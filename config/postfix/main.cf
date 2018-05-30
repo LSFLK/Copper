@@ -1,0 +1,139 @@
+smtpd_banner = $myhostname ESMTP $mail_name (Ubuntu)
+biff = no
+
+# The command_directory parameter specifies the location of all
+# postXXX commands.
+#
+command_directory = /usr/sbin
+
+
+# The queue_directory specifies the location of the Postfix queue.
+# This is also the root directory of Postfix daemons that run chrooted.
+# See the files in examples/chroot-setup for setting up Postfix chroot
+# environments on different UNIX systems.
+#
+queue_directory = /var/spool/postfix
+
+
+
+# The mydomain parameter specifies the local internet domain name.
+# The default is to use $myhostname minus the first component.
+# $mydomain is used as a default value for many other configuration
+# parameters.
+#
+#mydomain = domain.com
+mydomain = copper.com
+
+
+
+
+# SENDING MAIL
+# 
+# The myorigin parameter specifies the domain that locally-posted
+# mail appears to come from. The default is to append $myhostname,
+# which is fine for small sites.  If you run a domain with multiple
+# machines, you should (1) change this to $mydomain and (2) set up
+# a domain-wide alias database that aliases each user to
+# user@that.users.mailhost.
+#
+# For the sake of consistency between sender and recipient addresses,
+# myorigin also specifies the default domain name that is appended
+# to recipient addresses that have no @domain part.
+#
+#myorigin = $myhostname
+myorigin = $mydomain
+
+
+
+# RECEIVING MAIL
+
+# The inet_interfaces parameter specifies the network interface
+# addresses that this mail system receives mail on.  By default,
+# the software claims all active interfaces on the machine. The
+# parameter also controls delivery of mail to user@[ip.address].
+#
+# See also the proxy_interfaces parameter, for network addresses that
+# are forwarded to us via a proxy or network address translator.
+#
+# Note: you need to stop/start Postfix when this parameter changes.
+#
+inet_interfaces = all
+#inet_interfaces = $myhostname
+#inet_interfaces = $myhostname, localhost
+#inet_interfaces = localhost
+
+
+
+
+# The mydestination parameter specifies the list of domains that this
+# machine considers itself the final destination for.
+#
+# These domains are routed to the delivery agent specified with the
+# local_transport parameter setting. By default, that is the UNIX
+# compatible delivery agent that lookups all recipients in /etc/passwd
+# and /etc/aliases or their equivalent.
+#
+# The default is $myhostname + localhost.$mydomain.  On a mail domain
+# gateway, you should also include $mydomain.
+#
+# Do not specify the names of virtual domains - those domains are
+# specified elsewhere (see sample-virtual.cf).
+#
+# Do not specify the names of domains that this machine is backup MX
+# host for. Specify those names via the relay_domains settings for
+# the SMTP server, or use permit_mx_backup if you are lazy (see
+# sample-smtpd.cf).
+#
+# The local machine is always the final destination for mail addressed
+# to user@[the.net.work.address] of an interface that the mail system
+# receives mail on (see the inet_interfaces parameter).
+#
+# Specify a list of host or domain names, /file/name or type:table
+# patterns, separated by commas and/or whitespace. A /file/name
+# pattern is replaced by its contents; a type:table is matched when
+# a name matches a lookup key (the right-hand side is ignored).
+# Continue long lines by starting the next line with whitespace.
+#
+#mydestination = $myhostname, copper, ubuntu, localhost.localdomain, localhost
+#mydestination = $myhostname, localhost.$mydomain $mydomain
+mydestination = $myhostname, localhost.$mydomain, localhost
+
+
+
+
+
+# appending .domain is the MUA's job.
+append_dot_mydomain = no
+
+# Uncomment the next line to generate "delayed mail" warnings
+#delay_warning_time = 4h
+
+readme_directory = no
+
+
+# TLS parameters
+smtpd_tls_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem
+smtpd_tls_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
+smtpd_use_tls=yes
+smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
+smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
+
+# See /usr/share/doc/postfix/TLS_README.gz in the postfix-doc package for
+# information on enabling SSL in the smtp client.
+
+smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_unauth_destination
+myhostname = ubuntu.localdomain
+alias_maps = hash:/etc/aliases
+alias_database = hash:/etc/aliases
+
+relayhost = 
+mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
+mailbox_size_limit = 0
+recipient_delimiter = +
+inet_protocols = all
+
+########
+### To disable backward compatibility
+########
+#compatibility_level=${ENV}
+compatibility_level=2
