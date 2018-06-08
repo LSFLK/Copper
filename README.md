@@ -46,10 +46,12 @@ Instructions (commands) for create the docker image and you may test mail sendin
 
 7. When you are done with checking emails, type “quit”.
 
-Note: You may build the docker image using below command
+Note: You may build the docker image using below command.
+
 	* sudo docker build -t (image_name) .
 
 And run the created image with
+
 	* docker run -it -p 8080:80 (image_name) /bin/bash
 
 Restart the services apache2, postfix and dovecot. You will be able to access postfixadmin through host machine using port 8080.
