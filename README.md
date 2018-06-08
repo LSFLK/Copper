@@ -54,5 +54,4 @@ And run the created image with
 
 	* docker run -it -p 8080:80 (image_name) /bin/bash
 
-Restart the services apache2, postfix and dovecot. You will be able to access postfixadmin through host machine using port 8080.
-	* http://localhost:8080/postfixadmin/setup.php
+Restart the services apache2, postfix and dovecot. You will be able to access postfixadmin through host machine using port 8080. http://localhost:8080/postfixadmin/setup.php
