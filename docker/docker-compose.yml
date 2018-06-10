@@ -1,0 +1,204 @@
+version: '2'
+#--------------------------------------------------------------------------------------------
+#networks:
+    
+        #front:
+            #external:
+              #name: front
+        #back:
+            #driver: bridge
+
+#--------------------------------------------------------------------------------------------
+
+# https://runnable.com/docker/docker-compose-networking
+
+networks:
+    front:
+      
+        # use the bridge driver, but enable IPv6
+        driver: bridge
+        #driver_opts:
+            #com.docker.network.enable_ipv6: "true"
+        ipam:
+            driver: default
+            config:
+             - subnet: "192.168.0.0/24"
+               gateway: "192.168.0.1"
+                #- subnet: "2001:3984:3989::/64"
+                #gateway: "2001:3984:3989::1"
+    back:
+        # use a custom driver, with no options
+        driver: bridge
+
+services:
+
+#-------------------------------------myReverseProxy-----------------------------------------
+
+
+#--------------------------------------nginx--------------------------------------------------
+    reverse-proxy:
+        image: jwilder/nginx-proxy
+        #extends:
+            #file: docker-common.yml
+            #service: reverse-proxy
+        ports:
+            - 80:80
+            - 443:443
+        volumes:
+            - /var/run/docker.sock:/tmp/docker.sock:ro
+            - ./emailserver/ssl/archive/${FQDN}:/etc/nginx/certs:ro
+        #volumes_from:
+            #- emailserver
+        #network_mode: host 
+        networks:
+            - front
+            - back
+        container_name: "reverse-proxy"
+#-------------------------------------mariadb----------------------------------------------------
+    mariadb:
+        #extends:
+            #file: docker-common.yml
+            #service: mariadb
+        image: mariadb:10.2
+        #build:
+            #context: .
+            #dockerfile: ./database/Dockerfile
+        container_name: mariadb
+        restart: unless-stopped
+        #environment:
+          #- MYSQL_DATABASE=postfix
+          #- MYSQL_DATABASE=${DB}
+          #- MYSQL_USER=${DBUSER}
+          #- MYSQL_PASSWORD=${DBPASS}
+        volumes:
+          - ./database/data:/var/lib/mysql
+          # following volume is added ot copy some scripts to add domains and users by queries at startup
+          - ./database/scripts/mariadb-scripts:/var/lib/
+ 
+        environment:
+            #- MYSQL_RANDOM_ROOT_PASSWORD=yes
+            #- MYSQL_DATABASE=postfix
+            #- MYSQL_DATABASE=mail
+            - MYSQL_DATABASE=${DB}
+            - MYSQL_USER=${DBUSER}
+            - MYSQL_PASSWORD=${DBPASS}
+            - HOSTNAME=${DBHOST}
+            - VIRTUAL_HOST=mariadb
+        expose:
+            - "3306"
+        volumes:
+            #- ./docker/postgres/init-user-db.sh:/docker-entrypoint-initdb.d/init-user-db.sh
+            - ./database/scripts/mariadb-scripts:/docker-entrypoint-initdb.d/init-user-db.sh
+        networks:
+            - back
+        #depends_on:
+            #- front
+        #container_name: "mariadb"
+        
+#-----------------------------------email server------------------------------------------------------
+    emailserver:
+        #extends:
+            #file: docker-common.yml
+            #service: emailserver
+        build:
+            context: .
+            dockerfile: ./emailserver/Dockerfile
+        hostname: ${FQDN}
+        #hostname: mail.example.com
+        volumes:
+          - ./emailserver/certs:/certs
+          - ./emailserver/ssl:/etc/letsencrypt/
+          - ./mail:/var/mail
+      
+        environment:
+            - VIRTUAL_HOST=${FQDN},rspamd.${DOMAIN}
+            - VIRTUAL_PORT=80
+            - HOSTNAME=${FQDN}
+            - DOMAIN=${DOMAIN}
+            - EMAIL=${EMAIL}
+            - DBUSER=${DBUSER}
+            - DBPASS=${DBPASS}
+        ports:
+            # bellow 80 port is opened for external use
+            - "80"
+            - "11334:11334"
+            - "25:25"       # SMTP                - opened from external 25 to local 25
+            - "110:110"     # POP3
+            - "143:143"     # IMAP
+            - "465:465"     # SMTPS
+            - "587:587"     # Submission
+            - "993:993"     # IMAPS
+            - "995:995"     # POP3S
+            - "4190:4190"   # SIEVE
+        entrypoint:
+            - /bin/init_sys.sh
+        depends_on:
+            - mariadb
+            - redis
+            
+        networks:
+            - front
+            - back
+        
+        container_name: "emailserver"
+#-----------------------------------------postfixadmin-------------------------------------
+    postfixadmin:
+        #extends:
+            #file: docker-common.yml
+            #service: postfixadmin
+        build:
+            context: .
+            dockerfile: ./postfixadmin/Dockerfile
+        hostname: postfixadmin.${DOMAIN}
+        #hostname: postfixadmin.example.com
+     
+        environment:
+            - VIRTUAL_HOST=postfixadmin.${DOMAIN}
+            - VIRTUAL_PORT=80
+            - HOSTNAME=postfixadmin.${DOMAIN}
+            - DOMAIN=${DOMAIN}
+            - FQDN=${FQDN}
+            - EMAIL=${EMAIL}
+            - DBUSER=${DBUSER}
+            - DBPASS=${DBPASS}
+        entrypoint:
+            - /bin/init_sys.sh
+        ports:
+            # from external 88 opened to local 88
+            - "8080:8080"
+            #- "8080"
+        depends_on:
+            - mariadb
+            - emailserver
+           
+        expose:
+            - "8080"
+
+        networks:
+            - front
+            - back
+        
+        container_name: "postfixadmin"
+#------------------------------------------radis----------------------------------------------
+    redis:
+        #extends:
+            #file: docker-common.yml
+            #service: redis
+        image: redis:4.0-alpine
+        container_name: redis
+        restart: unless-stopped
+        command: redis-server --appendonly yes
+        volumes:
+          - ./redis/data:/data
+       
+        environment:
+            - VIRTUAL_HOST=redis
+        expose:
+            - "6379"
+        networks:
+            - back
+        #depends_on:
+            #- front
+
+        #container_name: "redis"
+    

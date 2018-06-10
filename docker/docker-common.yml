@@ -1,0 +1,50 @@
+version: '2'
+
+services:
+    reverse-proxy:
+        image: jwilder/nginx-proxy
+        # use this build option to build copper own reverse proxy latter
+        # https://medium.com/@joatmon08/using-containers-to-learn-nginx-reverse-proxy-6be8ac75a757
+        #build:
+            #context: .
+            #dockerfile: ./reverse-proxy/Dockerfile
+    mariadb:
+        image: mariadb:10.2
+        container_name: mariadb
+        restart: unless-stopped
+        environment:
+          #- MYSQL_DATABASE=postfix
+          - MYSQL_DATABASE=${DB}
+          - MYSQL_USER=${DBUSER}
+          - MYSQL_PASSWORD=${DBPASS}
+        volumes:
+          - ./database/data:/var/lib/mysql
+          # following volume is added ot copy some scripts to add domains and users by queries at startup
+          - ./database/scripts/mariadb-scripts:/var/lib/
+        #command: 
+            #-sh /var/lib/init-user-db.sh
+        
+    redis:
+        image: redis:4.0-alpine
+        container_name: redis
+        restart: unless-stopped
+        command: redis-server --appendonly yes
+        volumes:
+          - ./redis/data:/data
+
+    emailserver:
+        build:
+            context: .
+            dockerfile: ./emailserver/Dockerfile
+        hostname: ${FQDN}
+        #hostname: mail.example.com
+        volumes:
+          - ./emailserver/certs:/certs
+          - ./emailserver/ssl:/etc/letsencrypt/
+          - ./mail:/var/mail
+    postfixadmin:
+        build:
+            context: .
+            dockerfile: ./postfixadmin/Dockerfile
+        hostname: postfixadmin.${DOMAIN}
+        #hostname: postfixadmin.example.com
