@@ -1,2 +1,0 @@
-#!/bin/bash
-curl -L $1 -o $2

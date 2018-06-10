@@ -110,10 +110,10 @@ docker exec -it 5d02241a1739 sh /var/lib/init-user-db.sh
   
 
     - Test the mailserver by telent by sending a mail between above 2 users
-    wso2s-MacBook-Pro:docker wso2$ telnet localhost 25
-          Trying 127.0.0.1...
-          Connected to localhost.
-          Escape character is '^]'.
+    $ telnet localhost 25
+          -Trying 127.0.0.1...
+          -Connected to localhost.
+          -Escape character is '^]'.
           220 mail.nextgenmed.dyndns.org ESMTP Postfix (Ubuntu)
           MAIL FROM:admin@nextgenmed.dyndns.org
           250 2.1.0 Ok
