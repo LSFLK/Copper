@@ -1,4 +1,5 @@
-copper-base
+## Copper-base
+
 This repo is use for maintain the base docker image regarding the copper mail solution. Note that this is the core of copper mail.
 
 Initial development of copper base is completed including postfix and dovecot. You may find the source code in “https://github.com/LankaSoftwareFoundation/copper-base.git”.
