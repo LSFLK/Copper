@@ -17,7 +17,8 @@ try:
 except ImportError:
     from ConfigParser import SafeConfigParser  # Python 2
 
-import gpgme
+#import gpgme
+import gpg
 
 # Boiler plate to avoid dependency on six
 # BBB: Python 2.7 support

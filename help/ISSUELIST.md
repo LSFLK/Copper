@@ -351,8 +351,71 @@ This issue happen when we change the os to ubuntu 18.04 instaed of 16.04
 
 --------------------------------------------------------------------------------------------------------
 
+2018-06-12
+
+
+root@mail:/var/log# more mail.log
+Jun 12 05:08:42 mail postfix/master[202]: daemon started -- version 3.3.0, confi
+guration /etc/postfix
+Jun 12 05:09:48 mail postfix/smtpd[236]: warning: cannot get RSA certificate fro
+m file "/etc/letsencrypt/live/mail.coppermail.dyndns.org/fullchain.pem": disabli
+ng TLS support
+
+Jun 12 05:09:48 mail postfix/smtpd[236]: warning: TLS library problem: error:020
+01002:system library:fopen:No such file or directory:../crypto/bio/bss_file.c:29
+2:fopen('/etc/letsencrypt/live/mail.coppermail.dyndns.org/fullchain.pem','r'):
+
+
+* Issue resolved by changing name of the files putting . infont of them as i observe it has created.
+
+//main.cf
+smtpd_tls_cert_file=/etc/letsencrypt/live/%DFQN%/.fullchain.pem
+smtpd_tls_key_file=/etc/letsencrypt/live/%DFQN%/.privkey.pem
+
+//10.ssl.conf
+ssl_cert = </etc/letsencrypt/live/%DFQN%/.fullchain.pem
+ssl_key = </etc/letsencrypt/live/%DFQN%/.privkey.pem
+
+further in the shell file permission changes introduced after file creation
+
+
+
+------------------------------------------------------------------------------------------------------
+
+Telnet connection refused
+
+wso2s-MacBook-Pro:docker wso2$ telnet localhost 25
+Trying ::1...
+telnet: connect to address ::1: Connection refused
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+Connection closed by foreign host.
+
+mail.log erro
+
+root@mail:/var/log# more mail.log
+Jun 12 10:18:05 mail postfix/master[203]: fatal: bind ::1 port 10026: Cannot ass
+ign requested address
+
+
 
 
 
 -------------------------------------------------------------------------------------------------------
 
+docker log in to alpine containers
+
+Issue and solution :
+
+use /bin/sh instead of /bin/bash for apline
+
+Ex:
+wso2s-MacBook-Pro:docker wso2$ docker exec -it 8f884f87d885 /bin/bash
+OCI runtime exec failed: exec failed: container_linux.go:348: starting container process caused "exec: \"/bin/bash\": stat /bin/bash: no such file or directory": unknown
+wso2s-MacBook-Pro:docker wso2$ docker exec -it 8f884f87d885 /bin/sh
+/ # ls
+bin       home      mnt       root      services  tmp
+dev       lib       proc      run       srv       usr
+etc       media     rainloop  sbin      sys       var
+/ # 

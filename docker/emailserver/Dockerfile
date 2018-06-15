@@ -9,9 +9,13 @@ RUN apt-get -y install apt-utils
 RUN apt-get -y install net-tools
 # installing ping command
 RUN apt-get install -y iputils-ping
+# install mail until for testing functions
+RUN apt-get -y install mailutils
+# installing lsof command
+RUN apt-get -y install lsof
 RUN apt-get -y install telnet
 RUN apt-get -y install nano
-RUN apt-get -y install letsencrypt
+RUN apt-get -y install letsencrypt openssl
 RUN apt-get -y install postfix postfix-mysql postfix-pcre libsasl2-modules
 RUN apt-get install -y rsyslog fetchmail libdbi-perl libdbd-pg-perl libdbd-mysql-perl liblockfile-simple-perl
 #RUN apt-get -y install dovecot-core dovecot-imapd dovecot-pop3d dovecot-lmtpd dovecot-mysql dovecot-sieve dnsutils
@@ -31,8 +35,8 @@ RUN apt-get install -y gnupg software-properties-common
 
 RUN adduser --system --no-create-home --group --home /etc/zeyple --disabled-login zeyple
 RUN mkdir -p /etc/zeyple/keys && chmod 700 /etc/zeyple/keys && chown zeyple: /etc/zeyple/keys
-ADD https://raw.github.com/infertux/zeyple/master/zeyple/zeyple.py /usr/local/bin/zeyple.py
-#ADD ./emailserver/config/zeyple/zeyple.py /usr/local/bin/zeyple.py
+#ADD https://raw.github.com/infertux/zeyple/master/zeyple/zeyple.py /usr/local/bin/zeyple.py
+ADD ./emailserver/configs/zeyple/zeyple.py /usr/local/bin/zeyple.py
 RUN chmod 744 /usr/local/bin/zeyple.py && chown zeyple: /usr/local/bin/zeyple.py
 ADD https://raw.github.com/infertux/zeyple/master/zeyple/zeyple.conf.example /etc/zeyple.conf
 #ADD ./emailserver/config/zeyple/zeyple.conf.example /etc/zeyple.conf
@@ -54,6 +58,10 @@ COPY ./emailserver/configs/Postfix /etc/postfix/
 RUN chmod o= /etc/postfix/sql/mysql_virtual_*.cf
 RUN chgrp postfix /etc/postfix/sql/mysql_virtual_*.cf
 
+# Adding sieve file to /var/mail
+COPY ./emailserver/configs/sieve /var/mail/sieve
+
+
 RUN groupadd -g 5000 vmail && useradd -g vmail -u 5000 vmail -d /var/mail
 RUN chown -R vmail:vmail /var/mail
 RUN chown -R postfix /etc/postfix
@@ -62,17 +70,18 @@ RUN chmod -R 755 /etc/postfix
 RUN chown -R vmail:dovecot /etc/dovecot
 RUN chmod -R o-rwx /etc/dovecot
 
-COPY ./emailserver/configs/rspamd.sh /
+COPY ./emailserver/configs/Rspamd/rspamd.sh /
 #RUN ./rspamd.sh  // Error : /bin/sh: 1: ./rspamd.sh: Permission denied , bellow line introduced
 RUN chmod +x ./rspamd.sh
 RUN ./rspamd.sh
 COPY ./emailserver/configs/Rspamd /etc/rspamd/
 #RUN mkdir /var/lib/rspamd/dkim/	//error :/rspamd/...dkim/': No such file or directory
 RUN mkdir -p /var/lib/rspamd/dkim
-#RUN rspamadm dkim_keygen -b 1024 -s 2018 -d $DOMAIN -k /var/lib/rspamd/dkim/2018.key > /var/lib/rspamd/dkim/2018.txt
+
 RUN rspamadm dkim_keygen -b 1024 -s 2018 -d $DOMAIN -k /var/lib/rspamd/dkim/2018.key > /var/lib/rspamd/dkim/2018.txt
 RUN chown -R _rspamd:_rspamd /var/lib/rspamd/dkim
 RUN chmod 440 /var/lib/rspamd/dkim/*
+
 RUN cp -R /etc/rspamd/local.d/dkim_signing.conf /etc/rspamd/local.d/arc.conf
 COPY ./emailserver/configs/sieve /sieve
 

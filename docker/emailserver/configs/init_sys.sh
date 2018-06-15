@@ -10,6 +10,7 @@ export REDIS_PORT=${REDIS_PORT:-6379}
 export DBUSER=${DBUSER:-"postfixuser"}
 export DBPASS=${DBPASS:-"postfixpassword"}
 export DBHOST=${DBHOST:-"mariadb"}
+export DEBUG=${DEBUG:-"true"}
 export RSPAMD_PASSWORD=${RSPAMD_PASSWORD:-"password"}
 
 
@@ -58,26 +59,27 @@ echo "Checking for existing certificates"
 
 
 
-#if ["$DEBUG" = true]; then
-if ["$DEBUG" == true]; then
-  mkdir $KEY_PATH
-  openssl req -nodes -x509 -newkey rsa:4096 -keyout ${KEY_PATH}.privkey.pem -out ${KEY_PATH}.fullchain.pem -days 365 -subj "/C=US/ST=Oregon/L=Portland/O=Company Name/OU=Org/CN=www.example.com"
-  echo "IN DEBUG MODE!!!! - GENERATED SELF SIGNED SSL KEY"
-else
-  if (( ${#files} )); then
-      echo "Found existing keys!!"
+if [ "$DEBUG" = true ]; then
+   mkdir -p $KEY_PATH
+   openssl req -nodes -x509 -newkey rsa:4096 -keyout ${KEY_PATH}.privkey.pem -out ${KEY_PATH}.fullchain.pem -days 365 -subj "/C=US/ST=Oregon/L=Portland/O=Company Name/OU=Org/CN=nextgenmed.dyndns.org"
+   echo "IN DEBUG MODE!!!! - GENERATED SELF SIGNED SSL KEY"
   else
-      echo "No Certicates Found!!"
-      echo "Generating SSL Certificates with LetsEncrypt"
-      letsencrypt certonly --standalone -d $HOSTNAME --noninteractive --agree-tos --email $EMAIL
-      if (( ${#files} )); then
-        echo "Certicate generation Successfull"
-      else
-        echo "Certicate generation failed."
-        exit 1
-      fi
+if (( ${#files} )); then
+       echo "Found existing keys!!"
+   else
+       echo "No Certicates Found!!"
+       echo "Generating SSL Certificates with LetsEncrypt"
+       letsencrypt certonly --standalone -d $HOSTNAME --noninteractive --agree-tos --email $EMAIL
+       if (( ${#files} )); then
+         echo "Certicate generation Successfull"
+       else
+         echo "Certicate generation failed."
+         exit 1
+       fi
+   fi
   fi
-fi
+
+chmod -R 755 /etc/letsencrypt/
 
  cp -R /etc/letsencrypt/ /cert
  sed -i.bak -e "s;%DFQN%;"${HOSTNAME}";g" "/etc/postfix/main.cf"
@@ -112,13 +114,16 @@ fi
  cp -R /sieve/* /var/mail/sieve/global/
  sievec /var/mail/sieve/global/spam-global.sieve
  sievec /var/mail/sieve/global/report-ham.sieve
- sudo chown -R vmail: /var/mail/sieve/
+ rspamadm dkim_keygen -b 1024 -s 2018 -d ${DOMAIN} -k /var/lib/rspamd/dkim/2018.key > /var/lib/rspamd/dkim/2018.txt
+ chown -R _rspamd:_rspamd /var/lib/rspamd/dkim
+ chmod 440 /var/lib/rspamd/dkim/*
+ chown -R vmail: /var/mail/sieve/
  cat /var/lib/rspamd/dkim/2018.txt
  touch /var/log/mail.log
  touch /var/log/mail.err
  chown root:root /etc/postfix/dynamicmaps.cf
- sudo chown root:root /etc/postfix/main.cf
- sudo chmod 0644 /etc/postfix/main.cf
+ chown root:root /etc/postfix/main.cf
+ chmod 0644 /etc/postfix/main.cf
  
  chgrp postfix /etc/postfix/sql/mysql_virtual_*.cf
  chmod u=rw,g=r,o= /etc/postfix/sql/mysql_virtual_*.cf
@@ -127,8 +132,8 @@ fi
  #chgrp postfix /etc/postfix/mariadb-sql/mysql-virtual_*.cf
  #chmod u=rw,g=r,o= /etc/postfix/mariadb-sql/mysql-virtual_*.cf
  
- sudo chmod a+w /var/log/mail*
- sudo chown zeyple /etc/zeyple.conf
+ chmod a+w /var/log/mail*
+ chown zeyple /etc/zeyple.conf
  touch /etc/postfix/virtual
  touch /etc/postfix/access
  postmap hash:/etc/postfix/virtual

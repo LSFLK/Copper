@@ -87,3 +87,16 @@ Then:
 $ mysql -h "server-name" "database-name" < "filename.sql"
 
 
+
+--------------------------------------------------------------------------------------------------------------
+
+mail folder replacement
+sieve configuration
+
+There was a folder called mail in the root folder inside there were sieve and vhost some of configuration files.
+It was removed and in the composer file line contained volume adding to mail directory removed under emailserver service
+
+
+--------------------------------------------------------------------------------------------------------------
+
+

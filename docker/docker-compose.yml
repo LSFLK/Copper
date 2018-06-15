@@ -88,7 +88,8 @@ services:
             - "3306"
         volumes:
             #- ./docker/postgres/init-user-db.sh:/docker-entrypoint-initdb.d/init-user-db.sh
-            - ./database/scripts/mariadb-scripts:/docker-entrypoint-initdb.d/init-user-db.sh
+            #- ./database/scripts/mariadb-scripts:/docker-entrypoint-initdb.d/init-user-db.sh
+            - ./database/scripts/mysql:/docker-entrypoint-initdb.d/init-user-db.sh
         networks:
             - back
         #depends_on:
@@ -105,10 +106,13 @@ services:
             dockerfile: ./emailserver/Dockerfile
         hostname: ${FQDN}
         #hostname: mail.example.com
-        volumes:
-          - ./emailserver/certs:/certs
-          - ./emailserver/ssl:/etc/letsencrypt/
-          - ./mail:/var/mail
+        #volumes:
+          #- ./emailserver/certs:/certs
+          #- ./emailserver/ssl:/etc/letsencrypt/
+          #- ./emailserver/mail:/var/mail
+        extra_hosts:
+            - "coppermail.emailserver:127.0.1.1"
+            - "coppermail.emailserver.tld:127.0.1.1"
       
         environment:
             - VIRTUAL_HOST=${FQDN},rspamd.${DOMAIN}
@@ -129,6 +133,7 @@ services:
             - "587:587"     # Submission
             - "993:993"     # IMAPS
             - "995:995"     # POP3S
+            #- "10026:10026" # smtpd  // this was added by me due to a port open erro in msterfile config
             - "4190:4190"   # SIEVE
         entrypoint:
             - /bin/init_sys.sh
@@ -179,6 +184,46 @@ services:
             - back
         
         container_name: "postfixadmin"
+
+# ----------------------------------------webmail--------------------------------------------
+  
+    webmail:
+        build:
+            context: .
+            dockerfile: ./webmail/${WEBMAIL}/Dockerfile
+        restart: always
+        env_file: .env
+        volumes:
+            - ./webmail/${WEBMAIL}/app:/var/www/site/app/
+        ports:
+            - "8989:80"
+        depends_on:
+            - emailserver
+        networks:
+            - front
+            - back
+        container_name: "webmail"   
+
+            #-------------------------------------copperclient -- customized web mail client installation----
+    #webmail:
+        #build:
+            #context: .
+            #dockerfile: ./webmail/copperclient/Dockerfile
+        #restart: always
+        #env_file: .env
+        #volumes:
+            #- ./webmail/copperclient/app:/var/www/site/app/
+        #ports:
+            #- "8989:80"
+        #depends_on:
+            #- emailserver
+        #networks:
+            #- front
+            #- back
+        #container_name: "webmail" 
+
+
+
 #------------------------------------------radis----------------------------------------------
     redis:
         #extends:
