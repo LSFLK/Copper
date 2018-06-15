@@ -1,0 +1,400 @@
+<?php
+# $Id$
+//
+// Language file Hungarian
+// by Christian Hamar <krics at linuxforum dot hu> and Levente Farkas <lfarkas at lfarkas dot org>
+//
+
+$PALANG['YES'] = 'IGEN';
+$PALANG['NO'] = 'NEM';
+$PALANG['edit'] = 'szerkeszt';
+$PALANG['del'] = 'töröl';
+$PALANG['exit'] = 'Kilép';
+$PALANG['cancel'] = 'Cancel'; # XXX
+$PALANG['save'] = 'Save changes'; # XXX
+$PALANG['confirm'] = 'Biztos vagy benne hogy törlöd ezt?\n';
+$PALANG['confirm_delete_admin'] = 'Do you really want to delete the admin %s?'; # XXX
+$PALANG['confirm_delete_alias'] = 'Do you really want to delete the alias %s?'; # XXX
+$PALANG['confirm_delete_aliasdomain'] = 'Do you really want to delete the alias domain %s?'; # XXX
+$PALANG['confirm_delete_domain'] = 'Biztos hogy törölni akarod az összes bejegyzést ez alól a domain alól? Nem lehet visszahozni késõbb!\n (%s)'; # XXX text changed to: 'Do you really want to delete all records for the domain %s? This can not be undone'
+$PALANG['confirm_delete_fetchmail'] = 'Do you really want to delete the fetchmail job %s?'; # XXX
+$PALANG['confirm_delete_mailbox'] = 'Do you really want to delete the mailbox %s?'; # XXX
+$PALANG['confirm_delete_vacation'] = 'Do you really want to delete the vacation message for %s?'; # XXX
+$PALANG['no_delete_permissions'] = 'You are not allowed to delete %s!'; # XXX
+$PALANG['check_update'] = 'Check for update'; # XXX
+$PALANG['invalid_parameter'] = 'Invalid parameter!'; # XXX
+$PALANG['show'] = 'Show:'; # XXX
+$PALANG['all'] = 'All'; # XXX
+$PALANG['created'] = 'Created'; # XXX
+$PALANG['unknown'] = 'unknown'; # XXX
+$PALANG['download_csv'] = 'Download this list as CSV file'; # XXX
+$PALANG['missing_field'] = 'Field %s is missing'; # XXX
+$PALANG['must_be_numeric'] = '%s must be numeric'; # XXX
+$PALANG['must_be_numeric_bigger_than_null'] = '%s must be numeric and bigger than 0'; # XXX
+$PALANG['must_be_boolean'] = '%s must be boolean'; # XXX
+$PALANG['invalid_value_given'] = 'Invalid value given for %s'; # XXX
+$PALANG['edit_not_allowed'] = 'You are not allowed to edit %s'; # XXX
+$PALANG['searchparams'] = 'Search parameters:'; # XXX
+
+$PALANG['pFooter_logged_as'] = '%s-ként bejelentkezve'; # XXX Text change: 'logged in as %s' (the 'in' was missing)
+
+$PALANG['pLogin_welcome'] = 'Mail adminisztrátorok itt jelentkezzenek be, hogy adminisztrálják a domainjüket.';
+$PALANG['pLogin_username'] = 'Bejelentkezés (email)'; # XXX compare with pUsersLogin_username - should be "Login (email)"
+$PALANG['password'] = 'Jelszó';
+$PALANG['pLogin_language'] = 'Language'; # XXX
+$PALANG['pLogin_button'] = 'Bejelentkezés'; # XXX compare with pUsersLogin_button - should be "Login"
+$PALANG['pLogin_failed'] = 'Your email address or password are not correct.'; # XXX
+$PALANG['pLogin_login_users'] = 'A felhasználók kattintsanak ide a felhasználói felülethez.';
+
+$PALANG['pMenu_main'] = 'Főmenü';
+$PALANG['pMenu_overview'] = 'Áttekintés';
+$PALANG['add_alias'] = 'Alias felvétele';
+$PALANG['add_alias_domain'] = 'Add Alias Domain'; # XXX
+$PALANG['add_mailbox'] = 'Felhasználó felvétele'; # XXX check text - should be 'Add Mailbox'
+$PALANG['pMenu_fetchmail'] = 'Email lehozása';
+$PALANG['pMenu_sendmail'] = 'Email küldése';
+$PALANG['pMenu_password'] = 'Jelszó';
+$PALANG['pMenu_viewlog'] = 'Napló megtekintése';
+$PALANG['pMenu_logout'] = 'Kilépés';
+
+$PALANG['pMain_welcome'] = 'Üdvözöllek a Postfix Adminisztrációs rendszerben!';
+$PALANG['pMain_overview'] = 'Listázd az alias-okat és a postafiókokat. Innen tudod õket törölni / módosítani.';
+$PALANG['pMain_create_alias'] = 'Új alias készítése az adott domainhez.'; # XXX check text - should be 'Create a new alias for your domain.'
+$PALANG['pMain_create_mailbox'] = 'Új felhasználó felvétele az adott domainhez.';
+$PALANG['pMain_sendmail'] = 'Küldjön a rendszer emailt minden egyes új felhasználónak.';
+$PALANG['pMain_password'] = 'Admin jelszó megváltoztatása.';
+$PALANG['pMain_viewlog'] = 'Naplófájlok megtekintése.';
+$PALANG['pMain_logout'] = 'Kijelentkezés a rendszerbõl';
+
+$PALANG['pOverview_disabled'] = 'Letiltva';
+$PALANG['pOverview_unlimited'] = 'Korlátlan';
+$PALANG['pOverview_title'] = ':: Definiált Domain-ok';
+$PALANG['pOverview_up_arrow'] = 'Vissza a tetejére';
+$PALANG['pOverview_right_arrow'] = 'Következő oldal';
+$PALANG['pOverview_left_arrow'] = 'Előző oldal';
+$PALANG['pOverview_alias_domain_title'] = ':: Domain Aliases'; # XXX
+$PALANG['pOverview_alias_title'] = ':: Alias';
+$PALANG['pOverview_mailbox_title'] = ':: Mailbox-ok';
+$PALANG['go'] = 'Gyerünk'; # XXX check text - should be 'Go'
+$PALANG['pOverview_welcome'] = 'Áttekintés: ';
+$PALANG['pOverview_alias_domain_aliases'] = 'Alias Domains'; # XXX
+$PALANG['pOverview_alias_address'] = 'Honnan';
+$PALANG['active'] = 'Aktív';
+$PALANG['and_x_more'] = '[and %s more...]'; # XXX
+$PALANG['pOverview_mailbox_username'] = 'Email';
+$PALANG['name'] = 'Név';
+$PALANG['pOverview_mailbox_quota'] = 'Quota (MB)';
+$PALANG['pOverview_vacation_edit'] = 'SZABADSÁG EKKOR';
+$PALANG['pOverview_vacation_option'] = 'Szabadság beállítása';
+$PALANG['no_domains_for_this_admin'] = 'You don\'t have permissions for any domains.'; # XXX
+$PALANG['no_domains_exist'] = 'You have to create at least one domain before you can use virtual list.'; # "virtual list" should match $PALANG['pAdminMenu_list_virtual'] # XXX
+
+
+$PALANG['domain'] = 'Domain';
+$PALANG['pOverview_get_alias_domains'] = 'Domain Aliases'; # XXX
+$PALANG['mailboxes'] = 'Postafiókok';
+$PALANG['pOverview_get_quota'] = 'Postafiók Quota (MB)';
+
+$PALANG['pDelete_delete_error'] = 'Nem sikerült törölni a bejegyzést ';
+$PALANG['pDelete_delete_success'] = '%s deleted.'; # XXX
+$PALANG['pDelete_domain_error'] = 'Ehhez a domainhez nincs jogosultságod ';
+$PALANG['pDelete_alias_error'] = 'Nem sikerült törölni az alias-t ';
+$PALANG['pCreate_alias_domain_welcome'] = 'Mirror addresses of one of your domains to another.'; # XXX
+$PALANG['pCreate_alias_domain_alias'] = 'Alias Domain'; # XXX
+$PALANG['pCreate_alias_domain_alias_text'] = 'The domain that mails come in for.'; # XXX
+$PALANG['pCreate_alias_domain_target'] = 'Target Domain'; # XXX
+$PALANG['pCreate_alias_domain_target_text'] = 'The domain where mails should go to.'; # XXX
+$PALANG['pCreate_alias_domain_error1'] = 'You are not allowed to create the chosen configuration.'; # XXX
+$PALANG['pCreate_alias_domain_error2'] = 'The chosen configuration is invalid, please choose a different one!'; # XXX
+$PALANG['alias_domain_already_exists'] = 'This domain is already an alias domain!'; # XXX
+$PALANG['alias_domain_does_not_exist'] = 'This domain isn\'t an alias domain!'; # XXX
+$PALANG['alias_domain_create_failed'] = 'Creating the alias domain %s failed!'; # XXX
+$PALANG['alias_domain_change_failed'] = 'Changing the alias domain %s failed!'; # XXX
+$PALANG['pCreate_alias_domain_error4'] = 'All domains are already aliased.'; # XXX
+$PALANG['pCreate_alias_domain_success'] = 'The alias domain %s has been created.'; # XXX
+$PALANG['alias_domain_changed'] = 'The alias domain %s has been changed.'; # XXX
+$PALANG['alias_domain_to_itsself'] = 'A domain can\'t be an alias domain to itsself!'; # XXX
+$PALANG['delete_domain_aliasdomain_target'] = 'The domain %s is the target for one or more alias domains and can\'t be deleted! (Delete the alias domains first.)'; # XXX
+
+$PALANG['pCreate_alias_address_text_error1'] = 'Az ALIAS érvénytelen!';
+$PALANG['alias_does_not_exist'] = 'This alias does not exist!'; # XXX
+$PALANG['email_address_already_exists'] = 'Ez az email cím már létezik, kérlek válassz másikat!';
+$PALANG['pCreate_alias_address_text_error3'] = 'Elérted a maximális alias limitet!';
+$PALANG['pCreate_alias_goto_text'] = 'Ahova a levélnek mennie kell.';
+$PALANG['pCreate_alias_goto_text_error'] = 'Érvénytelen a HOVA mezõ!';
+$PALANG['pCreate_alias_result_error'] = 'Nemsikerült hozzáadni az aliast az alias táblához! (%s)'; # XXX Text changed to: Creating the alias %s failed!
+$PALANG['pCreate_alias_result_success'] = 'Az aliast felvettük az alias táblába!'; # XXX text change: 'The alias %s has been created!'
+$PALANG['alias_updated'] = 'The alias %s has been updated!'; # XXX
+$PALANG['pCreate_alias_catchall_text'] = 'A catch-all (*@valami.hu) beállításához használj "*" -ot az alias mezõnél. A domain-domain közötti átirányításhoz használd a "*@akarmi.hu" címet.'; # XXX check/beautify - was split in two lines before
+$PALANG['mailbox_alias_cant_be_deleted'] = 'This alias belongs to a mailbox and can\'t be deleted!'; # XXX
+$PALANG['protected_alias_cant_be_deleted'] = 'The alias %s is protected and can only be deleted by a superadmin'; # XXX
+
+$PALANG['pEdit_alias_welcome'] = 'Alias szerkesztése a domainhez.'; # XXX Text change to: 'Edit forwarding settings'
+$PALANG['pEdit_alias_help'] = 'Soronként egy.'; # XXX # XXX Text change to: 'Accepts multiple targets, one entry per line.'
+$PALANG['alias'] = 'Alias';
+$PALANG['to'] = 'Hova';
+$PALANG['pEdit_alias_goto_text_error1'] = 'Nem írtál semmit a \'Hova\' mezõbe';
+$PALANG['pEdit_alias_goto_text_error2'] = 'Az email cím amit beírtál érvénytelen: ';
+$PALANG['pEdit_alias_domain_result_error'] = 'Unable to modify the alias domain!'; # XXX
+$PALANG['pEdit_alias_forward_and_store'] = 'Kézbesítés helyi mailbox-ba.';
+$PALANG['pEdit_alias_forward_only'] = 'Továbbítás csak az adott email címre.';
+$PALANG['pEdit_alias_result_error'] = 'Nemsikerült módosítani az Aliast! (%s)'; # XXX Text changed to: Modifying the alias %s failed!
+
+$PALANG['pCreate_mailbox_welcome'] = 'Új postafiók létrehozása az adott domainhez.';
+$PALANG['pCreate_mailbox_username_text_error1'] = 'Érvénytelen EMAIL !';
+$PALANG['pCreate_mailbox_username_text_error3'] = 'Elérted a maximális postafiók számot!';
+$PALANG['pCreate_mailbox_password_text'] = 'Jelszó a POP3/IMAP -hoz';
+$PALANG['pCreate_mailbox_name_text'] = 'Teljes név';
+$PALANG['pCreate_mailbox_mail'] = 'Postafiók létrehozása'; # XXX Text change to 'Send Welcome mail'
+$PALANG['pCreate_mailbox_result_error'] = 'Nemsikerült a postafiókot felvenni a mailbox adatbázis táblába! (%s)'; # XXX Text changed to: Creating the mailbox %s failed!
+$PALANG['pCreate_mailbox_result_success'] = 'A postafiókot sikeresen felvettük a mailbox adatbázis táblába! (%s)'; # XXX Text changed to: The mailbox %s has been added to the mailbox table!
+$PALANG['pCreate_mailbox_result_succes_nosubfolders'] = 'A postafiókot hozzáadtuk a postafiók táblához, de egyik előre definiált alkönyvtárat sem tudtuk létrehozni (vagy csak néhányat) (%s)'; # XXX Text changed to: The mailbox %s has been added to the mailbox table, but none (or only some) of the predefined sub-folders could be created.
+$PALANG['mailbox_updated'] = "The mailbox %s has been updated.";  # XXX
+$PALANG['mailbox_update_failed'] = "Updating the mailbox %s failed!"; # XXX
+
+$PALANG['pEdit_mailbox_welcome'] = 'Postafiók szerkesztése az adott domainhez.';
+$PALANG['pEdit_mailbox_username'] = 'Felhasználónév';
+$PALANG['pEdit_mailbox_password_text_error'] = 'A beírt jelszavak nem egyeznek!';
+$PALANG['pEdit_mailbox_quota'] = 'Quota';
+$PALANG['pEdit_mailbox_quota_text'] = 'MB';
+$PALANG['mb_max'] = 'MB (max: %s)'; # XXX
+$PALANG['pEdit_mailbox_quota_text_error'] = 'A megadott quota érték túl magas!';
+$PALANG['pEdit_mailbox_domain_error'] = 'Ehhez a domainhez nincs jogosultságod: ';
+$PALANG['pEdit_mailbox_result_error'] = 'Nemsikerült megváltoztatni a jelszót!';
+
+$PALANG['pPassword_welcome'] = 'Bejelentkezési jelszó megváltoztatása';
+$PALANG['pPassword_admin'] = 'Bejelentkezés';
+$PALANG['pPassword_password_current'] = 'Régi jelszó';
+$PALANG['pPassword_password_current_text_error'] = 'Nem adtad meg a régi jelszavadat!';
+$PALANG['pPassword_password'] = 'Új jelszó';
+$PALANG['pPassword_password2'] = 'Új jelszó (mégegyszer)';
+$PALANG['pPassword_password_text_error'] = 'A beírt jelszavak nem egyeznek! Vagy üresek!'; # XXX check/beautify - was split in two lines before
+$PALANG['change_password'] = 'Jelszó megváltoztatása';
+$PALANG['pPassword_result_error'] = 'Nemsikerült megváltoztatni a jelszavad! (%s)'; # XXX Text changed to: Changing the password for %s failed!
+$PALANG['pPassword_result_success'] = 'A jelszavad megváltozott! (%s)'; # XXX Text changed to: The password for %s has been changed.
+
+$PALANG['pEdit_vacation_set'] = 'Nem vagyok elérhatő üzenet módosítás / beállítás';
+$PALANG['pEdit_vacation_remove'] = 'Nem vagyok elérhatő üzenet törlése';
+
+$PALANG['pVacation_result_error'] = 'Nem sikerült frissíteni az automatikus válasz beállításait! (%s)'; # XXX Text changed to: Updating the auto response settings for %s failed
+$PALANG['pVacation_result_removed'] = 'Az automatikus válasz törölve! (%s)'; # XXX Text changed to "Auto response for %s has been disabled!"
+$PALANG['pVacation_result_added'] = 'Az automatikus válasz engedélyezve! (%s)'; # XXX Text changed to "Auto response for %s has been enabled!"
+$PALANG['pVacation_reply_type'] = 'Choice of reply'; # XXX
+$PALANG['pVacation_reply_delay_time'] = 'Interval time'; # XXX
+$PALANG['pVacation_reply_delay_time_text'] = 'Time in seconds'; # XXX
+$PALANG['pVacation_until_before_today'] = 'The Date of [Active until] is set  before Today'; # XXX
+$PALANG['pVacation_until_before_from'] = 'The Date of [Active until] is set before [Active from]'; # XXX
+$PALANG['reply_once'] = 'Reply once'; # XXX
+$PALANG['reply_every_mail'] = 'Reply on every mail'; # XXX
+$PALANG['reply_once_per_day'] = 'Reply once a day'; # XXX
+$PALANG['reply_once_per_week'] = 'Reply once per week'; # XXX
+
+$PALANG['pViewlog_welcome'] = 'Az utolsó %s esemény megtekintése: ';
+$PALANG['pViewlog_timestamp'] = 'Idõbélyeg';
+$PALANG['pViewlog_action'] = 'Akció';
+$PALANG['pViewlog_data'] = 'Adat';
+$PALANG['pViewlog_action_create_domain'] = 'create domain'; # XXX
+$PALANG['pViewlog_action_delete_domain'] = 'delete domain'; # XXX
+$PALANG['pViewlog_action_edit_domain'] = 'edit domain'; # XXX
+
+$PALANG['pViewlog_action_create_mailbox'] = 'postafiók létrehozása';
+$PALANG['pViewlog_action_delete_mailbox'] = 'postafiók törlése';
+$PALANG['pViewlog_action_edit_mailbox'] = 'postafiók módosítása';
+$PALANG['pViewlog_action_edit_mailbox_state'] = 'postafiók aktivitás módosítása';
+$PALANG['pViewlog_action_create_alias'] = 'alias létrehozása';
+$PALANG['pViewlog_action_create_alias_domain'] = 'create alias domain'; # XXX
+$PALANG['pViewlog_action_edit_alias_domain'] = 'edit alias domain'; # XXX
+$PALANG['pViewlog_action_delete_alias'] = 'alias törlése';
+$PALANG['pViewlog_action_delete_alias_domain'] = 'delete alias domain'; # XXX
+$PALANG['pViewlog_action_edit_alias'] = 'alias módosítása';
+$PALANG['pViewlog_action_edit_alias_state'] = 'alias aktivitás módosítása';
+$PALANG['pViewlog_action_edit_alias_domain_state'] = 'edit alias domain active'; # XXX
+$PALANG['pViewlog_action_edit_password'] = 'jelszó módosítása';
+$PALANG['pViewlog_action_create_admin'] = 'create admin'; # XXX
+$PALANG['pViewlog_action_edit_admin'] = 'edit admin'; # XXX
+$PALANG['pViewlog_action_delete_admin'] = 'delete admin'; # XXX
+$PALANG['pViewlog_action_edit_vacation'] = 'edit vacation'; # XXX
+$PALANG['pViewlog_action_create_fetchmail'] = 'create fetchmail job'; # XXX
+$PALANG['pViewlog_action_edit_fetchmail'] = 'edit fetchmail job'; # XXX
+$PALANG['pViewlog_action_delete_fetchmail'] = 'delete fetchmail job'; # XXX
+
+$PALANG['pViewlog_result_error'] = 'Nemsikerült megtalálni a napló fájlokat!';
+
+$PALANG['pSendmail_welcome'] = 'Email küldése.';
+$PALANG['from'] = 'Feladó';
+$PALANG['pSendmail_to'] = 'Címzett';
+$PALANG['pSendmail_to_text_error'] = 'Ez egy üres, vagy nem megfelelõ email cím!';
+$PALANG['subject'] = 'Tárgy';
+$PALANG['pSendmail_subject_text'] = 'Postafiókja sikeresen elkészült!';
+$PALANG['pSendmail_body'] = 'Üzenet';
+$PALANG['pSendmail_button'] = 'Üzenet küldése';
+$PALANG['pSendmail_result_error'] = 'Postafiók létrehozása sikertelen! (%s)'; # XXX text change - new: Unable to send email to %s!
+$PALANG['pSendmail_result_success'] = 'A postafiók sikeresen elkészült! (%s)'; # XXX text change - new: Email sent to %s.
+
+$PALANG['pAdminMenu_list_admin'] = 'Admin Lista';
+$PALANG['pAdminMenu_list_domain'] = 'Domain Lista';
+$PALANG['pAdminMenu_list_virtual'] = 'Postafiók Lista';
+$PALANG['pAdminMenu_backup'] = 'Adatbázis mentés';
+$PALANG['pAdminMenu_create_domain_admins'] = 'Domain Adminok';
+$PALANG['pAdminMenu_create_admin'] = 'Új Admin';
+$PALANG['pAdminMenu_create_domain'] = 'Új Domain';
+
+$PALANG['pAdminList_admin_count'] = 'Domain-ek';
+
+$PALANG['description'] = 'Leírás';
+$PALANG['aliases'] = 'Alias-ok';
+$PALANG['pAdminList_domain_quota'] = 'Domain quota (MB)'; # XXX
+$PALANG['pAdminList_domain_backupmx'] = 'Backup MX'; # XXX
+$PALANG['last_modified'] = 'Utolsó módosítás';
+
+
+$PALANG['pAdminCreate_domain_welcome'] = 'Új domain felvétele';
+$PALANG['pAdminCreate_domain_domain_text_error'] = 'A domain már létezik!';
+$PALANG['domain_does_not_exist'] = 'This domain does not exist!'; # XXX
+$PALANG['pAdminCreate_domain_domain_text_error2'] = 'A domain érvénytelen!';
+$PALANG['pAdminCreate_domain_defaultaliases'] = 'Alapértelmezett alias-ok hozzáadása';
+$PALANG['pAdminCreate_domain_button'] = 'Domain felvétele';
+$PALANG['pAdminCreate_domain_result_error'] = 'A domain felvétele sikertelen! (%s)'; # XXX Text changed to: Adding the domain %s failed!
+$PALANG['pAdminCreate_domain_result_success'] = 'A domain-t felvettük az adatbázisba! (%s)'; # XXX Text changed to: The domain %s has been added.
+$PALANG['domain_updated'] = 'The domain %s has been updated.'; # XXX
+$PALANG['pAdminDelete_admin_error'] = 'Unable to delete admin!'; # XXX
+
+$PALANG['domain_postdel_failed'] = 'A domain törlése nem sikerült!'; # XXX Text changed to: The domain postdeletion script failed, check the error log for details!
+$PALANG['domain_postcreate_failed'] = 'The domain postcreate script failed, check the error log for details!'; # XXX
+$PALANG['mailbox_postdel_failed'] = 'The mailbox postdeletion script failed, check the error log for details!'; # XXX
+$PALANG['mailbox_postedit_failed'] = 'The mailbox postedit script failed, check the error log for details!'; # XXX
+$PALANG['mailbox_postcreate_failed'] = 'The mailbox postcreate script failed, check the error log for details!'; # XXX
+$PALANG['pAdminDelete_alias_domain_error'] = 'Unable to remove domain alias!'; # XXX
+$PALANG['domain_conflict_vacation_domain'] = 'You can\'t use the vacation domain as mail domain!'; # XXX
+
+$PALANG['pAdminEdit_domain_welcome'] = 'Domain szerkesztése';
+$PALANG['pAdminEdit_domain_aliases_text'] = '-1 = kikapcsol | 0 = végtelen';
+$PALANG['pAdminEdit_domain_maxquota'] = 'Max Quota'; # XXX
+$PALANG['pAdminEdit_domain_maxquota_text'] = 'MB | -1 = kikapcsol | 0 = végtelen';
+$PALANG['pAdminEdit_domain_quota'] = 'Domain Quota'; # XXX
+$PALANG['transport'] = 'Transport';
+$PALANG['pAdminEdit_domain_transport_text'] = 'Transport definiálása';
+$PALANG['pAdminEdit_domain_backupmx'] = 'A mail szerver egy backup MX';
+$PALANG['pAdminEdit_domain_result_error'] = 'A domain módosítása sikertelen! (%s)'; # XXX Text changed to: Modifying the domain %s failed!
+
+$PALANG['pAdminCreate_admin_welcome'] = 'Új domain admin felvétele';
+$PALANG['email_address'] = 'Email cím';
+$PALANG['pAdminCreate_admin_username_text_error1'] = 'Az Admin nem valós email cím!';
+$PALANG['admin_already_exists'] = 'Az Admin már létezik, vagy nem valós a cím!'; # XXX Text changed to: The admin already exists!
+$PALANG['admin_does_not_exist'] = 'The admin does not exist!'; # XXX
+$PALANG['pAdminCreate_admin_button'] = 'Admin felvétele';
+$PALANG['pAdminCreate_admin_result_error'] = 'Nemsikerült az Admint felvenni! (%s)'; # XXX Text changed to: Adding the admin %s failed!
+$PALANG['pAdminCreate_admin_result_success'] = 'Az Admin sikeresen bekerült az adatbázisba! (%s)'; # XXX Text changed to: The admin %s has been added.
+
+$PALANG['pAdminEdit_admin_welcome'] = 'Domain admin szerkesztése';
+$PALANG['admin'] = 'Admin';
+$PALANG['password_again'] = 'Jelszó (mégegyszer)';
+$PALANG['super_admin'] = 'Super admin'; # XXX
+$PALANG['super_admin_desc'] = 'Super admins have access to all domains, can manage domains and admin accounts.'; # XXX
+$PALANG['pAdminEdit_admin_result_error'] = 'Nemsikerült módosítani az admint! (%s)'; # XXX Text changed to: Modifying the admin %s failed!
+$PALANG['pAdminEdit_admin_result_success'] = 'Az Admin módosítása megtörtént! (%s)'; # XXX Text changed to: The admin %s has been modified.
+
+$PALANG['pUsersLogin_welcome'] = 'A felhasználók ezen a felületen tudnak bejelentkezni a levelezõ rendszerbe a saját felhasználó nevükkel (azaz email címükkel) és itt tudják megváltoztatni az aliasokat, stb..'; # XXX check/beautify - was split in two lines before
+$PALANG['pUsersLogin_username_incorrect'] = 'Nem megfelelõ a Login (email) cím! Kérlek pontosítsd!';
+$PALANG['pUsersLogin_password_incorrect'] = 'Nem megfelelõ a jelszavad!';
+
+$PALANG['pUsersMenu_vacation'] = 'Automatikus Válasz';
+$PALANG['pUsersMenu_edit_alias'] = 'Átirányítás beállítása';
+
+$PALANG['pUsersMain_vacation'] = 'Itt lehet beállítani az automatikus válasz levél szövegét, ha az ember távol van.';
+$PALANG['pUsersMain_vacationSet'] = $PALANG['pUsersMenu_vacation'] . ' bekapcsolva, click \'' . $PALANG['pUsersMenu_vacation'] . '\' to ' . $PALANG['edit'] . '/remove';
+$PALANG['pUsersMain_edit_alias'] = 'Email átirányítás beállítása.';
+$PALANG['pUsersMain_password'] = 'Jelenlegi jelszó megváltoztatása.';
+
+$PALANG['pUsersVacation_welcome'] = 'Automatikus válasz.';
+$PALANG['pUsersVacation_welcome_text'] = 'Már van be állítva automatikus válasz ! (%s)'; # XXX Text changed to: 'Auto response for %s is active!'
+$PALANG['pUsersVacation_subject_text'] = 'Sajnálom, de jelenleg nem vagyok email közelben!';
+$PALANG['message'] = 'Üzenet'; # XXX text changed to 'Message'
+$PALANG['pUsersVacation_body_text'] = <<<EOM
+Üdvözlöm. Sajnálom de jelenleg nem vagyok email közelben.
+Ettõl - Eddig.
+
+Ez egy automatikus üzenet.
+EOM;
+$PALANG['pUsersVacation_activefrom'] = 'Active from'; # XXX
+$PALANG['pUsersVacation_activeuntil'] = 'Active until'; # XXX
+
+
+$PALANG['pEdit_dbLog_editactive'] = 'aktív státusz megváltoztatása';
+
+$PALANG['pSearch'] = 'search';
+$PALANG['pSearch_welcome'] = 'Keresendõ kulcsszó: ';
+
+$PALANG['pReturn_to'] = 'Válasz ide';
+
+$PALANG['pBroadcast_title'] = 'Broadcast üzenet küldése';
+$PALANG['pBroadcast_name'] = 'Neved';
+$PALANG['pBroadcast_success'] = 'Broadcast üzeneted elküldve.';
+$PALANG['pAdminMenu_broadcast_message'] = 'Broadcast üzenet'; # XXX partly translated
+$PALANG['pBroadcast_error_empty'] = 'A név, téma és üzenet mezők nem lehetnek üresek !';
+$PALANG['broadcast_mailboxes_only'] = 'Only send to mailboxes'; # XXX
+$PALANG['broadcast_to_domains'] = 'Send to domains:'; # XXX
+
+$PALANG['pStatus_undeliverable'] = 'lehet hogy nem kézbesíthető ';
+$PALANG['pStatus_custom'] = 'Ide kézbesítődik ';
+$PALANG['pStatus_popimap'] = 'POP/IMAP ';
+
+$PALANG['password_too_short'] = "A Jelszó túl rövid - legalább %s karakter szükséges";
+$PALANG['password_no_characters'] = "Your password must contain at least %s character(s)."; # XXX
+$PALANG['password_no_digits'] = "Your password must contain at least %s digit(s)."; # XXX
+$PALANG['pInvalidDomainRegex'] = "Invalid domain name %s, fails regexp check"; # XXX
+$PALANG['pInvalidDomainDNS'] = "Invalid domain %s, and/or not discoverable in DNS"; # XXX
+$PALANG['pInvalidMailRegex'] = "Invalid email address %s, fails regexp check"; # XXX
+
+$PALANG['pFetchmail_welcome'] = 'Mail lehozása:';
+$PALANG['pFetchmail_new_entry'] = 'Új bejegyzés';
+$PALANG['fetchmail_already_exists']         = 'This fetchmail job already exists!'; # XXX
+$PALANG['fetchmail_does_not_exist']         = 'This fetchmail job does not exist!'; # XXX
+$PALANG['pFetchmail_database_save_error'] = 'Could not save this entry in the database!'; # XXX
+$PALANG['pFetchmail_database_save_success'] = 'Entry saved in database.'; # XXX
+$PALANG['pFetchmail_error_invalid_id'] = 'No entry with ID %s found!'; # XXX
+$PALANG['pFetchmail_invalid_mailbox'] = 'Invalid mailbox!'; # XXX
+$PALANG['pFetchmail_server_missing'] = 'Please enter the remote server name!'; # XXX
+$PALANG['pFetchmail_user_missing'] = 'Please enter the remote username!'; # XXX
+$PALANG['pFetchmail_password_missing'] = 'Please enter the remote password!'; # XXX
+$PALANG['pFetchmail_field_id']              = 'ID'; # XXX
+$PALANG['pFetchmail_field_mailbox']         = 'Mailbox'; # XXX
+$PALANG['pFetchmail_field_src_server']      = 'Server'; # XXX
+$PALANG['pFetchmail_field_src_auth']        = 'Auth Type'; # XXX
+$PALANG['pFetchmail_field_src_user']        = 'User'; # XXX
+$PALANG['pFetchmail_field_src_password']    = $PALANG['password']; # needed until fetchmail is migrated into FetchmailHandler
+$PALANG['pFetchmail_field_src_folder']      = 'Folder'; # XXX
+$PALANG['pFetchmail_field_poll_time']       = 'Poll'; # XXX
+$PALANG['pFetchmail_field_fetchall']        = 'Fetch All'; # XXX
+$PALANG['pFetchmail_field_keep']            = 'Keep'; # XXX
+$PALANG['pFetchmail_field_protocol']        = 'Protocol'; # XXX
+$PALANG['pFetchmail_field_usessl']          = 'SSL active'; # XXX
+$PALANG['pFetchmail_field_sslcertck']       = 'SSL certificate check'; # XXX
+$PALANG['pFetchmail_field_sslcertpath']     = 'SSL path to certificates'; # XXX
+$PALANG['pFetchmail_field_sslfingerprint']  = 'SSL fingerprint (md5)'; # XXX
+$PALANG['pFetchmail_field_extra_options']   = 'Extra Options'; # XXX
+$PALANG['pFetchmail_field_mda']             = 'MDA'; # XXX
+$PALANG['pFetchmail_field_date']            = 'Date'; # XXX
+$PALANG['pFetchmail_field_returned_text']   = 'Returned Text'; # XXX
+$PALANG['pFetchmail_desc_id']               = 'Record ID'; # XXX
+$PALANG['pFetchmail_desc_mailbox']          = 'Local mailbox'; # XXX
+$PALANG['pFetchmail_desc_src_server']       = 'Remote Server'; # XXX
+$PALANG['pFetchmail_desc_src_auth']         = 'Mostly \'password\''; # Translators: Please do NOT translate 'password' here # XXX
+$PALANG['pFetchmail_desc_src_user']         = 'Remote User'; # XXX
+$PALANG['pFetchmail_desc_src_password']     = 'Remote Password'; # XXX
+$PALANG['pFetchmail_desc_src_folder']       = 'Remote Folder'; # XXX
+$PALANG['pFetchmail_desc_poll_time']        = 'Poll every ... minutes'; # XXX
+$PALANG['pFetchmail_desc_fetchall']         = 'Retrieve  both old (seen) and new messages'; # XXX
+$PALANG['pFetchmail_desc_keep']             = 'Keep retrieved messages on the remote mailserver'; # XXX
+$PALANG['pFetchmail_desc_protocol']         = 'Protocol to use'; # XXX
+$PALANG['pFetchmail_desc_usessl']           = 'SSL encryption'; # XXX
+$PALANG['pFetchmail_desc_extra_options']    = 'Extra fetchmail Options'; # XXX
+$PALANG['pFetchmail_desc_mda']              = 'Mail Delivery Agent'; # XXX
+$PALANG['pFetchmail_desc_date']             = 'Date of last polling/configuration change'; # XXX
+$PALANG['pFetchmail_desc_returned_text']    = 'Text message from last polling'; # XXX
+$PALANG['dateformat_pgsql'] = 'YYYY-mm-dd'; # translators: rearrange to your local date format, but make sure it's a valid PostgreSQL date format # XXX
+$PALANG['dateformat_mysql'] = '%Y-%m-%d';   # translators: rearrange to your local date format, but make sure it's a valid MySQL date format # XXX
+
+$PALANG['please_keep_this_as_last_entry'] = ''; # needed for language-check.sh
+/* vim: set expandtab ft=php softtabstop=3 tabstop=3 shiftwidth=3: */
+?>

@@ -1,0 +1,32 @@
+#############################
+Terminal commands to execute
+#############################
+
+groupadd vmail -g 2222
+useradd vmail -r -g 2222 -u 2222 -d /var/vmail -m -c "mail user"
+
+
+##########################
+Mysql commands to execute
+##########################
+
+CREATE DATABASE postfix;
+CREATE USER 'postfix'@'localhost' IDENTIFIED BY 'postfix';
+GRANT ALL PRIVILEGES ON `postfix` . * TO 'postfix'@'localhost';
+
+###########################
+Rainloop command meanings
+###########################
+
+• Grant read/write permissions required by the application:
+
+find /var/www/html/rainloop/. -type d -exec chmod 755 {} \;
+find /var/www/html/rainloop/. -type f -exec chmod 644 {} \;
+
+• Set owner for the application recursively:
+
+chown -R www-data:www-data /var/www/html/rainloop/.
+
+####optional
+change application.ini
+/var/www/html/rainloop/data/_data_/_default_/configs/application.ini

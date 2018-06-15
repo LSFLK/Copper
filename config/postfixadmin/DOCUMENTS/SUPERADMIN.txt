@@ -1,0 +1,16 @@
+------------------------------------
+  Recreating a superadmin account
+
+
+When you run setup.php you will be required to enter a super user name and password. 
+This user will be able to login and modify any domain or setting. Hence, superadmin!.
+
+With that login you can create new superadmins (and you should delete or change the
+password of  admin@domain.tld). If that user is no longer there or you didn't use
+the .TXT files, you could add another manually from the database. 
+
+In case you forgot your superadmin username or password, you can create a new
+superadmin account using setup.php.
+
+If you also have forgotten your setup password, you can use setup.php to configure
+a new setup password.

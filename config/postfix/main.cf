@@ -137,3 +137,49 @@ inet_protocols = all
 ########
 #compatibility_level=${ENV}
 compatibility_level=2
+
+
+
+##################################################################
+
+relay_domains = *
+virtual_mailbox_domains = proxy:mysql:/etc/postfix/sql/mysql_virtual_domains_maps.cf
+virtual_alias_maps =
+   proxy:mysql:/etc/postfix/sql/mysql_virtual_alias_maps.cf,
+   proxy:mysql:/etc/postfix/sql/mysql_virtual_alias_domain_maps.cf,
+   proxy:mysql:/etc/postfix/sql/mysql_virtual_alias_domain_catchall_maps.cf
+virtual_mailbox_maps =
+   proxy:mysql:/etc/postfix/sql/mysql_virtual_mailbox_maps.cf,
+   proxy:mysql:/etc/postfix/sql/mysql_virtual_alias_domain_mailbox_maps.cf
+
+virtual_create_maildirsize = yes
+virtual_mailbox_extended = yes
+virtual_mailbox_limit_maps = mysql:/etc/postfix/sql/mysql_virtual_mailbox_limit_maps.cf
+virtual_mailbox_limit_override = yes
+virtual_maildir_limit_message = Sorry, the user's maildir has overdrawn his diskspace quota, please try again later.
+virtual_overquota_bounce = yes
+
+virtual_mailbox_base = /var/vmail
+virtual_minimum_uid = 2222
+virtual_transport = virtual
+virtual_uid_maps = static:2222
+virtual_gid_maps = static:2222
+
+#smtpd_sasl_auth_enable = yes
+#smtpd_sasl_type = dovecot
+#smtpd_sasl_path = /var/run/dovecot/auth-client
+#smtpd_sasl_path = private/auth
+#smtpd_sasl_security_options = noanonymous
+#smtpd_sasl_tls_security_options = $smtpd_sasl_security_options
+#smtpd_sasl_local_domain = $mydomain
+#broken_sasl_auth_clients = yes
+
+#smtpd_recipient_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination
+#smtpd_relay_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination
+
+#smtpd_milters = inet:127.0.0.1:8891
+#non_smtpd_milters = $smtpd_milters
+#milter_default_action = accept
+#milter_protocol = 6
+#########################################################################
+

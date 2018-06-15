@@ -1,0 +1,393 @@
+<?php
+# $Id$
+//
+// Language file Polish
+// by Jarek
+// updated by Piotr Meyer <aniou at smutek dot pl>
+// updated by Lukasz Wasikowski <lukasz@wasikowski.net>
+// updated by Michal Wojcik <michalw-snt @ SF>
+//
+
+$PALANG['YES'] = 'Tak';
+$PALANG['NO'] = 'Nie';
+$PALANG['edit'] = 'Edytuj';
+$PALANG['del'] = 'Usuń';
+$PALANG['exit'] = 'Wyjdź';
+$PALANG['cancel'] = 'Anuluj';
+$PALANG['save'] = 'Zapisz zmiany';
+$PALANG['confirm'] = 'Jesteś przekonany, że chcesz to usunąć?\n';
+$PALANG['confirm_delete_admin'] = 'Do you really want to delete the admin %s?'; # XXX
+$PALANG['confirm_delete_alias'] = 'Do you really want to delete the alias %s?'; # XXX
+$PALANG['confirm_delete_aliasdomain'] = 'Do you really want to delete the alias domain %s?'; # XXX
+$PALANG['confirm_delete_domain'] = 'Czy rzeczywiście chcesz usunąć wszystkie wpisy dla tej domeny? To jest proces nieodwracalny!\n (%s)'; # XXX text changed to: 'Do you really want to delete all records for the domain %s? This can not be undone'
+$PALANG['confirm_delete_fetchmail'] = 'Do you really want to delete the fetchmail job %s?'; # XXX
+$PALANG['confirm_delete_mailbox'] = 'Do you really want to delete the mailbox %s?'; # XXX
+$PALANG['confirm_delete_vacation'] = 'Do you really want to delete the vacation message for %s?'; # XXX
+$PALANG['no_delete_permissions'] = 'You are not allowed to delete %s!'; # XXX
+$PALANG['check_update'] = 'Sprawdź aktualizację';
+$PALANG['invalid_parameter'] = 'Błędny parametr!';
+$PALANG['show'] = 'Show:'; # XXX
+$PALANG['all'] = 'All'; # XXX
+$PALANG['created'] = 'Created'; # XXX
+$PALANG['unknown'] = 'unknown'; # XXX
+$PALANG['download_csv'] = 'Download this list as CSV file'; # XXX
+$PALANG['missing_field'] = 'Field %s is missing'; # XXX
+$PALANG['must_be_numeric'] = '%s must be numeric'; # XXX
+$PALANG['must_be_numeric_bigger_than_null'] = '%s must be numeric and bigger than 0'; # XXX
+$PALANG['must_be_boolean'] = '%s must be boolean'; # XXX
+$PALANG['invalid_value_given'] = 'Invalid value given for %s'; # XXX
+$PALANG['edit_not_allowed'] = 'You are not allowed to edit %s'; # XXX
+$PALANG['searchparams'] = 'Search parameters:'; # XXX
+$PALANG['pFooter_logged_as'] = 'Zalogowano jako %s';
+
+$PALANG['pLogin_welcome'] = 'Sekcja przeznaczona dla administratorów domen.';
+$PALANG['pLogin_username'] = 'Użytkownik (email)'; # XXX check translation - should be "Login (email)"
+$PALANG['password'] = 'Hasło';
+$PALANG['pLogin_language'] = 'Language'; # XXX
+$PALANG['pLogin_button'] = 'Zaloguj';
+$PALANG['pLogin_failed'] = 'Twój adres Email lub hasło jest niepoprawne.';
+$PALANG['pLogin_login_users'] = 'Sekcja przeznaczona dla użytkowników.';
+
+$PALANG['pMenu_main'] = 'Strona główna';
+$PALANG['pMenu_overview'] = 'Dane zbiorcze';
+$PALANG['add_alias'] = 'Dodaj alias';
+$PALANG['add_alias_domain'] = 'Dodaj alias domeny';
+$PALANG['add_mailbox'] = 'Dodaj konto';
+$PALANG['pMenu_fetchmail'] = 'Pobierz Email';
+$PALANG['pMenu_sendmail'] = 'Wyślij Email';
+$PALANG['pMenu_password'] = 'Hasło';
+$PALANG['pMenu_viewlog'] = 'Logi';
+$PALANG['pMenu_logout'] = 'Wyloguj';
+
+$PALANG['pMain_welcome'] = 'Witamy w Postfix Adminie!';
+$PALANG['pMain_overview'] = 'Lista Twoich aliasów i kont pocztowych. Możesz je tutaj edytować / usuwać.';
+$PALANG['pMain_create_alias'] = 'Utwórz nowy alias dla Twojej domeny.';
+$PALANG['pMain_create_mailbox'] = 'Utwórz nowe konto pocztowe dla Twojej domeny.';
+$PALANG['pMain_sendmail'] = 'Wyślij wiadomość do nowo utworzonego konta pocztowego.';
+$PALANG['pMain_password'] = 'Zmieć hasło swojego konta administracyjnego.';
+$PALANG['pMain_viewlog'] = 'Pokaż pliki logów.';
+$PALANG['pMain_logout'] = 'Zakończ pracę z systemem';
+
+$PALANG['pOverview_disabled'] = 'Wyłączony';
+$PALANG['pOverview_unlimited'] = 'Bez limitu';
+$PALANG['pOverview_title'] = ':: Zdefiniowane domeny';
+$PALANG['pOverview_up_arrow'] = 'Do góry';
+$PALANG['pOverview_right_arrow'] = 'Następna strona';
+$PALANG['pOverview_left_arrow'] = 'Poprzednia strona';
+$PALANG['pOverview_alias_domain_title'] = ':: Aliasy domen';
+$PALANG['pOverview_alias_title'] = ':: Aliasy';
+$PALANG['pOverview_mailbox_title'] = ':: Konta pocztowe';
+$PALANG['go'] = 'Idź';
+$PALANG['pOverview_welcome'] = 'Dane zbiorcze dla domeny ';
+$PALANG['pOverview_alias_domain_aliases'] = 'Domeny aliasowe';
+$PALANG['pOverview_alias_address'] = 'Od';
+$PALANG['active'] = 'Aktywny';
+$PALANG['and_x_more'] = '[i %s wiecej...]';
+$PALANG['pOverview_mailbox_username'] = 'Email';
+$PALANG['name'] = 'Nazwa';
+$PALANG['pOverview_mailbox_quota'] = 'Udział (MB)';
+$PALANG['pOverview_vacation_edit'] = 'Auto odpowiedź';
+$PALANG['pOverview_vacation_option'] = 'Ustaw automatyczną odpowiedź';
+$PALANG['no_domains_for_this_admin'] = 'You don\'t have permissions for any domains.'; # XXX
+$PALANG['no_domains_exist'] = 'You have to create at least one domain before you can use virtual list.'; # "virtual list" should match $PALANG['pAdminMenu_list_virtual'] # XXX
+
+$PALANG['domain'] = 'Domena';
+$PALANG['pOverview_get_alias_domains'] = 'Aliasy domenowe';
+$PALANG['mailboxes'] = 'Konta';
+$PALANG['pOverview_get_quota'] = 'Udział (MB)';
+
+$PALANG['pDelete_delete_error'] = 'Nie można usunąć tego wpisu ';
+$PALANG['pDelete_delete_success'] = '%s usunięty.';
+$PALANG['pDelete_domain_error'] = 'Ta domena nie należy do Ciebie ';
+$PALANG['pDelete_alias_error'] = 'Nie można usunąć aliasu ';
+$PALANG['pCreate_alias_domain_welcome'] = 'Duplikuj adresy z jednej Twojej domeny do innej.';
+$PALANG['pCreate_alias_domain_alias'] = 'Domena aliasowana/źródłowa';
+$PALANG['pCreate_alias_domain_alias_text'] = 'Domena do której przychodzą maile.';
+$PALANG['pCreate_alias_domain_target'] = 'Domena docelowa';
+$PALANG['pCreate_alias_domain_target_text'] = 'Domena do której powinny przychodzić maile.';
+$PALANG['pCreate_alias_domain_error1'] = 'Nie masz uprawnień do tworzenia takiej konfiguracji.';
+$PALANG['pCreate_alias_domain_error2'] = 'Wybrana konfiguracja jest nieprawidłowa, proszę wybrać inną!';
+$PALANG['alias_domain_already_exists'] = 'Ta domena istnieje już jako alias domenowy!';
+$PALANG['alias_domain_does_not_exist'] = 'This domain isn\'t an alias domain!'; # XXX
+$PALANG['alias_domain_create_failed'] = 'Dodanie do bazy nie powiodło się. (%s)'; # XXX Text changed to: Creating the alias domain %s failed!
+$PALANG['alias_domain_change_failed'] = 'Changing the alias domain %s failed!'; # XXX
+$PALANG['pCreate_alias_domain_error4'] = 'Wszystkie domeny są już aliasowane.';
+$PALANG['pCreate_alias_domain_success'] = 'Alias domeny został dodany do tabeli aliasów domen! (%s)'; # XXX Text changed to: The alias domain %s has been created.
+$PALANG['alias_domain_changed'] = 'The alias domain %s has been changed.'; # XXX
+$PALANG['alias_domain_to_itsself'] = 'A domain can\'t be an alias domain to itsself!'; # XXX
+$PALANG['delete_domain_aliasdomain_target'] = 'The domain %s is the target for one or more alias domains and can\'t be deleted! (Delete the alias domains first.)'; # XXX
+
+$PALANG['pCreate_alias_address_text_error1'] = 'Alias jest niepoprawny!';
+$PALANG['alias_does_not_exist'] = 'This alias does not exist!'; # XXX
+$PALANG['email_address_already_exists'] = 'Taki adres email juz istnieje, proszę wybrać inny!'; # XXX check text - should be 'This email address already exists, please choose a different one\!'
+$PALANG['pCreate_alias_address_text_error3'] = 'Twój limit aliasów został osiągniety!';
+$PALANG['pCreate_alias_goto_text'] = 'Gdzie ten mail powinien być wysłany.';
+$PALANG['pCreate_alias_goto_text_error'] = 'Pole TO jest niepoprawne!';
+$PALANG['pCreate_alias_result_error'] = 'Nie można dodać aliasu do tabeli aliasów! (%s)'; # XXX Text changed to: Creating the alias %s failed!
+$PALANG['pCreate_alias_result_success'] = 'Alias został dodany do tabeli aliasów!'; # XXX text change: 'The alias %s has been created!'
+$PALANG['alias_updated'] = 'Alias %s został zaktualizowany!';
+$PALANG['pCreate_alias_catchall_text'] = 'Aby utworzyć domyślne konto dla domeny (catch-all) podaj "*" (gwiazdkę) jako alias. Jeśli chcesz przekazywać całość poczty do innej domeny, wpisz jako alias "*@domena.tld".'; # XXX check/beautify - was split in two lines before
+$PALANG['mailbox_alias_cant_be_deleted'] = 'This alias belongs to a mailbox and can\'t be deleted!'; # XXX
+$PALANG['protected_alias_cant_be_deleted'] = 'The alias %s is protected and can only be deleted by a superadmin'; # XXX
+$PALANG['pEdit_alias_welcome'] = 'Edytuj alias dla Twojej domeny.'; # XXX Text change to: 'Edit forwarding settings'
+$PALANG['pEdit_alias_help'] = 'Jeden wpis na linię.'; # XXX # XXX Text change to: 'Accepts multiple targets, one entry per line.'
+$PALANG['alias'] = 'Alias';
+$PALANG['to'] = 'Do';
+$PALANG['pEdit_alias_goto_text_error1'] = 'Nie podałeś adresu odbiorcy (pole "To")';
+$PALANG['pEdit_alias_goto_text_error2'] = 'Wpisany adres email jest niepoprawny: ';
+$PALANG['pEdit_alias_domain_result_error'] = 'Nie można zmodyfikować aliasu domeny!';
+$PALANG['pEdit_alias_forward_and_store'] = 'Dostarczaj do mojej skrzynki.';
+$PALANG['pEdit_alias_forward_only'] = 'Prześlij jedynie na podane adresy.';
+$PALANG['pEdit_alias_result_error'] = 'Nie można zmodyfikować aliasu! (%s)'; # XXX Text changed to: Modifying the alias %s failed!
+
+$PALANG['pCreate_mailbox_welcome'] = 'Utwórz lokalne konto pocztowe dla Twojej domeny.';
+$PALANG['pCreate_mailbox_username_text_error1'] = 'Adres EMAIL jest niepoprawny!';
+$PALANG['pCreate_mailbox_username_text_error3'] = 'Twój limit kont pocztowych został osiągniety!';
+$PALANG['pCreate_mailbox_password_text'] = 'Hasło do POP3/IMAP';
+$PALANG['pCreate_mailbox_name_text'] = 'Pełna nazwa';
+$PALANG['pCreate_mailbox_mail'] = 'Utwórz konto'; # XXX Text change to 'Send Welcome mail'
+$PALANG['pCreate_mailbox_result_error'] = 'Nie można dodać konta do tabeli kont! (%s)'; # XXX Text changed to: Creating the mailbox %s failed!
+$PALANG['pCreate_mailbox_result_success'] = 'Konto zostało dodane do tabeli kont! (%s)'; # XXX Text changed to: The mailbox %s has been added to the mailbox table!
+$PALANG['pCreate_mailbox_result_succes_nosubfolders'] = 'Konto zostało dodane do tabeli kont, ale żadne (lub tylko niektóre) z predefiniowanych folderów nie zostały utworzone (%s)'; # XXX Text changed to: The mailbox %s has been added to the mailbox table, but none (or only some) of the predefined sub-folders could be created.
+$PALANG['mailbox_updated'] = "Skrzynka %s zostałą zaktualizowana.";
+$PALANG['mailbox_update_failed'] = "Aktualizacja skrzynki %s nie powiodła się!";
+
+$PALANG['pEdit_mailbox_welcome'] = 'Edytuj konto w Twojej domenie.';
+$PALANG['pEdit_mailbox_username'] = 'Nazwa użytkownika';
+$PALANG['pEdit_mailbox_password_text_error'] = 'Wpisane hasło nie pasuje!';
+$PALANG['pEdit_mailbox_quota'] = 'Udział';
+$PALANG['pEdit_mailbox_quota_text'] = 'MB';
+$PALANG['mb_max'] = 'MB (max: %s)'; # XXX
+$PALANG['pEdit_mailbox_quota_text_error'] = 'Podany udział jest za wysoki!';
+$PALANG['pEdit_mailbox_domain_error'] = 'Ta domena nie należy do Ciebie: ';
+$PALANG['pEdit_mailbox_result_error'] = 'Nie można zmienić parametrów!';
+
+$PALANG['pPassword_welcome'] = 'Zmień Swoje hasło.';
+$PALANG['pPassword_admin'] = 'Login';
+$PALANG['pPassword_password_current'] = 'Aktualne hasło';
+$PALANG['pPassword_password_current_text_error'] = 'Nieprawidłowe aktualne hasło!';
+$PALANG['pPassword_password'] = 'Nowe hasło';
+$PALANG['pPassword_password2'] = 'Nowe hasło (ponownie)';
+$PALANG['pPassword_password_text_error'] = 'Podane hasło nie pasuje! Lub jest puste!'; # XXX check/beautify - was split in two lines before
+$PALANG['change_password'] = 'Zmień hasło';
+$PALANG['pPassword_result_error'] = 'Nie można zmienić Twojego hasła! (%s)'; # XXX Text changed to: Changing the password for %s failed!
+$PALANG['pPassword_result_success'] = 'Twoje hasło zostało zmienione! (%s)'; # XXX Text changed to: The password for %s has been changed.
+
+$PALANG['pEdit_vacation_set'] = 'Zmień / Ustaw wiadomość automatycznej odpowiedzi';
+$PALANG['pEdit_vacation_remove'] = 'Usuń wiadomość automatycznej odpowiedzi';
+$PALANG['pVacation_result_error'] = 'Nie można ustawić wiadomości automatycznej odpowiedzi! (%s)'; # XXX Text changed to: Updating the auto response settings for %s failed
+$PALANG['pVacation_result_removed'] = 'Auto odpowiedź została usunięta! (%s)'; # XXX Text changed to "Auto response for %s has been disabled!"
+$PALANG['pVacation_result_added'] = 'Auto odpowiedź została dodana! (%s)'; # XXX Text changed to "Auto response for %s has been enabled!"
+$PALANG['pVacation_reply_type'] = 'Częstotliwość odpowiedzi';
+$PALANG['pVacation_reply_delay_time'] = 'Interval time'; # XXX
+$PALANG['pVacation_reply_delay_time_text'] = 'Time in seconds'; # XXX
+$PALANG['pVacation_until_before_today'] = 'Data w polu [Aktywna do] wskazuje na przeszłość';
+$PALANG['pVacation_until_before_from'] = 'Data w polu  [Aktywna do] jest wcześniejsza niż [Aktywna od]'; # XXX
+$PALANG['reply_once'] = 'Odpowiedz raz';
+$PALANG['reply_every_mail'] = 'Odpowiedz na każdy email';
+$PALANG['reply_once_per_day'] = 'Odpowiedz raz na dzień';
+$PALANG['reply_once_per_week'] = 'Odpowiedz raz na tydzień';
+
+$PALANG['pViewlog_welcome'] = 'Pokaż %s ostatnich działań dla ';
+$PALANG['pViewlog_timestamp'] = 'Data';
+$PALANG['pViewlog_action'] = 'Działanie';
+$PALANG['pViewlog_data'] = 'Dane';
+$PALANG['pViewlog_action_create_domain'] = 'utwórz domenę';
+$PALANG['pViewlog_action_delete_domain'] = 'skasuj domenę';
+$PALANG['pViewlog_action_edit_domain'] = 'edytuj domenę';
+$PALANG['pViewlog_action_create_mailbox'] = 'utworzenie konta';
+$PALANG['pViewlog_action_delete_mailbox'] = 'usunięcie konta';
+$PALANG['pViewlog_action_edit_mailbox'] = 'edycja konta';
+$PALANG['pViewlog_action_edit_mailbox_state'] = 'edycja statusu konta';
+$PALANG['pViewlog_action_create_alias'] = 'utworzenie aliasu';
+$PALANG['pViewlog_action_create_alias_domain'] = 'utworzenie aliasu domeny';
+$PALANG['pViewlog_action_edit_alias_domain'] = 'edit alias domain'; # XXX
+$PALANG['pViewlog_action_delete_alias'] = 'usunięcie aliasu';
+$PALANG['pViewlog_action_delete_alias_domain'] = 'usunięcie aliasu domeny';
+$PALANG['pViewlog_action_edit_alias'] = 'edycja aliasu';
+$PALANG['pViewlog_action_edit_alias_state'] = 'edycja statusu aliasu';
+$PALANG['pViewlog_action_edit_alias_domain_state'] = 'edycja statusu aliasu domeny';
+$PALANG['pViewlog_action_edit_password'] = 'zmień hasło';
+$PALANG['pViewlog_action_create_admin'] = 'create admin'; # XXX
+$PALANG['pViewlog_action_edit_admin'] = 'edit admin'; # XXX
+$PALANG['pViewlog_action_delete_admin'] = 'delete admin'; # XXX
+$PALANG['pViewlog_action_edit_vacation'] = 'edit vacation'; # XXX
+$PALANG['pViewlog_action_create_fetchmail'] = 'create fetchmail job'; # XXX
+$PALANG['pViewlog_action_edit_fetchmail'] = 'edit fetchmail job'; # XXX
+$PALANG['pViewlog_action_delete_fetchmail'] = 'delete fetchmail job'; # XXX
+
+$PALANG['pViewlog_result_error'] = 'Nie można odszukać logów!';
+
+$PALANG['pSendmail_welcome'] = 'Wyślij wiadomość.';
+$PALANG['from'] = 'Od';
+$PALANG['pSendmail_to'] = 'Do';
+$PALANG['pSendmail_to_text_error'] = 'Podany adres jest niepoprawny, bądź pole "Do" jest puste!';
+$PALANG['subject'] = 'Temat';
+$PALANG['pSendmail_subject_text'] = 'Witamy';
+$PALANG['pSendmail_body'] = 'Tekst';
+$PALANG['pSendmail_button'] = 'Wyślij wiadomość';
+$PALANG['pSendmail_result_error'] = 'Nie można wysłać emaila! (%s)'; # XXX text change - new: Unable to send email to %s!
+$PALANG['pSendmail_result_success'] = 'Email wysłany! (%s)'; # XXX text change - new: Email sent to %s.
+
+$PALANG['pAdminMenu_list_admin'] = 'Lista administratorów';
+$PALANG['pAdminMenu_list_domain'] = 'Lista domen';
+$PALANG['pAdminMenu_list_virtual'] = 'Lista zbiorcza';
+$PALANG['pAdminMenu_backup'] = 'Kopia bezpieczeństwa';
+$PALANG['pAdminMenu_create_domain_admins'] = 'Administratorzy domeny';
+$PALANG['pAdminMenu_create_admin'] = 'Nowy administrator';
+$PALANG['pAdminMenu_create_domain'] = 'Nowa domena';
+
+$PALANG['pAdminList_admin_count'] = 'Domeny';
+
+$PALANG['description'] = 'Opis';
+$PALANG['aliases'] = 'Aliasy'; # XXX check text - should be 'Aliases'
+$PALANG['pAdminList_domain_quota'] = 'Domain quota (MB)'; # XXX
+$PALANG['pAdminList_domain_backupmx'] = 'Zapasowy MX';
+$PALANG['last_modified'] = 'Ostatnio zmodyfikowane'; # XXX check text - should be 'Last modified'
+
+
+$PALANG['pAdminCreate_domain_welcome'] = 'Dodaj nową domenę';
+$PALANG['pAdminCreate_domain_domain_text_error'] = 'Podana domena już istnieje!';
+$PALANG['domain_does_not_exist'] = 'Taka domena nie istnieje!'; # XXX
+$PALANG['pAdminCreate_domain_domain_text_error2'] = 'Podana domena jest nieprawidłowa!';
+$PALANG['pAdminCreate_domain_defaultaliases'] = 'Dodaj domyślne aliasy mailowe';
+$PALANG['pAdminCreate_domain_button'] = 'Dodaj domenę';
+$PALANG['pAdminCreate_domain_result_error'] = 'Nie można dodać domeny! (%s)'; # XXX Text changed to: Adding the domain %s failed!
+$PALANG['pAdminCreate_domain_result_success'] = 'Domena została dodana! (%s)'; # XXX Text changed to: The domain %s has been added.
+$PALANG['domain_updated'] = 'Domena %s została zaktualizowana.';
+$PALANG['pAdminDelete_admin_error'] = 'Unable to delete admin!'; # XXX
+$PALANG['domain_postdel_failed'] = 'Nie można usunąć domeny!'; # XXX Text changed to: The domain postdeletion script failed, check the error log for details!
+$PALANG['domain_postcreate_failed'] = 'The domain postcreate script failed, check the error log for details!'; # XXX
+$PALANG['mailbox_postdel_failed'] = 'The mailbox postdeletion script failed, check the error log for details!'; # XXX
+$PALANG['mailbox_postedit_failed'] = 'The mailbox postedit script failed, check the error log for details!'; # XXX
+$PALANG['mailbox_postcreate_failed'] = 'The mailbox postcreate script failed, check the error log for details!'; # XXX
+$PALANG['pAdminDelete_alias_domain_error'] = 'Nie można usunąć aliasu domeny!';
+$PALANG['domain_conflict_vacation_domain'] = 'You can\'t use the vacation domain as mail domain!'; # XXX
+
+$PALANG['pAdminEdit_domain_welcome'] = 'Edytuj domenę';
+$PALANG['pAdminEdit_domain_aliases_text'] = '-1 = wyłączone | 0 = bez limitów';
+$PALANG['pAdminEdit_domain_maxquota'] = 'Max udział';
+$PALANG['pAdminEdit_domain_maxquota_text'] = 'MB | -1 = wyłączone | 0 = bez limitów';
+$PALANG['pAdminEdit_domain_quota'] = 'Domain Quota'; # XXX
+$PALANG['transport'] = 'Transport';
+$PALANG['pAdminEdit_domain_transport_text'] = 'Zdefiniuj transport';
+$PALANG['pAdminEdit_domain_backupmx'] = 'Serwer pocztowy jest zapasowym MX';
+$PALANG['pAdminEdit_domain_result_error'] = 'Nie można zmodyfikować domeny! (%s)'; # XXX Text changed to: Modifying the domain %s failed!
+
+$PALANG['pAdminCreate_admin_welcome'] = 'Dodaj konto administratora';
+$PALANG['email_address'] = 'Adres email';
+$PALANG['pAdminCreate_admin_username_text_error1'] = 'Administrator nie jest poprawnym adresem email!';
+$PALANG['admin_already_exists'] = 'Administrator już istnieje lub jest niepoprawny'; # XXX Text changed to: The admin already exists!
+$PALANG['admin_does_not_exist'] = 'Taki administrator nie istnieje!';
+$PALANG['pAdminCreate_admin_button'] = 'Dodaj administratora';
+$PALANG['pAdminCreate_admin_result_error'] = 'Nie można dodać administratora! (%s)'; # XXX Text changed to: Adding the admin %s failed!
+$PALANG['pAdminCreate_admin_result_success'] = 'Administrator został dodany! (%s)'; # XXX Text changed to: The admin %s has been added.
+
+$PALANG['pAdminEdit_admin_welcome'] = 'Edytuj administratora domeny';
+$PALANG['admin'] = 'Administrator'; # XXX check text - should be 'Admin'
+$PALANG['password_again'] = 'Hasło (ponownie)';
+$PALANG['super_admin'] = 'Główny administrator';
+$PALANG['super_admin_desc'] = 'Super admins have access to all domains, can manage domains and admin accounts.'; # XXX
+$PALANG['pAdminEdit_admin_result_error'] = 'Nie można zmodyfikować administratora! (%s)'; # XXX Text changed to: Modifying the admin %s failed!
+$PALANG['pAdminEdit_admin_result_success'] = 'Administrator został zmodyfikowany! (%s)'; # XXX Text changed to: The admin %s has been modified.
+
+$PALANG['pUsersLogin_welcome'] = 'Zaloguj się żeby zmienić hasło albo dodać aliasy.';
+$PALANG['pUsersLogin_username_incorrect'] = 'Podana nazwa użytkownika jest nieprawidłowa! ';
+$PALANG['pUsersLogin_password_incorrect'] = 'Podane hasło jest nieprawidłowe!';
+
+$PALANG['pUsersMenu_vacation'] = 'Auto odpowiedź';
+$PALANG['pUsersMenu_edit_alias'] = 'Zmień przekierowania';
+
+$PALANG['pUsersMain_vacation'] = 'Ustaw automatyczną odpowiedź.';
+$PALANG['pUsersMain_vacationSet'] = $PALANG['pUsersMenu_vacation'] . ' jest WŁACZONA,
+kliknij \'' . $PALANG['pUsersMenu_vacation'] . '\' aby ' . 'edytować/usunąć';
+$PALANG['pUsersMain_edit_alias'] = 'Zmień przekierowania wiadomości.';
+$PALANG['pUsersMain_password'] = 'Zmień aktualne hasło.';
+
+
+$PALANG['pUsersVacation_welcome'] = 'Automatyczna odpowiedź.';
+$PALANG['pUsersVacation_welcome_text'] = 'Masz już skonfigurowaną automatyczną odpowiedź! (%s)'; # XXX Text changed to: 'Auto response for %s is active!'
+$PALANG['pUsersVacation_subject_text'] = 'Poza biurem';
+$PALANG['message'] = 'Wiadomość';
+
+$PALANG['pUsersVacation_body_text'] = <<<EOM
+Będę nieobecny od <date> do <date>.
+W pilnych sprawach proszę się kontaktować z <contact person>.
+EOM;
+$PALANG['pUsersVacation_activefrom'] = 'Aktywna od';
+$PALANG['pUsersVacation_activeuntil'] = 'Aktywna do';
+
+
+$PALANG['pEdit_dbLog_editactive'] = 'zmień aktywny stan';
+
+$PALANG['pSearch'] = 'szukaj';
+$PALANG['pSearch_welcome'] = 'Wyszukuję: ';
+$PALANG['pReturn_to'] = 'Powrót do';
+$PALANG['pBroadcast_title'] = 'Wyślij wiadomość do wszystkich';
+$PALANG['pBroadcast_name'] = 'Nazwa';
+$PALANG['pBroadcast_success'] = 'Wiadomość do wszystkich została wysłana.';
+$PALANG['pAdminMenu_broadcast_message'] = 'Wiadomość do wszystkich';
+$PALANG['pBroadcast_error_empty'] = 'Pola Nazwa, Temat i Wiadomość nie powinny być puste !';
+$PALANG['broadcast_mailboxes_only'] = 'Only send to mailboxes'; # XXX
+$PALANG['broadcast_to_domains'] = 'Send to domains:'; # XXX
+$PALANG['pStatus_undeliverable'] = 'może być NIEDOSTARCZALNA ';
+$PALANG['pStatus_custom'] = 'Dostarczyć do ';
+$PALANG['pStatus_popimap'] = 'POP/IMAP ';
+$PALANG['password_too_short'] = 'Hasło jest za krótkie - musi mieć minimum %s znaków';
+$PALANG['password_no_characters'] = "Your password must contain at least %s character(s)."; # XXX
+$PALANG['password_no_digits'] = "Your password must contain at least %s digit(s)."; # XXX
+$PALANG['pInvalidDomainRegex'] = 'Nieprawidłowa nazwa domeny %s';
+$PALANG['pInvalidDomainDNS'] = 'Nieprawidłowa domena %s, nie wykrywana w DNS';
+$PALANG['pInvalidMailRegex'] = 'Nieprawidłowy adres email %s'; # XXX text changed to "Invalid email address %s, fails regexp check"
+$PALANG['pFetchmail_welcome'] = 'Pobierz pocztę dla:';
+$PALANG['pFetchmail_new_entry'] = 'Nowy wpis';
+$PALANG['fetchmail_already_exists']         = 'This fetchmail job already exists!'; # XXX
+$PALANG['fetchmail_does_not_exist']         = 'This fetchmail job does not exist!'; # XXX
+$PALANG['pFetchmail_database_save_error'] = 'Wpis nie może być zapisany w bazie danych!';
+$PALANG['pFetchmail_database_save_success'] = 'Wpis został zapisany w bazie danych.';
+$PALANG['pFetchmail_error_invalid_id'] = 'Nie znaleziono wpisu z ID %s !';
+$PALANG['pFetchmail_invalid_mailbox'] = 'Błędne konto!';
+$PALANG['pFetchmail_server_missing'] = 'Podaj nazwę zdalnego serwera!';
+$PALANG['pFetchmail_user_missing'] = 'Podaj nazwę zdalnego użytkownika!';
+$PALANG['pFetchmail_password_missing'] = 'Podaj hasło zdalnego użytkownika!';
+$PALANG['pFetchmail_field_id']              = 'ID';
+$PALANG['pFetchmail_field_mailbox']         = 'Konto';
+$PALANG['pFetchmail_field_src_server']      = 'Serwer';
+$PALANG['pFetchmail_field_src_auth']        = 'Uwierzytelnianie';
+$PALANG['pFetchmail_field_src_user']        = 'Użytkownik';
+$PALANG['pFetchmail_field_src_password']    = $PALANG['password']; # needed until fetchmail is migrated into FetchmailHandler
+$PALANG['pFetchmail_field_src_folder']      = 'Folder';
+$PALANG['pFetchmail_field_poll_time']       = 'Sprawdzaj';
+$PALANG['pFetchmail_field_fetchall']        = 'Pobierz wszystkie';
+$PALANG['pFetchmail_field_keep']            = 'Pozostaw';
+$PALANG['pFetchmail_field_protocol']        = 'Protokół';
+$PALANG['pFetchmail_field_usessl']          = 'Aktywne SSL';
+$PALANG['pFetchmail_field_sslcertck']       = 'SSL certificate check'; # XXX
+$PALANG['pFetchmail_field_sslcertpath']     = 'SSL path to certificates'; # XXX
+$PALANG['pFetchmail_field_sslfingerprint']  = 'SSL fingerprint (md5)'; # XXX
+$PALANG['pFetchmail_field_extra_options']   = 'Dodatkowe opcje';
+$PALANG['pFetchmail_field_mda']             = 'MDA';
+$PALANG['pFetchmail_field_date']            = 'Data';
+$PALANG['pFetchmail_field_returned_text']   = 'Zwrócony tekst';
+$PALANG['pFetchmail_desc_id']               = 'ID rekordu';
+$PALANG['pFetchmail_desc_mailbox']          = 'Konto lokalne';
+$PALANG['pFetchmail_desc_src_server']       = 'Zdalny serwer';
+$PALANG['pFetchmail_desc_src_auth']         = 'Najczęściej \'password\''; # Translators, do not translate 'password' here!
+$PALANG['pFetchmail_desc_src_user']         = 'Zdalny użytkownik';
+$PALANG['pFetchmail_desc_src_password']     = 'Hasło zdalnego użytkownika';
+$PALANG['pFetchmail_desc_src_folder']       = 'Zdalny Folder';
+$PALANG['pFetchmail_desc_poll_time']        = 'Pobierz co ... minut';
+$PALANG['pFetchmail_desc_fetchall']         = 'Pobierz zarówno stare (przeczytane) jak i nowe wiadomości';
+$PALANG['pFetchmail_desc_keep']             = 'Pozostaw wiadomości na serwerze';
+$PALANG['pFetchmail_desc_protocol']         = 'Protokół';
+$PALANG['pFetchmail_desc_usessl']           = 'szyfrowanie SSL';
+$PALANG['pFetchmail_desc_extra_options']    = 'Dodatkowe opcje dla fetchmail';
+$PALANG['pFetchmail_desc_mda']              = 'Mail Delivery Agent';
+$PALANG['pFetchmail_desc_date']             = 'Data ostatniego sprawdzenia/zmiany konfiguracji';
+$PALANG['pFetchmail_desc_returned_text']    = 'Wiadomość tekstowa z ostatniego sprawdzenia';
+$PALANG['dateformat_pgsql'] = 'YYYY-mm-dd'; # translators: rearrange to your local date format, but make sure it's a valid PostgreSQL date format # XXX
+$PALANG['dateformat_mysql'] = '%Y-%m-%d';   # translators: rearrange to your local date format, but make sure it's a valid MySQL date format # XXX
+
+$PALANG['please_keep_this_as_last_entry'] = ''; # needed for language-check.sh
+/* vim: set expandtab ft=php softtabstop=3 tabstop=3 shiftwidth=3: */
+?>

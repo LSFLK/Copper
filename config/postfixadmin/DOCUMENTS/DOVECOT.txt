@@ -1,0 +1,214 @@
+#
+# Dovecot configuration for Postfix Admin
+# Originally written by: Massimo <AndyCapp> Danieli
+# Revised by: Sampsa Hario <shario> for Dovecot v1.0
+# Revised by: David Goodwin <david@palepurple.co.uk> for Dovecot 2.1.x  (2014/01/02)
+#
+
+More complete Dovecot documentation:
+
+http://wiki.dovecot.org/Quota
+http://wiki.dovecot.org/Quota/Dict
+http://www.opensourcehowto.org/how-to/mysql/mysql-users-postfixadmin-postfix-dovecot--squirrelmail-with-userprefs-stored-in-mysql.html
+
+
+Here are the relevant parts of Dovecot v2.1.x configuration for Postfixadmin setup.
+
+Please refer to Dovecot documentation for complete information.
+
+The setup gets userdb and passdb info from MySQL as well as quotas, and 
+uses dict backend to store used quotas as key=value pairs so that they can
+be viewed real-time in Postfixadmin.
+
+
+1. Dovecot setup
+-----------------
+
+A basic /etc/dovecot/dovecot.conf is as follows, this was generated using 'dovecot -n' on a vanilla install and then
+changing to talk to a PostgreSQL or MySQL database. 
+
+# BEGIN /etc/dovecot/dovecot.conf:
+# Change this to where your mail root is, this needs to match whatever structure postfix expects....
+
+mail_location = maildir:/var/mail/vmail/%u/
+
+namespace inbox {
+  inbox = yes
+  location = 
+  mailbox Drafts {
+    special_use = \Drafts
+  }
+  mailbox Junk {
+    special_use = \Junk
+  }
+  mailbox Sent {
+    special_use = \Sent
+  }
+  mailbox "Sent Messages" {
+    special_use = \Sent
+  }
+  mailbox Trash {
+    special_use = \Trash
+  }
+  prefix = 
+}
+
+protocols = "imap pop3"
+# change to 'no' if you don't have ssl cert/keys, and comment out ssl_cert/ssl_key
+ssl = yes 
+ssl_cert = </etc/dovecot/private/dovecot.pem
+ssl_key = </etc/dovecot/private/dovecot.pem
+
+# login is for outlook express smtpd auth
+auth_mechanisms = plain login
+
+# If you're having trouble, try uncommenting these :
+#auth_debug = yes
+#auth_debug_passwords = yes
+
+userdb { 
+    driver = sql
+    args = /etc/dovecot/dovecot-sql.conf 
+}
+
+passdb { 
+    driver = sql
+    args = /etc/dovecot/dovecot-sql.conf 
+}
+
+# Uncomment this if you want Postfix to be able to do smtpd auth through dovecot
+# At a minimum Postfix probably needs : smtpd_sasl_type = dovecot 
+# And additionally: smtpd_sasl_path = private/auth
+#service auth {
+#    unix_listener /var/spool/postfix/private/auth {
+#        mode = 0660
+#        user = postfix
+#        group = postfix
+#    }
+#    user = postfix
+#    group = postfix
+#}
+
+# Needs to match Postfix virtual_uid_maps
+first_valid_uid = 1001 
+
+# allow plaintext auth (change to 'yes' to block plaintext passwords)
+disable_plaintext_auth = no
+
+#END
+
+
+2. Dovecot *sql setup
+----------------------
+
+Below you'll find the relevant part of dovecot-sql.conf file regarding our
+setup. 
+
+Things you will probably need to change are db connection settings (connect=)
+and the default_pass_scheme.
+
+#BEGIN /etc/dovecot/dovecot-sql.conf
+
+connect = host=localhost dbname=postfix user=postfix password=postfix
+# Use either 
+driver = mysql
+# Or 
+# driver = pgsql
+
+# Default password scheme - change to match your Postfixadmin setting.
+# depends on your $CONF['encrypt'] setting:
+# md5crypt  -> MD5-CRYPT
+# md5       -> PLAIN-MD5
+# cleartext -> PLAIN
+default_pass_scheme = MD5-CRYPT
+
+# Query to retrieve password. user can be used to retrieve username in other
+# formats also.
+
+password_query = SELECT username AS user,password FROM mailbox WHERE username = '%u' AND active='1'
+
+# Query to retrieve user information, note uid matches dovecot.conf AND Postfix virtual_uid_maps parameter.
+user_query = SELECT maildir, 1001 AS uid, 1001 AS gid FROM mailbox WHERE username = '%u' AND active='1'
+
+
+# MYSQL :
+user_query = SELECT CONCAT('/var/vmail/mail/', maildir) AS home, 1001 AS uid, 1001 AS gid, 
+	CONCAT('*:bytes=', quota) AS quota_rule FROM mailbox WHERE username = '%u' AND active='1'
+# PostgreSQL : (no Quota though) :
+# user_query = SELECT '/var/vmail/mail/' || maildir AS home, 1001 as uid, 1001 as gid FROM mailbox WHERE username = '%u' AND active = '1'
+
+#END /etc/dovecot/dovecot-sql.conf
+
+
+
+
+
+3. Dovecot v1.0 quota support (optional)
+----------------------------------------
+
+Please note that you need to use Dovecot's own local delivery agent to
+enforce and update quotas. Then you can view real-time used quotas in
+Postfixadmin.
+
+Add to dovecot.conf:
+
+## IMAP quota
+protocol imap {
+  quota = dict:storage=200000 proxy::quota
+}
+
+## POP quota
+protocol pop3 {
+  mail_plugins = quota
+}
+
+## Local Delivery Agent
+protocol lda {
+  mail_plugins = quota
+}
+
+## Dictionary DB proxy
+dict {
+  quota = mysql:/etc/dovecot-dict-quota.conf
+}
+
+## Default quota values
+plugin {
+quota = dict:storage=200000 proxy::quota
+}
+
+
+Change dovecot-sql.conf to return quota values:
+
+for MySQL:
+user_query = SELECT maildir, 1001 AS uid, 1001 AS gid, CONCAT('dict:storage=',floor(quota/1000),' proxy::quota') as quota FROM mailbox WHERE username = '%u' AND active='1'
+
+for PostgreSQL:
+user_query = SELECT maildir, 1001 AS uid, 1001 AS gid, 'dict:storage=' || floor(quota/1000) || '::proxy::quota' as quota FROM mailbox WHERE username = '%u' AND active='1'
+
+
+Create file dovecot-dict-quota.conf:
+
+driver = mysql
+connect = host=localhost dbname=postfix user=postfix password=postfix
+default_pass_scheme = MD5-CRYPT
+table = quota
+select_field = current
+where_field = path
+username_field = username
+
+
+Create database in Mysql:
+(This is automatically done by postfixadmin's setup.php)
+
+Enable quota support in Postfixadmin config.inc.php:
+
+$CONF['used_quotas'] = 'YES';
+$CONF['quota'] = 'YES';
+
+Note: The above text describes the configuration for dovecot 1.0 & 1.1 quota table format.
+
+If you use dovecot 1.2 or newer, 
+- use the 'quota2' table (also created by setup.php)
+- set $CONF['new_quota_table'] = 'YES'
+

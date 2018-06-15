@@ -1,0 +1,71 @@
+postfixadmin (3.1-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- David Goodwin <david@palepurple.co.uk>  Sun, 25 Jun 2017 16:27:01 +0000
+
+postfixadmin (3.0.2-1) unstable; urgency=low
+
+  * Security fix (don't delete protected aliases, CVE-2017-5930)
+  * Fix MySQL vacation.cache column (regression fix)
+
+ -- David Goodwin <david@palepurple.co.uk>  Wed, 08 Feb 2017 19:30:00 +0000
+
+postfixadmin (3.0.1-2) unstable; urgency=low
+
+  * Try and make dependencies less strict (and perhaps work for Ubuntu Precise as well)
+
+ -- David Goodwin <david@palepurple.co.uk>  Mon, 10 Oct 2016 20:00:00 +0100
+
+postfixadmin (3.0.1-1) unstable; urgency=low
+
+  * Fix packaging issues (missing: smarty/ and configs/)
+
+ -- David Goodwin <david@palepurple.co.uk>  Mon, 19 Sep 2016 10:08:00 +0100
+
+postfixadmin (3.0-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- David Goodwin <david@palepurple.co.uk>  Sun, 11 Sep 2016 18:42:00 +0100
+
+postfixadmin (2.93-2) unstable; urgency=low
+
+  * Replace debian/ using Debian v2.3.7-2. See Debian's #821643
+  * This adds : PHP7 and Apache 2.4 support.
+
+ -- David Goodwin <david@palepurple.co.uk>  Sun, 22 May 2016 19:41:01 +0100
+
+postfixadmin (2.93-1) unstable; urgency=low
+
+  * New upstream release (effectively beta3 for v3.0)
+  * update dependencies to allow mariadb as database
+
+ -- David Goodwin <david@palepurple.co.uk>  Sat, 26 Sep 2015 15:05:00 +0100
+
+postfixadmin (2.92-1) unstable; urgency=low
+
+  * New upstream release (effectively beta2 for v3.0)
+
+ -- David Goodwin <david@palepurple.co.uk>  Wed, 28 Oct 2014 21:02:00 +0100
+
+postfixadmin (2.91-1) unstable; urgency=low
+
+  * New upstream release (effectively beta for v3.0)
+
+ -- David Goodwin <david@palepurple.co.uk>  Tue, 06 May 2014 21:36:00 +0100
+
+postfixadmin (2.3.5-2) unstable; urgency=low
+
+  * Added .po translation files (Closes: 667951, #667962, #668202, #668288)
+  * Closes: #668298, #668301, #668405, #668635
+  * Updated standards version to 3.9.3 without changes.
+
+ -- Norman Messtorff <normes@normes.org>  Thu, 26 Apr 2012 20:55:57 +0200
+
+postfixadmin (2.3.5-1) unstable; urgency=low
+
+  * Initial Debian release (Closes: #247225)
+
+ -- Norman Messtorff <normes@normes.org>  Sun, 15 Jan 2012 12:27:28 +0100
+

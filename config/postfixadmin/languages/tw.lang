@@ -1,0 +1,389 @@
+<?php
+# $Id$
+//
+// Language file Traditional Chinese
+// by John Chen (johnpupu @SF)
+// Last updated 4 Feb 2016 by Wally LEE (wlee@clubx.net)
+//
+
+$PALANG['YES'] = '是';
+$PALANG['NO'] = '否';
+$PALANG['edit'] = '編輯';
+$PALANG['del'] = '刪除';
+$PALANG['exit'] = '退出';
+$PALANG['cancel'] = '取消';
+$PALANG['save'] = '保存';
+$PALANG['confirm'] = '是否確定刪除?\n';
+$PALANG['confirm_delete_admin'] = '確定要刪除 %s 這個管理員帳戶嗎?';
+$PALANG['confirm_delete_alias'] = '確定要刪除 %s 這個別名嗎?';
+$PALANG['confirm_delete_aliasdomain'] = '確定要刪除網域%s的別名嗎?';
+$PALANG['confirm_delete_domain'] = '你是否確定要刪除該網域中的所有記錄? 刪除後不可恢復!\n (%s)'; # XXX text changed to: 'Do you really want to delete all records for the domain %s? This can not be undone'
+$PALANG['confirm_delete_fetchmail'] = 'Do you really want to delete the fetchmail job %s?'; # XXX
+$PALANG['confirm_delete_mailbox'] = '確定要刪除 %s 的郵箱嗎?';
+$PALANG['confirm_delete_vacation'] = '確定要刪除%s的自動回覆內容嗎？';
+$PALANG['no_delete_permissions'] = 'You are not allowed to delete %s!'; # XXX
+$PALANG['check_update'] = '檢查新版本';
+$PALANG['invalid_parameter'] = 'Invalid parameter!'; # XXX
+$PALANG['show'] = 'Show:'; # XXX
+$PALANG['all'] = 'All'; # XXX
+$PALANG['created'] = 'Created'; # XXX
+$PALANG['unknown'] = 'unknown'; # XXX
+$PALANG['download_csv'] = '下載此名單的CSV檔案';
+$PALANG['missing_field'] = 'Field %s is missing'; # XXX
+$PALANG['must_be_numeric'] = '%s must be numeric'; # XXX
+$PALANG['must_be_numeric_bigger_than_null'] = '%s must be numeric and bigger than 0'; # XXX
+$PALANG['must_be_boolean'] = '%s must be boolean'; # XXX
+$PALANG['invalid_value_given'] = 'Invalid value given for %s'; # XXX
+$PALANG['edit_not_allowed'] = 'You are not allowed to edit %s'; # XXX
+$PALANG['searchparams'] = 'Search parameters:'; # XXX
+$PALANG['pFooter_logged_as'] = 'Logged as %s'; # XXX # XXX Text change: 'logged in as %s' (the 'in' was missing)
+
+$PALANG['pLogin_welcome'] = '郵件管理員請從這裡登錄以管理你的網域.';
+$PALANG['pLogin_username'] = '帳號(電郵)';
+$PALANG['password'] = '密碼';
+$PALANG['pLogin_language'] = 'Language'; # XXX
+$PALANG['pLogin_button'] = '登錄';
+$PALANG['pLogin_failed'] = '你的帳號或密碼不正確。';
+$PALANG['pLogin_login_users'] = '普通用戶點擊這裡進入用戶控制面板.';
+
+$PALANG['pMenu_main'] = '主頁';
+$PALANG['pMenu_overview'] = '概覽';
+$PALANG['add_alias'] = '新建別名';
+$PALANG['add_alias_domain'] = '新建網域別名';
+$PALANG['add_mailbox'] = '新建郵箱'; # XXX check text - should be 'Add Mailbox'
+$PALANG['pMenu_fetchmail'] = 'Fetch Email'; # XXX
+$PALANG['pMenu_sendmail'] = '發送郵件';
+$PALANG['pMenu_password'] = '修改密碼';
+$PALANG['pMenu_viewlog'] = '查看日誌';
+$PALANG['pMenu_logout'] = '退出';
+
+$PALANG['pMain_welcome'] = '歡迎來到Postfix Admin!';
+$PALANG['pMain_overview'] = '顯示你的郵件別名和郵箱. 你可以在這兒進行編輯/刪除操作.';
+$PALANG['pMain_create_alias'] = '在您的網域中新建一個別名.'; # XXX check text - should be 'Create a new alias for your domain.'
+$PALANG['pMain_create_mailbox'] = '在您的網域中新建一個郵箱.';
+$PALANG['pMain_sendmail'] = '發一封郵件到你新建的一個郵箱中.';
+$PALANG['pMain_password'] = '修改你的管理員密碼.';
+$PALANG['pMain_viewlog'] = '查看日誌文件.';
+$PALANG['pMain_logout'] = '退出系統';
+
+$PALANG['pOverview_disabled'] = '已停用';
+$PALANG['pOverview_unlimited'] = '無限';
+$PALANG['pOverview_title'] = ':: 網域';
+$PALANG['pOverview_up_arrow'] = '返回頂端';
+$PALANG['pOverview_right_arrow'] = '下一頁';
+$PALANG['pOverview_left_arrow'] = '上一頁';
+$PALANG['pOverview_alias_domain_title'] = ':: 網域別名';
+$PALANG['pOverview_alias_title'] = ':: 別名';
+$PALANG['pOverview_mailbox_title'] = ':: 郵箱';
+$PALANG['go'] = '執行';
+$PALANG['pOverview_welcome'] = '瀏覽 ';
+$PALANG['pOverview_alias_domain_aliases'] = '網域名';
+$PALANG['pOverview_alias_address'] = '前往';
+$PALANG['active'] = '生效';
+$PALANG['and_x_more'] = '[and %s more...]'; # XXX
+$PALANG['pOverview_mailbox_username'] = '郵件地址';
+$PALANG['name'] = '姓名';
+$PALANG['pOverview_mailbox_quota'] = '限制 (MB)';
+$PALANG['pOverview_vacation_edit'] = '自動回覆啟用中';
+$PALANG['pOverview_vacation_option'] = '設置自動回覆';
+$PALANG['no_domains_for_this_admin'] = 'You don\'t have permissions for any domains.'; # XXX
+$PALANG['no_domains_exist'] = 'You have to create at least one domain before you can use virtual list.'; # "virtual list" should match $PALANG['pAdminMenu_list_virtual'] # XXX
+
+$PALANG['domain'] = '網域名';
+$PALANG['pOverview_get_alias_domains'] = '網域別名';
+$PALANG['mailboxes'] = '郵箱';
+$PALANG['pOverview_get_quota'] = '郵箱限制 (MB)';
+
+$PALANG['pDelete_delete_error'] = '不能刪除本記錄';
+$PALANG['pDelete_delete_success'] = '%s 已刪除。';
+$PALANG['pDelete_domain_error'] = '你沒有該網域的管理權限';
+$PALANG['pDelete_alias_error'] = '不能刪除此別名 ';
+$PALANG['pCreate_alias_domain_welcome'] = 'Mirror addresses of one of your domains to another.'; # XXX
+$PALANG['pCreate_alias_domain_alias'] = '網域名';
+$PALANG['pCreate_alias_domain_alias_text'] = '外來郵件發送的網域。';
+$PALANG['pCreate_alias_domain_target'] = '目標網域名';
+$PALANG['pCreate_alias_domain_target_text'] = '郵件前往的網域。';
+$PALANG['pCreate_alias_domain_error1'] = 'You are not allowed to create the chosen configuration.'; # XXX
+$PALANG['pCreate_alias_domain_error2'] = 'The chosen configuration is invalid, please choose a different one!'; # XXX
+$PALANG['alias_domain_already_exists'] = 'This domain is already an alias domain!'; # XXX
+$PALANG['alias_domain_does_not_exist'] = 'This domain isn\'t an alias domain!'; # XXX
+$PALANG['alias_domain_create_failed'] = 'Creating the alias domain %s failed!'; # XXX
+$PALANG['alias_domain_change_failed'] = 'Changing the alias domain %s failed!'; # XXX
+$PALANG['pCreate_alias_domain_error4'] = 'All domains are already aliased.'; # XXX
+$PALANG['pCreate_alias_domain_success'] = '已新增網域%s的別名。';
+$PALANG['alias_domain_changed'] = '網域%s的別名已修改。';
+$PALANG['alias_domain_to_itsself'] = 'A domain can\'t be an alias domain to itsself!'; # XXX
+$PALANG['delete_domain_aliasdomain_target'] = 'The domain %s is the target for one or more alias domains and can\'t be deleted! (Delete the alias domains first.)'; # XXX
+
+$PALANG['pCreate_alias_address_text_error1'] = '該別名非法!';
+$PALANG['alias_does_not_exist'] = 'This alias does not exist!'; # XXX
+$PALANG['email_address_already_exists'] = '郵件地址已經存在, 請重新選擇!';
+$PALANG['pCreate_alias_address_text_error3'] = '你的別名已經達到上限!';
+$PALANG['pCreate_alias_goto_text'] = '郵件接收地址.';
+$PALANG['pCreate_alias_goto_text_error'] = '接收地址不正確!';
+$PALANG['pCreate_alias_result_error'] = '不能將別名添加到別名表中! (%s)'; # XXX Text changed to: Creating the alias %s failed!
+$PALANG['pCreate_alias_result_success'] = '添加別名成功!'; # XXX text change: 'The alias %s has been created!'
+$PALANG['alias_updated'] = 'The alias %s has been updated!'; # XXX
+$PALANG['pCreate_alias_catchall_text'] = '要將所有的郵件全部轉發請使用"*"作為別名. 網域到網域的轉發請使用"*@domain.tld".'; # XXX check/beautify - was split in two lines before
+$PALANG['mailbox_alias_cant_be_deleted'] = 'This alias belongs to a mailbox and can\'t be deleted!'; # XXX
+$PALANG['protected_alias_cant_be_deleted'] = 'The alias %s is protected and can only be deleted by a superadmin'; # XXX
+
+$PALANG['pEdit_alias_welcome'] = '編輯你網域中的別名.'; # XXX Text change to: 'Edit forwarding settings'
+$PALANG['pEdit_alias_help'] = '每行一條記錄.'; # XXX # XXX Text change to: 'Accepts multiple targets, one entry per line.'
+$PALANG['alias'] = '別名';
+$PALANG['to'] = '轉到';
+$PALANG['pEdit_alias_goto_text_error1'] = '你沒有填寫收信人';
+$PALANG['pEdit_alias_goto_text_error2'] = '郵件地址非法: ';
+$PALANG['pEdit_alias_domain_result_error'] = 'Unable to modify the alias domain!'; # XXX
+$PALANG['pEdit_alias_forward_and_store'] = '轉寄及保留外來郵件的副本';
+$PALANG['pEdit_alias_forward_only'] = '只轉寄到以上電郵地址';
+$PALANG['pEdit_alias_result_error'] = '不能修改該別名! (%s)'; # XXX Text changed to: Modifying the alias %s failed!
+
+$PALANG['pCreate_mailbox_welcome'] = '在你的網域中新建一個本地郵箱.';
+$PALANG['pCreate_mailbox_username_text_error1'] = '郵件非法!';
+$PALANG['pCreate_mailbox_username_text_error3'] = '郵箱地址已經達到上限!';
+$PALANG['pCreate_mailbox_password_text'] = 'POP3/IMAP 密碼';
+$PALANG['pCreate_mailbox_name_text'] = '全名';
+$PALANG['pCreate_mailbox_mail'] = '新建郵箱'; # XXX Text change to 'Send Welcome mail'
+$PALANG['pCreate_mailbox_result_error'] = '不能將郵箱增加到郵箱表中! (%s)'; # XXX Text changed to: Creating the mailbox %s failed!
+$PALANG['pCreate_mailbox_result_success'] = '增加郵箱成功! (%s)'; # XXX Text changed to: The mailbox %s has been added to the mailbox table!
+$PALANG['pCreate_mailbox_result_succes_nosubfolders'] = 'The mailbox %s has been added to the mailbox table, but none (or only some) of the predefined sub-folders could be created.'; # XXX
+$PALANG['mailbox_updated'] = "The mailbox %s has been updated.";  # XXX
+$PALANG['mailbox_update_failed'] = "Updating the mailbox %s failed!"; # XXX
+
+$PALANG['pEdit_mailbox_welcome'] = '編輯你網域中的郵箱.';
+$PALANG['pEdit_mailbox_username'] = '用戶名';
+$PALANG['pEdit_mailbox_password_text_error'] = '你輸入的兩個新密碼不相同!';
+$PALANG['pEdit_mailbox_quota'] = '限制';
+$PALANG['pEdit_mailbox_quota_text'] = 'MB';
+$PALANG['mb_max'] = 'MB (max: %s)'; # XXX
+$PALANG['pEdit_mailbox_quota_text_error'] = '你輸入的容量限制超出範圍!';
+$PALANG['pEdit_mailbox_domain_error'] = '你沒有該網域的管理權限: ';
+$PALANG['pEdit_mailbox_result_error'] = '不能編輯該郵箱!';
+
+$PALANG['pPassword_welcome'] = '更改你的登錄密碼.';
+$PALANG['pPassword_admin'] = '帳號';
+$PALANG['pPassword_password_current'] = '當前密碼';
+$PALANG['pPassword_password_current_text_error'] = '你沒有填寫當前密碼!';
+$PALANG['pPassword_password'] = '新密碼';
+$PALANG['pPassword_password2'] = '新密碼 (驗證)';
+$PALANG['pPassword_password_text_error'] = '你兩次輸入的新密碼不相同! 或者為空!'; # XXX check/beautify - was split in two lines before
+$PALANG['change_password'] = '更改密碼'; # XXX check text - should be 'Change Password'
+$PALANG['pPassword_result_error'] = '更改密碼失敗! (%s)'; # XXX Text changed to: Changing the password for %s failed!
+$PALANG['pPassword_result_success'] = '更改密碼成功! (%s)'; # XXX Text changed to: The password for %s has been changed.
+$PALANG['pEdit_vacation_set'] = '啟動自動回覆';
+$PALANG['pEdit_vacation_remove'] = '取消自動回覆';
+$PALANG['pVacation_result_error'] = 'Updating the auto response settings for %s failed'; # XXX
+$PALANG['pVacation_result_removed'] = '%s的自動回覆功能已取消!';
+$PALANG['pVacation_result_added'] = '%s的自動回覆功能已啟動!';
+$PALANG['pVacation_reply_type'] = '回覆方式';
+$PALANG['pVacation_reply_delay_time'] = 'Interval time'; # XXX
+$PALANG['pVacation_reply_delay_time_text'] = 'Time in seconds'; # XXX
+$PALANG['pVacation_until_before_today'] = 'The Date of [Active until] is set  before Today'; # XXX
+$PALANG['pVacation_until_before_from'] = 'The Date of [Active until] is set before [Active from]'; # XXX
+
+$PALANG['reply_once'] = '回覆一次';
+$PALANG['reply_every_mail'] = 'Reply on every mail'; # XXX
+$PALANG['reply_once_per_day'] = 'Reply once a day'; # XXX
+$PALANG['reply_once_per_week'] = '每星期回覆一次';
+
+$PALANG['pViewlog_welcome'] = '查看最新的%s項操作日誌 網域: ';
+$PALANG['pViewlog_timestamp'] = '時間';
+$PALANG['pViewlog_action'] = '操作';
+$PALANG['pViewlog_data'] = '內容';
+$PALANG['pViewlog_action_create_domain'] = 'create domain'; # XXX
+$PALANG['pViewlog_action_delete_domain'] = 'delete domain'; # XXX
+$PALANG['pViewlog_action_edit_domain'] = 'edit domain'; # XXX
+$PALANG['pViewlog_action_create_mailbox'] = 'create mailbox'; # XXX
+$PALANG['pViewlog_action_delete_mailbox'] = 'delete mailbox'; # XXX
+$PALANG['pViewlog_action_edit_mailbox'] = 'edit mailbox'; # XXX
+$PALANG['pViewlog_action_edit_mailbox_state'] = 'edit mailbox active'; # XXX
+$PALANG['pViewlog_action_create_alias'] = 'create alias'; # XXX
+$PALANG['pViewlog_action_create_alias_domain'] = 'create alias domain'; # XXX
+$PALANG['pViewlog_action_edit_alias_domain'] = 'edit alias domain'; # XXX
+$PALANG['pViewlog_action_delete_alias'] = 'delete alias'; # XXX
+$PALANG['pViewlog_action_delete_alias_domain'] = 'delete alias domain'; # XXX
+$PALANG['pViewlog_action_edit_alias'] = 'edit alias'; # XXX
+$PALANG['pViewlog_action_edit_alias_state'] = 'edit alias active'; # XXX
+$PALANG['pViewlog_action_edit_alias_domain_state'] = 'edit alias domain active'; # XXX
+$PALANG['pViewlog_action_edit_password'] = 'change password'; # XXX
+$PALANG['pViewlog_action_create_admin'] = 'create admin'; # XXX
+$PALANG['pViewlog_action_edit_admin'] = 'edit admin'; # XXX
+$PALANG['pViewlog_action_delete_admin'] = 'delete admin'; # XXX
+$PALANG['pViewlog_action_edit_vacation'] = 'edit vacation'; # XXX
+$PALANG['pViewlog_action_create_fetchmail'] = 'create fetchmail job'; # XXX
+$PALANG['pViewlog_action_edit_fetchmail'] = 'edit fetchmail job'; # XXX
+$PALANG['pViewlog_action_delete_fetchmail'] = 'delete fetchmail job'; # XXX
+
+$PALANG['pViewlog_result_error'] = '未找到相關的日誌!';
+
+$PALANG['pSendmail_welcome'] = '發送郵件.';
+$PALANG['from'] = '發件人';
+$PALANG['pSendmail_to'] = '收件人';
+$PALANG['pSendmail_to_text_error'] = '收件人為空或者收件人地址不正確!';
+$PALANG['subject'] = '主題';
+$PALANG['pSendmail_subject_text'] = '歡迎';
+$PALANG['pSendmail_body'] = '內容';
+$PALANG['pSendmail_button'] = '發送';
+$PALANG['pSendmail_result_error'] = '建立郵箱失敗! (%s)'; # XXX text change - new: Unable to send email to %s!
+$PALANG['pSendmail_result_success'] = '建立郵箱成功! (%s)'; # XXX text change - new: Email sent to %s.
+
+$PALANG['pAdminMenu_list_admin'] = '管理員清單';
+$PALANG['pAdminMenu_list_domain'] = '網域清單';
+$PALANG['pAdminMenu_list_virtual'] = '虛擬用戶清單';
+$PALANG['pAdminMenu_backup'] = '備份';
+$PALANG['pAdminMenu_create_domain_admins'] = '網域管理員';
+$PALANG['pAdminMenu_create_admin'] = '新建管理員';
+$PALANG['pAdminMenu_create_domain'] = '新建網域';
+
+$PALANG['pAdminList_admin_count'] = '管理網域數量';
+
+$PALANG['description'] = '描述';
+$PALANG['aliases'] = '別名數'; # XXX check text - should be 'Aliases'
+$PALANG['pAdminList_domain_quota'] = 'Domain quota (MB)'; # XXX
+$PALANG['pAdminList_domain_backupmx'] = 'Backup MX'; # XXX
+$PALANG['last_modified'] = '最後修改日期';
+
+
+$PALANG['pAdminCreate_domain_welcome'] = '新建網域';
+$PALANG['pAdminCreate_domain_domain_text_error'] = '該網域已經存在!';
+$PALANG['domain_does_not_exist'] = 'This domain does not exist!'; # XXX
+$PALANG['pAdminCreate_domain_domain_text_error2'] = 'The domain is invalid!'; # XXX
+$PALANG['pAdminCreate_domain_defaultaliases'] = '增加默認別名';
+$PALANG['pAdminCreate_domain_button'] = '新增';
+$PALANG['pAdminCreate_domain_result_error'] = '新增網域失敗! (%s)'; # XXX Text changed to: Adding the domain %s failed!
+$PALANG['pAdminCreate_domain_result_success'] = '新增網域成功! (%s)'; # XXX Text changed to: The domain %s has been added.
+$PALANG['domain_updated'] = 'The domain %s has been updated.'; # XXX
+$PALANG['pAdminDelete_admin_error'] = 'Unable to delete admin!'; # XXX
+$PALANG['domain_postdel_failed'] = 'The domain postdeletion script failed, check the error log for details!'; # XXX
+$PALANG['domain_postcreate_failed'] = 'The domain postcreate script failed, check the error log for details!'; # XXX
+$PALANG['mailbox_postdel_failed'] = 'The mailbox postdeletion script failed, check the error log for details!'; # XXX
+$PALANG['mailbox_postedit_failed'] = 'The mailbox postedit script failed, check the error log for details!'; # XXX
+$PALANG['mailbox_postcreate_failed'] = 'The mailbox postcreate script failed, check the error log for details!'; # XXX
+$PALANG['pAdminDelete_alias_domain_error'] = 'Unable to remove domain alias!'; # XXX
+$PALANG['domain_conflict_vacation_domain'] = 'You can\'t use the vacation domain as mail domain!'; # XXX
+
+$PALANG['pAdminEdit_domain_welcome'] = '修改網域';
+$PALANG['pAdminEdit_domain_aliases_text'] = '-1 = 禁止 | 0 = 無限制'; # XXX check / compare with pAdminCreate_domain_aliases_text - should be "-1 = disable | ..."
+$PALANG['pAdminEdit_domain_maxquota'] = '最大容量限制';
+$PALANG['pAdminEdit_domain_maxquota_text'] = 'MB | -1 = 禁止 | 0 = 無限制'; # XXX check - should be "MB | -1 = disable | 0 = unlimited"
+$PALANG['pAdminEdit_domain_quota'] = 'Domain Quota'; # XXX
+$PALANG['transport'] = 'Transport'; # XXX
+$PALANG['pAdminEdit_domain_transport_text'] = 'Define transport'; # XXX
+$PALANG['pAdminEdit_domain_backupmx'] = '備份郵件服務器';
+$PALANG['pAdminEdit_domain_result_error'] = '修改網域失敗! (%s)'; # XXX Text changed to: Modifying the domain %s failed!
+
+$PALANG['pAdminCreate_admin_welcome'] = '新增網域管理員';
+$PALANG['email_address'] = '郵件地址';
+$PALANG['pAdminCreate_admin_username_text_error1'] = '管理員名不是一個合法的郵件地址!';
+$PALANG['admin_already_exists'] = '管理員已經存在或者管理員名非法!'; # XXX Text changed to: The admin already exists!
+$PALANG['admin_does_not_exist'] = 'The admin does not exist!'; # XXX
+$PALANG['pAdminCreate_admin_button'] = '新增';
+$PALANG['pAdminCreate_admin_result_error'] = '新增管理員失敗! (%s)'; # XXX Text changed to: Adding the admin %s failed!
+$PALANG['pAdminCreate_admin_result_success'] = '新增管理員成功! (%s)'; # XXX Text changed to: The admin %s has been added.
+
+$PALANG['pAdminEdit_admin_welcome'] = '修改網域管理員';
+$PALANG['admin'] = '管理員';
+$PALANG['password_again'] = '密碼 (驗證)';
+$PALANG['super_admin'] = '超級管理員';
+$PALANG['super_admin_desc'] = '超級管理員可以管理所有網域和管理員帳戶。';
+$PALANG['pAdminEdit_admin_result_error'] = '網域管理員:%s 編輯失敗!';
+$PALANG['pAdminEdit_admin_result_success'] = '網域管理員:%s 編輯完成。';
+
+$PALANG['pUsersLogin_welcome'] = '郵件用戶從這裡登錄管理你的密碼和別名.';
+$PALANG['pUsersLogin_username_incorrect'] = '登錄失敗. 請確認你是使用你的郵箱地址登錄!';
+$PALANG['pUsersLogin_password_incorrect'] = '登錄密碼不正確!';
+
+$PALANG['pUsersMenu_vacation'] = '自動回覆';
+$PALANG['pUsersMenu_edit_alias'] = '修改轉發';
+
+$PALANG['pUsersMain_vacation'] = '設置外出信息或自動回覆.';
+$PALANG['pUsersMain_vacationSet'] = $PALANG['pUsersMenu_vacation'] . '啟用中, 如要修改請點擊 \'' . $PALANG['pUsersMenu_vacation'] . '\'';
+$PALANG['pUsersMain_edit_alias'] = '修改郵箱轉發.';
+$PALANG['pUsersMain_password'] = '修改當前密碼.';
+
+$PALANG['pUsersVacation_welcome'] = '自動回覆.';
+$PALANG['pUsersVacation_welcome_text'] = '你已經設置了自動回覆! (%s)'; # XXX Text changed to: 'Auto response for %s is active!'
+$PALANG['pUsersVacation_subject_text'] = '自動回覆: 我暫時未能回信';
+$PALANG['message'] = '內容'; # XXX text changed to 'Message'
+$PALANG['pUsersVacation_body_text'] = <<<EOM
+    我在 XXXX年XX月XX日 到 XXXX年XX月XX日 這段時間內暫時無法回信.
+如果你有急事請與 XXXX 聯繫.
+EOM;
+$PALANG['pUsersVacation_activefrom'] = '啟用日期';
+$PALANG['pUsersVacation_activeuntil'] = '直至';
+
+
+$PALANG['pEdit_dbLog_editactive'] = '改變生效狀態';
+
+$PALANG['pSearch'] = 'search'; # XXX
+$PALANG['pSearch_welcome'] = '搜索: ';
+$PALANG['pReturn_to'] = 'Return to'; # XXX
+$PALANG['pBroadcast_title'] = '發郵件給所有用戶';
+$PALANG['pBroadcast_name'] = '你的名字';
+$PALANG['pBroadcast_success'] = '你給所有用戶的郵件已發出。';
+$PALANG['pAdminMenu_broadcast_message'] = '發送給所有用戶';
+$PALANG['pBroadcast_error_empty'] = 'The fields Name, Subject and Message shouldn\'t be empty!'; # XXX
+$PALANG['broadcast_mailboxes_only'] = 'Only send to mailboxes'; # XXX
+$PALANG['broadcast_to_domains'] = 'Send to domains:'; # XXX
+$PALANG['pStatus_undeliverable'] = '可能無法送遞 ';
+$PALANG['pStatus_custom'] = '送遞至 ';
+$PALANG['pStatus_popimap'] = 'POP/IMAP '; # XXX
+$PALANG['password_too_short'] = "密碼太短 - 需要 %s 個字附";
+$PALANG['password_no_characters'] = "你的密碼最少要有 %s 字母。";
+$PALANG['password_no_digits'] = "你的密碼最少要有 %s 數字。";
+$PALANG['pInvalidDomainRegex'] = "網域名 %s 不正確，未能通過 regexp 檢查";
+$PALANG['pInvalidDomainDNS'] = "網域名 %s 不正確，或在DNS找不到"; 
+$PALANG['pInvalidMailRegex'] = '電郵地址 %s 不正確，未能通過 regexp 檢查';
+$PALANG['pFetchmail_welcome'] = 'Fetch mail for:'; # XXX
+$PALANG['pFetchmail_new_entry'] = 'New entry'; # XXX
+$PALANG['fetchmail_already_exists']         = 'This fetchmail job already exists!'; # XXX
+$PALANG['fetchmail_does_not_exist']         = 'This fetchmail job does not exist!'; # XXX
+$PALANG['pFetchmail_database_save_error'] = 'Could not save this entry in the database!'; # XXX
+$PALANG['pFetchmail_database_save_success'] = 'Entry saved in database.'; # XXX
+$PALANG['pFetchmail_error_invalid_id'] = 'No entry with ID %s found!'; # XXX
+$PALANG['pFetchmail_invalid_mailbox'] = 'Invalid mailbox!'; # XXX
+$PALANG['pFetchmail_server_missing'] = 'Please enter the remote server name!'; # XXX
+$PALANG['pFetchmail_user_missing'] = 'Please enter the remote username!'; # XXX
+$PALANG['pFetchmail_password_missing'] = 'Please enter the remote password!'; # XXX
+$PALANG['pFetchmail_field_id']              = 'ID'; # XXX
+$PALANG['pFetchmail_field_mailbox']         = 'Mailbox'; # XXX
+$PALANG['pFetchmail_field_src_server']      = 'Server'; # XXX
+$PALANG['pFetchmail_field_src_auth']        = 'Auth Type'; # XXX
+$PALANG['pFetchmail_field_src_user']        = 'User'; # XXX
+$PALANG['pFetchmail_field_src_password']    = $PALANG['password']; # needed until fetchmail is migrated into FetchmailHandler
+$PALANG['pFetchmail_field_src_folder']      = 'Folder'; # XXX
+$PALANG['pFetchmail_field_poll_time']       = 'Poll'; # XXX
+$PALANG['pFetchmail_field_fetchall']        = 'Fetch All'; # XXX
+$PALANG['pFetchmail_field_keep']            = 'Keep'; # XXX
+$PALANG['pFetchmail_field_protocol']        = 'Protocol'; # XXX
+$PALANG['pFetchmail_field_usessl']          = 'SSL active'; # XXX
+$PALANG['pFetchmail_field_sslcertck']       = 'SSL certificate check'; # XXX
+$PALANG['pFetchmail_field_sslcertpath']     = 'SSL path to certificates'; # XXX
+$PALANG['pFetchmail_field_sslfingerprint']  = 'SSL fingerprint (md5)'; # XXX
+$PALANG['pFetchmail_field_extra_options']   = 'Extra Options'; # XXX
+$PALANG['pFetchmail_field_mda']             = 'MDA'; # XXX
+$PALANG['pFetchmail_field_date']            = 'Date'; # XXX
+$PALANG['pFetchmail_field_returned_text']   = 'Returned Text'; # XXX
+$PALANG['pFetchmail_desc_id']               = 'Record ID'; # XXX
+$PALANG['pFetchmail_desc_mailbox']          = 'Local mailbox'; # XXX
+$PALANG['pFetchmail_desc_src_server']       = 'Remote Server'; # XXX
+$PALANG['pFetchmail_desc_src_auth']         = 'Mostly \'password\''; # Translators: Please do NOT translate 'password' here # XXX
+$PALANG['pFetchmail_desc_src_user']         = 'Remote User'; # XXX
+$PALANG['pFetchmail_desc_src_password']     = 'Remote Password'; # XXX
+$PALANG['pFetchmail_desc_src_folder']       = 'Remote Folder'; # XXX
+$PALANG['pFetchmail_desc_poll_time']        = 'Poll every ... minutes'; # XXX
+$PALANG['pFetchmail_desc_fetchall']         = 'Retrieve  both old (seen) and new messages'; # XXX
+$PALANG['pFetchmail_desc_keep']             = 'Keep retrieved messages on the remote mailserver'; # XXX
+$PALANG['pFetchmail_desc_protocol']         = 'Protocol to use'; # XXX
+$PALANG['pFetchmail_desc_usessl']           = 'SSL encryption'; # XXX
+$PALANG['pFetchmail_desc_extra_options']    = 'Extra fetchmail Options'; # XXX
+$PALANG['pFetchmail_desc_mda']              = 'Mail Delivery Agent'; # XXX
+$PALANG['pFetchmail_desc_date']             = 'Date of last polling/configuration change'; # XXX
+$PALANG['pFetchmail_desc_returned_text']    = 'Text message from last polling'; # XXX
+$PALANG['dateformat_pgsql'] = 'YYYY-mm-dd'; # translators: rearrange to your local date format, but make sure it's a valid PostgreSQL date format # XXX
+$PALANG['dateformat_mysql'] = '%Y-%m-%d';   # translators: rearrange to your local date format, but make sure it's a valid MySQL date format # XXX
+
+$PALANG['please_keep_this_as_last_entry'] = ''; # needed for language-check.sh
+/* vim: set expandtab ft=php softtabstop=3 tabstop=3 shiftwidth=3: */
+?>
