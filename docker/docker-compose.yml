@@ -34,26 +34,40 @@ services:
 
 #-------------------------------------myReverseProxy-----------------------------------------
 
-
-#--------------------------------------nginx--------------------------------------------------
-    reverse-proxy:
-        image: jwilder/nginx-proxy
-        #extends:
-            #file: docker-common.yml
-            #service: reverse-proxy
+    reverseproxy:
+        #image: reverseproxy:latest
+        build:
+            context: .
+            dockerfile: ./reverseproxy/Dockerfile
         ports:
             - 80:80
-            - 443:443
-        volumes:
-            - /var/run/docker.sock:/tmp/docker.sock:ro
-            - ./emailserver/ssl/archive/${FQDN}:/etc/nginx/certs:ro
-        #volumes_from:
-            #- emailserver
-        #network_mode: host 
+            - 88:88
+        restart: always
+
+        #test:
+        #image: webmail/webmail:latest
+        
+
         networks:
             - front
             - back
-        container_name: "reverse-proxy"
+        container_name: "reverseproxy"
+
+#--------------------------------------nginx--------------------------------------------------
+    #reverse-proxy:
+        #image: jwilder/nginx-proxy
+        
+        #ports:
+            #- 86:86
+            #- 443:443
+        #volumes:
+            #- /var/run/docker.sock:/tmp/docker.sock:ro
+            #- ./emailserver/ssl/archive/${FQDN}:/etc/nginx/certs:ro
+        
+        #networks:
+            #- front
+            #- back
+        #container_name: "reverse-proxy"
 #-------------------------------------mariadb----------------------------------------------------
     mariadb:
         #extends:
@@ -180,7 +194,7 @@ services:
             - "8080"
 
         networks:
-            - front
+            #- front
             - back
         
         container_name: "postfixadmin"
@@ -200,7 +214,7 @@ services:
         depends_on:
             - emailserver
         networks:
-            - front
+            #- front
             - back
         container_name: "webmail"   
 

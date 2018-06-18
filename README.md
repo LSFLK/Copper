@@ -11,9 +11,10 @@ https://github.com/prabod/email-solution/tree/master/docker
     - [POSTFIX](http://www.postfix.org/) : a modular mail transfer agent.
   - [x] IMAP Server and POP Server
     - [DOVECOT](https://www.dovecot.org/) : secure open-source IMAP and POP3 server.
-  - [x] Mailing List Capability
-    - Supported by Postfix alias. Can be managed through [POSTFIXADMIN](http://postfixadmin.sourceforge.net/) web interface
-  
+  - [x] Mail Server Administration and Mailing List Capability 
+    - [POSTFIXADMIN](http://postfixadmin.sourceforge.net/)Supported by Postfix alias. Can be managed through  web interface
+  - [x] WEBmail client
+    - [RAINLOOP](https://www.rainloop.net/) : web client to access mail for users.
 
 
 ## How to Setup
@@ -134,3 +135,8 @@ docker exec -it 5d02241a1739 sh /var/lib/init-user-db.sh
     - Direct your web browser to http://localhost:11334/
     - Login using the password mentioned in the .env file
   
+
+3. Web Client RainLoop
+
+    - Direct your web browser to http://localhost:8989/?admin to access the admin portal of the webclient
+    - Default user name passwords are :
