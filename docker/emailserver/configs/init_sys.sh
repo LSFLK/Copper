@@ -7,12 +7,19 @@ export FQDN=${FQDN:-$(hostname --fqdn)}
 export DOMAIN=${DOMAIN:-$(hostname --domain)}
 export REDIS_HOST=${REDIS_HOST:-"redis"}
 export REDIS_PORT=${REDIS_PORT:-6379}
-export DBUSER=${DBUSER:-"postfixuser"}
-export DBPASS=${DBPASS:-"postfixpassword"}
-export DBHOST=${DBHOST:-"mariadb"}
-export DEBUG=${DEBUG:-"true"}
-export RSPAMD_PASSWORD=${RSPAMD_PASSWORD:-"password"}
+# hardcoded variable setting
+#export DBUSER=${DBUSER:-"postfixuser"}
+#export DBPASS=${DBPASS:-"postfixpassword"}
+#export DBHOST=${DBHOST:-"mariadb"}
+#export DEBUG=${DEBUG:-"true"}
+#export RSPAMD_PASSWORD=${RSPAMD_PASSWORD:-"password"}
 
+#Getting variables from the .env file
+export DBUSER=${DBUSER}
+export DBPASS=${DBPASS}
+export DBHOST=${DBHOST}
+export DEBUG=${DEBUG}
+export RSPAMD_PASSWORD=${RSPAMD_PASSWORD}
 
 if [ -z "$EMAIL" ]; then
   echo "[ERROR] Email Must be set !"
@@ -106,7 +113,7 @@ chmod -R 755 /etc/letsencrypt/
  sed -i -e "s;127.0.0.1;"${DBHOST}";g" "/etc/dovecot/dovecot-sql.conf"
 
  PASSWORD=$(rspamadm pw --quiet --encrypt --type pbkdf2 --password "${RSPAMD_PASSWORD}")
- sed -i "s;pwrd;"${PASSWORD}";g" "/etc/rspamd/local.d/worker-controller.inc"
+ sed -i "s;pwrd;"${RSPAMD_PASSWORD}";g" "/etc/rspamd/local.d/worker-controller.inc"
  
  groupadd -g 5000 vmail && useradd -g vmail -u 5000 vmail -d /var/mail
  chown -R vmail:vmail /var/mail

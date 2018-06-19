@@ -14,21 +14,26 @@ version: '2'
 
 networks:
     front:
-      
+        external:
+            name: front
         # use the bridge driver, but enable IPv6
-        driver: bridge
+        #driver: bridge
         #driver_opts:
             #com.docker.network.enable_ipv6: "true"
-        ipam:
-            driver: default
-            config:
-             - subnet: "192.168.0.0/24"
-               gateway: "192.168.0.1"
+        #ipam:
+            #driver: default
+            #config:
+             #- subnet: "192.168.0.0/24"
+               #gateway: "192.168.0.1"
                 #- subnet: "2001:3984:3989::/64"
                 #gateway: "2001:3984:3989::1"
     back:
         # use a custom driver, with no options
         driver: bridge
+        ipam:
+            config:
+             - subnet: "172.19.0.0/24"
+               gateway: "172.19.0.18"
 
 services:
 
@@ -40,17 +45,23 @@ services:
             context: .
             dockerfile: ./reverseproxy/Dockerfile
         ports:
-            - 80:80
+            #- 80:80 # becouse when we allocate this port emailserver cant connect to online
             - 88:88
         restart: always
 
         #test:
         #image: webmail/webmail:latest
         
+        networks:           
+            back:
+               ipv4_address: 172.19.0.20
+            front:
 
-        networks:
-            - front
-            - back
+
+        #networks:
+            #- front
+            #- back
+             
         container_name: "reverseproxy"
 
 #--------------------------------------nginx--------------------------------------------------
@@ -104,8 +115,10 @@ services:
             #- ./docker/postgres/init-user-db.sh:/docker-entrypoint-initdb.d/init-user-db.sh
             #- ./database/scripts/mariadb-scripts:/docker-entrypoint-initdb.d/init-user-db.sh
             - ./database/scripts/mysql:/docker-entrypoint-initdb.d/init-user-db.sh
-        networks:
-            - back
+        networks:           
+            back:
+               ipv4_address: 172.19.0.19
+        
         #depends_on:
             #- front
         #container_name: "mariadb"
@@ -135,11 +148,14 @@ services:
             - DOMAIN=${DOMAIN}
             - EMAIL=${EMAIL}
             - DBUSER=${DBUSER}
+            - DBHOST=${DBHOST}
             - DBPASS=${DBPASS}
+            - DEBUG=${DEBUG}
+            - RSPAMD_PASSWORD=${RSPAMD_PASSWORD}
         ports:
             # bellow 80 port is opened for external use
             - "80"
-            - "11334:11334"
+            - "11334:11334" # RSPAMD web portal
             - "25:25"       # SMTP                - opened from external 25 to local 25
             - "110:110"     # POP3
             - "143:143"     # IMAP
@@ -154,10 +170,12 @@ services:
         depends_on:
             - mariadb
             - redis
-            
-        networks:
-            - front
-            - back
+        # two networks are allocated and one with static ip. this format is important    
+        networks:           
+            back:
+               ipv4_address: 172.19.0.17
+            front:
+        
         
         container_name: "emailserver"
 #-----------------------------------------postfixadmin-------------------------------------
@@ -195,7 +213,8 @@ services:
 
         networks:
             #- front
-            - back
+            back:
+              ipv4_address: 172.19.0.15
         
         container_name: "postfixadmin"
 
@@ -211,11 +230,15 @@ services:
             - ./webmail/${WEBMAIL}/app:/var/www/site/app/
         ports:
             - "8989:80"
+        environment:
+            - WEBMAIL=${WEBMAIL}
+         
         depends_on:
             - emailserver
         networks:
             #- front
-            - back
+            back:
+              ipv4_address: 172.19.0.16
         container_name: "webmail"   
 
             #-------------------------------------copperclient -- customized web mail client installation----
@@ -255,7 +278,9 @@ services:
         expose:
             - "6379"
         networks:
-            - back
+            #- back
+            back:
+              ipv4_address: 172.19.0.18
         #depends_on:
             #- front
 
