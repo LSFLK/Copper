@@ -15,6 +15,9 @@ https://github.com/prabod/email-solution/tree/master/docker
     - [POSTFIXADMIN](http://postfixadmin.sourceforge.net/)Supported by Postfix alias. Can be managed through  web interface
   - [x] WEBmail client
     - [RAINLOOP](https://www.rainloop.net/) : web client to access mail for users.
+  - [x] openLDAP
+    - openLDAP server and a phpldapadmin will be installed for ldap configuration
+
 
 
 ## How to Setup
@@ -132,11 +135,104 @@ docker exec -it 5d02241a1739 sh /var/lib/init-user-db.sh
   
 2. Access Rspamd WebUI
 
-    - Direct your web browser to http://localhost:11334/
+    - Direct your web browser to http://localhost:88/rspamd/
     - Login using the password mentioned in the .env file
   
 
 3. Web Client RainLoop
 
-    - Direct your web browser to http://localhost:8989/?admin to access the admin portal of the webclient
+    - Direct your web browser to http://localhost:88/webmail/?admin to access the admin portal of the webclient
     - Default user name passwords are :
+
+
+
+3. openLDAP server and phpldapadmin web portal
+
+    - After first time build you have to configure the openLDAP server with personal configuration
+      - Follwoing docker commands should be used for configuration
+      - docker exec -it ldap /bin/bash
+      - rm -rf /var/cache/debconf/*.dat
+      - dpkg-reconfigure slapd
+          Ex :
+                      
+                      wso2s-MacBook-Pro:docker wso2$ docker exec -it ldap /bin/bash
+                      root@7a3326f0e69d:/# rm -rf /var/cache/debconf/*.dat
+                      root@7a3326f0e69d:/# dpkg-reconfigure slapd
+                      debconf: unable to initialize frontend: Dialog
+                      debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 76.)
+                      debconf: falling back to frontend: Readline
+                      invoke-rc.d: could not determine current runlevel
+                      invoke-rc.d: policy-rc.d denied execution of stop.
+                      Configuring slapd
+                      -----------------
+
+                      If you enable this option, no initial configuration or database will be created
+                      for you.
+
+                      Omit OpenLDAP server configuration? [yes/no] no
+
+                      The DNS domain name is used to construct the base DN of the LDAP directory. For
+                      example, 'foo.example.org' will create the directory with 'dc=foo, dc=example,
+                      dc=org' as base DN.
+
+                      DNS domain name: coppermail.dyndns.org
+
+                      Please enter the name of the organization to use in the base DN of your LDAP
+                      directory.
+
+                      Organization name: Lanka Software Foundation
+
+                      Please enter the password for the admin entry in your LDAP directory.
+
+                      Administrator password: 
+
+                      Please enter the admin password for your LDAP directory again to verify that
+                      you have typed it correctly.
+
+                      Confirm password: 
+
+                      HDB and BDB use similar storage formats, but HDB adds support for subtree
+                      renames. Both support the same configuration options.
+
+                      The MDB backend is recommended. MDB uses a new storage format and requires less
+                      configuration than BDB or HDB.
+
+                      In any case, you should review the resulting database configuration for your
+                      needs. See /usr/share/doc/slapd/README.Debian.gz for more details.
+
+                        1. BDB  2. HDB  3. MDB
+                      Database backend to use: 3
+
+                      Do you want the database to be removed when slapd is purged? [yes/no] yes
+
+                      There are still files in /var/lib/ldap which will probably break the
+                      configuration process. If you enable this option, the maintainer scripts will
+                      move the old database files out of the way before creating a new database.
+
+                      Move old database? [yes/no] yes
+
+                      The obsolete LDAPv2 protocol is disabled by default in slapd. Programs and
+                      users should upgrade to LDAPv3.  If you have old programs which can't use
+                      LDAPv3, you should select this option and 'allow bind_v2' will be added to your
+                      slapd.conf file.
+
+                      Allow LDAPv2 protocol? [yes/no] no
+
+                        Moving old database directory to /var/backups:
+                        - directory unknown... done.
+                        Creating initial configuration... done.
+                        Creating LDAP directory... done.
+                      invoke-rc.d: could not determine current runlevel
+                      invoke-rc.d: policy-rc.d denied execution of start.
+                      root@7a3326f0e69d:/# service slapd status
+                      * slapd is not running
+                      root@7a3326f0e69d:/# service slapd start
+                      * Starting OpenLDAP slapd                                               [ OK ] 
+                      root@7a3326f0e69d:/# service slapd status
+                      * slapd is running
+                      root@7a3326f0e69d:/# service apaceh2 status
+                      apaceh2: unrecognized service
+                      root@7a3326f0e69d:/# service apache2 status
+                      * apache2 is not running
+    - Direct your web browser to http://localhost:88/ldap to access the admin portal of the phpldapadmin
+      It's username and password what we provided in above steps
