@@ -41,10 +41,8 @@ Unblock following ports
 | Service | Software | Protocol | Port |
 | ------- | -------- | -------- | ---- |
 | SMTP | Postfix | TCP | 25 |
-
 | POP3 | Dovecot | TCP | 110 |
 | IMAP | Dovecot | TCP | 143 |
-
 | SMTPS | Postfix | TCP | 465 |
 | Submission | Postfix | TCP | 587 |
 | IMAPS | Dovecot | TCP | 993 |
