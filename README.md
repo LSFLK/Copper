@@ -234,5 +234,91 @@ docker exec -it 5d02241a1739 sh /var/lib/init-user-db.sh
                       apaceh2: unrecognized service
                       root@7a3326f0e69d:/# service apache2 status
                       * apache2 is not running
+
+      Changing the domain settings in phpldapadmin web 
+      Then:
+
+              nano /etc/phpldapadmin/config.php
+
+              change:
+
+              $servers->setValue('server','base',array('dc=tampere,dc=hacklab,dc=fi')); $servers->setValue('login','bind_id','cn=admin,dc=tampere,dc=hacklab,dc=fi');
+
+              run: service slapd start service apache2 start
+
+              Open browser at http://localhost:8888/phpldapadmin
+
+              Admin login: cn=admin,dc=tampere,dc=hacklab,dc=fi
+
+
     - Direct your web browser to http://localhost:88/ldap to access the admin portal of the phpldapadmin
       It's username and password what we provided in above steps
+
+      Then time to create a organizational unit, group and then add create users under another organizational unit.
+      Reffrance : https://www.youtube.com/watch?v=DM_UQVVVtoY
+
+      According to above youtube video illustrate export the user profile :  it will be like bellow :
+
+      # Entry 1: cn=thara thara,ou=users,dc=coppermail,dc=dyndns,dc=org
+                      dn: cn=thara thara,ou=users,dc=coppermail,dc=dyndns,dc=org
+                      cn: thara thara
+                      facsimiletelephonenumber: 121212121
+                      givenname: thara
+                      l: colombo
+                      mail: thara@coppermail.dyndns.org
+                      mobile: 0714890075
+                      o: lsf
+                      objectclass: inetOrgPerson
+                      objectclass: top
+                      ou: hr
+                      postalcode: 121
+                      roomnumber: 12
+                      sn: thara
+                      st: 1
+                      street: thara@coppermail.dyndns.org
+                      telephonenumber: test
+                      title: test
+                      userpassword: {MD5}4DEDBWcJUvLZN8QaegRDug==
+
+
+      Then check above user by quering the ldap server by command line from the ldap container
+
+          docker exec -it ldap /bin/bash
+
+      root@7a3326f0e69d:/# ldapsearch -H ldap:// -x -D "cn=thara thara,ou=users,dc=coppermail,dc=dyndns,dc=org" -w postfix@123 -b "cn=thara thara,ou=users,dc=coppermail,dc=dyndns,dc=org"
+                      # extended LDIF
+                      #
+                      # LDAPv3
+                      # base <cn=thara thara,ou=users,dc=coppermail,dc=dyndns,dc=org> with scope subtree
+                      # filter: (objectclass=*)
+                      # requesting: ALL
+                      #
+
+                      # thara thara, users, coppermail.dyndns.org
+                      dn: cn=thara thara,ou=users,dc=coppermail,dc=dyndns,dc=org
+                      street: thara@coppermail.dyndns.org
+                      l: colombo
+                      cn: thara thara
+                      mail: thara@coppermail.dyndns.org
+                      facsimileTelephoneNumber: 121212121
+                      givenName: thara
+                      sn: thara
+                      mobile: 0714890075
+                      objectClass: inetOrgPerson
+                      objectClass: top
+                      o: lsf
+                      ou: hr
+                      userPassword:: e01ENX00REVEQldjSlV2TFpOOFFhZWdSRHVnPT0=
+                      postalCode: 121
+                      roomNumber: 12
+                      st: 1
+                      title: test
+                      telephoneNumber: test
+
+                      # search result
+                      search: 2
+                      result: 0 Success
+
+                      # numResponses: 2
+                      # numEntries: 1
+                      root@7a3326f0e69d:/# 

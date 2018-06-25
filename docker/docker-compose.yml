@@ -294,16 +294,20 @@ services:
            dockerfile: ./openLDAP/Dockerfile
         restart: always
         command: dpkg-reconfigure slapd
-        env_file: .env
+        #env_file: .env
         volumes:
-            - ./openLDAP/configs/etc:/etc/ldap
+            - ./openLDAP/configs:/etc/ldap
+            #- ./openLDAP/configs/etc:/etc/ldap
             - ./openLDAP/configs/slapd:/usr/share/slapd
         ports:
             - "389:389"
             - "8888:80"
         #environment:
             #- WEBMAIL=${WEBMAIL}
-         
+        environment:
+            - DOMAIN=${DOMAIN}
+            - DEBUG=${DEBUG}
+            - EMAIL=${EMAIL}
         #depends_on:
             #- emailserver
         networks:
