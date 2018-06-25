@@ -1,0 +1,6 @@
+# mysql_virtual_alias_domain_mailbox_maps.cf
+user = postfix
+password = postfixpassword
+hosts = 127.0.0.1
+dbname = mail
+query = SELECT maildir FROM mailbox,alias_domain WHERE alias_domain.alias_domain = '%d' and mailbox.username = CONCAT('%u', '@', alias_domain.target_domain) AND mailbox.active = 1 AND alias_domain.active='1'
