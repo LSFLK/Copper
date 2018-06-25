@@ -2,7 +2,7 @@
 # https://github.com/hacklab-fi/docker-ldapserver
 #FROM ubuntu:xenial
 FROM ubuntu:16.04
-MAINTAINER Tharanga Rajapaksha <tharanga.rajapaksha@gmail.com>
+MAINTAINER LSF <opensource.lk>
 
 #ARG DEBIAN_FRONTEND=noninteractive
 

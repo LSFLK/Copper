@@ -1,3 +1,3 @@
 FROM nginx:alpine
-MAINTAINER Tharanga Rajapaksha <tharangar@opensource.lk> 
+MAINTAINER LSF <opensource.lk>
 COPY ./reverseproxy/configs/nginx.conf /etc/nginx/nginx.conf
