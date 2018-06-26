@@ -22,8 +22,8 @@ before_install:
 #  - chmod +x docker-compose
 #  - sudo mv docker-compose /usr/local/bin
 
-# before_script: 
-#   - cd docker
+before_script: 
+   - cd docker
 
 script:
   - docker network create front
