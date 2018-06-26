@@ -1,5 +1,7 @@
 # email-solution
 
+[![Gitter](https://img.shields.io/badge/chat-on%20gitter-blue.svg)](https://gitter.im/copper-mail)
+
 ## Functionalities
 - Core
   - [x] ESMTP Server 
