@@ -1,0 +1,98 @@
+
+#  use this url to know each parameter : http://www.postfix.org/STANDARD_CONFIGURATION_README.html
+
+smtpd_banner = $myhostname ESMTP $mail_name (Ubuntu)
+biff = no
+
+# appending .domain is the MUA's job.
+append_dot_mydomain = no
+
+# Uncomment the next line to generate "delayed mail" warnings
+#delay_warning_time = 4h
+
+readme_directory = no
+
+smtpd_tls_cert_file=/etc/letsencrypt/live/%DFQN%/.fullchain.pem
+smtpd_tls_key_file=/etc/letsencrypt/live/%DFQN%/.privkey.pem
+smtpd_use_tls=yes
+
+smtpd_tls_auth_only = yes
+smtp_tls_security_level = may
+smtpd_tls_security_level = may
+
+# Enabling SMTP for authenticated users, and handing off authentication to Dovecot
+smtpd_sasl_type = dovecot
+smtpd_sasl_path = private/auth
+smtpd_sasl_auth_enable = yes
+
+smtpd_recipient_restrictions =
+        permit_sasl_authenticated,
+        permit_mynetworks,
+        #reject_unauth_destination
+
+# See /usr/share/doc/postfix/TLS_README.gz in the postfix-doc package for
+# information on enabling SSL in the smtp client.
+
+myhostname = %DFQN%
+alias_maps = hash:/etc/aliases
+alias_database = hash:/etc/aliases
+myorigin = %DOMAIN%
+mydestination = localhost
+relayhost =
+#mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
+mynetworks = 127.0.0.0/8 172.19.0.1
+mailbox_size_limit = 0 # this will enable unlimited mailbox size
+recipient_delimiter = +
+inet_interfaces = all
+
+# Handing off local delivery to Dovecot's LMTP, and telling it where to store mail
+virtual_transport = lmtp:unix:private/dovecot-lmtp
+
+# Virtual domains, users, and aliases
+
+virtual_mailbox_domains = proxy:mysql:/etc/postfix/sql/mysql_virtual_domains_maps.cf
+#virtual_mailbox_domains = mysql:/etc/postfix/sql/mysql_virtual_domains_maps.cf
+#virtual_mailbox_domains = proxy:mysql:/etc/postfix/mariadb-sql/mysql-virtual_domains.cf
+virtual_alias_maps =
+   proxy:mysql:/etc/postfix/sql/mysql_virtual_alias_maps.cf,
+   #mysql:/etc/postfix/sql/mysql_virtual_alias_maps.cf,
+   proxy:mysql:/etc/postfix/sql/mysql_virtual_alias_domain_maps.cf,
+   #mysql:/etc/postfix/sql/mysql_virtual_alias_domain_maps.cf,
+   proxy:mysql:/etc/postfix/sql/mysql_virtual_alias_domain_catchall_maps.cf
+   #mysql:/etc/postfix/sql/mysql_virtual_alias_domain_catchall_maps.cf
+
+   #New configurations files created myself
+   #proxy:mysql:/etc/postfix/mariadb-sql/mysql-virtual_forwardings.cf, 
+   #proxy:mysql:/etc/postfix/mariadb-sql/mysql-virtual_email2email.cf
+virtual_mailbox_maps =
+   proxy:mysql:/etc/postfix/sql/mysql_virtual_mailbox_maps.cf,
+   #mysql:/etc/postfix/sql/mysql_virtual_mailbox_maps.cf,
+   proxy:mysql:/etc/postfix/sql/mysql_virtual_alias_domain_mailbox_maps.cf
+   #mysql:/etc/postfix/sql/mysql_virtual_alias_domain_mailbox_maps.cf
+
+   #proxy:mysql:/etc/postfix/mariadb-sql/mysql-virtual_mailboxes.cf
+
+
+# Enable /disable zeyple encriptio mechanism
+# Just comment/uncomment the line content_filter = zeyple in your /etc/postfix/main.cf then postfix reload 
+# content_filter = zeyple
+
+
+compatibility_level = 2
+# removed bellow due to error : /usr/sbin/postconf: warning: /etc/postfix/main.cf: unused parameter: virtual_create_maildirsize=yes
+# According to new version following things are not used
+#virtual_create_maildirsize = yes
+#virtual_maildir_extended = yes
+#virtual_mailbox_limit_maps = mysql:/etc/postfix/sql/mysql_virtual_mailbox_limit_maps.cf
+#virtual_mailbox_limit_override = yes
+#virtual_maildir_limit_message = Sorry, the user's maildir has overdrawn his diskspace quota, please try again later.
+#virtual_overquota_bounce = yes
+#dovecot_destination_recipient_limit = 1
+
+
+# Milter setup
+milter_protocol = 6
+milter_default_action = accept
+smtpd_milters = inet:localhost:11332
+non_smtpd_milters=inet:127.0.0.1:11332
+milter_mail_macros = i {mail_addr} {client_addr} {client_name} {auth_authen}
