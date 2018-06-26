@@ -38,7 +38,7 @@ RUN DEBIAN_FRONTEND=noninteractive rm -rf /var/cache/debconf/*.dat
 COPY ./openLDAP/configs/renew.sh /etc/ldap/renew.sh
 #RUN ./rspamd.sh  // Error : /bin/sh: 1: ./rspamd.sh: Permission denied , bellow line introduced
 RUN chmod +x /etc/ldap/renew.sh
-RUN /etc/ldap/renew.sh
+#RUN /etc/ldap/renew.sh
 
 RUN service slapd start
 RUN service apache2 start
