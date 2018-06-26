@@ -4,17 +4,29 @@ services:
 - docker
 
 env:
-  COMPOSE_VERSION: 1.21.1
+  DOCKER_COMPOSE_VERSION: 1.8.0
 
 before_install:
- - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
- - chmod +x docker-compose
- - sudo mv docker-compose /usr/local/bin
+  - sudo apt-get update
+  - sudo apt-get install -o Dpkg::Options::="--force-confold" --force-yes -y docker-engine
+  - docker-compose --version
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
 
-before_script: 
-  - cd docker
+# env:
+#   COMPOSE_VERSION: 1.21.1
+
+# before_install:
+#  - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+#  - chmod +x docker-compose
+#  - sudo mv docker-compose /usr/local/bin
+
+# before_script: 
+#   - cd docker
 
 script:
   - docker network create front
   - docker network create back
-  - docker-compose build up -d start
+  - docker-compose build up -d 
