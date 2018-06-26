@@ -17,4 +17,4 @@ before_script:
 script:
   - docker network create front
   - docker network create back
-  - docker-compose build up -d
+  - docker-compose build up -d start
