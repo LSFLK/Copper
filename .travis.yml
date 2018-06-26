@@ -12,6 +12,7 @@ before_install:
  - sudo mv docker-compose /usr/local/bin
 
 script:
+  - build_travis.sh
   - docker network create front
   - docker network create back
   - docker-compose build up -d
