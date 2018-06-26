@@ -11,8 +11,10 @@ before_install:
  - chmod +x docker-compose
  - sudo mv docker-compose /usr/local/bin
 
+before_script: 
+  - cd docker
+
 script:
-  - build_travis.sh
   - docker network create front
   - docker network create back
   - docker-compose build up -d
