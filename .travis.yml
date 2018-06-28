@@ -1,3 +1,31 @@
+language: bash
 sudo: required
 services:
-  - docker
+- docker
+
+env:
+  DOCKER_COMPOSE_VERSION: 1.21.1
+
+before_install:
+  - sudo apt-get update
+  - docker-compose --version
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+
+# env:
+#   COMPOSE_VERSION: 1.21.1
+
+# before_install:
+#  - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+#  - chmod +x docker-compose
+#  - sudo mv docker-compose /usr/local/bin
+
+before_script: 
+   - cd docker
+
+script:
+  - docker network create front
+  - docker network create back
+  - docker-compose build 
