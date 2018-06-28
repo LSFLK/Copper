@@ -41,10 +41,8 @@ Unblock following ports
 | Service | Software | Protocol | Port |
 | ------- | -------- | -------- | ---- |
 | SMTP | Postfix | TCP | 25 |
-
 | POP3 | Dovecot | TCP | 110 |
 | IMAP | Dovecot | TCP | 143 |
-
 | SMTPS | Postfix | TCP | 465 |
 | Submission | Postfix | TCP | 587 |
 | IMAPS | Dovecot | TCP | 993 |
@@ -242,7 +240,8 @@ docker exec -it 5d02241a1739 sh /var/lib/init-user-db.sh
 
               change:
 
-              $servers->setValue('server','base',array('dc=tampere,dc=hacklab,dc=fi')); $servers->setValue('login','bind_id','cn=admin,dc=tampere,dc=hacklab,dc=fi');
+              $servers->setValue('server','base',array('dc=tampere,dc=hacklab,dc=fi')); 
+              $servers->setValue('login','bind_id','cn=admin,dc=tampere,dc=hacklab,dc=fi');
 
               run: service slapd start service apache2 start
 
