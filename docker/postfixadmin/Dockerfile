@@ -1,5 +1,5 @@
 From ubuntu:16.04
-MAINTAINER Tharanga Rajapaksha <tharangar@opensource.lk>
+MAINTAINER LSF <opensource.lk>
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
 RUN apt-get -y install apt-utils

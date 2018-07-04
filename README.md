@@ -1,9 +1,7 @@
 # email-solution
 
-Initial version of copper email solution
-Copper mail base is ivolving on the Email solution initiated by Prabod Rathnayaka.
-His project can be found in bellow url :
-https://github.com/prabod/email-solution/tree/master/docker
+[![Gitter](https://img.shields.io/badge/chat-on%20gitter-blue.svg)](https://gitter.im/copper-mail)
+[![Build Status](https://travis-ci.org/tharindu99/copper-base.svg?branch=master)](https://travis-ci.org/LankaSoftwareFoundation/copper-base)
 
 ## Functionalities
 - Core
@@ -57,7 +55,7 @@ Unblock following ports
 1. Clone this Repository
 
 ```
-$ git clone https://github.com/tharangar/copper-base.git
+$ git clone https://github.com/LankaSoftwareFoundation/copper-base.git
 ```
 
 2. Edit .env file to replicate your settings
@@ -321,3 +319,6 @@ docker exec -it 5d02241a1739 sh /var/lib/init-user-db.sh
                       # numResponses: 2
                       # numEntries: 1
                       root@7a3326f0e69d:/# 
+                      
+## References 
+- Email solution initiated by Prabod Rathnayaka. url : https://github.com/prabod/email-solution/tree/master/docker
