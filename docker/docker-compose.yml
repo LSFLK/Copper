@@ -226,6 +226,7 @@ services:
             dockerfile: ./webmail/${WEBMAIL}/Dockerfile
         restart: always
         env_file: .env
+        hostname: webmail.${DOMAIN}
         volumes:
             - ./webmail/${WEBMAIL}/app:/var/www/site/app/
         ports:
@@ -269,6 +270,7 @@ services:
             #service: redis
         image: redis:4.0-alpine
         container_name: redis
+        hostname: redis.${DOMAIN}
         restart: unless-stopped
         command: redis-server --appendonly yes
         volumes:
@@ -325,13 +327,14 @@ services:
         #container_name: "ldap" 
 
     # -----------------------------------new open ldap -------------------------------------------
-
+    # Refference : https://github.com/osixia/docker-openldap#quick-start
     openldap:
     #image: osixia/openldap:1.2.1
         build:
          context: .
          dockerfile: ./openldap/Dockerfile
         container_name: openldap
+        hostname: ldap.${DOMAIN}
         environment:
             - DOMAIN=${DOMAIN}
             - LDAP_LOG_LEVEL=${LDAP_LOG_LEVEL}
@@ -369,8 +372,9 @@ services:
         ports:
             - "389:389"
             - "636:636"
-        domainname: "coppermail.dyndns.org" # important: same as hostname
-        hostname: "ldap.coppermail.dyndns.org"
+        #domainname: "ldap.coppermail.dyndns.org" # important: same as hostname
+        domainname: ldap.${DOMAIN} # important: same as hostname
+        #hostname: "ldap.coppermail.dyndns.org"
         networks:
             #- front
             back:
@@ -381,8 +385,10 @@ services:
     phpldapadmin:
         image: osixia/phpldapadmin:latest
         container_name: phpldapadmin
+        hostname: phpldapadmin.${DOMAIN}
         environment:
-             PHPLDAPADMIN_LDAP_HOSTS: "openldap"
+             #PHPLDAPADMIN_LDAP_HOSTS: "openldap"
+             PHPLDAPADMIN_LDAP_HOSTS: ldap.${DOMAIN}
              PHPLDAPADMIN_HTTPS: "false"
         ports:
             - "8888:80"
