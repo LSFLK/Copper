@@ -1,7 +1,7 @@
 #From debian:stretch-slim
 #From debian:stretch
 From ubuntu:18.04
-MAINTAINER LSF <opensource.lk>
+MAINTAINER Tharanga Rajapaksha <tharangar@opensource.lk> 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get -y purge exim4*
 RUN apt-get -y install apt-utils
@@ -16,12 +16,16 @@ RUN apt-get -y install lsof
 RUN apt-get -y install telnet
 RUN apt-get -y install nano
 RUN apt-get -y install letsencrypt openssl
-RUN apt-get -y install postfix postfix-mysql postfix-pcre libsasl2-modules
+#postfix-mysql was used to connect with a mysql datbase
+#RUN apt-get -y install postfix postfix-mysql postfix-pcre libsasl2-modules
+#postfix-ldap required to connect with ldap services
+RUN apt-get -y install postfix postfix-ldap postfix-pcre postfix-policyd-spf-python libsasl2-modules 
+
 RUN apt-get install -y rsyslog fetchmail libdbi-perl libdbd-pg-perl libdbd-mysql-perl liblockfile-simple-perl
 #RUN apt-get -y install dovecot-core dovecot-imapd dovecot-pop3d dovecot-lmtpd dovecot-mysql dovecot-sieve dnsutils
 # changing for modifications
 #RUN apt-get -y install dovecot-core dovecot-imapd dovecot-pop3d dovecot-lmtpd dovecot-mysql dovecot-sieve dnsutils dovecot-managesieved
-RUN apt-get -y install dovecot-core dovecot-imapd dovecot-pop3d dovecot-lmtpd dovecot-mysql dnsutils
+RUN apt-get -y install dovecot-core dovecot-imapd dovecot-pop3d dovecot-lmtpd dovecot-mysql dovecot-ldap dnsutils
 #RUN apt install -y mail-stack-delivery // this was used instead of dovecto one by one installation
 
 RUN apt-get install -y dovecot-sieve dovecot-managesieved
@@ -54,9 +58,12 @@ COPY ./emailserver/configs/Postfix /etc/postfix/
 #RUN chmod o= /etc/postfix/mariadb-sql/mysql-virtual_*.cf
 #RUN chgrp postfix /etc/postfix/mariadb-sql/mysql-virtual_*.cf
 
-# Changing sql configuration files permissions for probod solution
-RUN chmod o= /etc/postfix/sql/mysql_virtual_*.cf
-RUN chgrp postfix /etc/postfix/sql/mysql_virtual_*.cf
+# Changing sql configuration files permissions 
+#RUN chmod o= /etc/postfix/sql/mysql_virtual_*.cf
+#RUN chgrp postfix /etc/postfix/sql/mysql_virtual_*.cf
+# Changing ldap configuration files permissions 
+RUN chmod o= /etc/postfix/ldap/*.cf
+RUN chgrp postfix /etc/postfix/ldap/*.cf
 
 # Adding sieve file to /var/mail
 COPY ./emailserver/configs/sieve /var/mail/sieve

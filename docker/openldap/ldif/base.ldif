@@ -1,0 +1,14 @@
+dn: dc=coppermail,dc=dyndns,dc=org
+objectClass: top
+objectClass: domain
+domainComponent: coppermail
+
+dn: cn=Manager, dc=coppermail,dc=dyndns,dc=org 
+objectClass: top
+objectClass: organizationalRole
+cn: Manager
+
+dn: o=mail, dc=coppermail,dc=dyndns,dc=org 
+objectClass: top
+objectClass: organization
+o: mail

@@ -1,7 +1,9 @@
 # email-solution
 
-[![Gitter](https://img.shields.io/badge/chat-on%20gitter-blue.svg)](https://gitter.im/copper-mail)
-[![Build Status](https://travis-ci.org/tharindu99/copper-base.svg?branch=master)](https://travis-ci.org/LankaSoftwareFoundation/copper-base)
+Initial version of copper email solution
+Copper mail base is ivolving on the Email solution initiated by Prabod Rathnayaka.
+His project can be found in bellow url :
+https://github.com/prabod/email-solution/tree/master/docker
 
 ## Functionalities
 - Core
@@ -55,7 +57,7 @@ Unblock following ports
 1. Clone this Repository
 
 ```
-$ git clone https://github.com/LankaSoftwareFoundation/copper-base.git
+$ git clone https://github.com/tharangar/copper-base.git
 ```
 
 2. Edit .env file to replicate your settings
@@ -142,111 +144,65 @@ docker exec -it 5d02241a1739 sh /var/lib/init-user-db.sh
 
 
 
-3. openLDAP server and phpldapadmin web portal
+3. openldap server and phpldapadmin web portal
 
-    - After first time build you have to configure the openLDAP server with personal configuration
-      - Follwoing docker commands should be used for configuration
-      - docker exec -it ldap /bin/bash
-      - rm -rf /var/cache/debconf/*.dat
-      - dpkg-reconfigure slapd
-          Ex :
-                      
-                      wso2s-MacBook-Pro:docker wso2$ docker exec -it ldap /bin/bash
-                      root@7a3326f0e69d:/# rm -rf /var/cache/debconf/*.dat
-                      root@7a3326f0e69d:/# dpkg-reconfigure slapd
-                      debconf: unable to initialize frontend: Dialog
-                      debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 76.)
-                      debconf: falling back to frontend: Readline
-                      invoke-rc.d: could not determine current runlevel
-                      invoke-rc.d: policy-rc.d denied execution of stop.
-                      Configuring slapd
-                      -----------------
+    Test whether ldap server is installed properly
 
-                      If you enable this option, no initial configuration or database will be created
-                      for you.
+    docker exec openldap ldapsearch -x -H ldap://localhost -b dc=coppermail,dc=dyndns,dc=org -D "cn=admin,dc=coppermail,dc=dyndns,dc=org" -w admin
 
-                      Omit OpenLDAP server configuration? [yes/no] no
+    Hear coppermail.dyndns.org is the test domain.
 
-                      The DNS domain name is used to construct the base DN of the LDAP directory. For
-                      example, 'foo.example.org' will create the directory with 'dc=foo, dc=example,
-                      dc=org' as base DN.
 
-                      DNS domain name: coppermail.dyndns.org
-
-                      Please enter the name of the organization to use in the base DN of your LDAP
-                      directory.
-
-                      Organization name: Lanka Software Foundation
-
-                      Please enter the password for the admin entry in your LDAP directory.
-
-                      Administrator password: 
-
-                      Please enter the admin password for your LDAP directory again to verify that
-                      you have typed it correctly.
-
-                      Confirm password: 
-
-                      HDB and BDB use similar storage formats, but HDB adds support for subtree
-                      renames. Both support the same configuration options.
-
-                      The MDB backend is recommended. MDB uses a new storage format and requires less
-                      configuration than BDB or HDB.
-
-                      In any case, you should review the resulting database configuration for your
-                      needs. See /usr/share/doc/slapd/README.Debian.gz for more details.
-
-                        1. BDB  2. HDB  3. MDB
-                      Database backend to use: 3
-
-                      Do you want the database to be removed when slapd is purged? [yes/no] yes
-
-                      There are still files in /var/lib/ldap which will probably break the
-                      configuration process. If you enable this option, the maintainer scripts will
-                      move the old database files out of the way before creating a new database.
-
-                      Move old database? [yes/no] yes
-
-                      The obsolete LDAPv2 protocol is disabled by default in slapd. Programs and
-                      users should upgrade to LDAPv3.  If you have old programs which can't use
-                      LDAPv3, you should select this option and 'allow bind_v2' will be added to your
-                      slapd.conf file.
-
-                      Allow LDAPv2 protocol? [yes/no] no
-
-                        Moving old database directory to /var/backups:
-                        - directory unknown... done.
-                        Creating initial configuration... done.
-                        Creating LDAP directory... done.
-                      invoke-rc.d: could not determine current runlevel
-                      invoke-rc.d: policy-rc.d denied execution of start.
-                      root@7a3326f0e69d:/# service slapd status
-                      * slapd is not running
-                      root@7a3326f0e69d:/# service slapd start
-                      * Starting OpenLDAP slapd                                               [ OK ] 
-                      root@7a3326f0e69d:/# service slapd status
-                      * slapd is running
-                      root@7a3326f0e69d:/# service apaceh2 status
-                      apaceh2: unrecognized service
-                      root@7a3326f0e69d:/# service apache2 status
-                      * apache2 is not running
-
-      Changing the domain settings in phpldapadmin web 
+      // phpldapadmin configurations are done automatically by the solution. For knowledge check the bellow point for further troubleshoots
       Then:
 
-              nano /etc/phpldapadmin/config.php
-
-              change:
-
-              $servers->setValue('server','base',array('dc=tampere,dc=hacklab,dc=fi')); $servers->setValue('login','bind_id','cn=admin,dc=tampere,dc=hacklab,dc=fi');
-
-              run: service slapd start service apache2 start
-
-              Open browser at http://localhost:8888/phpldapadmin
-
-              Admin login: cn=admin,dc=tampere,dc=hacklab,dc=fi
 
 
+      // --------------------------------------------------------------------------------------------------------------------------------
+
+          User creation by ldif script files.
+            First change the directory to 
+            cd /etc/openldap/ldif
+            you will see lot of ldif scripts hear and you can add users to the system using those scripts.
+
+             # add a user
+            #ldapadd -x -D cn=admin,dc=coppermail,dc=dyndns,dc=org -W -f add_content.ldif
+            
+
+            Ex :      root@ldap:/# cd /etc/openldap/ldif
+                      root@ldap:/etc/openldap/ldif# ls
+                      add_content.ldif  certs.ldif          logging.ldif  schema_convert.conf
+                      certinfo.ldif     consumer_sync.ldif  postfix.ldif
+                      root@ldap:/etc/openldap/ldif# ldapadd -x -D cn=admin,dc=coppermail,dc=dyndns,dc=org -W -f add_content.ldif
+                      Enter LDAP Password: 
+                      adding new entry "ou=People,dc=coppermail,dc=dyndns,dc=org"
+
+                      adding new entry "ou=Groups,dc=coppermail,dc=dyndns,dc=org"
+
+                      adding new entry "cn=miners,ou=Groups,dc=coppermail,dc=dyndns,dc=org"
+
+                      adding new entry "uid=john,ou=People,dc=coppermail,dc=dyndns,dc=org"
+
+                      root@ldap:/etc/openldap/ldif# 
+
+                      // you can activate starttls or ssl/tls. But ssl/tls will be deprecated soon so dont use it
+                      # enabling starttls
+                        ldapmodify -H ldapi:// -Y EXTERNAL -f addcerts.ldif
+                        
+                      # enableing ssl/tsl  this dont want to activate if above one is completed
+                      #ldapmodify -Y EXTERNAL -H ldapi:/// -f certinfo.ldif
+
+                      # enabl loging
+                      #ldapmodify -Q -Y EXTERNAL -H ldapi:/// -f logging.ldif
+
+
+
+
+
+
+
+
+      // --------------------------------------------------------------------------------------------------------------------------------
     - Direct your web browser to http://localhost:88/ldap to access the admin portal of the phpldapadmin
       It's username and password what we provided in above steps
 
@@ -318,6 +274,3 @@ docker exec -it 5d02241a1739 sh /var/lib/init-user-db.sh
                       # numResponses: 2
                       # numEntries: 1
                       root@7a3326f0e69d:/# 
-                      
-## References 
-- Email solution initiated by Prabod Rathnayaka. url : https://github.com/prabod/email-solution/tree/master/docker

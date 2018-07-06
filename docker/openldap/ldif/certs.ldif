@@ -1,0 +1,14 @@
+dn: cn=config
+changetype: modify
+replace: olcTLSCACertificateFile
+olcTLSCACertificateFile: /etc/openldap/certs/coppermailrootCA.pem
+
+dn: cn=config
+changetype: modify
+replace: olcTLSCertificateFile
+olcTLSCertificateFile: /etc/openldap/certs/coppermailldap.crt
+
+dn: cn=config
+changetype: modify
+replace: olcTLSCertificateKeyFile
+olcTLSCertificateKeyFile: /etc/openldap/certs/coppermailldap.key
