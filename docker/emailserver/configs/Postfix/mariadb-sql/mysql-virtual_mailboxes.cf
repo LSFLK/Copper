@@ -1,7 +1,0 @@
-# mysql-virtual_mailboxes.cf 
-# mysql-virtual_mailboxes.cf 
-user = postfixuser
-password = postfixpassword
-hosts = 127.0.0.1
-dbname = mail
-query = SELECT CONCAT(SUBSTRING_INDEX(email,'@',-1),'/',SUBSTRING_INDEX(email,'@',1),'/') FROM users WHERE email='%s'
