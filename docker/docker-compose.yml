@@ -7,6 +7,7 @@ version: '2'
               #name: front
         #back:
             #driver: bridge
+   
 
 #--------------------------------------------------------------------------------------------
 
@@ -137,6 +138,7 @@ services:
           #- ./emailserver/certs:/certs
           #- ./emailserver/ssl:/etc/letsencrypt/
           #- ./emailserver/mail:/var/mail
+        container_name: "emailserver"
         extra_hosts:
             - "coppermail.emailserver:127.0.1.1"
             - "coppermail.emailserver.tld:127.0.1.1"
@@ -177,7 +179,7 @@ services:
             front:
         
         
-        container_name: "emailserver"
+        
 #-----------------------------------------postfixadmin-------------------------------------
     postfixadmin:
         #extends:
@@ -349,14 +351,14 @@ services:
             - LDAP_RFC2307BIS_SCHEMA=${LDAP_RFC2307BIS_SCHEMA}
             - LDAP_BACKEND=${LDAP_BACKEND}
             - LDAP_TLS=${LDAP_TLS}
-            - LDAP_TLS_CRT_FILENAME=${LDAP_TLS_CRT_FILENAME}
-            - LDAP_TLS_KEY_FILENAME=${LDAP_TLS_KEY_FILENAME}
-            - LDAP_TLS_CA_CRT_FILENAME=${LDAP_TLS_CA_CRT_FILENAME}
-            - LDAP_TLS_ENFORCE=${LDAP_TLS_ENFORCE}
-            - LDAP_TLS_CIPHER_SUITE=${LDAP_TLS_CIPHER_SUITE}
-            - LDAP_TLS_PROTOCOL_MIN=${LDAP_TLS_PROTOCOL_MIN}
-            - LDAP_TLS_VERIFY_CLIENT=${LDAP_TLS_VERIFY_CLIENT}
-            - LDAP_REPLICATION=${LDAP_REPLICATION}
+            #- LDAP_TLS_CRT_FILENAME=${LDAP_TLS_CRT_FILENAME}
+            #- LDAP_TLS_KEY_FILENAME=${LDAP_TLS_KEY_FILENAME}
+            #- LDAP_TLS_CA_CRT_FILENAME=${LDAP_TLS_CA_CRT_FILENAME}
+            #- LDAP_TLS_ENFORCE=${LDAP_TLS_ENFORCE}
+            #- LDAP_TLS_CIPHER_SUITE=${LDAP_TLS_CIPHER_SUITE}
+            #- LDAP_TLS_PROTOCOL_MIN=${LDAP_TLS_PROTOCOL_MIN}
+            #- LDAP_TLS_VERIFY_CLIENT=${LDAP_TLS_VERIFY_CLIENT}
+            #- LDAP_REPLICATION=${LDAP_REPLICATION}
              #LDAP_REPLICATION_CONFIG_SYNCPROV: "binddn="cn=admin,cn=config" bindmethod=simple credentials=$LDAP_CONFIG_PASSWORD searchbase="cn=config" type=refreshAndPersist retry="60 +" timeout=1 starttls=critical"
              #LDAP_REPLICATION_DB_SYNCPROV: "binddn="cn=admin,$LDAP_BASE_DN" bindmethod=simple credentials=$LDAP_ADMIN_PASSWORD searchbase="$LDAP_BASE_DN" type=refreshAndPersist interval=00:00:00:10 retry="60 +" timeout=1 starttls=critical"
              #LDAP_REPLICATION_HOSTS: "#PYTHON2BASH:['ldap://ldap.example.org','ldap://ldap2.example.org']"
@@ -379,6 +381,16 @@ services:
             #- front
             back:
               ipv4_address: 172.19.0.22
+        # login option
+        
+        logging:
+            driver: "json-file"
+            #driver: "json-file"
+            #driver: "syslog"
+            #driver: "none"
+            options:
+              max-size: "200k"
+              max-file: "10"
   
   #---------------------------------phpldapadmin-------------------------------------------
   # Ref : https://github.com/osixia/docker-openldap
