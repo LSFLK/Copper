@@ -1,18 +1,4 @@
 #uris = ldap://172.19.0.22 ldap://ldap.coppermail.dyndns.org
-#hosts = 172.19.0.22
-#dn = cn=thara,ou=users,dc=coppermail,dc=dyndns,dc=org
-#dnpass = postfix@123
-#tls = yes
-#tls_ca_cert_file = /etc/ldap/tls/CA.pem
-#tls_require_cert = hard
-#debug_level = 0
-#auth_bind = yes
-#auth_bind_userdn = uid=%u,ou=users,dc=coppermail,dc=dyndns,dc=org
-#ldap_version = 3
-#base = ou=users,dc=coppermail,dc=dyndns,dc=corg
-#scope = subtree
-#user_attrs = homeDirectory=home,uidNumber=uid,gidNumber=gid
-#user_filter = (&(objectclass=inetOrgPerson)(uid=%n)
 
 # Space separated list of LDAP hosts to use. host:port is allowed too.
 hosts = 172.19.0.22
@@ -21,6 +7,7 @@ hosts = 172.19.0.22
 # Leave it commented out to bind anonymously (useful with auth_bind=yes).
 #dn = 
 dn = cn=admin,dc=coppermail,dc=dyndns,dc=org
+#dn = uid=admin,ou=users,dc=coppermail,dc=dyndns,dc=org
 
 # Password for LDAP server, if dn is specified.
 #dnpass = 
@@ -46,16 +33,19 @@ auth_bind = yes
 #
 # For example:
 #   auth_bind_userdn = cn=%u,ou=people,o=org
-#
-#auth_bind_userdn = uid=%u,ou=users,dc=coppermail,dc=dyndns,dc=org
+#auth_bind_userdn = mail=%u,ou=users,dc=coppermail,dc=dyndns,dc=org
+auth_bind_userdn = cn=%n,ou=users,dc=coppermail,dc=dyndns,dc=org
+# when we use cn=%n it means user part of the full uid user@domain.com  , cn=%u is the only the user part so 
+# when we use cn=%n full uid is requied for authentication other wise connection termianted error comes in telnet session.
+
 
 # LDAP protocol version to use. Likely 2 or 3.
 ldap_version = 3
 
 # LDAP base. %variables can be used here.
 # For example: dc=mail, dc=example, dc=org
-#base = ou=users,dc=coppermail,dc=dyndns,dc=org
-base = dc=coppermail,dc=dyndns,dc=org
+base = ou=users,dc=coppermail,dc=dyndns,dc=org
+#base = dc=coppermail,dc=dyndns,dc=org
 
 # Dereference: never, searching, finding, always
 deref = never
@@ -82,8 +72,8 @@ user_attrs = homeDirectory=home,uidNumber=uid,gidNumber=gid
 #   %n - user part in user@domain, same as %u if there's no domain
 #   %d - domain part in user@domain, empty if user there's no domain
 #user_filter = (&(objectClass=posixAccount)(uid=%u))
-#user_attrs = homedirectory=home,uidnumber=uid,gidnumber=gid
-user_filter = (&(objectclass=inetOrgPerson)(uid=%n)
+#user_filter = (&(objectclass=inetOrgPerson)(uid=%n)
+user_filter = (&(objectClass=posixAccount)(cn=%n))
 
 # Password checking attributes:
 #  user: Virtual user name (user@domain), if you wish to change the
@@ -92,8 +82,9 @@ user_filter = (&(objectclass=inetOrgPerson)(uid=%n)
 # There are also other special fields which can be returned, see
 # http://wiki2.dovecot.org/PasswordDatabase/ExtraFields
 #pass_attrs = uid=user,userPassword=password
+
 pass_attrs = mail=user,userPassword=password
-#pass_attrs = mail=user,userpassword=password
+
 
 # If you wish to avoid two LDAP lookups (passdb + userdb), you can use
 # userdb prefetch instead of userdb ldap in dovecot.conf. In that case you'll
@@ -104,8 +95,8 @@ pass_attrs = mail=user,userPassword=password
 
 # Filter for password lookups
 #pass_filter = (&(objectClass=posixAccount)(uid=%u))
-
 pass_filter = (&(objectclass=inetOrgPerson)(uid=%n))
+
 #default_pass_scheme = CRYPT
 
 
@@ -135,4 +126,4 @@ tls = no
 # LDAP library debug level as specified by LDAP_DEBUG_* in ldap_log.h.
 # -1 = everything. You may need to recompile OpenLDAP with debugging enabled
 # to get enough output.
-#debug_level = 0
+#debug_level = -1
