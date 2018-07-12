@@ -1,0 +1,24 @@
+
+#server_host = ldap://ldap.coppermail.dyndns.org
+#server_host = ldap://172.19.0.21
+server_host = ldap://172.19.0.22
+#
+
+start_tls = no
+version = 3
+#tls_ca_cert_file = /etc/ldap/tls/CA.pem
+#tls_require_cert = yes
+
+bind = yes
+bind_dn = cn=admin,dc=coppermail,dc=dyndns,dc=org
+bind_pw = admin
+
+#search_base = ou=Mail,dc=example,dc=com
+scope = sub
+#-----------------
+search_base = ou=domains,dc=coppermail,dc=dyndns,dc=org
+version = 3
+
+query_filter = (&(ObjectClass=dNSDomain)(dc=%d))
+result_attribute = dc
+

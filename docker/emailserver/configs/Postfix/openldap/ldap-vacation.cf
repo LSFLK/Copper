@@ -1,0 +1,13 @@
+#https://www.howtoforge.com/postfix-virtual-hosting-with-ldap-backend-and-dovecot-imap-pop3-on-ubuntu-trusty-tahr-14.04-p3
+server_host = 172.19.0.22
+#server_port = 389
+version = 3
+bind = yes
+start_tls = no
+bind_dn = cn=admin,dc=coppermail,dc=dyndns,dc=org
+bind_pw = admin
+search_base = ou=users,dc=coppermail,dc=dyndns,dc=org
+scope = sub
+#query_filter = (&(&(objectClass=VirtualMailAccount)(mail=%s))(vacationActive=TRUE)(forwardActive=FALSE)(accountActive=TRUE)(delete=FALSE))
+query_filter = (&(&(objectClass=inetOrgPerson)(mail=%s)))
+result_attribute = mailAutoreply 
