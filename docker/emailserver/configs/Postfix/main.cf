@@ -121,15 +121,15 @@ alias_database = hash:/etc/aliases
 
 # Domain appended to mail sent locally from this machine - such as mail sent
 # via the `sendmail` command.
-myorigin = awesomebox.example.com
-#myorigin = %DOMAIN%
+#myorigin = awesomebox.example.com
+myorigin = %DOMAIN%
 
 
 # Domains for which postfix will deliver local mail. Does not apply to
 # virtual domains, which are configured below. Make sure to specify the FQDN
 # of your sever, as well as localhost.
 # Note: NEVER specify any virtual domains here!!! Those come later.
-mydestination = awesomebox.example.com, localhost.example.com, localhost
+mydestination = localhost.example.com, localhost
 
 
 # spam related settings ---------------------------------
@@ -206,14 +206,20 @@ virtual_transport = lmtp:unix:private/dovecot-lmtp
 #transport_maps = hash:/etc/postfix/transport, ldap:/etc/postfix/openldap/ldap-transport.cf
 #mydestination = $transport_maps, localhost, localhost.localdomain, $myhostname, localhost.$mydomain, $mydomain
 
+# LDAP query to find which domains we accept mail for
+virtual_mailbox_domains = ldap:/etc/postfix/openldap/ldap-domains.cf
+
 virtual_alias_maps =
     ldap:/etc/postfix/openldap/ldap-aliases.cf,
     ldap:/etc/postfix/openldap/ldap-virtualforward.cf,
     ldap:/etc/postfix/openldap/ldap-accountsmap.cf
  
 # virtual accounts for delivery
-virtual_mailbox_base = /home/vmail
+#virtual_mailbox_base = /home/vmail
+#virtual_mailbox_base = /var/mail/vhosts/%d/%n
+virtual_mailbox_base = /var/mail/vhosts/%d
 virtual_mailbox_maps = ldap:/etc/postfix/openldap/ldap-accounts.cf
+
 virtual_minimum_uid = 1000
 virtual_uid_maps = static:1000
 virtual_gid_maps = static:1000

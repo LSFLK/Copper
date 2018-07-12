@@ -9,4 +9,5 @@ search_base = ou=users,dc=coppermail,dc=dyndns,dc=org
 scope = sub
 #query_filter = (&(&(objectClass=VirtualMailAccount)(mail=%s))(forwardActive=FALSE)(accountActive=TRUE)(delete=FALSE))
 query_filter = (&(&(objectClass=inetOrgPerson)(mail=%s)))
-result_attribute = mailbox 
+#result_attribute = mailbox 
+result_attribute = uid

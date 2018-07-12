@@ -138,6 +138,9 @@ chmod -R 755 /etc/letsencrypt/
  # mydb configurations
  #chgrp postfix /etc/postfix/mariadb-sql/mysql-virtual_*.cf
  #chmod u=rw,g=r,o= /etc/postfix/mariadb-sql/mysql-virtual_*.cf
+
+ # give the necessary permission for /var/mail folder to create 
+ chmod a+rwxt -R /var/mail
  
  chmod a+w /var/log/mail*
  chown zeyple /etc/zeyple.conf
