@@ -1,7 +1,0 @@
-# mysql-virtual_forwardings.cf 
-# virtual domain configuration
-user = postfixuser
-password = postfixpassword
-hosts = 127.0.0.1
-dbname = mail
-query = SELECT destination FROM forwardings WHERE source='%s'
