@@ -80,50 +80,7 @@ services:
             #- front
             #- back
         #container_name: "reverse-proxy"
-#-------------------------------------mariadb----------------------------------------------------
-    mariadb:
-        #extends:
-            #file: docker-common.yml
-            #service: mariadb
-        image: mariadb:10.2
-        #build:
-            #context: .
-            #dockerfile: ./database/Dockerfile
-        container_name: mariadb
-        restart: unless-stopped
-        #environment:
-          #- MYSQL_DATABASE=postfix
-          #- MYSQL_DATABASE=${DB}
-          #- MYSQL_USER=${DBUSER}
-          #- MYSQL_PASSWORD=${DBPASS}
-        volumes:
-          - ./database/data:/var/lib/mysql
-          # following volume is added ot copy some scripts to add domains and users by queries at startup
-          - ./database/scripts/mariadb-scripts:/var/lib/
- 
-        environment:
-            #- MYSQL_RANDOM_ROOT_PASSWORD=yes
-            #- MYSQL_DATABASE=postfix
-            #- MYSQL_DATABASE=mail
-            - MYSQL_DATABASE=${DB}
-            - MYSQL_USER=${DBUSER}
-            - MYSQL_PASSWORD=${DBPASS}
-            - HOSTNAME=${DBHOST}
-            - VIRTUAL_HOST=mariadb
-        expose:
-            - "3306"
-        volumes:
-            #- ./docker/postgres/init-user-db.sh:/docker-entrypoint-initdb.d/init-user-db.sh
-            #- ./database/scripts/mariadb-scripts:/docker-entrypoint-initdb.d/init-user-db.sh
-            - ./database/scripts/mysql:/docker-entrypoint-initdb.d/init-user-db.sh
-        networks:           
-            back:
-               ipv4_address: 172.19.0.19
-        
-        #depends_on:
-            #- front
-        #container_name: "mariadb"
-        
+
 #-----------------------------------email server------------------------------------------------------
     emailserver:
         #extends:
@@ -169,9 +126,9 @@ services:
             - "4190:4190"   # SIEVE
         entrypoint:
             - /bin/init_sys.sh
-        depends_on:
-            - mariadb
-            - redis
+        #depends_on:
+#            - mariadb
+#            - redis
         # two networks are allocated and one with static ip. this format is important    
         networks:           
             back:
@@ -180,45 +137,6 @@ services:
         
         
         
-#-----------------------------------------postfixadmin-------------------------------------
-    postfixadmin:
-        #extends:
-            #file: docker-common.yml
-            #service: postfixadmin
-        build:
-            context: .
-            dockerfile: ./postfixadmin/Dockerfile
-        hostname: postfixadmin.${DOMAIN}
-        #hostname: postfixadmin.example.com
-     
-        environment:
-            - VIRTUAL_HOST=postfixadmin.${DOMAIN}
-            - VIRTUAL_PORT=80
-            - HOSTNAME=postfixadmin.${DOMAIN}
-            - DOMAIN=${DOMAIN}
-            - FQDN=${FQDN}
-            - EMAIL=${EMAIL}
-            - DBUSER=${DBUSER}
-            - DBPASS=${DBPASS}
-        entrypoint:
-            - /bin/init_sys.sh
-        ports:
-            # from external 88 opened to local 88
-            - "8080:8080"
-            #- "8080"
-        depends_on:
-            - mariadb
-            - emailserver
-           
-        expose:
-            - "8080"
-
-        networks:
-            #- front
-            back:
-              ipv4_address: 172.19.0.15
-        
-        container_name: "postfixadmin"
 
 # ----------------------------------------webmail--------------------------------------------
   
@@ -265,28 +183,28 @@ services:
 
 
 
-#------------------------------------------radis----------------------------------------------
-    redis:
+#------------------------------------------redis----------------------------------------------
+#    redis:
         #extends:
             #file: docker-common.yml
             #service: redis
-        image: redis:4.0-alpine
-        container_name: redis
-        hostname: redis.${DOMAIN}
-        restart: unless-stopped
-        command: redis-server --appendonly yes
-        volumes:
-          - ./redis/data:/data
-       
-        environment:
-            - VIRTUAL_HOST=redis
-        expose:
-            - "6379"
-        networks:
+#        image: redis:4.0-alpine
+#        container_name: redis
+#        hostname: redis.${DOMAIN}
+#        restart: unless-stopped
+#        command: redis-server --appendonly yes
+#        volumes:
+#          - ./redis/data:/data
+#       
+#        environment:
+#            - VIRTUAL_HOST=redis
+#        expose:
+#            - "6379"
+#        networks:
             #- back
-            back:
-              ipv4_address: 172.19.0.18
-        #depends_on:
+#            back:
+#              ipv4_address: 172.19.0.18
+#        #depends_on:
             #- front
 
         #container_name: "redis"

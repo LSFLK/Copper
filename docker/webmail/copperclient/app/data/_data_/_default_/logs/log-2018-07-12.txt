@@ -1,0 +1,245 @@
+
+--- FlushLogCache: WriteOnErrorOnly
+[09:29:10.679][7c300d37] INFO[DATA]: [DATE:12.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:17][Apache/2.4.7 (Ubuntu)][apache2handler]
+[09:29:10.679][7c300d37] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[09:29:10.679][7c300d37] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[09:29:10.683][7c300d37] AJAX[NOTE]: Action: DoLogin
+[09:29:10.684][7c300d37] POST[DATA]: {"Email":"abandara","Login":"","Password":"*******","Language":"","AdditionalCode":"","AdditionalCodeSignMe":"0","SignMe":"0","Action":"Login","XToken":"e16c04776f1492d4d6060938a3309566"}
+[09:29:10.684][7c300d37] LOGIN[DATA]: The email address "abandara" is not complete
+[09:29:10.684][7c300d37] LOGIN[DATA]: Determined user domain: localhost
+[09:29:10.718][7c300d37] LOGIN[DATA]: Check "localhost": NO
+[09:29:10.726][7c300d37] LOGIN[DATA]: Check "localhost" with wildcard: NO
+[09:29:10.726][7c300d37] LOGIN[DATA]: Domain was not found!
+[09:29:10.726][7c300d37] LOGIN[DATA]: Default domain "coppermail.dyndns.org" was used. (abandara > abandara@coppermail.dyndns.org)
+[09:29:10.763][7c300d37] IMAP[NOTE]: Start connection to "ssl://172.19.0.17:993"
+[09:29:10.772][7c300d37] IMAP[NOTE]: Connected (unsuccess)
+--- FlushLogCache: Trigger
+[09:29:10.787][7c300d37] IMAP[NOTICE]: Socket: [2] stream_socket_client(): unable to connect to ssl://172.19.0.17:993 (Connection refused)
+[09:29:10.790][7c300d37] IMAP[NOTICE]: exception 'MailSo\Net\Exceptions\SocketCanNotConnectToHostException' with message 'Can't connect to host "ssl://172.19.0.17:993"' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Net/NetClient.php:292
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(153): MailSo\Net\NetClient->Connect('172.19.0.17', 993, 1, false, true)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(72): MailSo\Imap\ImapClient->Connect('172.19.0.17', 993, 1, false)
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(424): MailSo\Mail\MailClient->Connect('172.19.0.17', 993, 1, false, true)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('abandara@copper...', '*******', '', '', false)
+#6 [internal function]: RainLoop\Actions->DoLogin()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#8 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#9 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#11 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#12 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#13 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#14 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#15 {main}
+[09:29:11.807][7c300d37] INFO[ERROR]: exception 'MailSo\Net\Exceptions\SocketCanNotConnectToHostException' with message 'Can't connect to host "ssl://172.19.0.17:993"' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Net/NetClient.php:292
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(153): MailSo\Net\NetClient->Connect('172.19.0.17', 993, 1, false, true)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(72): MailSo\Imap\ImapClient->Connect('172.19.0.17', 993, 1, false)
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(424): MailSo\Mail\MailClient->Connect('172.19.0.17', 993, 1, false, true)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('abandara@copper...', '*******', '', '', false)
+#6 [internal function]: RainLoop\Actions->DoLogin()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#8 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#9 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#11 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#12 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#13 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#14 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#15 {main}
+
+Next exception 'RainLoop\Exceptions\ClientException' with message 'ConnectionError[104]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:2086
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('abandara@copper...', '*******', '', '', false)
+#2 [internal function]: RainLoop\Actions->DoLogin()
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#4 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#8 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#9 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#10 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#11 {main}
+[09:29:11.811][7c300d37] AJAX[DATA]: {"Action":"Login","Result":false,"ErrorCode":104,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1209}
+[09:29:11.823][7c300d37] INFO[MEMORY]: Memory peak usage: 1.25MB
+[09:29:11.826][7c300d37] INFO[TIME]: Time delta: 1.2059071063995
+
+--- FlushLogCache: WriteOnErrorOnly
+[09:29:24.006][99fb8e5d] INFO[DATA]: [DATE:12.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:14][Apache/2.4.7 (Ubuntu)][apache2handler]
+[09:29:24.007][99fb8e5d] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[09:29:24.007][99fb8e5d] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[09:29:24.008][99fb8e5d] AJAX[NOTE]: Action: DoLogin
+[09:29:24.009][99fb8e5d] POST[DATA]: {"Email":"abandara@coppermail.dyndns.org","Login":"","Password":"*******","Language":"","AdditionalCode":"","AdditionalCodeSignMe":"0","SignMe":"0","Action":"Login","XToken":"e16c04776f1492d4d6060938a3309566"}
+[09:29:24.046][99fb8e5d] IMAP[NOTE]: Start connection to "ssl://172.19.0.17:993"
+[09:29:24.050][99fb8e5d] IMAP[NOTE]: Connected (unsuccess)
+--- FlushLogCache: Trigger
+[09:29:24.055][99fb8e5d] IMAP[NOTICE]: Socket: [2] stream_socket_client(): unable to connect to ssl://172.19.0.17:993 (Connection refused)
+[09:29:24.058][99fb8e5d] IMAP[NOTICE]: exception 'MailSo\Net\Exceptions\SocketCanNotConnectToHostException' with message 'Can't connect to host "ssl://172.19.0.17:993"' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Net/NetClient.php:292
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(153): MailSo\Net\NetClient->Connect('172.19.0.17', 993, 1, false, true)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(72): MailSo\Imap\ImapClient->Connect('172.19.0.17', 993, 1, false)
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(424): MailSo\Mail\MailClient->Connect('172.19.0.17', 993, 1, false, true)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('abandara@copper...', '*******', '', '', false)
+#6 [internal function]: RainLoop\Actions->DoLogin()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#8 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#9 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#11 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#12 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#13 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#14 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#15 {main}
+[09:29:24.063][99fb8e5d] INFO[ERROR]: exception 'MailSo\Net\Exceptions\SocketCanNotConnectToHostException' with message 'Can't connect to host "ssl://172.19.0.17:993"' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Net/NetClient.php:292
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(153): MailSo\Net\NetClient->Connect('172.19.0.17', 993, 1, false, true)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(72): MailSo\Imap\ImapClient->Connect('172.19.0.17', 993, 1, false)
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(424): MailSo\Mail\MailClient->Connect('172.19.0.17', 993, 1, false, true)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('abandara@copper...', '*******', '', '', false)
+#6 [internal function]: RainLoop\Actions->DoLogin()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#8 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#9 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#11 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#12 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#13 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#14 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#15 {main}
+
+Next exception 'RainLoop\Exceptions\ClientException' with message 'ConnectionError[104]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:2086
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('abandara@copper...', '*******', '', '', false)
+#2 [internal function]: RainLoop\Actions->DoLogin()
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#4 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#8 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#9 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#10 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#11 {main}
+[09:29:24.065][99fb8e5d] AJAX[DATA]: {"Action":"Login","Result":false,"ErrorCode":104,"ErrorMessage":"","ErrorMessageAdditional":"","Time":131}
+[09:29:24.073][99fb8e5d] INFO[MEMORY]: Memory peak usage: 1.25MB
+[09:29:24.077][99fb8e5d] INFO[TIME]: Time delta: 0.12560296058655
+
+--- FlushLogCache: WriteOnErrorOnly
+[09:29:29.536][58e01ed3] INFO[DATA]: [DATE:12.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:12][Apache/2.4.7 (Ubuntu)][apache2handler]
+[09:29:29.536][58e01ed3] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[09:29:29.536][58e01ed3] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[09:29:29.540][58e01ed3] AJAX[NOTE]: Action: DoLogin
+[09:29:29.540][58e01ed3] POST[DATA]: {"Email":"abandara@coppermail.dyndns.org","Login":"","Password":"*******","Language":"","AdditionalCode":"","AdditionalCodeSignMe":"0","SignMe":"0","Action":"Login","XToken":"e16c04776f1492d4d6060938a3309566"}
+[09:29:29.578][58e01ed3] IMAP[NOTE]: Start connection to "ssl://172.19.0.17:993"
+[09:29:29.581][58e01ed3] IMAP[NOTE]: Connected (unsuccess)
+--- FlushLogCache: Trigger
+[09:29:29.588][58e01ed3] IMAP[NOTICE]: Socket: [2] stream_socket_client(): unable to connect to ssl://172.19.0.17:993 (Connection refused)
+[09:29:29.593][58e01ed3] IMAP[NOTICE]: exception 'MailSo\Net\Exceptions\SocketCanNotConnectToHostException' with message 'Can't connect to host "ssl://172.19.0.17:993"' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Net/NetClient.php:292
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(153): MailSo\Net\NetClient->Connect('172.19.0.17', 993, 1, false, true)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(72): MailSo\Imap\ImapClient->Connect('172.19.0.17', 993, 1, false)
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(424): MailSo\Mail\MailClient->Connect('172.19.0.17', 993, 1, false, true)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('abandara@copper...', '*******', '', '', false)
+#6 [internal function]: RainLoop\Actions->DoLogin()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#8 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#9 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#11 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#12 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#13 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#14 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#15 {main}
+[09:29:30.601][58e01ed3] INFO[ERROR]: exception 'MailSo\Net\Exceptions\SocketCanNotConnectToHostException' with message 'Can't connect to host "ssl://172.19.0.17:993"' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Net/NetClient.php:292
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(153): MailSo\Net\NetClient->Connect('172.19.0.17', 993, 1, false, true)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(72): MailSo\Imap\ImapClient->Connect('172.19.0.17', 993, 1, false)
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(424): MailSo\Mail\MailClient->Connect('172.19.0.17', 993, 1, false, true)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('abandara@copper...', '*******', '', '', false)
+#6 [internal function]: RainLoop\Actions->DoLogin()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#8 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#9 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#11 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#12 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#13 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#14 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#15 {main}
+
+Next exception 'RainLoop\Exceptions\ClientException' with message 'ConnectionError[104]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:2086
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('abandara@copper...', '*******', '', '', false)
+#2 [internal function]: RainLoop\Actions->DoLogin()
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#4 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#8 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#9 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#10 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#11 {main}
+[09:29:30.605][58e01ed3] AJAX[DATA]: {"Action":"Login","Result":false,"ErrorCode":104,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1136}
+[09:29:30.617][58e01ed3] INFO[MEMORY]: Memory peak usage: 1.25MB
+[09:29:30.619][58e01ed3] INFO[TIME]: Time delta: 1.1378898620605
+
+--- FlushLogCache: WriteOnErrorOnly
+[09:30:18.334][889cd113] INFO[DATA]: [DATE:12.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:13][Apache/2.4.7 (Ubuntu)][apache2handler]
+[09:30:18.334][889cd113] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[09:30:18.334][889cd113] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[09:30:18.336][889cd113] AJAX[NOTE]: Action: DoAdminDomainTest
+[09:30:18.336][889cd113] POST[DATA]: {"Name":"coppermail.dyndns.org","IncHost":"172.19.0.17","IncPort":"143","IncSecure":"2","UseSieve":"0","SieveHost":"","SievePort":"4190","SieveSecure":"0","OutHost":"172.19.0.17","OutPort":"465","OutSecure":"1","OutAuth":"1","OutUsePhpMail":"0","Action":"AdminDomainTest","XToken":"e16c04776f1492d4d6060938a3309566"}
+[09:30:18.370][889cd113] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
+[09:30:18.371][889cd113] IMAP[NOTE]: Connected (success)
+[09:30:18.456][889cd113] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN AUTH=LOGIN] Dovecot ready.
+
+--- FlushLogCache: Trigger
+[09:30:18.470][889cd113] IMAP[ERROR]: exception 'MailSo\Net\Exceptions\SocketUnsuppoterdSecureConnectionException' with message 'STARTTLS is not supported' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:168
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(4147): MailSo\Imap\ImapClient->Connect('172.19.0.17', 143, 2, false, true)
+#1 [internal function]: RainLoop\Actions->DoAdminDomainTest()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#10 {main}
+[09:30:18.480][889cd113] SMTP[NOTE]: Start connection to "ssl://172.19.0.17:465"
+[09:30:18.520][889cd113] SMTP[NOTE]: Connected (success)
+[09:30:18.563][889cd113] SMTP[DATA]: < 220 mail.coppermail.dyndns.org ESMTP Postfix (Ubuntu)\r\n
+[09:30:18.570][889cd113] SMTP[DATA]: > EHLO localhost\r\n
+[09:30:18.572][889cd113] SMTP[DATA]: < 250-mail.coppermail.dyndns.org\r\n
+[09:30:18.574][889cd113] SMTP[DATA]: < 250-PIPELINING\r\n
+[09:30:18.575][889cd113] SMTP[DATA]: < 250-SIZE 51200000\r\n
+[09:30:18.577][889cd113] SMTP[DATA]: < 250-VRFY\r\n
+[09:30:18.578][889cd113] SMTP[DATA]: < 250-ETRN\r\n
+[09:30:18.579][889cd113] SMTP[DATA]: < 250-AUTH PLAIN LOGIN\r\n
+[09:30:18.580][889cd113] SMTP[DATA]: < 250-ENHANCEDSTATUSCODES\r\n
+[09:30:18.582][889cd113] SMTP[DATA]: < 250-8BITMIME\r\n
+[09:30:18.584][889cd113] SMTP[DATA]: < 250-DSN\r\n
+[09:30:18.587][889cd113] SMTP[DATA]: < 250 SMTPUTF8\r\n
+[09:30:18.589][889cd113] SMTP[NOTE]: Disconnected from "ssl://172.19.0.17:465" (success)
+[09:30:18.591][889cd113] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
+[09:30:18.593][889cd113] AJAX[DATA]: {"Action":"AdminDomainTest","Result":{"Imap":"STARTTLS is not supported","Smtp":true,"Sieve":true},"Time":324}
+[09:30:18.607][889cd113] INFO[MEMORY]: Memory peak usage: 1.25MB
+[09:30:18.610][889cd113] INFO[TIME]: Time delta: 0.32339310646057
