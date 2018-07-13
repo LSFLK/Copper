@@ -16,6 +16,7 @@ scope = sub
 #-----------------
 search_base = ou=users,dc=coppermail,dc=dyndns,dc=org
 version = 3
-bind = no
-query_filter = (&(objectclass=inetLocalMailRecipient)(mailLocalAddress=%s))
+#bind = no
+#query_filter = (&(objectclass=inetLocalMailRecipient)(mailLocalAddress=%s))
+query_filter = (&(objectclass=inetOrgPerson)(mail=%s))
 result_attribute = mail
