@@ -57,28 +57,6 @@ services:
              
         container_name: "reverseproxy"
 
-<<<<<<< HEAD
-#--------------------------------------nginx--------------------------------------------------
-    #reverse-proxy:
-        #image: jwilder/nginx-proxy
-        
-        #ports:
-            #- 86:86
-            #- 443:443
-        #volumes:
-            #- /var/run/docker.sock:/tmp/docker.sock:ro
-            #- ./emailserver/ssl/archive/${FQDN}:/etc/nginx/certs:ro
-        
-        #networks:
-            #- front
-            #- back
-        #container_name: "reverse-proxy"
-
-=======
-
-
-        
->>>>>>> 49c881ffd28ab72e888bfa467861ae0c1925ac3e
 #-----------------------------------email server------------------------------------------------------
     emailserver:
         #extends:
@@ -124,27 +102,15 @@ services:
             - "4190:4190"   # SIEVE
         entrypoint:
             - /bin/init_sys.sh
-<<<<<<< HEAD
         #depends_on:
 #            - mariadb
 #            - redis
-=======
-        depends_on:
-            #- mariadb
-            - redis
->>>>>>> 49c881ffd28ab72e888bfa467861ae0c1925ac3e
+
         # two networks are allocated and one with static ip. this format is important    
         networks:           
             back:
                ipv4_address: 172.19.0.17
             front:
-        
-        
-<<<<<<< HEAD
-        
-=======
-
->>>>>>> 49c881ffd28ab72e888bfa467861ae0c1925ac3e
 
 # ----------------------------------------webmail--------------------------------------------
   
