@@ -1,13 +1,5 @@
 version: '2'
-#--------------------------------------------------------------------------------------------
-#networks:
-    
-        #front:
-            #external:
-              #name: front
-        #back:
-            #driver: bridge
-   
+
 
 #--------------------------------------------------------------------------------------------
 
@@ -65,6 +57,7 @@ services:
              
         container_name: "reverseproxy"
 
+<<<<<<< HEAD
 #--------------------------------------nginx--------------------------------------------------
     #reverse-proxy:
         #image: jwilder/nginx-proxy
@@ -81,6 +74,11 @@ services:
             #- back
         #container_name: "reverse-proxy"
 
+=======
+
+
+        
+>>>>>>> 49c881ffd28ab72e888bfa467861ae0c1925ac3e
 #-----------------------------------email server------------------------------------------------------
     emailserver:
         #extends:
@@ -126,9 +124,15 @@ services:
             - "4190:4190"   # SIEVE
         entrypoint:
             - /bin/init_sys.sh
+<<<<<<< HEAD
         #depends_on:
 #            - mariadb
 #            - redis
+=======
+        depends_on:
+            #- mariadb
+            - redis
+>>>>>>> 49c881ffd28ab72e888bfa467861ae0c1925ac3e
         # two networks are allocated and one with static ip. this format is important    
         networks:           
             back:
@@ -136,7 +140,11 @@ services:
             front:
         
         
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> 49c881ffd28ab72e888bfa467861ae0c1925ac3e
 
 # ----------------------------------------webmail--------------------------------------------
   
@@ -162,24 +170,6 @@ services:
               ipv4_address: 172.19.0.16
         container_name: "webmail"   
 
-            #-------------------------------------copperclient -- customized web mail client installation----
-    #webmail:
-        #build:
-            #context: .
-            #dockerfile: ./webmail/copperclient/Dockerfile
-        #restart: always
-        #env_file: .env
-        #volumes:
-            #- ./webmail/copperclient/app:/var/www/site/app/
-        #ports:
-
-            #- "8989:80"
-        #depends_on:
-            #- emailserver
-        #networks:
-            #- front
-            #- back
-        #container_name: "webmail" 
 
 
 
@@ -209,42 +199,7 @@ services:
 
         #container_name: "redis"
     
-# ----------------------------------------openLDAP---------------------------------------------------
 
-    #ldap:
-        #build:
-           #context: .
-           ##dockerfile: ./openLDAP/Dockerfile
-           #dockerfile: ./ldap/Dockerfile
-        #restart: always
-        ##restart: unless-stopped
-        ##command: sh /etc/openldap/init_ldap.sh
-        ##env_file: .env
-        #hostname: ldap01.${DOMAIN}
-        #extra_hosts:
-            #- "ldap.coppermail.dyndns.org ldap:127.0.1.1"
-            ##- "localhost:127.0.0.1"
-        ##volumes:
-            ##- ./ldap/configs/ldif/:/etc/openldap/ldif/
-            ##- ./ldap/configs/ldap/:/etc/ldap/
-            ##- ./ldap/configs/slapd:/usr/share/slapd/
-        #ports:
-            #- "389:389"
-            #- "636:636"
-            #- "8888:80"
-        #environment:
-            #- DOMAIN=${DOMAIN}
-            #- DEBUG=${DEBUG}
-            #- EMAIL=${EMAIL}
-        #entrypoint:
-            #- /etc/openldap/init_ldap.sh
-        #depends_on:
-            #- emailserver
-        #networks:
-            #- front
-            #back:
-              #ipv4_address: 172.19.0.21
-        #container_name: "ldap" 
 
     # -----------------------------------new open ldap -------------------------------------------
     # Refference : https://github.com/osixia/docker-openldap#quick-start
@@ -309,6 +264,44 @@ services:
             options:
               max-size: "200k"
               max-file: "10"
+
+  # ----------------------------------------openLDAP---------------------------------------------------
+
+    #ldap:
+        #build:
+           #context: .
+           ##dockerfile: ./openLDAP/Dockerfile
+           #dockerfile: ./ldap/Dockerfile
+        #restart: always
+        ##restart: unless-stopped
+        ##command: sh /etc/openldap/init_ldap.sh
+        ##env_file: .env
+        #hostname: ldap01.${DOMAIN}
+        #extra_hosts:
+            #- "ldap.coppermail.dyndns.org ldap:127.0.1.1"
+            ##- "localhost:127.0.0.1"
+        ##volumes:
+            ##- ./ldap/configs/ldif/:/etc/openldap/ldif/
+            ##- ./ldap/configs/ldap/:/etc/ldap/
+            ##- ./ldap/configs/slapd:/usr/share/slapd/
+        #ports:
+            #- "389:389"
+            #- "636:636"
+            #- "8888:80"
+        #environment:
+            #- DOMAIN=${DOMAIN}
+            #- DEBUG=${DEBUG}
+            #- EMAIL=${EMAIL}
+        #entrypoint:
+            #- /etc/openldap/init_ldap.sh
+        #depends_on:
+            #- emailserver
+        #networks:
+            #- front
+            #back:
+              #ipv4_address: 172.19.0.21
+        #container_name: "ldap" 
+
   
   #---------------------------------phpldapadmin-------------------------------------------
   # Ref : https://github.com/osixia/docker-openldap

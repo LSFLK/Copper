@@ -17,6 +17,6 @@ scope = sub
 #-----------------
 search_base = ou=domains,dc=coppermail,dc=dyndns,dc=org
 version = 3
-bind = no
+#bind = no
 query_filter = (&(ObjectClass=dNSDomain)(dc=%s))
 result_attribute = dc
