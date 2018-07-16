@@ -30,7 +30,7 @@ networks:
 
 services:
 
-#-------------------------------------myReverseProxy-----------------------------------------
+#-------------------------------------ReverseProxy-----------------------------------------
 
     reverseproxy:
         #image: reverseproxy:latest
@@ -49,17 +49,9 @@ services:
             back:
                ipv4_address: 172.19.0.20
             front:
-
-
-        #networks:
-            #- front
-            #- back
              
-        container_name: "reverseproxy"
+        container_name: "reverse_proxy"
 
-
-
-        
 #-----------------------------------email server------------------------------------------------------
     emailserver:
         #extends:
@@ -105,17 +97,14 @@ services:
             - "4190:4190"   # SIEVE
         entrypoint:
             - /bin/init_sys.sh
-        depends_on:
-            #- mariadb
-            - redis
+        #depends_on:
+#            - redis
+
         # two networks are allocated and one with static ip. this format is important    
         networks:           
             back:
                ipv4_address: 172.19.0.17
             front:
-        
-        
-
 
 # ----------------------------------------webmail--------------------------------------------
   
@@ -128,8 +117,8 @@ services:
         hostname: webmail.${DOMAIN}
         volumes:
             - ./webmail/${WEBMAIL}/app:/var/www/site/app/
-        ports:
-            - "8989:80"
+        #ports:
+        #    - "8989:80"
         environment:
             - WEBMAIL=${WEBMAIL}
          
@@ -144,35 +133,35 @@ services:
 
 
 
-#------------------------------------------radis----------------------------------------------
-    redis:
+#------------------------------------------redis----------------------------------------------
+#    redis:
         #extends:
             #file: docker-common.yml
             #service: redis
-        image: redis:4.0-alpine
-        container_name: redis
-        hostname: redis.${DOMAIN}
-        restart: unless-stopped
-        command: redis-server --appendonly yes
-        volumes:
-          - ./redis/data:/data
-       
-        environment:
-            - VIRTUAL_HOST=redis
-        expose:
-            - "6379"
-        networks:
+#        image: redis:4.0-alpine
+#        container_name: redis
+#        hostname: redis.${DOMAIN}
+#        restart: unless-stopped
+#        command: redis-server --appendonly yes
+#        volumes:
+#          - ./redis/data:/data
+#       
+#        environment:
+#            - VIRTUAL_HOST=redis
+#        expose:
+#            - "6379"
+#        networks:
             #- back
-            back:
-              ipv4_address: 172.19.0.18
-        #depends_on:
+#            back:
+#              ipv4_address: 172.19.0.18
+#        #depends_on:
             #- front
 
         #container_name: "redis"
     
 
 
-    # -----------------------------------new open ldap -------------------------------------------
+# -----------------------------------new open ldap -------------------------------------------
     # Refference : https://github.com/osixia/docker-openldap#quick-start
     openldap:
     #image: osixia/openldap:1.2.1
@@ -236,45 +225,7 @@ services:
               max-size: "200k"
               max-file: "10"
 
-  # ----------------------------------------openLDAP---------------------------------------------------
-
-    #ldap:
-        #build:
-           #context: .
-           ##dockerfile: ./openLDAP/Dockerfile
-           #dockerfile: ./ldap/Dockerfile
-        #restart: always
-        ##restart: unless-stopped
-        ##command: sh /etc/openldap/init_ldap.sh
-        ##env_file: .env
-        #hostname: ldap01.${DOMAIN}
-        #extra_hosts:
-            #- "ldap.coppermail.dyndns.org ldap:127.0.1.1"
-            ##- "localhost:127.0.0.1"
-        ##volumes:
-            ##- ./ldap/configs/ldif/:/etc/openldap/ldif/
-            ##- ./ldap/configs/ldap/:/etc/ldap/
-            ##- ./ldap/configs/slapd:/usr/share/slapd/
-        #ports:
-            #- "389:389"
-            #- "636:636"
-            #- "8888:80"
-        #environment:
-            #- DOMAIN=${DOMAIN}
-            #- DEBUG=${DEBUG}
-            #- EMAIL=${EMAIL}
-        #entrypoint:
-            #- /etc/openldap/init_ldap.sh
-        #depends_on:
-            #- emailserver
-        #networks:
-            #- front
-            #back:
-              #ipv4_address: 172.19.0.21
-        #container_name: "ldap" 
-
-  
-  #---------------------------------phpldapadmin-------------------------------------------
+#---------------------------------phpldapadmin-------------------------------------------
   # Ref : https://github.com/osixia/docker-openldap
     phpldapadmin:
         image: osixia/phpldapadmin:latest
@@ -294,6 +245,4 @@ services:
               ipv4_address: 172.19.0.21
 
 
-
-
-    #-------------------------------------END------------------------------------------------------    
+#-------------------------------------END------------------------------------------------------    

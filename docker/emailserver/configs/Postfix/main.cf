@@ -3,6 +3,7 @@
 #  & https://www.c0ffee.net/blog/mail-server-guide
 
 # "2" is current for postfix 3.2 configs
+# this prevent backward compatibility
 compatibility_level = 2
 
 smtpd_banner = $myhostname ESMTP $mail_name (Ubuntu)
@@ -129,7 +130,7 @@ myorigin = %DOMAIN%
 # virtual domains, which are configured below. Make sure to specify the FQDN
 # of your sever, as well as localhost.
 # Note: NEVER specify any virtual domains here!!! Those come later.
-mydestination = localhost.example.com, localhost
+mydestination = localhost
 
 
 # spam related settings ---------------------------------
