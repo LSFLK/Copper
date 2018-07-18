@@ -102,7 +102,7 @@ pass_filter = (&(objectclass=inetOrgPerson)(uid=%n))
 
 # Use SASL binding instead of the simple binding. Note that this changes
 # ldap_version automatically to be 3 if it's lower.
-#sasl_bind = no
+#sasl_bind = yes
 # SASL mechanism name to use.
 #sasl_mech =
 # SASL realm to use.
@@ -112,18 +112,18 @@ pass_filter = (&(objectclass=inetOrgPerson)(uid=%n))
 #sasl_authz_id =
 
 # Use TLS to connect to the LDAP server.
-tls = no
+ tls = no
 # TLS options, currently supported only with OpenLDAP:
-#tls_ca_cert_file =
-#tls_ca_cert_dir =
-#tls_cipher_suite =
+# tls_ca_cert_file = ca.crt
+# tls_ca_cert_dir =
+# tls_cipher_suite = SECURE256:-VERS-SSL3.0
 # TLS cert/key is used only if LDAP server requires a client certificate.
-#tls_cert_file =
-#tls_key_file =
+# tls_cert_file = /etc/letsencrypt/live/%FQDN%/.fullchain.pem
+# tls_key_file =/etc/letsencrypt/live/%FQDN%/.privkey.pem
 # Valid values: never, hard, demand, allow, try
-#tls_require_cert =
+# tls_require_cert = try
 
 # LDAP library debug level as specified by LDAP_DEBUG_* in ldap_log.h.
 # -1 = everything. You may need to recompile OpenLDAP with debugging enabled
 # to get enough output.
-#debug_level = -1
+debug_level = -1
