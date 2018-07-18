@@ -1,5 +1,5 @@
 FROM ubuntu:14.04
-MAINTAINER Dhanu Gupta <dhanu.gupta@gmail.com>
+MAINTAINER LSF <support@opensource.lk>
 
 RUN apt-get update
 RUN apt-get -y upgrade
