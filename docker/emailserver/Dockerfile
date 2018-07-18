@@ -30,6 +30,9 @@ RUN apt-get -y install dovecot-core dovecot-imapd dovecot-pop3d dovecot-lmtpd do
 
 RUN apt-get install -y dovecot-sieve dovecot-managesieved
 
+# installing ldap utils for testing perposes
+RUN apt-get install -y ldap-utils curl
+
 
 #RUN apt-get -y install gnupg python-gpgme dovecot-managesieved sudo
 # Following changed introduced to above installation due to python-gpgme not installed in 18.04 ubuntu 
