@@ -9,8 +9,8 @@
     - [POSTFIX](http://www.postfix.org/) : a modular mail transfer agent.
   - [x] IMAP Server and POP Server
     - [DOVECOT](https://www.dovecot.org/) : secure open-source IMAP and POP3 server.
-  - [x] Mail Server Administration and Mailing List Capability 
-    - [POSTFIXADMIN](http://postfixadmin.sourceforge.net/)Supported by Postfix alias. Can be managed through  web interface
+  - [x] Mail Server User Management with openLDAP
+    - [PHPLDAPADMIN](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-openldap-and-phpldapadmin-on-ubuntu-16-04) Ldap server can be managed through  web interface
   - [x] WEBmail client
     - [RAINLOOP](https://www.rainloop.net/) : web client to access mail for users.
   - [x] openLDAP
