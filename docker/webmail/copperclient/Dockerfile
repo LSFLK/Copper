@@ -1,5 +1,9 @@
 FROM ubuntu:14.04
+<<<<<<< HEAD
 MAINTAINER Lanka Software Foundation <opensource.lk>
+=======
+MAINTAINER LSF <support@opensource.lk>
+>>>>>>> f0cab70f36cb86db979c24d07046f52d956fc3c1
 
 RUN apt-get update
 RUN apt-get -y upgrade

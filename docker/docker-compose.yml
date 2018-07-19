@@ -142,7 +142,8 @@ services:
          context: .
          dockerfile: ./openldap/Dockerfile
         container_name: openldap
-        #hostname: ldap.${DOMAIN}
+        hostname: ldap.${DOMAIN}
+        #hostname: "openldap"
         environment:
             - DOMAIN=${DOMAIN}
             - LDAP_LOG_LEVEL=${LDAP_LOG_LEVEL}
@@ -152,19 +153,19 @@ services:
             - LDAP_ADMIN_PASSWORD=${LDAP_ADMIN_PASSWORD}
             - LDAP_CONFIG_PASSWORD=${LDAP_CONFIG_PASSWORD}
             - LDAP_READONLY_USER=${LDAP_READONLY_USER}
-             #LDAP_READONLY_USER_USERNAME: "readonly"
-             #LDAP_READONLY_USER_PASSWORD: "readonly"
+            - LDAP_READONLY_USER_USERNAME=${LDAP_READONLY_USER}
+            - LDAP_READONLY_USER_PASSWORD=${LDAP_READONLY_USER}
             - LDAP_RFC2307BIS_SCHEMA=${LDAP_RFC2307BIS_SCHEMA}
             - LDAP_BACKEND=${LDAP_BACKEND}
             - LDAP_TLS=${LDAP_TLS}
-            #- LDAP_TLS_CRT_FILENAME=${LDAP_TLS_CRT_FILENAME}
-            #- LDAP_TLS_KEY_FILENAME=${LDAP_TLS_KEY_FILENAME}
-            #- LDAP_TLS_CA_CRT_FILENAME=${LDAP_TLS_CA_CRT_FILENAME}
-            #- LDAP_TLS_ENFORCE=${LDAP_TLS_ENFORCE}
-            #- LDAP_TLS_CIPHER_SUITE=${LDAP_TLS_CIPHER_SUITE}
-            #- LDAP_TLS_PROTOCOL_MIN=${LDAP_TLS_PROTOCOL_MIN}
-            #- LDAP_TLS_VERIFY_CLIENT=${LDAP_TLS_VERIFY_CLIENT}
-            #- LDAP_REPLICATION=${LDAP_REPLICATION}
+            - LDAP_TLS_CRT_FILENAME=${LDAP_TLS_CRT_FILENAME}
+            - LDAP_TLS_KEY_FILENAME=${LDAP_TLS_KEY_FILENAME}
+            - LDAP_TLS_CA_CRT_FILENAME=${LDAP_TLS_CA_CRT_FILENAME}
+            - LDAP_TLS_ENFORCE=${LDAP_TLS_ENFORCE}
+            - LDAP_TLS_CIPHER_SUITE=${LDAP_TLS_CIPHER_SUITE}
+            - LDAP_TLS_PROTOCOL_MIN=${LDAP_TLS_PROTOCOL_MIN}
+            - LDAP_TLS_VERIFY_CLIENT=${LDAP_TLS_VERIFY_CLIENT}
+            - LDAP_REPLICATION=${LDAP_REPLICATION}
              #LDAP_REPLICATION_CONFIG_SYNCPROV: "binddn="cn=admin,cn=config" bindmethod=simple credentials=$LDAP_CONFIG_PASSWORD searchbase="cn=config" type=refreshAndPersist retry="60 +" timeout=1 starttls=critical"
              #LDAP_REPLICATION_DB_SYNCPROV: "binddn="cn=admin,$LDAP_BASE_DN" bindmethod=simple credentials=$LDAP_ADMIN_PASSWORD searchbase="$LDAP_BASE_DN" type=refreshAndPersist interval=00:00:00:10 retry="60 +" timeout=1 starttls=critical"
              #LDAP_REPLICATION_HOSTS: "#PYTHON2BASH:['ldap://ldap.example.org','ldap://ldap2.example.org']"
@@ -182,7 +183,7 @@ services:
             - "636:636"
         #domainname: "openldap" # important: same as hostname
         #domainname: ldap.${DOMAIN} # important: same as hostname
-        hostname: "openldap"
+        
         networks:
             #- front
             back:
@@ -205,8 +206,8 @@ services:
         container_name: phpldapadmin
         hostname: phpldapadmin.${DOMAIN}
         environment:
-             PHPLDAPADMIN_LDAP_HOSTS: "openldap"
-             #PHPLDAPADMIN_LDAP_HOSTS: ldap.${DOMAIN}
+             #PHPLDAPADMIN_LDAP_HOSTS: "openldap"
+             PHPLDAPADMIN_LDAP_HOSTS: ldap.${DOMAIN}
              PHPLDAPADMIN_HTTPS: "false"
         ports:
             - "8888:80"

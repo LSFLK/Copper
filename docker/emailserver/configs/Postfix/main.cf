@@ -27,10 +27,10 @@ readme_directory = no
 # path to the SSL certificate for the mail server
 smtpd_tls_cert_file=/etc/letsencrypt/live/%DFQN%/.fullchain.pem
 smtpd_tls_key_file=/etc/letsencrypt/live/%DFQN%/.privkey.pem
+
 smtpd_use_tls=yes
-
-
 smtpd_tls_auth_only = yes
+
 
 # These two lines define how postfix will connect to other mail servers.
 # DANE is a stronger form of opportunistic TLS. You can read about it here:
@@ -117,6 +117,7 @@ smtpd_helo_restrictions =
 myhostname = %DFQN%
 
 
+
 alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
 
@@ -148,7 +149,11 @@ mydestination = localhost
 # limit maximum e-mail size to 50MB. mailbox size must be at least as big as
 # the message size for the mail to be accepted, but has no meaning after
 # that since we are using Dovecot for delivery.
+<<<<<<< HEAD
 message_size_limit = 25000000
+=======
+message_size_limit = 25600000
+>>>>>>> f0cab70f36cb86db979c24d07046f52d956fc3c1
 mailbox_size_limit = 0 # this will enable unlimited mailbox size
 
 # require addresses of the form "user@domain.tld"
