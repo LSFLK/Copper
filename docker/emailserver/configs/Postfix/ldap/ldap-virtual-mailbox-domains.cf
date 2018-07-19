@@ -1,4 +1,3 @@
-
 #server_host = ldap://ldap.coppermail.dyndns.org
 #server_host = ldap://172.19.0.21
 server_host = ldap://172.19.0.22

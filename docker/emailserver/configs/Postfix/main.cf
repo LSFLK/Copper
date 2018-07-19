@@ -148,7 +148,7 @@ mydestination = localhost
 # limit maximum e-mail size to 50MB. mailbox size must be at least as big as
 # the message size for the mail to be accepted, but has no meaning after
 # that since we are using Dovecot for delivery.
-message_size_limit = 51200000
+message_size_limit = 25000000
 mailbox_size_limit = 0 # this will enable unlimited mailbox size
 
 # require addresses of the form "user@domain.tld"

@@ -104,34 +104,7 @@ services:
         networks:           
             back:
                ipv4_address: 172.19.0.17
-            front:
-
-# ----------------------------------------webmail--------------------------------------------
-  
-    webmail:
-        build:
-            context: .
-            dockerfile: ./webmail/${WEBMAIL}/Dockerfile
-        restart: always
-        env_file: .env
-        hostname: webmail.${DOMAIN}
-        volumes:
-            - ./webmail/${WEBMAIL}/app:/var/www/site/app/
-        #ports:
-        #    - "8989:80"
-        environment:
-            - WEBMAIL=${WEBMAIL}
-         
-        depends_on:
-            - emailserver
-        networks:
-            #- front
-            back:
-              ipv4_address: 172.19.0.16
-        container_name: "webmail"   
-
-
-
+            front: 
 
 #------------------------------------------redis----------------------------------------------
 #    redis:
@@ -243,6 +216,32 @@ services:
             #- front
             back:
               ipv4_address: 172.19.0.21
+
+
+# ----------------------------------------webmail--------------------------------------------
+  
+    webmail:
+        build:
+            context: .
+            dockerfile: ./webmail/${WEBMAIL}/Dockerfile
+        restart: always
+        env_file: .env
+        hostname: webmail.${DOMAIN}
+        volumes:
+            - ./webmail/${WEBMAIL}/app:/var/www/site/app/
+        #ports:
+        #    - "8989:80"
+        environment:
+            - WEBMAIL=${WEBMAIL}
+         
+        depends_on:
+            - emailserver
+            - openldap
+        networks:
+            #- front
+            back:
+              ipv4_address: 172.19.0.16
+        container_name: "webmail"  
 
 
 #-------------------------------------END------------------------------------------------------    
