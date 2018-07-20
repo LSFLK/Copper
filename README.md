@@ -90,3 +90,8 @@ $ docker-compose up -d
   
 - openLdap solutions
   https://github.com/osixia/docker-openldap#quick-start
+
+- Roundcube installation
+  https://github.com/roundcube/roundcubemail-docker
+
+  
