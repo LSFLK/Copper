@@ -82,6 +82,12 @@ services:
             - DBPASS=${DBPASS}
             - DEBUG=${DEBUG}
             - RSPAMD_PASSWORD=${RSPAMD_PASSWORD}
+            - CN=${CN}
+            - DC1=${DC1}
+            - DC2=${DC2}
+            - DC3=${DC3}
+            - DNPASS=${DNPASS}
+            - OU=${OU}
         ports:
             # bellow 80 port is opened for external use
             - "80"

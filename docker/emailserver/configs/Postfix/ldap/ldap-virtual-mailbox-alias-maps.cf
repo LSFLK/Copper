@@ -8,13 +8,13 @@ version = 3
 #tls_require_cert = yes
 
 bind = yes
-bind_dn = cn=admin,dc=coppermail,dc=dyndns,dc=org
-bind_pw = admin
+bind_dn = cn=%CN%,dc=%DC1%,dc=%DC2%,dc=%DC3%
+bind_pw = %DNPASS%
 
 #search_base = ou=Mail,dc=example,dc=com
 scope = sub
 #-----------------
-search_base = ou=users,dc=coppermail,dc=dyndns,dc=org
+search_base = ou=%OU%,dc=%DC1%,dc=%DC2%,dc=%DC3%
 version = 3
 #bind = no
 #query_filter = (&(objectclass=inetLocalMailRecipient)(mailLocalAddress=%s))

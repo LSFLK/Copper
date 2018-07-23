@@ -21,6 +21,14 @@ export DBHOST=${DBHOST}
 export DEBUG=${DEBUG}
 export RSPAMD_PASSWORD=${RSPAMD_PASSWORD}
 
+#Variables need for OpenLdap-dovecot
+export CN=${CN}
+export DC1=${DC1}
+export DC2=${DC2}
+export DC3=${DC3}
+export DNPASS=${DNPASS}
+export OU=${OU}
+
 if [ -z "$EMAIL" ]; then
   echo "[ERROR] Email Must be set !"
   exit 1
@@ -114,6 +122,36 @@ chmod -R 755 /etc/letsencrypt/
 
  PASSWORD=$(rspamadm pw --quiet --encrypt --type pbkdf2 --password "${RSPAMD_PASSWORD}")
  sed -i "s;pwrd;"${RSPAMD_PASSWORD}";g" "/etc/rspamd/local.d/worker-controller.inc"
+
+ #OpenLDAP with Dovecot conf
+ sed -i.bak -e "s;%CN%;"${CN}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
+ sed -i.bak -e "s;%DC1%;"${DC1}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
+ sed -i.bak -e "s;%DC2%;"${DC2}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
+ sed -i.bak -e "s;%DC3%;"${DC3}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
+ sed -i.bak -e "s;%DNPASS%;"${DNPASS}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
+ sed -i.bak -e "s;%OU%;"${OU}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
+
+ #OpenLDAP with Postfix conf
+ sed -i.bak -e "s;%CN%;"${CN}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf"
+ sed -i.bak -e "s;%DC1%;"${DC1}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf"
+ sed -i.bak -e "s;%DC2%;"${DC2}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf"
+ sed -i.bak -e "s;%DC3%;"${DC3}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf"
+ sed -i.bak -e "s;%DNPASS%;"${DNPASS}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf"
+ sed -i.bak -e "s;%OU%;"${OU}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf"
+
+ sed -i.bak -e "s;%CN%;"${CN}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-maps.cf"
+ sed -i.bak -e "s;%DC1%;"${DC1}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-maps.cf"
+ sed -i.bak -e "s;%DC2%;"${DC2}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-maps.cf"
+ sed -i.bak -e "s;%DC3%;"${DC3}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-maps.cf"
+ sed -i.bak -e "s;%DNPASS%;"${DNPASS}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-maps.cf"
+ sed -i.bak -e "s;%OU%;"${OU}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-maps.cf"
+
+ sed -i.bak -e "s;%CN%;"${CN}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
+ sed -i.bak -e "s;%DC1%;"${DC1}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
+ sed -i.bak -e "s;%DC2%;"${DC2}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
+ sed -i.bak -e "s;%DC3%;"${DC3}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
+ sed -i.bak -e "s;%DNPASS%;"${DNPASS}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
+ sed -i.bak -e "s;%OU%;"${OU}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
  
  groupadd -g 5000 vmail && useradd -g vmail -u 5000 vmail -d /var/mail
  chown -R vmail:vmail /var/mail
