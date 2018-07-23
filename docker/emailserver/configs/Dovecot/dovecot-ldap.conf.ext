@@ -6,12 +6,12 @@ hosts = 172.19.0.22
 # Distinguished Name - the username used to login to the LDAP server.
 # Leave it commented out to bind anonymously (useful with auth_bind=yes).
 #dn = 
-dn = cn=admin,dc=coppermail,dc=dyndns,dc=org
-#dn = uid=admin,ou=users,dc=coppermail,dc=dyndns,dc=org
+dn = cn=%CN%,dc=%DC1%,dc=%DC2%,dc=%DC3%
+#dn = uid=admin,ou=%OU%,dc=%DC1%,dc=%DC2%,dc=%DC3%
 
 # Password for LDAP server, if dn is specified.
 #dnpass = 
-dnpass = admin
+dnpass = %DNPASS%
 
 # Use authentication binding for verifying password's validity. This works by
 # logging into LDAP server using the username and password given by client.
@@ -33,8 +33,8 @@ auth_bind = yes
 #
 # For example:
 #   auth_bind_userdn = cn=%u,ou=people,o=org
-#auth_bind_userdn = mail=%u,ou=users,dc=coppermail,dc=dyndns,dc=org
-auth_bind_userdn = cn=%n,ou=users,dc=coppermail,dc=dyndns,dc=org
+#auth_bind_userdn = mail=%u,ou=%OU%,dc=%DC1%,dc=%DC2%,dc=%DC3%
+auth_bind_userdn = cn=%n,ou=%OU%,dc=%DC1%,dc=%DC2%,dc=%DC3%
 # when we use cn=%n it means user part of the full uid user@domain.com  , cn=%u is the only the user part so 
 # when we use cn=%n full uid is requied for authentication other wise connection termianted error comes in telnet session.
 
@@ -43,9 +43,9 @@ auth_bind_userdn = cn=%n,ou=users,dc=coppermail,dc=dyndns,dc=org
 ldap_version = 3
 
 # LDAP base. %variables can be used here.
-# For example: dc=mail, dc=example, dc=org
-base = ou=users,dc=coppermail,dc=dyndns,dc=org
-#base = dc=coppermail,dc=dyndns,dc=org
+# For example: dc=mail, dc=example, dc=%DC3%
+base = ou=%OU%,dc=%DC1%,dc=%DC2%,dc=%DC3%
+#base = dc=%DC1%,dc=%DC2%,dc=%DC3%
 
 # Dereference: never, searching, finding, always
 deref = never
