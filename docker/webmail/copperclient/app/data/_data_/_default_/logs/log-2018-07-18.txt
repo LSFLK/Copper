@@ -1,5 +1,348 @@
 
 --- FlushLogCache: WriteOnErrorOnly
+<<<<<<< HEAD
+[05:23:44.244][60abffbd] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:16][Apache/2.4.7 (Ubuntu)][apache2handler]
+[05:23:44.244][60abffbd] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[05:23:44.244][60abffbd] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_ie9tnd-dbFzHxw8oTi9_Nxcudox1w0J2gQ_2oQn_zxWdHe_8xuTttARuvMjzJGJg6VDRsuBojZLjjEwI4W3w0MZRgcwRltt_FA2Uj2aG_ssXYkpc-csoRxgrPJhR0MXrhcEMvgSxGA4j8k1LjUa4LRbrYBFZtrU7upFpsrD5lFFbxKZvhBwaswjZjcGFfwse9ENBArtGyOWI8X_MF-nEIqBxlAGwXpHKtyBUm6oDn8jwPdtfsZM8-1OMkgi3DGmS_JavyCFya8M1SAuktRfZzqf4oqRdiMH4Ckb0flfXeZe57nJfKsjHlEqtPjN9-paouc6TV60jg2rZZPA2n-uPS4iDczggEnRUCmU2lA/
+[05:23:44.246][60abffbd] AJAX[NOTE]: Action: DoChangePassword
+[05:23:44.246][60abffbd] POST[DATA]: {"PrevPassword":"*******","NewPassword":"*******","Action":"ChangePassword","XToken":"e16c04776f1492d4d6060938a3309566"}
+--- FlushLogCache: Trigger
+[05:23:44.281][60abffbd] LDAP[WARNING]: ldap_bind error: Invalid credentials (49)
+[05:23:45.290][60abffbd] INFO[NOTICE]: Error: Can't change password for lsf@coppermail.dyndns.org account.
+[05:23:45.296][60abffbd] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'CouldNotSaveNewPassword[130]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Providers/ChangePassword.php:79
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5069): RainLoop\Providers\ChangePassword->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#1 [internal function]: RainLoop\Actions->DoChangePassword()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#10 {main}
+[05:23:45.299][60abffbd] AJAX[DATA]: {"Action":"ChangePassword","Result":false,"ErrorCode":130,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1130}
+[05:23:45.315][60abffbd] INFO[MEMORY]: Memory peak usage: 1.25MB
+[05:23:45.318][60abffbd] INFO[TIME]: Time delta: 1.1298129558563
+
+--- FlushLogCache: WriteOnErrorOnly
+[05:23:58.684][70867abc] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:15][Apache/2.4.7 (Ubuntu)][apache2handler]
+[05:23:58.684][70867abc] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[05:23:58.684][70867abc] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_ie9tnd-dbFzHxw8oTi9_Nxcudox1w0J2gQ_2oQn_zxWdHe_8xuTttARuvMjzJGJg6VDRsuBojZLjjEwI4W3w0MZRgcwRltt_FA2Uj2aG_ssXYkpc-csoRxgrPJhR0MXrhcEMvgSxGA4j8k1LjUa4LRbrYBFZtrU7upFpsrD5lFFbxKZvhBwaswjZjcGFfwse9ENBArtGyOWI8X_MF-nEIqBxlAGwXpHKtyBUm6oDn8jwPdtfsZM8-1OMkgi3DGmS_JavyCFya8M1SAuktRfZzqf4oqRdiMH4Ckb0flfXeZe57nJfKsjHlEqtPjN9-paouc6TV60jg2rZZPA2n-uPS4iDczggEnRUCmU2lA/
+[05:23:58.686][70867abc] AJAX[NOTE]: Action: DoChangePassword
+[05:23:58.686][70867abc] POST[DATA]: {"PrevPassword":"*******","NewPassword":"*******","Action":"ChangePassword","XToken":"e16c04776f1492d4d6060938a3309566"}
+--- FlushLogCache: Trigger
+[05:23:59.715][70867abc] INFO[NOTICE]: Error: Can't change password for lsf@coppermail.dyndns.org account.
+[05:23:59.722][70867abc] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'CurrentPasswordIncorrect[131]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Providers/ChangePassword.php:63
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5069): RainLoop\Providers\ChangePassword->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#1 [internal function]: RainLoop\Actions->DoChangePassword()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#10 {main}
+[05:23:59.724][70867abc] AJAX[DATA]: {"Action":"ChangePassword","Result":false,"ErrorCode":131,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1110}
+[05:23:59.740][70867abc] INFO[MEMORY]: Memory peak usage: 1.25MB
+[05:23:59.743][70867abc] INFO[TIME]: Time delta: 1.1116790771484
+
+--- FlushLogCache: WriteOnErrorOnly
+[05:24:09.354][3a15cf6c] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:12][Apache/2.4.7 (Ubuntu)][apache2handler]
+[05:24:09.354][3a15cf6c] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[05:24:09.354][3a15cf6c] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_ie9tnd-dbFzHxw8oTi9_Nxcudox1w0J2gQ_2oQn_zxWdHe_8xuTttARuvMjzJGJg6VDRsuBojZLjjEwI4W3w0MZRgcwRltt_FA2Uj2aG_ssXYkpc-csoRxgrPJhR0MXrhcEMvgSxGA4j8k1LjUa4LRbrYBFZtrU7upFpsrD5lFFbxKZvhBwaswjZjcGFfwse9ENBArtGyOWI8X_MF-nEIqBxlAGwXpHKtyBUm6oDn8jwPdtfsZM8-1OMkgi3DGmS_JavyCFya8M1SAuktRfZzqf4oqRdiMH4Ckb0flfXeZe57nJfKsjHlEqtPjN9-paouc6TV60jg2rZZPA2n-uPS4iDczggEnRUCmU2lA/
+[05:24:09.356][3a15cf6c] AJAX[NOTE]: Action: DoChangePassword
+[05:24:09.356][3a15cf6c] POST[DATA]: {"PrevPassword":"*******","NewPassword":"*******","Action":"ChangePassword","XToken":"e16c04776f1492d4d6060938a3309566"}
+--- FlushLogCache: Trigger
+[05:24:09.389][3a15cf6c] LDAP[WARNING]: ldap_bind error: Invalid credentials (49)
+[05:24:10.396][3a15cf6c] INFO[NOTICE]: Error: Can't change password for lsf@coppermail.dyndns.org account.
+[05:24:10.401][3a15cf6c] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'CouldNotSaveNewPassword[130]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Providers/ChangePassword.php:79
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5069): RainLoop\Providers\ChangePassword->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#1 [internal function]: RainLoop\Actions->DoChangePassword()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#10 {main}
+[05:24:10.404][3a15cf6c] AJAX[DATA]: {"Action":"ChangePassword","Result":false,"ErrorCode":130,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1127}
+[05:24:10.410][3a15cf6c] INFO[MEMORY]: Memory peak usage: 1.25MB
+[05:24:10.411][3a15cf6c] INFO[TIME]: Time delta: 1.1203629970551
+
+--- FlushLogCache: WriteOnErrorOnly
+[05:24:41.080][e079315d] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:16][Apache/2.4.7 (Ubuntu)][apache2handler]
+[05:24:41.080][e079315d] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[05:24:41.080][e079315d] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_ie9tnd-dbFzHxw8oTi9_Nxcudox1w0J2gQ_2oQn_zxWdHe_8xuTttARuvMjzJGJg6VDRsuBojZLjjEwI4W3w0MZRgcwRltt_FA2Uj2aG_ssXYkpc-csoRxgrPJhR0MXrhcEMvgSxGA4j8k1LjUa4LRbrYBFZtrU7upFpsrD5lFFbxKZvhBwaswjZjcGFfwse9ENBArtGyOWI8X_MF-nEIqBxlAGwXpHKtyBUm6oDn8jwPdtfsZM8-1OMkgi3DGmS_JavyCFya8M1SAuktRfZzqf4oqRdiMH4Ckb0flfXeZe57nJfKsjHlEqtPjN9-paouc6TV60jg2rZZPA2n-uPS4iDczggEnRUCmU2lA/
+[05:24:41.081][e079315d] AJAX[NOTE]: Action: DoChangePassword
+[05:24:41.081][e079315d] POST[DATA]: {"PrevPassword":"*******","NewPassword":"*******","Action":"ChangePassword","XToken":"e16c04776f1492d4d6060938a3309566"}
+--- FlushLogCache: Trigger
+[05:24:41.100][e079315d] LDAP[WARNING]: ldap_bind error: Invalid credentials (49)
+[05:24:42.112][e079315d] INFO[NOTICE]: Error: Can't change password for lsf@coppermail.dyndns.org account.
+[05:24:42.119][e079315d] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'CouldNotSaveNewPassword[130]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Providers/ChangePassword.php:79
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5069): RainLoop\Providers\ChangePassword->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#1 [internal function]: RainLoop\Actions->DoChangePassword()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#10 {main}
+[05:24:42.122][e079315d] AJAX[DATA]: {"Action":"ChangePassword","Result":false,"ErrorCode":130,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1095}
+[05:24:42.136][e079315d] INFO[MEMORY]: Memory peak usage: 1.25MB
+[05:24:42.139][e079315d] INFO[TIME]: Time delta: 1.1008381843567
+
+--- FlushLogCache: WriteOnErrorOnly
+[05:45:45.901][e7cadc42] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:13][Apache/2.4.7 (Ubuntu)][apache2handler]
+[05:45:45.901][e7cadc42] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[05:45:45.901][e7cadc42] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_ie9tnd-dbFzHxw8oTi9_Nxcudox1w0J2gQ_2oQn_zxWdHe_8xuTttARuvMjzJGJg6VDRsuBojZLjjEwI4W3w0MZRgcwRltt_FA2Uj2aG_ssXYkpc-csoRxgrPJhR0MXrhcEMvgSxGA4j8k1LjUa4LRbrYBFZtrU7upFpsrD5lFFbxKZvhBwaswjZjcGFfwse9ENBArtGyOWI8X_MF-nEIqBxlAGwXpHKtyBUm6oDn8jwPdtfsZM8-1OMkgi3DGmS_JavyCFya8M1SAuktRfZzqf4oqRdiMH4Ckb0flfXeZe57nJfKsjHlEqtPjN9-paouc6TV60jg2rZZPA2n-uPS4iDczggEnRUCmU2lA/
+[05:45:45.904][e7cadc42] AJAX[NOTE]: Action: DoChangePassword
+[05:45:45.904][e7cadc42] POST[DATA]: {"PrevPassword":"*******","NewPassword":"*******","Action":"ChangePassword","XToken":"e16c04776f1492d4d6060938a3309566"}
+--- FlushLogCache: Trigger
+[05:45:45.939][e7cadc42] LDAP[WARNING]: ldap_bind error: Invalid credentials (49)
+[05:45:46.950][e7cadc42] INFO[NOTICE]: Error: Can't change password for lsf@coppermail.dyndns.org account.
+[05:45:46.957][e7cadc42] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'CouldNotSaveNewPassword[130]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Providers/ChangePassword.php:79
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5069): RainLoop\Providers\ChangePassword->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#1 [internal function]: RainLoop\Actions->DoChangePassword()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#10 {main}
+[05:45:46.959][e7cadc42] AJAX[DATA]: {"Action":"ChangePassword","Result":false,"ErrorCode":130,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1152}
+[05:45:46.977][e7cadc42] INFO[MEMORY]: Memory peak usage: 1.25MB
+[05:45:46.980][e7cadc42] INFO[TIME]: Time delta: 1.150083065033
+
+--- FlushLogCache: WriteOnErrorOnly
+[06:07:34.366][cd7365c7] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:17][Apache/2.4.7 (Ubuntu)][apache2handler]
+[06:07:34.366][cd7365c7] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[06:07:34.366][cd7365c7] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_ie9tnd-dbFzHxw8oTi9_Nxcudox1w0J2gQ_2oQn_zxWdHe_8xuTttARuvMjzJGJg6VDRsuBojZLjjEwI4W3w0MZRgcwRltt_FA2Uj2aG_ssXYkpc-csoRxgrPJhR0MXrhcEMvgSxGA4j8k1LjUa4LRbrYBFZtrU7upFpsrD5lFFbxKZvhBwaswjZjcGFfwse9ENBArtGyOWI8X_MF-nEIqBxlAGwXpHKtyBUm6oDn8jwPdtfsZM8-1OMkgi3DGmS_JavyCFya8M1SAuktRfZzqf4oqRdiMH4Ckb0flfXeZe57nJfKsjHlEqtPjN9-paouc6TV60jg2rZZPA2n-uPS4iDczggEnRUCmU2lA/
+[06:07:34.368][cd7365c7] AJAX[NOTE]: Action: DoChangePassword
+[06:07:34.368][cd7365c7] POST[DATA]: {"PrevPassword":"*******","NewPassword":"*******","Action":"ChangePassword","XToken":"e16c04776f1492d4d6060938a3309566"}
+--- FlushLogCache: Trigger
+[06:07:34.403][cd7365c7] LDAP[WARNING]: ldap_bind error: Invalid credentials (49)
+[06:07:35.415][cd7365c7] INFO[NOTICE]: Error: Can't change password for lsf@coppermail.dyndns.org account.
+[06:07:35.421][cd7365c7] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'CouldNotSaveNewPassword[130]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Providers/ChangePassword.php:79
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5069): RainLoop\Providers\ChangePassword->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#1 [internal function]: RainLoop\Actions->DoChangePassword()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#10 {main}
+[06:07:35.423][cd7365c7] AJAX[DATA]: {"Action":"ChangePassword","Result":false,"ErrorCode":130,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1128}
+[06:07:35.440][cd7365c7] INFO[MEMORY]: Memory peak usage: 1.25MB
+[06:07:35.442][cd7365c7] INFO[TIME]: Time delta: 1.1274180412292
+
+--- FlushLogCache: WriteOnErrorOnly
+[06:11:02.294][5ab9478e] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:13][Apache/2.4.7 (Ubuntu)][apache2handler]
+[06:11:02.294][5ab9478e] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[06:11:02.294][5ab9478e] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_ie9tnd-dbFzHxw8oTi9_Nxcudox1w0J2gQ_2oQn_zxWdHe_8xuTttARuvMjzJGJg6VDRsuBojZLjjEwI4W3w0MZRgcwRltt_FA2Uj2aG_ssXYkpc-csoRxgrPJhR0MXrhcEMvgSxGA4j8k1LjUa4LRbrYBFZtrU7upFpsrD5lFFbxKZvhBwaswjZjcGFfwse9ENBArtGyOWI8X_MF-nEIqBxlAGwXpHKtyBUm6oDn8jwPdtfsZM8-1OMkgi3DGmS_JavyCFya8M1SAuktRfZzqf4oqRdiMH4Ckb0flfXeZe57nJfKsjHlEqtPjN9-paouc6TV60jg2rZZPA2n-uPS4iDczggEnRUCmU2lA/
+[06:11:02.296][5ab9478e] AJAX[NOTE]: Action: DoChangePassword
+[06:11:02.296][5ab9478e] POST[DATA]: {"PrevPassword":"*******","NewPassword":"*******","Action":"ChangePassword","XToken":"e16c04776f1492d4d6060938a3309566"}
+--- FlushLogCache: Trigger
+[06:11:03.346][5ab9478e] INFO[NOTICE]: Error: Can't change password for lsf@coppermail.dyndns.org account.
+[06:11:03.355][5ab9478e] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'CurrentPasswordIncorrect[131]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Providers/ChangePassword.php:63
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5069): RainLoop\Providers\ChangePassword->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#1 [internal function]: RainLoop\Actions->DoChangePassword()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#10 {main}
+[06:11:03.358][5ab9478e] AJAX[DATA]: {"Action":"ChangePassword","Result":false,"ErrorCode":131,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1153}
+[06:11:03.375][5ab9478e] INFO[MEMORY]: Memory peak usage: 1.25MB
+[06:11:03.379][5ab9478e] INFO[TIME]: Time delta: 1.150584936142
+
+--- FlushLogCache: WriteOnErrorOnly
+[06:11:25.138][072e9dd1] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:12][Apache/2.4.7 (Ubuntu)][apache2handler]
+[06:11:25.138][072e9dd1] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[06:11:25.138][072e9dd1] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_ie9tnd-dbFzHxw8oTi9_Nxcudox1w0J2gQ_2oQn_zxWdHe_8xuTttARuvMjzJGJg6VDRsuBojZLjjEwI4W3w0MZRgcwRltt_FA2Uj2aG_ssXYkpc-csoRxgrPJhR0MXrhcEMvgSxGA4j8k1LjUa4LRbrYBFZtrU7upFpsrD5lFFbxKZvhBwaswjZjcGFfwse9ENBArtGyOWI8X_MF-nEIqBxlAGwXpHKtyBUm6oDn8jwPdtfsZM8-1OMkgi3DGmS_JavyCFya8M1SAuktRfZzqf4oqRdiMH4Ckb0flfXeZe57nJfKsjHlEqtPjN9-paouc6TV60jg2rZZPA2n-uPS4iDczggEnRUCmU2lA/
+[06:11:25.140][072e9dd1] AJAX[NOTE]: Action: DoChangePassword
+[06:11:25.140][072e9dd1] POST[DATA]: {"PrevPassword":"*******","NewPassword":"*******","Action":"ChangePassword","XToken":"e16c04776f1492d4d6060938a3309566"}
+--- FlushLogCache: Trigger
+[06:11:25.179][072e9dd1] LDAP[WARNING]: ldap_bind error: Invalid credentials (49)
+[06:11:26.191][072e9dd1] INFO[NOTICE]: Error: Can't change password for lsf@coppermail.dyndns.org account.
+[06:11:26.197][072e9dd1] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'CouldNotSaveNewPassword[130]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Providers/ChangePassword.php:79
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5069): RainLoop\Providers\ChangePassword->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#1 [internal function]: RainLoop\Actions->DoChangePassword()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#10 {main}
+[06:11:26.200][072e9dd1] AJAX[DATA]: {"Action":"ChangePassword","Result":false,"ErrorCode":130,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1151}
+[06:11:26.219][072e9dd1] INFO[MEMORY]: Memory peak usage: 1.25MB
+[06:11:26.221][072e9dd1] INFO[TIME]: Time delta: 1.1501379013062
+
+--- FlushLogCache: WriteOnErrorOnly
+[06:11:57.539][2104436e] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:15][Apache/2.4.7 (Ubuntu)][apache2handler]
+[06:11:57.539][2104436e] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[06:11:57.539][2104436e] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_ie9tnd-dbFzHxw8oTi9_Nxcudox1w0J2gQ_2oQn_zxWdHe_8xuTttARuvMjzJGJg6VDRsuBojZLjjEwI4W3w0MZRgcwRltt_FA2Uj2aG_ssXYkpc-csoRxgrPJhR0MXrhcEMvgSxGA4j8k1LjUa4LRbrYBFZtrU7upFpsrD5lFFbxKZvhBwaswjZjcGFfwse9ENBArtGyOWI8X_MF-nEIqBxlAGwXpHKtyBUm6oDn8jwPdtfsZM8-1OMkgi3DGmS_JavyCFya8M1SAuktRfZzqf4oqRdiMH4Ckb0flfXeZe57nJfKsjHlEqtPjN9-paouc6TV60jg2rZZPA2n-uPS4iDczggEnRUCmU2lA/
+[06:11:57.541][2104436e] AJAX[NOTE]: Action: DoChangePassword
+[06:11:57.541][2104436e] POST[DATA]: {"PrevPassword":"*******","NewPassword":"*******","Action":"ChangePassword","XToken":"e16c04776f1492d4d6060938a3309566"}
+--- FlushLogCache: Trigger
+[06:11:57.572][2104436e] LDAP[WARNING]: ldap_bind error: Can't contact LDAP server (-1)
+[06:11:58.581][2104436e] INFO[NOTICE]: Error: Can't change password for lsf@coppermail.dyndns.org account.
+[06:11:58.587][2104436e] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'CouldNotSaveNewPassword[130]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Providers/ChangePassword.php:79
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5069): RainLoop\Providers\ChangePassword->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#1 [internal function]: RainLoop\Actions->DoChangePassword()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#10 {main}
+[06:11:58.589][2104436e] AJAX[DATA]: {"Action":"ChangePassword","Result":false,"ErrorCode":130,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1118}
+[06:11:58.604][2104436e] INFO[MEMORY]: Memory peak usage: 1.25MB
+[06:11:58.607][2104436e] INFO[TIME]: Time delta: 1.1182670593262
+
+--- FlushLogCache: WriteOnErrorOnly
+[06:12:02.229][9cf54c4e] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:12][Apache/2.4.7 (Ubuntu)][apache2handler]
+[06:12:02.229][9cf54c4e] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[06:12:02.229][9cf54c4e] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_ie9tnd-dbFzHxw8oTi9_Nxcudox1w0J2gQ_2oQn_zxWdHe_8xuTttARuvMjzJGJg6VDRsuBojZLjjEwI4W3w0MZRgcwRltt_FA2Uj2aG_ssXYkpc-csoRxgrPJhR0MXrhcEMvgSxGA4j8k1LjUa4LRbrYBFZtrU7upFpsrD5lFFbxKZvhBwaswjZjcGFfwse9ENBArtGyOWI8X_MF-nEIqBxlAGwXpHKtyBUm6oDn8jwPdtfsZM8-1OMkgi3DGmS_JavyCFya8M1SAuktRfZzqf4oqRdiMH4Ckb0flfXeZe57nJfKsjHlEqtPjN9-paouc6TV60jg2rZZPA2n-uPS4iDczggEnRUCmU2lA/
+[06:12:02.233][9cf54c4e] AJAX[NOTE]: Action: DoChangePassword
+[06:12:02.233][9cf54c4e] POST[DATA]: {"PrevPassword":"*******","NewPassword":"*******","Action":"ChangePassword","XToken":"e16c04776f1492d4d6060938a3309566"}
+--- FlushLogCache: Trigger
+[06:12:03.264][9cf54c4e] INFO[NOTICE]: Error: Can't change password for lsf@coppermail.dyndns.org account.
+[06:12:03.270][9cf54c4e] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'CurrentPasswordIncorrect[131]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Providers/ChangePassword.php:63
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5069): RainLoop\Providers\ChangePassword->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#1 [internal function]: RainLoop\Actions->DoChangePassword()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#10 {main}
+[06:12:03.272][9cf54c4e] AJAX[DATA]: {"Action":"ChangePassword","Result":false,"ErrorCode":131,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1109}
+[06:12:03.286][9cf54c4e] INFO[MEMORY]: Memory peak usage: 1.25MB
+[06:12:03.288][9cf54c4e] INFO[TIME]: Time delta: 1.1111860275269
+
+--- FlushLogCache: WriteOnErrorOnly
+[06:12:45.785][11b11085] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:12][Apache/2.4.7 (Ubuntu)][apache2handler]
+[06:12:45.786][11b11085] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[06:12:45.786][11b11085] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_Ib1j7QNKs1b8ep_Sq7lo8o-LAL8i1KYVFDDwP-CzYIre3fhoFH1XVmOd54lIjdfdhZrGsEQEW6mrQTXIxp54mbMbfpzZNF3OADQ3WAAthzFGRojQQxCEKBINPKI7KvUJuX6B8eQphdKB7QJkC0ce1v8D88eYTCbplX0uBzy6SM1L-mg3OMvXmhzk9MF4XUjnf70xfM3gQrvJ_rJ17aJtpcn_hqdObEQldf9u6vw4EoB0TqAjmtkBu6b-LKfY83PzAEgfzvs_H7yeHMw08bQE8oppINBDxHtTkwunby0ImUfCNfIGSpMTotEKrxJ2DvvV62BzBcnSPEKdVASDAC_-hglF54IFQIYNnthSag/
+[06:12:45.788][11b11085] AJAX[NOTE]: Action: DoChangePassword
+[06:12:45.788][11b11085] POST[DATA]: {"PrevPassword":"*******","NewPassword":"*******","Action":"ChangePassword","XToken":"e16c04776f1492d4d6060938a3309566"}
+--- FlushLogCache: Trigger
+[06:12:45.814][11b11085] LDAP[WARNING]: ldap_bind error: Can't contact LDAP server (-1)
+[06:12:46.823][11b11085] INFO[NOTICE]: Error: Can't change password for anu@coppermail.dyndns.org account.
+[06:12:46.829][11b11085] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'CouldNotSaveNewPassword[130]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Providers/ChangePassword.php:79
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5069): RainLoop\Providers\ChangePassword->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#1 [internal function]: RainLoop\Actions->DoChangePassword()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#10 {main}
+[06:12:46.830][11b11085] AJAX[DATA]: {"Action":"ChangePassword","Result":false,"ErrorCode":130,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1113}
+[06:12:46.844][11b11085] INFO[MEMORY]: Memory peak usage: 1.25MB
+[06:12:46.847][11b11085] INFO[TIME]: Time delta: 1.1126210689545
+
+--- FlushLogCache: WriteOnErrorOnly
+[06:12:49.725][870799bc] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:17][Apache/2.4.7 (Ubuntu)][apache2handler]
+[06:12:49.725][870799bc] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[06:12:49.725][870799bc] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_Ib1j7QNKs1b8ep_Sq7lo8o-LAL8i1KYVFDDwP-CzYIre3fhoFH1XVmOd54lIjdfdhZrGsEQEW6mrQTXIxp54mbMbfpzZNF3OADQ3WAAthzFGRojQQxCEKBINPKI7KvUJuX6B8eQphdKB7QJkC0ce1v8D88eYTCbplX0uBzy6SM1L-mg3OMvXmhzk9MF4XUjnf70xfM3gQrvJ_rJ17aJtpcn_hqdObEQldf9u6vw4EoB0TqAjmtkBu6b-LKfY83PzAEgfzvs_H7yeHMw08bQE8oppINBDxHtTkwunby0ImUfCNfIGSpMTotEKrxJ2DvvV62BzBcnSPEKdVASDAC_-hglF54IFQIYNnthSag/
+[06:12:49.728][870799bc] AJAX[NOTE]: Action: DoChangePassword
+[06:12:49.728][870799bc] POST[DATA]: {"PrevPassword":"*******","NewPassword":"*******","Action":"ChangePassword","XToken":"e16c04776f1492d4d6060938a3309566"}
+--- FlushLogCache: Trigger
+[06:12:50.765][870799bc] INFO[NOTICE]: Error: Can't change password for anu@coppermail.dyndns.org account.
+[06:12:50.771][870799bc] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'CurrentPasswordIncorrect[131]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Providers/ChangePassword.php:63
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5069): RainLoop\Providers\ChangePassword->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#1 [internal function]: RainLoop\Actions->DoChangePassword()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#10 {main}
+[06:12:50.774][870799bc] AJAX[DATA]: {"Action":"ChangePassword","Result":false,"ErrorCode":131,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1117}
+[06:12:50.788][870799bc] INFO[MEMORY]: Memory peak usage: 1.25MB
+[06:12:50.791][870799bc] INFO[TIME]: Time delta: 1.1166169643402
+
+--- FlushLogCache: WriteOnErrorOnly
+[06:47:50.902][7b778d99] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:11][Apache/2.4.7 (Ubuntu)][apache2handler]
+[06:47:50.902][7b778d99] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[06:47:50.902][7b778d99] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[06:47:50.906][7b778d99] AJAX[NOTE]: Action: DoLogin
+[06:47:50.906][7b778d99] POST[DATA]: {"Email":"anu","Login":"","Password":"*******","Language":"","AdditionalCode":"","AdditionalCodeSignMe":"0","SignMe":"0","Action":"Login","XToken":"e16c04776f1492d4d6060938a3309566"}
+[06:47:50.906][7b778d99] LOGIN[DATA]: The email address "anu" is not complete
+[06:47:50.906][7b778d99] LOGIN[DATA]: Determined user domain: localhost
+[06:47:50.926][7b778d99] LOGIN[DATA]: Check "localhost": NO
+[06:47:50.940][7b778d99] LOGIN[DATA]: Check "localhost" with wildcard: NO
+[06:47:50.940][7b778d99] LOGIN[DATA]: Domain was not found!
+[06:47:50.940][7b778d99] LOGIN[DATA]: Default domain "coppermail.dyndns.org" was used. (anu > anu@coppermail.dyndns.org)
+[06:47:50.962][7b778d99] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
+[06:47:50.963][7b778d99] IMAP[NOTE]: Connected (success)
+[06:47:50.971][7b778d99] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN AUTH=LOGIN] Dovecot ready.
+
+[06:47:50.972][7b778d99] IMAP[DATA]: > TAG1 AUTHENTICATE PLAIN
+
+[06:47:50.972][7b778d99] IMAP[DATA]: < + 
+
+[06:47:50.972][7b778d99] IMAP[SECURE]: > *******
+
+[06:47:52.482][7b778d99] IMAP[DATA]: < TAG1 NO [AUTHENTICATIONFAILED] Authentication failed.
+
+--- FlushLogCache: Trigger
+[06:47:52.496][7b778d99] IMAP[WARNING]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('anu@coppermail....', '*******', '', true, false)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('anu@coppermail....', '*******', '', true, false)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('anu@coppermail....', '*******', '', '', false)
+=======
 [03:43:02.458][71c125ae] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:12][Apache/2.4.7 (Ubuntu)][apache2handler]
 [03:43:02.458][71c125ae] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
 [03:43:02.458][71c125ae] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
@@ -719,6 +1062,7 @@ Stack trace:
 #4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
 #5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
 #6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('thara@coppermai...', '*******', '', '', false)
+>>>>>>> f0cab70f36cb86db979c24d07046f52d956fc3c1
 #7 [internal function]: RainLoop\Actions->DoLogin()
 #8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
 #9 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
@@ -729,6 +1073,17 @@ Stack trace:
 #14 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #15 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #16 {main}
+<<<<<<< HEAD
+[06:47:52.505][7b778d99] IMAP[NOTICE]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('anu@coppermail....', '*******', '', true, false)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('anu@coppermail....', '*******', '', true, false)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('anu@coppermail....', '*******', '', '', false)
+=======
 [04:15:53.288][3f64e8b2] IMAP[NOTICE]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
@@ -738,6 +1093,7 @@ Stack trace:
 #4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
 #5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
 #6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('thara@coppermai...', '*******', '', '', false)
+>>>>>>> f0cab70f36cb86db979c24d07046f52d956fc3c1
 #7 [internal function]: RainLoop\Actions->DoLogin()
 #8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
 #9 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
@@ -751,11 +1107,19 @@ Stack trace:
 
 Next exception 'MailSo\Imap\Exceptions\LoginBadCredentialsException' with message 'MailSo-Imap-Exceptions-LoginBadCredentialsException (ImapClient.php ~ 312)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:312
 Stack trace:
+<<<<<<< HEAD
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('anu@coppermail....', '*******', '', true, false)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('anu@coppermail....', '*******', '', true, false)
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('anu@coppermail....', '*******', '', '', false)
+=======
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('thara@coppermai...', '*******', '', true, false)
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('thara@coppermai...', '*******', '', true, false)
 #2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
 #3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
 #4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('thara@coppermai...', '*******', '', '', false)
+>>>>>>> f0cab70f36cb86db979c24d07046f52d956fc3c1
 #5 [internal function]: RainLoop\Actions->DoLogin()
 #6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
 #7 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
@@ -766,6 +1130,17 @@ Stack trace:
 #12 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #13 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #14 {main}
+<<<<<<< HEAD
+[06:47:52.511][7b778d99] INFO[ERROR]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('anu@coppermail....', '*******', '', true, false)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('anu@coppermail....', '*******', '', true, false)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('anu@coppermail....', '*******', '', '', false)
+=======
 [04:15:53.301][3f64e8b2] INFO[ERROR]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
@@ -775,6 +1150,7 @@ Stack trace:
 #4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
 #5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
 #6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('thara@coppermai...', '*******', '', '', false)
+>>>>>>> f0cab70f36cb86db979c24d07046f52d956fc3c1
 #7 [internal function]: RainLoop\Actions->DoLogin()
 #8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
 #9 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
@@ -788,6 +1164,56 @@ Stack trace:
 
 Next exception 'MailSo\Imap\Exceptions\LoginBadCredentialsException' with message 'MailSo-Imap-Exceptions-LoginBadCredentialsException (ImapClient.php ~ 312)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:312
 Stack trace:
+<<<<<<< HEAD
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('anu@coppermail....', '*******', '', true, false)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('anu@coppermail....', '*******', '', true, false)
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('anu@coppermail....', '*******', '', '', false)
+#5 [internal function]: RainLoop\Actions->DoLogin()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#7 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#9 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#11 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#12 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#13 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#14 {main}
+
+Next exception 'RainLoop\Exceptions\ClientException' with message 'AuthError[102]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:2097
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('anu@coppermail....', '*******', '', '', false)
+#2 [internal function]: RainLoop\Actions->DoLogin()
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#4 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#8 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#9 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#10 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#11 {main}
+[06:47:52.513][7b778d99] AJAX[DATA]: {"Action":"Login","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1728}
+[06:47:52.525][7b778d99] INFO[MEMORY]: Memory peak usage: 1.25MB
+[06:47:52.528][7b778d99] INFO[TIME]: Time delta: 1.7220001220703
+[06:47:52.530][7b778d99] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
+
+--- FlushLogCache: WriteOnErrorOnly
+[06:48:18.981][103f21d9] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:23][Apache/2.4.7 (Ubuntu)][apache2handler]
+[06:48:18.981][103f21d9] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[06:48:18.981][103f21d9] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_ie9tnd-dbFzHxw8oTi9_Nxcudox1w0J2gQ_2oQn_zxWdHe_8xuTttARuvMjzJGJg6VDRsuBojZLjjEwI4W3w0MZRgcwRltt_FA2Uj2aG_ssXYkpc-csoRxgrPJhR0MXrhcEMvgSxGA4j8k1LjUa4LRbrYBFZtrU7upFpsrD5lFFbxKZvhBwaswjZjcGFfwse9ENBArtGyOWI8X_MF-nEIqBxlAGwXpHKtyBUm6oDn8jwPdtfsZM8-1OMkgi3DGmS_JavyCFya8M1SAuktRfZzqf4oqRdiMH4Ckb0flfXeZe57nJfKsjHlEqtPjN9-paouc6TV60jg2rZZPA2n-uPS4iDczggEnRUCmU2lA/
+[06:48:18.983][103f21d9] AJAX[NOTE]: Action: DoChangePassword
+[06:48:18.983][103f21d9] POST[DATA]: {"PrevPassword":"*******","NewPassword":"*******","Action":"ChangePassword","XToken":"e16c04776f1492d4d6060938a3309566"}
+--- FlushLogCache: Trigger
+[06:48:19.011][103f21d9] LDAP[WARNING]: ldap_bind error: Invalid credentials (49)
+[06:48:19.020][103f21d9] INFO[NOTICE]: Error: Can't change password for lsf@coppermail.dyndns.org account.
+[06:48:19.021][103f21d9] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'CouldNotSaveNewPassword[130]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Providers/ChangePassword.php:79
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5069): RainLoop\Providers\ChangePassword->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#1 [internal function]: RainLoop\Actions->DoChangePassword()
+=======
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('thara@coppermai...', '*******', '', true, false)
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('thara@coppermai...', '*******', '', true, false)
 #2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
@@ -945,6 +1371,7 @@ Next exception 'RainLoop\Exceptions\ClientException' with message 'AuthError[102
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5696): RainLoop\Actions->initMailClientConnection()
 #1 [internal function]: RainLoop\Actions->DoFolderInformation()
+>>>>>>> f0cab70f36cb86db979c24d07046f52d956fc3c1
 #2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
 #3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
 #4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
@@ -954,6 +1381,29 @@ Stack trace:
 #8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #10 {main}
+<<<<<<< HEAD
+[06:48:19.023][103f21d9] AJAX[DATA]: {"Action":"ChangePassword","Result":false,"ErrorCode":130,"ErrorMessage":"","ErrorMessageAdditional":"","Time":97}
+[06:48:19.034][103f21d9] INFO[MEMORY]: Memory peak usage: 1.25MB
+[06:48:19.036][103f21d9] INFO[TIME]: Time delta: 0.09520697593689
+
+--- FlushLogCache: WriteOnErrorOnly
+[06:59:53.064][c7ffceff] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:17][Apache/2.4.7 (Ubuntu)][apache2handler]
+[06:59:53.064][c7ffceff] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[06:59:53.064][c7ffceff] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_ie9tnd-dbFzHxw8oTi9_Nxcudox1w0J2gQ_2oQn_zxWdHe_8xuTttARuvMjzJGJg6VDRsuBojZLjjEwI4W3w0MZRgcwRltt_FA2Uj2aG_ssXYkpc-csoRxgrPJhR0MXrhcEMvgSxGA4j8k1LjUa4LRbrYBFZtrU7upFpsrD5lFFbxKZvhBwaswjZjcGFfwse9ENBArtGyOWI8X_MF-nEIqBxlAGwXpHKtyBUm6oDn8jwPdtfsZM8-1OMkgi3DGmS_JavyCFya8M1SAuktRfZzqf4oqRdiMH4Ckb0flfXeZe57nJfKsjHlEqtPjN9-paouc6TV60jg2rZZPA2n-uPS4iDczggEnRUCmU2lA/
+[06:59:53.065][c7ffceff] AJAX[NOTE]: Action: DoChangePassword
+[06:59:53.066][c7ffceff] POST[DATA]: {"PrevPassword":"*******","NewPassword":"*******","Action":"ChangePassword","XToken":"e16c04776f1492d4d6060938a3309566"}
+[06:59:53.094][c7ffceff] POPPASSD[NOTE]: Start connection to "tcp://127.0.0.1:106"
+[06:59:53.097][c7ffceff] POPPASSD[NOTE]: Connected (unsuccess)
+--- FlushLogCache: Trigger
+[06:59:53.107][c7ffceff] POPPASSD[NOTICE]: Socket: [2] stream_socket_client(): unable to connect to tcp://127.0.0.1:106 (Connection refused)
+[06:59:53.110][c7ffceff] POPPASSD[NOTICE]: exception 'MailSo\Net\Exceptions\SocketCanNotConnectToHostException' with message 'Can't connect to host "tcp://127.0.0.1:106"' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Net/NetClient.php:292
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Poppassd/PoppassdClient.php(68): MailSo\Net\NetClient->Connect('127.0.0.1', 106, 9, false, true)
+#1 /var/www/site/app/data/_data_/_default_/plugins/poppassd-change-password/ChangePasswordPoppassdDriver.php(104): MailSo\Poppassd\PoppassdClient->Connect('127.0.0.1', 106)
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Providers/ChangePassword.php(77): ChangePasswordPoppassdDriver->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5069): RainLoop\Providers\ChangePassword->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#4 [internal function]: RainLoop\Actions->DoChangePassword()
+=======
 [05:00:17.436][736ad1e1] AJAX[DATA]: {"Action":"FolderInformation","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1973}
 [05:00:17.455][736ad1e1] INFO[MEMORY]: Memory peak usage: 3.5MB
 [05:00:17.459][736ad1e1] INFO[TIME]: Time delta: 1.9572930335999
@@ -1032,6 +1482,7 @@ Stack trace:
 #2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(9024): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
 #3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5750): RainLoop\Actions->initMailClientConnection()
 #4 [internal function]: RainLoop\Actions->DoFolderInformationMultiply()
+>>>>>>> f0cab70f36cb86db979c24d07046f52d956fc3c1
 #5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
 #6 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
 #7 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
@@ -1041,6 +1492,43 @@ Stack trace:
 #11 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #12 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #13 {main}
+<<<<<<< HEAD
+[06:59:54.117][c7ffceff] INFO[NOTICE]: Error: Can't change password for lsf@coppermail.dyndns.org account.
+[06:59:54.123][c7ffceff] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'CouldNotSaveNewPassword[130]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Providers/ChangePassword.php:79
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5069): RainLoop\Providers\ChangePassword->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#1 [internal function]: RainLoop\Actions->DoChangePassword()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#10 {main}
+[06:59:54.125][c7ffceff] AJAX[DATA]: {"Action":"ChangePassword","Result":false,"ErrorCode":130,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1113}
+[06:59:54.137][c7ffceff] INFO[MEMORY]: Memory peak usage: 1.25MB
+[06:59:54.140][c7ffceff] INFO[TIME]: Time delta: 1.1140789985657
+
+--- FlushLogCache: WriteOnErrorOnly
+[07:00:54.475][5d22dc46] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:17][Apache/2.4.7 (Ubuntu)][apache2handler]
+[07:00:54.475][5d22dc46] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[07:00:54.475][5d22dc46] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_Kx5850wSEPUjFTkkQuJh6UGEHVnXtGAGYghG7NeLKYCEP9q_1JLcu4lnvZksarYy_OZrrrqLF15YnYb66izTDcuuG5EeP-cE12842mtgOuksSAeCKp-lxmhKSWaxAIapdviv6BGp5VlmKmswVhlowR1kA564SCACkHPfNiNKaXTDJj_fw3bfbDXA9EEPIuGjDbVcEv5lR7I4sPioDeH75CCrZWJFnoxS5Lf5X9VoXPNotKAfem4gu7AiY66vfCGyDsA0h5QoAb3lRMFwQ1VBl3r9v4ikv_hNn8hLDF8-83rZ0KwNmLPlJl9j1yZaNHZfnDs9mr3tbjPWskRIACqLCZeJLgse9ZKVO4wxLWrCFVLpLuCXU0iwJv_I5JyKaICre9f6mA/
+[07:00:54.478][5d22dc46] AJAX[NOTE]: Action: DoChangePassword
+[07:00:54.478][5d22dc46] POST[DATA]: {"PrevPassword":"*******","NewPassword":"*******","Action":"ChangePassword","XToken":"e16c04776f1492d4d6060938a3309566"}
+[07:00:54.508][5d22dc46] POPPASSD[NOTE]: Start connection to "tcp://127.0.0.1:106"
+[07:00:54.510][5d22dc46] POPPASSD[NOTE]: Connected (unsuccess)
+--- FlushLogCache: Trigger
+[07:00:54.512][5d22dc46] POPPASSD[NOTICE]: Socket: [2] stream_socket_client(): unable to connect to tcp://127.0.0.1:106 (Connection refused)
+[07:00:54.515][5d22dc46] POPPASSD[NOTICE]: exception 'MailSo\Net\Exceptions\SocketCanNotConnectToHostException' with message 'Can't connect to host "tcp://127.0.0.1:106"' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Net/NetClient.php:292
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Poppassd/PoppassdClient.php(68): MailSo\Net\NetClient->Connect('127.0.0.1', 106, 9, false, true)
+#1 /var/www/site/app/data/_data_/_default_/plugins/poppassd-change-password/ChangePasswordPoppassdDriver.php(104): MailSo\Poppassd\PoppassdClient->Connect('127.0.0.1', 106)
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Providers/ChangePassword.php(77): ChangePasswordPoppassdDriver->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5069): RainLoop\Providers\ChangePassword->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#4 [internal function]: RainLoop\Actions->DoChangePassword()
+=======
 [05:01:16.293][af44ea3a] INFO[ERROR]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
@@ -1067,6 +1555,7 @@ Stack trace:
 #2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(9024): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
 #3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5750): RainLoop\Actions->initMailClientConnection()
 #4 [internal function]: RainLoop\Actions->DoFolderInformationMultiply()
+>>>>>>> f0cab70f36cb86db979c24d07046f52d956fc3c1
 #5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
 #6 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
 #7 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
@@ -1075,12 +1564,21 @@ Stack trace:
 #10 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
 #11 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #12 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+<<<<<<< HEAD
+#13 {main}
+[07:00:55.524][5d22dc46] INFO[NOTICE]: Error: Can't change password for anu@coppermail.dyndns.org account.
+[07:00:55.529][5d22dc46] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'CouldNotSaveNewPassword[130]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Providers/ChangePassword.php:79
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5069): RainLoop\Providers\ChangePassword->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#1 [internal function]: RainLoop\Actions->DoChangePassword()
+=======
 #13 {main}
 
 Next exception 'RainLoop\Exceptions\ClientException' with message 'AuthError[102]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:9032
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5750): RainLoop\Actions->initMailClientConnection()
 #1 [internal function]: RainLoop\Actions->DoFolderInformationMultiply()
+>>>>>>> f0cab70f36cb86db979c24d07046f52d956fc3c1
 #2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
 #3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
 #4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
@@ -1090,6 +1588,309 @@ Stack trace:
 #8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #10 {main}
+<<<<<<< HEAD
+[07:00:55.531][5d22dc46] AJAX[DATA]: {"Action":"ChangePassword","Result":false,"ErrorCode":130,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1123}
+[07:00:55.544][5d22dc46] INFO[MEMORY]: Memory peak usage: 1.25MB
+[07:00:55.546][5d22dc46] INFO[TIME]: Time delta: 1.1226229667664
+
+--- FlushLogCache: WriteOnErrorOnly
+[07:02:29.002][03ae1780] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:12][Apache/2.4.7 (Ubuntu)][apache2handler]
+[07:02:29.002][03ae1780] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[07:02:29.002][03ae1780] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_Kx5850wSEPUjFTkkQuJh6UGEHVnXtGAGYghG7NeLKYCEP9q_1JLcu4lnvZksarYy_OZrrrqLF15YnYb66izTDcuuG5EeP-cE12842mtgOuksSAeCKp-lxmhKSWaxAIapdviv6BGp5VlmKmswVhlowR1kA564SCACkHPfNiNKaXTDJj_fw3bfbDXA9EEPIuGjDbVcEv5lR7I4sPioDeH75CCrZWJFnoxS5Lf5X9VoXPNotKAfem4gu7AiY66vfCGyDsA0h5QoAb3lRMFwQ1VBl3r9v4ikv_hNn8hLDF8-83rZ0KwNmLPlJl9j1yZaNHZfnDs9mr3tbjPWskRIACqLCZeJLgse9ZKVO4wxLWrCFVLpLuCXU0iwJv_I5JyKaICre9f6mA/
+[07:02:29.004][03ae1780] AJAX[NOTE]: Action: DoChangePassword
+[07:02:29.004][03ae1780] POST[DATA]: {"PrevPassword":"*******","NewPassword":"*******","Action":"ChangePassword","XToken":"e16c04776f1492d4d6060938a3309566"}
+--- FlushLogCache: Trigger
+[07:02:29.033][03ae1780] LDAP[WARNING]: ldap_bind error: Invalid DN syntax (34)
+[07:02:29.042][03ae1780] INFO[NOTICE]: Error: Can't change password for anu@coppermail.dyndns.org account.
+[07:02:29.044][03ae1780] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'CouldNotSaveNewPassword[130]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Providers/ChangePassword.php:79
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5069): RainLoop\Providers\ChangePassword->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#1 [internal function]: RainLoop\Actions->DoChangePassword()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#10 {main}
+[07:02:29.045][03ae1780] AJAX[DATA]: {"Action":"ChangePassword","Result":false,"ErrorCode":130,"ErrorMessage":"","ErrorMessageAdditional":"","Time":107}
+[07:02:29.059][03ae1780] INFO[MEMORY]: Memory peak usage: 1.25MB
+[07:02:29.062][03ae1780] INFO[TIME]: Time delta: 0.10767889022827
+
+--- FlushLogCache: WriteOnErrorOnly
+[07:02:35.097][90e35a4e] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:15][Apache/2.4.7 (Ubuntu)][apache2handler]
+[07:02:35.097][90e35a4e] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[07:02:35.097][90e35a4e] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_Kx5850wSEPUjFTkkQuJh6UGEHVnXtGAGYghG7NeLKYCEP9q_1JLcu4lnvZksarYy_OZrrrqLF15YnYb66izTDcuuG5EeP-cE12842mtgOuksSAeCKp-lxmhKSWaxAIapdviv6BGp5VlmKmswVhlowR1kA564SCACkHPfNiNKaXTDJj_fw3bfbDXA9EEPIuGjDbVcEv5lR7I4sPioDeH75CCrZWJFnoxS5Lf5X9VoXPNotKAfem4gu7AiY66vfCGyDsA0h5QoAb3lRMFwQ1VBl3r9v4ikv_hNn8hLDF8-83rZ0KwNmLPlJl9j1yZaNHZfnDs9mr3tbjPWskRIACqLCZeJLgse9ZKVO4wxLWrCFVLpLuCXU0iwJv_I5JyKaICre9f6mA/
+[07:02:35.100][90e35a4e] AJAX[NOTE]: Action: DoChangePassword
+[07:02:35.100][90e35a4e] POST[DATA]: {"PrevPassword":"*******","NewPassword":"*******","Action":"ChangePassword","XToken":"e16c04776f1492d4d6060938a3309566"}
+--- FlushLogCache: Trigger
+[07:02:36.138][90e35a4e] INFO[NOTICE]: Error: Can't change password for anu@coppermail.dyndns.org account.
+[07:02:36.143][90e35a4e] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'CurrentPasswordIncorrect[131]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Providers/ChangePassword.php:63
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5069): RainLoop\Providers\ChangePassword->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#1 [internal function]: RainLoop\Actions->DoChangePassword()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#10 {main}
+[07:02:36.146][90e35a4e] AJAX[DATA]: {"Action":"ChangePassword","Result":false,"ErrorCode":131,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1127}
+[07:02:36.162][90e35a4e] INFO[MEMORY]: Memory peak usage: 1.25MB
+[07:02:36.164][90e35a4e] INFO[TIME]: Time delta: 1.1241998672485
+
+--- FlushLogCache: WriteOnErrorOnly
+[07:07:38.499][dfa57bf2] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:17][Apache/2.4.7 (Ubuntu)][apache2handler]
+[07:07:38.499][dfa57bf2] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[07:07:38.499][dfa57bf2] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_BKcZPmPpFETTyN1Fa8OGAxd2MXrij_j7vRmv9wNGnHPrKSut3nWG4DH4vEhMohesCsf5951cY4ICTgixmqfuYjmMUxl27zGoUn7Ulw2KRiKifSpaCxjTyp6aSBQv-b6Aqk37MqxmIG_Ee5vLAhiIiNEjGsoYU8aXNJtarrKSVXI9wdPMGNolf-kwp7KW7oY1K_79YDgz_cVqoN5CEQfvr7sRHkh82cp61mkjUVvXC_OqgXVrFP5Y4s-h8jOYavrOyP3c9CnUPCxonp0I2kJbU6xdCmLIgXwvG8yVjIMcs7NgCbWupPregExxUowXp-MeEtkzTA_sXp-2ohiTRuZ1kmZ7i1bI2sjgqRMN_w/
+[07:07:38.501][dfa57bf2] AJAX[NOTE]: Action: DoChangePassword
+[07:07:38.502][dfa57bf2] POST[DATA]: {"PrevPassword":"*******","NewPassword":"*******","Action":"ChangePassword","XToken":"6dbf77ede7799f36f98f889e12f94bf8"}
+--- FlushLogCache: Trigger
+[07:07:39.535][dfa57bf2] INFO[NOTICE]: Error: Can't change password for anu@coppermail.dyndns.org account.
+[07:07:39.543][dfa57bf2] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'CurrentPasswordIncorrect[131]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Providers/ChangePassword.php:63
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5069): RainLoop\Providers\ChangePassword->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#1 [internal function]: RainLoop\Actions->DoChangePassword()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#10 {main}
+[07:07:39.545][dfa57bf2] AJAX[DATA]: {"Action":"ChangePassword","Result":false,"ErrorCode":131,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1114}
+[07:07:39.561][dfa57bf2] INFO[MEMORY]: Memory peak usage: 1.25MB
+[07:07:39.563][dfa57bf2] INFO[TIME]: Time delta: 1.1155800819397
+
+--- FlushLogCache: WriteOnErrorOnly
+[07:07:49.264][fe659396] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:15][Apache/2.4.7 (Ubuntu)][apache2handler]
+[07:07:49.264][fe659396] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[07:07:49.264][fe659396] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_BKcZPmPpFETTyN1Fa8OGAxd2MXrij_j7vRmv9wNGnHPrKSut3nWG4DH4vEhMohesCsf5951cY4ICTgixmqfuYjmMUxl27zGoUn7Ulw2KRiKifSpaCxjTyp6aSBQv-b6Aqk37MqxmIG_Ee5vLAhiIiNEjGsoYU8aXNJtarrKSVXI9wdPMGNolf-kwp7KW7oY1K_79YDgz_cVqoN5CEQfvr7sRHkh82cp61mkjUVvXC_OqgXVrFP5Y4s-h8jOYavrOyP3c9CnUPCxonp0I2kJbU6xdCmLIgXwvG8yVjIMcs7NgCbWupPregExxUowXp-MeEtkzTA_sXp-2ohiTRuZ1kmZ7i1bI2sjgqRMN_w/
+[07:07:49.266][fe659396] AJAX[NOTE]: Action: DoChangePassword
+[07:07:49.266][fe659396] POST[DATA]: {"PrevPassword":"*******","NewPassword":"*******","Action":"ChangePassword","XToken":"6dbf77ede7799f36f98f889e12f94bf8"}
+--- FlushLogCache: Trigger
+[07:07:49.302][fe659396] LDAP[WARNING]: ldap_bind error: Invalid DN syntax (34)
+[07:07:50.311][fe659396] INFO[NOTICE]: Error: Can't change password for anu@coppermail.dyndns.org account.
+[07:07:50.317][fe659396] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'CouldNotSaveNewPassword[130]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Providers/ChangePassword.php:79
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5069): RainLoop\Providers\ChangePassword->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#1 [internal function]: RainLoop\Actions->DoChangePassword()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#10 {main}
+[07:07:50.319][fe659396] AJAX[DATA]: {"Action":"ChangePassword","Result":false,"ErrorCode":130,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1134}
+[07:07:50.335][fe659396] INFO[MEMORY]: Memory peak usage: 1.25MB
+[07:07:50.337][fe659396] INFO[TIME]: Time delta: 1.1324729919434
+
+--- FlushLogCache: WriteOnErrorOnly
+[07:30:45.316][40bb124c] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:17][Apache/2.4.7 (Ubuntu)][apache2handler]
+[07:30:45.316][40bb124c] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[07:30:45.316][40bb124c] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_BKcZPmPpFETTyN1Fa8OGAxd2MXrij_j7vRmv9wNGnHPrKSut3nWG4DH4vEhMohesCsf5951cY4ICTgixmqfuYjmMUxl27zGoUn7Ulw2KRiKifSpaCxjTyp6aSBQv-b6Aqk37MqxmIG_Ee5vLAhiIiNEjGsoYU8aXNJtarrKSVXI9wdPMGNolf-kwp7KW7oY1K_79YDgz_cVqoN5CEQfvr7sRHkh82cp61mkjUVvXC_OqgXVrFP5Y4s-h8jOYavrOyP3c9CnUPCxonp0I2kJbU6xdCmLIgXwvG8yVjIMcs7NgCbWupPregExxUowXp-MeEtkzTA_sXp-2ohiTRuZ1kmZ7i1bI2sjgqRMN_w/
+[07:30:45.317][40bb124c] AJAX[NOTE]: Action: DoChangePassword
+[07:30:45.317][40bb124c] POST[DATA]: {"PrevPassword":"*******","NewPassword":"*******","Action":"ChangePassword","XToken":"6dbf77ede7799f36f98f889e12f94bf8"}
+--- FlushLogCache: Trigger
+[07:30:45.351][40bb124c] LDAP[WARNING]: ldap_bind error: Invalid DN syntax (34)
+[07:30:46.362][40bb124c] INFO[NOTICE]: Error: Can't change password for anu@coppermail.dyndns.org account.
+[07:30:46.369][40bb124c] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'CouldNotSaveNewPassword[130]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Providers/ChangePassword.php:79
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5069): RainLoop\Providers\ChangePassword->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#1 [internal function]: RainLoop\Actions->DoChangePassword()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#10 {main}
+[07:30:46.371][40bb124c] AJAX[DATA]: {"Action":"ChangePassword","Result":false,"ErrorCode":130,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1132}
+[07:30:46.386][40bb124c] INFO[MEMORY]: Memory peak usage: 1.25MB
+[07:30:46.389][40bb124c] INFO[TIME]: Time delta: 1.1322860717773
+
+--- FlushLogCache: WriteOnErrorOnly
+[07:31:52.476][905afd49] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:14][Apache/2.4.7 (Ubuntu)][apache2handler]
+[07:31:52.476][905afd49] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[07:31:52.476][905afd49] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_BKcZPmPpFETTyN1Fa8OGAxd2MXrij_j7vRmv9wNGnHPrKSut3nWG4DH4vEhMohesCsf5951cY4ICTgixmqfuYjmMUxl27zGoUn7Ulw2KRiKifSpaCxjTyp6aSBQv-b6Aqk37MqxmIG_Ee5vLAhiIiNEjGsoYU8aXNJtarrKSVXI9wdPMGNolf-kwp7KW7oY1K_79YDgz_cVqoN5CEQfvr7sRHkh82cp61mkjUVvXC_OqgXVrFP5Y4s-h8jOYavrOyP3c9CnUPCxonp0I2kJbU6xdCmLIgXwvG8yVjIMcs7NgCbWupPregExxUowXp-MeEtkzTA_sXp-2ohiTRuZ1kmZ7i1bI2sjgqRMN_w/
+[07:31:52.478][905afd49] AJAX[NOTE]: Action: DoChangePassword
+[07:31:52.478][905afd49] POST[DATA]: {"PrevPassword":"*******","NewPassword":"*******","Action":"ChangePassword","XToken":"6dbf77ede7799f36f98f889e12f94bf8"}
+--- FlushLogCache: Trigger
+[07:31:52.513][905afd49] LDAP[WARNING]: ldap_bind error: Invalid DN syntax (34)
+[07:31:53.525][905afd49] INFO[NOTICE]: Error: Can't change password for anu@coppermail.dyndns.org account.
+[07:31:53.532][905afd49] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'CouldNotSaveNewPassword[130]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Providers/ChangePassword.php:79
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5069): RainLoop\Providers\ChangePassword->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#1 [internal function]: RainLoop\Actions->DoChangePassword()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#10 {main}
+[07:31:53.534][905afd49] AJAX[DATA]: {"Action":"ChangePassword","Result":false,"ErrorCode":130,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1127}
+[07:31:53.549][905afd49] INFO[MEMORY]: Memory peak usage: 1.25MB
+[07:31:53.553][905afd49] INFO[TIME]: Time delta: 1.125678062439
+
+--- FlushLogCache: WriteOnErrorOnly
+[08:59:32.709][2b11b7dc] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:17][Apache/2.4.7 (Ubuntu)][apache2handler]
+[08:59:32.709][2b11b7dc] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[08:59:32.709][2b11b7dc] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_sAQHek3ZMFZ-LuavjghDwyn3nLgCvEB1KxOkkr1cNdQYJdYR0dPgg-ZB47BtEy4nvktld0LBgqNjzPpoEhc-XfUaM7r8Gxhhvf5sQ27dsaW7jQH8K2SZ-ZN6xCyESdAtOSZFESGpRhGV_a8jkPb09T8xmlo8299Bo_zfdiBqOCofDKxhN9Oku_wIBfDJAsUbDklup0hu7ieMrflhxI3KDLY5A2C5i4OuEQE0kYeyxc-s5W5yWb9JPXN_AFeIYKoc3fv9YcCP_y-SAXofOfUjpYOwBDkQdJSM9VpSBz3Ab7BHeqPmA0gLa5owSvyPy19TIFnelvVpKzdCvWakyrPat53bNgTNovURd_iEIw/
+[08:59:32.711][2b11b7dc] AJAX[NOTE]: Action: DoChangePassword
+[08:59:32.711][2b11b7dc] POST[DATA]: {"PrevPassword":"*******","NewPassword":"*******","Action":"ChangePassword","XToken":"6dbf77ede7799f36f98f889e12f94bf8"}
+--- FlushLogCache: Trigger
+[08:59:32.843][2b11b7dc] LDAP[WARNING]: ldap_bind error: Can't contact LDAP server (-1)
+[08:59:33.856][2b11b7dc] INFO[NOTICE]: Error: Can't change password for lsf@coppermail.dyndns.org account.
+[08:59:33.862][2b11b7dc] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'CouldNotSaveNewPassword[130]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Providers/ChangePassword.php:79
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5069): RainLoop\Providers\ChangePassword->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#1 [internal function]: RainLoop\Actions->DoChangePassword()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#10 {main}
+[08:59:33.863][2b11b7dc] AJAX[DATA]: {"Action":"ChangePassword","Result":false,"ErrorCode":130,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1234}
+[08:59:33.880][2b11b7dc] INFO[MEMORY]: Memory peak usage: 1.25MB
+[08:59:33.884][2b11b7dc] INFO[TIME]: Time delta: 1.2359600067139
+
+--- FlushLogCache: WriteOnErrorOnly
+[08:59:37.706][6a79c1ec] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:15][Apache/2.4.7 (Ubuntu)][apache2handler]
+[08:59:37.706][6a79c1ec] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[08:59:37.706][6a79c1ec] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_sAQHek3ZMFZ-LuavjghDwyn3nLgCvEB1KxOkkr1cNdQYJdYR0dPgg-ZB47BtEy4nvktld0LBgqNjzPpoEhc-XfUaM7r8Gxhhvf5sQ27dsaW7jQH8K2SZ-ZN6xCyESdAtOSZFESGpRhGV_a8jkPb09T8xmlo8299Bo_zfdiBqOCofDKxhN9Oku_wIBfDJAsUbDklup0hu7ieMrflhxI3KDLY5A2C5i4OuEQE0kYeyxc-s5W5yWb9JPXN_AFeIYKoc3fv9YcCP_y-SAXofOfUjpYOwBDkQdJSM9VpSBz3Ab7BHeqPmA0gLa5owSvyPy19TIFnelvVpKzdCvWakyrPat53bNgTNovURd_iEIw/
+[08:59:37.709][6a79c1ec] AJAX[NOTE]: Action: DoChangePassword
+[08:59:37.709][6a79c1ec] POST[DATA]: {"PrevPassword":"*******","NewPassword":"*******","Action":"ChangePassword","XToken":"6dbf77ede7799f36f98f889e12f94bf8"}
+--- FlushLogCache: Trigger
+[08:59:37.747][6a79c1ec] LDAP[WARNING]: ldap_bind error: Can't contact LDAP server (-1)
+[08:59:38.756][6a79c1ec] INFO[NOTICE]: Error: Can't change password for lsf@coppermail.dyndns.org account.
+[08:59:38.761][6a79c1ec] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'CouldNotSaveNewPassword[130]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Providers/ChangePassword.php:79
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5069): RainLoop\Providers\ChangePassword->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#1 [internal function]: RainLoop\Actions->DoChangePassword()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#10 {main}
+[08:59:38.763][6a79c1ec] AJAX[DATA]: {"Action":"ChangePassword","Result":false,"ErrorCode":130,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1132}
+[08:59:38.781][6a79c1ec] INFO[MEMORY]: Memory peak usage: 1.25MB
+[08:59:38.783][6a79c1ec] INFO[TIME]: Time delta: 1.1330060958862
+
+--- FlushLogCache: WriteOnErrorOnly
+[09:34:57.333][06d174a4] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:13][Apache/2.4.7 (Ubuntu)][apache2handler]
+[09:34:57.333][06d174a4] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[09:34:57.333][06d174a4] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_sAQHek3ZMFZ-LuavjghDwyn3nLgCvEB1KxOkkr1cNdQYJdYR0dPgg-ZB47BtEy4nvktld0LBgqNjzPpoEhc-XfUaM7r8Gxhhvf5sQ27dsaW7jQH8K2SZ-ZN6xCyESdAtOSZFESGpRhGV_a8jkPb09T8xmlo8299Bo_zfdiBqOCofDKxhN9Oku_wIBfDJAsUbDklup0hu7ieMrflhxI3KDLY5A2C5i4OuEQE0kYeyxc-s5W5yWb9JPXN_AFeIYKoc3fv9YcCP_y-SAXofOfUjpYOwBDkQdJSM9VpSBz3Ab7BHeqPmA0gLa5owSvyPy19TIFnelvVpKzdCvWakyrPat53bNgTNovURd_iEIw/
+[09:34:57.335][06d174a4] AJAX[NOTE]: Action: DoChangePassword
+[09:34:57.335][06d174a4] POST[DATA]: {"PrevPassword":"*******","NewPassword":"*******","Action":"ChangePassword","XToken":"6dbf77ede7799f36f98f889e12f94bf8"}
+--- FlushLogCache: Trigger
+[09:34:57.363][06d174a4] LDAP[WARNING]: ldap_bind error: Invalid DN syntax (34)
+[09:34:58.374][06d174a4] INFO[NOTICE]: Error: Can't change password for lsf@coppermail.dyndns.org account.
+[09:34:58.380][06d174a4] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'CouldNotSaveNewPassword[130]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Providers/ChangePassword.php:79
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5069): RainLoop\Providers\ChangePassword->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#1 [internal function]: RainLoop\Actions->DoChangePassword()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#10 {main}
+[09:34:58.382][06d174a4] AJAX[DATA]: {"Action":"ChangePassword","Result":false,"ErrorCode":130,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1121}
+[09:34:58.398][06d174a4] INFO[MEMORY]: Memory peak usage: 1.25MB
+[09:34:58.401][06d174a4] INFO[TIME]: Time delta: 1.1235070228577
+
+--- FlushLogCache: WriteOnErrorOnly
+[09:36:40.430][d6f2ec4a] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:23][Apache/2.4.7 (Ubuntu)][apache2handler]
+[09:36:40.430][d6f2ec4a] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[09:36:40.430][d6f2ec4a] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_sAQHek3ZMFZ-LuavjghDwyn3nLgCvEB1KxOkkr1cNdQYJdYR0dPgg-ZB47BtEy4nvktld0LBgqNjzPpoEhc-XfUaM7r8Gxhhvf5sQ27dsaW7jQH8K2SZ-ZN6xCyESdAtOSZFESGpRhGV_a8jkPb09T8xmlo8299Bo_zfdiBqOCofDKxhN9Oku_wIBfDJAsUbDklup0hu7ieMrflhxI3KDLY5A2C5i4OuEQE0kYeyxc-s5W5yWb9JPXN_AFeIYKoc3fv9YcCP_y-SAXofOfUjpYOwBDkQdJSM9VpSBz3Ab7BHeqPmA0gLa5owSvyPy19TIFnelvVpKzdCvWakyrPat53bNgTNovURd_iEIw/
+[09:36:40.431][d6f2ec4a] AJAX[NOTE]: Action: DoChangePassword
+[09:36:40.431][d6f2ec4a] POST[DATA]: {"PrevPassword":"*******","NewPassword":"*******","Action":"ChangePassword","XToken":"6dbf77ede7799f36f98f889e12f94bf8"}
+--- FlushLogCache: Trigger
+[09:36:40.464][d6f2ec4a] LDAP[WARNING]: ldap_bind error: Invalid DN syntax (34)
+[09:36:41.472][d6f2ec4a] INFO[NOTICE]: Error: Can't change password for lsf@coppermail.dyndns.org account.
+[09:36:41.478][d6f2ec4a] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'CouldNotSaveNewPassword[130]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Providers/ChangePassword.php:79
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5069): RainLoop\Providers\ChangePassword->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#1 [internal function]: RainLoop\Actions->DoChangePassword()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#10 {main}
+[09:36:41.480][d6f2ec4a] AJAX[DATA]: {"Action":"ChangePassword","Result":false,"ErrorCode":130,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1130}
+[09:36:41.496][d6f2ec4a] INFO[MEMORY]: Memory peak usage: 1.25MB
+[09:36:41.498][d6f2ec4a] INFO[TIME]: Time delta: 1.1269199848175
+
+--- FlushLogCache: WriteOnErrorOnly
+[09:42:51.830][4121697a] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:17][Apache/2.4.7 (Ubuntu)][apache2handler]
+[09:42:51.830][4121697a] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[09:42:51.830][4121697a] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_sAQHek3ZMFZ-LuavjghDwyn3nLgCvEB1KxOkkr1cNdQYJdYR0dPgg-ZB47BtEy4nvktld0LBgqNjzPpoEhc-XfUaM7r8Gxhhvf5sQ27dsaW7jQH8K2SZ-ZN6xCyESdAtOSZFESGpRhGV_a8jkPb09T8xmlo8299Bo_zfdiBqOCofDKxhN9Oku_wIBfDJAsUbDklup0hu7ieMrflhxI3KDLY5A2C5i4OuEQE0kYeyxc-s5W5yWb9JPXN_AFeIYKoc3fv9YcCP_y-SAXofOfUjpYOwBDkQdJSM9VpSBz3Ab7BHeqPmA0gLa5owSvyPy19TIFnelvVpKzdCvWakyrPat53bNgTNovURd_iEIw/
+[09:42:51.832][4121697a] AJAX[NOTE]: Action: DoChangePassword
+[09:42:51.832][4121697a] POST[DATA]: {"PrevPassword":"*******","NewPassword":"*******","Action":"ChangePassword","XToken":"6dbf77ede7799f36f98f889e12f94bf8"}
+--- FlushLogCache: Trigger
+[09:42:51.865][4121697a] LDAP[WARNING]: ldap_bind error: Invalid DN syntax (34)
+[09:42:52.874][4121697a] INFO[NOTICE]: Error: Can't change password for lsf@coppermail.dyndns.org account.
+[09:42:52.881][4121697a] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'CouldNotSaveNewPassword[130]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Providers/ChangePassword.php:79
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5069): RainLoop\Providers\ChangePassword->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#1 [internal function]: RainLoop\Actions->DoChangePassword()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#10 {main}
+[09:42:52.883][4121697a] AJAX[DATA]: {"Action":"ChangePassword","Result":false,"ErrorCode":130,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1119}
+[09:42:52.899][4121697a] INFO[MEMORY]: Memory peak usage: 1.25MB
+[09:42:52.901][4121697a] INFO[TIME]: Time delta: 1.1187448501587
+
+--- FlushLogCache: WriteOnErrorOnly
+[10:11:02.316][4dfba41e] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:14][Apache/2.4.7 (Ubuntu)][apache2handler]
+[10:11:02.316][4dfba41e] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[10:11:02.316][4dfba41e] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_sAQHek3ZMFZ-LuavjghDwyn3nLgCvEB1KxOkkr1cNdQYJdYR0dPgg-ZB47BtEy4nvktld0LBgqNjzPpoEhc-XfUaM7r8Gxhhvf5sQ27dsaW7jQH8K2SZ-ZN6xCyESdAtOSZFESGpRhGV_a8jkPb09T8xmlo8299Bo_zfdiBqOCofDKxhN9Oku_wIBfDJAsUbDklup0hu7ieMrflhxI3KDLY5A2C5i4OuEQE0kYeyxc-s5W5yWb9JPXN_AFeIYKoc3fv9YcCP_y-SAXofOfUjpYOwBDkQdJSM9VpSBz3Ab7BHeqPmA0gLa5owSvyPy19TIFnelvVpKzdCvWakyrPat53bNgTNovURd_iEIw/
+[10:11:02.319][4dfba41e] AJAX[NOTE]: Action: DoChangePassword
+[10:11:02.319][4dfba41e] POST[DATA]: {"PrevPassword":"*******","NewPassword":"*******","Action":"ChangePassword","XToken":"6dbf77ede7799f36f98f889e12f94bf8"}
+--- FlushLogCache: Trigger
+[10:11:02.363][4dfba41e] LDAP[WARNING]: ldap_bind error: Invalid DN syntax (34)
+[10:11:03.374][4dfba41e] INFO[NOTICE]: Error: Can't change password for lsf@coppermail.dyndns.org account.
+[10:11:03.385][4dfba41e] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'CouldNotSaveNewPassword[130]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Providers/ChangePassword.php:79
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5069): RainLoop\Providers\ChangePassword->ChangePassword(Object(RainLoop\Model\Account), '*******', '*******')
+#1 [internal function]: RainLoop\Actions->DoChangePassword()
+=======
 [05:01:16.294][af44ea3a] AJAX[DATA]: {"Action":"FolderInformationMultiply","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1661}
 [05:01:16.304][af44ea3a] INFO[MEMORY]: Memory peak usage: 1.25MB
 [05:01:16.307][af44ea3a] INFO[TIME]: Time delta: 1.6525280475616
@@ -1217,6 +2018,7 @@ Next exception 'RainLoop\Exceptions\ClientException' with message 'AuthError[102
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5335): RainLoop\Actions->initMailClientConnection()
 #1 [internal function]: RainLoop\Actions->DoFolders()
+>>>>>>> f0cab70f36cb86db979c24d07046f52d956fc3c1
 #2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
 #3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
 #4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
@@ -1226,6 +2028,46 @@ Stack trace:
 #8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #10 {main}
+<<<<<<< HEAD
+[10:11:03.389][4dfba41e] AJAX[DATA]: {"Action":"ChangePassword","Result":false,"ErrorCode":130,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1172}
+[10:11:03.405][4dfba41e] INFO[MEMORY]: Memory peak usage: 1.25MB
+[10:11:03.408][4dfba41e] INFO[TIME]: Time delta: 1.1656010150909
+
+--- FlushLogCache: WriteOnErrorOnly
+[11:16:53.688][93395c47] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:11][Apache/2.4.7 (Ubuntu)][apache2handler]
+[11:16:53.688][93395c47] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[11:16:53.688][93395c47] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[11:16:53.691][93395c47] AJAX[NOTE]: Action: DoLogin
+[11:16:53.691][93395c47] POST[DATA]: {"Email":"anu","Login":"","Password":"*******","Language":"","AdditionalCode":"","AdditionalCodeSignMe":"0","SignMe":"0","Action":"Login","XToken":"e16c04776f1492d4d6060938a3309566"}
+[11:16:53.691][93395c47] LOGIN[DATA]: The email address "anu" is not complete
+[11:16:53.691][93395c47] LOGIN[DATA]: Determined user domain: localhost
+[11:16:53.713][93395c47] LOGIN[DATA]: Check "localhost": NO
+[11:16:53.729][93395c47] LOGIN[DATA]: Check "localhost" with wildcard: NO
+[11:16:53.729][93395c47] LOGIN[DATA]: Domain was not found!
+[11:16:53.729][93395c47] LOGIN[DATA]: Default domain "coppermail.dyndns.org" was used. (anu > anu@coppermail.dyndns.org)
+[11:16:53.758][93395c47] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
+[11:16:53.760][93395c47] IMAP[NOTE]: Connected (success)
+[11:16:53.780][93395c47] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN AUTH=LOGIN] Dovecot ready.
+
+[11:16:53.783][93395c47] IMAP[DATA]: > TAG1 AUTHENTICATE PLAIN
+
+[11:16:53.784][93395c47] IMAP[DATA]: < + 
+
+[11:16:53.784][93395c47] IMAP[SECURE]: > *******
+
+[11:16:55.293][93395c47] IMAP[DATA]: < TAG1 NO [AUTHENTICATIONFAILED] Authentication failed.
+
+--- FlushLogCache: Trigger
+[11:16:55.307][93395c47] IMAP[WARNING]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('anu@coppermail....', '*******', '', true, false)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('anu@coppermail....', '*******', '', true, false)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('anu@coppermail....', '*******', '', '', false)
+=======
 [05:01:49.341][6d7ace0f] AJAX[DATA]: {"Action":"Folders","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","ClearAuth":true,"Time":2100}
 [05:01:49.346][6d7ace0f] INFO[MEMORY]: Memory peak usage: 1.25MB
 [05:01:49.350][6d7ace0f] INFO[TIME]: Time delta: 2.0968160629272
@@ -1269,6 +2111,7 @@ Stack trace:
 #4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
 #5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
 #6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('thara@coppermai...', '*******', '', '', false)
+>>>>>>> f0cab70f36cb86db979c24d07046f52d956fc3c1
 #7 [internal function]: RainLoop\Actions->DoLogin()
 #8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
 #9 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
@@ -1279,6 +2122,17 @@ Stack trace:
 #14 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #15 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #16 {main}
+<<<<<<< HEAD
+[11:16:55.317][93395c47] IMAP[NOTICE]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('anu@coppermail....', '*******', '', true, false)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('anu@coppermail....', '*******', '', true, false)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('anu@coppermail....', '*******', '', '', false)
+=======
 [05:02:03.393][0c6f8007] IMAP[NOTICE]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
@@ -1288,6 +2142,7 @@ Stack trace:
 #4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
 #5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
 #6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('thara@coppermai...', '*******', '', '', false)
+>>>>>>> f0cab70f36cb86db979c24d07046f52d956fc3c1
 #7 [internal function]: RainLoop\Actions->DoLogin()
 #8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
 #9 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
@@ -1301,11 +2156,19 @@ Stack trace:
 
 Next exception 'MailSo\Imap\Exceptions\LoginBadCredentialsException' with message 'MailSo-Imap-Exceptions-LoginBadCredentialsException (ImapClient.php ~ 312)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:312
 Stack trace:
+<<<<<<< HEAD
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('anu@coppermail....', '*******', '', true, false)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('anu@coppermail....', '*******', '', true, false)
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('anu@coppermail....', '*******', '', '', false)
+=======
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('thara@coppermai...', '*******', '', true, false)
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('thara@coppermai...', '*******', '', true, false)
 #2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
 #3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
 #4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('thara@coppermai...', '*******', '', '', false)
+>>>>>>> f0cab70f36cb86db979c24d07046f52d956fc3c1
 #5 [internal function]: RainLoop\Actions->DoLogin()
 #6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
 #7 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
@@ -1316,6 +2179,17 @@ Stack trace:
 #12 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #13 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #14 {main}
+<<<<<<< HEAD
+[11:16:55.326][93395c47] INFO[ERROR]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('anu@coppermail....', '*******', '', true, false)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('anu@coppermail....', '*******', '', true, false)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('anu@coppermail....', '*******', '', '', false)
+=======
 [05:02:03.398][0c6f8007] INFO[ERROR]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
@@ -1325,6 +2199,7 @@ Stack trace:
 #4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
 #5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
 #6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('thara@coppermai...', '*******', '', '', false)
+>>>>>>> f0cab70f36cb86db979c24d07046f52d956fc3c1
 #7 [internal function]: RainLoop\Actions->DoLogin()
 #8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
 #9 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
@@ -1338,11 +2213,19 @@ Stack trace:
 
 Next exception 'MailSo\Imap\Exceptions\LoginBadCredentialsException' with message 'MailSo-Imap-Exceptions-LoginBadCredentialsException (ImapClient.php ~ 312)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:312
 Stack trace:
+<<<<<<< HEAD
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('anu@coppermail....', '*******', '', true, false)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('anu@coppermail....', '*******', '', true, false)
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('anu@coppermail....', '*******', '', '', false)
+=======
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('thara@coppermai...', '*******', '', true, false)
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('thara@coppermai...', '*******', '', true, false)
 #2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
 #3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
 #4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('thara@coppermai...', '*******', '', '', false)
+>>>>>>> f0cab70f36cb86db979c24d07046f52d956fc3c1
 #5 [internal function]: RainLoop\Actions->DoLogin()
 #6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
 #7 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
@@ -1357,7 +2240,11 @@ Stack trace:
 Next exception 'RainLoop\Exceptions\ClientException' with message 'AuthError[102]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:2097
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+<<<<<<< HEAD
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('anu@coppermail....', '*******', '', '', false)
+=======
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('thara@coppermai...', '*******', '', '', false)
+>>>>>>> f0cab70f36cb86db979c24d07046f52d956fc3c1
 #2 [internal function]: RainLoop\Actions->DoLogin()
 #3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
 #4 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
@@ -1368,10 +2255,76 @@ Stack trace:
 #9 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #10 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #11 {main}
+<<<<<<< HEAD
+[11:16:55.330][93395c47] AJAX[DATA]: {"Action":"Login","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1759}
+[11:16:55.343][93395c47] INFO[MEMORY]: Memory peak usage: 1.25MB
+[11:16:55.347][93395c47] INFO[TIME]: Time delta: 1.7484169006348
+[11:16:55.350][93395c47] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
+
+--- FlushLogCache: WriteOnErrorOnly
+[11:17:37.664][669d52a7] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:17][Apache/2.4.7 (Ubuntu)][apache2handler]
+[11:17:37.664][669d52a7] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[11:17:37.664][669d52a7] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[11:17:37.665][669d52a7] AJAX[NOTE]: Action: DoAdminDomainTest
+[11:17:37.665][669d52a7] POST[DATA]: {"Name":"coppermail.dyndns.org","IncHost":"172.19.0.17","IncPort":"143","IncSecure":"2","UseSieve":"0","SieveHost":"","SievePort":"4190","SieveSecure":"0","OutHost":"172.19.0.17","OutPort":"587","OutSecure":"2","OutAuth":"1","OutUsePhpMail":"0","Action":"AdminDomainTest","XToken":"e16c04776f1492d4d6060938a3309566"}
+[11:17:37.691][669d52a7] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
+[11:17:37.693][669d52a7] IMAP[NOTE]: Connected (success)
+[11:17:37.698][669d52a7] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN AUTH=LOGIN] Dovecot ready.
+
+--- FlushLogCache: Trigger
+[11:17:37.710][669d52a7] IMAP[ERROR]: exception 'MailSo\Net\Exceptions\SocketUnsuppoterdSecureConnectionException' with message 'STARTTLS is not supported' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:168
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(4147): MailSo\Imap\ImapClient->Connect('172.19.0.17', 143, 2, false, true)
+#1 [internal function]: RainLoop\Actions->DoAdminDomainTest()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#10 {main}
+[11:17:37.717][669d52a7] SMTP[NOTE]: Start connection to "tcp://172.19.0.17:587"
+[11:17:37.720][669d52a7] SMTP[NOTE]: Connected (success)
+[11:17:37.786][669d52a7] SMTP[DATA]: < 220 mail.coppermail.dyndns.org ESMTP Postfix (Ubuntu)\r\n
+[11:17:37.791][669d52a7] SMTP[DATA]: > EHLO localhost\r\n
+[11:17:37.792][669d52a7] SMTP[DATA]: < 250-mail.coppermail.dyndns.org\r\n
+[11:17:37.793][669d52a7] SMTP[DATA]: < 250-PIPELINING\r\n
+[11:17:37.794][669d52a7] SMTP[DATA]: < 250-SIZE 51200000\r\n
+[11:17:37.795][669d52a7] SMTP[DATA]: < 250-VRFY\r\n
+[11:17:37.796][669d52a7] SMTP[DATA]: < 250-ETRN\r\n
+[11:17:37.797][669d52a7] SMTP[DATA]: < 250-STARTTLS\r\n
+[11:17:37.798][669d52a7] SMTP[DATA]: < 250-ENHANCEDSTATUSCODES\r\n
+[11:17:37.800][669d52a7] SMTP[DATA]: < 250-8BITMIME\r\n
+[11:17:37.801][669d52a7] SMTP[DATA]: < 250-DSN\r\n
+[11:17:37.802][669d52a7] SMTP[DATA]: < 250 SMTPUTF8\r\n
+[11:17:37.805][669d52a7] SMTP[DATA]: > STARTTLS\r\n
+[11:17:37.807][669d52a7] SMTP[DATA]: < 220 2.0.0 Ready to start TLS\r\n
+[11:17:37.833][669d52a7] SMTP[DATA]: > EHLO localhost\r\n
+[11:17:37.836][669d52a7] SMTP[DATA]: < 250-mail.coppermail.dyndns.org\r\n
+[11:17:37.837][669d52a7] SMTP[DATA]: < 250-PIPELINING\r\n
+[11:17:37.838][669d52a7] SMTP[DATA]: < 250-SIZE 51200000\r\n
+[11:17:37.839][669d52a7] SMTP[DATA]: < 250-VRFY\r\n
+[11:17:37.840][669d52a7] SMTP[DATA]: < 250-ETRN\r\n
+[11:17:37.842][669d52a7] SMTP[DATA]: < 250-AUTH PLAIN LOGIN\r\n
+[11:17:37.843][669d52a7] SMTP[DATA]: < 250-ENHANCEDSTATUSCODES\r\n
+[11:17:37.844][669d52a7] SMTP[DATA]: < 250-8BITMIME\r\n
+[11:17:37.845][669d52a7] SMTP[DATA]: < 250-DSN\r\n
+[11:17:37.846][669d52a7] SMTP[DATA]: < 250 SMTPUTF8\r\n
+[11:17:37.848][669d52a7] SMTP[NOTE]: Disconnected from "tcp://172.19.0.17:587" (success)
+[11:17:37.852][669d52a7] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
+[11:17:37.855][669d52a7] AJAX[DATA]: {"Action":"AdminDomainTest","Result":{"Imap":"STARTTLS is not supported","Smtp":true,"Sieve":true},"Time":242}
+[11:17:37.865][669d52a7] INFO[MEMORY]: Memory peak usage: 1.25MB
+[11:17:37.866][669d52a7] INFO[TIME]: Time delta: 0.24174308776855
+=======
 [05:02:03.399][0c6f8007] AJAX[DATA]: {"Action":"Login","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":5643}
 [05:02:03.406][0c6f8007] INFO[MEMORY]: Memory peak usage: 1.25MB
 [05:02:03.409][0c6f8007] INFO[TIME]: Time delta: 5.6361739635468
 [05:02:03.410][0c6f8007] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
+<<<<<<< HEAD
+>>>>>>> f0cab70f36cb86db979c24d07046f52d956fc3c1
+=======
 
 --- FlushLogCache: WriteOnErrorOnly
 [09:11:31.890][fe6d4541] INFO[DATA]: [DATE:18.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:11][Apache/2.4.7 (Ubuntu)][apache2handler]
@@ -2360,3 +3313,4 @@ Stack trace:
 [10:13:50.423][91d3806c] INFO[MEMORY]: Memory peak usage: 1.25MB
 [10:13:50.426][91d3806c] INFO[TIME]: Time delta: 1.6771371364594
 [10:13:50.429][91d3806c] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
+>>>>>>> 6aa245092e7a5c8ff5285a36c297006d7904e309
