@@ -152,7 +152,10 @@ chmod -R 755 /etc/letsencrypt/
  sed -i.bak -e "s;%DC3%;"${DC3}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
  sed -i.bak -e "s;%DNPASS%;"${DNPASS}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
  sed -i.bak -e "s;%OU%;"${OU}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
- 
+
+ # Amavis
+ sed -i.bak -e "s;%DOMAIN%;"${DOMAIN}";g" "/etc/amavis/conf.d/50-user"
+
  groupadd -g 5000 vmail && useradd -g vmail -u 5000 vmail -d /var/mail
  chown -R vmail:vmail /var/mail
  mkdir -p /var/mail/sieve/global
@@ -191,5 +194,6 @@ chmod -R 755 /etc/letsencrypt/
  service postfix start
  service dovecot restart
  service rspamd start
- service postfixadmin start
  tail -f /dev/null
+ service amavis start
+ service spamassassin start
