@@ -194,6 +194,9 @@ chmod -R 755 /etc/letsencrypt/
  service postfix start
  service dovecot restart
  service rspamd start
- tail -f /dev/null
- service amavis start
+ freshclam
  service spamassassin start
+ service amavis start
+
+
+ tail -f /dev/null
