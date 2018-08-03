@@ -1070,3 +1070,48 @@ Stack trace:
 [05:45:58.055][0baf16f2] INFO[MEMORY]: Memory peak usage: 1.25MB
 [05:45:58.058][0baf16f2] INFO[TIME]: Time delta: 15.360443115234
 [05:45:58.060][0baf16f2] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
+
+--- FlushLogCache: WriteOnErrorOnly
+[09:29:46.564][c5e3694f] INFO[DATA]: [DATE:23.07.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:13][Apache/2.4.7 (Ubuntu)][apache2handler]
+[09:29:46.564][c5e3694f] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[09:29:46.564][c5e3694f] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[09:29:46.565][c5e3694f] AJAX[NOTE]: Action: DoAdminDomainTest
+[09:29:46.565][c5e3694f] POST[DATA]: {"Name":"coppermail.dyndns.org","IncHost":"172.19.0.17","IncPort":"143","IncSecure":"2","UseSieve":"0","SieveHost":"","SievePort":"4190","SieveSecure":"0","OutHost":"172.19.0.17","OutPort":"587","OutSecure":"2","OutAuth":"1","OutUsePhpMail":"0","Action":"AdminDomainTest","XToken":"e16c04776f1492d4d6060938a3309566"}
+[09:29:46.594][c5e3694f] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
+[09:29:49.729][c5e3694f] IMAP[NOTE]: Connected (unsuccess)
+--- FlushLogCache: Trigger
+[09:29:49.741][c5e3694f] IMAP[NOTICE]: Socket: [2] stream_socket_client(): unable to connect to tcp://172.19.0.17:143 (No route to host)
+[09:29:49.744][c5e3694f] IMAP[NOTICE]: exception 'MailSo\Net\Exceptions\SocketCanNotConnectToHostException' with message 'Can't connect to host "tcp://172.19.0.17:143"' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Net/NetClient.php:292
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(153): MailSo\Net\NetClient->Connect('172.19.0.17', 143, 2, false, true)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(4147): MailSo\Imap\ImapClient->Connect('172.19.0.17', 143, 2, false, true)
+#2 [internal function]: RainLoop\Actions->DoAdminDomainTest()
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#4 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#8 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#9 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#10 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#11 {main}
+[09:29:49.750][c5e3694f] SMTP[NOTE]: Start connection to "tcp://172.19.0.17:587"
+[09:29:52.839][c5e3694f] SMTP[NOTE]: Connected (unsuccess)
+[09:29:52.845][c5e3694f] SMTP[NOTICE]: Socket: [2] stream_socket_client(): unable to connect to tcp://172.19.0.17:587 (No route to host)
+[09:29:52.846][c5e3694f] SMTP[NOTICE]: exception 'MailSo\Net\Exceptions\SocketCanNotConnectToHostException' with message 'Can't connect to host "tcp://172.19.0.17:587"' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Net/NetClient.php:292
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Smtp/SmtpClient.php(168): MailSo\Net\NetClient->Connect('172.19.0.17', 587, 2, false, true)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(4188): MailSo\Smtp\SmtpClient->Connect('172.19.0.17', 587, 'localhost', 2, false, true)
+#2 [internal function]: RainLoop\Actions->DoAdminDomainTest()
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#4 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#8 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#9 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#10 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#11 {main}
+[09:29:52.848][c5e3694f] AJAX[DATA]: {"Action":"AdminDomainTest","Result":{"Imap":"stream_socket_client(): unable to connect to tcp:\/\/172.19.0.17:143 (No route to host)","Smtp":"stream_socket_client(): unable to connect to tcp:\/\/172.19.0.17:587 (No route to host)","Sieve":true},"Time":6339}
+[09:29:52.858][c5e3694f] INFO[MEMORY]: Memory peak usage: 1.25MB
+[09:29:52.861][c5e3694f] INFO[TIME]: Time delta: 6.3384299278259

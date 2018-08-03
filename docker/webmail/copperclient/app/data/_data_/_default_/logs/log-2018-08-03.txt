@@ -1,0 +1,69 @@
+
+--- FlushLogCache: WriteOnErrorOnly
+[04:37:40.385][3d738209] INFO[DATA]: [DATE:03.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:15][Apache/2.4.7 (Ubuntu)][apache2handler]
+[04:37:40.385][3d738209] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[04:37:40.385][3d738209] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[04:37:40.387][3d738209] AJAX[NOTE]: Action: DoAdminLogin
+[04:37:40.387][3d738209] POST[DATA]: {"Login":"lsf","Password":"*******","Action":"AdminLogin","XToken":"85e7691a9f576f4e4a31497a277ba63a"}
+--- FlushLogCache: Trigger
+[04:37:41.413][3d738209] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'AuthError[102]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:3840
+Stack trace:
+#0 [internal function]: RainLoop\Actions->DoAdminLogin()
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#2 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#7 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#8 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#9 {main}
+[04:37:41.416][3d738209] AJAX[DATA]: {"Action":"AdminLogin","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1109}
+[04:37:41.433][3d738209] INFO[MEMORY]: Memory peak usage: 1.25MB
+[04:37:41.435][3d738209] INFO[TIME]: Time delta: 1.1109759807587
+
+--- FlushLogCache: WriteOnErrorOnly
+[05:09:16.474][657d2c7c] INFO[DATA]: [DATE:03.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:17][Apache/2.4.7 (Ubuntu)][apache2handler]
+[05:09:16.475][657d2c7c] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[05:09:16.475][657d2c7c] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[05:09:16.476][657d2c7c] AJAX[NOTE]: Action: DoAdminLogin
+[05:09:16.476][657d2c7c] POST[DATA]: {"Login":"lsf","Password":"*******","Action":"AdminLogin","XToken":"85e7691a9f576f4e4a31497a277ba63a"}
+--- FlushLogCache: Trigger
+[05:09:17.487][657d2c7c] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'AuthError[102]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:3840
+Stack trace:
+#0 [internal function]: RainLoop\Actions->DoAdminLogin()
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#2 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#7 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#8 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#9 {main}
+[05:09:17.491][657d2c7c] AJAX[DATA]: {"Action":"AdminLogin","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1075}
+[05:09:17.504][657d2c7c] INFO[MEMORY]: Memory peak usage: 1.25MB
+[05:09:17.506][657d2c7c] INFO[TIME]: Time delta: 1.0774710178375
+
+--- FlushLogCache: WriteOnErrorOnly
+[05:09:22.132][e7464f4f] INFO[DATA]: [DATE:03.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:16][Apache/2.4.7 (Ubuntu)][apache2handler]
+[05:09:22.132][e7464f4f] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[05:09:22.132][e7464f4f] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[05:09:22.134][e7464f4f] AJAX[NOTE]: Action: DoAdminLogin
+[05:09:22.134][e7464f4f] POST[DATA]: {"Login":"lsf","Password":"*******","Action":"AdminLogin","XToken":"85e7691a9f576f4e4a31497a277ba63a"}
+--- FlushLogCache: Trigger
+[05:09:23.142][e7464f4f] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'AuthError[102]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:3840
+Stack trace:
+#0 [internal function]: RainLoop\Actions->DoAdminLogin()
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#2 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#7 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#8 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#9 {main}
+[05:09:23.145][e7464f4f] AJAX[DATA]: {"Action":"AdminLogin","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1087}
+[05:09:23.160][e7464f4f] INFO[MEMORY]: Memory peak usage: 1.25MB
+[05:09:23.163][e7464f4f] INFO[TIME]: Time delta: 1.0904078483582
