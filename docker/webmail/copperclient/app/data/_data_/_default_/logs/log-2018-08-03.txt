@@ -1,0 +1,694 @@
+
+--- FlushLogCache: WriteOnErrorOnly
+[05:04:33.877][cef6fe4d] INFO[DATA]: [DATE:03.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:14][Apache/2.4.7 (Ubuntu)][apache2handler]
+[05:04:33.878][cef6fe4d] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[05:04:33.878][cef6fe4d] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[05:04:33.879][cef6fe4d] AJAX[NOTE]: Action: DoAdminLogin
+[05:04:33.879][cef6fe4d] POST[DATA]: {"Login":"*******@coppermail.dyndns.org","Password":"*******","Action":"AdminLogin","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
+--- FlushLogCache: Trigger
+[05:04:34.899][cef6fe4d] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'AuthError[102]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:3840
+Stack trace:
+#0 [internal function]: RainLoop\Actions->DoAdminLogin()
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#2 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#7 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#8 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#9 {main}
+[05:04:34.902][cef6fe4d] AJAX[DATA]: {"Action":"AdminLogin","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1084}
+[05:04:34.912][cef6fe4d] INFO[MEMORY]: Memory peak usage: 1.25MB
+[05:04:34.915][cef6fe4d] INFO[TIME]: Time delta: 1.0818560123444
+
+--- FlushLogCache: WriteOnErrorOnly
+[05:04:40.679][4485d922] INFO[DATA]: [DATE:03.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:12][Apache/2.4.7 (Ubuntu)][apache2handler]
+[05:04:40.679][4485d922] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[05:04:40.679][4485d922] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[05:04:40.680][4485d922] AJAX[NOTE]: Action: DoAdminLogin
+[05:04:40.680][4485d922] POST[DATA]: {"Login":"*******@coppermail.dyndns.org","Password":"*******","Action":"AdminLogin","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
+--- FlushLogCache: Trigger
+[05:04:41.689][4485d922] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'AuthError[102]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:3840
+Stack trace:
+#0 [internal function]: RainLoop\Actions->DoAdminLogin()
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#2 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#7 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#8 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#9 {main}
+[05:04:41.692][4485d922] AJAX[DATA]: {"Action":"AdminLogin","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1074}
+[05:04:41.702][4485d922] INFO[MEMORY]: Memory peak usage: 1.25MB
+[05:04:41.705][4485d922] INFO[TIME]: Time delta: 1.0694489479065
+
+--- FlushLogCache: WriteOnErrorOnly
+[05:05:15.052][132c5144] INFO[DATA]: [DATE:03.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:17][Apache/2.4.7 (Ubuntu)][apache2handler]
+[05:05:15.052][132c5144] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[05:05:15.052][132c5144] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[05:05:15.054][132c5144] AJAX[NOTE]: Action: DoAdminLogin
+[05:05:15.054][132c5144] POST[DATA]: {"Login":"*******@coppermail.dyndns.org","Password":"*******","Action":"AdminLogin","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
+--- FlushLogCache: Trigger
+[05:05:15.057][132c5144] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'AuthError[102]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:3840
+Stack trace:
+#0 [internal function]: RainLoop\Actions->DoAdminLogin()
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#2 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#7 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#8 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#9 {main}
+[05:05:15.060][132c5144] AJAX[DATA]: {"Action":"AdminLogin","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":92}
+[05:05:15.076][132c5144] INFO[MEMORY]: Memory peak usage: 1.25MB
+[05:05:15.077][132c5144] INFO[TIME]: Time delta: 0.089301824569702
+
+--- FlushLogCache: WriteOnErrorOnly
+[05:06:53.934][f4c91628] INFO[DATA]: [DATE:03.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:15][Apache/2.4.7 (Ubuntu)][apache2handler]
+[05:06:53.934][f4c91628] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[05:06:53.934][f4c91628] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[05:06:53.936][f4c91628] AJAX[NOTE]: Action: DoAdminLogin
+[05:06:53.936][f4c91628] POST[DATA]: {"Login":"*******@coppermail.dyndns.org","Password":"*******","Action":"AdminLogin","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
+--- FlushLogCache: Trigger
+[05:06:54.950][f4c91628] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'AuthError[102]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:3840
+Stack trace:
+#0 [internal function]: RainLoop\Actions->DoAdminLogin()
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#2 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#7 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#8 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#9 {main}
+[05:06:54.954][f4c91628] AJAX[DATA]: {"Action":"AdminLogin","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1088}
+[05:06:54.969][f4c91628] INFO[MEMORY]: Memory peak usage: 1.25MB
+[05:06:54.971][f4c91628] INFO[TIME]: Time delta: 1.0900120735168
+
+--- FlushLogCache: WriteOnErrorOnly
+[05:07:55.114][7a621399] INFO[DATA]: [DATE:03.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:16][Apache/2.4.7 (Ubuntu)][apache2handler]
+[05:07:55.114][7a621399] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[05:07:55.114][7a621399] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[05:07:55.117][7a621399] AJAX[NOTE]: Action: DoAdminLogin
+[05:07:55.117][7a621399] POST[DATA]: {"Login":"test@coppermail.dyndns.org","Password":"*******","Action":"AdminLogin","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
+--- FlushLogCache: Trigger
+[05:07:55.123][7a621399] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'AuthError[102]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:3840
+Stack trace:
+#0 [internal function]: RainLoop\Actions->DoAdminLogin()
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#2 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#7 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#8 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#9 {main}
+[05:07:55.128][7a621399] AJAX[DATA]: {"Action":"AdminLogin","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":126}
+[05:07:55.163][7a621399] INFO[MEMORY]: Memory peak usage: 1.25MB
+[05:07:55.173][7a621399] INFO[TIME]: Time delta: 0.12900400161743
+
+--- FlushLogCache: WriteOnErrorOnly
+[05:23:48.574][6a329d3a] INFO[DATA]: [DATE:03.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:19][Apache/2.4.7 (Ubuntu)][apache2handler]
+[05:23:48.574][6a329d3a] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[05:23:48.574][6a329d3a] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[05:23:48.576][6a329d3a] AJAX[NOTE]: Action: DoAdminLogin
+[05:23:48.576][6a329d3a] POST[DATA]: {"Login":"test@coppermail.dyndns.org","Password":"*******","Action":"AdminLogin","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
+--- FlushLogCache: Trigger
+[05:23:49.590][6a329d3a] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'AuthError[102]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:3840
+Stack trace:
+#0 [internal function]: RainLoop\Actions->DoAdminLogin()
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#2 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#7 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#8 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#9 {main}
+[05:23:49.594][6a329d3a] AJAX[DATA]: {"Action":"AdminLogin","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1096}
+[05:23:49.609][6a329d3a] INFO[MEMORY]: Memory peak usage: 1.25MB
+[05:23:49.611][6a329d3a] INFO[TIME]: Time delta: 1.0977640151978
+
+--- FlushLogCache: WriteOnErrorOnly
+[05:54:26.005][b7374397] INFO[DATA]: [DATE:03.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:16][Apache/2.4.7 (Ubuntu)][apache2handler]
+[05:54:26.005][b7374397] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[05:54:26.005][b7374397] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_yd0Y0qffu-OEDxPHB9D6uUUCNsvAlV3BQNG09YJcHD9TtCf4Ajw3zIGBp6JnxPvQ4EA3MTqcS8Fqmpqcr4FSEp_jTi8gbbIGkcFgvp6e26llDkKyDiqUur9d6meV2SppBPMhMIqaC9ciKY6sm2N1mt8DmjuFIAxU-TMNf5jD0tevnygd3vIuqcPGosJwu9Ng5rHurJvEICOg4mRPVxmF6qjxQ8luZBObq24rDEa_TZCxZKFscKXk9td2ghn6NbZwyUwVYlZY6raJidbpHnYkaIrYglEx12B-nCVI3A3_tMl8gTtdiEHiHvuN2CNi_YxkpNzttSyPXvmiH7X0d1TqlLL2DdQ/
+[05:54:26.005][b7374397] AJAX[NOTE]: Action: DoSendMessage
+[05:54:26.006][b7374397] POST[DATA]: {"IdentityID":"","MessageFolder":"","MessageUid":"","SentFolder":"Sent","To":"tharangar@coppermail.dyndns.org","Cc":"","Bcc":"","ReplyTo":"","Subject":"test","TextIsHtml":"1","Text":"<div data-html-editor-font-wrapper=\"true\" style=\"font-family: arial, sans-serif; font-size: 13px;\"><br \/>test<signature><\/signature><\/div>","DraftInfo":"","InReplyTo":"","References":"","Dsn":"0","ReadReceiptRequest":"0","MarkAsImportant":"0","Attachments":{"upload-post-1644dc9807a1e3124422f2b5bebd4c2c":["virus.txt","0","",""]},"Action":"SendMessage","XToken":"3b8e7f9ef8969d7a319afd734359b903"}
+[05:54:26.014][b7374397] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
+[05:54:26.015][b7374397] IMAP[NOTE]: Connected (success)
+[05:54:26.020][b7374397] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE STARTTLS LOGINDISABLED] Dovecot ready.
+
+[05:54:26.021][b7374397] IMAP[DATA]: > TAG1 STARTTLS
+
+[05:54:26.021][b7374397] IMAP[DATA]: < TAG1 OK Begin TLS negotiation now.
+
+[05:54:26.036][b7374397] IMAP[DATA]: > TAG2 CAPABILITY
+
+[05:54:26.037][b7374397] IMAP[DATA]: < * CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN AUTH=LOGIN
+
+[05:54:26.037][b7374397] IMAP[DATA]: < TAG2 OK Pre-login capabilities listed, post-login capabilities have more.
+
+[05:54:26.037][b7374397] IMAP[DATA]: > TAG3 AUTHENTICATE PLAIN
+
+[05:54:26.038][b7374397] IMAP[DATA]: < + 
+
+[05:54:26.038][b7374397] IMAP[SECURE]: > *******
+
+[05:54:26.044][b7374397] IMAP[DATA]: < TAG3 OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE SORT SORT=DISPLAY THREAD=REFERENCES THREAD=REFS THREAD=ORDEREDSUBJECT MULTIAPPEND URL-PARTIAL CATENATE UNSELECT CHILDREN NAMESPACE UIDPLUS LIST-EXTENDED I18NLEVEL=1 CONDSTORE QRESYNC ESEARCH ESORT SEARCHRES WITHIN CONTEXT=SEARCH LIST-STATUS BINARY MOVE QUOTA] Logged in
+
+[05:54:26.084][b7374397] SMTP[NOTE]: Start connection to "tcp://172.19.0.17:587"
+[05:54:26.084][b7374397] SMTP[NOTE]: Connected (success)
+[05:54:26.107][b7374397] SMTP[DATA]: < 220 mail.coppermail.dyndns.org ESMTP Postfix (Ubuntu)
+
+[05:54:26.107][b7374397] SMTP[DATA]: > EHLO localhost
+
+[05:54:26.107][b7374397] SMTP[DATA]: < 250-mail.coppermail.dyndns.org
+
+[05:54:26.107][b7374397] SMTP[DATA]: < 250-PIPELINING
+
+[05:54:26.107][b7374397] SMTP[DATA]: < 250-SIZE 25600000
+
+[05:54:26.107][b7374397] SMTP[DATA]: < 250-VRFY
+
+[05:54:26.107][b7374397] SMTP[DATA]: < 250-ETRN
+
+[05:54:26.107][b7374397] SMTP[DATA]: < 250-STARTTLS
+
+[05:54:26.107][b7374397] SMTP[DATA]: < 250-ENHANCEDSTATUSCODES
+
+[05:54:26.107][b7374397] SMTP[DATA]: < 250-8BITMIME
+
+[05:54:26.107][b7374397] SMTP[DATA]: < 250-DSN
+
+[05:54:26.107][b7374397] SMTP[DATA]: < 250 SMTPUTF8
+
+[05:54:26.108][b7374397] SMTP[DATA]: > STARTTLS
+
+[05:54:26.108][b7374397] SMTP[DATA]: < 220 2.0.0 Ready to start TLS
+
+[05:54:26.124][b7374397] SMTP[DATA]: > EHLO localhost
+
+[05:54:26.124][b7374397] SMTP[DATA]: < 250-mail.coppermail.dyndns.org
+
+[05:54:26.124][b7374397] SMTP[DATA]: < 250-PIPELINING
+
+[05:54:26.124][b7374397] SMTP[DATA]: < 250-SIZE 25600000
+
+[05:54:26.124][b7374397] SMTP[DATA]: < 250-VRFY
+
+[05:54:26.124][b7374397] SMTP[DATA]: < 250-ETRN
+
+[05:54:26.124][b7374397] SMTP[DATA]: < 250-AUTH PLAIN LOGIN
+
+[05:54:26.124][b7374397] SMTP[DATA]: < 250-ENHANCEDSTATUSCODES
+
+[05:54:26.124][b7374397] SMTP[DATA]: < 250-8BITMIME
+
+[05:54:26.124][b7374397] SMTP[DATA]: < 250-DSN
+
+[05:54:26.124][b7374397] SMTP[DATA]: < 250 SMTPUTF8
+
+[05:54:26.124][b7374397] SMTP[DATA]: > AUTH PLAIN
+
+[05:54:26.125][b7374397] SMTP[DATA]: < 334 
+
+[05:54:26.125][b7374397] SMTP[SECURE]: > ********
+
+[05:54:26.125][b7374397] SMTP[DATA]: < 235 2.7.0 Authentication successful
+
+[05:54:26.125][b7374397] SMTP[DATA]: > MAIL FROM:<*******@coppermail.dyndns.org>
+
+[05:54:26.143][b7374397] SMTP[DATA]: < 250 2.1.0 Ok
+
+[05:54:26.143][b7374397] SMTP[DATA]: > RCPT TO:<tharangar@coppermail.dyndns.org>
+
+[05:54:26.162][b7374397] SMTP[DATA]: < 550 5.1.1 <tharangar@coppermail.dyndns.org>: Recipient address rejected: User unknown in virtual mailbox table
+
+--- FlushLogCache: Trigger
+[05:54:26.178][b7374397] SMTP[ERROR]: exception 'MailSo\Smtp\Exceptions\NegativeResponseException' with message 'Failed to add recipient "tharangar@coppermail.dyndns.org": 550 5.1.1 <tharangar@coppermail.dyndns.org>: Recipient address rejected: User unknown in virtual mailbox table' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Smtp/SmtpClient.php:794
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Smtp/SmtpClient.php(674): MailSo\Smtp\SmtpClient->validateResponse(Array, 'Failed to add r...')
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Smtp/SmtpClient.php(419): MailSo\Smtp\SmtpClient->sendRequestWithCheck('RCPT', Array, 'TO:<tharangar@c...', false, 'Failed to add r...')
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(6294): MailSo\Smtp\SmtpClient->Rcpt('tharangar@coppe...', false)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(6390): RainLoop\Actions->smtpSendMessage(Object(RainLoop\Model\Account), Object(MailSo\Mime\Message), Resource id #11, 1406, false, true)
+#4 [internal function]: RainLoop\Actions->DoSendMessage()
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#6 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#7 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#9 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#10 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#11 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#12 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#13 {main}
+[05:54:26.182][b7374397] SMTP[DATA]: > QUIT\r\n
+[05:54:26.184][b7374397] SMTP[DATA]: < 221 2.0.0 Bye\r\n
+[05:54:26.186][b7374397] SMTP[NOTE]: Disconnected from "tcp://172.19.0.17:587" (success)
+[05:54:26.198][b7374397] INFO[ERROR]: exception 'MailSo\Smtp\Exceptions\NegativeResponseException' with message 'Failed to add recipient "tharangar@coppermail.dyndns.org": 550 5.1.1 <tharangar@coppermail.dyndns.org>: Recipient address rejected: User unknown in virtual mailbox table' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Smtp/SmtpClient.php:794
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Smtp/SmtpClient.php(674): MailSo\Smtp\SmtpClient->validateResponse(Array, 'Failed to add r...')
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Smtp/SmtpClient.php(419): MailSo\Smtp\SmtpClient->sendRequestWithCheck('RCPT', Array, 'TO:<tharangar@c...', false, 'Failed to add r...')
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(6294): MailSo\Smtp\SmtpClient->Rcpt('tharangar@coppe...', false)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(6390): RainLoop\Actions->smtpSendMessage(Object(RainLoop\Model\Account), Object(MailSo\Mime\Message), Resource id #11, 1406, false, true)
+#4 [internal function]: RainLoop\Actions->DoSendMessage()
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#6 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#7 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#9 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#10 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#11 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#12 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#13 {main}
+
+Next exception 'RainLoop\Exceptions\ClientException' with message 'CantSendMessage[302]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:6499
+Stack trace:
+#0 [internal function]: RainLoop\Actions->DoSendMessage()
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#2 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#7 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#8 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#9 {main}
+[05:54:26.201][b7374397] AJAX[DATA]: {"Action":"SendMessage","Result":false,"ErrorCode":302,"ErrorMessage":"","ErrorMessageAdditional":"","Time":223}
+[05:54:26.206][b7374397] IMAP[DATA]: > TAG4 LOGOUT\r\n
+[05:54:26.211][b7374397] IMAP[DATA]: < * BYE Logging out\r\n
+[05:54:26.214][b7374397] IMAP[DATA]: < TAG4 OK Logout completed (0.001 + 0.000 secs).\r\n
+[05:54:26.216][b7374397] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
+[05:54:26.218][b7374397] INFO[MEMORY]: Memory peak usage: 1.75MB
+[05:54:26.219][b7374397] INFO[TIME]: Time delta: 0.23801207542419
+
+--- FlushLogCache: WriteOnErrorOnly
+[08:13:22.286][4f6c1a1b] INFO[DATA]: [DATE:03.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:12][Apache/2.4.7 (Ubuntu)][apache2handler]
+[08:13:22.286][4f6c1a1b] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[08:13:22.286][4f6c1a1b] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[08:13:22.288][4f6c1a1b] AJAX[NOTE]: Action: DoAdminLogin
+[08:13:22.288][4f6c1a1b] POST[DATA]: {"Login":"test@coppermail.dyndns.org","Password":"*******","Action":"AdminLogin","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
+--- FlushLogCache: Trigger
+[08:13:23.306][4f6c1a1b] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'AuthError[102]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:3840
+Stack trace:
+#0 [internal function]: RainLoop\Actions->DoAdminLogin()
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#2 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#7 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#8 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#9 {main}
+[08:13:23.309][4f6c1a1b] AJAX[DATA]: {"Action":"AdminLogin","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1102}
+[08:13:23.328][4f6c1a1b] INFO[MEMORY]: Memory peak usage: 1.25MB
+[08:13:23.331][4f6c1a1b] INFO[TIME]: Time delta: 1.1066710948944
+
+--- FlushLogCache: WriteOnErrorOnly
+[08:41:39.452][a597b12c] INFO[DATA]: [DATE:03.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:12][Apache/2.4.7 (Ubuntu)][apache2handler]
+[08:41:39.452][a597b12c] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[08:41:39.452][a597b12c] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[08:41:39.462][a597b12c] AJAX[NOTE]: Action: DoAdminLogin
+[08:41:39.462][a597b12c] POST[DATA]: {"Login":"test@coppermail.dyndns.org","Password":"*******","Action":"AdminLogin","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
+--- FlushLogCache: Trigger
+[08:41:40.482][a597b12c] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'AuthError[102]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:3840
+Stack trace:
+#0 [internal function]: RainLoop\Actions->DoAdminLogin()
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#2 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#7 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#8 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#9 {main}
+[08:41:40.485][a597b12c] AJAX[DATA]: {"Action":"AdminLogin","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1234}
+[08:41:40.540][a597b12c] INFO[MEMORY]: Memory peak usage: 3.5MB
+[08:41:40.543][a597b12c] INFO[TIME]: Time delta: 1.2544498443604
+
+--- FlushLogCache: WriteOnErrorOnly
+[08:42:51.311][1ec30b2a] INFO[DATA]: [DATE:03.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:16][Apache/2.4.7 (Ubuntu)][apache2handler]
+[08:42:51.311][1ec30b2a] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[08:42:51.311][1ec30b2a] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[08:42:51.321][1ec30b2a] AJAX[NOTE]: Action: DoLogin
+[08:42:51.321][1ec30b2a] POST[DATA]: {"Email":"test@coppermail.dyndns.org","Login":"","Password":"*******","Language":"","AdditionalCode":"","AdditionalCodeSignMe":"0","SignMe":"0","Action":"Login","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
+[08:42:51.411][1ec30b2a] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
+[08:42:51.418][1ec30b2a] IMAP[NOTE]: Connected (success)
+[08:42:51.428][1ec30b2a] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE STARTTLS LOGINDISABLED] Dovecot ready.
+
+[08:42:51.430][1ec30b2a] IMAP[DATA]: > TAG1 STARTTLS
+
+[08:42:51.430][1ec30b2a] IMAP[DATA]: < TAG1 OK Begin TLS negotiation now.
+
+[08:42:51.446][1ec30b2a] IMAP[DATA]: > TAG2 CAPABILITY
+
+[08:42:51.446][1ec30b2a] IMAP[DATA]: < * CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN AUTH=LOGIN
+
+[08:42:51.446][1ec30b2a] IMAP[DATA]: < TAG2 OK Pre-login capabilities listed, post-login capabilities have more.
+
+[08:42:51.446][1ec30b2a] IMAP[DATA]: > TAG3 AUTHENTICATE PLAIN
+
+[08:42:51.447][1ec30b2a] IMAP[DATA]: < + 
+
+[08:42:51.447][1ec30b2a] IMAP[SECURE]: > *******
+
+[08:42:53.457][1ec30b2a] IMAP[DATA]: < TAG3 NO [AUTHENTICATIONFAILED] Authentication failed.
+
+--- FlushLogCache: Trigger
+[08:42:53.479][1ec30b2a] IMAP[WARNING]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('test@coppermail...', '*******', '', true, false)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('test@coppermail...', '*******', '', true, false)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('test@coppermail...', '*******', '', '', false)
+#7 [internal function]: RainLoop\Actions->DoLogin()
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#9 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#11 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#12 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#13 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#14 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#15 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#16 {main}
+[08:42:53.489][1ec30b2a] IMAP[NOTICE]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('test@coppermail...', '*******', '', true, false)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('test@coppermail...', '*******', '', true, false)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('test@coppermail...', '*******', '', '', false)
+#7 [internal function]: RainLoop\Actions->DoLogin()
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#9 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#11 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#12 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#13 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#14 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#15 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#16 {main}
+
+Next exception 'MailSo\Imap\Exceptions\LoginBadCredentialsException' with message 'MailSo-Imap-Exceptions-LoginBadCredentialsException (ImapClient.php ~ 312)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:312
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('test@coppermail...', '*******', '', true, false)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('test@coppermail...', '*******', '', true, false)
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('test@coppermail...', '*******', '', '', false)
+#5 [internal function]: RainLoop\Actions->DoLogin()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#7 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#9 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#11 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#12 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#13 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#14 {main}
+[08:42:53.495][1ec30b2a] INFO[ERROR]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('test@coppermail...', '*******', '', true, false)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('test@coppermail...', '*******', '', true, false)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('test@coppermail...', '*******', '', '', false)
+#7 [internal function]: RainLoop\Actions->DoLogin()
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#9 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#11 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#12 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#13 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#14 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#15 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#16 {main}
+
+Next exception 'MailSo\Imap\Exceptions\LoginBadCredentialsException' with message 'MailSo-Imap-Exceptions-LoginBadCredentialsException (ImapClient.php ~ 312)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:312
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('test@coppermail...', '*******', '', true, false)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('test@coppermail...', '*******', '', true, false)
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('test@coppermail...', '*******', '', '', false)
+#5 [internal function]: RainLoop\Actions->DoLogin()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#7 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#9 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#11 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#12 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#13 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#14 {main}
+
+Next exception 'RainLoop\Exceptions\ClientException' with message 'AuthError[102]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:2097
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('test@coppermail...', '*******', '', '', false)
+#2 [internal function]: RainLoop\Actions->DoLogin()
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#4 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#8 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#9 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#10 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#11 {main}
+[08:42:53.497][1ec30b2a] AJAX[DATA]: {"Action":"Login","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":2313}
+[08:42:53.504][1ec30b2a] INFO[MEMORY]: Memory peak usage: 1.25MB
+[08:42:53.507][1ec30b2a] INFO[TIME]: Time delta: 2.3015220165253
+[08:42:53.509][1ec30b2a] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
+
+--- FlushLogCache: WriteOnErrorOnly
+[10:22:58.767][6bd555f8] INFO[DATA]: [DATE:03.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:17][Apache/2.4.7 (Ubuntu)][apache2handler]
+[10:22:58.767][6bd555f8] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[10:22:58.767][6bd555f8] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[10:22:58.768][6bd555f8] AJAX[NOTE]: Action: DoAdminLogin
+[10:22:58.768][6bd555f8] POST[DATA]: {"Login":"admin","Password":"*******","Action":"AdminLogin","XToken":"3b8e7f9ef8969d7a319afd734359b903"}
+--- FlushLogCache: Trigger
+[10:22:59.790][6bd555f8] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'AuthError[102]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:3840
+Stack trace:
+#0 [internal function]: RainLoop\Actions->DoAdminLogin()
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#2 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#7 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#8 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#9 {main}
+[10:22:59.793][6bd555f8] AJAX[DATA]: {"Action":"AdminLogin","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1100}
+[10:22:59.808][6bd555f8] INFO[MEMORY]: Memory peak usage: 1.25MB
+[10:22:59.810][6bd555f8] INFO[TIME]: Time delta: 1.0951020717621
+
+--- FlushLogCache: WriteOnErrorOnly
+[10:40:08.280][bec223b0] INFO[DATA]: [DATE:03.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:17][Apache/2.4.7 (Ubuntu)][apache2handler]
+[10:40:08.280][bec223b0] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[10:40:08.280][bec223b0] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_pfEeifMQ3zhwrVJhwvHkh_aJDo3QxRHHCFOInXutCWjH1-4N10y-27SroQTa8DivWbMcA1FJzmS8Brd_uIxEwj29iL5jrE_ep9lPJGUiDpMpswrYUhX_5y5Tur1qQCYRRgagcOGupmQ0W5rLXBqv18PbG4l0iNE0JtWHXqeHybu6OP1Zg9R92z8UmGMi4R3JdCB0_NWPCUcW99x96wo9Sl7NlhGyOPaM4QBOhfZKdngO_GWc3cs8NadWP9iWSK8G5M2rLkqlvkAAfpfVMrY4J-Kilb8EGwF-xaTNwAiR8XG1yNIKru47SmA09MPNLmYW53nsan4H6p-4EJsanAVRSAQ0GuY/
+[10:40:08.281][bec223b0] AJAX[NOTE]: Action: DoFolderInformation
+[10:40:08.281][bec223b0] POST[DATA]: {"Folder":"INBOX","FlagsUids":"","UidNext":"1","Action":"FolderInformation","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
+[10:40:08.301][bec223b0] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
+[10:40:08.319][bec223b0] IMAP[NOTE]: Connected (unsuccess)
+--- FlushLogCache: Trigger
+[10:40:08.327][bec223b0] IMAP[NOTICE]: Socket: [2] stream_socket_client(): unable to connect to tcp://172.19.0.17:143 (Connection refused)
+[10:40:08.329][bec223b0] IMAP[NOTICE]: exception 'MailSo\Net\Exceptions\SocketCanNotConnectToHostException' with message 'Can't connect to host "tcp://172.19.0.17:143"' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Net/NetClient.php:292
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(153): MailSo\Net\NetClient->Connect('172.19.0.17', 143, 2, false, true)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(72): MailSo\Imap\ImapClient->Connect('172.19.0.17', 143, 2, false)
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(424): MailSo\Mail\MailClient->Connect('172.19.0.17', 143, 2, false, true)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(9024): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5696): RainLoop\Actions->initMailClientConnection()
+#5 [internal function]: RainLoop\Actions->DoFolderInformation()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#7 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#9 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#11 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#12 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#13 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#14 {main}
+[10:40:08.333][bec223b0] INFO[ERROR]: exception 'MailSo\Net\Exceptions\SocketCanNotConnectToHostException' with message 'Can't connect to host "tcp://172.19.0.17:143"' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Net/NetClient.php:292
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(153): MailSo\Net\NetClient->Connect('172.19.0.17', 143, 2, false, true)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(72): MailSo\Imap\ImapClient->Connect('172.19.0.17', 143, 2, false)
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(424): MailSo\Mail\MailClient->Connect('172.19.0.17', 143, 2, false, true)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(9024): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5696): RainLoop\Actions->initMailClientConnection()
+#5 [internal function]: RainLoop\Actions->DoFolderInformation()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#7 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#9 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#11 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#12 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#13 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#14 {main}
+
+Next exception 'RainLoop\Exceptions\ClientException' with message 'ConnectionError[104]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:9028
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5696): RainLoop\Actions->initMailClientConnection()
+#1 [internal function]: RainLoop\Actions->DoFolderInformation()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#10 {main}
+[10:40:08.334][bec223b0] AJAX[DATA]: {"Action":"FolderInformation","Result":false,"ErrorCode":104,"ErrorMessage":"","ErrorMessageAdditional":"","Time":110}
+[10:40:08.340][bec223b0] INFO[MEMORY]: Memory peak usage: 1.25MB
+[10:40:08.342][bec223b0] INFO[TIME]: Time delta: 0.10858917236328
+
+--- FlushLogCache: WriteOnErrorOnly
+[11:26:32.034][2d1ac07a] INFO[DATA]: [DATE:03.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:13][Apache/2.4.7 (Ubuntu)][apache2handler]
+[11:26:32.037][2d1ac07a] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[11:26:32.037][2d1ac07a] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_pfEeifMQ3zhwrVJhwvHkh_aJDo3QxRHHCFOInXutCWjH1-4N10y-27SroQTa8DivWbMcA1FJzmS8Brd_uIxEwj29iL5jrE_ep9lPJGUiDpMpswrYUhX_5y5Tur1qQCYRRgagcOGupmQ0W5rLXBqv18PbG4l0iNE0JtWHXqeHybu6OP1Zg9R92z8UmGMi4R3JdCB0_NWPCUcW99x96wo9Sl7NlhGyOPaM4QBOhfZKdngO_GWc3cs8NadWP9iWSK8G5M2rLkqlvkAAfpfVMrY4J-Kilb8EGwF-xaTNwAiR8XG1yNIKru47SmA09MPNLmYW53nsan4H6p-4EJsanAVRSAQ0GuY/
+[11:26:32.048][2d1ac07a] AJAX[NOTE]: Action: DoFolderInformation
+[11:26:32.049][2d1ac07a] POST[DATA]: {"Folder":"Sent","FlagsUids":"","UidNext":"","Action":"FolderInformation","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
+[11:26:32.128][2d1ac07a] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
+[11:26:32.139][2d1ac07a] IMAP[NOTE]: Connected (unsuccess)
+--- FlushLogCache: Trigger
+[11:26:32.153][2d1ac07a] IMAP[NOTICE]: Socket: [2] stream_socket_client(): unable to connect to tcp://172.19.0.17:143 (Connection refused)
+[11:26:32.156][2d1ac07a] IMAP[NOTICE]: exception 'MailSo\Net\Exceptions\SocketCanNotConnectToHostException' with message 'Can't connect to host "tcp://172.19.0.17:143"' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Net/NetClient.php:292
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(153): MailSo\Net\NetClient->Connect('172.19.0.17', 143, 2, false, true)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(72): MailSo\Imap\ImapClient->Connect('172.19.0.17', 143, 2, false)
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(424): MailSo\Mail\MailClient->Connect('172.19.0.17', 143, 2, false, true)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(9024): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5696): RainLoop\Actions->initMailClientConnection()
+#5 [internal function]: RainLoop\Actions->DoFolderInformation()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#7 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#9 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#11 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#12 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#13 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#14 {main}
+[11:26:32.170][2d1ac07a] INFO[ERROR]: exception 'MailSo\Net\Exceptions\SocketCanNotConnectToHostException' with message 'Can't connect to host "tcp://172.19.0.17:143"' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Net/NetClient.php:292
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(153): MailSo\Net\NetClient->Connect('172.19.0.17', 143, 2, false, true)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(72): MailSo\Imap\ImapClient->Connect('172.19.0.17', 143, 2, false)
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(424): MailSo\Mail\MailClient->Connect('172.19.0.17', 143, 2, false, true)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(9024): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5696): RainLoop\Actions->initMailClientConnection()
+#5 [internal function]: RainLoop\Actions->DoFolderInformation()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#7 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#9 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#11 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#12 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#13 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#14 {main}
+
+Next exception 'RainLoop\Exceptions\ClientException' with message 'ConnectionError[104]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:9028
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5696): RainLoop\Actions->initMailClientConnection()
+#1 [internal function]: RainLoop\Actions->DoFolderInformation()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#10 {main}
+[11:26:32.171][2d1ac07a] AJAX[DATA]: {"Action":"FolderInformation","Result":false,"ErrorCode":104,"ErrorMessage":"","ErrorMessageAdditional":"","Time":334}
+[11:26:32.188][2d1ac07a] INFO[MEMORY]: Memory peak usage: 3.5MB
+[11:26:32.191][2d1ac07a] INFO[TIME]: Time delta: 0.30489897727966
+
+--- FlushLogCache: WriteOnErrorOnly
+[11:26:32.828][e8b92e3f] INFO[DATA]: [DATE:03.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:14][Apache/2.4.7 (Ubuntu)][apache2handler]
+[11:26:32.828][e8b92e3f] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[11:26:32.828][e8b92e3f] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/_pfEeifMQ3zhwrVJhwvHkh_aJDo3QxRHHCFOInXutCWjH1-4N10y-27SroQTa8DivWbMcA1FJzmS8Brd_uIxEwj29iL5jrE_ep9lPJGUiDpMpswrYUhX_5y5Tur1qQCYRRgagcOGupmQ0W5rLXBqv18PbG4l0iNE0JtWHXqeHybu6OP1Zg9R92z8UmGMi4R3JdCB0_NWPCUcW99x96wo9Sl7NlhGyOPaM4QBOhfZKdngO_GWc3cs8NadWP9iWSK8G5M2rLkqlvkAAfpfVMrY4J-Kilb8EGwF-xaTNwAiR8XG1yNIKru47SmA09MPNLmYW53nsan4H6p-4EJsanAVRSAQ0GuY/
+[11:26:32.828][e8b92e3f] AJAX[NOTE]: Action: DoFolderInformationMultiply
+[11:26:32.828][e8b92e3f] POST[DATA]: {"Folders":["Drafts","Archive","Junk","Trash"],"Action":"FolderInformationMultiply","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
+[11:26:32.836][e8b92e3f] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
+[11:26:32.836][e8b92e3f] IMAP[NOTE]: Connected (success)
+[11:26:32.943][e8b92e3f] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE STARTTLS LOGINDISABLED] Dovecot ready.
+
+[11:26:32.951][e8b92e3f] IMAP[DATA]: > TAG1 STARTTLS
+
+[11:26:32.951][e8b92e3f] IMAP[DATA]: < TAG1 OK Begin TLS negotiation now.
+
+--- FlushLogCache: Trigger
+[11:26:42.957][e8b92e3f] IMAP[ERROR]: exception 'MailSo\Net\Exceptions\Exception' with message 'Cannot enable STARTTLS.' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Net/NetClient.php:330
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(161): MailSo\Net\NetClient->EnableCrypto()
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(72): MailSo\Imap\ImapClient->Connect('172.19.0.17', 143, 2, false)
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(424): MailSo\Mail\MailClient->Connect('172.19.0.17', 143, 2, false, true)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(9024): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5750): RainLoop\Actions->initMailClientConnection()
+#5 [internal function]: RainLoop\Actions->DoFolderInformationMultiply()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#7 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#9 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#11 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#12 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#13 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#14 {main}
+[11:26:42.963][e8b92e3f] INFO[ERROR]: exception 'MailSo\Net\Exceptions\Exception' with message 'Cannot enable STARTTLS.' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Net/NetClient.php:330
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(161): MailSo\Net\NetClient->EnableCrypto()
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(72): MailSo\Imap\ImapClient->Connect('172.19.0.17', 143, 2, false)
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(424): MailSo\Mail\MailClient->Connect('172.19.0.17', 143, 2, false, true)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(9024): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5750): RainLoop\Actions->initMailClientConnection()
+#5 [internal function]: RainLoop\Actions->DoFolderInformationMultiply()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#7 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#9 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#11 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#12 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#13 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#14 {main}
+
+Next exception 'RainLoop\Exceptions\ClientException' with message 'AuthError[102]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:9032
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(5750): RainLoop\Actions->initMailClientConnection()
+#1 [internal function]: RainLoop\Actions->DoFolderInformationMultiply()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#3 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#8 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#9 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#10 {main}
+[11:26:42.964][e8b92e3f] AJAX[DATA]: {"Action":"FolderInformationMultiply","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":10174}
+[11:26:42.972][e8b92e3f] INFO[MEMORY]: Memory peak usage: 1.25MB
+[11:26:42.973][e8b92e3f] INFO[TIME]: Time delta: 10.169846057892
+[11:26:42.975][e8b92e3f] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)

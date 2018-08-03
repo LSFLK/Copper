@@ -11,6 +11,7 @@ RUN apt-get -y install net-tools
 RUN apt-get install -y iputils-ping
 # install mail until for testing functions
 RUN apt-get -y install mailutils
+
 # installing lsof command
 RUN apt-get -y install lsof
 RUN apt-get -y install telnet
@@ -96,4 +97,39 @@ RUN cp -R /etc/rspamd/local.d/dkim_signing.conf /etc/rspamd/local.d/arc.conf
 COPY ./emailserver/configs/sieve /sieve
 
 COPY ./emailserver/configs/init_sys.sh /bin/
+COPY ./emailserver/configs/security/clamscan_daily.sh /bin/
+COPY ./emailserver/configs/security/spamassassin_conf.sh /bin/
+RUN mkdir -p /amavis
+COPY ./emailserver/configs/security/amavis/15-content_filter_mode /amavis/
+COPY ./emailserver/configs/security/amavis/50-user /amavis/
+RUN mkdir -p /rspamd
+COPY ./emailserver/configs/security/rspamd/antivirus.conf /rspamd/
+
+# install security related components clamAV antivirus
+RUN apt-get -y install amavisd-new spamassassin clamav clamav-daemon clamav-freshclam
+RUN apt-get -y install opendkim postfix-policyd-spf-python
+# Some optional packages that integrate with Spamassassin for better spam detection:
+RUN apt-get -y install pyzor razor
+# main filtering applications compression utilities are needed to process some email attachments:
+#RUN apt-get -y install arj cabextract cpio lha nomarch pax rar unrar unzip zip # Removed due to lha package having a issue
+RUN apt-get -y install arj cabextract cpio nomarch pax rar unrar unzip zip
+
+#The default behaviour of ClamAV will fit our needs. For more ClamAV configuration options, check the configuration files in /etc/clamav.
+# Add the clamav user to the amavis group in order for Amavisd-new to have the appropriate access to scan files:
+RUN adduser clamav amavis
+RUN adduser amavis clamav
+
+# change the permission as follows:
+RUN chmod +x /bin/clamscan_daily.sh
+# RUN chmod +x /bin/clamscan_daily.sh
+# update the virus definition database or virus signature
+RUN freshclam
+
+# Now enable the daily execution of the script by creating a symlink in the /etc/cron.daily/ directory:
+RUN ln /bin/clamscan_daily.sh /etc/cron.daily/clamscan_daily
+
+# run security script
+RUN chmod +x /bin/spamassassin_conf.sh
+
+
 RUN chmod +x /bin/init_sys.sh
