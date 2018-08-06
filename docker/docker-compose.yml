@@ -77,9 +77,6 @@ services:
             - HOSTNAME=${FQDN}
             - DOMAIN=${DOMAIN}
             - EMAIL=${EMAIL}
-            - DBUSER=${DBUSER}
-            - DBHOST=${DBHOST}
-            - DBPASS=${DBPASS}
             - DEBUG=${DEBUG}
             - RSPAMD_PASSWORD=${RSPAMD_PASSWORD}
             - CN=${CN}
@@ -93,17 +90,14 @@ services:
             - "80"
             - "11334:11334" # RSPAMD web portal
             - "25:25"       # SMTP                - opened from external 25 to local 25
-            - "110:110"     # POP3
+            #- "110:110"     # POP3
             - "143:143"     # IMAP
             - "465:465"     # SMTPS
             - "587:587"     # Submission
             - "993:993"     # IMAPS
             - "995:995"     # POP3S
-            - "10024:10024"     # amavis
-            - "10025:10025"     # amavis
-            - "10026:10026" # smtpd  // this was added by me due to a port open erro in msterfile config
+            #- "10026:10026" # smtpd  // this was added by me due to a port open erro in msterfile config
             - "4190:4190"   # SIEVE
-            - "3310:3310"   # rspamd - clamAv socker communication
         entrypoint:
             - /bin/init_sys.sh
         #depends_on:
@@ -142,26 +136,26 @@ services:
 
 
 #------------------------------------------redis----------------------------------------------
-    redis:
+#    redis:
         #extends:
             #file: docker-common.yml
             #service: redis
-        image: redis:4.0-alpine
-        container_name: redis
-        hostname: redis.${DOMAIN}
-        restart: unless-stopped
-        command: redis-server --appendonly yes
-        volumes:
-          - ./redis/data:/data
+#        image: redis:4.0-alpine
+#        container_name: redis
+#        hostname: redis.${DOMAIN}
+#        restart: unless-stopped
+#        command: redis-server --appendonly yes
+#        volumes:
+#          - ./redis/data:/data
 #       
-        environment:
-            - VIRTUAL_HOST=redis
-        expose:
-            - "6379"
-        networks:
+#        environment:
+#            - VIRTUAL_HOST=redis
+#        expose:
+#            - "6379"
+#        networks:
             #- back
-            back:
-              ipv4_address: 172.19.0.23
+#            back:
+#              ipv4_address: 172.19.0.18
 #        #depends_on:
             #- front
 

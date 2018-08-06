@@ -15,7 +15,16 @@
     - [RAINLOOP](https://www.rainloop.net/) : web client to access mail for users.
   - [x] openLDAP
     - openLDAP server and a phpldapadmin will be installed for ldap configuration
-
+  - [x] Spam Filter
+    - [RSPAMD](https://rspamd.com/) : Fast, free and open-source spam filtering system.
+  - [x] Antivirus 
+    - [ClamAV](https://www.clamav.net/) : is an open source antivirus engine for detecting trojans, viruses, malware & other malicious threats.
+  - [x] Spam Filter (for pdf filtering perposes)
+    - [SpamAssassin](https://spamassassin.apache.org/) : Open Source anti-spam platform giving system administrators a filter to classify email and block spam (https://rspamd.com/comparison.html).
+  - [x] Security enhancement
+    - [DKIM](http://www.dkim.org/) : DomainKeys Identified Mail (DKIM) lets an organization take responsibility for a message that is in transit.
+  - [x] Mail Virus Scanner
+    - [AMaViS](http://amavis.sourceforge.net/) : A Mail Virus Scanner.
 
 
 ## How to Setup
@@ -39,7 +48,6 @@ Unblock following ports
 | Service | Software | Protocol | Port |
 | ------- | -------- | -------- | ---- |
 | SMTP | Postfix | TCP | 25 |
-| POP3 | Dovecot | TCP | 110 |
 | IMAP | Dovecot | TCP | 143 |
 | SMTPS | Postfix | TCP | 465 |
 | Submission | Postfix | TCP | 587 |
@@ -91,7 +99,3 @@ $ docker-compose up -d
 - openLdap solutions
   https://github.com/osixia/docker-openldap#quick-start
 
-- Roundcube installation
-  https://github.com/roundcube/roundcubemail-docker
-
-  

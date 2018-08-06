@@ -14,10 +14,7 @@ export REDIS_PORT=${REDIS_PORT:-6379}
 #export DEBUG=${DEBUG:-"true"}
 #export RSPAMD_PASSWORD=${RSPAMD_PASSWORD:-"password"}
 
-#Getting variables from the .env file
-export DBUSER=${DBUSER}
-export DBPASS=${DBPASS}
-export DBHOST=${DBHOST}
+
 export DEBUG=${DEBUG}
 export RSPAMD_PASSWORD=${RSPAMD_PASSWORD}
 
@@ -34,10 +31,10 @@ if [ -z "$EMAIL" ]; then
   exit 1
 fi
 
-if [ -z "$DBPASS" ]; then
-  echo "[ERROR] MariaDB database password must be set !"
-  exit 1
-fi
+#if [ -z "$DBPASS" ]; then
+  #echo "[ERROR] MariaDB database password must be set !"
+  #exit 1
+#fi
 
 if [ -z "$RSPAMD_PASSWORD" ]; then
   echo "[ERROR] Rspamd password must be set !"
@@ -103,22 +100,11 @@ chmod -R 755 /etc/letsencrypt/
  sed -i.bak -e "s;%DOMAIN%;"${DOMAIN}";g" "/etc/dovecot/conf.d/20-lmtp.conf"
  sed -i.bak -e "s;%DFQN%;"${HOSTNAME}";g" "/etc/dovecot/conf.d/10-ssl.conf"
 
-# postfixadmin mail database architecture
- find /etc/postfix/sql/ -name "mysql_virtual*" -exec sed -i -e "s;postfixuser;"${DBUSER}";g" {} \;
- find /etc/postfix/sql/ -name "mysql_virtual*" -exec sed -i -e "s;postfixpassword;"${DBPASS}";g" {} \;
- find /etc/postfix/sql/ -name "mysql_virtual*" -exec sed -i -e "s;127.0.0.1;"${DBHOST}";g" {} \;
- 
- # bellow configurations used with my database configuration
- #find /etc/postfix/mariadb-sql/ -name "mysql-virtual*" -exec sed -i -e "s;postfixuser;"${DBUSER}";g" {} \;
- #find /etc/postfix/mariadb-sql/ -name "mysql-virtual*" -exec sed -i -e "s;postfixpassword;"${DBPASS}";g" {} \;
- #find /etc/postfix/mariadb-sql/ -name "mysql-virtual*" -exec sed -i -e "s;127.0.0.1;"${DBHOST}";g" {} \;
 
  sed -i -e "s;redis;"${REDIS_HOST}";g" "/etc/rspamd/local.d/redis.conf"
  sed -i -e "s;redis;"${REDIS_HOST}";g" "/etc/rspamd/local.d/redis.conf"
 
- sed -i -e "s;postfixuser;"${DBUSER}";g" "/etc/dovecot/dovecot-sql.conf"
- sed -i -e "s;postfixpassword;"${DBPASS}";g" "/etc/dovecot/dovecot-sql.conf"
- sed -i -e "s;127.0.0.1;"${DBHOST}";g" "/etc/dovecot/dovecot-sql.conf"
+
 
  PASSWORD=$(rspamadm pw --quiet --encrypt --type pbkdf2 --password "${RSPAMD_PASSWORD}")
  sed -i "s;pwrd;"${RSPAMD_PASSWORD}";g" "/etc/rspamd/local.d/worker-controller.inc"
@@ -176,53 +162,6 @@ chmod -R 755 /etc/letsencrypt/
  chgrp postfix /etc/postfix/sql/mysql_virtual_*.cf
  chmod u=rw,g=r,o= /etc/postfix/sql/mysql_virtual_*.cf
 
- # mydb configurations
- #chgrp postfix /etc/postfix/mariadb-sql/mysql-virtual_*.cf
- #chmod u=rw,g=r,o= /etc/postfix/mariadb-sql/mysql-virtual_*.cf
-
-
-
-#For Postfix integration, enter the following from a terminal prompt:
- postconf -e 'content_filter = smtp-amavis:[127.0.0.1]:10024'
-
-# security related functions #######################################################
-sed -i "s;ENABLED=0;ENABLED=1;g" /etc/default/spamassassin
-
-chmod -R 755 /amavis/
-
-cp -R /amavis/* /etc/amavis/conf.d/
-cp -R /rspamd/* /etc/rspamd/local.d/
-
-sed -i "s;final_spam_destiny       = D_BOUNCE;final_spam_destiny       = D_DISCARD;g" /etc/amavis/conf.d/20-debian_defaults
-# add spam info headers if at, or above that level
-sed -i "s;sa_tag_level_deflt  = 2.0;sa_tag_level_deflt = -999;g" /etc/amavis/conf.d/20-debian_defaults
-# add 'spam detected' headers at that level
-sed -i "s;sa_tag2_level_deflt = 6.31;sa_tag2_level_deflt = 6.0;g" /etc/amavis/conf.d/20-debian_defaults
-# triggers spam evasive actions
-sed -i "s;sa_kill_level_deflt = 6.31;sa_kill_level_deflt = 21.0;g" /etc/amavis/conf.d/20-debian_defaults
-# spam level beyond which a DSN is not sent
-sed -i "s;sa_dsn_cutoff_level = 10;sa_dsn_cutoff_level = 4;g" /etc/amavis/conf.d/20-debian_defaults
-
-# DKIM domain white listing
-sed -i "s;ebay.at;${DOMAIN};g" /etc/amavis/conf.d/40-policy_banks
-
-
-
-# change the host name and domain names in examples
-sed -i "s;%HOSTNAME%;${HOSTNAME};g" /etc/amavis/conf.d/50-user
-sed -i "s;%DOMAIN%;${DOMAIN};g" /etc/amavis/conf.d/50-user
-
-# change the hostname and domain names in 50-user file
-
-
-
-
-#systemctl start spamassassin.service
-service spamassassin start
-service amavis restart
-service clamav-daemon restart
-
-#####  End of Security related functions ################################
 
  # give the necessary permission for /var/mail folder to create 
  chmod a+rwxt -R /var/mail
