@@ -85,6 +85,7 @@ COPY ./emailserver/configs/Rspamd/rspamd.sh /
 RUN chmod +x ./rspamd.sh
 RUN ./rspamd.sh
 COPY ./emailserver/configs/Rspamd /etc/rspamd/
+
 #RUN mkdir /var/lib/rspamd/dkim/	//error :/rspamd/...dkim/': No such file or directory
 RUN mkdir -p /var/lib/rspamd/dkim
 
