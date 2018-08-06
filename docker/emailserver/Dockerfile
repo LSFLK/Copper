@@ -133,3 +133,14 @@ RUN chmod +x /bin/spamassassin_conf.sh
 
 
 RUN chmod +x /bin/init_sys.sh
+
+# Antivirus with amavisd-new and clamAV
+RUN apt -y install amavisd-new spamassassin clamav-daemon clamav
+RUN adduser clamav amavis
+RUN adduser amavis clamav
+RUN adduser clamav amavis
+RUN adduser amavis clamav
+COPY /emailserver/configs/amavis_clamAV/spamassassin /etc/default/
+COPY ./emailserver/configs/amavis_clamAV/15-content_filter_mode /etc/amavis/conf.d/
+COPY ./emailserver/configs/amavis_clamAV/20-debian_defaults /etc/amavis/conf.d/
+COPY ./emailserver/configs/amavis_clamAV/50-user /etc/amavis/conf.d/

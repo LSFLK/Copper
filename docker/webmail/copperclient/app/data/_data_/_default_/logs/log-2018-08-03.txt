@@ -1,5 +1,6 @@
 
 --- FlushLogCache: WriteOnErrorOnly
+<<<<<<< HEAD
 [05:04:33.877][cef6fe4d] INFO[DATA]: [DATE:03.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:14][Apache/2.4.7 (Ubuntu)][apache2handler]
 [05:04:33.878][cef6fe4d] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
 [05:04:33.878][cef6fe4d] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
@@ -7,6 +8,15 @@
 [05:04:33.879][cef6fe4d] POST[DATA]: {"Login":"*******@coppermail.dyndns.org","Password":"*******","Action":"AdminLogin","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
 --- FlushLogCache: Trigger
 [05:04:34.899][cef6fe4d] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'AuthError[102]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:3840
+=======
+[04:37:40.385][3d738209] INFO[DATA]: [DATE:03.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:15][Apache/2.4.7 (Ubuntu)][apache2handler]
+[04:37:40.385][3d738209] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[04:37:40.385][3d738209] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[04:37:40.387][3d738209] AJAX[NOTE]: Action: DoAdminLogin
+[04:37:40.387][3d738209] POST[DATA]: {"Login":"lsf","Password":"*******","Action":"AdminLogin","XToken":"85e7691a9f576f4e4a31497a277ba63a"}
+--- FlushLogCache: Trigger
+[04:37:41.413][3d738209] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'AuthError[102]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:3840
+>>>>>>> 334815644b664e6ff8a8f7da9ffdcbac3ef43441
 Stack trace:
 #0 [internal function]: RainLoop\Actions->DoAdminLogin()
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
@@ -18,6 +28,7 @@ Stack trace:
 #7 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #8 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #9 {main}
+<<<<<<< HEAD
 [05:04:34.902][cef6fe4d] AJAX[DATA]: {"Action":"AdminLogin","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1084}
 [05:04:34.912][cef6fe4d] INFO[MEMORY]: Memory peak usage: 1.25MB
 [05:04:34.915][cef6fe4d] INFO[TIME]: Time delta: 1.0818560123444
@@ -30,6 +41,20 @@ Stack trace:
 [05:04:40.680][4485d922] POST[DATA]: {"Login":"*******@coppermail.dyndns.org","Password":"*******","Action":"AdminLogin","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
 --- FlushLogCache: Trigger
 [05:04:41.689][4485d922] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'AuthError[102]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:3840
+=======
+[04:37:41.416][3d738209] AJAX[DATA]: {"Action":"AdminLogin","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1109}
+[04:37:41.433][3d738209] INFO[MEMORY]: Memory peak usage: 1.25MB
+[04:37:41.435][3d738209] INFO[TIME]: Time delta: 1.1109759807587
+
+--- FlushLogCache: WriteOnErrorOnly
+[05:09:16.474][657d2c7c] INFO[DATA]: [DATE:03.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:17][Apache/2.4.7 (Ubuntu)][apache2handler]
+[05:09:16.475][657d2c7c] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[05:09:16.475][657d2c7c] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[05:09:16.476][657d2c7c] AJAX[NOTE]: Action: DoAdminLogin
+[05:09:16.476][657d2c7c] POST[DATA]: {"Login":"lsf","Password":"*******","Action":"AdminLogin","XToken":"85e7691a9f576f4e4a31497a277ba63a"}
+--- FlushLogCache: Trigger
+[05:09:17.487][657d2c7c] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'AuthError[102]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:3840
+>>>>>>> 334815644b664e6ff8a8f7da9ffdcbac3ef43441
 Stack trace:
 #0 [internal function]: RainLoop\Actions->DoAdminLogin()
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
@@ -41,6 +66,7 @@ Stack trace:
 #7 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #8 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #9 {main}
+<<<<<<< HEAD
 [05:04:41.692][4485d922] AJAX[DATA]: {"Action":"AdminLogin","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1074}
 [05:04:41.702][4485d922] INFO[MEMORY]: Memory peak usage: 1.25MB
 [05:04:41.705][4485d922] INFO[TIME]: Time delta: 1.0694489479065
@@ -53,6 +79,20 @@ Stack trace:
 [05:05:15.054][132c5144] POST[DATA]: {"Login":"*******@coppermail.dyndns.org","Password":"*******","Action":"AdminLogin","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
 --- FlushLogCache: Trigger
 [05:05:15.057][132c5144] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'AuthError[102]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:3840
+=======
+[05:09:17.491][657d2c7c] AJAX[DATA]: {"Action":"AdminLogin","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1075}
+[05:09:17.504][657d2c7c] INFO[MEMORY]: Memory peak usage: 1.25MB
+[05:09:17.506][657d2c7c] INFO[TIME]: Time delta: 1.0774710178375
+
+--- FlushLogCache: WriteOnErrorOnly
+[05:09:22.132][e7464f4f] INFO[DATA]: [DATE:03.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:16][Apache/2.4.7 (Ubuntu)][apache2handler]
+[05:09:22.132][e7464f4f] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[05:09:22.132][e7464f4f] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[05:09:22.134][e7464f4f] AJAX[NOTE]: Action: DoAdminLogin
+[05:09:22.134][e7464f4f] POST[DATA]: {"Login":"lsf","Password":"*******","Action":"AdminLogin","XToken":"85e7691a9f576f4e4a31497a277ba63a"}
+--- FlushLogCache: Trigger
+[05:09:23.142][e7464f4f] INFO[NOTICE]: exception 'RainLoop\Exceptions\ClientException' with message 'AuthError[102]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:3840
+>>>>>>> 334815644b664e6ff8a8f7da9ffdcbac3ef43441
 Stack trace:
 #0 [internal function]: RainLoop\Actions->DoAdminLogin()
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
@@ -64,6 +104,7 @@ Stack trace:
 #7 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #8 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #9 {main}
+<<<<<<< HEAD
 [05:05:15.060][132c5144] AJAX[DATA]: {"Action":"AdminLogin","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":92}
 [05:05:15.076][132c5144] INFO[MEMORY]: Memory peak usage: 1.25MB
 [05:05:15.077][132c5144] INFO[TIME]: Time delta: 0.089301824569702
@@ -692,3 +733,8 @@ Stack trace:
 [11:26:42.972][e8b92e3f] INFO[MEMORY]: Memory peak usage: 1.25MB
 [11:26:42.973][e8b92e3f] INFO[TIME]: Time delta: 10.169846057892
 [11:26:42.975][e8b92e3f] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
+=======
+[05:09:23.145][e7464f4f] AJAX[DATA]: {"Action":"AdminLogin","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1087}
+[05:09:23.160][e7464f4f] INFO[MEMORY]: Memory peak usage: 1.25MB
+[05:09:23.163][e7464f4f] INFO[TIME]: Time delta: 1.0904078483582
+>>>>>>> 334815644b664e6ff8a8f7da9ffdcbac3ef43441
