@@ -14,10 +14,7 @@ export REDIS_PORT=${REDIS_PORT:-6379}
 #export DEBUG=${DEBUG:-"true"}
 #export RSPAMD_PASSWORD=${RSPAMD_PASSWORD:-"password"}
 
-#Getting variables from the .env file
-export DBUSER=${DBUSER}
-export DBPASS=${DBPASS}
-export DBHOST=${DBHOST}
+
 export DEBUG=${DEBUG}
 export RSPAMD_PASSWORD=${RSPAMD_PASSWORD}
 
@@ -34,10 +31,10 @@ if [ -z "$EMAIL" ]; then
   exit 1
 fi
 
-if [ -z "$DBPASS" ]; then
-  echo "[ERROR] MariaDB database password must be set !"
-  exit 1
-fi
+#if [ -z "$DBPASS" ]; then
+  #echo "[ERROR] MariaDB database password must be set !"
+  #exit 1
+#fi
 
 if [ -z "$RSPAMD_PASSWORD" ]; then
   echo "[ERROR] Rspamd password must be set !"
@@ -103,22 +100,11 @@ chmod -R 755 /etc/letsencrypt/
  sed -i.bak -e "s;%DOMAIN%;"${DOMAIN}";g" "/etc/dovecot/conf.d/20-lmtp.conf"
  sed -i.bak -e "s;%DFQN%;"${HOSTNAME}";g" "/etc/dovecot/conf.d/10-ssl.conf"
 
-# postfixadmin mail database architecture
- find /etc/postfix/sql/ -name "mysql_virtual*" -exec sed -i -e "s;postfixuser;"${DBUSER}";g" {} \;
- find /etc/postfix/sql/ -name "mysql_virtual*" -exec sed -i -e "s;postfixpassword;"${DBPASS}";g" {} \;
- find /etc/postfix/sql/ -name "mysql_virtual*" -exec sed -i -e "s;127.0.0.1;"${DBHOST}";g" {} \;
- 
- # bellow configurations used with my database configuration
- #find /etc/postfix/mariadb-sql/ -name "mysql-virtual*" -exec sed -i -e "s;postfixuser;"${DBUSER}";g" {} \;
- #find /etc/postfix/mariadb-sql/ -name "mysql-virtual*" -exec sed -i -e "s;postfixpassword;"${DBPASS}";g" {} \;
- #find /etc/postfix/mariadb-sql/ -name "mysql-virtual*" -exec sed -i -e "s;127.0.0.1;"${DBHOST}";g" {} \;
 
  sed -i -e "s;redis;"${REDIS_HOST}";g" "/etc/rspamd/local.d/redis.conf"
  sed -i -e "s;redis;"${REDIS_HOST}";g" "/etc/rspamd/local.d/redis.conf"
 
- sed -i -e "s;postfixuser;"${DBUSER}";g" "/etc/dovecot/dovecot-sql.conf"
- sed -i -e "s;postfixpassword;"${DBPASS}";g" "/etc/dovecot/dovecot-sql.conf"
- sed -i -e "s;127.0.0.1;"${DBHOST}";g" "/etc/dovecot/dovecot-sql.conf"
+
 
  PASSWORD=$(rspamadm pw --quiet --encrypt --type pbkdf2 --password "${RSPAMD_PASSWORD}")
  sed -i "s;pwrd;"${RSPAMD_PASSWORD}";g" "/etc/rspamd/local.d/worker-controller.inc"
@@ -174,9 +160,6 @@ chmod -R 755 /etc/letsencrypt/
  chgrp postfix /etc/postfix/sql/mysql_virtual_*.cf
  chmod u=rw,g=r,o= /etc/postfix/sql/mysql_virtual_*.cf
 
- # mydb configurations
- #chgrp postfix /etc/postfix/mariadb-sql/mysql-virtual_*.cf
- #chmod u=rw,g=r,o= /etc/postfix/mariadb-sql/mysql-virtual_*.cf
 
  # give the necessary permission for /var/mail folder to create 
  chmod a+rwxt -R /var/mail

@@ -77,9 +77,6 @@ services:
             - HOSTNAME=${FQDN}
             - DOMAIN=${DOMAIN}
             - EMAIL=${EMAIL}
-            - DBUSER=${DBUSER}
-            - DBHOST=${DBHOST}
-            - DBPASS=${DBPASS}
             - DEBUG=${DEBUG}
             - RSPAMD_PASSWORD=${RSPAMD_PASSWORD}
             - CN=${CN}
@@ -93,7 +90,7 @@ services:
             - "80"
             - "11334:11334" # RSPAMD web portal
             - "25:25"       # SMTP                - opened from external 25 to local 25
-            - "110:110"     # POP3
+            #- "110:110"     # POP3
             - "143:143"     # IMAP
             - "465:465"     # SMTPS
             - "587:587"     # Submission
