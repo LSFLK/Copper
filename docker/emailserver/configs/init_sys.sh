@@ -91,6 +91,8 @@ if (( ${#files} )); then
    fi
   fi
 
+  
+
 chmod -R 755 /etc/letsencrypt/
 
  cp -R /etc/letsencrypt/ /cert

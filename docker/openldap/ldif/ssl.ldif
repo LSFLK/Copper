@@ -1,0 +1,10 @@
+dn: cn=config
+changetype: modify
+add: olcTLSCACertificateFile
+olcTLSCACertificateFile: /container/service/slapd/assets/certs/openldap.csr
+-
+add: olcTLSCertificateFile
+olcTLSCertificateFile: /container/service/slapd/assets/certs/openldap.crt
+-
+add: olcTLSCertificateKeyFile
+olcTLSCertificateKeyFile: /container/service/slapd/assets/certs/openldap.key

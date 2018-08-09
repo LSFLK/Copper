@@ -12,3 +12,19 @@ dn: cn=config
 changetype: modify
 replace: olcTLSCertificateKeyFile
 olcTLSCertificateKeyFile: /etc/openldap/certs/coppermailldap.key
+
+
+
+docker run --hostname openldap --volume /Users/wso2/Documents/ssl:/container/service/slapd/assets/certs \
+--env LDAP_TLS_CRT_FILENAME=openldap.crt \
+--env LDAP_TLS_KEY_FILENAME=openldap.key \
+--env LDAP_TLS_CA_CRT_FILENAME=openldap.crt \
+--detach osixia/openldap:1.2.1
+
+
+
+// serch whether secured configuration
+ldapsearch -x -Z -D "cn=admin,dc=coppermail,dc=dyndns,dc=org" -W -s sub "(objectClass=*)"
+
+
+docker run --env LDAP_TLS=true --detach openldap

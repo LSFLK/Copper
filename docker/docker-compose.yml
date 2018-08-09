@@ -62,7 +62,8 @@ services:
             dockerfile: ./emailserver/Dockerfile
         hostname: ${FQDN}
         #hostname: mail.example.com
-        #volumes:
+        volumes:
+           - ./emailserver/configs/security/ssl /ldap/certs/ # this keys are going to used when connect to openldap server
           #- ./emailserver/certs:/certs
           #- ./emailserver/ssl:/etc/letsencrypt/
           #- ./emailserver/mail:/var/mail
@@ -96,6 +97,8 @@ services:
             - "587:587"     # Submission
             - "993:993"     # IMAPS
             - "995:995"     # POP3S
+            - "10024:10024" # Amavis
+            - "10025:10025" # smtpd
             #- "10026:10026" # smtpd  // this was added by me due to a port open erro in msterfile config
             - "4190:4190"   # SIEVE
         entrypoint:
@@ -204,9 +207,11 @@ services:
         tty: true
         stdin_open: true
         volumes:
+             - ./emailserver/configs/security/ssl:/container/service/slapd/assets/certs/
              - /var/lib/ldap
              - /etc/ldap/slapd.d
-             - /container/service/slapd/assets/certs/
+             - ./openldap/ldif/:/ldap/ldif
+             #- /container/service/slapd/assets/certs/
         ports:
             - "389:389"
             - "636:636"
@@ -214,9 +219,9 @@ services:
         #domainname: ldap.${DOMAIN} # important: same as hostname
         
         networks:
-            #- front
             back:
               ipv4_address: 172.19.0.22
+            front:
         # login option
         
         logging:
