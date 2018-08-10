@@ -1134,3 +1134,571 @@ Stack trace:
 [09:13:09.399][74dac4b5] INFO[MEMORY]: Memory peak usage: 1.5MB
 [09:13:09.401][74dac4b5] INFO[TIME]: Time delta: 2.0996870994568
 [09:13:09.403][74dac4b5] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
+
+--- FlushLogCache: WriteOnErrorOnly
+[09:54:06.959][fab73e41] INFO[DATA]: [DATE:10.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:13][Apache/2.4.7 (Ubuntu)][apache2handler]
+[09:54:06.963][fab73e41] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[09:54:06.963][fab73e41] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[09:54:06.980][fab73e41] AJAX[NOTE]: Action: DoLogin
+[09:54:06.986][fab73e41] POST[DATA]: {"Email":"*******@coppermail.dyndns.org","Login":"","Password":"*******","Language":"","AdditionalCode":"","AdditionalCodeSignMe":"0","SignMe":"0","Action":"Login","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
+[09:54:07.101][fab73e41] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
+[09:54:07.110][fab73e41] IMAP[NOTE]: Connected (success)
+[09:54:07.653][fab73e41] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE STARTTLS LOGINDISABLED] Dovecot ready.
+
+[09:54:07.663][fab73e41] IMAP[DATA]: > TAG1 STARTTLS
+
+[09:54:07.664][fab73e41] IMAP[DATA]: < TAG1 OK Begin TLS negotiation now.
+
+[09:54:07.706][fab73e41] IMAP[DATA]: > TAG2 CAPABILITY
+
+[09:54:07.706][fab73e41] IMAP[DATA]: < * CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN AUTH=LOGIN
+
+[09:54:07.707][fab73e41] IMAP[DATA]: < TAG2 OK Pre-login capabilities listed, post-login capabilities have more.
+
+[09:54:07.707][fab73e41] IMAP[DATA]: > TAG3 AUTHENTICATE PLAIN
+
+[09:54:07.708][fab73e41] IMAP[DATA]: < + 
+
+[09:54:07.708][fab73e41] IMAP[SECURE]: > *******
+
+[09:54:09.215][fab73e41] IMAP[DATA]: < TAG3 NO [UNAVAILABLE] Temporary authentication failure. [mail.coppermail.dyndns.org:2018-08-10 09:54:09]
+
+--- FlushLogCache: Trigger
+[09:54:09.238][fab73e41] IMAP[WARNING]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('*******@coppermail...', '*******', '', true, false)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('*******@coppermail...', '*******', '', true, false)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('*******@coppermail...', '*******', '', '', false)
+#7 [internal function]: RainLoop\Actions->DoLogin()
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#9 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#11 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#12 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#13 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#14 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#15 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#16 {main}
+[09:54:09.252][fab73e41] IMAP[NOTICE]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('*******@coppermail...', '*******', '', true, false)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('*******@coppermail...', '*******', '', true, false)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('*******@coppermail...', '*******', '', '', false)
+#7 [internal function]: RainLoop\Actions->DoLogin()
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#9 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#11 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#12 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#13 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#14 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#15 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#16 {main}
+
+Next exception 'MailSo\Imap\Exceptions\LoginBadCredentialsException' with message 'MailSo-Imap-Exceptions-LoginBadCredentialsException (ImapClient.php ~ 312)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:312
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('*******@coppermail...', '*******', '', true, false)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('*******@coppermail...', '*******', '', true, false)
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('*******@coppermail...', '*******', '', '', false)
+#5 [internal function]: RainLoop\Actions->DoLogin()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#7 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#9 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#11 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#12 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#13 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#14 {main}
+[09:54:09.266][fab73e41] INFO[ERROR]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('*******@coppermail...', '*******', '', true, false)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('*******@coppermail...', '*******', '', true, false)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('*******@coppermail...', '*******', '', '', false)
+#7 [internal function]: RainLoop\Actions->DoLogin()
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#9 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#11 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#12 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#13 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#14 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#15 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#16 {main}
+
+Next exception 'MailSo\Imap\Exceptions\LoginBadCredentialsException' with message 'MailSo-Imap-Exceptions-LoginBadCredentialsException (ImapClient.php ~ 312)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:312
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('*******@coppermail...', '*******', '', true, false)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('*******@coppermail...', '*******', '', true, false)
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('*******@coppermail...', '*******', '', '', false)
+#5 [internal function]: RainLoop\Actions->DoLogin()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#7 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#9 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#11 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#12 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#13 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#14 {main}
+
+Next exception 'RainLoop\Exceptions\ClientException' with message 'AuthError[102]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:2097
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('*******@coppermail...', '*******', '', '', false)
+#2 [internal function]: RainLoop\Actions->DoLogin()
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#4 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#8 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#9 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#10 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#11 {main}
+[09:54:09.269][fab73e41] AJAX[DATA]: {"Action":"Login","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":2626}
+[09:54:09.290][fab73e41] INFO[MEMORY]: Memory peak usage: 1.25MB
+[09:54:09.294][fab73e41] INFO[TIME]: Time delta: 2.5293169021606
+[09:54:09.301][fab73e41] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
+
+--- FlushLogCache: WriteOnErrorOnly
+[11:04:23.614][ffd1f0f4] INFO[DATA]: [DATE:10.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:12][Apache/2.4.7 (Ubuntu)][apache2handler]
+[11:04:23.614][ffd1f0f4] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[11:04:23.614][ffd1f0f4] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[11:04:23.629][ffd1f0f4] AJAX[NOTE]: Action: DoLogin
+[11:04:23.630][ffd1f0f4] POST[DATA]: {"Email":"*******@coppermail.dyndns.org","Login":"","Password":"*******","Language":"","AdditionalCode":"","AdditionalCodeSignMe":"0","SignMe":"0","Action":"Login","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
+[11:04:23.782][ffd1f0f4] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
+[11:04:23.789][ffd1f0f4] IMAP[NOTE]: Connected (success)
+[11:04:23.947][ffd1f0f4] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE STARTTLS LOGINDISABLED] Dovecot ready.
+
+[11:04:23.955][ffd1f0f4] IMAP[DATA]: > TAG1 STARTTLS
+
+[11:04:23.955][ffd1f0f4] IMAP[DATA]: < TAG1 OK Begin TLS negotiation now.
+
+[11:04:23.989][ffd1f0f4] IMAP[DATA]: > TAG2 CAPABILITY
+
+[11:04:23.989][ffd1f0f4] IMAP[DATA]: < * CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN AUTH=LOGIN
+
+[11:04:23.989][ffd1f0f4] IMAP[DATA]: < TAG2 OK Pre-login capabilities listed, post-login capabilities have more.
+
+[11:04:23.990][ffd1f0f4] IMAP[DATA]: > TAG3 AUTHENTICATE PLAIN
+
+[11:04:23.990][ffd1f0f4] IMAP[DATA]: < + 
+
+[11:04:23.990][ffd1f0f4] IMAP[SECURE]: > *******
+
+[11:04:25.492][ffd1f0f4] IMAP[DATA]: < TAG3 NO [UNAVAILABLE] Temporary authentication failure. [mail.coppermail.dyndns.org:2018-08-10 11:04:25]
+
+--- FlushLogCache: Trigger
+[11:04:25.522][ffd1f0f4] IMAP[WARNING]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('*******@coppermail...', '*******', '', true, false)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('*******@coppermail...', '*******', '', true, false)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('*******@coppermail...', '*******', '', '', false)
+#7 [internal function]: RainLoop\Actions->DoLogin()
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#9 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#11 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#12 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#13 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#14 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#15 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#16 {main}
+[11:04:25.543][ffd1f0f4] IMAP[NOTICE]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('*******@coppermail...', '*******', '', true, false)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('*******@coppermail...', '*******', '', true, false)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('*******@coppermail...', '*******', '', '', false)
+#7 [internal function]: RainLoop\Actions->DoLogin()
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#9 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#11 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#12 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#13 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#14 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#15 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#16 {main}
+
+Next exception 'MailSo\Imap\Exceptions\LoginBadCredentialsException' with message 'MailSo-Imap-Exceptions-LoginBadCredentialsException (ImapClient.php ~ 312)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:312
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('*******@coppermail...', '*******', '', true, false)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('*******@coppermail...', '*******', '', true, false)
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('*******@coppermail...', '*******', '', '', false)
+#5 [internal function]: RainLoop\Actions->DoLogin()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#7 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#9 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#11 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#12 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#13 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#14 {main}
+[11:04:25.572][ffd1f0f4] INFO[ERROR]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('*******@coppermail...', '*******', '', true, false)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('*******@coppermail...', '*******', '', true, false)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('*******@coppermail...', '*******', '', '', false)
+#7 [internal function]: RainLoop\Actions->DoLogin()
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#9 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#11 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#12 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#13 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#14 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#15 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#16 {main}
+
+Next exception 'MailSo\Imap\Exceptions\LoginBadCredentialsException' with message 'MailSo-Imap-Exceptions-LoginBadCredentialsException (ImapClient.php ~ 312)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:312
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('*******@coppermail...', '*******', '', true, false)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('*******@coppermail...', '*******', '', true, false)
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('*******@coppermail...', '*******', '', '', false)
+#5 [internal function]: RainLoop\Actions->DoLogin()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#7 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#9 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#11 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#12 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#13 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#14 {main}
+
+Next exception 'RainLoop\Exceptions\ClientException' with message 'AuthError[102]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:2097
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('*******@coppermail...', '*******', '', '', false)
+#2 [internal function]: RainLoop\Actions->DoLogin()
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#4 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#8 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#9 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#10 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#11 {main}
+[11:04:25.577][ffd1f0f4] AJAX[DATA]: {"Action":"Login","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":2350}
+[11:04:25.611][ffd1f0f4] INFO[MEMORY]: Memory peak usage: 3.5MB
+[11:04:25.617][ffd1f0f4] INFO[TIME]: Time delta: 2.2816240787506
+[11:04:25.620][ffd1f0f4] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
+
+--- FlushLogCache: WriteOnErrorOnly
+[11:32:21.597][6eae413b] INFO[DATA]: [DATE:10.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:12][Apache/2.4.7 (Ubuntu)][apache2handler]
+[11:32:21.597][6eae413b] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[11:32:21.597][6eae413b] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[11:32:21.603][6eae413b] AJAX[NOTE]: Action: DoLogin
+[11:32:21.605][6eae413b] POST[DATA]: {"Email":"*******@coppermail.dyndns.org","Login":"","Password":"*******","Language":"","AdditionalCode":"","AdditionalCodeSignMe":"0","SignMe":"0","Action":"Login","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
+[11:32:21.715][6eae413b] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
+[11:32:21.720][6eae413b] IMAP[NOTE]: Connected (success)
+[11:32:22.090][6eae413b] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE STARTTLS LOGINDISABLED] Dovecot ready.
+
+[11:32:22.102][6eae413b] IMAP[DATA]: > TAG1 STARTTLS
+
+[11:32:22.102][6eae413b] IMAP[DATA]: < TAG1 OK Begin TLS negotiation now.
+
+[11:32:22.130][6eae413b] IMAP[DATA]: > TAG2 CAPABILITY
+
+[11:32:22.131][6eae413b] IMAP[DATA]: < * CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN AUTH=LOGIN
+
+[11:32:22.131][6eae413b] IMAP[DATA]: < TAG2 OK Pre-login capabilities listed, post-login capabilities have more.
+
+[11:32:22.131][6eae413b] IMAP[DATA]: > TAG3 AUTHENTICATE PLAIN
+
+[11:32:22.132][6eae413b] IMAP[DATA]: < + 
+
+[11:32:22.132][6eae413b] IMAP[SECURE]: > *******
+
+[11:32:24.140][6eae413b] IMAP[DATA]: < TAG3 NO [UNAVAILABLE] Temporary authentication failure. [mail.coppermail.dyndns.org:2018-08-10 11:32:24]
+
+--- FlushLogCache: Trigger
+[11:32:24.158][6eae413b] IMAP[WARNING]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('*******@coppermail...', '*******', '', true, false)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('*******@coppermail...', '*******', '', true, false)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('*******@coppermail...', '*******', '', '', false)
+#7 [internal function]: RainLoop\Actions->DoLogin()
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#9 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#11 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#12 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#13 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#14 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#15 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#16 {main}
+[11:32:24.197][6eae413b] IMAP[NOTICE]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('*******@coppermail...', '*******', '', true, false)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('*******@coppermail...', '*******', '', true, false)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('*******@coppermail...', '*******', '', '', false)
+#7 [internal function]: RainLoop\Actions->DoLogin()
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#9 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#11 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#12 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#13 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#14 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#15 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#16 {main}
+
+Next exception 'MailSo\Imap\Exceptions\LoginBadCredentialsException' with message 'MailSo-Imap-Exceptions-LoginBadCredentialsException (ImapClient.php ~ 312)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:312
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('*******@coppermail...', '*******', '', true, false)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('*******@coppermail...', '*******', '', true, false)
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('*******@coppermail...', '*******', '', '', false)
+#5 [internal function]: RainLoop\Actions->DoLogin()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#7 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#9 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#11 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#12 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#13 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#14 {main}
+[11:32:24.223][6eae413b] INFO[ERROR]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('*******@coppermail...', '*******', '', true, false)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('*******@coppermail...', '*******', '', true, false)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('*******@coppermail...', '*******', '', '', false)
+#7 [internal function]: RainLoop\Actions->DoLogin()
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#9 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#11 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#12 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#13 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#14 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#15 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#16 {main}
+
+Next exception 'MailSo\Imap\Exceptions\LoginBadCredentialsException' with message 'MailSo-Imap-Exceptions-LoginBadCredentialsException (ImapClient.php ~ 312)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:312
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('*******@coppermail...', '*******', '', true, false)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('*******@coppermail...', '*******', '', true, false)
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('*******@coppermail...', '*******', '', '', false)
+#5 [internal function]: RainLoop\Actions->DoLogin()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#7 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#9 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#11 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#12 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#13 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#14 {main}
+
+Next exception 'RainLoop\Exceptions\ClientException' with message 'AuthError[102]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:2097
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('*******@coppermail...', '*******', '', '', false)
+#2 [internal function]: RainLoop\Actions->DoLogin()
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#4 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#8 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#9 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#10 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#11 {main}
+[11:32:24.227][6eae413b] AJAX[DATA]: {"Action":"Login","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":2850}
+[11:32:24.239][6eae413b] INFO[MEMORY]: Memory peak usage: 1.5MB
+[11:32:24.242][6eae413b] INFO[TIME]: Time delta: 2.8072810173035
+[11:32:24.243][6eae413b] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
+
+--- FlushLogCache: WriteOnErrorOnly
+[11:42:01.011][920b3291] INFO[DATA]: [DATE:10.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:12][Apache/2.4.7 (Ubuntu)][apache2handler]
+[11:42:01.011][920b3291] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[11:42:01.011][920b3291] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[11:42:01.033][920b3291] AJAX[NOTE]: Action: DoLogin
+[11:42:01.033][920b3291] POST[DATA]: {"Email":"*******@coppermail.dyndns.org","Login":"","Password":"*******","Language":"","AdditionalCode":"","AdditionalCodeSignMe":"0","SignMe":"0","Action":"Login","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
+[11:42:01.193][920b3291] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
+[11:42:01.199][920b3291] IMAP[NOTE]: Connected (success)
+[11:42:01.414][920b3291] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE STARTTLS LOGINDISABLED] Dovecot ready.
+
+[11:42:01.433][920b3291] IMAP[DATA]: > TAG1 STARTTLS
+
+[11:42:01.433][920b3291] IMAP[DATA]: < TAG1 OK Begin TLS negotiation now.
+
+[11:42:01.495][920b3291] IMAP[DATA]: > TAG2 CAPABILITY
+
+[11:42:01.496][920b3291] IMAP[DATA]: < * CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN AUTH=LOGIN
+
+[11:42:01.496][920b3291] IMAP[DATA]: < TAG2 OK Pre-login capabilities listed, post-login capabilities have more.
+
+[11:42:01.497][920b3291] IMAP[DATA]: > TAG3 AUTHENTICATE PLAIN
+
+[11:42:01.499][920b3291] IMAP[DATA]: < + 
+
+[11:42:01.499][920b3291] IMAP[SECURE]: > *******
+
+[11:42:03.006][920b3291] IMAP[DATA]: < TAG3 NO [UNAVAILABLE] Temporary authentication failure. [mail.coppermail.dyndns.org:2018-08-10 11:42:03]
+
+--- FlushLogCache: Trigger
+[11:42:03.332][920b3291] IMAP[WARNING]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('*******@coppermail...', '*******', '', true, false)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('*******@coppermail...', '*******', '', true, false)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('*******@coppermail...', '*******', '', '', false)
+#7 [internal function]: RainLoop\Actions->DoLogin()
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#9 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#11 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#12 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#13 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#14 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#15 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#16 {main}
+[11:42:03.380][920b3291] IMAP[NOTICE]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('*******@coppermail...', '*******', '', true, false)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('*******@coppermail...', '*******', '', true, false)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('*******@coppermail...', '*******', '', '', false)
+#7 [internal function]: RainLoop\Actions->DoLogin()
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#9 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#11 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#12 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#13 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#14 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#15 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#16 {main}
+
+Next exception 'MailSo\Imap\Exceptions\LoginBadCredentialsException' with message 'MailSo-Imap-Exceptions-LoginBadCredentialsException (ImapClient.php ~ 312)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:312
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('*******@coppermail...', '*******', '', true, false)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('*******@coppermail...', '*******', '', true, false)
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('*******@coppermail...', '*******', '', '', false)
+#5 [internal function]: RainLoop\Actions->DoLogin()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#7 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#9 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#11 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#12 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#13 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#14 {main}
+[11:42:03.429][920b3291] INFO[ERROR]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('*******@coppermail...', '*******', '', true, false)
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('*******@coppermail...', '*******', '', true, false)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('*******@coppermail...', '*******', '', '', false)
+#7 [internal function]: RainLoop\Actions->DoLogin()
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#9 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#11 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#12 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#13 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#14 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#15 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#16 {main}
+
+Next exception 'MailSo\Imap\Exceptions\LoginBadCredentialsException' with message 'MailSo-Imap-Exceptions-LoginBadCredentialsException (ImapClient.php ~ 312)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:312
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('*******@coppermail...', '*******', '', true, false)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('*******@coppermail...', '*******', '', true, false)
+#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('*******@coppermail...', '*******', '', '', false)
+#5 [internal function]: RainLoop\Actions->DoLogin()
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#7 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#9 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#11 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#12 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#13 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#14 {main}
+
+Next exception 'RainLoop\Exceptions\ClientException' with message 'AuthError[102]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:2097
+Stack trace:
+#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
+#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('*******@coppermail...', '*******', '', '', false)
+#2 [internal function]: RainLoop\Actions->DoLogin()
+#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
+#4 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
+#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
+#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
+#7 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
+#8 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
+#9 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
+#10 /var/www/site/app/index.php(13): include('/var/www/site/a...')
+#11 {main}
+[11:42:03.436][920b3291] AJAX[DATA]: {"Action":"Login","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":2771}
+[11:42:03.499][920b3291] INFO[MEMORY]: Memory peak usage: 3.5MB
+[11:42:03.520][920b3291] INFO[TIME]: Time delta: 2.7573020458221
+[11:42:03.528][920b3291] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
