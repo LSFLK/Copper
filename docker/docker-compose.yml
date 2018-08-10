@@ -63,8 +63,9 @@ services:
         hostname: ${FQDN}
         #hostname: mail.example.com
         volumes:
-           - ./emailserver/configs/security/ssl /ldap/certs/ # this keys are going to used when connect to openldap server
-          #- ./emailserver/certs:/certs
+           - ./emailserver/configs/security/ssl:/etc/ldap/tls/ # this keys are going to used when connect to openldap server
+           #- ./emailserver/certs/:/etc/ldap/tls/
+           #- ./emailserver/certs:/certs
           #- ./emailserver/ssl:/etc/letsencrypt/
           #- ./emailserver/mail:/var/mail
         container_name: "emailserver"
@@ -207,10 +208,12 @@ services:
         tty: true
         stdin_open: true
         volumes:
+             #- ./openldap/certs/:/container/service/slapd/assets/certs/
              - ./emailserver/configs/security/ssl:/container/service/slapd/assets/certs/
+             #- ./emailserver/certs/:/container/service/slapd/assets/certs/
              - /var/lib/ldap
              - /etc/ldap/slapd.d
-             - ./openldap/ldif/:/ldap/ldif
+             - ./openldap/ldif/:/ldap/ldif/
              #- /container/service/slapd/assets/certs/
         ports:
             - "389:389"

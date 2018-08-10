@@ -1,34 +1,34 @@
 
 --- FlushLogCache: WriteOnErrorOnly
-[06:43:51.255][07a1a970] INFO[DATA]: [DATE:09.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:13][Apache/2.4.7 (Ubuntu)][apache2handler]
-[06:43:51.255][07a1a970] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
-[06:43:51.255][07a1a970] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
-[06:43:51.271][07a1a970] AJAX[NOTE]: Action: DoLogin
-[06:43:51.271][07a1a970] POST[DATA]: {"Email":"*******@coppermail.dyndns.org","Login":"","Password":"*******","Language":"","AdditionalCode":"","AdditionalCodeSignMe":"0","SignMe":"0","Action":"Login","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
-[06:43:51.367][07a1a970] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
-[06:43:51.373][07a1a970] IMAP[NOTE]: Connected (success)
-[06:43:51.661][07a1a970] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE STARTTLS LOGINDISABLED] Dovecot ready.
+[03:41:34.325][77bd1e20] INFO[DATA]: [DATE:10.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:12][Apache/2.4.7 (Ubuntu)][apache2handler]
+[03:41:34.325][77bd1e20] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[03:41:34.325][77bd1e20] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[03:41:34.351][77bd1e20] AJAX[NOTE]: Action: DoLogin
+[03:41:34.352][77bd1e20] POST[DATA]: {"Email":"*******@coppermail.dyndns.org","Login":"","Password":"*******","Language":"","AdditionalCode":"","AdditionalCodeSignMe":"0","SignMe":"0","Action":"Login","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
+[03:41:34.519][77bd1e20] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
+[03:41:34.527][77bd1e20] IMAP[NOTE]: Connected (success)
+[03:41:34.753][77bd1e20] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE STARTTLS LOGINDISABLED] Dovecot ready.
 
-[06:43:51.669][07a1a970] IMAP[DATA]: > TAG1 STARTTLS
+[03:41:34.762][77bd1e20] IMAP[DATA]: > TAG1 STARTTLS
 
-[06:43:51.669][07a1a970] IMAP[DATA]: < TAG1 OK Begin TLS negotiation now.
+[03:41:34.762][77bd1e20] IMAP[DATA]: < TAG1 OK Begin TLS negotiation now.
 
-[06:43:51.694][07a1a970] IMAP[DATA]: > TAG2 CAPABILITY
+[03:41:34.792][77bd1e20] IMAP[DATA]: > TAG2 CAPABILITY
 
-[06:43:51.694][07a1a970] IMAP[DATA]: < * CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN AUTH=LOGIN
+[03:41:34.793][77bd1e20] IMAP[DATA]: < * CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN AUTH=LOGIN
 
-[06:43:51.694][07a1a970] IMAP[DATA]: < TAG2 OK Pre-login capabilities listed, post-login capabilities have more.
+[03:41:34.793][77bd1e20] IMAP[DATA]: < TAG2 OK Pre-login capabilities listed, post-login capabilities have more.
 
-[06:43:51.695][07a1a970] IMAP[DATA]: > TAG3 AUTHENTICATE PLAIN
+[03:41:34.793][77bd1e20] IMAP[DATA]: > TAG3 AUTHENTICATE PLAIN
 
-[06:43:51.696][07a1a970] IMAP[DATA]: < + 
+[03:41:34.794][77bd1e20] IMAP[DATA]: < + 
 
-[06:43:51.696][07a1a970] IMAP[SECURE]: > *******
+[03:41:34.794][77bd1e20] IMAP[SECURE]: > *******
 
-[06:43:53.213][07a1a970] IMAP[DATA]: < TAG3 NO [UNAVAILABLE] Temporary authentication failure. [mail.coppermail.dyndns.org:2018-08-09 06:43:53]
+[03:41:36.303][77bd1e20] IMAP[DATA]: < TAG3 NO [UNAVAILABLE] Temporary authentication failure. [mail.coppermail.dyndns.org:2018-08-10 03:41:36]
 
 --- FlushLogCache: Trigger
-[06:43:53.234][07a1a970] IMAP[WARNING]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+[03:41:36.326][77bd1e20] IMAP[WARNING]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
@@ -47,7 +47,7 @@ Stack trace:
 #14 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #15 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #16 {main}
-[06:43:53.243][07a1a970] IMAP[NOTICE]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+[03:41:36.342][77bd1e20] IMAP[NOTICE]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
@@ -84,7 +84,7 @@ Stack trace:
 #12 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #13 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #14 {main}
-[06:43:53.256][07a1a970] INFO[ERROR]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+[03:41:36.361][77bd1e20] INFO[ERROR]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
@@ -136,41 +136,41 @@ Stack trace:
 #9 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #10 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #11 {main}
-[06:43:53.258][07a1a970] AJAX[DATA]: {"Action":"Login","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":2266}
-[06:43:53.272][07a1a970] INFO[MEMORY]: Memory peak usage: 3.5MB
-[06:43:53.275][07a1a970] INFO[TIME]: Time delta: 2.198725938797
-[06:43:53.276][07a1a970] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
+[03:41:36.363][77bd1e20] AJAX[DATA]: {"Action":"Login","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":2559}
+[03:41:36.394][77bd1e20] INFO[MEMORY]: Memory peak usage: 3.5MB
+[03:41:36.398][77bd1e20] INFO[TIME]: Time delta: 2.4499320983887
+[03:41:36.400][77bd1e20] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
 
 --- FlushLogCache: WriteOnErrorOnly
-[06:43:56.419][cc67de39] INFO[DATA]: [DATE:09.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:14][Apache/2.4.7 (Ubuntu)][apache2handler]
-[06:43:56.419][cc67de39] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
-[06:43:56.419][cc67de39] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
-[06:43:56.422][cc67de39] AJAX[NOTE]: Action: DoLogin
-[06:43:56.422][cc67de39] POST[DATA]: {"Email":"*******@coppermail.dyndns.org","Login":"","Password":"*******","Language":"","AdditionalCode":"","AdditionalCodeSignMe":"0","SignMe":"0","Action":"Login","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
-[06:43:56.503][cc67de39] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
-[06:43:56.505][cc67de39] IMAP[NOTE]: Connected (success)
-[06:43:56.511][cc67de39] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE STARTTLS LOGINDISABLED] Dovecot ready.
+[03:42:40.825][df40b37e] INFO[DATA]: [DATE:10.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:13][Apache/2.4.7 (Ubuntu)][apache2handler]
+[03:42:40.825][df40b37e] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[03:42:40.825][df40b37e] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[03:42:40.827][df40b37e] AJAX[NOTE]: Action: DoLogin
+[03:42:40.827][df40b37e] POST[DATA]: {"Email":"*******@coppermail.dyndns.org","Login":"","Password":"*******","Language":"","AdditionalCode":"","AdditionalCodeSignMe":"0","SignMe":"0","Action":"Login","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
+[03:42:40.864][df40b37e] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
+[03:42:40.865][df40b37e] IMAP[NOTE]: Connected (success)
+[03:42:40.889][df40b37e] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE STARTTLS LOGINDISABLED] Dovecot ready.
 
-[06:43:56.522][cc67de39] IMAP[DATA]: > TAG1 STARTTLS
+[03:42:40.894][df40b37e] IMAP[DATA]: > TAG1 STARTTLS
 
-[06:43:56.522][cc67de39] IMAP[DATA]: < TAG1 OK Begin TLS negotiation now.
+[03:42:40.894][df40b37e] IMAP[DATA]: < TAG1 OK Begin TLS negotiation now.
 
-[06:43:56.542][cc67de39] IMAP[DATA]: > TAG2 CAPABILITY
+[03:42:40.909][df40b37e] IMAP[DATA]: > TAG2 CAPABILITY
 
-[06:43:56.542][cc67de39] IMAP[DATA]: < * CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN AUTH=LOGIN
+[03:42:40.909][df40b37e] IMAP[DATA]: < * CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN AUTH=LOGIN
 
-[06:43:56.542][cc67de39] IMAP[DATA]: < TAG2 OK Pre-login capabilities listed, post-login capabilities have more.
+[03:42:40.909][df40b37e] IMAP[DATA]: < TAG2 OK Pre-login capabilities listed, post-login capabilities have more.
 
-[06:43:56.542][cc67de39] IMAP[DATA]: > TAG3 AUTHENTICATE PLAIN
+[03:42:40.909][df40b37e] IMAP[DATA]: > TAG3 AUTHENTICATE PLAIN
 
-[06:44:00.550][cc67de39] IMAP[DATA]: < + 
+[03:42:40.910][df40b37e] IMAP[DATA]: < + 
 
-[06:44:00.550][cc67de39] IMAP[SECURE]: > *******
+[03:42:40.910][df40b37e] IMAP[SECURE]: > *******
 
-[06:44:02.056][cc67de39] IMAP[DATA]: < TAG3 NO [UNAVAILABLE] Temporary authentication failure. [mail.coppermail.dyndns.org:2018-08-09 06:44:02]
+[03:42:42.418][df40b37e] IMAP[DATA]: < TAG3 NO [UNAVAILABLE] Temporary authentication failure. [mail.coppermail.dyndns.org:2018-08-10 03:42:42]
 
 --- FlushLogCache: Trigger
-[06:44:02.070][cc67de39] IMAP[WARNING]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+[03:42:42.428][df40b37e] IMAP[WARNING]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
@@ -189,7 +189,7 @@ Stack trace:
 #14 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #15 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #16 {main}
-[06:44:02.080][cc67de39] IMAP[NOTICE]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+[03:42:42.438][df40b37e] IMAP[NOTICE]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
@@ -226,7 +226,7 @@ Stack trace:
 #12 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #13 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #14 {main}
-[06:44:02.086][cc67de39] INFO[ERROR]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+[03:42:42.446][df40b37e] INFO[ERROR]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
@@ -278,41 +278,41 @@ Stack trace:
 #9 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #10 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #11 {main}
-[06:44:02.087][cc67de39] AJAX[DATA]: {"Action":"Login","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":5866}
-[06:44:02.104][cc67de39] INFO[MEMORY]: Memory peak usage: 1.25MB
-[06:44:02.108][cc67de39] INFO[TIME]: Time delta: 5.8366239070892
-[06:44:02.109][cc67de39] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
+[03:42:42.448][df40b37e] AJAX[DATA]: {"Action":"Login","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1709}
+[03:42:42.457][df40b37e] INFO[MEMORY]: Memory peak usage: 1.25MB
+[03:42:42.461][df40b37e] INFO[TIME]: Time delta: 1.6970920562744
+[03:42:42.462][df40b37e] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
 
 --- FlushLogCache: WriteOnErrorOnly
-[06:44:39.473][de558467] INFO[DATA]: [DATE:09.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:15][Apache/2.4.7 (Ubuntu)][apache2handler]
-[06:44:39.473][de558467] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
-[06:44:39.473][de558467] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
-[06:44:39.475][de558467] AJAX[NOTE]: Action: DoLogin
-[06:44:39.475][de558467] POST[DATA]: {"Email":"*******@coppermail.dyndns.org","Login":"","Password":"*******","Language":"","AdditionalCode":"","AdditionalCodeSignMe":"0","SignMe":"0","Action":"Login","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
-[06:44:39.512][de558467] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
-[06:44:39.514][de558467] IMAP[NOTE]: Connected (success)
-[06:44:39.528][de558467] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE STARTTLS LOGINDISABLED] Dovecot ready.
+[03:47:13.132][81bf2462] INFO[DATA]: [DATE:10.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:11][Apache/2.4.7 (Ubuntu)][apache2handler]
+[03:47:13.132][81bf2462] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[03:47:13.133][81bf2462] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[03:47:13.148][81bf2462] AJAX[NOTE]: Action: DoLogin
+[03:47:13.148][81bf2462] POST[DATA]: {"Email":"*******@coppermail.dyndns.org","Login":"","Password":"*******","Language":"","AdditionalCode":"","AdditionalCodeSignMe":"0","SignMe":"0","Action":"Login","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
+[03:47:13.287][81bf2462] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
+[03:47:13.293][81bf2462] IMAP[NOTE]: Connected (success)
+[03:47:13.464][81bf2462] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE STARTTLS LOGINDISABLED] Dovecot ready.
 
-[06:44:39.529][de558467] IMAP[DATA]: > TAG1 STARTTLS
+[03:47:13.474][81bf2462] IMAP[DATA]: > TAG1 STARTTLS
 
-[06:44:39.529][de558467] IMAP[DATA]: < TAG1 OK Begin TLS negotiation now.
+[03:47:13.474][81bf2462] IMAP[DATA]: < TAG1 OK Begin TLS negotiation now.
 
-[06:44:39.544][de558467] IMAP[DATA]: > TAG2 CAPABILITY
+[03:47:13.493][81bf2462] IMAP[DATA]: > TAG2 CAPABILITY
 
-[06:44:39.544][de558467] IMAP[DATA]: < * CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN AUTH=LOGIN
+[03:47:13.493][81bf2462] IMAP[DATA]: < * CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN AUTH=LOGIN
 
-[06:44:39.544][de558467] IMAP[DATA]: < TAG2 OK Pre-login capabilities listed, post-login capabilities have more.
+[03:47:13.493][81bf2462] IMAP[DATA]: < TAG2 OK Pre-login capabilities listed, post-login capabilities have more.
 
-[06:44:39.544][de558467] IMAP[DATA]: > TAG3 AUTHENTICATE PLAIN
+[03:47:13.494][81bf2462] IMAP[DATA]: > TAG3 AUTHENTICATE PLAIN
 
-[06:44:39.545][de558467] IMAP[DATA]: < + 
+[03:47:13.495][81bf2462] IMAP[DATA]: < + 
 
-[06:44:39.545][de558467] IMAP[SECURE]: > *******
+[03:47:13.495][81bf2462] IMAP[SECURE]: > *******
 
-[06:44:41.050][de558467] IMAP[DATA]: < TAG3 NO [UNAVAILABLE] Temporary authentication failure. [mail.coppermail.dyndns.org:2018-08-09 06:44:41]
+[03:47:15.498][81bf2462] IMAP[DATA]: < TAG3 NO [UNAVAILABLE] Temporary authentication failure. [mail.coppermail.dyndns.org:2018-08-10 03:47:15]
 
 --- FlushLogCache: Trigger
-[06:44:41.059][de558467] IMAP[WARNING]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+[03:47:15.519][81bf2462] IMAP[WARNING]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
@@ -331,7 +331,7 @@ Stack trace:
 #14 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #15 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #16 {main}
-[06:44:41.064][de558467] IMAP[NOTICE]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+[03:47:15.529][81bf2462] IMAP[NOTICE]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
@@ -368,7 +368,7 @@ Stack trace:
 #12 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #13 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #14 {main}
-[06:44:41.071][de558467] INFO[ERROR]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+[03:47:15.544][81bf2462] INFO[ERROR]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
@@ -420,41 +420,41 @@ Stack trace:
 #9 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #10 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #11 {main}
-[06:44:41.073][de558467] AJAX[DATA]: {"Action":"Login","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1681}
-[06:44:41.082][de558467] INFO[MEMORY]: Memory peak usage: 1.25MB
-[06:44:41.085][de558467] INFO[TIME]: Time delta: 1.6683678627014
-[06:44:41.086][de558467] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
+[03:47:15.548][81bf2462] AJAX[DATA]: {"Action":"Login","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":2698}
+[03:47:15.572][81bf2462] INFO[MEMORY]: Memory peak usage: 3.5MB
+[03:47:15.580][81bf2462] INFO[TIME]: Time delta: 2.6596670150757
+[03:47:15.582][81bf2462] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
 
 --- FlushLogCache: WriteOnErrorOnly
-[08:30:09.677][a177c594] INFO[DATA]: [DATE:09.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:12][Apache/2.4.7 (Ubuntu)][apache2handler]
-[08:30:09.679][a177c594] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
-[08:30:09.679][a177c594] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
-[08:30:09.691][a177c594] AJAX[NOTE]: Action: DoLogin
-[08:30:09.692][a177c594] POST[DATA]: {"Email":"*******@coppermail.dyndns.org","Login":"","Password":"*******","Language":"","AdditionalCode":"","AdditionalCodeSignMe":"0","SignMe":"0","Action":"Login","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
-[08:30:09.827][a177c594] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
-[08:30:09.832][a177c594] IMAP[NOTE]: Connected (success)
-[08:30:10.075][a177c594] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE STARTTLS LOGINDISABLED] Dovecot ready.
+[03:47:23.847][906524d9] INFO[DATA]: [DATE:10.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:12][Apache/2.4.7 (Ubuntu)][apache2handler]
+[03:47:23.848][906524d9] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[03:47:23.848][906524d9] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[03:47:23.852][906524d9] AJAX[NOTE]: Action: DoLogin
+[03:47:23.852][906524d9] POST[DATA]: {"Email":"*******@coppermail.dyndns.org","Login":"","Password":"*******","Language":"","AdditionalCode":"","AdditionalCodeSignMe":"0","SignMe":"0","Action":"Login","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
+[03:47:23.879][906524d9] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
+[03:47:23.880][906524d9] IMAP[NOTE]: Connected (success)
+[03:47:23.887][906524d9] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE STARTTLS LOGINDISABLED] Dovecot ready.
 
-[08:30:10.083][a177c594] IMAP[DATA]: > TAG1 STARTTLS
+[03:47:23.889][906524d9] IMAP[DATA]: > TAG1 STARTTLS
 
-[08:30:10.083][a177c594] IMAP[DATA]: < TAG1 OK Begin TLS negotiation now.
+[03:47:23.889][906524d9] IMAP[DATA]: < TAG1 OK Begin TLS negotiation now.
 
-[08:30:10.135][a177c594] IMAP[DATA]: > TAG2 CAPABILITY
+[03:47:23.907][906524d9] IMAP[DATA]: > TAG2 CAPABILITY
 
-[08:30:10.136][a177c594] IMAP[DATA]: < * CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN AUTH=LOGIN
+[03:47:23.907][906524d9] IMAP[DATA]: < * CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN AUTH=LOGIN
 
-[08:30:10.136][a177c594] IMAP[DATA]: < TAG2 OK Pre-login capabilities listed, post-login capabilities have more.
+[03:47:23.907][906524d9] IMAP[DATA]: < TAG2 OK Pre-login capabilities listed, post-login capabilities have more.
 
-[08:30:10.136][a177c594] IMAP[DATA]: > TAG3 AUTHENTICATE PLAIN
+[03:47:23.907][906524d9] IMAP[DATA]: > TAG3 AUTHENTICATE PLAIN
 
-[08:30:10.137][a177c594] IMAP[DATA]: < + 
+[03:47:27.914][906524d9] IMAP[DATA]: < + 
 
-[08:30:10.137][a177c594] IMAP[SECURE]: > *******
+[03:47:27.914][906524d9] IMAP[SECURE]: > *******
 
-[08:30:12.160][a177c594] IMAP[DATA]: < TAG3 NO [UNAVAILABLE] Temporary authentication failure. [mail.coppermail.dyndns.org:2018-08-09 08:30:12]
+[03:47:29.417][906524d9] IMAP[DATA]: < TAG3 NO [UNAVAILABLE] Temporary authentication failure. [mail.coppermail.dyndns.org:2018-08-10 03:47:29]
 
 --- FlushLogCache: Trigger
-[08:30:12.179][a177c594] IMAP[WARNING]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+[03:47:29.427][906524d9] IMAP[WARNING]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
@@ -473,7 +473,7 @@ Stack trace:
 #14 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #15 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #16 {main}
-[08:30:12.193][a177c594] IMAP[NOTICE]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+[03:47:29.433][906524d9] IMAP[NOTICE]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
@@ -510,7 +510,7 @@ Stack trace:
 #12 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #13 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #14 {main}
-[08:30:12.208][a177c594] INFO[ERROR]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+[03:47:29.442][906524d9] INFO[ERROR]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
@@ -562,41 +562,41 @@ Stack trace:
 #9 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #10 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #11 {main}
-[08:30:12.210][a177c594] AJAX[DATA]: {"Action":"Login","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":2934}
-[08:30:12.238][a177c594] INFO[MEMORY]: Memory peak usage: 3.5MB
-[08:30:12.241][a177c594] INFO[TIME]: Time delta: 2.8480041027069
-[08:30:12.242][a177c594] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
+[03:47:29.444][906524d9] AJAX[DATA]: {"Action":"Login","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":5674}
+[03:47:29.453][906524d9] INFO[MEMORY]: Memory peak usage: 1.25MB
+[03:47:29.456][906524d9] INFO[TIME]: Time delta: 5.6669039726257
+[03:47:29.457][906524d9] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
 
 --- FlushLogCache: WriteOnErrorOnly
-[08:52:07.543][e02a2c99] INFO[DATA]: [DATE:09.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:13][Apache/2.4.7 (Ubuntu)][apache2handler]
-[08:52:07.545][e02a2c99] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
-[08:52:07.545][e02a2c99] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
-[08:52:07.554][e02a2c99] AJAX[NOTE]: Action: DoLogin
-[08:52:07.554][e02a2c99] POST[DATA]: {"Email":"*******@coppermail.dyndns.org","Login":"","Password":"*******","Language":"","AdditionalCode":"","AdditionalCodeSignMe":"0","SignMe":"0","Action":"Login","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
-[08:52:07.604][e02a2c99] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
-[08:52:07.605][e02a2c99] IMAP[NOTE]: Connected (success)
-[08:52:07.698][e02a2c99] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE STARTTLS LOGINDISABLED] Dovecot ready.
+[03:48:56.007][1e1aa696] INFO[DATA]: [DATE:10.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:13][Apache/2.4.7 (Ubuntu)][apache2handler]
+[03:48:56.007][1e1aa696] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[03:48:56.007][1e1aa696] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[03:48:56.008][1e1aa696] AJAX[NOTE]: Action: DoLogin
+[03:48:56.008][1e1aa696] POST[DATA]: {"Email":"*******@coppermail.dyndns.org","Login":"","Password":"*******","Language":"","AdditionalCode":"","AdditionalCodeSignMe":"0","SignMe":"0","Action":"Login","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
+[03:48:56.040][1e1aa696] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
+[03:48:56.042][1e1aa696] IMAP[NOTE]: Connected (success)
+[03:48:56.099][1e1aa696] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE STARTTLS LOGINDISABLED] Dovecot ready.
 
-[08:52:07.704][e02a2c99] IMAP[DATA]: > TAG1 STARTTLS
+[03:48:56.103][1e1aa696] IMAP[DATA]: > TAG1 STARTTLS
 
-[08:52:07.705][e02a2c99] IMAP[DATA]: < TAG1 OK Begin TLS negotiation now.
+[03:48:56.103][1e1aa696] IMAP[DATA]: < TAG1 OK Begin TLS negotiation now.
 
-[08:52:07.734][e02a2c99] IMAP[DATA]: > TAG2 CAPABILITY
+[03:48:56.122][1e1aa696] IMAP[DATA]: > TAG2 CAPABILITY
 
-[08:52:07.734][e02a2c99] IMAP[DATA]: < * CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN AUTH=LOGIN
+[03:48:56.123][1e1aa696] IMAP[DATA]: < * CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN AUTH=LOGIN
 
-[08:52:07.734][e02a2c99] IMAP[DATA]: < TAG2 OK Pre-login capabilities listed, post-login capabilities have more.
+[03:48:56.123][1e1aa696] IMAP[DATA]: < TAG2 OK Pre-login capabilities listed, post-login capabilities have more.
 
-[08:52:07.735][e02a2c99] IMAP[DATA]: > TAG3 AUTHENTICATE PLAIN
+[03:48:56.123][1e1aa696] IMAP[DATA]: > TAG3 AUTHENTICATE PLAIN
 
-[08:52:07.735][e02a2c99] IMAP[DATA]: < + 
+[03:48:56.123][1e1aa696] IMAP[DATA]: < + 
 
-[08:52:07.735][e02a2c99] IMAP[SECURE]: > *******
+[03:48:56.123][1e1aa696] IMAP[SECURE]: > *******
 
-[08:52:09.239][e02a2c99] IMAP[DATA]: < TAG3 NO [UNAVAILABLE] Temporary authentication failure. [mail.coppermail.dyndns.org:2018-08-09 08:52:09]
+[03:48:58.131][1e1aa696] IMAP[DATA]: < TAG3 NO [UNAVAILABLE] Temporary authentication failure. [mail.coppermail.dyndns.org:2018-08-10 03:48:58]
 
 --- FlushLogCache: Trigger
-[08:52:09.249][e02a2c99] IMAP[WARNING]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+[03:48:58.140][1e1aa696] IMAP[WARNING]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
@@ -615,7 +615,7 @@ Stack trace:
 #14 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #15 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #16 {main}
-[08:52:09.255][e02a2c99] IMAP[NOTICE]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+[03:48:58.147][1e1aa696] IMAP[NOTICE]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
@@ -652,7 +652,7 @@ Stack trace:
 #12 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #13 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #14 {main}
-[08:52:09.263][e02a2c99] INFO[ERROR]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+[03:48:58.153][1e1aa696] INFO[ERROR]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
@@ -704,41 +704,41 @@ Stack trace:
 #9 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #10 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #11 {main}
-[08:52:09.264][e02a2c99] AJAX[DATA]: {"Action":"Login","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":1908}
-[08:52:09.280][e02a2c99] INFO[MEMORY]: Memory peak usage: 1.25MB
-[08:52:09.283][e02a2c99] INFO[TIME]: Time delta: 1.8377041816711
-[08:52:09.284][e02a2c99] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
+[03:48:58.155][1e1aa696] AJAX[DATA]: {"Action":"Login","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":2229}
+[03:48:58.162][1e1aa696] INFO[MEMORY]: Memory peak usage: 1.25MB
+[03:48:58.165][1e1aa696] INFO[TIME]: Time delta: 2.2173080444336
+[03:48:58.167][1e1aa696] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
 
 --- FlushLogCache: WriteOnErrorOnly
-[09:43:32.610][6b6982d5] INFO[DATA]: [DATE:09.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:12][Apache/2.4.7 (Ubuntu)][apache2handler]
-[09:43:32.610][6b6982d5] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
-[09:43:32.610][6b6982d5] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
-[09:43:32.620][6b6982d5] AJAX[NOTE]: Action: DoLogin
-[09:43:32.621][6b6982d5] POST[DATA]: {"Email":"*******@coppermail.dyndns.org","Login":"","Password":"*******","Language":"","AdditionalCode":"","AdditionalCodeSignMe":"0","SignMe":"0","Action":"Login","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
-[09:43:32.727][6b6982d5] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
-[09:43:32.730][6b6982d5] IMAP[NOTE]: Connected (success)
-[09:43:32.773][6b6982d5] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE STARTTLS LOGINDISABLED] Dovecot ready.
+[04:27:50.183][71dcfdf5] INFO[DATA]: [DATE:10.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:16][Apache/2.4.7 (Ubuntu)][apache2handler]
+[04:27:50.188][71dcfdf5] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[04:27:50.189][71dcfdf5] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[04:27:50.207][71dcfdf5] AJAX[NOTE]: Action: DoLogin
+[04:27:50.214][71dcfdf5] POST[DATA]: {"Email":"*******@coppermail.dyndns.org","Login":"","Password":"*******","Language":"","AdditionalCode":"","AdditionalCodeSignMe":"0","SignMe":"0","Action":"Login","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
+[04:27:50.347][71dcfdf5] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
+[04:27:50.371][71dcfdf5] IMAP[NOTE]: Connected (success)
+[04:27:50.727][71dcfdf5] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE STARTTLS LOGINDISABLED] Dovecot ready.
 
-[09:43:32.780][6b6982d5] IMAP[DATA]: > TAG1 STARTTLS
+[04:27:50.735][71dcfdf5] IMAP[DATA]: > TAG1 STARTTLS
 
-[09:43:32.780][6b6982d5] IMAP[DATA]: < TAG1 OK Begin TLS negotiation now.
+[04:27:50.736][71dcfdf5] IMAP[DATA]: < TAG1 OK Begin TLS negotiation now.
 
-[09:43:32.804][6b6982d5] IMAP[DATA]: > TAG2 CAPABILITY
+[04:27:50.775][71dcfdf5] IMAP[DATA]: > TAG2 CAPABILITY
 
-[09:43:32.805][6b6982d5] IMAP[DATA]: < * CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN AUTH=LOGIN
+[04:27:50.776][71dcfdf5] IMAP[DATA]: < * CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN AUTH=LOGIN
 
-[09:43:32.805][6b6982d5] IMAP[DATA]: < TAG2 OK Pre-login capabilities listed, post-login capabilities have more.
+[04:27:50.776][71dcfdf5] IMAP[DATA]: < TAG2 OK Pre-login capabilities listed, post-login capabilities have more.
 
-[09:43:32.805][6b6982d5] IMAP[DATA]: > TAG3 AUTHENTICATE PLAIN
+[04:27:50.776][71dcfdf5] IMAP[DATA]: > TAG3 AUTHENTICATE PLAIN
 
-[09:43:32.805][6b6982d5] IMAP[DATA]: < + 
+[04:27:50.777][71dcfdf5] IMAP[DATA]: < + 
 
-[09:43:32.806][6b6982d5] IMAP[SECURE]: > *******
+[04:27:50.777][71dcfdf5] IMAP[SECURE]: > *******
 
-[09:43:34.315][6b6982d5] IMAP[DATA]: < TAG3 NO [UNAVAILABLE] Temporary authentication failure. [mail.coppermail.dyndns.org:2018-08-09 09:43:34]
+[04:27:52.282][71dcfdf5] IMAP[DATA]: < TAG3 NO [UNAVAILABLE] Temporary authentication failure. [mail.coppermail.dyndns.org:2018-08-10 04:27:52]
 
 --- FlushLogCache: Trigger
-[09:43:34.335][6b6982d5] IMAP[WARNING]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+[04:27:52.299][71dcfdf5] IMAP[WARNING]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
@@ -757,7 +757,7 @@ Stack trace:
 #14 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #15 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #16 {main}
-[09:43:34.347][6b6982d5] IMAP[NOTICE]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+[04:27:52.313][71dcfdf5] IMAP[NOTICE]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
@@ -794,7 +794,7 @@ Stack trace:
 #12 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #13 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #14 {main}
-[09:43:34.377][6b6982d5] INFO[ERROR]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+[04:27:52.323][71dcfdf5] INFO[ERROR]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
@@ -846,41 +846,41 @@ Stack trace:
 #9 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #10 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #11 {main}
-[09:43:34.381][6b6982d5] AJAX[DATA]: {"Action":"Login","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":2148}
-[09:43:34.417][6b6982d5] INFO[MEMORY]: Memory peak usage: 3.5MB
-[09:43:34.424][6b6982d5] INFO[TIME]: Time delta: 2.1185991764069
-[09:43:34.428][6b6982d5] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
+[04:27:52.329][71dcfdf5] AJAX[DATA]: {"Action":"Login","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":2499}
+[04:27:52.351][71dcfdf5] INFO[MEMORY]: Memory peak usage: 1.25MB
+[04:27:52.354][71dcfdf5] INFO[TIME]: Time delta: 2.4217739105225
+[04:27:52.356][71dcfdf5] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
 
 --- FlushLogCache: WriteOnErrorOnly
-[10:12:42.044][0bd469cf] INFO[DATA]: [DATE:09.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:12][Apache/2.4.7 (Ubuntu)][apache2handler]
-[10:12:42.044][0bd469cf] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
-[10:12:42.044][0bd469cf] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
-[10:12:42.064][0bd469cf] AJAX[NOTE]: Action: DoLogin
-[10:12:42.064][0bd469cf] POST[DATA]: {"Email":"*******@coppermail.dyndns.org","Login":"","Password":"*******","Language":"","AdditionalCode":"","AdditionalCodeSignMe":"0","SignMe":"0","Action":"Login","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
-[10:12:42.222][0bd469cf] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
-[10:12:42.235][0bd469cf] IMAP[NOTE]: Connected (success)
-[10:12:45.528][0bd469cf] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE STARTTLS LOGINDISABLED] Dovecot ready.
+[09:01:51.187][bf036557] INFO[DATA]: [DATE:10.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:12][Apache/2.4.7 (Ubuntu)][apache2handler]
+[09:01:51.187][bf036557] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[09:01:51.187][bf036557] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[09:01:51.201][bf036557] AJAX[NOTE]: Action: DoLogin
+[09:01:51.203][bf036557] POST[DATA]: {"Email":"*******@coppermail.dyndns.org","Login":"","Password":"*******","Language":"","AdditionalCode":"","AdditionalCodeSignMe":"0","SignMe":"0","Action":"Login","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
+[09:01:51.297][bf036557] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
+[09:01:51.307][bf036557] IMAP[NOTE]: Connected (success)
+[09:01:51.673][bf036557] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE STARTTLS LOGINDISABLED] Dovecot ready.
 
-[10:12:45.536][0bd469cf] IMAP[DATA]: > TAG1 STARTTLS
+[09:01:51.685][bf036557] IMAP[DATA]: > TAG1 STARTTLS
 
-[10:12:45.537][0bd469cf] IMAP[DATA]: < TAG1 OK Begin TLS negotiation now.
+[09:01:51.686][bf036557] IMAP[DATA]: < TAG1 OK Begin TLS negotiation now.
 
-[10:12:45.558][0bd469cf] IMAP[DATA]: > TAG2 CAPABILITY
+[09:01:51.752][bf036557] IMAP[DATA]: > TAG2 CAPABILITY
 
-[10:12:45.558][0bd469cf] IMAP[DATA]: < * CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN AUTH=LOGIN
+[09:01:51.755][bf036557] IMAP[DATA]: < * CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN AUTH=LOGIN
 
-[10:12:45.558][0bd469cf] IMAP[DATA]: < TAG2 OK Pre-login capabilities listed, post-login capabilities have more.
+[09:01:51.755][bf036557] IMAP[DATA]: < TAG2 OK Pre-login capabilities listed, post-login capabilities have more.
 
-[10:12:45.558][0bd469cf] IMAP[DATA]: > TAG3 AUTHENTICATE PLAIN
+[09:01:51.755][bf036557] IMAP[DATA]: > TAG3 AUTHENTICATE PLAIN
 
-[10:12:45.559][0bd469cf] IMAP[DATA]: < + 
+[09:01:51.757][bf036557] IMAP[DATA]: < + 
 
-[10:12:45.559][0bd469cf] IMAP[SECURE]: > *******
+[09:01:51.757][bf036557] IMAP[SECURE]: > *******
 
-[10:12:49.148][0bd469cf] IMAP[DATA]: < TAG3 NO [UNAVAILABLE] Temporary authentication failure. [mail.coppermail.dyndns.org:2018-08-09 10:12:49]
+[09:01:53.267][bf036557] IMAP[DATA]: < TAG3 NO [UNAVAILABLE] Temporary authentication failure. [mail.coppermail.dyndns.org:2018-08-10 09:01:53]
 
 --- FlushLogCache: Trigger
-[10:12:49.187][0bd469cf] IMAP[WARNING]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+[09:01:53.319][bf036557] IMAP[WARNING]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
@@ -899,7 +899,7 @@ Stack trace:
 #14 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #15 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #16 {main}
-[10:12:49.201][0bd469cf] IMAP[NOTICE]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+[09:01:53.349][bf036557] IMAP[NOTICE]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
@@ -936,7 +936,7 @@ Stack trace:
 #12 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #13 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #14 {main}
-[10:12:49.219][0bd469cf] INFO[ERROR]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+[09:01:53.390][bf036557] INFO[ERROR]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
@@ -988,183 +988,41 @@ Stack trace:
 #9 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #10 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #11 {main}
-[10:12:49.221][0bd469cf] AJAX[DATA]: {"Action":"Login","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":7646}
-[10:12:49.249][0bd469cf] INFO[MEMORY]: Memory peak usage: 3.5MB
-[10:12:49.252][0bd469cf] INFO[TIME]: Time delta: 7.5575070381165
-[10:12:49.256][0bd469cf] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
+[09:01:53.393][bf036557] AJAX[DATA]: {"Action":"Login","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":2454}
+[09:01:53.423][bf036557] INFO[MEMORY]: Memory peak usage: 3.5MB
+[09:01:53.432][bf036557] INFO[TIME]: Time delta: 2.4323239326477
+[09:01:53.440][bf036557] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
 
 --- FlushLogCache: WriteOnErrorOnly
-[10:14:25.803][eec0641a] INFO[DATA]: [DATE:09.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:13][Apache/2.4.7 (Ubuntu)][apache2handler]
-[10:14:25.803][eec0641a] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
-[10:14:25.803][eec0641a] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
-[10:14:25.805][eec0641a] AJAX[NOTE]: Action: DoLogin
-[10:14:25.806][eec0641a] POST[DATA]: {"Email":"*******@coppermail.dyndns.org","Login":"","Password":"*******","Language":"","AdditionalCode":"","AdditionalCodeSignMe":"0","SignMe":"0","Action":"Login","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
-[10:14:25.848][eec0641a] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
-[10:14:25.849][eec0641a] IMAP[NOTE]: Connected (success)
-[10:14:28.985][eec0641a] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE STARTTLS LOGINDISABLED] Dovecot ready.
+[09:13:07.387][74dac4b5] INFO[DATA]: [DATE:10.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:14][Apache/2.4.7 (Ubuntu)][apache2handler]
+[09:13:07.387][74dac4b5] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
+[09:13:07.387][74dac4b5] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
+[09:13:07.391][74dac4b5] AJAX[NOTE]: Action: DoLogin
+[09:13:07.391][74dac4b5] POST[DATA]: {"Email":"*******@coppermail.dyndns.org","Login":"","Password":"*******","Language":"","AdditionalCode":"","AdditionalCodeSignMe":"0","SignMe":"0","Action":"Login","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
+[09:13:07.527][74dac4b5] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
+[09:13:07.532][74dac4b5] IMAP[NOTE]: Connected (success)
+[09:13:07.764][74dac4b5] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE STARTTLS LOGINDISABLED] Dovecot ready.
 
-[10:14:28.990][eec0641a] IMAP[DATA]: > TAG1 STARTTLS
+[09:13:07.775][74dac4b5] IMAP[DATA]: > TAG1 STARTTLS
 
-[10:14:28.990][eec0641a] IMAP[DATA]: < TAG1 OK Begin TLS negotiation now.
+[09:13:07.775][74dac4b5] IMAP[DATA]: < TAG1 OK Begin TLS negotiation now.
 
-[10:14:29.005][eec0641a] IMAP[DATA]: > TAG2 CAPABILITY
+[09:13:07.812][74dac4b5] IMAP[DATA]: > TAG2 CAPABILITY
 
-[10:14:29.005][eec0641a] IMAP[DATA]: < * CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN AUTH=LOGIN
+[09:13:07.813][74dac4b5] IMAP[DATA]: < * CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN AUTH=LOGIN
 
-[10:14:29.005][eec0641a] IMAP[DATA]: < TAG2 OK Pre-login capabilities listed, post-login capabilities have more.
+[09:13:07.813][74dac4b5] IMAP[DATA]: < TAG2 OK Pre-login capabilities listed, post-login capabilities have more.
 
-[10:14:29.005][eec0641a] IMAP[DATA]: > TAG3 AUTHENTICATE PLAIN
+[09:13:07.813][74dac4b5] IMAP[DATA]: > TAG3 AUTHENTICATE PLAIN
 
-[10:14:29.006][eec0641a] IMAP[DATA]: < + 
+[09:13:07.813][74dac4b5] IMAP[DATA]: < + 
 
-[10:14:29.006][eec0641a] IMAP[SECURE]: > *******
+[09:13:07.813][74dac4b5] IMAP[SECURE]: > *******
 
-[10:14:32.605][eec0641a] IMAP[DATA]: < TAG3 NO [UNAVAILABLE] Temporary authentication failure. [mail.coppermail.dyndns.org:2018-08-09 10:14:32]
-
---- FlushLogCache: Trigger
-[10:14:32.617][eec0641a] IMAP[WARNING]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
-Stack trace:
-#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
-#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
-#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('*******@coppermai...', '*******', '', true, false)
-#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('*******@coppermai...', '*******', '', true, false)
-#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
-#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
-#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('*******@coppermai...', '*******', '', '', false)
-#7 [internal function]: RainLoop\Actions->DoLogin()
-#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
-#9 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
-#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
-#11 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
-#12 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
-#13 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
-#14 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
-#15 /var/www/site/app/index.php(13): include('/var/www/site/a...')
-#16 {main}
-[10:14:32.626][eec0641a] IMAP[NOTICE]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
-Stack trace:
-#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
-#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
-#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('*******@coppermai...', '*******', '', true, false)
-#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('*******@coppermai...', '*******', '', true, false)
-#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
-#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
-#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('*******@coppermai...', '*******', '', '', false)
-#7 [internal function]: RainLoop\Actions->DoLogin()
-#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
-#9 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
-#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
-#11 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
-#12 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
-#13 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
-#14 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
-#15 /var/www/site/app/index.php(13): include('/var/www/site/a...')
-#16 {main}
-
-Next exception 'MailSo\Imap\Exceptions\LoginBadCredentialsException' with message 'MailSo-Imap-Exceptions-LoginBadCredentialsException (ImapClient.php ~ 312)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:312
-Stack trace:
-#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('*******@coppermai...', '*******', '', true, false)
-#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('*******@coppermai...', '*******', '', true, false)
-#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
-#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
-#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('*******@coppermai...', '*******', '', '', false)
-#5 [internal function]: RainLoop\Actions->DoLogin()
-#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
-#7 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
-#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
-#9 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
-#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
-#11 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
-#12 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
-#13 /var/www/site/app/index.php(13): include('/var/www/site/a...')
-#14 {main}
-[10:14:32.630][eec0641a] INFO[ERROR]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
-Stack trace:
-#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
-#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
-#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('*******@coppermai...', '*******', '', true, false)
-#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('*******@coppermai...', '*******', '', true, false)
-#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
-#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
-#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('*******@coppermai...', '*******', '', '', false)
-#7 [internal function]: RainLoop\Actions->DoLogin()
-#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
-#9 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
-#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
-#11 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
-#12 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
-#13 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
-#14 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
-#15 /var/www/site/app/index.php(13): include('/var/www/site/a...')
-#16 {main}
-
-Next exception 'MailSo\Imap\Exceptions\LoginBadCredentialsException' with message 'MailSo-Imap-Exceptions-LoginBadCredentialsException (ImapClient.php ~ 312)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:312
-Stack trace:
-#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Mail/MailClient.php(92): MailSo\Imap\ImapClient->Login('*******@coppermai...', '*******', '', true, false)
-#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Model/Account.php(451): MailSo\Mail\MailClient->Login('*******@coppermai...', '*******', '', true, false)
-#2 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2078): RainLoop\Model\Account->IncConnectAndLoginHelper(Object(RainLoop\Plugins\Manager), Object(MailSo\Mail\MailClient), Object(RainLoop\Config\Application))
-#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
-#4 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('*******@coppermai...', '*******', '', '', false)
-#5 [internal function]: RainLoop\Actions->DoLogin()
-#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
-#7 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
-#8 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
-#9 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
-#10 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
-#11 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
-#12 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
-#13 /var/www/site/app/index.php(13): include('/var/www/site/a...')
-#14 {main}
-
-Next exception 'RainLoop\Exceptions\ClientException' with message 'AuthError[102]' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php:2097
-Stack trace:
-#0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2329): RainLoop\Actions->CheckMailConnection(Object(RainLoop\Model\Account), true)
-#1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Actions.php(2383): RainLoop\Actions->LoginProcess('*******@coppermai...', '*******', '', '', false)
-#2 [internal function]: RainLoop\Actions->DoLogin()
-#3 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/ServiceActions.php(172): call_user_func(Array)
-#4 [internal function]: RainLoop\ServiceActions->ServiceAjax('')
-#5 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(146): call_user_func(Array, '')
-#6 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(56): RainLoop\Service->localHandle()
-#7 /var/www/site/app/rainloop/v/1.12.0/app/libraries/RainLoop/Service.php(79): RainLoop\Service->__construct()
-#8 /var/www/site/app/rainloop/v/1.12.0/app/handle.php(94): RainLoop\Service::Handle()
-#9 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
-#10 /var/www/site/app/index.php(13): include('/var/www/site/a...')
-#11 {main}
-[10:14:32.634][eec0641a] AJAX[DATA]: {"Action":"Login","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":6927}
-[10:14:32.644][eec0641a] INFO[MEMORY]: Memory peak usage: 1.25MB
-[10:14:32.646][eec0641a] INFO[TIME]: Time delta: 6.9159450531006
-[10:14:32.647][eec0641a] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
-
---- FlushLogCache: WriteOnErrorOnly
-[10:14:56.092][aaa8b7d3] INFO[DATA]: [DATE:09.08.18][OFFSET:-00][RL:1.12.0][PHP:5.5.9-1ubuntu4.25][IP:172.19.0.20][PID:14][Apache/2.4.7 (Ubuntu)][apache2handler]
-[10:14:56.092][aaa8b7d3] INFO[DATA]: [Suhosin:off][APC:on][MB:on][PDO:mysql][Streams:tcp,udp,unix,udg,ssl,sslv3,tls]
-[10:14:56.092][aaa8b7d3] REQUEST[NOTE]: [POST] http://localhost/?/Ajax/&q[]=/0/
-[10:14:56.093][aaa8b7d3] AJAX[NOTE]: Action: DoLogin
-[10:14:56.093][aaa8b7d3] POST[DATA]: {"Email":"*******@coppermail.dyndns.org","Login":"","Password":"*******","Language":"","AdditionalCode":"","AdditionalCodeSignMe":"0","SignMe":"0","Action":"Login","XToken":"2526d1749c6b8a90eb2a80f812055bf5"}
-[10:14:56.152][aaa8b7d3] IMAP[NOTE]: Start connection to "tcp://172.19.0.17:143"
-[10:14:56.154][aaa8b7d3] IMAP[NOTE]: Connected (success)
-[10:14:56.161][aaa8b7d3] IMAP[DATA]: < * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE STARTTLS LOGINDISABLED] Dovecot ready.
-
-[10:14:56.165][aaa8b7d3] IMAP[DATA]: > TAG1 STARTTLS
-
-[10:14:56.165][aaa8b7d3] IMAP[DATA]: < TAG1 OK Begin TLS negotiation now.
-
-[10:14:56.190][aaa8b7d3] IMAP[DATA]: > TAG2 CAPABILITY
-
-[10:14:56.191][aaa8b7d3] IMAP[DATA]: < * CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN AUTH=LOGIN
-
-[10:14:56.191][aaa8b7d3] IMAP[DATA]: < TAG2 OK Pre-login capabilities listed, post-login capabilities have more.
-
-[10:14:56.191][aaa8b7d3] IMAP[DATA]: > TAG3 AUTHENTICATE PLAIN
-
-[10:14:56.192][aaa8b7d3] IMAP[DATA]: < + 
-
-[10:14:56.192][aaa8b7d3] IMAP[SECURE]: > *******
-
-[10:14:59.772][aaa8b7d3] IMAP[DATA]: < TAG3 NO [UNAVAILABLE] Temporary authentication failure. [mail.coppermail.dyndns.org:2018-08-09 10:14:59]
+[09:13:09.317][74dac4b5] IMAP[DATA]: < TAG3 NO [UNAVAILABLE] Temporary authentication failure. [mail.coppermail.dyndns.org:2018-08-10 09:13:09]
 
 --- FlushLogCache: Trigger
-[10:14:59.791][aaa8b7d3] IMAP[WARNING]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+[09:13:09.350][74dac4b5] IMAP[WARNING]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
@@ -1183,7 +1041,7 @@ Stack trace:
 #14 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #15 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #16 {main}
-[10:14:59.801][aaa8b7d3] IMAP[NOTICE]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+[09:13:09.364][74dac4b5] IMAP[NOTICE]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
@@ -1220,7 +1078,7 @@ Stack trace:
 #12 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #13 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #14 {main}
-[10:14:59.812][aaa8b7d3] INFO[ERROR]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
+[09:13:09.384][74dac4b5] INFO[ERROR]: exception 'MailSo\Imap\Exceptions\NegativeResponseException' with message 'MailSo-Imap-Exceptions-NegativeResponseException (ImapClient.php ~ 1874)' in /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php:1874
 Stack trace:
 #0 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(1951): MailSo\Imap\ImapClient->validateResponse(Array)
 #1 /var/www/site/app/rainloop/v/1.12.0/app/libraries/MailSo/Imap/ImapClient.php(281): MailSo\Imap\ImapClient->parseResponseWithValidation()
@@ -1272,7 +1130,7 @@ Stack trace:
 #9 /var/www/site/app/rainloop/v/1.12.0/include.php(228): include('/var/www/site/a...')
 #10 /var/www/site/app/index.php(13): include('/var/www/site/a...')
 #11 {main}
-[10:14:59.815][aaa8b7d3] AJAX[DATA]: {"Action":"Login","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":3816}
-[10:14:59.825][aaa8b7d3] INFO[MEMORY]: Memory peak usage: 1.25MB
-[10:14:59.827][aaa8b7d3] INFO[TIME]: Time delta: 3.8088321685791
-[10:14:59.831][aaa8b7d3] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
+[09:13:09.386][74dac4b5] AJAX[DATA]: {"Action":"Login","Result":false,"ErrorCode":102,"ErrorMessage":"","ErrorMessageAdditional":"","Time":2114}
+[09:13:09.399][74dac4b5] INFO[MEMORY]: Memory peak usage: 1.5MB
+[09:13:09.401][74dac4b5] INFO[TIME]: Time delta: 2.0996870994568
+[09:13:09.403][74dac4b5] IMAP[NOTE]: Disconnected from "tcp://172.19.0.17:143" (success)
