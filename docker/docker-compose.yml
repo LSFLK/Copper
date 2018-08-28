@@ -136,27 +136,27 @@ services:
 
 
 #------------------------------------------redis----------------------------------------------
-#    redis:
+    redis:
         #extends:
             #file: docker-common.yml
             #service: redis
-#        image: redis:4.0-alpine
-#        container_name: redis
-#        hostname: redis.${DOMAIN}
-#        restart: unless-stopped
-#        command: redis-server --appendonly yes
-#        volumes:
-#          - ./redis/data:/data
-#       
-#        environment:
-#            - VIRTUAL_HOST=redis
-#        expose:
-#            - "6379"
-#        networks:
+        image: redis:4.0-alpine
+        container_name: redis
+        hostname: redis.${DOMAIN}
+        restart: unless-stopped
+        command: redis-server --appendonly yes
+        volumes:
+          - ./redis/data:/data
+       
+        environment:
+            - VIRTUAL_HOST=redis
+        expose:
+            - "6379"
+        networks:
             #- back
-#            back:
-#              ipv4_address: 172.19.0.18
-#        #depends_on:
+           back:
+              ipv4_address: 172.19.0.23
+        #depends_on:
             #- front
 
         #container_name: "redis"

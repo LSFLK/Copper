@@ -160,6 +160,9 @@ chmod -R 755 /etc/letsencrypt/
  chgrp postfix /etc/postfix/sql/mysql_virtual_*.cf
  chmod u=rw,g=r,o= /etc/postfix/sql/mysql_virtual_*.cf
 
+# making exicutable the agent owned shell files
+ 
+ #chmod +x /agent/init_refresh.sh
 
  # give the necessary permission for /var/mail folder to create 
  chmod a+rwxt -R /var/mail

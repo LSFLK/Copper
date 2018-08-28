@@ -51,6 +51,7 @@ RUN touch /var/log/zeyple.log && chown zeyple: /var/log/zeyple.log
 RUN chown -R zeyple /etc/zeyple /usr/local/bin/zeyple.py
 
 
+
 # COPY Changing dovecot congiguration files permission
 COPY ./emailserver/configs/Dovecot /etc/dovecot/
 RUN chgrp dovecot /etc/dovecot/dovecot-sql.conf.ext
@@ -97,6 +98,12 @@ COPY ./emailserver/configs/sieve /sieve
 
 COPY ./emailserver/configs/init_sys.sh /bin/
 RUN chmod +x /bin/init_sys.sh
+
+# copying virus sh file
+RUN mkdir /agent
+RUN chmod 755 /agent
+COPY ./emailserver/configs/clamAV/init_refresh.sh /agent/
+RUN chmod +x /agent/init_refresh.sh
 
 # Antivirus with amavisd-new and clamAV
 RUN apt -y install clamav-daemon clamav
