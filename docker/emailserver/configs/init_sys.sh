@@ -91,8 +91,6 @@ if (( ${#files} )); then
    fi
   fi
 
-  
-
 chmod -R 755 /etc/letsencrypt/
 
  cp -R /etc/letsencrypt/ /cert
@@ -141,8 +139,6 @@ chmod -R 755 /etc/letsencrypt/
  sed -i.bak -e "s;%DNPASS%;"${DNPASS}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
  sed -i.bak -e "s;%OU%;"${OU}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
 
- # Amavis
- sed -i.bak -e "s;%DOMAIN%;"${DOMAIN}";g" "/etc/amavis/conf.d/50-user"
 
  groupadd -g 5000 vmail && useradd -g vmail -u 5000 vmail -d /var/mail
  chown -R vmail:vmail /var/mail
@@ -164,6 +160,9 @@ chmod -R 755 /etc/letsencrypt/
  chgrp postfix /etc/postfix/sql/mysql_virtual_*.cf
  chmod u=rw,g=r,o= /etc/postfix/sql/mysql_virtual_*.cf
 
+# making exicutable the agent owned shell files
+ 
+ #chmod +x /agent/init_refresh.sh
 
  # give the necessary permission for /var/mail folder to create 
  chmod a+rwxt -R /var/mail
@@ -180,8 +179,10 @@ chmod -R 755 /etc/letsencrypt/
  service dovecot restart
  service rspamd start
  freshclam
- service spamassassin start
- service amavis start
+ service rspamd reload
+ service clamav-daemon start
+ service clamav-freshclam start
+
 
 
  tail -f /dev/null

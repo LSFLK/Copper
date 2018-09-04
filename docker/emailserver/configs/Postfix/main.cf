@@ -32,10 +32,6 @@ smtpd_use_tls=yes
 smtpd_tls_auth_only = yes
 
 
-# http://www.postfix.org/TLS_README.html
-# Use log level 3 only in case of problems. Use of log level 4 is strongly discouraged. 
-smtpd_tls_loglevel = 3
-
 # These two lines define how postfix will connect to other mail servers.
 # DANE is a stronger form of opportunistic TLS. You can read about it here:
 # http://www.postfix.org/TLS_README.html#client_tls_dane
@@ -45,11 +41,9 @@ smtpd_tls_loglevel = 3
 # support DNSSEC, remove the above two lines and uncomment the below:
 #   smtp_tls_security_level = may
 smtp_tls_security_level = may
-#smtp_tls_security_level = yes
 
 # allow other mail servers to connect using TLS, but don't require it
 smtpd_tls_security_level = may
-#smtpd_tls_security_level = yes
 
 
 # Enabling SMTP for authenticated users, and handing off authentication to Dovecot
@@ -255,13 +249,9 @@ virtual_alias_maps = ldap:/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf
 #virtual_overquota_bounce = yes
 #dovecot_destination_recipient_limit = 1
 
-
 # Milter setup
 milter_protocol = 6
 milter_default_action = accept
 smtpd_milters = inet:localhost:11332
 non_smtpd_milters=inet:127.0.0.1:11332
 milter_mail_macros = i {mail_addr} {client_addr} {client_name} {auth_authen}
-
-# Amavis and ClamAV
-content_filter = smtp-amavis:[127.0.0.1]:10024

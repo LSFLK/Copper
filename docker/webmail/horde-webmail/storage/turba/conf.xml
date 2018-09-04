@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!-- $Id: 4cd616848fb2e5c81200bf7c65930e9086ec2dcd $ -->
+<configuration>
+ <configsection name="menu">
+  <configheader>Menu Settings</configheader>
+  <configboolean name="import_export" desc="Should we display an Import/Export
+  link in Turba's menu?">true</configboolean>
+ </configsection>
+
+ <configsection name="client">
+   <configheader>Clients</configheader>
+   <configenum name="addressbook" desc="Name of client addressbook" required="false">
+     <values>
+       <configspecial application="contacts" name="sources"/>
+     </values>
+   </configenum>
+ </configsection>
+
+ <configsection name="gal">
+   <configheader>Exchange GAL</configheader>
+   <configenum name="addressbook" desc="If using a synchronization solution
+   that supports Exchange-style Global Address List (GAL) searches enter the
+   name of the addressbook that should act as the GAL. This is normally a
+   globally accessable, readonly addressbook." required="false">
+     <values>
+       <configspecial application="contacts" name="sources"/>
+     </values>
+   </configenum>
+ </configsection>
+
+ <configsection name="shares">
+  <configheader>Shares</configheader>
+  <configstring name="source" desc="Name of source for creating new
+  shares.&lt;br /&gt; Note that leaving this blank will prevent users from
+  being able to create new address books."
+  required="false">localsql</configstring>
+ </configsection>
+
+ <configsection name="comments">
+  <configheader>Comments</configheader>
+  <configboolean name="allow" desc="Can users comment on
+  contacts?">true</configboolean>
+ </configsection>
+
+ <configsection name="documents">
+  <configheader>Virtual File Storage</configheader>
+  <configvfs switchname="type" />
+ </configsection>
+
+ <configsection name="tags">
+  <configheader>Tag Settings</configheader>
+  <configboolean name="enabled" desc="Enable tagging?">true</configboolean>
+ </configsection>
+</configuration>

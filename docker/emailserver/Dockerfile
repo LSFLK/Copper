@@ -51,6 +51,7 @@ RUN touch /var/log/zeyple.log && chown zeyple: /var/log/zeyple.log
 RUN chown -R zeyple /etc/zeyple /usr/local/bin/zeyple.py
 
 
+
 # COPY Changing dovecot congiguration files permission
 COPY ./emailserver/configs/Dovecot /etc/dovecot/
 RUN chgrp dovecot /etc/dovecot/dovecot-sql.conf.ext
@@ -85,7 +86,6 @@ COPY ./emailserver/configs/Rspamd/rspamd.sh /
 RUN chmod +x ./rspamd.sh
 RUN ./rspamd.sh
 COPY ./emailserver/configs/Rspamd /etc/rspamd/
-
 #RUN mkdir /var/lib/rspamd/dkim/	//error :/rspamd/...dkim/': No such file or directory
 RUN mkdir -p /var/lib/rspamd/dkim
 
@@ -99,13 +99,12 @@ COPY ./emailserver/configs/sieve /sieve
 COPY ./emailserver/configs/init_sys.sh /bin/
 RUN chmod +x /bin/init_sys.sh
 
+# copying virus sh file
+RUN mkdir /agent
+RUN chmod 755 /agent
+COPY ./emailserver/configs/clamAV/init_refresh.sh /agent/
+RUN chmod +x /agent/init_refresh.sh
+
 # Antivirus with amavisd-new and clamAV
-RUN apt -y install amavisd-new spamassassin clamav-daemon clamav
-RUN adduser clamav amavis
-RUN adduser amavis clamav
-RUN adduser clamav amavis
-RUN adduser amavis clamav
-COPY /emailserver/configs/amavis_clamAV/spamassassin /etc/default/
-COPY ./emailserver/configs/amavis_clamAV/15-content_filter_mode /etc/amavis/conf.d/
-COPY ./emailserver/configs/amavis_clamAV/20-debian_defaults /etc/amavis/conf.d/
-COPY ./emailserver/configs/amavis_clamAV/50-user /etc/amavis/conf.d/
+RUN apt -y install clamav-daemon clamav
+COPY ./emailserver/configs/clamAV/antivirus.conf /etc/rspamd/override.d/
