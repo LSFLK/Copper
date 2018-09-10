@@ -133,30 +133,56 @@ services:
             front:
         container_name: "webmail"   
 
-
+# ----------------------------------------webmail--------------------------------------------
+  
+    horde:
+        build:
+            context: .
+            #dockerfile: ./webmail/${WEBMAIL}/Dockerfile
+            dockerfile: ./webmail/horde-webmail/Dockerfile
+            #dockerfile: ./webmail/horde/Dockerfile
+        restart: always
+        #env_file: .env
+        hostname: horde.${DOMAIN}
+        #volumes:
+            #- ./webmail/horde/storage:/etc/horde
+        ports:
+            - "80:80"
+            #- "8989:80"
+            - "3306"
+        #environment:
+            #- WEBMAIL=${WEBMAIL}
+         
+        depends_on:
+            - emailserver
+        networks:
+            back:
+              ipv4_address: 172.19.0.26
+            front:
+        container_name: "horde"   
 
 #------------------------------------------redis----------------------------------------------
-#    redis:
+    redis:
         #extends:
             #file: docker-common.yml
             #service: redis
-#        image: redis:4.0-alpine
-#        container_name: redis
-#        hostname: redis.${DOMAIN}
-#        restart: unless-stopped
-#        command: redis-server --appendonly yes
-#        volumes:
-#          - ./redis/data:/data
-#       
-#        environment:
-#            - VIRTUAL_HOST=redis
-#        expose:
-#            - "6379"
-#        networks:
+        image: redis:4.0-alpine
+        container_name: redis
+        hostname: redis.${DOMAIN}
+        restart: unless-stopped
+        command: redis-server --appendonly yes
+        volumes:
+          - ./redis/data:/data
+       
+        environment:
+            - VIRTUAL_HOST=redis
+        expose:
+            - "6379"
+        networks:
             #- back
-#            back:
-#              ipv4_address: 172.19.0.18
-#        #depends_on:
+           back:
+              ipv4_address: 172.19.0.23
+        #depends_on:
             #- front
 
         #container_name: "redis"
@@ -247,3 +273,53 @@ services:
             #- front
             back:
               ipv4_address: 172.19.0.21
+#-------------------------------------mariadb----------------------------------------------------
+    mariadb:
+        #extends:
+            #file: docker-common.yml
+            #service: mariadb
+        image: mariadb:10.2
+        hostname: mariadb
+        #build:
+            #context: .
+            #dockerfile: ./database/Dockerfile
+        container_name: mariadb
+        restart: unless-stopped
+        #environment:
+          #- MYSQL_DATABASE=postfix
+          #- MYSQL_DATABASE=${DB}
+          #- MYSQL_USER=${DBUSER}
+          #- MYSQL_PASSWORD=${DBPASS}
+        volumes:
+          - ./database/data:/var/lib/mysql
+          # following volume is added ot copy some scripts to add domains and users by queries at startup
+          - ./database/scripts/mariadb-scripts:/var/lib/
+
+        environment:
+            - MYSQL_RANDOM_ROOT_PASSWORD=no
+            #- MYSQL_DATABASE=postfix
+            #- MYSQL_DATABASE=mail
+            - MYSQL_DATABASE=horde
+            - MYSQL_USER=horde
+            - MYSQL_PASSWORD=horde
+            #- HOSTNAME=mariadb
+            #- VIRTUAL_HOST=mariadb
+            #- MYSQL_DATABASE=${DB}
+            #- MYSQL_USER=${DBUSER}
+            #- MYSQL_PASSWORD=${DBPASS}
+            #- HOSTNAME=${DBHOST}
+            #- VIRTUAL_HOST=mariadb
+        #expose:
+        expose:
+            - "3306"
+        volumes:
+            #- ./docker/postgres/init-user-db.sh:/docker-entrypoint-initdb.d/init-user-db.sh
+            #- ./database/scripts/mariadb-scripts:/docker-entrypoint-initdb.d/init-user-db.sh
+            - ./database/scripts/mysql:/docker-entrypoint-initdb.d/init-user-db.sh
+        networks:           
+            back:
+               ipv4_address: 172.19.0.19
+        
+        #depends_on:
+            #- front
+        #container_name: "mariadb"
