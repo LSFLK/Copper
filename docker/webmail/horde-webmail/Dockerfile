@@ -32,7 +32,6 @@ RUN apt-get -y install apache2 libapache2-mod-php mysql-client gnupg2 openssl ph
 #RUN apt-get -y  install php-horde
 RUN apt-get -y install php-horde-webmail
 
-
 RUN mkdir /var/lib/horde/
 RUN chown www-data:www-data /var/lib/horde/
 RUN cp /etc/horde/horde/conf.php.dist /etc/horde/horde/conf.php
@@ -41,7 +40,6 @@ RUN touch /etc/horde/imp/conf.php /etc/horde/turba/conf.php
 RUN chown www-data:www-data /etc/horde/imp/conf.php /etc/horde/turba/conf.php
 RUN cp /etc/horde/imp/backends.php /etc/horde/imp/backends.local.php
 
-
 ADD ./webmail/horde/horde-init.sh /etc/my_init.d/horde-init.sh
 RUN chmod +x /etc/my_init.d/horde-init.sh
 
@@ -49,11 +47,8 @@ RUN mkdir -p /etc/service/apache2
 ADD ./webmail/horde-webmail/run.sh /etc/service/apache2/run
 
 # coppying conf.php for horde active directory
-ADD ./webmail/horde/config/conf.php /usr/share/horde/config/conf.php
-ADD ./webmail/horde/config/backends.local.php /etc/horde/imp/backends.local.php
-
-#
-
+COPY ./webmail/horde/config/conf.php /usr/share/horde/config/conf.php
+COPY ./webmail/horde/config/backends.local.php /etc/horde/imp/backends.local.php
 
 RUN chmod +x /etc/service/apache2/run
 
