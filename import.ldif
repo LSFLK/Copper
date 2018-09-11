@@ -30,15 +30,9 @@ objectclass: top
 ou: groups
 
 # Entry 4: cn=admin,ou=groups,dc=coppermail,dc=dyndns,dc=org
-dn: cn=admin,ou=groups,dc=coppermail,dc=dyndns,dc=org
-cn: admin
+dn: cn=admins,ou=groups,dc=coppermail,dc=dyndns,dc=org
+cn: admins
 gidnumber: 500
-objectclass: posixGroup
-objectclass: top
-# Entry 4.1: cn=users,ou=groups,dc=coppermail,dc=dyndns,dc=org
-dn: cn=users,ou=groups,dc=coppermail,dc=dyndns,dc=org
-cn: users
-gidnumber: 501
 objectclass: posixGroup
 objectclass: top
 
@@ -98,3 +92,10 @@ uid: s_admin
 uidnumber: 900
 userpassword: {SSHA}79+ggcj1RrXEitcvjVBDgqF6NdJf09Y3
 #userpassword in plain: coppermail@lsf
+
+# Entry 4.1: cn=users,ou=groups,dc=coppermail,dc=dyndns,dc=org
+dn: cn=users,ou=groups,dc=coppermail,dc=dyndns,dc=org
+cn: users
+gidnumber: 501
+objectclass: posixGroup
+objectclass: top
