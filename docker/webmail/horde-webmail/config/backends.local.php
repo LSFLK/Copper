@@ -357,8 +357,8 @@
 $servers['imap'] = array(
     // ENABLED by default; will connect to IMAP port on local server
     'disabled' => false,
-    'name' => 'IMAP Server',
-    'hostspec' => 'localhost',
+    'name' => 'mail.coppermail.dyndns.org',
+    'hostspec' => '172.19.0.17',
     'hordeauth' => false,
     'protocol' => 'imap',
     'port' => 143,
