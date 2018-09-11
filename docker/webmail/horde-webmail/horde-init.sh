@@ -1,5 +1,35 @@
 #!/bin/bash
 
+<<<<<<< HEAD
+if [ ! -f "/etc/horde/horde/conf.php" ]; then
+    cp -rp /etc/.horde/* /etc/horde/
+    cp /etc/horde/horde/conf.php.dist /etc/horde/horde/conf.php
+    cat /etc/horde-base-settings.inc >> /etc/horde/horde/conf.php
+    chown -R www-data:www-data /etc/horde
+fi
+
+if [ $MYSQL_PORT_3306_TCP_ADDR ]; then
+    sed -i "s/^\(.*sql.*hostspec.*=\)\(.*\);/\1 '$MYSQL_PORT_3306_TCP_ADDR';/g" /etc/horde/horde/conf.php
+    sed -i "s/^\(.*sql.*port.*=\)\(.*\);/\1 '$MYSQL_PORT_3306_TCP_PORT';/g" /etc/horde/horde/conf.php
+else
+	sed -i "s/^\(.*sql.*hostspec.*=\)\(.*\);/\1 '$DB_HOST';/g" /etc/horde/horde/conf.php
+	sed -i "s/^\(.*sql.*port.*=\)\(.*\);/\1 '$DB_PORT';/g" /etc/horde/horde/conf.php
+	sed -i "s/^\(.*sql.*protocol.*=\)\(.*\);/\1 '$DB_PROTOCOL';/g" /etc/horde/horde/conf.php
+fi
+
+if [ $MYSQL_ENV_MYSQL_ROOT_PASSWORD ]; then
+	#sed -i "s/^\(.*sql.*username.*=\)\(.*\);/\1 'root';/g" /etc/horde/horde/conf.php
+	sed -i "s/^\(.*sql.*username.*=\)\(.*\);/\1 '$MYSQL_ENV_MYSQL_ROOT_USERNAME';/g" /etc/horde/horde/conf.php
+	sed -i "s/^\(.*sql.*password.*=\)\(.*\);/\1 '$MYSQL_ENV_MYSQL_ROOT_PASSWORD';/g" /etc/horde/horde/conf.php
+	sed -i "s/^\(.*sql.*database.*=\)\(.*\);/\1 '$DB_NAME';/g" /etc/horde/horde/conf.php
+	sed -i "s/^\(.*sql.*phptype.*=\)\(.*\);/\1 '$DB_DRIVER';/g" /etc/horde/horde/conf.php
+else
+	sed -i "s/^\(.*sql.*username.*=\)\(.*\);/\1 '$DB_USER';/g" /etc/horde/horde/conf.php
+	sed -i "s/^\(.*sql.*password.*=\)\(.*\);/\1 '$DB_PASS';/g" /etc/horde/horde/conf.php
+	sed -i "s/^\(.*sql.*database.*=\)\(.*\);/\1 '$DB_NAME';/g" /etc/horde/horde/conf.php
+	sed -i "s/^\(.*sql.*phptype.*=\)\(.*\);/\1 '$DB_DRIVER';/g" /etc/horde/horde/conf.php
+fi
+=======
 #if [ ! -f "/etc/horde/horde/conf.php" ]; then
 #    cp -rp /etc/.horde/* /etc/horde/
 #    cp /etc/horde/horde/conf.php.dist /etc/horde/horde/conf.php
@@ -39,6 +69,7 @@ sed -i "s/^\(.*sql.*phptype.*=\)\(.*\);/\1 '$DB_DRIVER';/g" /etc/horde/horde/con
 # this is where horde_db_migrate fiel is placed
 cd /usr/sbin
 
+>>>>>>> b6b7bb62a6aa8065c15b54f11cada24b068c86bf
 
 if [ $MYSQL_PORT_3306_TCP_ADDR ]; then
 
@@ -64,6 +95,14 @@ else
 	fi
 fi
 
+<<<<<<< HEAD
+sed -i "$ s|\-n||g" /usr/bin/pecl
+pecl install lzf 
+pear upgrade-all
+
+sed -i "s/^\(.*use_ssl.*=\)\(.*\);/\1 0;/g" /etc/horde/horde/conf.php
+sed -i "s/^\(.*testdisable.*=\)\(.*\);/\1 $HORDE_TEST_DISABLE;/g" /etc/horde/horde/conf.php
+=======
 #sed -i "$ s|\-n||g" /usr/bin/pecl
 #pecl install lzf 
 #pear upgrade-all
@@ -73,6 +112,7 @@ fi
 
 cd /usr/sbin
 horde-db-migrate
+>>>>>>> b6b7bb62a6aa8065c15b54f11cada24b068c86bf
 
 service apache2 start
 

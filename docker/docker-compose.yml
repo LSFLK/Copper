@@ -294,7 +294,11 @@ services:
           - ./database/data:/var/lib/mysql
           # following volume is added ot copy some scripts to add domains and users by queries at startup
           - ./database/scripts/mariadb-scripts:/var/lib/
+<<<<<<< HEAD
+
+=======
  
+>>>>>>> b6b7bb62a6aa8065c15b54f11cada24b068c86bf
         environment:
             - MYSQL_RANDOM_ROOT_PASSWORD=no
             #- MYSQL_DATABASE=postfix

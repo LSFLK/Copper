@@ -34,5 +34,5 @@ ADD ./webmail/copperclient/app/ /var/www/site/app
 ADD ./webmail/copperclient/apache-config.conf /etc/apache2/sites-enabled/000-default.conf
 
 # By default, simply start apache.
- CMD /usr/sbin/apache2ctl -D FOREGROUND
+CMD /usr/sbin/apache2ctl -D FOREGROUND
 # RUN service apache2 restart

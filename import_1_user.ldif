@@ -23,4 +23,8 @@ sn: lsf
 uid: lsf
 uidnumber: 1003
 userpassword: {SSHA}79+ggcj1RrXEitcvjVBDgqF6NdJf09Y3 
-#userpassword in plain: coppermail@lsf
+# userpassword in plain: coppermail@lsf
+
+
+## rainloop password change plugin default password format
+## uid={imap:login},ou=users,{domain:dc}

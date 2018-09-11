@@ -78,6 +78,9 @@ $ docker network create front
 Run the system and start all services by :
 
 ```
+$ docker-compose build
+```
+```
 $ docker-compose up -d 
 ```
 
