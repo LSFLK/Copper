@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-FROM ubuntu:18.04
-=======
 FROM ubuntu
->>>>>>> b6b7bb62a6aa8065c15b54f11cada24b068c86bf
 ARG DEBIAN_FRONTEND=noninteractive
 LABEL KEY=LSF-COPPER-HORDE
 
@@ -46,10 +42,6 @@ RUN chown www-data:www-data /etc/horde/imp/conf.php /etc/horde/turba/conf.php
 RUN cp /etc/horde/imp/backends.php /etc/horde/imp/backends.local.php
 
 
-<<<<<<< HEAD
-RUN mkdir -p /etc/service/apache2
-ADD ./webmail/horde-webmail/run.sh /etc/service/apache2/run
-=======
 ADD ./webmail/horde/horde-init.sh /etc/my_init.d/horde-init.sh
 RUN chmod +x /etc/my_init.d/horde-init.sh
 
@@ -63,18 +55,8 @@ ADD ./webmail/horde/config/backends.local.php /etc/horde/imp/backends.local.php
 #
 
 
->>>>>>> b6b7bb62a6aa8065c15b54f11cada24b068c86bf
 RUN chmod +x /etc/service/apache2/run
 
 #CMD service apache2 start
 CMD ["/etc/service/apache2/run"]
-<<<<<<< HEAD
 #CMD ["/sbin/my_init"]
-
-# horde config files
-COPY ./webmail/horde-webmail/backends.local.php /etc/horde/imp/
-COPY ./webmail/horde-webmail/conf.php /usr/share/horde/config/
-# RUN /usr/bin/horde-db-migrate
-=======
-#CMD ["/sbin/my_init"]
->>>>>>> b6b7bb62a6aa8065c15b54f11cada24b068c86bf
