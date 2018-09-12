@@ -1,91 +1,26 @@
 <?php
-/**
- * Horde Configuration File
- *
- * This file contains intial configuration settings for Horde.
- * It contains basic settings that allow you to log into Horde and
- * complete the configuration with configuration interface. The first
- * change you should do is to select a sensible authentication driver
- * and administrator user name.
- *
- * The only settings that might need changes if you are not running
- * Horde in a "default" setup are documented below.
- *
- * Strings should be enclosed in 'quotes'.
- * Integers should be given literally (without quotes).
- * Boolean values may be true or false (never quotes).
- *
- * $Id: ece403cee0a0710ffebe617031f2847d67550434 $
- */
-
-// Determines how we generate full URLs (for location headers and
-// such). Possible values are:
-//   0 - Assume that we are not using SSL and never generate https URLS.
-//   1 - Assume that we are using SSL and always generate https URLS.
-//       NOTE: If you do this, you MUST hardcode the correct HTTPS port
-//       number in $conf['server']['port'] below. Otherwise Horde will
-//       be unable to generate correct HTTPS URLs when a user tries to
-//       access Horde via a non-HTTPS port.
-//   2 - Attempt to auto-detect, and generate URLs appropriately.
-$conf['use_ssl'] = 2;
-
-// What server name should we use? You'll probably know if you need to
-// change this default; only in situations where you need to override
-// what Apache thinks the server name is.
-$conf['server']['name'] = localhost;
-
-// What port number is the webserver running on? Again, you shouldn't
-// need to change the default, and you probably know it if you do. The
-// exception is if you have $conf['use_ssl'] set to 1, as described
-// above.
-// $conf['server']['port'] = 80;
-
-// What domain should we set cookies from? If you have a cluster that
-// needs to share cookies, this might be '.example.com' - the leading
-// '.' is important. Most likely, though, you won't have to change the
-// default.
-$conf['cookie']['domain'] = $_SERVER['SERVER_NAME'];
-
-// What path should we set cookies to? For maximum security this should
-// match the URL where Horde is on your webserver.
-// If Horde is at /horde, then this should be '/horde'.
-// If Horde is installed as the document root, then this
-// needs to be '/' - NOT ''.
-// ** BUT, if IE will be used to access Horde modules, you should read
-//    this first (discussing issues with IE's Content Advisor):
-//    http://lists.horde.org/archives/imp/Week-of-Mon-20030113/029149.html
-$conf['cookie']['path'] = '/';
-
-// Disable the test script (horde/test.php)? For security reasons, this is
-// disabled by default.
-$conf['testdisable'] = false;
-
-// YOU SHOULDN'T CHANGE ANTHING BELOW THIS LINE.
+/* CONFIG START. DO NOT CHANGE ANYTHING IN OR AFTER THIS LINE. */
+// $Id: 08fc885cd91fbae2d752e274b554c5f1645129c8 $
+$conf['vhosts'] = false;
 $conf['debug_level'] = E_ALL & ~E_NOTICE;
-$conf['umask'] = 077;
-$conf['compress_pages'] = true;
 $conf['max_exec_time'] = 0;
+$conf['compress_pages'] = true;
+$conf['secret_key'] = 'JznDZwbebxhwvRCiRD9pBuP';
+$conf['umask'] = 077;
+$conf['testdisable'] = false;
+$conf['use_ssl'] = 2;
+$conf['server']['name'] = localhost;
+$conf['urls']['token_lifetime'] = 30;
+$conf['urls']['hmac_lifetime'] = 30;
+$conf['urls']['pretty'] = false;
+$conf['safe_ips'] = array();
 $conf['session']['name'] = 'Horde';
+$conf['session']['use_only_cookies'] = false;
+$conf['session']['timeout'] = 0;
 $conf['session']['cache_limiter'] = 'nocache';
 $conf['session']['max_time'] = 72000;
-$conf['session']['timeout'] = 0;
-$conf['auth']['admins'] = array('Administrator');
-$conf['auth']['driver'] = 'auto';
-$conf['auth']['params'] = array('username' => 'Administrator');
-$conf['prefs']['driver'] = 'Sql';
-$conf['portal']['fixed_blocks'] = array();
-$conf['imsp']['enabled'] = false;
-$conf['kolab']['enabled'] = false;
-$conf['log']['priority'] = 'INFO';
-$conf['log']['ident'] = 'HORDE';
-$conf['log']['name'] = LOG_USER;
-$conf['log']['type'] = 'syslog';
-$conf['log']['enabled'] = true;
-
-// Further to avode driver not found error
-$conf['session']['use_only_cookies'] = false;
-
-// Database configurations
+$conf['cookie']['domain'] = coppermail.dyndns.org;
+$conf['cookie']['path'] = '/';
 $conf['sql']['username'] = 'horde';
 $conf['sql']['password'] = 'horde';
 $conf['sql']['hostspec'] = '172.19.0.19';
@@ -97,3 +32,102 @@ $conf['sql']['ssl'] = false;
 $conf['sql']['splitread'] = false;
 $conf['sql']['logqueries'] = true;
 $conf['sql']['phptype'] = 'mysqli';
+$conf['nosql']['phptype'] = false;
+$conf['ldap']['useldap'] = false;
+$conf['auth']['admins'] = array('admin_horde@coppermail.dyndns.org');
+$conf['auth']['checkip'] = true;
+$conf['auth']['checkbrowser'] = true;
+$conf['auth']['resetpassword'] = true;
+$conf['auth']['alternate_login'] = false;
+$conf['auth']['redirect_on_logout'] = false;
+$conf['auth']['list_users'] = 'list';
+$conf['auth']['params']['app'] = 'imp';
+$conf['auth']['driver'] = 'application';
+$conf['auth']['params']['count_bad_logins'] = false;
+$conf['auth']['params']['login_block'] = false;
+$conf['auth']['params']['login_block_count'] = 5;
+$conf['auth']['params']['login_block_time'] = 5;
+$conf['signup']['allow'] = false;
+$conf['log']['priority'] = 'INFO';
+$conf['log']['ident'] = 'HORDE';
+$conf['log']['name'] = LOG_USER;
+$conf['log']['type'] = 'syslog';
+$conf['log']['enabled'] = true;
+$conf['log_accesskeys'] = false;
+$conf['prefs']['maxsize'] = 65535;
+$conf['prefs']['params']['driverconfig'] = 'horde';
+$conf['prefs']['driver'] = 'Sql';
+$conf['alarms']['params']['driverconfig'] = 'horde';
+$conf['alarms']['params']['ttl'] = 300;
+$conf['alarms']['driver'] = 'Sql';
+$conf['group']['params']['driverconfig'] = 'horde';
+$conf['group']['driver'] = 'Sql';
+$conf['perms']['driverconfig'] = 'horde';
+$conf['perms']['driver'] = 'Sql';
+$conf['share']['no_sharing'] = false;
+$conf['share']['auto_create'] = true;
+$conf['share']['world'] = true;
+$conf['share']['any_group'] = false;
+$conf['share']['hidden'] = false;
+$conf['share']['cache'] = false;
+$conf['share']['driver'] = 'Sqlng';
+$conf['cache']['default_lifetime'] = 86400;
+$conf['cache']['params']['sub'] = 0;
+$conf['cache']['driver'] = 'File';
+$conf['cache']['use_memorycache'] = '';
+$conf['cachecssparams']['url_version_param'] = true;
+$conf['cachecss'] = false;
+$conf['cachejsparams']['url_version_param'] = true;
+$conf['cachejs'] = false;
+$conf['cachethemes'] = false;
+$conf['lock']['params']['driverconfig'] = 'horde';
+$conf['lock']['driver'] = 'Sql';
+$conf['token']['params']['driverconfig'] = 'horde';
+$conf['token']['driver'] = 'Sql';
+$conf['history']['params']['driverconfig'] = 'horde';
+$conf['history']['driver'] = 'Sql';
+$conf['davstorage']['params']['driverconfig'] = 'horde';
+$conf['davstorage']['driver'] = 'Sql';
+$conf['mailer']['params']['host'] = '172.19.0.17';
+$conf['mailer']['params']['port'] = 587;
+$conf['mailer']['params']['secure'] = 'tls';
+$conf['mailer']['params']['localhost'] = 'localhost';
+$conf['mailer']['params']['username_auth'] = true;
+$conf['mailer']['params']['password_auth'] = true;
+$conf['mailer']['params']['auth'] = true;
+$conf['mailer']['params']['lmtp'] = false;
+$conf['mailer']['type'] = 'smtp';
+$conf['vfs']['params']['driverconfig'] = 'horde';
+$conf['vfs']['type'] = 'Sql';
+$conf['sessionhandler']['type'] = 'Builtin';
+$conf['sessionhandler']['hashtable'] = false;
+$conf['spell']['driver'] = '';
+$conf['gnupg']['keyserver'] = array('pool.sks-keyservers.net');
+$conf['gnupg']['timeout'] = 10;
+$conf['nobase64_img'] = false;
+$conf['image']['driver'] = false;
+$conf['exif']['driver'] = 'Bundled';
+$conf['timezone']['location'] = 'ftp://ftp.iana.org/tz/tzdata-latest.tar.gz';
+$conf['problems']['email'] = 'webmaster@example.com';
+$conf['problems']['maildomain'] = 'example.com';
+$conf['problems']['tickets'] = false;
+$conf['problems']['attachments'] = true;
+$conf['menu']['links']['help'] = 'all';
+$conf['menu']['links']['prefs'] = 'authenticated';
+$conf['menu']['links']['problem'] = 'all';
+$conf['menu']['links']['login'] = 'all';
+$conf['menu']['links']['logout'] = 'authenticated';
+$conf['portal']['fixed_blocks'] = array();
+$conf['accounts']['driver'] = 'null';
+$conf['user']['verify_from_addr'] = false;
+$conf['user']['select_view'] = true;
+$conf['facebook']['enabled'] = false;
+$conf['twitter']['enabled'] = false;
+$conf['urlshortener'] = false;
+$conf['weather']['provider'] = false;
+$conf['imap']['enabled'] = false;
+$conf['imsp']['enabled'] = false;
+$conf['kolab']['enabled'] = false;
+$conf['hashtable']['driver'] = 'none';
+$conf['activesync']['enabled'] = false;
+/* CONFIG END. DO NOT CHANGE ANYTHING IN OR BEFORE THIS LINE. */
