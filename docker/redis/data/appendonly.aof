@@ -58613,3 +58613,935 @@ $1
 0
 $3
 199
+*2
+$3
+DEL
+$37
+rs_clee5bd448fa73678a9f62c5d46a4545b5
+*2
+$3
+DEL
+$37
+rs_cl63336ac833d8f6bc372d84d91ff3a483
+*2
+$3
+DEL
+$37
+rs_cl5a4582cd775326df6f59712626f10026
+*2
+$3
+DEL
+$37
+rs_cl26a5c64dafd304df6217ff23bb07cbac
+*2
+$6
+SELECT
+$1
+0
+*3
+$6
+SCRIPT
+$4
+LOAD
+$402
+  local locked = redis.call('GET', KEYS[1] .. '_locked')
+  if locked then return false end
+  redis.call('SET', KEYS[1] .. '_locked', '1')
+  redis.call('SET', KEYS[1] .. '_version', '0')
+  redis.call('DEL', KEYS[1] .. '_spam')
+  redis.call('DEL', KEYS[1] .. '_ham')
+  redis.call('DEL', KEYS[1] .. '_data')
+  redis.call('DEL', KEYS[1] .. '_locked')
+  redis.call('DEL', KEYS[1] .. '_hostname')
+  return 1
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$311
+  local locked = redis.call('GET', KEYS[1] .. '_locked')
+  if locked then
+    if tonumber(KEYS[2]) < tonumber(locked) then
+      return false
+    end
+  end
+  redis.call('SET', KEYS[1] .. '_locked', tostring(tonumber(KEYS[2]) + tonumber(KEYS[3])))
+  redis.call('SET', KEYS[1] .. '_hostname', KEYS[4])
+  return 1
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$234
+  local ver = 0
+  local ret = redis.call('GET', KEYS[1] .. '_version')
+  if ret then ver = tonumber(ret) end
+  if ver > tonumber(KEYS[2]) then
+    return {redis.call('GET', KEYS[1] .. '_data'), ret}
+  end
+
+  return tonumber(ret) or 0
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$1123
+  local last = redis.call('HGET', KEYS[1], 'l')
+  local now = tonumber(KEYS[2])
+  local dynr, dynb = 0, 0
+  if not last then
+    -- New bucket
+    redis.call('HSET', KEYS[1], 'l', KEYS[2])
+    redis.call('HSET', KEYS[1], 'b', '0')
+    redis.call('HSET', KEYS[1], 'dr', '10000')
+    redis.call('HSET', KEYS[1], 'db', '10000')
+    redis.call('EXPIRE', KEYS[1], KEYS[5])
+    return {0, 0, 1, 1}
+  end
+
+  last = tonumber(last)
+  local burst = tonumber(redis.call('HGET', KEYS[1], 'b'))
+  -- Perform leak
+  if burst > 0 then
+   if last < tonumber(KEYS[2]) then
+    local rate = tonumber(KEYS[3])
+    dynr = tonumber(redis.call('HGET', KEYS[1], 'dr')) / 10000.0
+    rate = rate * dynr
+    local leaked = ((now - last) * rate)
+    burst = burst - leaked
+    redis.call('HINCRBYFLOAT', KEYS[1], 'b', -(leaked))
+   end
+  else
+   burst = 0
+   redis.call('HSET', KEYS[1], 'b', '0')
+  end
+
+  dynb = tonumber(redis.call('HGET', KEYS[1], 'db')) / 10000.0
+
+  if (burst + 1) * dynb > tonumber(KEYS[4]) then
+   return {1, tostring(burst), tostring(dynr), tostring(dynb)}
+  end
+
+  return {0, tostring(burst), tostring(dynr), tostring(dynb)}
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$1101
+  local last = redis.call('HGET', KEYS[1], 'l')
+  local now = tonumber(KEYS[2])
+  if not last then
+    -- New bucket
+    redis.call('HSET', KEYS[1], 'l', KEYS[2])
+    redis.call('HSET', KEYS[1], 'b', '1')
+    redis.call('HSET', KEYS[1], 'dr', '10000')
+    redis.call('HSET', KEYS[1], 'db', '10000')
+    redis.call('EXPIRE', KEYS[1], KEYS[7])
+    return {1, 1, 1}
+  end
+
+  local burst = tonumber(redis.call('HGET', KEYS[1], 'b'))
+  local db = tonumber(redis.call('HGET', KEYS[1], 'db')) / 10000
+  local dr = tonumber(redis.call('HGET', KEYS[1], 'dr')) / 10000
+
+  if dr < tonumber(KEYS[5]) and dr > 1.0 / tonumber(KEYS[5]) then
+    dr = dr * tonumber(KEYS[3])
+    redis.call('HSET', KEYS[1], 'dr', tostring(math.floor(dr * 10000)))
+  end
+
+  if db < tonumber(KEYS[6]) and db > 1.0 / tonumber(KEYS[6]) then
+    db = db * tonumber(KEYS[4])
+    redis.call('HSET', KEYS[1], 'db', tostring(math.floor(db * 10000)))
+  end
+
+  redis.call('HINCRBYFLOAT', KEYS[1], 'b', 1)
+  redis.call('HSET', KEYS[1], 'l', KEYS[2])
+  redis.call('EXPIRE', KEYS[1], KEYS[7])
+
+  return {tostring(burst), tostring(dr), tostring(db)}
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$264
+  redis.call('SET', KEYS[1] .. '_version', '0')
+  redis.call('DEL', KEYS[1] .. '_spam')
+  redis.call('DEL', KEYS[1] .. '_ham')
+  redis.call('DEL', KEYS[1] .. '_data')
+  redis.call('DEL', KEYS[1] .. '_locked')
+  redis.call('DEL', KEYS[1] .. '_hostname')
+  return 1
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$383
+  redis.call('INCRBY', KEYS[1] .. '_version', '1')
+  redis.call('DEL', KEYS[1] .. '_spam')
+  redis.call('DEL', KEYS[1] .. '_ham')
+  redis.call('SET', KEYS[1] .. '_data', KEYS[2])
+  redis.call('DEL', KEYS[1] .. '_locked')
+  redis.call('DEL', KEYS[1] .. '_hostname')
+  redis.call('EXPIRE', KEYS[1] .. '_data', KEYS[3])
+  redis.call('EXPIRE', KEYS[1] .. '_version', KEYS[3])
+  return 1
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$862
+  local prefix = KEYS[1] .. KEYS[2]
+  local locked = redis.call('GET', prefix .. '_locked')
+  if locked then return 0 end
+  local nspam = 0
+  local nham = 0
+  local lim = tonumber(KEYS[4])
+  lim = lim + lim * 0.1
+
+  local exists = redis.call('SISMEMBER', KEYS[1], KEYS[2])
+  if not exists or tonumber(exists) == 0 then
+    redis.call('SADD', KEYS[1], KEYS[2])
+  end
+
+  local ret = redis.call('LLEN', prefix .. '_spam')
+  if ret then nspam = tonumber(ret) end
+  ret = redis.call('LLEN', prefix .. '_ham')
+  if ret then nham = tonumber(ret) end
+
+  if KEYS[3] == 'spam' then
+    if nham <= lim and nham + 1 >= nspam then
+      return tostring(nspam + 1)
+    else
+      return tostring(-(nspam))
+    end
+  else
+    if nspam <= lim and nspam + 1 >= nham then
+      return tostring(nham + 1)
+    else
+      return tostring(-(nham))
+    end
+  end
+
+  return tostring(0)
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$862
+  local prefix = KEYS[1] .. KEYS[2]
+  local locked = redis.call('GET', prefix .. '_locked')
+  if locked then return 0 end
+  local nspam = 0
+  local nham = 0
+  local lim = tonumber(KEYS[4])
+  lim = lim + lim * 0.1
+
+  local exists = redis.call('SISMEMBER', KEYS[1], KEYS[2])
+  if not exists or tonumber(exists) == 0 then
+    redis.call('SADD', KEYS[1], KEYS[2])
+  end
+
+  local ret = redis.call('LLEN', prefix .. '_spam')
+  if ret then nspam = tonumber(ret) end
+  ret = redis.call('LLEN', prefix .. '_ham')
+  if ret then nham = tonumber(ret) end
+
+  if KEYS[3] == 'spam' then
+    if nham <= lim and nham + 1 >= nspam then
+      return tostring(nspam + 1)
+    else
+      return tostring(-(nspam))
+    end
+  else
+    if nspam <= lim and nspam + 1 >= nham then
+      return tostring(nham + 1)
+    else
+      return tostring(-(nham))
+    end
+  end
+
+  return tostring(0)
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$383
+  redis.call('INCRBY', KEYS[1] .. '_version', '1')
+  redis.call('DEL', KEYS[1] .. '_spam')
+  redis.call('DEL', KEYS[1] .. '_ham')
+  redis.call('SET', KEYS[1] .. '_data', KEYS[2])
+  redis.call('DEL', KEYS[1] .. '_locked')
+  redis.call('DEL', KEYS[1] .. '_hostname')
+  redis.call('EXPIRE', KEYS[1] .. '_data', KEYS[3])
+  redis.call('EXPIRE', KEYS[1] .. '_version', KEYS[3])
+  return 1
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$402
+  local locked = redis.call('GET', KEYS[1] .. '_locked')
+  if locked then return false end
+  redis.call('SET', KEYS[1] .. '_locked', '1')
+  redis.call('SET', KEYS[1] .. '_version', '0')
+  redis.call('DEL', KEYS[1] .. '_spam')
+  redis.call('DEL', KEYS[1] .. '_ham')
+  redis.call('DEL', KEYS[1] .. '_data')
+  redis.call('DEL', KEYS[1] .. '_locked')
+  redis.call('DEL', KEYS[1] .. '_hostname')
+  return 1
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$1101
+  local last = redis.call('HGET', KEYS[1], 'l')
+  local now = tonumber(KEYS[2])
+  if not last then
+    -- New bucket
+    redis.call('HSET', KEYS[1], 'l', KEYS[2])
+    redis.call('HSET', KEYS[1], 'b', '1')
+    redis.call('HSET', KEYS[1], 'dr', '10000')
+    redis.call('HSET', KEYS[1], 'db', '10000')
+    redis.call('EXPIRE', KEYS[1], KEYS[7])
+    return {1, 1, 1}
+  end
+
+  local burst = tonumber(redis.call('HGET', KEYS[1], 'b'))
+  local db = tonumber(redis.call('HGET', KEYS[1], 'db')) / 10000
+  local dr = tonumber(redis.call('HGET', KEYS[1], 'dr')) / 10000
+
+  if dr < tonumber(KEYS[5]) and dr > 1.0 / tonumber(KEYS[5]) then
+    dr = dr * tonumber(KEYS[3])
+    redis.call('HSET', KEYS[1], 'dr', tostring(math.floor(dr * 10000)))
+  end
+
+  if db < tonumber(KEYS[6]) and db > 1.0 / tonumber(KEYS[6]) then
+    db = db * tonumber(KEYS[4])
+    redis.call('HSET', KEYS[1], 'db', tostring(math.floor(db * 10000)))
+  end
+
+  redis.call('HINCRBYFLOAT', KEYS[1], 'b', 1)
+  redis.call('HSET', KEYS[1], 'l', KEYS[2])
+  redis.call('EXPIRE', KEYS[1], KEYS[7])
+
+  return {tostring(burst), tostring(dr), tostring(db)}
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$234
+  local ver = 0
+  local ret = redis.call('GET', KEYS[1] .. '_version')
+  if ret then ver = tonumber(ret) end
+  if ver > tonumber(KEYS[2]) then
+    return {redis.call('GET', KEYS[1] .. '_data'), ret}
+  end
+
+  return tonumber(ret) or 0
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$311
+  local locked = redis.call('GET', KEYS[1] .. '_locked')
+  if locked then
+    if tonumber(KEYS[2]) < tonumber(locked) then
+      return false
+    end
+  end
+  redis.call('SET', KEYS[1] .. '_locked', tostring(tonumber(KEYS[2]) + tonumber(KEYS[3])))
+  redis.call('SET', KEYS[1] .. '_hostname', KEYS[4])
+  return 1
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$264
+  redis.call('SET', KEYS[1] .. '_version', '0')
+  redis.call('DEL', KEYS[1] .. '_spam')
+  redis.call('DEL', KEYS[1] .. '_ham')
+  redis.call('DEL', KEYS[1] .. '_data')
+  redis.call('DEL', KEYS[1] .. '_locked')
+  redis.call('DEL', KEYS[1] .. '_hostname')
+  return 1
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$1123
+  local last = redis.call('HGET', KEYS[1], 'l')
+  local now = tonumber(KEYS[2])
+  local dynr, dynb = 0, 0
+  if not last then
+    -- New bucket
+    redis.call('HSET', KEYS[1], 'l', KEYS[2])
+    redis.call('HSET', KEYS[1], 'b', '0')
+    redis.call('HSET', KEYS[1], 'dr', '10000')
+    redis.call('HSET', KEYS[1], 'db', '10000')
+    redis.call('EXPIRE', KEYS[1], KEYS[5])
+    return {0, 0, 1, 1}
+  end
+
+  last = tonumber(last)
+  local burst = tonumber(redis.call('HGET', KEYS[1], 'b'))
+  -- Perform leak
+  if burst > 0 then
+   if last < tonumber(KEYS[2]) then
+    local rate = tonumber(KEYS[3])
+    dynr = tonumber(redis.call('HGET', KEYS[1], 'dr')) / 10000.0
+    rate = rate * dynr
+    local leaked = ((now - last) * rate)
+    burst = burst - leaked
+    redis.call('HINCRBYFLOAT', KEYS[1], 'b', -(leaked))
+   end
+  else
+   burst = 0
+   redis.call('HSET', KEYS[1], 'b', '0')
+  end
+
+  dynb = tonumber(redis.call('HGET', KEYS[1], 'db')) / 10000.0
+
+  if (burst + 1) * dynb > tonumber(KEYS[4]) then
+   return {1, tostring(burst), tostring(dynr), tostring(dynb)}
+  end
+
+  return {0, tostring(burst), tostring(dynr), tostring(dynb)}
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$383
+  redis.call('INCRBY', KEYS[1] .. '_version', '1')
+  redis.call('DEL', KEYS[1] .. '_spam')
+  redis.call('DEL', KEYS[1] .. '_ham')
+  redis.call('SET', KEYS[1] .. '_data', KEYS[2])
+  redis.call('DEL', KEYS[1] .. '_locked')
+  redis.call('DEL', KEYS[1] .. '_hostname')
+  redis.call('EXPIRE', KEYS[1] .. '_data', KEYS[3])
+  redis.call('EXPIRE', KEYS[1] .. '_version', KEYS[3])
+  return 1
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$1123
+  local last = redis.call('HGET', KEYS[1], 'l')
+  local now = tonumber(KEYS[2])
+  local dynr, dynb = 0, 0
+  if not last then
+    -- New bucket
+    redis.call('HSET', KEYS[1], 'l', KEYS[2])
+    redis.call('HSET', KEYS[1], 'b', '0')
+    redis.call('HSET', KEYS[1], 'dr', '10000')
+    redis.call('HSET', KEYS[1], 'db', '10000')
+    redis.call('EXPIRE', KEYS[1], KEYS[5])
+    return {0, 0, 1, 1}
+  end
+
+  last = tonumber(last)
+  local burst = tonumber(redis.call('HGET', KEYS[1], 'b'))
+  -- Perform leak
+  if burst > 0 then
+   if last < tonumber(KEYS[2]) then
+    local rate = tonumber(KEYS[3])
+    dynr = tonumber(redis.call('HGET', KEYS[1], 'dr')) / 10000.0
+    rate = rate * dynr
+    local leaked = ((now - last) * rate)
+    burst = burst - leaked
+    redis.call('HINCRBYFLOAT', KEYS[1], 'b', -(leaked))
+   end
+  else
+   burst = 0
+   redis.call('HSET', KEYS[1], 'b', '0')
+  end
+
+  dynb = tonumber(redis.call('HGET', KEYS[1], 'db')) / 10000.0
+
+  if (burst + 1) * dynb > tonumber(KEYS[4]) then
+   return {1, tostring(burst), tostring(dynr), tostring(dynb)}
+  end
+
+  return {0, tostring(burst), tostring(dynr), tostring(dynb)}
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$311
+  local locked = redis.call('GET', KEYS[1] .. '_locked')
+  if locked then
+    if tonumber(KEYS[2]) < tonumber(locked) then
+      return false
+    end
+  end
+  redis.call('SET', KEYS[1] .. '_locked', tostring(tonumber(KEYS[2]) + tonumber(KEYS[3])))
+  redis.call('SET', KEYS[1] .. '_hostname', KEYS[4])
+  return 1
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$402
+  local locked = redis.call('GET', KEYS[1] .. '_locked')
+  if locked then return false end
+  redis.call('SET', KEYS[1] .. '_locked', '1')
+  redis.call('SET', KEYS[1] .. '_version', '0')
+  redis.call('DEL', KEYS[1] .. '_spam')
+  redis.call('DEL', KEYS[1] .. '_ham')
+  redis.call('DEL', KEYS[1] .. '_data')
+  redis.call('DEL', KEYS[1] .. '_locked')
+  redis.call('DEL', KEYS[1] .. '_hostname')
+  return 1
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$264
+  redis.call('SET', KEYS[1] .. '_version', '0')
+  redis.call('DEL', KEYS[1] .. '_spam')
+  redis.call('DEL', KEYS[1] .. '_ham')
+  redis.call('DEL', KEYS[1] .. '_data')
+  redis.call('DEL', KEYS[1] .. '_locked')
+  redis.call('DEL', KEYS[1] .. '_hostname')
+  return 1
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$862
+  local prefix = KEYS[1] .. KEYS[2]
+  local locked = redis.call('GET', prefix .. '_locked')
+  if locked then return 0 end
+  local nspam = 0
+  local nham = 0
+  local lim = tonumber(KEYS[4])
+  lim = lim + lim * 0.1
+
+  local exists = redis.call('SISMEMBER', KEYS[1], KEYS[2])
+  if not exists or tonumber(exists) == 0 then
+    redis.call('SADD', KEYS[1], KEYS[2])
+  end
+
+  local ret = redis.call('LLEN', prefix .. '_spam')
+  if ret then nspam = tonumber(ret) end
+  ret = redis.call('LLEN', prefix .. '_ham')
+  if ret then nham = tonumber(ret) end
+
+  if KEYS[3] == 'spam' then
+    if nham <= lim and nham + 1 >= nspam then
+      return tostring(nspam + 1)
+    else
+      return tostring(-(nspam))
+    end
+  else
+    if nspam <= lim and nspam + 1 >= nham then
+      return tostring(nham + 1)
+    else
+      return tostring(-(nham))
+    end
+  end
+
+  return tostring(0)
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$234
+  local ver = 0
+  local ret = redis.call('GET', KEYS[1] .. '_version')
+  if ret then ver = tonumber(ret) end
+  if ver > tonumber(KEYS[2]) then
+    return {redis.call('GET', KEYS[1] .. '_data'), ret}
+  end
+
+  return tonumber(ret) or 0
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$1101
+  local last = redis.call('HGET', KEYS[1], 'l')
+  local now = tonumber(KEYS[2])
+  if not last then
+    -- New bucket
+    redis.call('HSET', KEYS[1], 'l', KEYS[2])
+    redis.call('HSET', KEYS[1], 'b', '1')
+    redis.call('HSET', KEYS[1], 'dr', '10000')
+    redis.call('HSET', KEYS[1], 'db', '10000')
+    redis.call('EXPIRE', KEYS[1], KEYS[7])
+    return {1, 1, 1}
+  end
+
+  local burst = tonumber(redis.call('HGET', KEYS[1], 'b'))
+  local db = tonumber(redis.call('HGET', KEYS[1], 'db')) / 10000
+  local dr = tonumber(redis.call('HGET', KEYS[1], 'dr')) / 10000
+
+  if dr < tonumber(KEYS[5]) and dr > 1.0 / tonumber(KEYS[5]) then
+    dr = dr * tonumber(KEYS[3])
+    redis.call('HSET', KEYS[1], 'dr', tostring(math.floor(dr * 10000)))
+  end
+
+  if db < tonumber(KEYS[6]) and db > 1.0 / tonumber(KEYS[6]) then
+    db = db * tonumber(KEYS[4])
+    redis.call('HSET', KEYS[1], 'db', tostring(math.floor(db * 10000)))
+  end
+
+  redis.call('HINCRBYFLOAT', KEYS[1], 'b', 1)
+  redis.call('HSET', KEYS[1], 'l', KEYS[2])
+  redis.call('EXPIRE', KEYS[1], KEYS[7])
+
+  return {tostring(burst), tostring(dr), tostring(db)}
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$1123
+  local last = redis.call('HGET', KEYS[1], 'l')
+  local now = tonumber(KEYS[2])
+  local dynr, dynb = 0, 0
+  if not last then
+    -- New bucket
+    redis.call('HSET', KEYS[1], 'l', KEYS[2])
+    redis.call('HSET', KEYS[1], 'b', '0')
+    redis.call('HSET', KEYS[1], 'dr', '10000')
+    redis.call('HSET', KEYS[1], 'db', '10000')
+    redis.call('EXPIRE', KEYS[1], KEYS[5])
+    return {0, 0, 1, 1}
+  end
+
+  last = tonumber(last)
+  local burst = tonumber(redis.call('HGET', KEYS[1], 'b'))
+  -- Perform leak
+  if burst > 0 then
+   if last < tonumber(KEYS[2]) then
+    local rate = tonumber(KEYS[3])
+    dynr = tonumber(redis.call('HGET', KEYS[1], 'dr')) / 10000.0
+    rate = rate * dynr
+    local leaked = ((now - last) * rate)
+    burst = burst - leaked
+    redis.call('HINCRBYFLOAT', KEYS[1], 'b', -(leaked))
+   end
+  else
+   burst = 0
+   redis.call('HSET', KEYS[1], 'b', '0')
+  end
+
+  dynb = tonumber(redis.call('HGET', KEYS[1], 'db')) / 10000.0
+
+  if (burst + 1) * dynb > tonumber(KEYS[4]) then
+   return {1, tostring(burst), tostring(dynr), tostring(dynb)}
+  end
+
+  return {0, tostring(burst), tostring(dynr), tostring(dynb)}
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$311
+  local locked = redis.call('GET', KEYS[1] .. '_locked')
+  if locked then
+    if tonumber(KEYS[2]) < tonumber(locked) then
+      return false
+    end
+  end
+  redis.call('SET', KEYS[1] .. '_locked', tostring(tonumber(KEYS[2]) + tonumber(KEYS[3])))
+  redis.call('SET', KEYS[1] .. '_hostname', KEYS[4])
+  return 1
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$402
+  local locked = redis.call('GET', KEYS[1] .. '_locked')
+  if locked then return false end
+  redis.call('SET', KEYS[1] .. '_locked', '1')
+  redis.call('SET', KEYS[1] .. '_version', '0')
+  redis.call('DEL', KEYS[1] .. '_spam')
+  redis.call('DEL', KEYS[1] .. '_ham')
+  redis.call('DEL', KEYS[1] .. '_data')
+  redis.call('DEL', KEYS[1] .. '_locked')
+  redis.call('DEL', KEYS[1] .. '_hostname')
+  return 1
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$862
+  local prefix = KEYS[1] .. KEYS[2]
+  local locked = redis.call('GET', prefix .. '_locked')
+  if locked then return 0 end
+  local nspam = 0
+  local nham = 0
+  local lim = tonumber(KEYS[4])
+  lim = lim + lim * 0.1
+
+  local exists = redis.call('SISMEMBER', KEYS[1], KEYS[2])
+  if not exists or tonumber(exists) == 0 then
+    redis.call('SADD', KEYS[1], KEYS[2])
+  end
+
+  local ret = redis.call('LLEN', prefix .. '_spam')
+  if ret then nspam = tonumber(ret) end
+  ret = redis.call('LLEN', prefix .. '_ham')
+  if ret then nham = tonumber(ret) end
+
+  if KEYS[3] == 'spam' then
+    if nham <= lim and nham + 1 >= nspam then
+      return tostring(nspam + 1)
+    else
+      return tostring(-(nspam))
+    end
+  else
+    if nspam <= lim and nspam + 1 >= nham then
+      return tostring(nham + 1)
+    else
+      return tostring(-(nham))
+    end
+  end
+
+  return tostring(0)
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$1101
+  local last = redis.call('HGET', KEYS[1], 'l')
+  local now = tonumber(KEYS[2])
+  if not last then
+    -- New bucket
+    redis.call('HSET', KEYS[1], 'l', KEYS[2])
+    redis.call('HSET', KEYS[1], 'b', '1')
+    redis.call('HSET', KEYS[1], 'dr', '10000')
+    redis.call('HSET', KEYS[1], 'db', '10000')
+    redis.call('EXPIRE', KEYS[1], KEYS[7])
+    return {1, 1, 1}
+  end
+
+  local burst = tonumber(redis.call('HGET', KEYS[1], 'b'))
+  local db = tonumber(redis.call('HGET', KEYS[1], 'db')) / 10000
+  local dr = tonumber(redis.call('HGET', KEYS[1], 'dr')) / 10000
+
+  if dr < tonumber(KEYS[5]) and dr > 1.0 / tonumber(KEYS[5]) then
+    dr = dr * tonumber(KEYS[3])
+    redis.call('HSET', KEYS[1], 'dr', tostring(math.floor(dr * 10000)))
+  end
+
+  if db < tonumber(KEYS[6]) and db > 1.0 / tonumber(KEYS[6]) then
+    db = db * tonumber(KEYS[4])
+    redis.call('HSET', KEYS[1], 'db', tostring(math.floor(db * 10000)))
+  end
+
+  redis.call('HINCRBYFLOAT', KEYS[1], 'b', 1)
+  redis.call('HSET', KEYS[1], 'l', KEYS[2])
+  redis.call('EXPIRE', KEYS[1], KEYS[7])
+
+  return {tostring(burst), tostring(dr), tostring(db)}
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$383
+  redis.call('INCRBY', KEYS[1] .. '_version', '1')
+  redis.call('DEL', KEYS[1] .. '_spam')
+  redis.call('DEL', KEYS[1] .. '_ham')
+  redis.call('SET', KEYS[1] .. '_data', KEYS[2])
+  redis.call('DEL', KEYS[1] .. '_locked')
+  redis.call('DEL', KEYS[1] .. '_hostname')
+  redis.call('EXPIRE', KEYS[1] .. '_data', KEYS[3])
+  redis.call('EXPIRE', KEYS[1] .. '_version', KEYS[3])
+  return 1
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$264
+  redis.call('SET', KEYS[1] .. '_version', '0')
+  redis.call('DEL', KEYS[1] .. '_spam')
+  redis.call('DEL', KEYS[1] .. '_ham')
+  redis.call('DEL', KEYS[1] .. '_data')
+  redis.call('DEL', KEYS[1] .. '_locked')
+  redis.call('DEL', KEYS[1] .. '_hostname')
+  return 1
+
+*3
+$6
+SCRIPT
+$4
+LOAD
+$234
+  local ver = 0
+  local ret = redis.call('GET', KEYS[1] .. '_version')
+  if ret then ver = tonumber(ret) end
+  if ver > tonumber(KEYS[2]) then
+    return {redis.call('GET', KEYS[1] .. '_data'), ret}
+  end
+
+  return tonumber(ret) or 0
+
+*3
+$3
+SET
+$37
+rs_cl2e1b5c67d244836c0866f951214c3f68
+$2
+OK
+*3
+$9
+PEXPIREAT
+$37
+rs_cl2e1b5c67d244836c0866f951214c3f68
+$13
+1536747507769
+*3
+$3
+SET
+$22
+rrxrf67qnzf9au8fc6hxn5
+$1
+1
+*3
+$9
+PEXPIREAT
+$22
+rrxrf67qnzf9au8fc6hxn5
+$13
+1536830311684
+*3
+$5
+LPUSH
+$40
+rs_historymail.coppermail.dyndns.org_zst
+$834
+(µ/˝`ß≈ vÒï'Œhà(ÿ_níú™y/Õf∏âWπ– xTÀ1§∞˙<œ@å Ö ã î⁄ÒΩr?(Å< Ñ Rg“Òs◊∂‘ˆ“ø§ˆ5wÄÇ–$Çí®•÷hø˛|±L^7P¯	Aî¡∞ê&ù‘GCdÉA!ü¯f âC ö@G4Åt¥‘ì6<BÊÏµﬂCG‡e;≠gBïª¶›k‡≥;HÌï÷¯⁄Ö˚	D"A©3π=¶—+˝ŒMZ¿Dãö‚&SEãÅ∆´¥Œ#3-”È§Û
+âπø÷eø”aü“1W/∆LñHMQCUò~©ΩJ€ØﬂzÜêŒÒˆ“F–Ï*E£¯ >˚≈ã‚˜⁄RS¶X©(ù!uŒ.Dı‰~ÿßı‹Ø?˚∑‘ÿÛ÷o"ÅHÌ4˜Ûú…é‘”5çN‰òi?!Ñê◊"<¥•2” ˛"€K_ªä*àçÅ¶^åqéΩÀé]/´ÀŸÒú“]KCUò∏pâî5ΩÇ˙Âï≥‘Y˜Ï≤¥pùŒmL+17˝ÂEﬂ:ˆ%c1P¢Ç•ŸDä'Z8ï*Á∑N5z9véΩÎ\ÁˆNóâö‚dâî’Ôc©¨w∫È¥C3πQ4<Y∂uú§nì©\üH4”ç¬q?	ú< íÄG$í⁄+˝xAÌˆ˘[Íø\bÀ˝>“yïô:Œtâó®°*ÃÙ
+Í◊¬rPñÖS©nÊ÷ùcÔ∞Îeµ*g∫ƒL≈¢h"e=æZ∂øõ˛ö_÷›Ùºπ¨]Ãe&$P‚&¡äN•Í˜Åñä¢51Pïh)T™~ÕÛç∑˛ˆ^ŒS®ëô1 ¿¿LPÿX @B ÅJÛ``·Hå•1öa“PP4·Lã≈ßò∆ùrM%ÊÑÁ≥≈?v˝˜ÊñK€!K7∑74'„[~nNd›…Ï}†úè? ∏ÒøG¬ﬁ^)vÅ?c#ÔKwÇ“ÔÄXX§ê⁄Éõ^N¨¸‘‚t˜
+Q†›Z:Î@ãõ’H#_I™/¬≠˜´2êSF'/DX4<íë…år3ë%HÏÑP2DÊ%«‰? “øg˚^â∫qÌ)™ÕÉC;m0˚.z^Û!Á†u
+*4
+$5
+LTRIM
+$40
+rs_historymail.coppermail.dyndns.org_zst
+$1
+0
+$3
+199
+*3
+$3
+SET
+$37
+rs_cl0c6566100e6c3afb400078b1bf56b229
+$2
+OK
+*3
+$9
+PEXPIREAT
+$37
+rs_cl0c6566100e6c3afb400078b1bf56b229
+$13
+1536749675889
+*3
+$3
+SET
+$22
+rrb1o4kmrw7a7df61g7r6b
+$1
+1
+*3
+$9
+PEXPIREAT
+$22
+rrb1o4kmrw7a7df61g7r6b
+$13
+1536832479842
+*3
+$5
+LPUSH
+$40
+rs_historymail.coppermail.dyndns.org_zst
+$848
+(µ/˝`º5 frò'∞∫Ëyëm€/íyb'V˚$÷õﬂˇ}K3~˙öÊí”S§#≤âlBCë á å ÔΩÙ§v[±Ôá@ΩËA©µËˆ·J[jZÁ≈"w∑ÔÄÙ ÇzD-57˚È˚5”"VµÇÈaZ0¯ÉKÄDc£@ò$P,ëÖÅ\⁄zÅ$êàÑ‡="Ç7ΩGK-ß√'‚øo˝DÙÑ≠–SI9“f‹¨s\≈
+Ó˚m©}õºf˚â@ »Éû‘ZÏÆù–∑y{#'3\,¶`2h¡ØäÇR0ﬂ"eN‘∏üí#˚EÃ¯V ÔU≤u=„≠ZEÅ3ïeÈß#µoëˆ”ó˙KDv€›H'ÊÛdM∏i±wŸƒ¶ΩæıÜ‘
+N÷§7§~≠JlúÔ«∫§˛˝Ù}ø-µıÔ˙yâ‘Æ1ø-n§ñŒq≥‚·œ~ﬁúÎ∏‘/≠SåJ"öŒ®q 7„iùó´Ùî™2Äï&≥Ukaœ.øgÿçˇªï2rΩ2ïeÅX]“/¶cn1ùL›ü?bfSí∆å•ﬂàÕK=ª›‰r5L†¬ïaÄåR4ìı©OnbnŸ≥Àõ N+U°*
+RX]˝tËå[ï,}n¶;G”∫MI$›ŒŒ¬m?ÅÄH"©}õfL⁄q4≠€¸;ÜuœN´‰ü|1ßêËæüNdﬂ‚O÷P∏PÅô ≤Høò^1ÆGÂpQ4ìU5ø†Œû]Œ∞∑Ka≤4T^¶kíÅ’umÂûF{Y˙Â8£Œ“ø„Áj∆ö6y		»êpAäf≤˙È<ZE¢™	^
+ì’OáT®ëô1 ¿¿L@ 6 @B ÅJÎ``Aåf1öa–PP4·Lã≈˚ò∆MŒJÜ:
+1Ñ©„Ø∏ˇÙÊXêVêÓo/i:„K|Oúë»∫≥9`ÿ«àn3_“Ä∆5{µv— √	‘ˇ…¥/tp¯˚%zA
+©=8±˘ÂTz>'daØpzl•#ƒp≥i4*˘ÎßA∫ıÓTZ∫Qœã¥_r-ô[Æb.”;âûÜ—¿Ã ± pıflasï6Ê=ÂQ ÿ<§q∑”Ü´/•˜Ô49æ†
+*4
+$5
+LTRIM
+$40
+rs_historymail.coppermail.dyndns.org_zst
+$1
+0
+$3
+199
+*2
+$3
+DEL
+$37
+rs_cl2e1b5c67d244836c0866f951214c3f68
+*2
+$3
+DEL
+$37
+rs_cl0c6566100e6c3afb400078b1bf56b229
