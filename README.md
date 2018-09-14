@@ -21,8 +21,6 @@
     - [RSPAMD](https://rspamd.com/) : Fast, free and open-source spam filtering system. You may find a comparison of spam filters [here](https://rspamd.com/comparison.html).
   - [x] Antivirus 
     - [ClamAV](https://www.clamav.net/) : is an open source antivirus engine for detecting trojans, viruses, malware & other malicious threats.
-  - [x] Spam Filter (for pdf filtering perposes)
-    - [SpamAssassin](https://spamassassin.apache.org/) : Open Source anti-spam platform giving system administrators a filter to classify email and block spam (https://rspamd.com/comparison.html).
   - [x] Security enhancement
     - [DKIM](http://www.dkim.org/) : DomainKeys Identified Mail (DKIM) lets an organization take responsibility for a message that is in transit.
 
