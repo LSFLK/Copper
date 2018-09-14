@@ -12,7 +12,9 @@
   - [x] Mail Server User Management with openLDAP
     - [PHPLDAPADMIN](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-openldap-and-phpldapadmin-on-ubuntu-16-04) Ldap server can be managed through  web interface
   - [x] WEBmail client
-    - [RAINLOOP](https://www.rainloop.net/) : web client to access mail for users.
+    - [RAINLOOP](https://www.rainloop.net/) : Webmail client with basic features.
+  - [x] WEBmail client
+    - [Horde](https://www.horde.org/) : Webmail client with advanced features.
   - [x] openLDAP
     - openLDAP server and a phpldapadmin will be installed for ldap configuration
   - [x] Spam Filter
