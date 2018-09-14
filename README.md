@@ -15,8 +15,8 @@
     - [RAINLOOP](https://www.rainloop.net/) : Webmail client with basic features.
   - [x] WEBmail client
     - [Horde](https://www.horde.org/) : Webmail client with advanced features.
-  - [x] openLDAP
-    - openLDAP server and a phpldapadmin will be installed for ldap configuration
+  - [x] User management
+    - [OpenLDAP](https://www.openldap.org/) server and a phpldapadmin will be installed for ldap configuration
   - [x] Spam Filter
     - [RSPAMD](https://rspamd.com/) : Fast, free and open-source spam filtering system.
   - [x] Antivirus 
