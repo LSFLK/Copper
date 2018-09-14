@@ -16,7 +16,7 @@
   - [x] WEBmail client
     - [Horde](https://www.horde.org/) : Webmail client with advanced features.
   - [x] User management
-    - [OpenLDAP](https://www.openldap.org/) server and a phpldapadmin will be installed for ldap configuration
+    - [OpenLDAP](https://www.openldap.org/) server and [phpLDAPadmin](https://wiki.debian.org/PhpLdapAdmin) will be installed for ldap configuration
   - [x] Spam Filter
     - [RSPAMD](https://rspamd.com/) : Fast, free and open-source spam filtering system.
   - [x] Antivirus 
