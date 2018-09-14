@@ -79,8 +79,13 @@ RUN chown www-data:www-data /etc/horde/imp/conf.php /etc/horde/turba/conf.php
 ADD ./webmail/horde-webmail/config/conf.php /etc/horde/horde/conf.php
 ADD ./webmail/horde-webmail/config/backends.local.php /etc/horde/imp/backends.local.php
 
+<<<<<<< HEAD
 ADD ./webmail/horde-webmail/config/conf.php /usr/share/horde/config/conf.php
 RUN chown www-data:www-data /usr/share/horde/config/conf.php
+=======
+#ADD ./webmail/horde-webmail/config/conf.php /usr/share/horde/config/conf.php
+#RUN chown www-data:www-data /usr/share/horde/config/conf.php
+>>>>>>> 9a4962f7079d99dc45ffa3256801e0d721202c2b
 
 ADD ./webmail/horde-webmail/horde-init.sh /etc/my_init.d/horde-init.sh
 RUN chmod +x /etc/my_init.d/horde-init.sh
