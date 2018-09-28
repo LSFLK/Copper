@@ -1,7 +1,7 @@
 #From debian:stretch-slim
 #From debian:stretch
 From ubuntu:18.04
-MAINTAINER Lanka Software Foundation <opensource.lk> 
+MAINTAINER Lanka Software Foundation <support@opensource.lk> 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get -y purge exim4*
 RUN apt-get -y install apt-utils

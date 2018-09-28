@@ -12,19 +12,17 @@
   - [x] Mail Server User Management with openLDAP
     - [PHPLDAPADMIN](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-openldap-and-phpldapadmin-on-ubuntu-16-04) Ldap server can be managed through  web interface
   - [x] WEBmail client
-    - [RAINLOOP](https://www.rainloop.net/) : web client to access mail for users.
-  - [x] openLDAP
-    - openLDAP server and a phpldapadmin will be installed for ldap configuration
+    - [RAINLOOP](https://www.rainloop.net/) : Webmail client with basic features.
+  - [x] WEBmail client
+    - [Horde](https://www.horde.org/) : Webmail client with advanced features.
+  - [x] User management
+    - [OpenLDAP](https://www.openldap.org/) server and [phpLDAPadmin](https://wiki.debian.org/PhpLdapAdmin) will be installed for ldap configuration
   - [x] Spam Filter
-    - [RSPAMD](https://rspamd.com/) : Fast, free and open-source spam filtering system.
+    - [RSPAMD](https://rspamd.com/) : Fast, free and open-source spam filtering system. You may find a comparison of spam filters [here](https://rspamd.com/comparison.html).
   - [x] Antivirus 
     - [ClamAV](https://www.clamav.net/) : is an open source antivirus engine for detecting trojans, viruses, malware & other malicious threats.
-  - [x] Spam Filter (for pdf filtering perposes)
-    - [SpamAssassin](https://spamassassin.apache.org/) : Open Source anti-spam platform giving system administrators a filter to classify email and block spam (https://rspamd.com/comparison.html).
   - [x] Security enhancement
     - [DKIM](http://www.dkim.org/) : DomainKeys Identified Mail (DKIM) lets an organization take responsibility for a message that is in transit.
-  - [x] Mail Virus Scanner
-    - [AMaViS](http://amavis.sourceforge.net/) : A Mail Virus Scanner.
 
 
 ## How to Setup
@@ -77,6 +75,9 @@ $ docker network create front
 
 Run the system and start all services by :
 
+```
+$ docker-compose build
+```
 ```
 $ docker-compose up -d 
 ```

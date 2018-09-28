@@ -32,7 +32,6 @@ RUN apt-get -y install apache2 libapache2-mod-php mysql-client gnupg2 openssl ph
 #RUN apt-get -y  install php-horde
 RUN apt-get -y install php-horde-webmail
 
-
 RUN mkdir /var/lib/horde/
 RUN chown www-data:www-data /var/lib/horde/
 RUN cp /etc/horde/horde/conf.php.dist /etc/horde/horde/conf.php
