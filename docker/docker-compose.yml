@@ -130,7 +130,7 @@ services:
         networks:
             back:
               ipv4_address: 172.19.0.16
-            front:
+            # front:
         container_name: "webmail"   
 
 # ----------------------------------------webmail--------------------------------------------
@@ -146,8 +146,8 @@ services:
         hostname: horde.${DOMAIN}
         #volumes:
             #- ./webmail/horde/storage:/etc/horde
-        ports:
-            - "80:80"
+        # ports:
+        #     - "80:80"
             #- "80:80"
             #- "8989:80"
             #- "3306"
@@ -266,8 +266,8 @@ services:
              PHPLDAPADMIN_LDAP_HOSTS: "openldap"
              #PHPLDAPADMIN_LDAP_HOSTS: ldap.${DOMAIN}
              PHPLDAPADMIN_HTTPS: "false"
-        ports:
-            - "8888:80"
+        # ports:
+            # - "8888:80"
         depends_on:
             - openldap
         networks:
