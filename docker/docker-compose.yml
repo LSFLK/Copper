@@ -95,7 +95,7 @@ services:
             - "465:465"     # SMTPS
             - "587:587"     # Submission
             - "993:993"     # IMAPS
-            - "995:995"     # POP3S
+            # - "995:995"     # POP3S
             #- "10026:10026" # smtpd  // this was added by me due to a port open erro in msterfile config
             - "4190:4190"   # SIEVE
         entrypoint:
@@ -146,8 +146,8 @@ services:
         hostname: horde.${DOMAIN}
         #volumes:
             #- ./webmail/horde/storage:/etc/horde
-        # ports:
-        #     - "80:80"
+        ports:
+            - "80:80"
             #- "80:80"
             #- "8989:80"
             #- "3306"
