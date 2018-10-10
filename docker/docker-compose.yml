@@ -66,6 +66,8 @@ services:
           #- ./emailserver/certs:/certs
           #- ./emailserver/ssl:/etc/letsencrypt/
           #- ./emailserver/mail:/var/mail
+        volumes:
+            - ./emailserver/mail_backup:/var/mail/vhosts/
         container_name: "emailserver"
         extra_hosts:
             - "coppermail.emailserver:127.0.1.1"
