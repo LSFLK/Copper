@@ -2,7 +2,14 @@
 #From debian:stretch
 From ubuntu:18.04
 MAINTAINER Lanka Software Foundation <support@opensource.lk> 
+
 ARG DEBIAN_FRONTEND=noninteractive
+
+ENV TELEGRAF_VERSION 1.8.1-1
+
+
+
+
 RUN apt-get update && apt-get -y purge exim4*
 RUN apt-get -y install apt-utils
 # installing netstat command
@@ -99,12 +106,30 @@ COPY ./emailserver/configs/sieve /sieve
 COPY ./emailserver/configs/init_sys.sh /bin/
 RUN chmod +x /bin/init_sys.sh
 
+# postfixlog analyser 
+COPY ./emailserver/configs/logAnalyze/pflogsumm /usr/local/bin/pflogsumm
+RUN chown bin:bin /usr/local/bin/pflogsumm
+RUN chmod 755 /usr/local/bin/pflogsumm
+
 # copying virus sh file
-RUN mkdir /agent
-RUN chmod 755 /agent
-COPY ./emailserver/configs/clamAV/init_refresh.sh /agent/
-RUN chmod +x /agent/init_refresh.sh
+# RUN mkdir /agent
+# RUN chmod 755 /agent
+# COPY ./emailserver/configs/clamAV/init_refresh.sh /agent/
+# RUN chmod +x /agent/init_refresh.sh
 
 # Antivirus with amavisd-new and clamAV
 RUN apt -y install clamav-daemon clamav
 COPY ./emailserver/configs/clamAV/antivirus.conf /etc/rspamd/override.d/
+
+# Install Telegraf
+RUN wget https://dl.influxdata.com/telegraf/releases/telegraf_${TELEGRAF_VERSION}_amd64.deb && \
+	dpkg -i telegraf_${TELEGRAF_VERSION}_amd64.deb && rm telegraf_${TELEGRAF_VERSION}_amd64.deb
+
+# Configure Telegraf
+COPY ./emailserver/configs/telegraf/telegraf.conf /etc/telegraf/telegraf.conf
+COPY ./emailserver/configs/telegraf/init.sh /etc/init.d/telegraf
+
+# Cleanup
+RUN apt-get clean && \
+ rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+

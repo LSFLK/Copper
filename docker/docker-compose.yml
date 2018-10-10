@@ -324,3 +324,23 @@ services:
         #depends_on:
             #- front
         #container_name: "mariadb"
+
+#-------------------------------------Grafana----------------------------------------------------
+ 
+    grafana:
+        build:
+            context: .
+            dockerfile: ./grafana/Dockerfile
+        restart: always
+        hostname: grafana
+        
+        ports:
+            - "3003:3003" 
+            - "3004:8888" 
+            - "8086:8086" 
+            - "22022:22" 
+            - "8125:8125"
+        networks:
+           back:
+              ipv4_address: 172.19.0.15
+        
