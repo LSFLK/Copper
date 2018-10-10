@@ -75,5 +75,3 @@ cd /usr/sbin
 horde-db-migrate
 
 service apache2 start
-
-
