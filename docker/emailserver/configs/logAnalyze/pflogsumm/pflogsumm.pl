@@ -933,331 +933,334 @@ if(my $msgsTotal = $msgsDlvrd + $msgsRjctd + $msgsDscrdd) {
 }
 
 if(defined($dateStr)) {
-    print "Postfix log summaries for $dateStr\n";
+   # print "Postfix log summaries for $dateStr\n";
 }
 
-print_subsect_title("Grand Totals");
-print "messages\n\n";
-printf " %6d%s  received\n", adj_int_units($msgsRcvd);
-printf " %6d%s  delivered\n", adj_int_units($msgsDlvrd);
-printf " %6d%s  forwarded\n", adj_int_units($msgsFwdd);
-printf " %6d%s  deferred", adj_int_units($msgsDfrd);
-printf "  (%d%s deferrals)", adj_int_units($msgsDfrdCnt) if($msgsDfrdCnt);
-print "\n";
-printf " %6d%s  bounced\n", adj_int_units($msgsBncd);
-printf " %6d%s  rejected (%d%%)\n", adj_int_units($msgsRjctd), $msgsRjctdPct;
-printf " %6d%s  reject warnings\n", adj_int_units($msgsWrnd);
-printf " %6d%s  held\n", adj_int_units($msgsHld);
-printf " %6d%s  discarded (%d%%)\n", adj_int_units($msgsDscrdd), $msgsDscrddPct;
-print "\n";
-printf " %6d%s  bytes received\n", adj_int_units($sizeRcvd);
-printf " %6d%s  bytes delivered\n", adj_int_units($sizeDlvrd);
-printf " %6d%s  senders\n", adj_int_units($sendgUserCnt);
-printf " %6d%s  sending hosts/domains\n", adj_int_units($sendgDomCnt);
-printf " %6d%s  recipients\n", adj_int_units($recipUserCnt);
-printf " %6d%s  recipient hosts/domains\n", adj_int_units($recipDomCnt);
+# print_subsect_title("Grand Totals");
+# print "messages\n\n";
 
-if(defined($opts{'smtpdStats'})) {
-    print "\nsmtpd\n\n";
-    printf "  %6d%s  connections\n", adj_int_units($smtpdConnCnt);
-    printf "  %6d%s  hosts/domains\n", adj_int_units(int(keys %smtpdPerDom));
-    printf "  %6d   avg. connect time (seconds)\n",
-	$smtpdConnCnt > 0? ($smtpdTotTime / $smtpdConnCnt) + .5 : 0;
-    {
-	my ($sec, $min, $hr) = get_smh($smtpdTotTime);
-	printf " %2d:%02d:%02d  total connect time\n",
-	  $hr, $min, $sec;
-    }
-}
+ printf "PFstat mail_received=%d%s \n",adj_int_units($msgsRcvd);
+# printf "PFstat received value=%d%s\n", adj_int_units($msgsRcvd);
+ printf "PFstat mail_delivered=%d%s \n",adj_int_units($msgsDlvrd);
+ printf "PFstat mail_forwarded=%d%s \n",adj_int_units($msgsFwdd);
 
-print "\n";
+#  printf "PFstat received value=%d %d%s ",localtime,"\n", adj_int_units($msgsRcvd);
+#  printf "PFstat delivered value=%d%s\n", adj_int_units($msgsDlvrd);
+#  printf "PFstat forwarded value=%d%s\n", adj_int_units($msgsFwdd);
+#  printf "PFstat deferred value=%d%s\n", adj_int_units($msgsDfrd);
+ 
+#  printf "PFstat bounced value=%d%s\n", adj_int_units($msgsBncd);
+#  #printf "PFstat rejected=%d%%s\n", adj_int_units($msgsRjctd), $msgsRjctdPct;
+#  printf "PFstat reject_warnings value=%d%s\n", adj_int_units($msgsWrnd);
+#  printf "PFstat held=%d%s\n", adj_int_units($msgsHld);
 
-print_problems_reports() if(defined($opts{'pf'}));
+#  printf "PFstat bytes_received value=%d%s\n", adj_int_units($sizeRcvd);
+#  printf "PFstat bytes_delivered value=%d%s\n", adj_int_units($sizeDlvrd);
+#  printf "PFstat senders value=%d%s\n", adj_int_units($sendgUserCnt);
+#  printf "PFstat sending_hosts/domains value=%d%s\n", adj_int_units($sendgDomCnt);
+#  printf "PFstat recipients value=%d%s\n", adj_int_units($recipUserCnt);
+#  printf "PFstat recipient_hosts/domains value=%d%s\n", adj_int_units($recipDomCnt);
+# # if(defined($opts{'smtpdStats'})) {
+# #     print "\nsmtpd\n\n";
+# #     printf "  %6d%s  connections\n", adj_int_units($smtpdConnCnt);
+# #     printf "  %6d%s  hosts/domains\n", adj_int_units(int(keys %smtpdPerDom));
+# #     printf "  %6d   avg. connect time (seconds)\n",
+# # 	$smtpdConnCnt > 0? ($smtpdTotTime / $smtpdConnCnt) + .5 : 0;
+# #     {
+# # 	my ($sec, $min, $hr) = get_smh($smtpdTotTime);
+# # 	printf " %2d:%02d:%02d  total connect time\n",
+# # 	  $hr, $min, $sec;
+# #     }
+# # }
 
-print_per_day_summary(\%msgsPerDay) if($dayCnt > 1);
-print_per_hour_summary(\@rcvPerHr, \@dlvPerHr, \@dfrPerHr, \@bncPerHr,
-    \@rejPerHr, $dayCnt);
+# print "\n";
 
-print_recip_domain_summary(\%recipDom, $opts{'h'});
-print_sending_domain_summary(\%sendgDom, $opts{'h'});
+# print_problems_reports() if(defined($opts{'pf'}));
 
-if(defined($opts{'smtpdStats'})) {
-    print_per_day_smtpd(\%smtpdPerDay, $dayCnt) if($dayCnt > 1);
-    print_per_hour_smtpd(\@smtpdPerHr, $dayCnt);
-    print_domain_smtpd_summary(\%smtpdPerDom, $opts{'h'});
-}
+# print_per_day_summary(\%msgsPerDay) if($dayCnt > 1);
+# print_per_hour_summary(\@rcvPerHr, \@dlvPerHr, \@dfrPerHr, \@bncPerHr,
+#     \@rejPerHr, $dayCnt);
 
-print_user_data(\%sendgUser, "Senders by message count", $msgCntI, $opts{'u'}, $opts{'q'});
-print_user_data(\%recipUser, "Recipients by message count", $msgCntI, $opts{'u'}, $opts{'q'});
-print_user_data(\%sendgUser, "Senders by message size", $msgSizeI, $opts{'u'}, $opts{'q'});
-print_user_data(\%recipUser, "Recipients by message size", $msgSizeI, $opts{'u'}, $opts{'q'});
+# print_recip_domain_summary(\%recipDom, $opts{'h'});
+# print_sending_domain_summary(\%sendgDom, $opts{'h'});
 
-print_hash_by_key(\%noMsgSize, "Messages with no size data", 0, 1);
+# if(defined($opts{'smtpdStats'})) {
+#     print_per_day_smtpd(\%smtpdPerDay, $dayCnt) if($dayCnt > 1);
+#     print_per_hour_smtpd(\@smtpdPerHr, $dayCnt);
+#     print_domain_smtpd_summary(\%smtpdPerDom, $opts{'h'});
+# }
 
-print_problems_reports() unless(defined($opts{'pf'}));
+# print_user_data(\%sendgUser, "Senders by message count", $msgCntI, $opts{'u'}, $opts{'q'});
+# print_user_data(\%recipUser, "Recipients by message count", $msgCntI, $opts{'u'}, $opts{'q'});
+# print_user_data(\%sendgUser, "Senders by message size", $msgSizeI, $opts{'u'}, $opts{'q'});
+# print_user_data(\%recipUser, "Recipients by message size", $msgSizeI, $opts{'u'}, $opts{'q'});
 
-print_detailed_msg_data(\%msgDetail, "Message detail", $opts{'q'}) if($opts{'e'});
+# print_hash_by_key(\%noMsgSize, "Messages with no size data", 0, 1);
 
-# Print "problems" reports
-sub print_problems_reports {
-    unless($opts{'deferralDetail'} == 0) {
-	print_nested_hash(\%deferred, "message deferral detail", $opts{'deferralDetail'}, $opts{'q'});
-    }
-    unless($opts{'bounceDetail'} == 0) {
-	print_nested_hash(\%bounced, "message bounce detail (by relay)", $opts{'bounceDetail'}, $opts{'q'});
-    }
-    unless($opts{'rejectDetail'} == 0) {
-	print_nested_hash(\%rejects, "message reject detail", $opts{'rejectDetail'}, $opts{'q'});
-	print_nested_hash(\%warns, "message reject warning detail", $opts{'rejectDetail'}, $opts{'q'});
-	print_nested_hash(\%holds, "message hold detail", $opts{'rejectDetail'}, $opts{'q'});
-	print_nested_hash(\%discards, "message discard detail", $opts{'rejectDetail'}, $opts{'q'});
-    }
-    unless($opts{'smtpDetail'} == 0) {
-	print_nested_hash(\%smtpMsgs, "smtp delivery failures", $opts{'smtpDetail'}, $opts{'q'});
-    }
-    unless($opts{'smtpdWarnDetail'} == 0) {
-	print_nested_hash(\%warnings, "Warnings", $opts{'smtpdWarnDetail'}, $opts{'q'});
-    }
-    print_nested_hash(\%fatals, "Fatal Errors", 0, $opts{'q'});
-    print_nested_hash(\%panics, "Panics", 0, $opts{'q'});
-    print_hash_by_cnt_vals(\%masterMsgs,"Master daemon messages", 0, $opts{'q'});
-}
+# print_problems_reports() unless(defined($opts{'pf'}));
 
-if($opts{'mailq'}) {
-    # flush stdout first cuz of asynchronousity
-    $| = 1;
-    print_subsect_title("Current Mail Queue");
-    system($mailqCmd);
-}
+# print_detailed_msg_data(\%msgDetail, "Message detail", $opts{'q'}) if($opts{'e'});
+
+# # Print "problems" reports
+# sub print_problems_reports {
+#     unless($opts{'deferralDetail'} == 0) {
+# 	print_nested_hash(\%deferred, "message deferral detail", $opts{'deferralDetail'}, $opts{'q'});
+#     }
+#     unless($opts{'bounceDetail'} == 0) {
+# 	print_nested_hash(\%bounced, "message bounce detail (by relay)", $opts{'bounceDetail'}, $opts{'q'});
+#     }
+#     unless($opts{'rejectDetail'} == 0) {
+# 	print_nested_hash(\%rejects, "message reject detail", $opts{'rejectDetail'}, $opts{'q'});
+# 	print_nested_hash(\%warns, "message reject warning detail", $opts{'rejectDetail'}, $opts{'q'});
+# 	print_nested_hash(\%holds, "message hold detail", $opts{'rejectDetail'}, $opts{'q'});
+# 	print_nested_hash(\%discards, "message discard detail", $opts{'rejectDetail'}, $opts{'q'});
+#     }
+#     unless($opts{'smtpDetail'} == 0) {
+# 	print_nested_hash(\%smtpMsgs, "smtp delivery failures", $opts{'smtpDetail'}, $opts{'q'});
+#     }
+#     unless($opts{'smtpdWarnDetail'} == 0) {
+# 	print_nested_hash(\%warnings, "Warnings", $opts{'smtpdWarnDetail'}, $opts{'q'});
+#     }
+#     print_nested_hash(\%fatals, "Fatal Errors", 0, $opts{'q'});
+#     print_nested_hash(\%panics, "Panics", 0, $opts{'q'});
+#     print_hash_by_cnt_vals(\%masterMsgs,"Master daemon messages", 0, $opts{'q'});
+# }
+
+# if($opts{'mailq'}) {
+#     # flush stdout first cuz of asynchronousity
+#     $| = 1;
+#     print_subsect_title("Current Mail Queue");
+#     system($mailqCmd);
+# }
 
 # print "per-day" traffic summary
 # (done in a subroutine only to keep main-line code clean)
-sub print_per_day_summary {
-    my($msgsPerDay) = @_;
-    my $value;
+# sub print_per_day_summary {
+#     my($msgsPerDay) = @_;
+#     my $value;
 
-    print_subsect_title("Per-Day Traffic Summary");
+#     print_subsect_title("Per-Day Traffic Summary");
 
-    print <<End_Of_Per_Day_Heading;
-    date          received  delivered   deferred    bounced     rejected
-    --------------------------------------------------------------------
-End_Of_Per_Day_Heading
+#     print <<End_Of_Per_Day_Heading;
+#     date          received  delivered   deferred    bounced     rejected
+#     --------------------------------------------------------------------
+# End_Of_Per_Day_Heading
 
-    foreach (sort { $a <=> $b } keys(%$msgsPerDay)) {
-	my ($msgYr, $msgMon, $msgDay) = unpack("A4 A2 A2", $_);
-	if($isoDateTime) {
-	    printf "    %04d-%02d-%02d ", $msgYr, $msgMon + 1, $msgDay
-	} else {
-	    my $msgMonStr = $monthNames[$msgMon];
-	    printf "    $msgMonStr %2d $msgYr", $msgDay;
-	}
-	foreach $value (@{$msgsPerDay->{$_}}) {
-	    my $value2 = $value? $value : 0;
-	    printf "    %6d%s", adj_int_units($value2);
-	}
-	print "\n";
-    }
-}
+#     foreach (sort { $a <=> $b } keys(%$msgsPerDay)) {
+# 	my ($msgYr, $msgMon, $msgDay) = unpack("A4 A2 A2", $_);
+# 	if($isoDateTime) {
+# 	    printf "    %04d-%02d-%02d ", $msgYr, $msgMon + 1, $msgDay
+# 	} else {
+# 	    my $msgMonStr = $monthNames[$msgMon];
+# 	    printf "    $msgMonStr %2d $msgYr", $msgDay;
+# 	}
+# 	foreach $value (@{$msgsPerDay->{$_}}) {
+# 	    my $value2 = $value? $value : 0;
+# 	    printf "    %6d%s", adj_int_units($value2);
+# 	}
+# 	print "\n";
+#     }
+# }
 
 # print "per-hour" traffic summary
 # (done in a subroutine only to keep main-line code clean)
-sub print_per_hour_summary {
-    my ($rcvPerHr, $dlvPerHr, $dfrPerHr, $bncPerHr, $rejPerHr, $dayCnt) = @_;
-    my $reportType = $dayCnt > 1? 'Daily Average' : 'Summary';
-    my ($hour, $value);
+# sub print_per_hour_summary {
+#     my ($rcvPerHr, $dlvPerHr, $dfrPerHr, $bncPerHr, $rejPerHr, $dayCnt) = @_;
+#     my $reportType = $dayCnt > 1? 'Daily Average' : 'Summary';
+#     my ($hour, $value);
 
-    print_subsect_title("Per-Hour Traffic $reportType");
+#     print_subsect_title("Per-Hour Traffic $reportType");
 
-    print <<End_Of_Per_Hour_Heading;
-    time          received  delivered   deferred    bounced     rejected
-    --------------------------------------------------------------------
-End_Of_Per_Hour_Heading
+#     print <<End_Of_Per_Hour_Heading;
+#     time          received  delivered   deferred    bounced     rejected
+#     --------------------------------------------------------------------
+# End_Of_Per_Hour_Heading
 
-    for($hour = 0; $hour < 24; ++$hour) {
-	if($isoDateTime) {
-	    printf "    %02d:00-%02d:00", $hour, $hour + 1;
-	} else {
-	    printf "    %02d00-%02d00  ", $hour, $hour + 1;
-	}
-	foreach $value (@$rcvPerHr[$hour], @$dlvPerHr[$hour],
-			   @$dfrPerHr[$hour], @$bncPerHr[$hour],
-			   @$rejPerHr[$hour])
-	{
-	    my $units = ' ';
-	    $value = ($value / $dayCnt) + 0.5 if($dayCnt);
-	    printf "    %6d%s", adj_int_units($value);
-	}
-	print "\n";
-    }
-}
+#     for($hour = 0; $hour < 24; ++$hour) {
+# 	if($isoDateTime) {
+# 	    printf "    %02d:00-%02d:00", $hour, $hour + 1;
+# 	} else {
+# 	    printf "    %02d00-%02d00  ", $hour, $hour + 1;
+# 	}
+# 	foreach $value (@$rcvPerHr[$hour], @$dlvPerHr[$hour],
+# 			   @$dfrPerHr[$hour], @$bncPerHr[$hour],
+# 			   @$rejPerHr[$hour])
+# 	{
+# 	    my $units = ' ';
+# 	    $value = ($value / $dayCnt) + 0.5 if($dayCnt);
+# 	    printf "    %6d%s", adj_int_units($value);
+# 	}
+# 	print "\n";
+#     }
+# }
 
 # print "per-recipient-domain" traffic summary
 # (done in a subroutine only to keep main-line code clean)
-sub print_recip_domain_summary {
-    use vars '$hashRef';
-    local($hashRef) = $_[0];
-    my($cnt) = $_[1];
-    return if($cnt == 0);
-    my $topCnt = $cnt > 0? "(top $cnt)" : "";
-    my $avgDly;
+# sub print_recip_domain_summary {
+#     use vars '$hashRef';
+#     local($hashRef) = $_[0];
+#     my($cnt) = $_[1];
+#     return if($cnt == 0);
+#     my $topCnt = $cnt > 0? "(top $cnt)" : "";
+#     my $avgDly;
 
-    print_subsect_title("Host/Domain Summary: Message Delivery $topCnt");
+#     print_subsect_title("Host/Domain Summary: Message Delivery $topCnt");
 
-    print <<End_Of_Recip_Domain_Heading;
- sent cnt  bytes   defers   avg dly max dly host/domain
- -------- -------  -------  ------- ------- -----------
-End_Of_Recip_Domain_Heading
+#     print <<End_Of_Recip_Domain_Heading;
+#  sent cnt  bytes   defers   avg dly max dly host/domain
+#  -------- -------  -------  ------- ------- -----------
+# End_Of_Recip_Domain_Heading
 
-    foreach (reverse sort by_count_then_size keys(%$hashRef)) {
-	# there are only delay values if anything was sent
-	if(${$hashRef->{$_}}[$msgCntI]) {
-	    $avgDly = (${$hashRef->{$_}}[$msgDlyAvgI] /
-		       ${$hashRef->{$_}}[$msgCntI]);
-	} else {
-	    $avgDly = 0;
-	}
-	printf " %6d%s  %6d%s  %6d%s  %5.1f %s  %5.1f %s  %s\n",
-	    adj_int_units(${$hashRef->{$_}}[$msgCntI]),
-	    adj_int_units(${$hashRef->{$_}}[$msgSizeI]),
-	    adj_int_units(${$hashRef->{$_}}[$msgDfrsI]),
-	    adj_time_units($avgDly),
-	    adj_time_units(${$hashRef->{$_}}[$msgDlyMaxI]),
-	    $_;
-	last if --$cnt == 0;
-    }
-}
+#     foreach (reverse sort by_count_then_size keys(%$hashRef)) {
+# 	# there are only delay values if anything was sent
+# 	if(${$hashRef->{$_}}[$msgCntI]) {
+# 	    $avgDly = (${$hashRef->{$_}}[$msgDlyAvgI] /
+# 		       ${$hashRef->{$_}}[$msgCntI]);
+# 	} else {
+# 	    $avgDly = 0;
+# 	}
+# 	printf " %6d%s  %6d%s  %6d%s  %5.1f %s  %5.1f %s  %s\n",
+# 	    adj_int_units(${$hashRef->{$_}}[$msgCntI]),
+# 	    adj_int_units(${$hashRef->{$_}}[$msgSizeI]),
+# 	    adj_int_units(${$hashRef->{$_}}[$msgDfrsI]),
+# 	    adj_time_units($avgDly),
+# 	    adj_time_units(${$hashRef->{$_}}[$msgDlyMaxI]),
+# 	    $_;
+# 	last if --$cnt == 0;
+#     }
+# }
 
 # print "per-sender-domain" traffic summary
 # (done in a subroutine only to keep main-line code clean)
-sub print_sending_domain_summary {
-    use vars '$hashRef';
-    local($hashRef) = $_[0];
-    my($cnt) = $_[1];
-    return if($cnt == 0);
-    my $topCnt = $cnt > 0? "(top $cnt)" : "";
+# sub print_sending_domain_summary {
+#     use vars '$hashRef';
+#     local($hashRef) = $_[0];
+#     my($cnt) = $_[1];
+#     return if($cnt == 0);
+#     my $topCnt = $cnt > 0? "(top $cnt)" : "";
 
-    print_subsect_title("Host/Domain Summary: Messages Received $topCnt");
+#     print_subsect_title("Host/Domain Summary: Messages Received $topCnt");
 
-    print <<End_Of_Sender_Domain_Heading;
- msg cnt   bytes   host/domain
- -------- -------  -----------
-End_Of_Sender_Domain_Heading
+#     print <<End_Of_Sender_Domain_Heading;
+#  msg cnt   bytes   host/domain
+#  -------- -------  -----------
+# End_Of_Sender_Domain_Heading
 
-    foreach (reverse sort by_count_then_size keys(%$hashRef)) {
-	printf " %6d%s  %6d%s  %s\n",
-	    adj_int_units(${$hashRef->{$_}}[$msgCntI]),
-	    adj_int_units(${$hashRef->{$_}}[$msgSizeI]),
-	    $_;
-	last if --$cnt == 0;
-    }
-}
+#     foreach (reverse sort by_count_then_size keys(%$hashRef)) {
+# 	printf " %6d%s  %6d%s  %s\n",
+# 	    adj_int_units(${$hashRef->{$_}}[$msgCntI]),
+# 	    adj_int_units(${$hashRef->{$_}}[$msgSizeI]),
+# 	    $_;
+# 	last if --$cnt == 0;
+#     }
+# }
 
 # print "per-user" data sorted in descending order
 # order (i.e.: highest first)
-sub print_user_data {
-    my($hashRef, $title, $index, $cnt, $quiet) = @_;
-    my $dottedLine;
-    return if($cnt == 0);
-    $title = sprintf "%s%s", $cnt > 0? "top $cnt " : "", $title;
-    unless(%$hashRef) {
-	return if($quiet);
-	$dottedLine = ": none";
-    } else {
-	$dottedLine = "\n" . "-" x length($title);
-    }
-    printf "\n$title$dottedLine\n";
-    foreach (map { $_->[0] }
-	     sort { $b->[1] <=> $a->[1] || $a->[2] cmp $b->[2] }
-	     map { [ $_, $hashRef->{$_}[$index], normalize_host($_) ] }
-	     (keys(%$hashRef)))
-    {
-	printf " %6d%s  %s\n", adj_int_units(${$hashRef->{$_}}[$index]), $_;
-	last if --$cnt == 0;
-    }
-}
+# sub print_user_data {
+#     my($hashRef, $title, $index, $cnt, $quiet) = @_;
+#     my $dottedLine;
+#     return if($cnt == 0);
+#     $title = sprintf "%s%s", $cnt > 0? "top $cnt " : "", $title;
+#     unless(%$hashRef) {
+# 	return if($quiet);
+# 	$dottedLine = ": none";
+#     } else {
+# 	$dottedLine = "\n" . "-" x length($title);
+#     }
+#     printf "\n$title$dottedLine\n";
+#     foreach (map { $_->[0] }
+# 	     sort { $b->[1] <=> $a->[1] || $a->[2] cmp $b->[2] }
+# 	     map { [ $_, $hashRef->{$_}[$index], normalize_host($_) ] }
+# 	     (keys(%$hashRef)))
+#     {
+# 	printf " %6d%s  %s\n", adj_int_units(${$hashRef->{$_}}[$index]), $_;
+# 	last if --$cnt == 0;
+#     }
+# }
 
 
 # print "per-hour" smtpd connection summary
 # (done in a subroutine only to keep main-line code clean)
-sub print_per_hour_smtpd {
-    my ($smtpdPerHr, $dayCnt) = @_;
-    my ($hour, $value);
-    if($dayCnt > 1) {
-	print_subsect_title("Per-Hour SMTPD Connection Daily Average");
+# sub print_per_hour_smtpd {
+#     my ($smtpdPerHr, $dayCnt) = @_;
+#     my ($hour, $value);
+#     if($dayCnt > 1) {
+# 	print_subsect_title("Per-Hour SMTPD Connection Daily Average");
 
-	print <<End_Of_Per_Hour_Smtp_Average;
-    hour        connections    time conn.
-    -------------------------------------
-End_Of_Per_Hour_Smtp_Average
-    } else {
-	print_subsect_title("Per-Hour SMTPD Connection Summary");
+# 	print <<End_Of_Per_Hour_Smtp_Average;
+#     hour        connections    time conn.
+#     -------------------------------------
+# End_Of_Per_Hour_Smtp_Average
+#     } else {
+# 	print_subsect_title("Per-Hour SMTPD Connection Summary");
 
-	print <<End_Of_Per_Hour_Smtp;
-    hour        connections    time conn.    avg./conn.   max. time
-    --------------------------------------------------------------------
-End_Of_Per_Hour_Smtp
-    }
+# 	print <<End_Of_Per_Hour_Smtp;
+#     hour        connections    time conn.    avg./conn.   max. time
+#     --------------------------------------------------------------------
+# End_Of_Per_Hour_Smtp
+#     }
 
-    for($hour = 0; $hour < 24; ++$hour) {
-	$smtpdPerHr[$hour]->[0] || next;
-	my $avg = int($smtpdPerHr[$hour]->[0]?
-	    ($smtpdPerHr[$hour]->[1]/$smtpdPerHr[$hour]->[0]) + .5 : 0);
-	if($dayCnt > 1) {
-	    $smtpdPerHr[$hour]->[0] /= $dayCnt;
-	    $smtpdPerHr[$hour]->[1] /= $dayCnt;
-	    $smtpdPerHr[$hour]->[0] += .5;
-	    $smtpdPerHr[$hour]->[1] += .5;
-	}
-	my($sec, $min, $hr) = get_smh($smtpdPerHr[$hour]->[1]);
+#     for($hour = 0; $hour < 24; ++$hour) {
+# 	$smtpdPerHr[$hour]->[0] || next;
+# 	my $avg = int($smtpdPerHr[$hour]->[0]?
+# 	    ($smtpdPerHr[$hour]->[1]/$smtpdPerHr[$hour]->[0]) + .5 : 0);
+# 	if($dayCnt > 1) {
+# 	    $smtpdPerHr[$hour]->[0] /= $dayCnt;
+# 	    $smtpdPerHr[$hour]->[1] /= $dayCnt;
+# 	    $smtpdPerHr[$hour]->[0] += .5;
+# 	    $smtpdPerHr[$hour]->[1] += .5;
+# 	}
+# 	my($sec, $min, $hr) = get_smh($smtpdPerHr[$hour]->[1]);
 
-	if($isoDateTime) {
-	    printf "    %02d:00-%02d:00", $hour, $hour + 1;
-	} else {
-	    printf "    %02d00-%02d00  ", $hour, $hour + 1;
-	}
-	printf "   %6d%s       %2d:%02d:%02d",
-	    adj_int_units($smtpdPerHr[$hour]->[0]),
-	    $hr, $min, $sec;
-	if($dayCnt < 2) {
-	    printf "      %6ds      %6ds",
-		$avg,
-		$smtpdPerHr[$hour]->[2];
-	}
-	print "\n";
-    }
-}
+# 	if($isoDateTime) {
+# 	    printf "    %02d:00-%02d:00", $hour, $hour + 1;
+# 	} else {
+# 	    printf "    %02d00-%02d00  ", $hour, $hour + 1;
+# 	}
+# 	printf "   %6d%s       %2d:%02d:%02d",
+# 	    adj_int_units($smtpdPerHr[$hour]->[0]),
+# 	    $hr, $min, $sec;
+# 	if($dayCnt < 2) {
+# 	    printf "      %6ds      %6ds",
+# 		$avg,
+# 		$smtpdPerHr[$hour]->[2];
+# 	}
+# 	print "\n";
+#     }
+# }
 
 # print "per-day" smtpd connection summary
 # (done in a subroutine only to keep main-line code clean)
-sub print_per_day_smtpd {
-    my ($smtpdPerDay, $dayCnt) = @_;
+# sub print_per_day_smtpd {
+#     my ($smtpdPerDay, $dayCnt) = @_;
 
-    print_subsect_title("Per-Day SMTPD Connection Summary");
+#     print_subsect_title("Per-Day SMTPD Connection Summary");
 
-    print <<End_Of_Per_Day_Smtp;
-    date        connections    time conn.    avg./conn.   max. time
-    --------------------------------------------------------------------
-End_Of_Per_Day_Smtp
+#     print <<End_Of_Per_Day_Smtp;
+#     date        connections    time conn.    avg./conn.   max. time
+#     --------------------------------------------------------------------
+# End_Of_Per_Day_Smtp
 
-    foreach (sort { $a <=> $b } keys(%$smtpdPerDay)) {
-	my ($msgYr, $msgMon, $msgDay) = unpack("A4 A2 A2", $_);
-	if($isoDateTime) {
-	    printf "    %04d-%02d-%02d ", $msgYr, $msgMon + 1, $msgDay
-	} else {
-	    my $msgMonStr = $monthNames[$msgMon];
-	    printf "    $msgMonStr %2d $msgYr", $msgDay;
-	}
+#     foreach (sort { $a <=> $b } keys(%$smtpdPerDay)) {
+# 	my ($msgYr, $msgMon, $msgDay) = unpack("A4 A2 A2", $_);
+# 	if($isoDateTime) {
+# 	    printf "    %04d-%02d-%02d ", $msgYr, $msgMon + 1, $msgDay
+# 	} else {
+# 	    my $msgMonStr = $monthNames[$msgMon];
+# 	    printf "    $msgMonStr %2d $msgYr", $msgDay;
+# 	}
 
-	my $avg = (${$smtpdPerDay{$_}}[1]/${$smtpdPerDay{$_}}[0]) + .5;
-	my($sec, $min, $hr) = get_smh(${$smtpdPerDay{$_}}[1]);
+# 	my $avg = (${$smtpdPerDay{$_}}[1]/${$smtpdPerDay{$_}}[0]) + .5;
+# 	my($sec, $min, $hr) = get_smh(${$smtpdPerDay{$_}}[1]);
 
-	printf "   %6d%s       %2d:%02d:%02d      %6ds      %6ds\n",
-	    adj_int_units(${$smtpdPerDay{$_}}[0]),
-	    $hr, $min, $sec,
-	    $avg,
-	    ${$smtpdPerDay{$_}}[2];
-    }
-}
+# 	printf "   %6d%s       %2d:%02d:%02d      %6ds      %6ds\n",
+# 	    adj_int_units(${$smtpdPerDay{$_}}[0]),
+# 	    $hr, $min, $sec,
+# 	    $avg,
+# 	    ${$smtpdPerDay{$_}}[2];
+#     }
+# }
 
 # print "per-domain-smtpd" connection summary
 # (done in a subroutine only to keep main-line code clean)
@@ -1292,125 +1295,125 @@ End_Of_Domain_Smtp_Heading
 
 # print hash contents sorted by numeric values in descending
 # order (i.e.: highest first)
-sub print_hash_by_cnt_vals {
-    my($hashRef, $title, $cnt, $quiet) = @_;
-    my $dottedLine;
-    $title = sprintf "%s%s", $cnt? "top $cnt " : "", $title;
-    unless(%$hashRef) {
-	return if($quiet);
-	$dottedLine = ": none";
-    } else {
-	$dottedLine = "\n" . "-" x length($title);
-    }
-    printf "\n$title$dottedLine\n";
-    really_print_hash_by_cnt_vals($hashRef, $cnt, ' ');
-}
+# sub print_hash_by_cnt_vals {
+#     my($hashRef, $title, $cnt, $quiet) = @_;
+#     my $dottedLine;
+#     $title = sprintf "%s%s", $cnt? "top $cnt " : "", $title;
+#     unless(%$hashRef) {
+# 	return if($quiet);
+# 	$dottedLine = ": none";
+#     } else {
+# 	$dottedLine = "\n" . "-" x length($title);
+#     }
+#     printf "\n$title$dottedLine\n";
+#     really_print_hash_by_cnt_vals($hashRef, $cnt, ' ');
+# }
 
-# print hash contents sorted by key in ascending order
-sub print_hash_by_key {
-    my($hashRef, $title, $cnt, $quiet) = @_;
-    my $dottedLine;
-    $title = sprintf "%s%s", $cnt? "first $cnt " : "", $title;
-    unless(%$hashRef) {
-	return if($quiet);
-	$dottedLine = ": none";
-    } else {
-	$dottedLine = "\n" . "-" x length($title);
-    }
-    printf "\n$title$dottedLine\n";
-    foreach (sort keys(%$hashRef))
-    {
-	printf " %s  %s\n", $_, $hashRef->{$_};
-	last if --$cnt == 0;
-    }
-}
+# # print hash contents sorted by key in ascending order
+# sub print_hash_by_key {
+#     my($hashRef, $title, $cnt, $quiet) = @_;
+#     my $dottedLine;
+#     $title = sprintf "%s%s", $cnt? "first $cnt " : "", $title;
+#     unless(%$hashRef) {
+# 	return if($quiet);
+# 	$dottedLine = ": none";
+#     } else {
+# 	$dottedLine = "\n" . "-" x length($title);
+#     }
+#     printf "\n$title$dottedLine\n";
+#     foreach (sort keys(%$hashRef))
+#     {
+# 	printf " %s  %s\n", $_, $hashRef->{$_};
+# 	last if --$cnt == 0;
+#     }
+# }
 
 # print "nested" hashes
-sub print_nested_hash {
-    my($hashRef, $title, $cnt, $quiet) = @_;
-    my $dottedLine;
-    unless(%$hashRef) {
-	return if($quiet);
-	$dottedLine = ": none";
-    } else {
-	$dottedLine = "\n" . "-" x length($title);
-    }
-    printf "\n$title$dottedLine\n";
-    walk_nested_hash($hashRef, $cnt, 0);
-}
+# sub print_nested_hash {
+#     my($hashRef, $title, $cnt, $quiet) = @_;
+#     my $dottedLine;
+#     unless(%$hashRef) {
+# 	return if($quiet);
+# 	$dottedLine = ": none";
+#     } else {
+# 	$dottedLine = "\n" . "-" x length($title);
+#     }
+#     printf "\n$title$dottedLine\n";
+#     walk_nested_hash($hashRef, $cnt, 0);
+# }
 
-# "walk" a "nested" hash
-sub walk_nested_hash {
-    my ($hashRef, $cnt, $level) = @_;
-    $level += 2;
-    my $indents = ' ' x $level;
-    my ($keyName, $hashVal) = each(%$hashRef);
+# # "walk" a "nested" hash
+# sub walk_nested_hash {
+#     my ($hashRef, $cnt, $level) = @_;
+#     $level += 2;
+#     my $indents = ' ' x $level;
+#     my ($keyName, $hashVal) = each(%$hashRef);
 
-    if(ref($hashVal) eq 'HASH') {
-	foreach (sort keys %$hashRef) {
-	    print "$indents$_";
-	    # If the next hash is finally the data, total the
-	    # counts for the report and print
-	    my $hashVal2 = (each(%{$hashRef->{$_}}))[1];
-	    keys(%{$hashRef->{$_}});	# "reset" hash iterator
-	    unless(ref($hashVal2) eq 'HASH') {
-		print " (top $cnt)" if($cnt > 0);
-		my $rptCnt = 0;
-		$rptCnt += $_ foreach (values %{$hashRef->{$_}});
-		print " (total: $rptCnt)";
-	    }
-	    print "\n";
-	    walk_nested_hash($hashRef->{$_}, $cnt, $level);
-	}
-    } else {
-	really_print_hash_by_cnt_vals($hashRef, $cnt, $indents);
-    }
-}
+#     if(ref($hashVal) eq 'HASH') {
+# 	foreach (sort keys %$hashRef) {
+# 	    print "$indents$_";
+# 	    # If the next hash is finally the data, total the
+# 	    # counts for the report and print
+# 	    my $hashVal2 = (each(%{$hashRef->{$_}}))[1];
+# 	    keys(%{$hashRef->{$_}});	# "reset" hash iterator
+# 	    unless(ref($hashVal2) eq 'HASH') {
+# 		print " (top $cnt)" if($cnt > 0);
+# 		my $rptCnt = 0;
+# 		$rptCnt += $_ foreach (values %{$hashRef->{$_}});
+# 		print " (total: $rptCnt)";
+# 	    }
+# 	    print "\n";
+# 	    walk_nested_hash($hashRef->{$_}, $cnt, $level);
+# 	}
+#     } else {
+# 	really_print_hash_by_cnt_vals($hashRef, $cnt, $indents);
+#     }
+# }
 
 
 # print per-message info in excruciating detail :-)
-sub print_detailed_msg_data {
-    use vars '$hashRef';
-    local($hashRef) = $_[0];
-    my($title, $quiet) = @_[1,2];
-    my $dottedLine;
-    unless(%$hashRef) {
-	return if($quiet);
-	$dottedLine = ": none";
-    } else {
-	$dottedLine = "\n" . "-" x length($title);
-    }
-    printf "\n$title$dottedLine\n";
-    foreach (sort by_domain_then_user keys(%$hashRef))
-    {
-	printf " %s  %s\n", $_, shift(@{$hashRef->{$_}});
-	foreach (@{$hashRef->{$_}}) {
-	    print "   $_\n";
-	}
-	print "\n";
-    }
-}
+# sub print_detailed_msg_data {
+#     use vars '$hashRef';
+#     local($hashRef) = $_[0];
+#     my($title, $quiet) = @_[1,2];
+#     my $dottedLine;
+#     unless(%$hashRef) {
+# 	return if($quiet);
+# 	$dottedLine = ": none";
+#     } else {
+# 	$dottedLine = "\n" . "-" x length($title);
+#     }
+#     printf "\n$title$dottedLine\n";
+#     foreach (sort by_domain_then_user keys(%$hashRef))
+#     {
+# 	printf " %s  %s\n", $_, shift(@{$hashRef->{$_}});
+# 	foreach (@{$hashRef->{$_}}) {
+# 	    print "   $_\n";
+# 	}
+# 	print "\n";
+#     }
+# }
 
 # *really* print hash contents sorted by numeric values in descending
 # order (i.e.: highest first), then by IP/addr, in ascending order.
-sub really_print_hash_by_cnt_vals {
-    my($hashRef, $cnt, $indents) = @_;
+# sub really_print_hash_by_cnt_vals {
+#     my($hashRef, $cnt, $indents) = @_;
 
-    foreach (map { $_->[0] }
-	     sort { $b->[1] <=> $a->[1] || $a->[2] cmp $b->[2] }
-	     map { [ $_, $hashRef->{$_}, normalize_host($_) ] }
-	     (keys(%$hashRef)))
-    {
-        printf "$indents%6d%s  %s\n", adj_int_units($hashRef->{$_}), $_;
-        last if --$cnt == 0;
-    }
-}
+#     foreach (map { $_->[0] }
+# 	     sort { $b->[1] <=> $a->[1] || $a->[2] cmp $b->[2] }
+# 	     map { [ $_, $hashRef->{$_}, normalize_host($_) ] }
+# 	     (keys(%$hashRef)))
+#     {
+#         printf "$indents%6d%s  %s\n", adj_int_units($hashRef->{$_}), $_;
+#         last if --$cnt == 0;
+#     }
+# }
 
 # Print a sub-section title with properly-sized underline
-sub print_subsect_title {
-    my $title = $_[0];
-    print "\n$title\n" . "-" x length($title) . "\n";
-}
+# sub print_subsect_title {
+#     my $title = $_[0];
+#     print "\n$title\n" . "-" x length($title) . "\n";
+# }
 
 # Normalize IP addr or hostname
 # (Note: Makes no effort to normalize IPv6 addrs.  Just returns them
@@ -1552,7 +1555,7 @@ sub gimme_domain {
 # Return (value, units) for integer
 sub adj_int_units {
     my $value = $_[0];
-    my $units = ' ';
+    my $units = 'i';
     $value = 0 unless($value);
     if($value > $divByOneMegAt) {
 	$value /= $oneMeg;
