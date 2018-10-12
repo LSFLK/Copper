@@ -133,3 +133,8 @@ COPY ./emailserver/configs/telegraf/init.sh /etc/init.d/telegraf
 RUN apt-get clean && \
  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+COPY ./emailserver/configs/telegraf/entrypoint.sh entrypoint.sh
+RUN chmod 755 entrypoint.sh
+
+ENTRYPOINT ["entrypoint.sh"]
+CMD ["telegraf"]
