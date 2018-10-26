@@ -303,9 +303,12 @@ services:
             - MYSQL_RANDOM_ROOT_PASSWORD=no
             #- MYSQL_DATABASE=postfix
             #- MYSQL_DATABASE=mail
-            - MYSQL_DATABASE=horde
-            - MYSQL_USER=horde
-            - MYSQL_PASSWORD=horde
+            # - MYSQL_DATABASE=horde
+            # - MYSQL_USER=horde
+            # - MYSQL_PASSWORD=horde
+            - MYSQL_DATABASE=rainloop
+            - MYSQL_USER=rainloop
+            - MYSQL_PASSWORD=rainloop
             #- HOSTNAME=mariadb
             #- VIRTUAL_HOST=mariadb
             #- MYSQL_DATABASE=${DB}

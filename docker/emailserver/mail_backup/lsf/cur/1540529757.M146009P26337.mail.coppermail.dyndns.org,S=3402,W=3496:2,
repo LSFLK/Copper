@@ -1,0 +1,94 @@
+Return-Path: <>
+Delivered-To: lsf@coppermail.dyndns.org
+Received: from mail.coppermail.dyndns.org
+	by mail.coppermail.dyndns.org with LMTP id kMykCF2e0lvhZgAAzZcZFA
+	for <lsf@coppermail.dyndns.org>; Fri, 26 Oct 2018 04:55:57 +0000
+Received: by mail.coppermail.dyndns.org (Postfix)
+	id 1A5CE321915; Fri, 26 Oct 2018 04:55:57 +0000 (UTC)
+Date: Fri, 26 Oct 2018 04:55:57 +0000 (UTC)
+From: MAILER-DAEMON@coppermail.dyndns.org (Mail Delivery System)
+Subject: Undelivered Mail Returned to Sender
+To: lsf@coppermail.dyndns.org
+Auto-Submitted: auto-replied
+MIME-Version: 1.0
+Content-Type: multipart/report; report-type=delivery-status;
+	boundary="DAE53321913.1540529757/mail.coppermail.dyndns.org"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20181026045557.1A5CE321915@mail.coppermail.dyndns.org>
+
+This is a MIME-encapsulated message.
+
+--DAE53321913.1540529757/mail.coppermail.dyndns.org
+Content-Description: Notification
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+
+This is the mail system at host mail.coppermail.dyndns.org.
+
+I'm sorry to have to inform you that your message could not
+be delivered to one or more recipients. It's attached below.
+
+For further assistance, please send mail to postmaster.
+
+If you do so, please include this problem report. You can
+delete your own text from the attached returned message.
+
+                   The mail system
+
+<anu.udb@gmail.com>: Host or domain name not found. Name service error for
+    name=gmail.com type=AAAA: Host not found
+
+--DAE53321913.1540529757/mail.coppermail.dyndns.org
+Content-Description: Delivery report
+Content-Type: message/delivery-status
+
+Reporting-MTA: dns; mail.coppermail.dyndns.org
+X-Postfix-Queue-ID: DAE53321913
+X-Postfix-Sender: rfc822; lsf@coppermail.dyndns.org
+Arrival-Date: Fri, 26 Oct 2018 04:55:56 +0000 (UTC)
+
+Final-Recipient: rfc822; anu.udb@gmail.com
+Original-Recipient: rfc822;anu.udb@gmail.com
+Action: failed
+Status: 5.4.4
+Diagnostic-Code: X-Postfix; Host or domain name not found. Name service error
+    for name=gmail.com type=AAAA: Host not found
+
+--DAE53321913.1540529757/mail.coppermail.dyndns.org
+Content-Description: Undelivered Message
+Content-Type: message/rfc822
+Content-Transfer-Encoding: 8bit
+
+Return-Path: <lsf@coppermail.dyndns.org>
+Received: from localhost (webmail.docker_back [172.19.0.16])
+	by mail.coppermail.dyndns.org (Postfix) with ESMTPSA id DAE53321913
+	for <anu.udb@gmail.com>; Fri, 26 Oct 2018 04:55:56 +0000 (UTC)
+MIME-Version: 1.0
+Date: Fri, 26 Oct 2018 04:55:56 +0000
+Content-Type: multipart/alternative;
+ boundary="--=_RainLoop_301_835371551.1540529756"
+X-Mailer: RainLoop/1.12.0
+From: lsf@coppermail.dyndns.org
+Message-ID: <91cd3aa54ec4d7ed8453b4d4b6bbe3c4@coppermail.dyndns.org>
+Subject: testing addressbook
+To: anu.udb@gmail.com
+
+
+----=_RainLoop_301_835371551.1540529756
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+
+
+----=_RainLoop_301_835371551.1540529756
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html><head><meta http-equiv=3D"Content-Type" content=3D"t=
+ext/html; charset=3Dutf-8" /></head><body><div data-html-editor-font-wrap=
+per=3D"true" style=3D"font-family: arial, sans-serif; font-size: 13px;"> =
+<br><br><signature></signature> </div></body></html>
+
+----=_RainLoop_301_835371551.1540529756--
+
+--DAE53321913.1540529757/mail.coppermail.dyndns.org--
