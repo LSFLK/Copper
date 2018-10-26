@@ -236,7 +236,7 @@ services:
             - /var/lib/ldap
             - /etc/ldap/slapd.d
             - /container/service/slapd/assets/certs/
-            - ./openldap/user_backup:/var/lib/ldap/
+        #    - ./openldap/user_backup:/var/lib/ldap/
         ports:
             - "389:389"
             - "636:636"

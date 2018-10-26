@@ -10,7 +10,7 @@ ENV TELEGRAF_VERSION 1.8.1-1
 
 
 
-RUN apt-get update && apt-get -y purge exim4*
+RUN apt-get update --fix-missing && apt-get -y purge exim4*
 RUN apt-get -y upgrade
 RUN apt-get -y install apt-utils
 # installing netstat command
