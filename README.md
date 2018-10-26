@@ -100,3 +100,10 @@ $ docker-compose up -d
 - openLdap solutions
   https://github.com/osixia/docker-openldap#quick-start
 
+<!-- Prometheus container pull and run: 
+    sudo docker pull prom/prometheus
+    docker run -p 9090:9090 prom/prometheus
+
+Grafana pull and run
+    docker pull grafana/grafana
+    docker run -d --name=grafana -p 3000:3000 grafana/grafana -->

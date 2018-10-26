@@ -66,6 +66,8 @@ services:
           #- ./emailserver/certs:/certs
           #- ./emailserver/ssl:/etc/letsencrypt/
           #- ./emailserver/mail:/var/mail
+        volumes:
+            - ./emailserver/mail_backup:/var/mail/vhosts/
         container_name: "emailserver"
         extra_hosts:
             - "coppermail.emailserver:127.0.1.1"
@@ -95,7 +97,7 @@ services:
             - "465:465"     # SMTPS
             - "587:587"     # Submission
             - "993:993"     # IMAPS
-            - "995:995"     # POP3S
+            # - "995:995"     # POP3S
             #- "10026:10026" # smtpd  // this was added by me due to a port open erro in msterfile config
             - "4190:4190"   # SIEVE
         entrypoint:
@@ -130,7 +132,7 @@ services:
         networks:
             back:
               ipv4_address: 172.19.0.16
-            front:
+            # front:
         container_name: "webmail"   
 
 # ----------------------------------------webmail--------------------------------------------
@@ -231,9 +233,10 @@ services:
         tty: true
         stdin_open: true
         volumes:
-             - /var/lib/ldap
-             - /etc/ldap/slapd.d
-             - /container/service/slapd/assets/certs/
+            - /var/lib/ldap
+            - /etc/ldap/slapd.d
+            - /container/service/slapd/assets/certs/
+            - ./openldap/user_backup:/var/lib/ldap/
         ports:
             - "389:389"
             - "636:636"
@@ -266,8 +269,8 @@ services:
              PHPLDAPADMIN_LDAP_HOSTS: "openldap"
              #PHPLDAPADMIN_LDAP_HOSTS: ldap.${DOMAIN}
              PHPLDAPADMIN_HTTPS: "false"
-        ports:
-            - "8888:80"
+        # ports:
+            # - "8888:80"
         depends_on:
             - openldap
         networks:
@@ -300,9 +303,12 @@ services:
             - MYSQL_RANDOM_ROOT_PASSWORD=no
             #- MYSQL_DATABASE=postfix
             #- MYSQL_DATABASE=mail
-            - MYSQL_DATABASE=horde
-            - MYSQL_USER=horde
-            - MYSQL_PASSWORD=horde
+            # - MYSQL_DATABASE=horde
+            # - MYSQL_USER=horde
+            # - MYSQL_PASSWORD=horde
+            - MYSQL_DATABASE=rainloop
+            - MYSQL_USER=rainloop
+            - MYSQL_PASSWORD=rainloop
             #- HOSTNAME=mariadb
             #- VIRTUAL_HOST=mariadb
             #- MYSQL_DATABASE=${DB}

@@ -1,0 +1,35 @@
+Return-Path: <lsf@coppermail.dyndns.org>
+Delivered-To: test@coppermail.dyndns.org
+Received: from mail.coppermail.dyndns.org
+	by mail.coppermail.dyndns.org with LMTP id 2LBNEOhkxVsmBwAAzZcZFA
+	for <test@coppermail.dyndns.org>; Tue, 16 Oct 2018 04:11:20 +0000
+Received: from localhost (webmail.docker_back [172.19.0.16])
+	by mail.coppermail.dyndns.org (Postfix) with ESMTPSA id 30131220BD5
+	for <test@coppermail.dyndns.org>; Tue, 16 Oct 2018 04:11:20 +0000 (UTC)
+MIME-Version: 1.0
+Date: Tue, 16 Oct 2018 04:11:20 +0000
+Content-Type: multipart/alternative;
+ boundary="--=_RainLoop_758_230151378.1539663080"
+X-Mailer: RainLoop/1.12.0
+From: lsf@coppermail.dyndns.org
+Message-ID: <6c388a82a289e3bde8014dbc6bcf40a7@coppermail.dyndns.org>
+Subject: testing
+To: test@coppermail.dyndns.org
+
+
+----=_RainLoop_758_230151378.1539663080
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+
+
+----=_RainLoop_758_230151378.1539663080
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html><head><meta http-equiv=3D"Content-Type" content=3D"t=
+ext/html; charset=3Dutf-8" /></head><body><div data-html-editor-font-wrap=
+per=3D"true" style=3D"font-family: arial, sans-serif; font-size: 13px;"> =
+<br><br><signature></signature> </div></body></html>
+
+----=_RainLoop_758_230151378.1539663080--
