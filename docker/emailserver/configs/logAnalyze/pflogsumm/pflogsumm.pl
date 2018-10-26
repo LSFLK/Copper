@@ -862,8 +862,8 @@ if(defined($dateStr)) {
 
 # print_problems_reports() if(defined($opts{'pf'}));
 
-# print_per_day_summary(\%msgsPerDay) if($dayCnt > 1);
-# print_per_hour_summary(\@rcvPerHr, \@dlvPerHr, \@dfrPerHr, \@bncPerHr,
+ print_per_day_summary(\%msgsPerDay) if($dayCnt > 1);
+ print_per_hour_summary(\@rcvPerHr, \@dlvPerHr, \@dfrPerHr, \@bncPerHr,
 #     \@rejPerHr, $dayCnt);
 
 # print_recip_domain_summary(\%recipDom, $opts{'h'});
@@ -911,12 +911,12 @@ if(defined($dateStr)) {
 #     print_hash_by_cnt_vals(\%masterMsgs,"Master daemon messages", 0, $opts{'q'});
 # }
 
-# if($opts{'mailq'}) {
-#     # flush stdout first cuz of asynchronousity
-#     $| = 1;
-#     print_subsect_title("Current Mail Queue");
-#     system($mailqCmd);
-# }
+ if($opts{'mailq'}) {
+     # flush stdout first cuz of asynchronousity
+     $| = 1;
+     print_subsect_title("Current Mail Queue");
+     system($mailqCmd);
+ }
 
 # print "per-day" traffic summary
 # (done in a subroutine only to keep main-line code clean)
