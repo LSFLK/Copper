@@ -29,6 +29,7 @@ ENV APACHE_PID_FILE /var/run/apache2.pid
 
 # Copy site into place.
 ADD ./webmail/copperclient/app/ /var/www/site/app
+#RUN chown -R www-data:www-data /var/www/site/app .
 
 # Update the default apache site with the config we created.
 ADD ./webmail/copperclient/apache-config.conf /etc/apache2/sites-enabled/000-default.conf
