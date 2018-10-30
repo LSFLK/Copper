@@ -76,20 +76,7 @@ uidnumber: 1002
 userpassword: {SSHA}79+ggcj1RrXEitcvjVBDgqF6NdJf09Y3
 #userpassword in plain: copper@lsf
 
-dn: uid=admin_horde,ou=users,dc=copper,dc=opensource,dc=lk
-cn: admin_horde
-gidnumber: 500
-givenname: admin_horde
-homedirectory: /home/users/admin_horde
-loginshell: /bin/sh
-mail: admin_horde@copper.opensource.lk
-objectclass: inetOrgPerson
-objectclass: posixAccount
-objectclass: top
-sn: admin_horde
-uid: admin_horde
-uidnumber: 1003
-userpassword: {MD5}ISMvKXpXpadDiUoOSoAfww==
+ 
 #userpassword in plain: admin
 
 # Entry 8: cn=s_admin,ou=users,dc=copper,dc=opensource,dc=lk
@@ -110,7 +97,7 @@ userpassword: {SSHA}79+ggcj1RrXEitcvjVBDgqF6NdJf09Y3
 #userpassword in plain: coppermail@lsf
 
 # Entry 4.1: cn=users,ou=groups,dc=copper,dc=opensource,dc=lk
-dn: uid=users,ou=groups,dc=copper,dc=opensource,dc=lk
+dn: cn=users,ou=groups,dc=copper,dc=opensource,dc=lk
 cn: users
 gidnumber: 501
 objectclass: posixGroup

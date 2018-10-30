@@ -6,8 +6,8 @@ hosts = 172.19.0.22
 # Distinguished Name - the username used to login to the LDAP server.
 # Leave it commented out to bind anonymously (useful with auth_bind=yes).
 #dn = 
-#dn = cn=%CN%,dc=%DC1%,dc=%DC2%,dc=%DC3%
-dn = uid=%CN%,dc=%DC1%,dc=%DC2%,dc=%DC3%
+dn = cn=%CN%,dc=%DC1%,dc=%DC2%,dc=%DC3%
+#dn = uid=%CN%,dc=%DC1%,dc=%DC2%,dc=%DC3%
 #dn = uid=admin,ou=%OU%,dc=%DC1%,dc=%DC2%,dc=%DC3%
 
 # Password for LDAP server, if dn is specified.
@@ -75,8 +75,8 @@ user_attrs = homeDirectory=home,uidNumber=uid,gidNumber=gid
 #   %d - domain part in user@domain, empty if user there's no domain
 #user_filter = (&(objectClass=posixAccount)(uid=%u))
 #user_filter = (&(objectclass=inetOrgPerson)(uid=%n)
-#user_filter = (&(objectClass=posixAccount)(cn=%n))
-user_filter = (&(objectclass=inetOrgPerson)(uid=%n)
+user_filter = (&(objectClass=posixAccount)(cn=%n))
+#user_filter = (&(objectclass=inetOrgPerson)(uid=%n)
 
 # Password checking attributes:
 #  user: Virtual user name (user@domain), if you wish to change the

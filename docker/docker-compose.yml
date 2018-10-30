@@ -137,32 +137,32 @@ services:
 
 # ----------------------------------------webmail--------------------------------------------
   
-    horde:
-        build:
-            context: .
-            #dockerfile: ./webmail/${WEBMAIL}/Dockerfile
-            dockerfile: ./webmail/horde-webmail/Dockerfile
-            #dockerfile: ./webmail/horde/Dockerfile
-        restart: always
-        #env_file: .env
-        hostname: horde.${DOMAIN}
-        #volumes:
-            #- ./webmail/horde/storage:/etc/horde
-        ports:
-            - "80:80"
-            #- "80:80"
-            #- "8989:80"
-            #- "3306"
-        #environment:
-            #- WEBMAIL=${WEBMAIL}
+    # horde:
+    #     build:
+    #         context: .
+    #         #dockerfile: ./webmail/${WEBMAIL}/Dockerfile
+    #         dockerfile: ./webmail/horde-webmail/Dockerfile
+    #         #dockerfile: ./webmail/horde/Dockerfile
+    #     restart: always
+    #     #env_file: .env
+    #     hostname: horde.${DOMAIN}
+    #     #volumes:
+    #         #- ./webmail/horde/storage:/etc/horde
+    #     ports:
+    #         - "80:80"
+    #         #- "80:80"
+    #         #- "8989:80"
+    #         #- "3306"
+    #     #environment:
+    #         #- WEBMAIL=${WEBMAIL}
          
-        depends_on:
-            - emailserver
-        networks:
-            back:
-              ipv4_address: 172.19.0.26
-            #front:
-        container_name: "horde"   
+    #     depends_on:
+    #         - emailserver
+    #     networks:
+    #         back:
+    #           ipv4_address: 172.19.0.26
+    #         #front:
+    #     container_name: "horde"   
 
 #------------------------------------------redis----------------------------------------------
     redis:
@@ -333,20 +333,20 @@ services:
 
 #-------------------------------------Grafana----------------------------------------------------
  
-    grafana:
-        build:
-            context: .
-            dockerfile: ./grafana/Dockerfile
-        restart: always
-        hostname: grafana
+    # grafana:
+    #     build:
+    #         context: .
+    #         dockerfile: ./grafana/Dockerfile
+    #     restart: always
+    #     hostname: grafana
         
-        ports:
-            - "3003:3003" 
-            - "3004:8888" 
-            - "8086:8086" 
-            - "22022:22" 
-            - "8125:8125"
-        networks:
-           back:
-              ipv4_address: 172.19.0.15
+    #     ports:
+    #         - "3003:3003" 
+    #         - "3004:8888" 
+    #         - "8086:8086" 
+    #         - "22022:22" 
+    #         - "8125:8125"
+    #     networks:
+    #        back:
+    #           ipv4_address: 172.19.0.15
         
