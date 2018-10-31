@@ -9,3 +9,4 @@
 *.DS_Store
 .DS_Store
 ./docker/webmail/copperclient/app/data/
+./docker/emailserver/mail_backup/

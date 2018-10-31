@@ -87,6 +87,7 @@ services:
             - DC3=${DC3}
             - DNPASS=${DNPASS}
             - OU=${OU}
+            - LDAP_HOST_IP=${LDAP_HOST_IP}
         ports:
             # bellow 80 port is opened for external use
             - "80"
