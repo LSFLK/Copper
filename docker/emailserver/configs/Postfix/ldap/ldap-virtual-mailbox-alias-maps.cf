@@ -1,7 +1,7 @@
 #server_host = ldapi://%2fvar%2frun%2fopenldap%2fldapi/
 #server_host = ldap://172.19.0.21:3268/dc=coppermail,dc=dyndns,dc=org
-# server_host = ldap://%LDAP_HOST_IP%
-server_host = ldap://172.19.0.22
+server_host = ldap://%LDAP_HOST_IP%
+# server_host = ldap://172.19.0.22
 # server_host = ldap://127.0.0.1
 
 # server_host = ldap://localhost

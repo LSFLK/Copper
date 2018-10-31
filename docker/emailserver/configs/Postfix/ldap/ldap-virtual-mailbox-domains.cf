@@ -1,7 +1,7 @@
 #server_host = ldap://ldap.coppermail.dyndns.org
 #server_host = ldap://172.19.0.21
-# server_host = ldap://%LDAP_HOST_IP%
-server_host = ldap://172.19.0.22
+server_host = ldap://%LDAP_HOST_IP%
+# server_host = ldap://172.19.0.22
 # server_host = ldap://127.0.0.1
 #
 start_tls = no
