@@ -1,0 +1,39 @@
+Return-Path: <lsf@copper.opensource.lk>
+Delivered-To: anushka@copper.opensource.lk
+Received: from mail.copper.opensource.lk
+	by mail.copper.opensource.lk with LMTP id KFduCFNn4Vs4AQAADTTj3Q
+	for <anushka@copper.opensource.lk>; Tue, 06 Nov 2018 10:05:07 +0000
+Received: from localhost (webmail.docker_back [172.19.0.16])
+	by mail.copper.opensource.lk (Postfix) with ESMTPSA id 0CF42300357
+	for <anushka@copper.opensource.lk>; Tue,  6 Nov 2018 10:05:03 +0000 (UTC)
+MIME-Version: 1.0
+Date: Tue, 06 Nov 2018 10:05:03 +0000
+Content-Type: multipart/alternative;
+ boundary="--=_RainLoop_648_195737160.1541498702"
+X-Mailer: RainLoop/1.12.0
+From: lsf@copper.opensource.lk
+Message-ID: <40f589a3b08a6868e141854500b8ffa2@copper.opensource.lk>
+Subject: tesint encryption with encryption
+To: anushka@copper.opensource.lk
+
+
+----=_RainLoop_648_195737160.1541498702
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+In this post, I will show you how to add gdb support to your project. Thi=
+s example will use the RTOS SDK, but applies just the same to the non-OS =
+SDK.
+
+----=_RainLoop_648_195737160.1541498702
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html><head><meta http-equiv=3D"Content-Type" content=3D"t=
+ext/html; charset=3Dutf-8" /></head><body><div data-html-editor-font-wrap=
+per=3D"true" style=3D"font-family: arial, sans-serif; font-size: 13px;">I=
+n this post, I will show you how to add <code>gdb</code> support to your =
+project. This example will use the RTOS SDK, but applies just the same to=
+ the non-OS SDK.<br><br><signature></signature> </div></body></html>
+
+----=_RainLoop_648_195737160.1541498702--
