@@ -25,6 +25,7 @@ export DC2=${DC2}
 export DC3=${DC3}
 export DNPASS=${DNPASS}
 export OU=${OU}
+export LDAP_HOST_IP=${LDAP_HOST_IP}
 
 if [ -z "$EMAIL" ]; then
   echo "[ERROR] Email Must be set !"
@@ -116,6 +117,7 @@ chmod -R 755 /etc/letsencrypt/
  sed -i.bak -e "s;%DC3%;"${DC3}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
  sed -i.bak -e "s;%DNPASS%;"${DNPASS}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
  sed -i.bak -e "s;%OU%;"${OU}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
+ sed -i.bak -e "s;%LDAP_HOST_IP%;"${LDAP_HOST_IP}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
 
  #OpenLDAP with Postfix conf
  sed -i.bak -e "s;%CN%;"${CN}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf"
@@ -124,6 +126,7 @@ chmod -R 755 /etc/letsencrypt/
  sed -i.bak -e "s;%DC3%;"${DC3}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf"
  sed -i.bak -e "s;%DNPASS%;"${DNPASS}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf"
  sed -i.bak -e "s;%OU%;"${OU}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf"
+ sed -i.bak -e "s;%LDAP_HOST_IP%;"${LDAP_HOST_IP}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf"
 
  sed -i.bak -e "s;%CN%;"${CN}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-maps.cf"
  sed -i.bak -e "s;%DC1%;"${DC1}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-maps.cf"
@@ -131,6 +134,7 @@ chmod -R 755 /etc/letsencrypt/
  sed -i.bak -e "s;%DC3%;"${DC3}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-maps.cf"
  sed -i.bak -e "s;%DNPASS%;"${DNPASS}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-maps.cf"
  sed -i.bak -e "s;%OU%;"${OU}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-maps.cf"
+ sed -i.bak -e "s;%LDAP_HOST_IP%;"${LDAP_HOST_IP}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-maps.cf"
 
  sed -i.bak -e "s;%CN%;"${CN}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
  sed -i.bak -e "s;%DC1%;"${DC1}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
@@ -138,6 +142,7 @@ chmod -R 755 /etc/letsencrypt/
  sed -i.bak -e "s;%DC3%;"${DC3}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
  sed -i.bak -e "s;%DNPASS%;"${DNPASS}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
  sed -i.bak -e "s;%OU%;"${OU}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
+ sed -i.bak -e "s;%LDAP_HOST_IP%;"${LDAP_HOST_IP}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
 
 
  groupadd -g 5000 vmail && useradd -g vmail -u 5000 vmail -d /var/mail

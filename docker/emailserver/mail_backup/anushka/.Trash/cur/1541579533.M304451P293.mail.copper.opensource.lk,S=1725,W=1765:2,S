@@ -1,0 +1,40 @@
+Return-Path: <lsf@copper.opensource.lk>
+Delivered-To: anushka@copper.opensource.lk
+Received: from mail.copper.opensource.lk
+	by mail.copper.opensource.lk with LMTP id SDAHEg2j4lslAQAADTTj3Q
+	for <anushka@copper.opensource.lk>; Wed, 07 Nov 2018 08:32:13 +0000
+Received: from localhost (webmail.docker_back [172.19.0.16])
+	by mail.copper.opensource.lk (Postfix) with ESMTPSA id 03CEE3A0220
+	for <anushka@copper.opensource.lk>; Wed,  7 Nov 2018 08:32:12 +0000 (UTC)
+MIME-Version: 1.0
+Date: Wed, 07 Nov 2018 08:32:12 +0000
+Content-Type: multipart/alternative;
+ boundary="--=_RainLoop_735_773908344.1541579532"
+X-Mailer: RainLoop/1.12.0
+From: lsf@copper.opensource.lk
+Message-ID: <f4da11c5648bbb9d91a213944c8876e8@copper.opensource.lk>
+Subject: testing encryption
+To: anushka@copper.opensource.lk
+
+
+----=_RainLoop_735_773908344.1541579532
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Greetings and salutations. It has been a really long time since my last p=
+ost. IRL job has been sucking the life out of me. Someday I will tell you=
+ all about it=E2=80=A6
+
+----=_RainLoop_735_773908344.1541579532
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html><head><meta http-equiv=3D"Content-Type" content=3D"t=
+ext/html; charset=3Dutf-8" /></head><body><div data-html-editor-font-wrap=
+per=3D"true" style=3D"font-family: arial, sans-serif; font-size: 13px;"> =
+<br>Greetings and salutations. It has been a <em>really</em> long time si=
+nce my last post. IRL job has been sucking the life out of me. Someday I =
+will tell you all about it=E2=80=A6<br><signature></signature> </div></bo=
+dy></html>
+
+----=_RainLoop_735_773908344.1541579532--

@@ -1,12 +1,16 @@
 #uris = ldap://172.19.0.22 ldap://ldap.coppermail.dyndns.org
 
 # Space separated list of LDAP hosts to use. host:port is allowed too.
-hosts = 172.19.0.22
+hosts = %LDAP_HOST_IP%
+#hosts = 172.19.0.22
+#hosts = localhost
+#hosts = 127.0.0.1
 
 # Distinguished Name - the username used to login to the LDAP server.
 # Leave it commented out to bind anonymously (useful with auth_bind=yes).
 #dn = 
 dn = cn=%CN%,dc=%DC1%,dc=%DC2%,dc=%DC3%
+#dn = uid=%CN%,dc=%DC1%,dc=%DC2%,dc=%DC3%
 #dn = uid=admin,ou=%OU%,dc=%DC1%,dc=%DC2%,dc=%DC3%
 
 # Password for LDAP server, if dn is specified.
@@ -34,7 +38,8 @@ auth_bind = yes
 # For example:
 #   auth_bind_userdn = cn=%u,ou=people,o=org
 #auth_bind_userdn = mail=%u,ou=%OU%,dc=%DC1%,dc=%DC2%,dc=%DC3%
-auth_bind_userdn = cn=%n,ou=%OU%,dc=%DC1%,dc=%DC2%,dc=%DC3%
+#auth_bind_userdn = cn=%n,ou=%OU%,dc=%DC1%,dc=%DC2%,dc=%DC3%
+auth_bind_userdn = uid=%n,ou=%OU%,dc=%DC1%,dc=%DC2%,dc=%DC3%
 # when we use cn=%n it means user part of the full uid user@domain.com  , cn=%u is the only the user part so 
 # when we use cn=%n full uid is requied for authentication other wise connection termianted error comes in telnet session.
 
@@ -74,6 +79,7 @@ user_attrs = homeDirectory=home,uidNumber=uid,gidNumber=gid
 #user_filter = (&(objectClass=posixAccount)(uid=%u))
 #user_filter = (&(objectclass=inetOrgPerson)(uid=%n)
 user_filter = (&(objectClass=posixAccount)(cn=%n))
+#user_filter = (&(objectclass=inetOrgPerson)(uid=%n)
 
 # Password checking attributes:
 #  user: Virtual user name (user@domain), if you wish to change the
