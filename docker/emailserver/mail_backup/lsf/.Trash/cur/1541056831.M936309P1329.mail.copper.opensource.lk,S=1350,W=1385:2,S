@@ -1,0 +1,35 @@
+Return-Path: <anushka@copper.opensource.lk>
+Delivered-To: lsf@copper.opensource.lk
+Received: from mail.copper.opensource.lk
+	by mail.copper.opensource.lk with LMTP id +Gu0Nz+p2lsxBQAADTTj3Q
+	for <lsf@copper.opensource.lk>; Thu, 01 Nov 2018 07:20:31 +0000
+Received: from localhost (webmail.docker_back [172.19.0.16])
+	by mail.copper.opensource.lk (Postfix) with ESMTPSA id 01D032E055C
+	for <lsf@copper.opensource.lk>; Thu,  1 Nov 2018 07:20:30 +0000 (UTC)
+MIME-Version: 1.0
+Date: Thu, 01 Nov 2018 07:20:30 +0000
+Content-Type: multipart/alternative;
+ boundary="--=_RainLoop_881_841739217.1541056830"
+X-Mailer: RainLoop/1.12.0
+From: anushka@copper.opensource.lk
+Message-ID: <a90740cdcfb53812899fb988e01b962e@copper.opensource.lk>
+Subject: test 2
+To: lsf@copper.opensource.lk
+
+
+----=_RainLoop_881_841739217.1541056830
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+
+
+----=_RainLoop_881_841739217.1541056830
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html><head><meta http-equiv=3D"Content-Type" content=3D"t=
+ext/html; charset=3Dutf-8" /></head><body><div data-html-editor-font-wrap=
+per=3D"true" style=3D"font-family: arial, sans-serif; font-size: 13px;"> =
+<br><br><signature></signature> </div></body></html>
+
+----=_RainLoop_881_841739217.1541056830--

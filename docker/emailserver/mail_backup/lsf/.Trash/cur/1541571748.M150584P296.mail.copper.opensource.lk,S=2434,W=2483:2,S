@@ -1,0 +1,49 @@
+Return-Path: <anushka@copper.opensource.lk>
+Delivered-To: lsf@copper.opensource.lk
+Received: from mail.copper.opensource.lk
+	by mail.copper.opensource.lk with LMTP id 0ELVCKSE4lsoAQAADTTj3Q
+	for <lsf@copper.opensource.lk>; Wed, 07 Nov 2018 06:22:28 +0000
+Received: from localhost (webmail.docker_back [172.19.0.16])
+	by mail.copper.opensource.lk (Postfix) with ESMTPSA id B903530034C
+	for <lsf@copper.opensource.lk>; Wed,  7 Nov 2018 06:22:27 +0000 (UTC)
+MIME-Version: 1.0
+Date: Wed, 07 Nov 2018 06:22:27 +0000
+Content-Type: multipart/alternative;
+ boundary="--=_RainLoop_290_296618576.1541571747"
+X-Mailer: RainLoop/1.12.0
+From: anushka@copper.opensource.lk
+Message-ID: <4a42d6fa50f258baff48f087476a014d@copper.opensource.lk>
+Subject: testing
+To: lsf@copper.opensource.lk
+
+
+----=_RainLoop_290_296618576.1541571747
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Greetings and salutations. It has been a really long time since my last p=
+ost. IRL job has been sucking the life out of me. Someday I will tell you=
+ all about it=E2=80=A6 =0A=0A	Anyhow, I=E2=80=99ve been carving out some =
+time for playing with a raspberrypi display and wanted to save some notes=
+ for posterity. This more a note to self than anything, but if someone en=
+ds up here via googling, I hope it will be of help. =0A=0A	Without furthe=
+r ado, here are the first things I do after booting up a new RaspberryPi =
+installation
+
+----=_RainLoop_290_296618576.1541571747
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html><head><meta http-equiv=3D"Content-Type" content=3D"t=
+ext/html; charset=3Dutf-8" /></head><body><div data-html-editor-font-wrap=
+per=3D"true" style=3D"font-family: arial, sans-serif; font-size: 13px;"> =
+<p>Greetings and salutations. It has been a <em>really</em> long time sin=
+ce my last post. IRL job has been sucking the life out of me. Someday I w=
+ill tell you all about it=E2=80=A6</p> <p>Anyhow, I=E2=80=99ve been carvi=
+ng out some time for playing with a raspberrypi display and wanted to sav=
+e some notes for posterity. This more a note to self than anything, but i=
+f someone ends up here via googling, I hope it will be of help.</p> <p>Wi=
+thout further ado, here are the first things I do after booting up a new =
+RaspberryPi installation</p> <signature></signature> </div></body></html>
+
+----=_RainLoop_290_296618576.1541571747--

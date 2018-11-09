@@ -1,8 +1,15 @@
 #uris = ldap://172.19.0.22 ldap://ldap.coppermail.dyndns.org
 
 # Space separated list of LDAP hosts to use. host:port is allowed too.
+<<<<<<< HEAD
 #hosts = 172.19.0.22
 hosts = ldap://copper-openldap
+=======
+hosts = %LDAP_HOST_IP%
+#hosts = 172.19.0.22
+#hosts = localhost
+#hosts = 127.0.0.1
+>>>>>>> upstream/master
 
 # Distinguished Name - the username used to login to the LDAP server.
 # Leave it commented out to bind anonymously (useful with auth_bind=yes).

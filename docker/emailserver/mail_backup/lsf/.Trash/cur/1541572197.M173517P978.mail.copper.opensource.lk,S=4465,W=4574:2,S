@@ -1,0 +1,109 @@
+Return-Path: <>
+Delivered-To: lsf@copper.opensource.lk
+Received: from mail.copper.opensource.lk
+	by mail.copper.opensource.lk with LMTP id mJUdCmWG4lvSAwAADTTj3Q
+	for <lsf@copper.opensource.lk>; Wed, 07 Nov 2018 06:29:57 +0000
+Received: by mail.copper.opensource.lk (Postfix)
+	id 1D05830123C; Wed,  7 Nov 2018 06:29:57 +0000 (UTC)
+Date: Wed,  7 Nov 2018 06:29:57 +0000 (UTC)
+From: MAILER-DAEMON@copper.opensource.lk (Mail Delivery System)
+Subject: Undelivered Mail Returned to Sender
+To: lsf@copper.opensource.lk
+Auto-Submitted: auto-replied
+MIME-Version: 1.0
+Content-Type: multipart/report; report-type=delivery-status;
+	boundary="40C4330035E.1541572197/mail.copper.opensource.lk"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20181107062957.1D05830123C@mail.copper.opensource.lk>
+
+This is a MIME-encapsulated message.
+
+--40C4330035E.1541572197/mail.copper.opensource.lk
+Content-Description: Notification
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+
+This is the mail system at host mail.copper.opensource.lk.
+
+I'm sorry to have to inform you that your message could not
+be delivered to one or more recipients. It's attached below.
+
+For further assistance, please send mail to postmaster.
+
+If you do so, please include this problem report. You can
+delete your own text from the attached returned message.
+
+                   The mail system
+
+<anushkab@opensource.lk>: host alt2.aspmx.l.google.com[108.177.104.27] said:
+    550-5.7.1 [112.135.6.54] The IP you're using to send mail is not authorized
+    to 550-5.7.1 send email directly to our servers. Please use the SMTP relay
+    at your 550-5.7.1 service provider instead. Learn more at 550 5.7.1
+    https://support.google.com/mail/?p=NotAuthorizedError
+    c185-v6si15467317oig.247 - gsmtp (in reply to end of DATA command)
+
+--40C4330035E.1541572197/mail.copper.opensource.lk
+Content-Description: Delivery report
+Content-Type: message/delivery-status
+
+Reporting-MTA: dns; mail.copper.opensource.lk
+X-Postfix-Queue-ID: 40C4330035E
+X-Postfix-Sender: rfc822; lsf@copper.opensource.lk
+Arrival-Date: Wed,  7 Nov 2018 06:24:48 +0000 (UTC)
+
+Final-Recipient: rfc822; anushkab@opensource.lk
+Original-Recipient: rfc822;anushkab@opensource.lk
+Action: failed
+Status: 5.7.1
+Remote-MTA: dns; alt2.aspmx.l.google.com
+Diagnostic-Code: smtp; 550-5.7.1 [112.135.6.54] The IP you're using to send
+    mail is not authorized to 550-5.7.1 send email directly to our servers.
+    Please use the SMTP relay at your 550-5.7.1 service provider instead. Learn
+    more at 550 5.7.1  https://support.google.com/mail/?p=NotAuthorizedError
+    c185-v6si15467317oig.247 - gsmtp
+
+--40C4330035E.1541572197/mail.copper.opensource.lk
+Content-Description: Undelivered Message
+Content-Type: message/rfc822
+Content-Transfer-Encoding: 8bit
+
+Return-Path: <lsf@copper.opensource.lk>
+Received: from localhost (webmail.docker_back [172.19.0.16])
+	by mail.copper.opensource.lk (Postfix) with ESMTPSA id 40C4330035E
+	for <anushkab@opensource.lk>; Wed,  7 Nov 2018 06:24:48 +0000 (UTC)
+MIME-Version: 1.0
+Date: Wed, 07 Nov 2018 06:24:48 +0000
+Content-Type: multipart/alternative;
+ boundary="--=_RainLoop_112_208699190.1541571888"
+X-Mailer: RainLoop/1.12.0
+From: lsf@copper.opensource.lk
+Message-ID: <dff607896fa9bb82dcf1af1b83d3a216@copper.opensource.lk>
+Subject: testing
+To: anushkab@opensource.lk
+
+
+----=_RainLoop_112_208699190.1541571888
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Anyhow, I=E2=80=99ve been carving out some time for playing with a raspbe=
+rrypi display and wanted to save some notes for posterity. This more a no=
+te to self than anything, but if someone ends up here via googling, I hop=
+e it will be of help.
+
+----=_RainLoop_112_208699190.1541571888
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html><head><meta http-equiv=3D"Content-Type" content=3D"t=
+ext/html; charset=3Dutf-8" /></head><body><div data-html-editor-font-wrap=
+per=3D"true" style=3D"font-family: arial, sans-serif; font-size: 13px;"> =
+<p>Anyhow, I=E2=80=99ve been carving out some time for playing with a ras=
+pberrypi display and wanted to save some notes for posterity. This more a=
+ note to self than anything, but if someone ends up here via googling, I =
+hope it will be of help.</p> <br><signature></signature> </div></body></h=
+tml>
+
+----=_RainLoop_112_208699190.1541571888--
+
+--40C4330035E.1541572197/mail.copper.opensource.lk--

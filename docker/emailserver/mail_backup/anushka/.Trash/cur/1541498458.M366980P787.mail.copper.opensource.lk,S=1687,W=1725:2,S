@@ -1,0 +1,38 @@
+Return-Path: <lsf@copper.opensource.lk>
+Delivered-To: anushka@copper.opensource.lk
+Received: from mail.copper.opensource.lk
+	by mail.copper.opensource.lk with LMTP id qIqKFVpm4VsTAwAADTTj3Q
+	for <anushka@copper.opensource.lk>; Tue, 06 Nov 2018 10:00:58 +0000
+Received: from localhost (webmail.docker_back [172.19.0.16])
+	by mail.copper.opensource.lk (Postfix) with ESMTPSA id 0421B30036D
+	for <anushka@copper.opensource.lk>; Tue,  6 Nov 2018 10:00:57 +0000 (UTC)
+MIME-Version: 1.0
+Date: Tue, 06 Nov 2018 10:00:57 +0000
+Content-Type: multipart/alternative;
+ boundary="--=_RainLoop_400_938696796.1541498457"
+X-Mailer: RainLoop/1.12.0
+From: lsf@copper.opensource.lk
+Message-ID: <b5241a1d80a1e5cec5100709141961c5@copper.opensource.lk>
+Subject: Encryption testing without encryption
+To: anushka@copper.opensource.lk
+
+
+----=_RainLoop_400_938696796.1541498457
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+In this post, I will show you how to add support to your project. This ex=
+ample will use the RTOS SDK, but applies just the same to the non-OS SDK.
+
+----=_RainLoop_400_938696796.1541498457
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html><head><meta http-equiv=3D"Content-Type" content=3D"t=
+ext/html; charset=3Dutf-8" /></head><body><div data-html-editor-font-wrap=
+per=3D"true" style=3D"font-family: arial, sans-serif; font-size: 13px;"> =
+<br>In this post, I will show you how to add support to your project. Thi=
+s example will use the RTOS SDK, but applies just the same to the non-OS =
+SDK.<br><signature></signature> </div></body></html>
+
+----=_RainLoop_400_938696796.1541498457--
