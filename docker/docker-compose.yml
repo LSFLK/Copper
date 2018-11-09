@@ -40,8 +40,10 @@ services:
         ports:
             #- 80:80 # becouse when we allocate this port emailserver cant connect to online
             - 88:88
+            - 443:443
+            - 80:80
         restart: always
-
+        hostname: example.com
         #test:
         #image: webmail/webmail:latest
         
@@ -89,7 +91,7 @@ services:
             - OU=${OU}
         ports:
             # bellow 80 port is opened for external use
-            - "80"
+            #- "80"
             - "11334:11334" # RSPAMD web portal
             - "25:25"       # SMTP                - opened from external 25 to local 25
             #- "110:110"     # POP3
@@ -146,7 +148,8 @@ services:
         volumes:
             - ./webmail/rainloop/app:/var/www/html/
         ports:
-            - "80:80"
+            - "8080:80"
+            - "4433:443"
         environment:
             - WEBMAIL=${WEBMAIL}
             
@@ -159,7 +162,31 @@ services:
             # front:
         container_name: "rainloop"   
 
-
+# ----------------------------------------Rainloop--------------------------------------------
+  
+    #nginxrainloop:
+    #    build:
+    #        context: .
+    #        dockerfile: ./webmail/nginxrainloop/Dockerfile
+    #    restart: always
+    #    env_file: .env
+    #    hostname: nginxrainloop.${DOMAIN}
+    #    volumes:
+    #        - ./webmail/rainloop/app:/var/www/html/
+    #    ports:
+    #        - "80:80"
+    #        - "443:443"
+        #environment:
+            #- WEBMAIL=${WEBMAIL}
+            
+         
+    #    depends_on:
+    #        - emailserver
+    #    networks:
+    #        back:
+    #          ipv4_address: 172.19.0.29
+            # front:
+    #    container_name: "nginxrainloop"   
 # ----------------------------------------webmail--------------------------------------------
   
     # horde:

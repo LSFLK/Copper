@@ -18,6 +18,7 @@ add-apt-repository ppa:ondrej/php && apt-get update
 #RUN apt-get install -y — force-yes curl
 RUN apt-get install -y curl
 
+
 # Install PHP 5.6
 
 #RUN apt-get install -y — allow-unauthenticated php5.6 php5.6-mysql php5.6-mcrypt php5.6-cli php5.6-gd php5.6-curl
@@ -45,6 +46,11 @@ ENV APACHE_LOCK_DIR /var/lock/apache2
 
 ENV APACHE_PID_FILE /var/run/apache2.pid
 
+# Manually set up the apache environment variables
+ENV APACHE_RUN_USER www-data
+
+ENV APACHE_RUN_GROUP www-data
+
 
 
 # Expose apache.
@@ -53,21 +59,24 @@ EXPOSE 80
 
 #EXPOSE 8080
 
-EXPOSE 443
+#EXPOSE 443
 
-EXPOSE 3306
+#EXPOSE 3306
 
 # Update the default apache site with the config we created.
 
 #ADD apache-config.conf /etc/apache2/sites-enabled/000-default.conf
 
 # Copy site into place.
-ADD ./webmail/rainloop/app/ /var/www/html/
+ADD ./webmail/rainloop/app/ /var/www/html/data
+#RUN chmod -R 777 /var/www/html/data
 #RUN chown -R www-data:www-data /var/www/site/app .
 
 # Update the default apache site with the config we created.
-#ADD ./webmail/rainloop/config/apache-config.conf /etc/apache2/sites-enabled/000-default.conf
-ADD ./webmail/rainloop/config/copper.opensource.lk.conf /etc/apache2/sites-enabled/copper.opensource.lk.conf
+ADD ./webmail/rainloop/config/apache-config.conf /etc/apache2/sites-enabled/example.com.conf
+
+# this for copper live server
+#ADD ./webmail/rainloop/config/copper.opensource.lk.conf /etc/apache2/sites-enabled/copper.opensource.lk.conf
 
 
 
@@ -83,8 +92,39 @@ RUN apt install -y python-certbot-apache
 CMD systemctl reload apache2
 
 #certbot --apache -d example.com -d www.example.com
-CMD certbot --apache -d copper.opensource.lk -d www.copper.opensource.lk
-CMD certbot renew --dry-run
+#CMD certbot --apache -d copper.opensource.lk -d copper.opensource.lk
+
+
+# with certbot-auto
+#https://www.exratione.com/2016/06/a-simple-setup-and-installation-script-for-lets-encrypt-ssl-certificates/
+#RUN apt-get install -y wget
+#RUN wget https://dl.eff.org/certbot-auto
+#RUN chmod a+x certbot-auto
+#RUN mv certbot-auto /usr/local/bin
+#RUN certbot-auto --noninteractive --os-packages-only
+# Use this command if a webserver is already running with the webroot
+# at /var/www/html.
+#RUN certbot-auto certonly \
+#RUN certbot-auto \
+#  --non-interactive \
+#  --agree-tos \
+  #--text \
+  #--rsa-key-size 4096 \
+#  --email admin@copper.opensource.lk \
+  #--webroot-path /var/www/html/data \
+#  --apache \
+  #--help plugins \
+#  --domains "copper.opensource.lk"
+
+
+
+
+#RUN cp /etc/letsencrypt/live/copper.opensource.lk/fullchain.pem /etc/ssl/certs/copper.opensource.lk.fullchain.pem
+#RUN cp /etc/letsencrypt/live/copper.opensource.lk/privkey.pem /etc/ssl/private/copper.opensource.lk.privkey.pem
+
+
+#RUN certbot renew --dry-run
 # By default start up apache in the foreground, override with /bin/bash for interative.
 
 CMD /usr/sbin/apache2ctl -D FOREGROUND
+
