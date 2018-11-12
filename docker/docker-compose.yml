@@ -139,29 +139,29 @@ services:
         container_name: "webmail"   
 # ----------------------------------------Rainloop--------------------------------------------
   
-    rainloop:
-        build:
-            context: .
-            dockerfile: ./webmail/rainloop/Dockerfile
-        restart: always
-        env_file: .env
-        hostname: rainloop.${DOMAIN}
-        volumes:
-            - ./webmail/rainloop/app:/var/www/html/
-        ports:
-            - "8080:80"
-            - "4433:443"
-        environment:
-            - WEBMAIL=${WEBMAIL}
+#    rainloop:
+#    build:
+#            context: .
+#            dockerfile: ./webmail/rainloop/Dockerfile
+#        restart: always
+#        env_file: .env
+#        hostname: rainloop.${DOMAIN}
+#        volumes:
+#            - ./webmail/rainloop/app:/var/www/html/
+#        ports:
+#            - "8080:80"
+#            - "4433:443"
+#        environment:
+#            - WEBMAIL=${WEBMAIL}
             
          
-        depends_on:
-            - emailserver
-        networks:
-            back:
-              ipv4_address: 172.19.0.28
+#        depends_on:
+#            - emailserver
+#        networks:
+#            back:
+#              ipv4_address: 172.19.0.14
             # front:
-        container_name: "rainloop"   
+#        container_name: "rainloop"   
 
 # ----------------------------------------Rainloop--------------------------------------------
   

@@ -70,6 +70,7 @@ EXPOSE 80
 # Copy site into place.
 ADD ./webmail/rainloop/app/ /var/www/html/data
 #RUN chmod -R 777 /var/www/html/data
+
 #RUN chown -R www-data:www-data /var/www/site/app .
 
 # Update the default apache site with the config we created.
@@ -125,6 +126,6 @@ CMD systemctl reload apache2
 
 #RUN certbot renew --dry-run
 # By default start up apache in the foreground, override with /bin/bash for interative.
-
+RUN chmod -R 777 /var/www/html/data
 CMD /usr/sbin/apache2ctl -D FOREGROUND
 
