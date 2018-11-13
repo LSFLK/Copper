@@ -50,7 +50,6 @@ Unblock following ports
 | SMTPS | Postfix | TCP | 465 |
 | Submission | Postfix | TCP | 587 |
 | IMAPS | Dovecot | TCP | 993 |
-| POP3S | Dovecot | TCP | 995 |
 
 
 
