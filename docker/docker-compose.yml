@@ -139,29 +139,29 @@ services:
         container_name: "webmail"   
 # ----------------------------------------Rainloop--------------------------------------------
   
-#    rainloop:
-#    build:
-#            context: .
-#            dockerfile: ./webmail/rainloop/Dockerfile
-#        restart: always
-#        env_file: .env
-#        hostname: rainloop.${DOMAIN}
-#        volumes:
-#            - ./webmail/rainloop/app:/var/www/html/
-#        ports:
-#            - "8080:80"
-#            - "4433:443"
-#        environment:
-#            - WEBMAIL=${WEBMAIL}
+    rainloop:
+        build:
+            context: .
+            dockerfile: ./webmail/rainloop/Dockerfile
+        restart: always
+        env_file: .env
+        hostname: rainloop.${DOMAIN}
+        volumes:
+            - ./webmail/rainloop/app:/var/www/html/
+        #ports:
+        #    - "80"
+        #    - "4433:443"
+        environment:
+            - WEBMAIL=${WEBMAIL}
             
          
-#        depends_on:
-#            - emailserver
-#        networks:
-#            back:
-#              ipv4_address: 172.19.0.14
-            # front:
-#        container_name: "rainloop"   
+        depends_on:
+            - emailserver
+        networks:
+            back:
+              ipv4_address: 172.19.0.14
+            front:
+        container_name: "rainloop"   
 
 # ----------------------------------------Rainloop--------------------------------------------
   
@@ -386,20 +386,21 @@ services:
 
 #-------------------------------------Grafana----------------------------------------------------
  
-    # grafana:
-    #     build:
-    #         context: .
-    #         dockerfile: ./grafana/Dockerfile
-    #     restart: always
-    #     hostname: grafana
-        
-    #     ports:
-    #         - "3003:3003" 
-    #         - "3004:8888" 
-    #         - "8086:8086" 
-    #         - "22022:22" 
-    #         - "8125:8125"
-    #     networks:
-    #        back:
-    #           ipv4_address: 172.19.0.15
+    grafana:
+        build:
+             context: .
+             dockerfile: ./grafana/Dockerfile
+        restart: always
+        hostname: grafana
+        ports:
+             - "3003:3003" 
+             - "3004:8888" 
+             - "8086:8086" 
+             - "22022:22" 
+             - "8125:8125"
+        networks:
+            back:
+               ipv4_address: 172.19.0.15
+
+        container_name: "grafana"
         

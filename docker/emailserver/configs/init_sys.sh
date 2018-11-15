@@ -162,8 +162,8 @@ chmod -R 755 /etc/letsencrypt/
  chown root:root /etc/postfix/main.cf
  chmod 0644 /etc/postfix/main.cf
  
- chgrp postfix /etc/postfix/sql/mysql_virtual_*.cf
- chmod u=rw,g=r,o= /etc/postfix/sql/mysql_virtual_*.cf
+ #chgrp postfix /etc/postfix/sql/mysql_virtual_*.cf
+ #chmod u=rw,g=r,o= /etc/postfix/sql/mysql_virtual_*.cf
 
 # making exicutable the agent owned shell files
  
