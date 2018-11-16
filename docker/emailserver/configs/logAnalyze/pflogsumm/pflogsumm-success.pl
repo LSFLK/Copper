@@ -338,6 +338,7 @@ $msgDfrsI   = 2;	# number of defers
 $msgDlyAvgI = 3;	# total of delays (used for averaging)
 $msgDlyMaxI = 4;	# max delay
 
+
 my (
     $cmd, $qid, $addr, $size, $relay, $status, $delay,
     $dateStr,
@@ -824,10 +825,39 @@ if(defined($dateStr)) {
 # print_subsect_title("Grand Totals");
 # print "messages\n\n";
 
- printf "%d",adj_int_units($msgsRcvd);
+# printf "PFstat mail_received=%d%s \n",adj_int_units($msgsRcvd);
 # printf "PFstat received value=%d%s\n", adj_int_units($msgsRcvd);
-#  printf "%d%s \n",adj_int_units($msgsDlvrd);
-#  printf "forwarded=%d%s \n",adj_int_units($msgsFwdd);
+# printf "PFstat mail_delivered=%d%s \n",adj_int_units($msgsDlvrd);
+# printf "PFstat mail_forwarded=%d%s \n",adj_int_units($msgsFwdd);
+#printf "PFstat mail_received=%d%s",adj_int_units($msgsRcvd);
+#printf "PFstat mail_delevered=%d%s ",adj_int_units($msgsDlvrd);
+#printf "PFstat mail_forwarded=%d%s ",adj_int_units($msgsDlvrd);
+ #printf "%d",$msgsDlvrd ,;
+ #printf "%d",$msgsFwdd ,;
+ #printf "%d",$msgsBncd ,;
+ #printf "%d",$msgsRjctd;
+#weather,location=us-midwest temperature=82 1465839830100400200
+#printf "PFstat,location=us-midwest temperature=82";
+#printf "Copper,grandtot=pflogsumm received-count=82,delivered-count=24,received-bytes=82,delivered-bytes=24,senders=0,recipients=0,forwarded=0";
+
+sub none_adjestment {
+    my $value = $_[0];
+    $value = 0 unless($value);
+
+	return($value);
+}
+
+my $val1 = none_adjestment($msgsRcvd);
+my $val2 = none_adjestment($msgsDlvrd);
+my $val3 = none_adjestment($sizeRcvd);
+my $val4 = none_adjestment($sizeDlvrd);
+my $val5 = none_adjestment($sendgDomCnt);
+my $val6 = none_adjestment($recipDomCnt);
+my $val7 = none_adjestment($msgsFwdd);
+
+printf "Copper,grandtot=pflogsumm received-count=${val1},delivered-count=${val2},received-bytes=${val3},delivered-bytes=${val4},senders=${val5},recipients=${val6},forwarded=${val7}";
+
+
 
 #  printf "PFstat received value=%d %d%s ",localtime,"\n", adj_int_units($msgsRcvd);
 #  printf "PFstat delivered value=%d%s\n", adj_int_units($msgsDlvrd);
@@ -1449,7 +1479,7 @@ sub adj_int_units {
 	$value /= $oneK;
 	$units = 'k'
     }
-    # return($value, $units);
+    #return($value, $units);
 	return($value);
 }
 
