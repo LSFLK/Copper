@@ -7,3 +7,8 @@ passdb {
     driver = sql
     args = /etc/dovecot/dovecot-sql.conf
 }
+
+password_query = SELECT \
+email as user, password, \
+'%w' AS userdb_mail_crypt_private_password \
+FROM virtual_users  WHERE email='%u';
