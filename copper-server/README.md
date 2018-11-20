@@ -1,7 +1,7 @@
 # email-solution
 
 [![Gitter](https://img.shields.io/badge/chat-on%20gitter-blue.svg)](https://gitter.im/copper-mail)
-[![Build Status](https://travis-ci.org/tharindu99/copper-base.svg?branch=master)](https://travis-ci.org/LankaSoftwareFoundation/copper-base)
+[![Build Status](https://travis-ci.org/LSFLK/copper.svg?branch=master)](https://travis-ci.org/LSFLK/copper)
 
 ## Functionalities
 - Core
