@@ -1,0 +1,65 @@
+# Postfix master process configuration file.  For details on the format
+# of the file, see the master(5) manual page (command: "man 5 master").
+#
+# Do not forget to execute "postfix reload" after editing this file.
+#
+# ==========================================================================
+# service type  private unpriv  chroot  wakeup  maxproc command + args
+#               (yes)   (yes)   (yes)   (never) (100)
+# ==========================================================================
+smtp      inet  n       -       n       -       -       smtpd
+#smtp      inet  n       -       -       -       1       postscreen
+#smtpd     pass  -       -       -       -       -       smtpd
+#dnsblog   unix  -       -       -       -       0       dnsblog
+#tlsproxy  unix  -       -       -       -       0       tlsproxy
+submission inet n       -       -       -       -       smtpd
+  -o syslog_name=postfix/submission
+  -o smtpd_tls_security_level=encrypt
+  -o smtpd_sasl_auth_enable=yes
+  -o smtpd_client_restrictions=permit_sasl_authenticated,reject
+  -o milter_macro_daemon_name=ORIGINATING
+smtps     inet  n       -       -       -       -       smtpd
+  -o syslog_name=postfix/smtps
+  -o smtpd_tls_wrappermode=yes
+  -o smtpd_sasl_auth_enable=yes
+  -o smtpd_client_restrictions=permit_sasl_authenticated,reject
+  -o milter_macro_daemon_name=ORIGINATING
+
+
+cleanup   unix  n       -       -       -       0       cleanup
+qmgr      fifo  n       -       n       300     1       qmgr
+tlsmgr    unix  -       -       -       1000?   1       tlsmgr
+rewrite   unix  -       -       -       -       -       trivial-rewrite
+bounce    unix  -       -       -       -       0       bounce
+defer     unix  -       -       -       -       0       bounce
+trace     unix  -       -       -       -       0       bounce
+verify    unix  -       -       -       -       1       verify
+flush     unix  n       -       -       1000?   0       flush
+proxymap  unix  -       -       n       -       -       proxymap
+proxywrite unix -       -       n       -       1       proxymap
+smtp      unix  -       -       -       -       -       smtp
+relay     unix  -       -       -       -       -       smtp
+showq     unix  n       -       -       -       -       showq
+error     unix  -       -       -       -       -       error
+retry     unix  -       -       -       -       -       error
+discard   unix  -       -       -       -       -       discard
+local     unix  -       n       n       -       -       local
+virtual   unix  -       n       n       -       -       virtual
+lmtp      unix  -       -       -       -       -       lmtp
+anvil     unix  -       -       -       -       1       anvil
+scache    unix  -       -       -       -       1       scache
+#zeyple    unix  -       n       n       -       -       pipe
+  #user=zeyple argv=/usr/local/bin/zeyple.py ${recipient}
+
+#localhost:10026 inet  n       -       n       -       10      smtpd
+ # -o content_filter=
+ # -o receive_override_options=no_unknown_recipient_checks,no_header_body_checks,no_milters
+ # -o smtpd_helo_restrictions=
+ # -o smtpd_client_restrictions=
+ # -o smtpd_sender_restrictions=
+ # -o smtpd_recipient_restrictions=permit_mynetworks,reject
+ # -o mynetworks=127.0.0.0/8,[::1]/128
+ # -o smtpd_authorized_xforward_hosts=127.0.0.0/8,[::1]/128
+
+  #dovecot   unix  -       n       n       -       -       pipe
+    #flags=DRhu user=vmail:vmail argv=/usr/libexec/dovecot/deliver -f ${sender} -d ${recipient}

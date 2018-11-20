@@ -1,0 +1,405 @@
+version: '2'
+
+
+#--------------------------------------------------------------------------------------------
+
+# https://runnable.com/docker/docker-compose-networking
+
+networks:
+    front:
+        external:
+            name: front
+        # use the bridge driver, but enable IPv6
+        #driver: bridge
+        #driver_opts:
+            #com.docker.network.enable_ipv6: "true"
+        #ipam:
+            #driver: default
+            #config:
+             #- subnet: "192.168.0.0/24"
+               #gateway: "192.168.0.1"
+                #- subnet: "2001:3984:3989::/64"
+                #gateway: "2001:3984:3989::1"
+    back:
+        # use a custom driver, with no options
+        driver: bridge
+        ipam:
+            config:
+             - subnet: "172.19.0.0/24"
+               gateway: "172.19.0.18"
+
+services:
+
+#-------------------------------------ReverseProxy-----------------------------------------
+
+    reverseproxy:
+        #image: reverseproxy:latest
+        build:
+            context: .
+            dockerfile: ./reverseproxy/Dockerfile
+        ports:
+            #- 80:80 # becouse when we allocate this port emailserver cant connect to online
+            - 88:88
+            - 443:443
+            - 80:80
+        restart: always
+        hostname: example.com
+        #test:
+        #image: webmail/webmail:latest
+        
+        networks:           
+            back:
+               ipv4_address: 172.19.0.20
+            front:
+             
+        container_name: "reverse_proxy"
+
+#-----------------------------------email server------------------------------------------------------
+    emailserver:
+        #extends:
+            #file: docker-common.yml
+            #service: emailserver
+        build:
+            context: .
+            dockerfile: ./emailserver/Dockerfile
+        hostname: ${FQDN}
+        #hostname: mail.example.com
+        #volumes:
+          #- ./emailserver/certs:/certs
+          #- ./emailserver/ssl:/etc/letsencrypt/
+          #- ./emailserver/mail:/var/mail
+        volumes:
+            - ./emailserver/mail_backup:/var/mail/vhosts/
+        container_name: "emailserver"
+        extra_hosts:
+            - "coppermail.emailserver:127.0.1.1"
+            - "coppermail.emailserver.tld:127.0.1.1"
+      
+        environment:
+            - VIRTUAL_HOST=${FQDN},rspamd.${DOMAIN}
+            - VIRTUAL_PORT=80
+            - HOSTNAME=${FQDN}
+            - DOMAIN=${DOMAIN}
+            - EMAIL=${EMAIL}
+            - DEBUG=${DEBUG}
+            - RSPAMD_PASSWORD=${RSPAMD_PASSWORD}
+            - CN=${CN}
+            - DC1=${DC1}
+            - DC2=${DC2}
+            - DC3=${DC3}
+            - DNPASS=${DNPASS}
+            - OU=${OU}
+            - LDAP_HOST_IP=${LDAP_HOST_IP}
+        ports:
+            # bellow 80 port is opened for external use
+            #- "80"
+            - "11334:11334" # RSPAMD web portal
+            - "25:25"       # SMTP                - opened from external 25 to local 25
+            #- "110:110"     # POP3
+            - "143:143"     # IMAP
+            - "465:465"     # SMTPS
+            - "587:587"     # Submission
+            - "993:993"     # IMAPS
+            # - "995:995"     # POP3S
+            #- "10026:10026" # smtpd  // this was added by me due to a port open erro in msterfile config
+            - "4190:4190"   # SIEVE
+        entrypoint:
+            - /bin/init_sys.sh
+        #depends_on:
+#            - redis
+
+        # two networks are allocated and one with static ip. this format is important    
+        networks:           
+            back:
+               ipv4_address: 172.19.0.17
+            front:
+
+# ----------------------------------------webmail--------------------------------------------
+  
+    webmail:
+        build:
+            context: .
+            dockerfile: ./webmail/${WEBMAIL}/Dockerfile
+        restart: always
+        env_file: .env
+        hostname: webmail.${DOMAIN}
+        volumes:
+            - ./webmail/${WEBMAIL}/app:/var/www/site/app/
+        #ports:
+        #    - "8989:80"
+        environment:
+            - WEBMAIL=${WEBMAIL}
+         
+        depends_on:
+            - emailserver
+        networks:
+            back:
+              ipv4_address: 172.19.0.16
+            # front:
+        container_name: "webmail"   
+# ----------------------------------------Rainloop--------------------------------------------
+  
+    rainloop:
+        build:
+            context: .
+            dockerfile: ./webmail/rainloop/Dockerfile
+        restart: always
+        env_file: .env
+        hostname: rainloop.${DOMAIN}
+        volumes:
+            - ./webmail/rainloop/app:/var/www/html/
+        ports:
+            - "8080:80"
+            - "4433:443"
+        environment:
+            - WEBMAIL=${WEBMAIL}
+            
+         
+        depends_on:
+            - emailserver
+        networks:
+            back:
+              ipv4_address: 172.19.0.28
+            # front:
+        container_name: "rainloop"   
+
+# ----------------------------------------Rainloop--------------------------------------------
+  
+    #nginxrainloop:
+    #    build:
+    #        context: .
+    #        dockerfile: ./webmail/nginxrainloop/Dockerfile
+    #    restart: always
+    #    env_file: .env
+    #    hostname: nginxrainloop.${DOMAIN}
+    #    volumes:
+    #        - ./webmail/rainloop/app:/var/www/html/
+    #    ports:
+    #        - "80:80"
+    #        - "443:443"
+        #environment:
+            #- WEBMAIL=${WEBMAIL}
+            
+         
+    #    depends_on:
+    #        - emailserver
+    #    networks:
+    #        back:
+    #          ipv4_address: 172.19.0.29
+            # front:
+    #    container_name: "nginxrainloop"   
+# ----------------------------------------webmail--------------------------------------------
+  
+    # horde:
+    #     build:
+    #         context: .
+    #         #dockerfile: ./webmail/${WEBMAIL}/Dockerfile
+    #         dockerfile: ./webmail/horde-webmail/Dockerfile
+    #         #dockerfile: ./webmail/horde/Dockerfile
+    #     restart: always
+    #     #env_file: .env
+    #     hostname: horde.${DOMAIN}
+    #     #volumes:
+    #         #- ./webmail/horde/storage:/etc/horde
+    #     ports:
+    #         - "80:80"
+    #         #- "80:80"
+    #         #- "8989:80"
+    #         #- "3306"
+    #     #environment:
+    #         #- WEBMAIL=${WEBMAIL}
+         
+    #     depends_on:
+    #         - emailserver
+    #     networks:
+    #         back:
+    #           ipv4_address: 172.19.0.26
+    #         #front:
+    #     container_name: "horde"   
+
+#------------------------------------------redis----------------------------------------------
+ #   redis:
+        #extends:
+            #file: docker-common.yml
+            #service: redis
+ #       image: redis:4.0-alpine
+ #       container_name: redis
+ #       hostname: redis.${DOMAIN}
+ #       restart: unless-stopped
+ #       command: redis-server --appendonly yes
+ #       volumes:
+ #         - ./redis/data:/data
+       
+ #       environment:
+ #           - VIRTUAL_HOST=redis
+ #       expose:
+ #           - "6379"
+ #       networks:
+            #- back
+ #          back:
+ #             ipv4_address: 172.19.0.23
+        #depends_on:
+            #- front
+
+        #container_name: "redis"
+    
+
+
+# -----------------------------------new open ldap -------------------------------------------
+    # Refference : https://github.com/osixia/docker-openldap#quick-start
+ #   openldap:
+    #image: osixia/openldap:1.2.1
+ #       build:
+ #        context: .
+ #        dockerfile: ./openldap/Dockerfile
+ #       container_name: openldap
+        #hostname: ldap.${DOMAIN}
+ #       hostname: "openldap"
+ #       environment:
+ #           - DOMAIN=${DOMAIN}
+ #           - LDAP_LOG_LEVEL=${LDAP_LOG_LEVEL}
+ #           - LDAP_ORGANISATION=${LDAP_ORGANISATION}
+ #           - LDAP_DOMAIN=${DOMAIN}
+ #           - LDAP_BASE_DN=${LDAP_BASE_DN}
+ #           - LDAP_ADMIN_PASSWORD=${LDAP_ADMIN_PASSWORD}
+ #           - LDAP_CONFIG_PASSWORD=${LDAP_CONFIG_PASSWORD}
+ #           - LDAP_READONLY_USER=${LDAP_READONLY_USER}
+ #           - LDAP_READONLY_USER_USERNAME=${LDAP_READONLY_USER}
+ #           - LDAP_READONLY_USER_PASSWORD=${LDAP_READONLY_USER}
+ #           - LDAP_RFC2307BIS_SCHEMA=${LDAP_RFC2307BIS_SCHEMA}
+ #           - LDAP_BACKEND=${LDAP_BACKEND}
+ #           - LDAP_TLS=${LDAP_TLS}
+ #           - LDAP_TLS_CRT_FILENAME=${LDAP_TLS_CRT_FILENAME}
+ #           - LDAP_TLS_KEY_FILENAME=${LDAP_TLS_KEY_FILENAME}
+ #           - LDAP_TLS_CA_CRT_FILENAME=${LDAP_TLS_CA_CRT_FILENAME}
+ #           - LDAP_TLS_ENFORCE=${LDAP_TLS_ENFORCE}
+ #           - LDAP_TLS_CIPHER_SUITE=${LDAP_TLS_CIPHER_SUITE}
+ #           - LDAP_TLS_PROTOCOL_MIN=${LDAP_TLS_PROTOCOL_MIN}
+ #           - LDAP_TLS_VERIFY_CLIENT=${LDAP_TLS_VERIFY_CLIENT}
+ #           - LDAP_REPLICATION=${LDAP_REPLICATION}
+ #            #LDAP_REPLICATION_CONFIG_SYNCPROV: "binddn="cn=admin,cn=config" bindmethod=simple credentials=$LDAP_CONFIG_PASSWORD searchbase="cn=config" type=refreshAndPersist retry="60 +" timeout=1 starttls=critical"
+             #LDAP_REPLICATION_DB_SYNCPROV: "binddn="cn=admin,$LDAP_BASE_DN" bindmethod=simple credentials=$LDAP_ADMIN_PASSWORD searchbase="$LDAP_BASE_DN" type=refreshAndPersist interval=00:00:00:10 retry="60 +" timeout=1 starttls=critical"
+             #LDAP_REPLICATION_HOSTS: "#PYTHON2BASH:['ldap://ldap.example.org','ldap://ldap2.example.org']"
+ #           - KEEP_EXISTING_CONFIG=${KEEP_EXISTING_CONFIG}
+ #           - LDAP_REMOVE_CONFIG_AFTER_SETUP=${LDAP_REMOVE_CONFIG_AFTER_SETUP}
+ #           - LDAP_SSL_HELPER_PREFIX=${LDAP_SSL_HELPER_PREFIX}
+ #       tty: true
+ #       stdin_open: true
+ #       volumes:
+ #           - /var/lib/ldap
+ #           - /etc/ldap/slapd.d
+ #           - /container/service/slapd/assets/certs/
+        #    - ./openldap/user_backup:/var/lib/ldap/
+ #       ports:
+ #           - "389:389"
+ #           - "636:636"
+        #domainname: "openldap" # important: same as hostname
+        #domainname: ldap.${DOMAIN} # important: same as hostname
+        
+ #       networks:
+            #- front
+ #           back:
+ #             ipv4_address: 172.19.0.22
+        # login option
+        
+ #       logging:
+ #           driver: "json-file"
+            #driver: "json-file"
+            #driver: "syslog"
+            #driver: "none"
+ #           options:
+ #             max-size: "200k"
+ #             max-file: "10"
+
+#---------------------------------phpldapadmin-------------------------------------------
+  # Ref : https://github.com/osixia/docker-openldap
+ #   phpldapadmin:
+ #       image: osixia/phpldapadmin:latest
+ #       container_name: phpldapadmin
+ #       hostname: phpldapadmin.${DOMAIN}
+
+ #       environment:
+ #            PHPLDAPADMIN_LDAP_HOSTS: "openldap"
+             #PHPLDAPADMIN_LDAP_HOSTS: ldap.${DOMAIN}
+ #            PHPLDAPADMIN_HTTPS: "false"
+        # ports:
+            # - "8888:80"
+ #       depends_on:
+ #           - openldap
+ #       networks:
+            #- front
+ #           back:
+ #             ipv4_address: 172.19.0.21
+#-------------------------------------mariadb----------------------------------------------------
+    mariadb:
+        #extends:
+            #file: docker-common.yml
+            #service: mariadb
+        image: mariadb:10.2
+        hostname: mariadb
+        #build:
+            #context: .
+            #dockerfile: ./database/Dockerfile
+        container_name: mariadb
+        restart: unless-stopped
+        #environment:
+          #- MYSQL_DATABASE=postfix
+          #- MYSQL_DATABASE=${DB}
+          #- MYSQL_USER=${DBUSER}
+          #- MYSQL_PASSWORD=${DBPASS}
+        volumes:
+          - ./database/data:/var/lib/mysql
+          # following volume is added ot copy some scripts to add domains and users by queries at startup
+          - ./database/scripts/mariadb-scripts:/var/lib/
+ 
+        environment:
+            - MYSQL_RANDOM_ROOT_PASSWORD=no
+            #- MYSQL_DATABASE=postfix
+            #- MYSQL_DATABASE=mail
+            # - MYSQL_DATABASE=horde
+            # - MYSQL_USER=horde
+            # - MYSQL_PASSWORD=horde
+            - MYSQL_DATABASE=rainloop
+            - MYSQL_USER=rainloop
+            - MYSQL_PASSWORD=rainloop
+            #- HOSTNAME=mariadb
+            #- VIRTUAL_HOST=mariadb
+            #- MYSQL_DATABASE=${DB}
+            #- MYSQL_USER=${DBUSER}
+            #- MYSQL_PASSWORD=${DBPASS}
+            #- HOSTNAME=${DBHOST}
+            #- VIRTUAL_HOST=mariadb
+        #expose:
+        expose:
+            - "3306"
+        volumes:
+            #- ./docker/postgres/init-user-db.sh:/docker-entrypoint-initdb.d/init-user-db.sh
+            #- ./database/scripts/mariadb-scripts:/docker-entrypoint-initdb.d/init-user-db.sh
+            - ./database/scripts/mysql:/docker-entrypoint-initdb.d/init-user-db.sh
+        networks:           
+            back:
+               ipv4_address: 172.19.0.19
+        
+        #depends_on:
+            #- front
+        #container_name: "mariadb"
+
+#-------------------------------------Grafana----------------------------------------------------
+ 
+    # grafana:
+    #     build:
+    #         context: .
+    #         dockerfile: ./grafana/Dockerfile
+    #     restart: always
+    #     hostname: grafana
+        
+    #     ports:
+    #         - "3003:3003" 
+    #         - "3004:8888" 
+    #         - "8086:8086" 
+    #         - "22022:22" 
+    #         - "8125:8125"
+    #     networks:
+    #        back:
+    #           ipv4_address: 172.19.0.15
+        
