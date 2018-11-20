@@ -13,7 +13,7 @@ Source code of the copper mail solution is here. This is the core part of copper
 
 ## Copper hub
 
-Source code for monitoring and update handling of copper server goes here. After the deployment of Copper server, Copper hub is controled by LSF team for providing updates and fullfil the monitoring part.
+Source code for monitoring and update handling of Copper server goes here. After the deployment of Copper server, Copper hub is controled by LSF team for providing updates and fullfil the monitoring part of Copper server.
 
 ## Copper docs
 
