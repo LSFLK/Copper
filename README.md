@@ -29,15 +29,4 @@ This project’s objective is to provide a comprehensive email solution which ca
 
 The promotion and adoption of this solution by non public sector organizations is a secondary goal and interesting as a method of revenue generation. Our long term objective is to make this project self-funding in a not-for-profit manner.
 
-## Competitors / Alternatives
-While so far no comprehensive alternatives have been found the following systems have similar goals:
-- [iRedMail](http://www.iredmail.org/)
-- [Zimbra](https://www.zimbra.com/) : Sold multiple times; future and commitment is unclear
-- [Mail-in-a-Box](https://mailinabox.email/)
-- [Tutanota](https://tutanota.com/)
-- [Citadel](http://www.citadel.org/doku.php) : Guides on https://linode.com/docs/email/citadel/
-- [Postfix](https://linode.com/docs/email/postfix/)
-- [Postal](https://github.com/atech/postal) : A fully featured open source mail delivery platform for incoming & outgoing e-mail
-- [Sogo](https://sogo.nu/) : SOGo is a fully supported and trusted groupware server with a focus on scalability and open standards. SOGo is released under the GNU GPL/LGPL v2 and above.
-
 ### The  major difference in this project is that we aim to provide, manage and possibly even operate comprehensive deployment templates whereas these only provide a complex distribution with lots of moving parts and massive configuration complexity. We are aiming our solution at organizations that may yet be challenged to have world-class an IT operations staff that is needed to run any kind of Internet facing email system today.
