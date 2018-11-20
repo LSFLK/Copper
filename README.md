@@ -13,7 +13,7 @@ The promotion and adoption of this solution by non public sector organizations i
 
 ### The  major difference in this project is that we aim to provide, manage and possibly even operate comprehensive deployment templates whereas these only provide a complex distribution with lots of moving parts and massive configuration complexity. We are aiming our solution at organizations that may yet be challenged to have world-class an IT operations staff that is needed to run any kind of Internet facing email system today.
 
-Here you see three main repos. 
+## Three main repos. 
 
 1. Copper server
 2. Copper hub 
