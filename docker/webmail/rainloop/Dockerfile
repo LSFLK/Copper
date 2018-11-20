@@ -2,7 +2,7 @@
 #https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-ubuntu-18-04
 FROM ubuntu:latest
 
-MAINTAINER Name<tharangar@opensource.lk>
+MAINTAINER Name<admin@opensource.lk>
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV DOMAIN=${DOMAIN}
@@ -18,6 +18,10 @@ add-apt-repository ppa:ondrej/php && apt-get update
 #RUN apt-get install -y — force-yes curl
 RUN apt-get install -y curl
 
+# installing ping command
+RUN apt-get install -y iputils-ping
+
+RUN apt-get update
 
 # Install PHP 5.6
 
@@ -68,15 +72,16 @@ EXPOSE 80
 #ADD apache-config.conf /etc/apache2/sites-enabled/000-default.conf
 
 # Copy site into place.
-ADD ./webmail/rainloop/app/ /var/www/html/data
+ADD ./webmail/rainloop/app/ /var/www/site/app
 #RUN chmod -R 777 /var/www/html/data
+
 #RUN chown -R www-data:www-data /var/www/site/app .
 
 # Update the default apache site with the config we created.
-ADD ./webmail/rainloop/config/apache-config.conf /etc/apache2/sites-enabled/example.com.conf
+#ADD ./webmail/rainloop/config/apache-config.conf /etc/apache2/sites-enabled/example.com.conf
 
 # this for copper live server
-#ADD ./webmail/rainloop/config/copper.opensource.lk.conf /etc/apache2/sites-enabled/copper.opensource.lk.conf
+ADD ./webmail/rainloop/config/copper.opensource.lk.conf /etc/apache2/sites-enabled/copper.opensource.lk.conf
 
 
 
@@ -125,6 +130,6 @@ CMD systemctl reload apache2
 
 #RUN certbot renew --dry-run
 # By default start up apache in the foreground, override with /bin/bash for interative.
-
+RUN chmod -R 777 /var/www/site/app
 CMD /usr/sbin/apache2ctl -D FOREGROUND
 
