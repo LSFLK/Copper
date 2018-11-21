@@ -23,9 +23,9 @@ before_install:
 #  - sudo mv docker-compose /usr/local/bin
 
 before_script: 
-   - cd docker
+   - cd copper-server/docker
 
 script:
   - docker network create front
   - docker network create back
-  - docker-compose build 
+  - docker-compose build
