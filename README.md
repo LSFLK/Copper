@@ -1,109 +1,34 @@
-# email-solution
+# Open Source Email Solution
 
-[![Gitter](https://img.shields.io/badge/chat-on%20gitter-blue.svg)](https://gitter.im/copper-mail)
-[![Build Status](https://travis-ci.org/tharindu99/copper-base.svg?branch=master)](https://travis-ci.org/LankaSoftwareFoundation/copper-base)
+## Motivation
+Organizations in Sri Lanka’s public sector, such as the Sri Lanka Army, need to own and operate their own email infrastructure as they are not in a position to use cloud services for such critical technology due to security, privacy and national independence concerns. This is a requirement not just for Sri Lanka but globally and is in fact not limited to the public sector.
 
-## Functionalities
-- Core
-  - [x] ESMTP Server 
-    - [POSTFIX](http://www.postfix.org/) : a modular mail transfer agent.
-  - [x] IMAP Server and POP Server
-    - [DOVECOT](https://www.dovecot.org/) : secure open-source IMAP and POP3 server.
-  - [x] Mail Server User Management with openLDAP
-    - [PHPLDAPADMIN](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-openldap-and-phpldapadmin-on-ubuntu-16-04) Ldap server can be managed through  web interface
-  - [x] WEBmail client
-    - [RAINLOOP](https://www.rainloop.net/) : Webmail client with basic features.
-  - [x] WEBmail client
-    - [Horde](https://www.horde.org/) : Webmail client with advanced features.
-  - [x] User management
-    - [OpenLDAP](https://www.openldap.org/) server and [phpLDAPadmin](https://wiki.debian.org/PhpLdapAdmin) will be installed for ldap configuration
-  - [x] Spam Filter
-    - [RSPAMD](https://rspamd.com/) : Fast, free and open-source spam filtering system. You may find a comparison of spam filters [here](https://rspamd.com/comparison.html).
-  - [x] Antivirus 
-    - [ClamAV](https://www.clamav.net/) : is an open source antivirus engine for detecting trojans, viruses, malware & other malicious threats.
-  - [x] Security enhancement
-    - [DKIM](http://www.dkim.org/) : DomainKeys Identified Mail (DKIM) lets an organization take responsibility for a message that is in transit.
+While there are now high quality proprietary off the shelf systems available, it is not acceptable to simply buy such a solution for reasons of cost, independence and control.
 
+While there are open source components for all parts of an email solution available, building the technical skill to put that together in a safe and secure operational manner requires significant technical skills that are not readily available in many public sector organizations.
 
-## How to Setup
+This project’s objective is to provide a comprehensive email solution which can be readily deployed without complex configuration and which receives active maintenance and support from this project team. It is expected that each organization would deploy this solution for itself in their own data center or a shared data center, but this project team will provide the professional support and management needed to install and operate the system safely and securely to whatever extent the organization needs. This can eventually even go as far as managed hosting for the organization. The intent is to provide extremely limited customization and tuning capability to end user administrators - certainly no more than what Google provides for Google Apps customers.
 
-### Before We Start
+The promotion and adoption of this solution by non public sector organizations is a secondary goal and interesting as a method of revenue generation. Our long term objective is to make this project self-funding in a not-for-profit manner.
 
-Make sure any other application does not use ports that we are going to listen to
+### The  major difference in this project is that we aim to provide, manage and possibly even operate comprehensive deployment templates whereas these only provide a complex distribution with lots of moving parts and massive configuration complexity. We are aiming our solution at organizations that may yet be challenged to have world-class an IT operations staff that is needed to run any kind of Internet facing email system today.
 
-```
-$ netstat -tulpn | grep -E -w '25|80|110|143|443|465|587|993|995|4190|11334'
+## Three main repos. 
 
-//check each port
+1. Copper server
+2. Copper hub 
+3. Copper docs
 
-$ sudo lsof -i :25
-```
+## Copper server
 
-### Firewall
+Source code of the copper mail solution is here. This is the core part of copper. All the email server related development goes here. 
 
-Unblock following ports
+## Copper hub
 
-| Service | Software | Protocol | Port |
-| ------- | -------- | -------- | ---- |
-| SMTP | Postfix | TCP | 25 |
-| IMAP | Dovecot | TCP | 143 |
-| SMTPS | Postfix | TCP | 465 |
-| Submission | Postfix | TCP | 587 |
-| IMAPS | Dovecot | TCP | 993 |
-| POP3S | Dovecot | TCP | 995 |
+Source code for monitoring and update handling of Copper server goes here. After the deployment of Copper server, Copper hub is controled by LSF team for providing updates and fullfil the monitoring part of Copper server.
+
+## Copper docs
+
+All the related documentations of copper project goes here. You may read this at first to get better understanding about Copper server and hub.
 
 
-
-
-
-## Installation
-
-1. Clone this Repository
-
-```
-$ git clone https://github.com/LankaSoftwareFoundation/copper-base.git
-```
-
-2. Edit .env file to replicate your settings
-
-3. Create external Docker Network
-
-```
-$ docker network create front
-```
-## Running
-
-Run the system and start all services by :
-
-```
-$ docker-compose build
-```
-```
-$ docker-compose up -d 
-```
-
-
-
-
-    - Direct your web browser to http://localhost:88/ldap to access the admin portal of the phpldapadmin
-      It's username and password what we provided in above steps
-
-      
-                      
-## References 
-- Email solution initiated by Prabod Rathnayaka. url :   
-  https://github.com/prabod/email-solution/tree/master/docker
-
-- Email solution with rspamd
-  https://github.com/tomav
-  
-- openLdap solutions
-  https://github.com/osixia/docker-openldap#quick-start
-
-<!-- Prometheus container pull and run: 
-    sudo docker pull prom/prometheus
-    docker run -p 9090:9090 prom/prometheus
-
-Grafana pull and run
-    docker pull grafana/grafana
-    docker run -d --name=grafana -p 3000:3000 grafana/grafana -->
