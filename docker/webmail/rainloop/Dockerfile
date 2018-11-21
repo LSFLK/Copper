@@ -130,6 +130,6 @@ CMD systemctl reload apache2
 
 #RUN certbot renew --dry-run
 # By default start up apache in the foreground, override with /bin/bash for interative.
-RUN chmod -R 777 /var/www/site/app
+CMD chmod -R 777 /var/www/html/data/
 CMD /usr/sbin/apache2ctl -D FOREGROUND
 
