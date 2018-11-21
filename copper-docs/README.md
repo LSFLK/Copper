@@ -11,7 +11,7 @@ Copper email solution can be used by any organization and can be monitored and c
 
 ### Architecture
 
-![Octocat](https://github.com/LSFLK/Copper/blob/master/copper-docs/copperBase_mailServerArchitecture.png)
+![Octocat](https://github.com/LSFLK/Copper/blob/master/copper-docs/copperBase_mailServerArchitecture_updated.png)
 
 
 #### Copper-server main components.
