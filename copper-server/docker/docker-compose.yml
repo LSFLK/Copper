@@ -190,32 +190,32 @@ services:
     #    container_name: "nginxrainloop"   
 # ----------------------------------------webmail--------------------------------------------
   
-    # horde:
-    #     build:
-    #         context: .
-    #         #dockerfile: ./webmail/${WEBMAIL}/Dockerfile
-    #         dockerfile: ./webmail/horde-webmail/Dockerfile
-    #         #dockerfile: ./webmail/horde/Dockerfile
-    #     restart: always
-    #     #env_file: .env
-    #     hostname: horde.${DOMAIN}
-    #     #volumes:
-    #         #- ./webmail/horde/storage:/etc/horde
-    #     ports:
-    #         - "80:80"
-    #         #- "80:80"
-    #         #- "8989:80"
-    #         #- "3306"
-    #     #environment:
-    #         #- WEBMAIL=${WEBMAIL}
+    horde:
+        build:
+            context: .
+            #dockerfile: ./webmail/${WEBMAIL}/Dockerfile
+            dockerfile: ./webmail/horde-webmail/Dockerfile
+            #dockerfile: ./webmail/horde/Dockerfile
+        restart: always
+        #env_file: .env
+        hostname: horde.${DOMAIN}
+        #volumes:
+            #- ./webmail/horde/storage:/etc/horde
+        ports:
+            - "80:80"
+            #- "80:80"
+            #- "8989:80"
+            #- "3306"
+        #environment:
+            #- WEBMAIL=${WEBMAIL}
          
-    #     depends_on:
-    #         - emailserver
-    #     networks:
-    #         back:
-    #           ipv4_address: 172.19.0.26
-    #         #front:
-    #     container_name: "horde"   
+        depends_on:
+            - emailserver
+        networks:
+            back:
+              ipv4_address: 172.19.0.26
+            #front:
+        container_name: "horde"   
 
 #------------------------------------------redis----------------------------------------------
  #   redis:
