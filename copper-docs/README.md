@@ -1,3 +1,5 @@
+## Proposed architecture of Copper
+
 Copper email solution can be used by any organization and can be monitored and controled from a central access point. It consists of 2 main parts
 1. Copper-server
 2. Copper-hub
