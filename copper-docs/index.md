@@ -1,10 +1,9 @@
-Copper email solution can be used by any organization and can be monitored and controled from a central access point. It consists of 3 main parts
-1. Copper-base
-2. Copper-suite
-3. Copper-hub
+Copper email solution can be used by any organization and can be monitored and controled from a central access point. It consists of 2 main parts
+1. Copper-server
+2. Copper-hub
 
 
-## Copper-base
+## Copper-server
 
 ### Architecture
 
@@ -29,7 +28,7 @@ So any one whom, willing to contribute are wellcome and coppermail team is ready
 
 ### Further readings
 
-  1. [Copper-base readme.md](https://github.com/LankaSoftwareFoundation/copper-base/blob/master/README.md)
+  1. [Copper-server readme.md](https://github.com/LankaSoftwareFoundation/copper-base/blob/master/README.md)
 
   2. [Docker perspective copper base architecture](https://github.com/LankaSoftwareFoundation/Copper-EmailSolution/blob/master/docker%20perspective%20copper-base%20architecture.md)
   
