@@ -44,7 +44,7 @@ So any one whom, willing to contribute are wellcome and coppermail team is ready
 $ git clone https://github.com/LSFLK/Copper.git
 ```
 
-2. Edit ".env" file to replicate your settings
+2. Edit ".env" file which is inside of copper server, to replicate your settings
 
 3. Create external docker networks using below commands
 
@@ -54,7 +54,7 @@ $ docker network create back
 ```
 #### Run
 
-Run the system and start all services by :
+Run the system and start Copper server by :
 
 ```
 $ docker-compose build
