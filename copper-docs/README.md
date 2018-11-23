@@ -32,11 +32,7 @@ So any one whom, willing to contribute are wellcome and coppermail team is ready
 
 ### Further readings
 
-  1. [Copper-server readme.md](https://github.com/LankaSoftwareFoundation/copper-base/blob/master/README.md)
-
-  2. [Docker perspective copper server architecture](https://github.com/LankaSoftwareFoundation/Copper-EmailSolution/blob/master/docker%20perspective%20copper-base%20architecture.md)
-  
-  3. [Copper mail solution abstract architecture](https://docs.google.com/drawings/d/1wwptKob-_G_trksjU4VX9iOO4hrRiZFj7v3jX7qvvvc/edit?usp=sharing)
+  1. [Ready to deploy email solution](https://docs.google.com/document/d/103ApdgqkJtV1fE3tVQKIwE-ldxtfBPKsAVjk8GFpLb8/edit#heading=h.tca36t2d12pa)
 
 ### Instruction for deployment (summary)
 
