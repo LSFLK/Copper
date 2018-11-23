@@ -15,9 +15,9 @@ The promotion and adoption of this solution by non public sector organizations i
 
 ## Three main repos. 
 
-1. Copper server
-2. Copper hub 
-3. Copper docs
+1. [Copper server](https://github.com/LSFLK/Copper/tree/master/copper-server)
+2. [Copper hub](https://github.com/LSFLK/Copper/tree/master/copper-hub)
+3. [Copper docs](https://github.com/LSFLK/Copper/tree/master/copper-docs)
 
 ## Copper server
 
