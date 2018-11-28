@@ -41,7 +41,7 @@ services:
             #- 80:80 # becouse when we allocate this port emailserver cant connect to online
             - 88:88
             - 443:443
-            - 80:80
+            #- 80:80
         restart: always
         hostname: example.com
         #test:
@@ -148,8 +148,8 @@ services:
         hostname: rainloop.${DOMAIN}
         volumes:
             - ./webmail/rainloop/app:/var/www/html/
-        #ports:
-        #    - "80"
+        ports:
+            - "80:80"
         #    - "4433:443"
         environment:
             - WEBMAIL=${WEBMAIL}
