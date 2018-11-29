@@ -59,7 +59,7 @@ ENV APACHE_RUN_GROUP www-data
 
 # Expose apache.
 
-EXPOSE 80
+#EXPOSE 80
 
 #EXPOSE 8080
 

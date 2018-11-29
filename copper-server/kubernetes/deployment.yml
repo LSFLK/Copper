@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: rainloop-deploy
+  name: my-image-deployment
   labels:
-    app: rainloop2
+    app: my-image
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      app: rainloop2
+      app: my-image
   template:
     metadata:
       labels:
-        app: rainloop2
+        app: my-image
     spec:
       containers:
-      - name: rainloop2
-        image: rainloop
-        imagePullPolicy: IfNotPresent
+      - name: my-image
+        image: my-image
+        imagePullPolicy: Never
         ports:
         - containerPort: 80
