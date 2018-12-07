@@ -1,0 +1,64 @@
+#apiVersion: apps/v1
+#kind: Deployment
+#metadata:
+#  name: rainloop-deployment
+#  labels:
+#    app: rainloop
+#spec:
+#  replicas: 1
+#  selector:
+#    matchLabels:
+#      app: rainloop
+#  template:
+#    metadata:
+#      labels:
+#        app: rainloop
+#    spec:
+#      containers:
+#      - name: rainloop
+#        image: rainloop
+#        imagePullPolicy: Never
+#        ports:
+#        - containerPort: 80
+#
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: rainloop
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: rainloop
+        track: stable
+    spec:
+      containers:
+        - name: rainloop
+          #image: "udacity/example-auth:1.0.0"
+          image: rainloop
+          imagePullPolicy: Never
+          ports:
+            - name: http
+              containerPort: 8080
+            - name: health
+              containerPort: 8081
+          resources:
+            limits:
+              cpu: 0.2
+              memory: "10Mi"
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8081
+              scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 15
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /readiness
+              port: 8081
+              scheme: HTTP
+            initialDelaySeconds: 5
+            timeoutSeconds: 1
