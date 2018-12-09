@@ -51,7 +51,7 @@ RUN apt-get install -y gnupg software-properties-common
 RUN adduser --system --no-create-home --group --home /etc/zeyple --disabled-login zeyple
 RUN mkdir -p /etc/zeyple/keys && chmod 700 /etc/zeyple/keys && chown zeyple: /etc/zeyple/keys
 #ADD https://raw.github.com/infertux/zeyple/master/zeyple/zeyple.py /usr/local/bin/zeyple.py
-ADD ./emailserver/configs/zeyple/zeyple.py /usr/local/bin/zeyple.py
+ADD ./configs/zeyple/zeyple.py /usr/local/bin/zeyple.py
 RUN chmod 744 /usr/local/bin/zeyple.py && chown zeyple: /usr/local/bin/zeyple.py
 ADD https://raw.github.com/infertux/zeyple/master/zeyple/zeyple.conf.example /etc/zeyple.conf
 #ADD ./emailserver/config/zeyple/zeyple.conf.example /etc/zeyple.conf
@@ -61,12 +61,12 @@ RUN chown -R zeyple /etc/zeyple /usr/local/bin/zeyple.py
 
 
 # COPY Changing dovecot congiguration files permission
-COPY ./emailserver/configs/Dovecot /etc/dovecot/
+COPY ./configs/Dovecot /etc/dovecot/
 RUN chgrp dovecot /etc/dovecot/dovecot-sql.conf.ext
 RUN chmod o= /etc/dovecot/dovecot-sql.conf.ext
 
 # changes accoring to url : https://www.linode.com/docs/email/postfix/email-with-postfix-dovecot-and-mariadb-on-centos-7/
-COPY ./emailserver/configs/Postfix /etc/postfix/
+COPY ./configs/Postfix /etc/postfix/
 #RUN chmod o= /etc/postfix/mariadb-sql/mysql-virtual_*.cf
 #RUN chgrp postfix /etc/postfix/mariadb-sql/mysql-virtual_*.cf
 
@@ -78,7 +78,7 @@ RUN chmod o= /etc/postfix/ldap/*.cf
 RUN chgrp postfix /etc/postfix/ldap/*.cf
 
 # Adding sieve file to /var/mail
-COPY ./emailserver/configs/sieve /var/mail/sieve
+COPY ./configs/sieve /var/mail/sieve
 
 
 RUN groupadd -g 5000 vmail && useradd -g vmail -u 5000 vmail -d /var/mail
@@ -89,11 +89,11 @@ RUN chmod -R 755 /etc/postfix
 RUN chown -R vmail:dovecot /etc/dovecot
 RUN chmod -R o-rwx /etc/dovecot
 
-COPY ./emailserver/configs/Rspamd/rspamd.sh /
+COPY ./configs/Rspamd/rspamd.sh /
 #RUN ./rspamd.sh  // Error : /bin/sh: 1: ./rspamd.sh: Permission denied , bellow line introduced
 RUN chmod +x ./rspamd.sh
 RUN ./rspamd.sh
-COPY ./emailserver/configs/Rspamd /etc/rspamd/
+COPY ./configs/Rspamd /etc/rspamd/
 #RUN mkdir /var/lib/rspamd/dkim/	//error :/rspamd/...dkim/': No such file or directory
 RUN mkdir -p /var/lib/rspamd/dkim
 
@@ -102,13 +102,14 @@ RUN chown -R _rspamd:_rspamd /var/lib/rspamd/dkim
 RUN chmod 440 /var/lib/rspamd/dkim/*
 
 RUN cp -R /etc/rspamd/local.d/dkim_signing.conf /etc/rspamd/local.d/arc.conf
-COPY ./emailserver/configs/sieve /sieve
+COPY ./configs/sieve /sieve
 
-COPY ./emailserver/configs/init_sys.sh /bin/
+COPY ./configs/init_sys.sh /bin/
+COPY ./configs/.env /bin/
 RUN chmod +x /bin/init_sys.sh
 
 # postfixlog analyser 
-COPY ./emailserver/configs/logAnalyze/pflogsumm /usr/local/bin/pflogsumm
+COPY ./configs/logAnalyze/pflogsumm /usr/local/bin/pflogsumm
 RUN chown bin:bin /usr/local/bin/pflogsumm
 RUN chmod 755 /usr/local/bin/pflogsumm
 
@@ -120,22 +121,22 @@ RUN chmod 755 /usr/local/bin/pflogsumm
 
 # Antivirus with amavisd-new and clamAV
 RUN apt -y install clamav-daemon clamav
-COPY ./emailserver/configs/clamAV/antivirus.conf /etc/rspamd/override.d/
+COPY ./configs/clamAV/antivirus.conf /etc/rspamd/override.d/
 
 # Install Telegraf
 RUN wget https://dl.influxdata.com/telegraf/releases/telegraf_${TELEGRAF_VERSION}_amd64.deb && \
 	dpkg -i telegraf_${TELEGRAF_VERSION}_amd64.deb && rm telegraf_${TELEGRAF_VERSION}_amd64.deb
 
 # Configure Telegraf
-COPY ./emailserver/configs/telegraf/telegraf.conf /etc/telegraf/telegraf.conf
-COPY ./emailserver/configs/telegraf/init.sh /etc/init.d/telegraf
+COPY ./configs/telegraf/telegraf.conf /etc/telegraf/telegraf.conf
+COPY ./configs/telegraf/init.sh /etc/init.d/telegraf
 
 # Cleanup
 RUN apt-get clean && \
  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-COPY ./emailserver/configs/telegraf/entrypoint.sh entrypoint.sh
+COPY ./configs/telegraf/entrypoint.sh entrypoint.sh
 RUN chmod 755 entrypoint.sh
 
-ENTRYPOINT ["entrypoint.sh"]
+#ENTRYPOINT ["entrypoint.sh"]
 CMD ["telegraf"]
