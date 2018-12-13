@@ -36,6 +36,11 @@ ADD ./app/ /var/www/site/app
 
 # Update the default apache site with the config we created.
 ADD ./apache-config.conf /etc/apache2/sites-enabled/000-default.conf
+ADD ./fqdn /etc/apache2/conf.d/fqdn
+ADD ./hosts /etc/hosts
+ADD ./apache2.conf /etc/apache2/apache2.conf
+ADD ./servername.conf /etc/apache2/conf-available/servername.conf
+ADD ./servername.conf /etc/apache2/sites-enabled/servername.conf
 
 # By default, simply start apache.
 RUN chmod -R 777 /var/www/site/app/data/

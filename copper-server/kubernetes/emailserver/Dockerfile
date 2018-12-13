@@ -107,6 +107,8 @@ COPY ./configs/sieve /sieve
 COPY ./configs/init_sys.sh /bin/
 COPY ./configs/.env /bin/
 RUN chmod +x /bin/init_sys.sh
+RUN chmod 755 /bin/.env
+
 
 # postfixlog analyser 
 COPY ./configs/logAnalyze/pflogsumm /usr/local/bin/pflogsumm
@@ -138,5 +140,9 @@ RUN apt-get clean && \
 COPY ./configs/telegraf/entrypoint.sh entrypoint.sh
 RUN chmod 755 entrypoint.sh
 
+
+RUN init_sys.sh
+
 #ENTRYPOINT ["entrypoint.sh"]
-CMD ["telegraf"]
+#CMD ["telegraf"]
+CMD service postfix start

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-#source .env
+source .env
 
 # how to get parametes from the source file.
 # .env loading in the shell
@@ -21,9 +21,9 @@ cd () {
 
 # end of env loading to the file
 
-export EMAIL
+export EMAIL=${EMAIL}
 export KEY_PATH
-
+export HOSTNAME=${FQDN}
 export FQDN=${FQDN:-$(hostname --fqdn)}
 export DOMAIN=${DOMAIN:-$(hostname --domain)}
 export REDIS_HOST=${REDIS_HOST:-"redis"}
@@ -47,6 +47,8 @@ export DC3=${DC3}
 export DNPASS=${DNPASS}
 export OU=${OU}
 export LDAP_HOST_IP=${LDAP_HOST_IP}
+
+echo "Email is ${EMAIL}"
 
 if [ -z "$EMAIL" ]; then
   echo "[ERROR] Email Must be set !"
@@ -125,8 +127,8 @@ chmod -R 755 /etc/letsencrypt/
  sed -i.bak -e "s;%DFQN%;"${FQDN}";g" "/etc/dovecot/conf.d/10-ssl.conf"
 
 
- sed -i -e "s;redis;"${REDIS_HOST}";g" "/etc/rspamd/local.d/redis.conf"
- sed -i -e "s;redis;"${REDIS_HOST}";g" "/etc/rspamd/local.d/redis.conf"
+ #sed -i -e "s;redis;"${REDIS_HOST}";g" "/etc/rspamd/local.d/redis.conf"
+ #sed -i -e "s;redis;"${REDIS_HOST}";g" "/etc/rspamd/local.d/redis.conf"
 
 
 
@@ -206,11 +208,11 @@ chmod -R 755 /etc/letsencrypt/
  service postfix start
  service dovecot restart
  service rspamd start
- freshclam
+freshclam
  service rspamd reload
  service clamav-daemon start
  service clamav-freshclam start
+ 
 
 
-
- tail -f /dev/null
+ #tail -f /dev/null

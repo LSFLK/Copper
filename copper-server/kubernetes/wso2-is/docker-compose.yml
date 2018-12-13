@@ -1,0 +1,74 @@
+version: '3.7'
+services:
+# -----------------------------------new open ldap -------------------------------------------
+    # Refference : https://github.com/osixia/docker-openldap#quick-start
+    openldap:
+    #image: osixia/openldap:1.2.1
+        build:
+         context: .
+         dockerfile: ./openldap/Dockerfile
+        container_name: openldap
+        #hostname: ldap.${DOMAIN}
+        hostname: "openldap"
+        environment:
+            - DOMAIN=${DOMAIN}
+            - LDAP_LOG_LEVEL=${LDAP_LOG_LEVEL}
+            - LDAP_ORGANISATION=${LDAP_ORGANISATION}
+            - LDAP_DOMAIN=${DOMAIN}
+            - LDAP_BASE_DN=${LDAP_BASE_DN}
+            - LDAP_ADMIN_PASSWORD=${LDAP_ADMIN_PASSWORD}
+            - LDAP_CONFIG_PASSWORD=${LDAP_CONFIG_PASSWORD}
+            - LDAP_READONLY_USER=${LDAP_READONLY_USER}
+            - LDAP_READONLY_USER_USERNAME=${LDAP_READONLY_USER}
+            - LDAP_READONLY_USER_PASSWORD=${LDAP_READONLY_USER}
+           
+             #LDAP_REPLICATION_CONFIG_SYNCPROV: "binddn="cn=admin,cn=config" bindmethod=simple credentials=$LDAP_CONFIG_PASSWORD searchbase="cn=config" type=refreshAndPersist retry="60 +" timeout=1 starttls=critical"
+             #LDAP_REPLICATION_DB_SYNCPROV: "binddn="cn=admin,$LDAP_BASE_DN" bindmethod=simple credentials=$LDAP_ADMIN_PASSWORD searchbase="$LDAP_BASE_DN" type=refreshAndPersist interval=00:00:00:10 retry="60 +" timeout=1 starttls=critical"
+             #LDAP_REPLICATION_HOSTS: "#PYTHON2BASH:['ldap://ldap.example.org','ldap://ldap2.example.org']"
+             #KEEP_EXISTING_CONFIG=${KEEP_EXISTING_CONFIG}
+             #LDAP_REMOVE_CONFIG_AFTER_SETUP=${LDAP_REMOVE_CONFIG_AFTER_SETUP}
+             #LDAP_SSL_HELPER_PREFIX=${LDAP_SSL_HELPER_PREFIX}
+        
+        ports:
+            - "389:389"
+            - "636:636"
+        #domainname: "openldap" # important: same as hostname
+        #domainname: ldap.${DOMAIN} # important: same as hostname
+
+
+
+# ----------------------------------- identity-server -------------------------------------------
+    identity-server:
+        build:
+            context: .
+            dockerfile: ./product-is/Dockerfile
+       #  container_name: new-doc-is
+        container_name: identity-server
+        ports:
+         - "9443:9443"
+        volumes:
+        - ./product-is:/home/wso2carbon/wso2-server-volume
+        links:
+        - openldap  
+        depends_on:
+        - openldap       
+
+#---------------------------------phpldapadmin-------------------------------------------
+  #Ref : https://github.com/osixia/docker-openldap
+    phpldapadmin:
+        image: osixia/phpldapadmin:latest
+        container_name: phpldapadmin
+        hostname: phpldapadmin.${DOMAIN}
+
+        environment:
+             PHPLDAPADMIN_LDAP_HOSTS: "openldap"
+             #PHPLDAPADMIN_LDAP_HOSTS: ldap.${DOMAIN}
+             PHPLDAPADMIN_HTTPS: "false"
+        ports:
+            - "8888:80"
+        depends_on:
+            - openldap
+
+     
+        
+      
