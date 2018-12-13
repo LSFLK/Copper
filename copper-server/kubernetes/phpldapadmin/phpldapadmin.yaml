@@ -6,8 +6,23 @@ metadata:
   name: phpldapadmin-service
 spec:
   ports:
-    - port: 443
+    - protocol: TCP
+      port: 443
+      targetPort: 443
+      name: https
       nodePort: 30443
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      name: http
+      nodePort: 30180
+  #ports:
+    #- port: 443
+    #  nodePort: 30443
+    #  name : securedweb
+    #- port: 80
+    #  nodePort: 30180
+    #  name : normalweb
   selector:
     app: phpldapadmin
   type: NodePort
@@ -39,13 +54,13 @@ spec:
             - containerPort: 443
           env:
             - name: PHPLDAPADMIN_LDAP_HOSTS
-              value: "#PYTHON2BASH:[{'ldap.example.org: [{'server': [{'tls': 'true'}]}]}]"
+              value: "#PYTHON2BASH:[{'ldap.example.org': [{'server': [{'tls': 'true'}]}]}]"
             - name: PHPLDAPADMIN_SERVER_ADMIN
-              value: "webmaster@ldap.example.org"
+              value: "webmaster@example.org"
             - name: PHPLDAPADMIN_SERVER_PATH
               value: "/phpldapadmin"
             - name: PHPLDAPADMIN_HTTPS
-              value: "false"
+              value: "true"
             - name: PHPLDAPADMIN_HTTPS_CRT_FILENAME
               value: "cert.crt"
             - name: PHPLDAPADMIN_HTTPS_KEY_FILENAME
@@ -53,7 +68,7 @@ spec:
             - name: PHPLDAPADMIN_HTTPS_CA_CRT_FILENAME
               value: "ca.crt"
             - name: PHPLDAPADMIN_LDAP_CLIENT_TLS
-              value: "false"
+              value: "true"
             - name: PHPLDAPADMIN_LDAP_CLIENT_TLS_REQCERT
               value: "demand"
             - name: PHPLDAPADMIN_LDAP_CLIENT_TLS_CRT_FILENAME
@@ -69,4 +84,3 @@ spec:
         - name: ldap-client-certs
           hostPath:
             path: "/data/phpldapadmin/ldap-client-certs/"
-

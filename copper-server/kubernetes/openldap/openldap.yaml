@@ -6,7 +6,18 @@ metadata:
   name: ldap-service
 spec:
   ports:
-    - port: 389
+    - protocol: TCP
+      port: 389
+      targetPort: 389
+      name: ldap
+      #nodePort: 30025
+    #- protocol: TCP
+    #  port: 143
+    #  targetPort: 143
+    #  name: imap
+    #  nodePort: 30143
+  #ports:
+    #- port: 389
   selector:
     app: ldap
 ---
@@ -58,7 +69,7 @@ spec:
             - name: LDAP_BACKEND
               value: "mdb"
             - name: LDAP_TLS
-              value: "false"
+              value: "true"
             - name: LDAP_TLS_CRT_FILENAME
               value: "ldap.crt"
             - name: LDAP_TLS_KEY_FILENAME
