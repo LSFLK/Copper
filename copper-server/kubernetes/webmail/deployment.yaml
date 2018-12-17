@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rainloop-deployment
+  labels:
+    app: rainloop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rainloop
+  template:
+    metadata:
+      labels:
+        app: rainloop
+    spec:
+      containers:
+      - name: rainloop
+        image: anuudb/rainloop
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
