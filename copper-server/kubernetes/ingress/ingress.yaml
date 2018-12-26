@@ -1,0 +1,24 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress
+spec:
+  #tls:
+  #- hosts:
+  # - example.com
+  #  secretName: tls-certs
+  rules:
+  - host: example.com
+    http:
+      paths:
+      - path: /webmail
+        backend:
+          serviceName: webmail
+          servicePort: 80
+      - path: /ldap
+        backend:
+          serviceName: phpldapadmin-service
+          servicePort: 443
+  #backend:
+  #   serviceName: webmail
+  #   servicePort: 80
