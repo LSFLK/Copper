@@ -17,7 +17,7 @@ bind_pw = %DNPASS%
 #search_base = ou=Mail,dc=example,dc=com
 scope = sub
 #-----------------
-search_base = ou=domains,dc=%DC1%,dc=%DC2%,dc=%DC3%
+search_base = ou=Domains,dc=%DC1%,dc=%DC2%,dc=%DC3%
 version = 3
 #bind = no
 query_filter = (&(ObjectClass=dNSDomain)(dc=%s))

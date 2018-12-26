@@ -1,7 +1,7 @@
 # email-solution
 
 [![Gitter](https://img.shields.io/badge/chat-on%20gitter-blue.svg)](https://gitter.im/copper-mail)
-[![Build Status](https://travis-ci.org/LSFLK/copper.svg?branch=master)](https://travis-ci.org/LSFLK/copper)
+[![Build Status](https://travis-ci.org/LSFLK/Copper.svg?branch=master)](https://travis-ci.org/LSFLK/Copper)
 
 ## Functionalities
 - Core
@@ -9,14 +9,10 @@
     - [POSTFIX](http://www.postfix.org/) : a modular mail transfer agent.
   - [x] IMAP Server and POP Server
     - [DOVECOT](https://www.dovecot.org/) : secure open-source IMAP and POP3 server.
-  - [x] Mail Server User Management with openLDAP
-    - [PHPLDAPADMIN](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-openldap-and-phpldapadmin-on-ubuntu-16-04) Ldap server can be managed through  web interface
   - [x] WEBmail client
     - [RAINLOOP](https://www.rainloop.net/) : Webmail client with basic features.
   - [x] WEBmail client
     - [Horde](https://www.horde.org/) : Webmail client with advanced features.
-  - [x] User management
-    - [OpenLDAP](https://www.openldap.org/) server and [phpLDAPadmin](https://wiki.debian.org/PhpLdapAdmin) will be installed for ldap configuration
   - [x] Spam Filter
     - [RSPAMD](https://rspamd.com/) : Fast, free and open-source spam filtering system. You may find a comparison of spam filters [here](https://rspamd.com/comparison.html).
   - [x] Antivirus 
@@ -84,7 +80,7 @@ $ docker-compose up -d
 
 
 
-    - Direct your web browser to http://localhost:88/ldap to access the admin portal of the phpldapadmin
+    - Direct your web browser to https://copper.opensource.lk/ldap to access the admin portal of the phpldapadmin
       It's username and password what we provided in above steps
 
       
