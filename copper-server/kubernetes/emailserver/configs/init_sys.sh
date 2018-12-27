@@ -208,11 +208,10 @@ chmod -R 755 /etc/letsencrypt/
  service postfix start
  service dovecot restart
  service rspamd start
-freshclam
+ #service clamav start # clamav unrecognized service
+ freshclam
  service rspamd reload
  service clamav-daemon start
  service clamav-freshclam start
  
-
-
  #tail -f /dev/null

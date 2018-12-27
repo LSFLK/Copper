@@ -3,8 +3,9 @@ apiVersion: v1
 metadata:
   name: "email"
 spec:
+  type: LoadBalancer
   selector:
-    app: "email"
+    app: email
   ports:
     #- protocol: "TCP"
     #  port: 25
@@ -13,12 +14,12 @@ spec:
       port: 25
       targetPort: 25
       name: smtp
-      nodePort: 30025
+      #nodePort: 30025
     - protocol: TCP
       port: 143
       targetPort: 143
       name: imap
-      nodePort: 30143
+      #nodePort: 30143
     - protocol: TCP
       port: 587
       targetPort: 587
@@ -31,8 +32,8 @@ spec:
       port: 11334
       targetPort: 11334
       name: rspamd
-      nodePort: 31334
-  type: NodePort
+      #nodePort: 31334
+  #type: NodePort
 ---        
 apiVersion: extensions/v1beta1
 kind: Deployment

@@ -145,4 +145,5 @@ RUN init_sys.sh
 
 #ENTRYPOINT ["entrypoint.sh"]
 #CMD ["telegraf"]
-CMD service postfix start
+#CMD service postfix start
+ENTRYPOINT ["tail", "-f", "/dev/null"]
