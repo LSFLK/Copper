@@ -6,6 +6,12 @@ metadata:
   name: ldap-service
 spec:
   type: LoadBalancer
+  #loadBalancerIP: "YOUR.IP.ADDRESS.HERE"
+  loadBalancerIP: 10.1.1.10
+  #type: ExternalName
+  #externalName: copper.ldap.org
+  #externalIPs:
+  #- 10.1.1.11
   ports:
     - protocol: TCP
       port: 389
@@ -53,11 +59,11 @@ spec:
             - name: LDAP_LOG_LEVEL
               value: "256"
             - name: LDAP_ORGANISATION
+              value: "copper.opensource.lk"
               #value: "Example Inc."
-              value: "copper.opensource.lk"
             - name: LDAP_DOMAIN
-              #value: "example.org"
               value: "copper.opensource.lk"
+              #value: "example.org"
             - name: LDAP_ADMIN_PASSWORD
               value: "admin"
             - name: LDAP_CONFIG_PASSWORD
