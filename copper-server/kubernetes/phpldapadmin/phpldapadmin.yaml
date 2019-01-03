@@ -58,7 +58,7 @@ spec:
             - name: PHPLDAPADMIN_LDAP_HOSTS
               #value: "#PYTHON2BASH:[{'ldap.example.org': [{'server': [{'tls': 'true'}]}]}]"
               #value: "#PYTHON2BASH:[{'copper-ldap': [{'server': [{'tls': 'false'}]}]}]"
-              value: "10.109.24.43"
+              value: "10.106.181.167"
             - name: PHPLDAPADMIN_SERVER_ADMIN
               value: "webmaster@example.org"
             - name: PHPLDAPADMIN_SERVER_PATH
