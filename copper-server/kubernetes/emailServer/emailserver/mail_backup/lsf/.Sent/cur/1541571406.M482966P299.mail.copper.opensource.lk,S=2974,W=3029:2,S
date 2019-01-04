@@ -1,0 +1,55 @@
+MIME-Version: 1.0
+Date: Wed, 07 Nov 2018 06:16:41 +0000
+Content-Type: multipart/alternative;
+ boundary="--=_RainLoop_181_578363711.1541571401"
+X-Mailer: RainLoop/1.12.0
+From: lsf@copper.opensource.lk
+Message-ID: <8a9edf9c18d51cdc88566cbf3a8e77be@copper.opensource.lk>
+Subject: testing encryption
+To: anushka@copper.opensource.lk
+
+
+----=_RainLoop_181_578363711.1541571401
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Ok, now we=E2=80=99re finally to the Postfix-specific part. What we=E2=80=
+=99re essentially trying to do is a content filtering operation on the me=
+ssage. We want to yank it out of the queue, and, based on the content pro=
+duce a modified content and return the updated message to the mail queue =
+for delivery. It is not that different from what a spam (http://www.akadi=
+a.com/services/postfix_spamassassin.html) filter (https://wiki.apache.org=
+/spamassassin/IntegratedSpamdInPostfix) does. There are 3 places to tap i=
+nto in order to achieve the desired result (manual (http://www.postfix.or=
+g/CONTENT_INSPECTION_README.html)). We will choose the after queue method=
+ in order to relieve pressure on RAM and CPU, and provide the most reliab=
+le service. In other words, we will add -o content_filter=3Dmy_filter opt=
+ion to smtp commands, where my_filter is another config element that spec=
+ifies an external shell script to which the message contents will be pass=
+ed.
+
+----=_RainLoop_181_578363711.1541571401
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html><head><meta http-equiv=3D"Content-Type" content=3D"t=
+ext/html; charset=3Dutf-8" /></head><body><div data-html-editor-font-wrap=
+per=3D"true" style=3D"font-family: arial, sans-serif; font-size: 13px;"> =
+<br>Ok, now we=E2=80=99re finally to the <code>Postfix</code>-specific pa=
+rt. What we=E2=80=99re essentially trying to do is a content filtering op=
+eration on the message. We want to yank it out of the queue, and, based o=
+n the content produce a modified content and return the updated message t=
+o the mail queue for delivery. It is not that different from what a <a hr=
+ef=3D"http://www.akadia.com/services/postfix_spamassassin.html">spam</a> =
+<a href=3D"https://wiki.apache.org/spamassassin/IntegratedSpamdInPostfix"=
+>filter</a> does. There are 3 places to tap into in order to achieve the =
+desired result (<a href=3D"http://www.postfix.org/CONTENT_INSPECTION_READ=
+ME.html">manual</a>). We will choose the <code>after queue</code> method =
+in order to relieve pressure on RAM and CPU, and provide the most reliabl=
+e service. In other words, we will add <code>-o content_filter=3Dmy_filte=
+r</code> option to <code>smtp</code> commands, where <code>my_filter</cod=
+e> is another config element that specifies an external shell script to w=
+hich the message contents will be passed.<br><signature></signature> </di=
+v></body></html>
+
+----=_RainLoop_181_578363711.1541571401--

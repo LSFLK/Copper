@@ -1,0 +1,74 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.16.0 ()
+  creationTimestamp: null
+  labels:
+    io.kompose.service: emailserver
+  name: emailserver
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: emailserver
+    spec:
+      containers:
+      - command:
+        - /bin/init_sys.sh
+        env:
+        - name: CN
+          value: admin
+        - name: DC1
+          value: copper
+        - name: DC2
+          value: opensource
+        - name: DC3
+          value: lk
+        - name: DEBUG
+          value: "true"
+        - name: DNPASS
+          value: admin
+        - name: DOMAIN
+          value: copper.opensource.lk
+        - name: EMAIL
+          value: admin@copper.opensource.lk
+        - name: HOSTNAME
+          value: mail.copper.opensource.lk
+        - name: LDAP_HOST_IP
+          value: localhost:389
+        - name: OU
+          value: Users
+        - name: RSPAMD_PASSWORD
+          value: postfix@123
+        - name: VIRTUAL_HOST
+          value: mail.copper.opensource.lk,rspamd.copper.opensource.lk
+        - name: VIRTUAL_PORT
+          value: "80"
+        image: anuudb/email_server_k8s
+        name: emailserver
+        ports:
+        - containerPort: 80
+        - containerPort: 11334
+        - containerPort: 25
+        - containerPort: 143
+        - containerPort: 465
+        - containerPort: 587
+        - containerPort: 993
+        - containerPort: 4190
+        resources: {}
+        volumeMounts:
+        - mountPath: /var/mail/vhosts/
+          name: emailserver-claim0
+      # hostname: mail.copper.opensource.lk
+      restartPolicy: Always
+      volumes:
+      - name: emailserver-claim0
+        persistentVolumeClaim:
+          claimName: emailserver-claim0
+status: {}

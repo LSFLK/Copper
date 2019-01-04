@@ -25,9 +25,11 @@ spec:
             - containerPort: 80
           env:
             - name: PHPLDAPADMIN_LDAP_HOSTS
-              value: "#PYTHON2BASH:[{'ldap.example.org': [{'server': [{'tls': 'true'}]}]}]"
+              # value: "#PYTHON2BASH:[{'ldap.example.org': [{'server': [{'tls': 'true'}]}]}]"
+              value: "#PYTHON2BASH:[{'ldap.copper.opensource.lk': [{'server': [{'tls': 'true'}]}]}]"
             - name: PHPLDAPADMIN_SERVER_ADMIN
-              value: "webmaster@example.org"
+              # value: "webmaster@copper.opensource.lk"
+              value: "admin@copper.opensource.lk"
             - name: PHPLDAPADMIN_SERVER_PATH
               value: "/phpldapadmin"
             - name: PHPLDAPADMIN_HTTPS

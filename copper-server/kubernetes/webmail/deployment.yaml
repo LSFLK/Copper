@@ -5,6 +5,7 @@ metadata:
   labels:
     app: rainloop
 spec:
+  type: LoadBalancer
   replicas: 1
   selector:
     matchLabels:
