@@ -149,7 +149,7 @@ services:
         volumes:
             - ./webmail/rainloop/app:/var/www/html/
         #ports:
-        #    - "80"
+        #    - "80:80"
         #    - "4433:443"
         environment:
             - WEBMAIL=${WEBMAIL}

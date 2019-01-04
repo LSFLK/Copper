@@ -1,0 +1,68 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: webmail
+spec:
+  type: LoadBalancer
+  selector:
+    app: webmail
+  ports:
+    - protocol: "TCP"
+      port: 80
+      #targetPort: 80
+      targetPort: http
+      #clusterIP: None    
+      name: webmail
+      #nodePort: 30080
+  #type: NodePort
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: webmail
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: webmail
+        track: stable
+    spec:
+      containers:
+        - name: webmail
+          #image: "udacity/example-auth:1.0.0"
+          image: webmail
+          imagePullPolicy: Never
+          ports:
+            - name: http
+              containerPort: 80
+            - name: health
+              containerPort: 81
+          resources:      
+           limits:
+             cpu: "1"
+             memory: 2Gi
+           requests:
+             cpu: 200m
+             memory: 1Gi
+          #dnsPolicy: ClusterFirst # errors with this version
+          #restartPolicy: Never   # errors with this version
+          #resources:
+          #  limits:
+          #    cpu: 0.9
+          #    memory: "5500Mi"
+          #livenessProbe:
+          #  httpGet:
+          #    path: /healthz
+          #    port: 81
+          #    scheme: HTTP
+          #  initialDelaySeconds: 5
+          #  periodSeconds: 15
+          #  timeoutSeconds: 5
+          #readinessProbe:
+          #  httpGet:
+          #    path: /readiness
+          #    port: 81
+          #    scheme: HTTP
+          #  initialDelaySeconds: 5
+          #  timeoutSeconds: 1
