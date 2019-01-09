@@ -57,8 +57,8 @@ spec:
           env:
             - name: PHPLDAPADMIN_LDAP_HOSTS
               #value: "#PYTHON2BASH:[{'ldap.example.org': [{'server': [{'tls': 'true'}]}]}]"
-              #value: "#PYTHON2BASH:[{'copper-ldap': [{'server': [{'tls': 'false'}]}]}]"
-              value: "10.106.181.167"
+              #value: "#PYTHON2BASH:[{'10.102.209.171': [{'server': [{'tls': 'true'}]}]}]"
+              value: "10.102.209.171"
             - name: PHPLDAPADMIN_SERVER_ADMIN
               value: "webmaster@example.org"
             - name: PHPLDAPADMIN_SERVER_PATH
@@ -73,10 +73,11 @@ spec:
             - name: PHPLDAPADMIN_HTTPS_CA_CRT_FILENAME
               value: "ca.crt"
             - name: PHPLDAPADMIN_LDAP_CLIENT_TLS
-              #value: "true"
-              value: "false"
+              value: "true"
+              #value: "false"
             - name: PHPLDAPADMIN_LDAP_CLIENT_TLS_REQCERT
-              value: "demand"
+              #value: "demand"
+              value: "try"
             - name: PHPLDAPADMIN_LDAP_CLIENT_TLS_CRT_FILENAME
               value: "cert.crt"
             - name: PHPLDAPADMIN_LDAP_CLIENT_TLS_KEY_FILENAME
