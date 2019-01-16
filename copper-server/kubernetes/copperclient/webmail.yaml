@@ -2,6 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: webmail
+  namespace: monitoring
 spec:
   type: LoadBalancer
   selector:
@@ -20,6 +21,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: webmail
+  namespace: monitoring
 spec:
   replicas: 1
   template:
