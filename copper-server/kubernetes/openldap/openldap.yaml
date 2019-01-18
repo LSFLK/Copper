@@ -4,6 +4,7 @@ items:
   - apiVersion: v1
     kind: Service  
     metadata:
+      namespace: monitoring
       labels:
         app: ldap
       name: ldap-service
@@ -35,6 +36,7 @@ items:
     kind: Deployment
     metadata:
       name: ldap
+      namespace: monitoring
       labels:
         app: ldap
     spec:
