@@ -143,7 +143,7 @@ Our emailserver is the most complex part of this system. First we have to build 
   // check all pods created under monitoring namespace
   kubectl get pods --namespace=monitoring
 
-  Hear you can get pod name
+  You can get pod name from above command.
 
 ```
 ### Once you created the emailserver it's services has to be run manualy 
@@ -161,6 +161,12 @@ Our emailserver is the most complex part of this system. First we have to build 
   kubectl delete deployment email --namespace=monitoring
 
 ```
+
+You may Access the RSPAMD spam filter from bellow url.
+[http://localhost:11334/]
+
+password : postfix@123
+
 ## webmail client service implementation
 In copper Email solution we are using rainloop web client.So we have to implement a rainloop client also. We have a image for a rainloop web client also. So we have to build docker image first.
 ```
@@ -205,7 +211,7 @@ Pass Word : coppermail@lsf
 
 ## Alert Manager Deployment
 
-Alerting is very importatn function any live system. In this copper email solution alerts facility is available with the support of Kubernetes API and Prometheus.
+Alerting is very importatn function in any live system. In this copper email solution alerts facility is available with the support of Kubernetes API and Prometheus.
 
 "Prometheus is an open-source systems monitoring and alerting toolkit originally built at SoundCloud. Since its inception in 2012, many companies and organizations have adopted Prometheus, and the project has a very active developer and user community. It is now a standalone open source project and maintained independently of any company. To emphasize this, and to clarify the project's governance structure, Prometheus joined the Cloud Native Computing Foundation in 2016 as the second hosted project, after Kubernetes."
 
