@@ -211,7 +211,7 @@ chmod -R 755 /etc/letsencrypt/
  #service clamav start # clamav unrecognized service
  freshclam
  service rspamd reload
- service clamav-daemon start
+ service clamav-daemon start # if there is not enough memory in the container this will omit a error and docker build will stop from hear.
  service clamav-freshclam start
  
  #tail -f /dev/null
