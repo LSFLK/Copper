@@ -1,0 +1,35 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress
+spec:
+  #tls:
+  #- hosts:
+  # - example.com
+  #  secretName: tls-certs
+  rules:
+  - host: localhost
+    http:
+      paths:
+      - path: /webmail
+        backend:
+          serviceName: webmail
+          servicePort: 80
+      - path: /ldap
+        backend:
+          serviceName: phpldapadmin-service
+          servicePort: 443
+  #backend:
+  #   serviceName: webmail
+  #   servicePort: 80
+kind: Service
+apiVersion: v1
+metadata:
+  name: service-test
+spec:
+  type: LoadBalancer
+  selector:
+    app: service_test_pod
+  ports:
+  - port: 80
+targetPort: http

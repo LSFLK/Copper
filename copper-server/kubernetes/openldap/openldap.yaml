@@ -4,6 +4,7 @@ items:
   - apiVersion: v1
     kind: Service  
     metadata:
+      namespace: monitoring
       labels:
         app: ldap
       name: ldap-service
@@ -35,6 +36,7 @@ items:
     kind: Deployment
     metadata:
       name: ldap
+      namespace: monitoring
       labels:
         app: ldap
     spec:
@@ -60,7 +62,8 @@ items:
                   name: openldap
               env:
                 - name: LDAP_LOG_LEVEL
-                  value: "256"
+                  #value: "256"
+                  value: "-1"
                 - name: LDAP_ORGANISATION
                   value: "copper.opensource.lk"
                   #value: "Example Inc."
@@ -83,19 +86,23 @@ items:
                   value: "mdb"
                 - name: LDAP_TLS
                   value: "true"
-                  value: "false"
+                  #value: "false"
                 - name: LDAP_TLS_CRT_FILENAME
-                  value: "ldap.crt"
+                  #value: "ldap.crt"
+                  value: "cert.pem"
                 - name: LDAP_TLS_KEY_FILENAME
-                  value: "ldap.key"
-                - name: LDAP_TLS_CA_CRT_FILENAME
-                  value: "ca.crt"
+                  #value: "ldap.key"
+                  value: "privkey.pem"
+                - name: LDAP_TLS_CA_CRT_FILENAME 
+                  #value: "ca.crt"
+                  value: "fullchain.pem"
                 - name: LDAP_TLS_ENFORCE
                   value: "false"
                 - name: LDAP_TLS_CIPHER_SUITE
                   value: "SECURE256:+SECURE128:-VERS-TLS-ALL:+VERS-TLS1.2:-RSA:-DHE-DSS:-CAMELLIA-128-CBC:-CAMELLIA-256-CBC"
                 - name: LDAP_TLS_VERIFY_CLIENT
-                  value: "demand"
+                  #value: "demand"
+                  value: "try"
                 - name: LDAP_REPLICATION
                   value: "false"
                 - name: LDAP_REPLICATION_CONFIG_SYNCPROV
@@ -119,4 +126,5 @@ items:
                 path: "/data/ldap/config"
             - name: ldap-certs
               hostPath:
-                path: "/data/ldap/certs"
+                #path: "/data/ldap/certs"
+                path: "/Users/wso2/Documents/copper/copper/copper-server/kubernetes/tls"
