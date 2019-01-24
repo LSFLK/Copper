@@ -1,4 +1,23 @@
 #!/usr/bin/env bash
+source .env
+
+# how to get parametes from the source file.
+# .env loading in the shell
+dotenv () {
+  set -a
+  [ -f .env ] && . .env
+  set +a
+}
+
+# Run dotenv on login
+dotenv
+
+# Run dotenv on every new directory
+cd () {
+  builtin cd $@
+  dotenv
+}
+
 
 export EMAIL
 export KEY_PATH
@@ -26,6 +45,8 @@ export DC3=${DC3}
 export DNPASS=${DNPASS}
 export OU=${OU}
 export LDAP_HOST_IP=${LDAP_HOST_IP}
+
+echo "Email is ${EMAIL}"
 
 if [ -z "$EMAIL" ]; then
   echo "[ERROR] Email Must be set !"
@@ -95,11 +116,13 @@ if (( ${#files} )); then
 chmod -R 755 /etc/letsencrypt/
 
  cp -R /etc/letsencrypt/ /cert
- sed -i.bak -e "s;%DFQN%;"${HOSTNAME}";g" "/etc/postfix/main.cf"
+ #sed -i.bak -e "s;%DFQN%;"${HOSTNAME}";g" "/etc/postfix/main.cf"
+ sed -i.bak -e "s;%DFQN%;"${FQDN}";g" "/etc/postfix/main.cf"
  sed -i.bak -e "s;%DOMAIN%;"${DOMAIN}";g" "/etc/postfix/main.cf"
  sed -i.bak -e "s;%DOMAIN%;"${DOMAIN}";g" "/etc/dovecot/conf.d/15-lda.conf"
  sed -i.bak -e "s;%DOMAIN%;"${DOMAIN}";g" "/etc/dovecot/conf.d/20-lmtp.conf"
- sed -i.bak -e "s;%DFQN%;"${HOSTNAME}";g" "/etc/dovecot/conf.d/10-ssl.conf"
+ #sed -i.bak -e "s;%DFQN%;"${HOSTNAME}";g" "/etc/dovecot/conf.d/10-ssl.conf"
+ sed -i.bak -e "s;%DFQN%;"${FQDN}";g" "/etc/dovecot/conf.d/10-ssl.conf"
 
 
  sed -i -e "s;redis;"${REDIS_HOST}";g" "/etc/rspamd/local.d/redis.conf"
@@ -190,4 +213,4 @@ chmod -R 755 /etc/letsencrypt/
 
 
 
- tail -f /dev/null
+#  tail -f /dev/null

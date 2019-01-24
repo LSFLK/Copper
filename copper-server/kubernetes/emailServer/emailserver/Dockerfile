@@ -54,7 +54,7 @@ RUN mkdir -p /etc/zeyple/keys && chmod 700 /etc/zeyple/keys && chown zeyple: /et
 ADD ./configs/zeyple/zeyple.py /usr/local/bin/zeyple.py
 RUN chmod 744 /usr/local/bin/zeyple.py && chown zeyple: /usr/local/bin/zeyple.py
 ADD https://raw.github.com/infertux/zeyple/master/zeyple/zeyple.conf.example /etc/zeyple.conf
-#ADD ./config/zeyple/zeyple.conf.example /etc/zeyple.conf
+#ADD ./emailserver/config/zeyple/zeyple.conf.example /etc/zeyple.conf
 RUN touch /var/log/zeyple.log && chown zeyple: /var/log/zeyple.log
 RUN chown -R zeyple /etc/zeyple /usr/local/bin/zeyple.py
 
@@ -105,7 +105,10 @@ RUN cp -R /etc/rspamd/local.d/dkim_signing.conf /etc/rspamd/local.d/arc.conf
 COPY ./configs/sieve /sieve
 
 COPY ./configs/init_sys.sh /bin/
+COPY ./configs/.env /bin/
 RUN chmod +x /bin/init_sys.sh
+RUN chmod 755 /bin/.env
+
 
 # postfixlog analyser 
 COPY ./configs/logAnalyze/pflogsumm /usr/local/bin/pflogsumm
@@ -115,7 +118,7 @@ RUN chmod 755 /usr/local/bin/pflogsumm
 # copying virus sh file
 # RUN mkdir /agent
 # RUN chmod 755 /agent
-# COPY ./configs/clamAV/init_refresh.sh /agent/
+# COPY ./emailserver/configs/clamAV/init_refresh.sh /agent/
 # RUN chmod +x /agent/init_refresh.sh
 
 # Antivirus with amavisd-new and clamAV
@@ -137,5 +140,10 @@ RUN apt-get clean && \
 COPY ./configs/telegraf/entrypoint.sh entrypoint.sh
 RUN chmod 755 entrypoint.sh
 
-ENTRYPOINT ["entrypoint.sh"]
-CMD ["telegraf"]
+
+RUN init_sys.sh
+
+#ENTRYPOINT ["entrypoint.sh"]
+#CMD ["telegraf"]
+#CMD service postfix start
+ENTRYPOINT ["tail", "-f", "/dev/null"]
