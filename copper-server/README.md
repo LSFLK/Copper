@@ -51,7 +51,7 @@ Unblock following ports
 
 ## Installation
 
-1. Clone this Repository
+1. Clone this Repository (Cu-mail is compatible with k8s, If you need k8s setup, please check kubernetes folder here)
 
 ```
 $ git clone https://github.com/LankaSoftwareFoundation/copper-base.git
