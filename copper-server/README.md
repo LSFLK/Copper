@@ -3,6 +3,8 @@
 [![Gitter](https://img.shields.io/badge/chat-on%20gitter-blue.svg)](https://gitter.im/copper-mail)
 [![Build Status](https://travis-ci.org/LSFLK/Copper.svg?branch=master)](https://travis-ci.org/LSFLK/Copper)
 
+At the moment, Cu-email is compatible with both docker-compose and k8s. Please refer this documnet for docker-compose setup and refer [kubernetes setup](https://github.com/LSFLK/Copper/tree/master/copper-server/kubernetes) for kubernetes setup.
+
 ## Functionalities
 - Core
   - [x] ESMTP Server 
@@ -51,7 +53,7 @@ Unblock following ports
 
 ## Installation
 
-1. Clone this Repository (Cu-mail is compatible with k8s, If you need k8s setup, please check kubernetes folder here)
+1. Clone this Repository
 
 ```
 $ git clone https://github.com/LankaSoftwareFoundation/copper-base.git
