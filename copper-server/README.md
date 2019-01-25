@@ -11,8 +11,6 @@
     - [DOVECOT](https://www.dovecot.org/) : secure open-source IMAP and POP3 server.
   - [x] WEBmail client
     - [RAINLOOP](https://www.rainloop.net/) : Webmail client with basic features.
-  - [x] WEBmail client
-    - [Horde](https://www.horde.org/) : Webmail client with advanced features.
   - [x] Spam Filter
     - [RSPAMD](https://rspamd.com/) : Fast, free and open-source spam filtering system. You may find a comparison of spam filters [here](https://rspamd.com/comparison.html).
   - [x] Antivirus 
