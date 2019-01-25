@@ -49,7 +49,7 @@ Unblock following ports
 
 # Installation
 
-## Clone this Repository and then change to the kubernetes folder. Bellow mentioned commands should be run from kubernetes folder.
+## Clone this Repository and then move to kubernetes folder. Bellow mentioned commands should be run from kubernetes folder.
 
 ```
 $ git clone 
