@@ -98,7 +98,7 @@ cd copper/copper-server/kubernetes
 ```
   ### when there is no ldap-utils you have to install it.
 ```
-  Apt-get update
+  apt-get update
 
   apt-get install ldap-utils
 ```
