@@ -270,19 +270,3 @@ kubectl delete deployment alertmanager --namespace=monitoring
 kubectl delete deployment prometheus-deployment --namespace=monitoring
 
 ```
-
-
-
-
-
-                      
-## References 
-- Email solution initiated by Prabod Rathnayaka. url :   
-  https://github.com/prabod/email-solution/tree/master/docker
-
-- Email solution with rspamd
-  https://github.com/tomav
-  
-- openLdap solutions
-  https://github.com/osixia/docker-openldap#quick-start
-
