@@ -3,6 +3,8 @@
 [![Gitter](https://img.shields.io/badge/chat-on%20gitter-blue.svg)](https://gitter.im/copper-mail)
 [![Build Status](https://travis-ci.org/LSFLK/Copper.svg?branch=master)](https://travis-ci.org/LSFLK/Copper)
 
+At the moment, Cu-email is compatible with both docker-compose and k8s. Please refer this documnet for docker-compose setup and refer [kubernetes setup](https://github.com/LSFLK/Copper/tree/master/copper-server/kubernetes) for kubernetes setup.
+
 ## Functionalities
 - Core
   - [x] ESMTP Server 
@@ -11,8 +13,6 @@
     - [DOVECOT](https://www.dovecot.org/) : secure open-source IMAP and POP3 server.
   - [x] WEBmail client
     - [RAINLOOP](https://www.rainloop.net/) : Webmail client with basic features.
-  - [x] WEBmail client
-    - [Horde](https://www.horde.org/) : Webmail client with advanced features.
   - [x] Spam Filter
     - [RSPAMD](https://rspamd.com/) : Fast, free and open-source spam filtering system. You may find a comparison of spam filters [here](https://rspamd.com/comparison.html).
   - [x] Antivirus 

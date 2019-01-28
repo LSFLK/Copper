@@ -49,7 +49,7 @@ Unblock following ports
 
 # Installation
 
-## Clone this Repository and then change to the kubernetes folder. Bellow mentioned commands should be run from kubernetes folder.
+## Clone this Repository and then move to kubernetes folder. Bellow mentioned commands should be run from kubernetes folder.
 
 ```
 $ git clone 
@@ -98,7 +98,7 @@ cd copper/copper-server/kubernetes
 ```
   ### when there is no ldap-utils you have to install it.
 ```
-  Apt-get update
+  apt-get update
 
   apt-get install ldap-utils
 ```
