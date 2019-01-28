@@ -30,8 +30,3 @@ Source code for monitoring and update handling of Copper server goes here. After
 ## Copper docs
 
 All the related documentations of copper project goes here. You may read this at first to get better understanding about Copper server and hub.
-
-
-
-## Reach us
-#### If you have any questions or doubts about Cu, please reach us via copper@opensource.lk
