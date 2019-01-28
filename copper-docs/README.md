@@ -1,8 +1,8 @@
 ## Copper Mail solution
 
 Copper email solution can be used by any organization and can be monitored and controled from a central access point. It consists of 2 main parts
-1. Copper-server
-2. Copper-hub
+1. [Copper-server](https://github.com/LSFLK/Copper/tree/master/copper-server)
+2. [Copper-hub](https://github.com/LSFLK/Copper/tree/master/copper-hub)
 
 
 ## Copper-server
