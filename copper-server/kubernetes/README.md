@@ -270,3 +270,5 @@ kubectl delete deployment alertmanager --namespace=monitoring
 kubectl delete deployment prometheus-deployment --namespace=monitoring
 
 ```
+
+#### If you have any questions or doubts about Cu, please reach us via copper@opensource.lk
