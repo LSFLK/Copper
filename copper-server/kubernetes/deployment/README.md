@@ -8,7 +8,7 @@
 
 ## Start the deployment
     '''
-        cd Deployment
+        cd deployment
         sh deploy.sh
     '''
 
