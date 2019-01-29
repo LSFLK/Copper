@@ -70,4 +70,4 @@
 
     - Password : postfix@123
     
-### Please do net forget to reset the default passwords after configuring email server
+### Please do not forget to reset the default passwords after configuring email server
