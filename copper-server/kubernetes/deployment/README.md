@@ -19,6 +19,7 @@
     '''
     // view all pods and copy the pod name for emailserver
     kubectl get pods --namespace=monitoring
+    
     // login to emailserver. You have to raplace pod_name with email pod.
     kubectl exec <pod_name> --namespace=monitoring --stdin --tty -c email /bin/sh
   
