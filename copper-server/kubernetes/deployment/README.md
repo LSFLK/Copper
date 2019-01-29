@@ -40,7 +40,7 @@
     username : cn=admin,dc=copper,dc=opensource,dc=lk
     password : admin
 
-    - Above details are may be different in your deployment configuration.( .env).
+    - Above details are different in your deployment configuration.( .env).
 
     - Once successully loged in then you have to import some test users creation file  (import_uid.ldif).
 
