@@ -1,7 +1,5 @@
 
 #   Deplyment
- Deployment Files are located in the Deployment folder
- You can use deploy shell script to start server easily
 
 ## Prerequisite
     - Docker 
