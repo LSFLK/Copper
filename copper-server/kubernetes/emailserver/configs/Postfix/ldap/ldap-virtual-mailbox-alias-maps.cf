@@ -6,8 +6,8 @@ server_host = ldap://%LDAP_HOST_IP%
 
 # server_host = ldap://localhost
 #
-#start_tls = no
-start_tls = yes
+start_tls = no
+#start_tls = yes
 version = 3
 tls_ca_cert_file = /etc/ldap/tls/CA.pem
 tls_require_cert = yes

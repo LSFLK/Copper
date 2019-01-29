@@ -1,19 +1,10 @@
 #!/bin/bash
 
 # ------------------------------------------------------------------------
-# Copyright 2017 WSO2, Inc. (http://wso2.com)
+#  (http://opensource.lk)
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-# http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License
+# 
+
 # ------------------------------------------------------------------------
 
 # methods
@@ -60,39 +51,57 @@ function echoGreenBold () {
     
 }
 
-echoRedBold 'Uneploying Copper Email Server !!!!!!!!'
+echoRedBold ' !!!!!!!! -Undeploying Copper Email Server - !!!!!!!! '
+
+
+read -r -p "Are you sure? [y/N] " response
+case "$response" in
+    [yY][eE][sS]|[yY])
+
+# 2> /dev/null || true   // statement is used to ignore and go ahead when a error received
+# 2>  true
 
 ## delete the ldap
-kubectl delete namespace monitoring
-echoRedBold "k8s namespace deleted"
-
-## delete the ldap
-kubectl delete service ldap-service --namespace=monitoring
-kubectl delete deployment ldap --namespace=monitoring
-
+kubectl delete service ldap-service --namespace=monitoring 2> /dev/null || true
+kubectl delete deployment ldap --namespace=monitoring 2> /dev/null || true
+echoRedBold 'Ldap service deleted...'
 # Then if you want to delete services created by above command
-kubectl delete service phpldapadmin-service --namespace=monitoring
-kubectl delete replicationcontrollers phpldapadmin-controller --namespace=monitoring
-
+kubectl delete service phpldapadmin-service --namespace=monitoring 2> /dev/null || true
+kubectl delete replicationcontrollers phpldapadmin-controller --namespace=monitoring 2> /dev/null || true
+echoRedBold 'phpldapadmin service deleted...'
 # If you want to delete emai service use following commands.
-kubectl delete service email --namespace=monitoring
-kubectl delete deployment email --namespace=monitoring
-
+kubectl delete service email --namespace=monitoring 2> /dev/null || true
+kubectl delete deployment email --namespace=monitoring 2> /dev/null || true
+echoRedBold 'Email service deleted...'
 
 
 #deleting services
-kubectl delete services alertmanager --namespace=monitoring
-kubectl delete services prometheus-service --namespace=monitoring
+kubectl delete services alertmanager --namespace=monitoring 2> /dev/null || true
+kubectl delete services prometheus-service --namespace=monitoring 2> /dev/null || true
+echoRedBold 'Alert service deleted...'
 #deleting configmaps
-kubectl delete configmap alertmanager-config --namespace=monitoring
-kubectl delete configmap alertmanager-templates --namespace=monitoring
-kubectl delete configmap prometheus-server-conf --namespace=monitoring
+kubectl delete configmap alertmanager-config --namespace=monitoring 2> /dev/null || true
+kubectl delete configmap alertmanager-templates --namespace=monitoring 2> /dev/null || true
+kubectl delete configmap prometheus-server-conf --namespace=monitoring 2> /dev/null || true
+echoRedBold 'Alert configuration deleted...'
 #deleting cluster roll
-kubectl delete clusterroles prometheus
-kubectl delete clusterrolebindings prometheus
+kubectl delete clusterroles prometheus 2> /dev/null || true
+kubectl delete clusterrolebindings prometheus 2> /dev/null || true
+echoRedBold 'Prometheus Role deleted...'
 #deleting deployments
-kubectl delete deployment alertmanager --namespace=monitoring
-kubectl delete deployment prometheus-deployment --namespace=monitoring
+kubectl delete deployment alertmanager --namespace=monitoring 2> /dev/null || true
+kubectl delete deployment prometheus-deployment --namespace=monitoring 2> /dev/null || true
+echoRedBold 'Prometheus deployment deleted...'
 
+
+## deleting namespace
+kubectl delete namespace monitoring  2> /dev/null || true
+echoRedBold "k8s namespace deleted"
 
 echoGreenBold 'Finished'
+
+    ;;
+    *)
+        echoRedBold "Undeploying cancelled"
+        ;;
+esac
