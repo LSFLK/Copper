@@ -1,6 +1,8 @@
 
 #   Deplyment
 
+Please update emailserver/configs/.env file before the deployment.
+
 ## Prerequisite
     - Docker 
     - Kubernetes
