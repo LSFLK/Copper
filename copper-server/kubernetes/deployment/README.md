@@ -21,7 +21,7 @@
     '''
     // view all pods and copy the pod name for emailserver
     kubectl get pods --namespace=monitoring
-    // login in to emailserver. You have to raplace pod_name with email pod.
+    // login to emailserver. You have to raplace pod_name with email pod.
     kubectl exec <pod_name> --namespace=monitoring --stdin --tty -c email /bin/sh
   
     // starting main services from inside the pod
@@ -70,4 +70,4 @@
 
     - Password : postfix@123
     
-### Please do not forget to reset the default passwords after configuring email server
+### Please do not forget to reset default passwords after configuring email server
