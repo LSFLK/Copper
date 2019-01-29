@@ -8,6 +8,14 @@ Please update emailserver/configs/.env file before the deployment.
     - Kubernetes
     - Internet connectivity
 
+## Copy your certification and key files to the folder
+
+  /kubernetes/tls
+    - cert.pem
+    - fullchain.pem
+    - privkey.key
+    - dhparam.pem
+
 ## Start the deployment
     '''
         cd deployment
@@ -36,7 +44,7 @@ Please update emailserver/configs/.env file before the deployment.
 
 ### Testing phpldapadmin user management
 
-    URL :http://localhost:8080
+    URL :https://localhost:4343
 
     username : cn=admin,dc=copper,dc=opensource,dc=lk
     password : admin

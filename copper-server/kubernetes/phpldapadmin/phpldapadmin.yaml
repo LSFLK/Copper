@@ -9,14 +9,14 @@ spec:
   type: LoadBalancer
   ports:
     - protocol: TCP
-      port: 443
+      port: 4433
       targetPort: 443
       name: https
       #nodePort: 30443
-    - protocol: TCP
-      port: 8080
-      targetPort: 80
-      name: http
+    #- protocol: TCP
+    #  port: 8080
+    #  targetPort: 80
+    #  name: http
       #nodePort: 30180
   #ports:
     #- port: 443
@@ -67,8 +67,8 @@ spec:
             - name: PHPLDAPADMIN_SERVER_PATH
               value: "/phpldapadmin"
             - name: PHPLDAPADMIN_HTTPS
-              #value: "true"
-              value: "false"
+              value: "true"
+              #value: "false"
             - name: PHPLDAPADMIN_HTTPS_CRT_FILENAME
               value: "cert.crt"
             - name: PHPLDAPADMIN_HTTPS_KEY_FILENAME
