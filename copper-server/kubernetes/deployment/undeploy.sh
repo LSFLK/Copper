@@ -53,6 +53,11 @@ function echoGreenBold () {
 
 echoRedBold ' !!!!!!!! -Undeploying Copper Email Server - !!!!!!!! '
 
+
+read -r -p "Are you sure? [y/N] " response
+case "$response" in
+    [yY][eE][sS]|[yY])
+
 # 2> /dev/null || true   // statement is used to ignore and go ahead when a error received
 # 2>  true
 
@@ -94,3 +99,9 @@ kubectl delete namespace monitoring  2> /dev/null || true
 echoRedBold "k8s namespace deleted"
 
 echoGreenBold 'Finished'
+
+    ;;
+    *)
+        echoRedBold "Undeploying cancelled"
+        ;;
+esac

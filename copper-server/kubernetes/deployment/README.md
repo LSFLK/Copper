@@ -1,7 +1,7 @@
 
 #   Deplyment
-### Deployment Files are located in the Deployment folder
-### You can use deploy shell script to start server easily
+ Deployment Files are located in the Deployment folder
+ You can use deploy shell script to start server easily
 
 ## Prerequisite
     - Docker 
@@ -16,7 +16,7 @@
 
 ## Service start
 
-### After successfull completion of deployment you have to start some services related to emailserver.
+ After successfull completion of deployment you have to start some services related to emailserver.
 
     '''
     // view all pods and copy the pod name for emailserver
@@ -31,9 +31,9 @@
 
     '''
 
-## Testing the server
+### Testing the server
 
-### Testing phpldapadmin user management
+ Testing phpldapadmin user management
 
     URL :http://localhost:8080
 

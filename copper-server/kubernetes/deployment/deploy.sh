@@ -69,7 +69,9 @@ function echoGreenBold () {
 
 echoGreenBold 'Deploying Copper Email Server...'
 
-
+read -r -p "Are you sure? [y/N] " response
+case "$response" in
+    [yY][eE][sS]|[yY])
 
 
 # starting kubernetes deployment
@@ -143,3 +145,9 @@ sleep 1s
 # https://stackoverflow.com/questions/51026174/running-a-command-on-all-kubernetes-pods-of-a-service
 
 echoGreenBold 'Finished'
+
+     ;;
+    *)
+        echoRedBold "Deployment cancelled"
+        ;;
+esac
