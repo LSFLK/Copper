@@ -8,7 +8,7 @@
     - Kubernetes
     - Internet connectivity
 
-## Copy your certification and key files to the folder
+## Copy your certification and key files to the folder "/kubernetes/tls" replacing follwing sample files.
 
   /kubernetes/tls
     - cert.pem
@@ -43,7 +43,7 @@
 
 ### Testing phpldapadmin user management
 
-    URL :https://localhost:4343
+    URL :https://localhost:4433
 
     username : cn=admin,dc=copper,dc=opensource,dc=lk
     password : admin
