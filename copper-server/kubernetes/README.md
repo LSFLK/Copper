@@ -3,6 +3,8 @@
 [![Gitter](https://img.shields.io/badge/chat-on%20gitter-blue.svg)](https://gitter.im/copper-mail)
 [![Build Status](https://travis-ci.org/LSFLK/Copper.svg?branch=master)](https://travis-ci.org/LSFLK/Copper)
 
+#### This "README" contains every single commands which needs to deploy Copper-mail with kubernetes. Please refer "README" file which is inside the "deployment" directory for quick deployment.
+
 ## Functionalities
 - Core
   - [x] ESMTP Server 
