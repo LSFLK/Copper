@@ -63,6 +63,5 @@ spec:
             limits:
               cpu: 0.5
               memory: "500Mi"
-      command: ["/bin/sh"]
-        args: ["-c", "service postfix start"]        
+   
               
