@@ -23,6 +23,41 @@ KUBECTL=`which kubectl`
 #Cyan         0;36     Light Cyan    1;36
 #Light Gray   0;37     White         1;37
 
+# Creating The Banner
+#Colours
+red="\033[00;31m"
+RED="\033[01;31m"
+
+green="\033[00;32m"
+GREEN="\033[01;32m"
+
+brown="\033[00;33m"
+YELLOW="\033[01;33m"
+
+blue="\033[00;34m"
+BLUE="\033[01;34m"
+
+purple="\033[00;35m"
+PURPLE="\033[01;35m"
+
+cyan="\033[00;36m"
+CYAN="\033[01;36m"
+
+white="\033[00;37m"
+WHITE="\033[01;37m"
+
+WHITECHAR="\033[01;39m"
+
+NC="\033[00m"
+BOLD="\e[1m"
+NRM="\e[0m"
+
+echo -e "${RED}******************************************************************************"
+echo -e "${WHITE}**                                                                          **"
+echo -e "${WHITECHAR}**          POWERED BY LANKA SOFTWARE FOUNDATION  (LSF)                     **"
+echo -e "${WHITE}**                                                                          **"
+echo -e "${RED}******************************************************************************"
+
 #   Add follwing tag after command for ignoring stdout, errors etc
 #   > /dev/null throw away stdout
 #   1> /dev/null throw away stdout
@@ -69,7 +104,53 @@ function echoGreenBold () {
 
 echoGreenBold 'Deploying Copper Email Server...'
 
-read -r -p "Are you sure? [y/N] " response
+
+
+# checking cert file list
+# - cert.pem
+# - fullchain.pem
+# - privkey.key
+# - dhparam.pem
+
+# checking the cert.pem files exists
+file="../tls/cert.pem"
+if [ ! -f "$file" ]
+then
+    echoRedBold "$0: cert.pem file '${file}' not found in tls directory. !"
+    exit 3 
+fi
+
+# checking the privkey.key files exists
+file="../tls/privkey.pem"
+if [ ! -f "$file" ]
+then
+    echoRedBold "$0: privkey.pem file '${file}' not found in tls directory. !"
+    exit 3 
+fi
+
+# checking the dhparam.pem files exists
+file="../tls/dhparam.pem"
+if [ ! -f "$file" ]
+then
+    echoRedBold "$0: dhparam.pem file '${file}' not found in tls directory. !"
+    exit 3 
+fi
+
+# checking the fullchain.pem files exists
+#file="../tls/fullchain.pem"
+#if [ ! -f "$file" ]
+#then
+#    echoRedBold "$0: fullchain.pem file '${file}' not found in tls directory. !"
+#    exit 3 
+#fi
+
+echoGreenBold 'Certificate files are avaialbe in the tls folder'
+
+
+# -------------------------------------
+
+
+read -r -p "You are going to install copper Email. You should have coppied your certificate and key files to tls folder. Are you ready? [y/N] " response
 case "$response" in
     [yY][eE][sS]|[yY])
 
