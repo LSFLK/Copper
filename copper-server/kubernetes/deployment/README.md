@@ -42,7 +42,7 @@
 
     - Above details are different in your deployment configuration.( .env).
 
-    - Once successully loged in then you have to import some test users creation file  (import_uid.ldif).
+    - Once successully loged in then you have to import some test users creation file  (user_import.ldif).
 
 
 ### Testing web mail client
@@ -50,7 +50,7 @@
 
      URL :http://localhost/?admin
 
-     Login with credential username : admin , password : admin and add your own domain here. Below you can see relevant settings which you needs to set and set other neccesary settings as your wish.
+     Login with credential username : admin , password : 12345 and add your own domain here. Below you can see relevant settings which you needs to set and set other neccesary settings as your wish.
 
      - IMAP and SMTP server : email
      - security : STARTTLS
