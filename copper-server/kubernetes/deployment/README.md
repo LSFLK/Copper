@@ -21,8 +21,8 @@
     '''
     // view all pods and copy the pod name for emailserver
     kubectl get pods --namespace=monitoring
-    // login in to emailserver. You have to change pod name email-6f46b7cfbb-l9d8w.
-    kubectl exec <email-server pod name> --namespace=monitoring --stdin --tty -c email /bin/sh
+    // login in to emailserver. You have to raplace pod_name with email pod.
+    kubectl exec <pod_name> --namespace=monitoring --stdin --tty -c email /bin/sh
   
     // starting main services from inside the pod
     service postfix start
@@ -50,9 +50,9 @@
 
      URL :http://localhost/?admin
 
-     Login with credential username : admin , password : admin
+     Login with credential username : admin , password : admin and add your own domain here. Below you can see relevant settings which you needs to set and set other neccesary settings as your wish.
 
-     - impa and email server : email
+     - IMAP and SMTP server : email
      - security : STARTTLS
 
      Then login to the web client and test your email service
@@ -69,3 +69,5 @@
     URL :http://localhost:11334/
 
     - Password : postfix@123
+    
+### Please do net forget to reset the default passwords after configuring email server
