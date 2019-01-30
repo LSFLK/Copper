@@ -126,11 +126,8 @@ chmod -R 755 /etc/letsencrypt/
  #sed -i.bak -e "s;%DFQN%;"${HOSTNAME}";g" "/etc/dovecot/conf.d/10-ssl.conf"
  sed -i.bak -e "s;%DFQN%;"${FQDN}";g" "/etc/dovecot/conf.d/10-ssl.conf"
 
-
  #sed -i -e "s;redis;"${REDIS_HOST}";g" "/etc/rspamd/local.d/redis.conf"
  #sed -i -e "s;redis;"${REDIS_HOST}";g" "/etc/rspamd/local.d/redis.conf"
-
-
 
  PASSWORD=$(rspamadm pw --quiet --encrypt --type pbkdf2 --password "${RSPAMD_PASSWORD}")
  sed -i "s;pwrd;"${RSPAMD_PASSWORD}";g" "/etc/rspamd/local.d/worker-controller.inc"

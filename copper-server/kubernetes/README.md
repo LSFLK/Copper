@@ -49,7 +49,7 @@ Unblock following ports
 
 # Installation
 
-## Clone this Repository and then change to the kubernetes folder. Bellow mentioned commands should be run from kubernetes folder.
+## Clone this Repository and then move to kubernetes folder. Bellow mentioned commands should be run from kubernetes folder.
 
 ```
 $ git clone 
@@ -98,7 +98,7 @@ cd copper/copper-server/kubernetes
 ```
   ### when there is no ldap-utils you have to install it.
 ```
-  Apt-get update
+  apt-get update
 
   apt-get install ldap-utils
 ```
@@ -271,18 +271,4 @@ kubectl delete deployment prometheus-deployment --namespace=monitoring
 
 ```
 
-
-
-
-
-                      
-## References 
-- Email solution initiated by Prabod Rathnayaka. url :   
-  https://github.com/prabod/email-solution/tree/master/docker
-
-- Email solution with rspamd
-  https://github.com/tomav
-  
-- openLdap solutions
-  https://github.com/osixia/docker-openldap#quick-start
-
+#### If you have any questions or doubts about Cu, please reach us via copper@opensource.lk
