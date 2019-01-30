@@ -3,6 +3,8 @@
 [![Gitter](https://img.shields.io/badge/chat-on%20gitter-blue.svg)](https://gitter.im/copper-mail)
 [![Build Status](https://travis-ci.org/LSFLK/Copper.svg?branch=master)](https://travis-ci.org/LSFLK/Copper)
 
+#### This "README" contains every single commands which needs to deploy Copper-mail with kubernetes. Please refer "README" file which is inside the "deployment" directory for quick deployment.
+
 ## Functionalities
 - Core
   - [x] ESMTP Server 
@@ -61,6 +63,15 @@ cd copper/copper-server/kubernetes
 ## Edit .env file to replicate your settings in file path
       copper/copper-server/kubernetes/emailserver/configs/ 
 
+## Copy your certification and key files to the folder
+
+  /kubernetes/tls
+    - cert.pem
+    - fullchain.pem
+    - privkey.key
+    - dhparam.pem
+
+
 ## Creating the namespace for the project
 ```
   kubectl create namespace monitoring
@@ -118,7 +129,7 @@ Phpldapadmin service is created to control openldap service. We have provided im
   kubectl exec <pod_name> --namespace=monitoring --stdin --tty -c phpldapadmin /bin/sh
 ```
 Now you can test openldap and phpldapadmin services by login to it.
-[http://localhost:8080]
+[https://localhost:4433]
 
 User name : cn=admin,dc=copper,dc=opensource,dc=lk
 Pass Word : admin
