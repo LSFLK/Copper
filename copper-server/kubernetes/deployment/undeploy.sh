@@ -110,6 +110,10 @@ echoRedBold 'phpldapadmin service deleted...'
 kubectl delete service email --namespace=monitoring 2> /dev/null || true
 kubectl delete deployment email --namespace=monitoring 2> /dev/null || true
 echoRedBold 'Email service deleted...'
+# If you want to delete webmail service use following commands.
+kubectl delete service webmail --namespace=monitoring 2> /dev/null || true
+kubectl delete deployment webmail --namespace=monitoring 2> /dev/null || true
+echoRedBold 'Email service deleted...'
 
 
 #deleting services

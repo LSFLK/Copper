@@ -8,12 +8,25 @@ spec:
   selector:
     app: webmail
   ports:
-    - protocol: "TCP"
+    #- protocol: "TCP"
+    #  port: 443
+    - protocol: TCP
       port: 80
-      #targetPort: 80
-      targetPort: http
+      targetPort: 80
+      name: http
+    - protocol: TCP
+      port: 443
+      targetPort: 443
+      name: https
+    - protocol: TCP
+      port: 433
+      targetPort: 433
+      name: httpse
+    #  port: 433
+    #  targetPort: 433
+      #targetPort: http
       #clusterIP: None    
-      name: webmail
+      #name: webmail
       #nodePort: 30080
   #type: NodePort
 ---
@@ -38,6 +51,10 @@ spec:
           ports:
             - name: http
               containerPort: 80
+            - name: https
+              containerPort: 443
+            - name: httpse
+              containerPort: 433
             - name: health
               containerPort: 81
           resources:      
