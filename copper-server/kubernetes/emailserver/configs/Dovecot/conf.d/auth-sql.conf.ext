@@ -1,0 +1,9 @@
+userdb {
+    driver = sql
+    args = /etc/dovecot/dovecot-sql.conf
+}
+
+passdb {
+    driver = sql
+    args = /etc/dovecot/dovecot-sql.conf
+}

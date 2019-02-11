@@ -1,0 +1,77 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: homail
+  namespace: monitoring
+spec:
+  type: LoadBalancer
+  selector:
+    app: homail
+  ports:
+    - protocol: "TCP"
+      port: 88
+      #targetPort: 80
+      targetPort: http
+      #clusterIP: None    
+      name: webmail
+      #nodePort: 30080
+  #type: NodePort
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: homail
+  namespace: monitoring
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: webmail
+        track: stable
+    spec:
+      containers:
+        - name: homail
+          #image: "udacity/example-auth:1.0.0"
+          image: webmail
+          imagePullPolicy: Never
+          ports:
+            - name: http
+              containerPort: 80
+            - name: health
+              containerPort: 81
+          volumeMounts:
+            - name: "tls-certs"
+              mountPath: "/etc/tls"
+          resources:      
+           limits:
+             cpu: "1"
+             memory: 2Gi
+           requests:
+             cpu: 200m
+             memory: 1Gi
+      volumes:
+        - name: "tls-certs"
+          secret:
+            secretName: "tls-certs"
+          #dnsPolicy: ClusterFirst # errors with this version
+          #restartPolicy: Never   # errors with this version
+          #resources:
+          #  limits:
+          #    cpu: 0.9
+          #    memory: "5500Mi"
+          #livenessProbe:
+          #  httpGet:
+          #    path: /healthz
+          #    port: 81
+          #    scheme: HTTP
+          #  initialDelaySeconds: 5
+          #  periodSeconds: 15
+          #  timeoutSeconds: 5
+          #readinessProbe:
+          #  httpGet:
+          #    path: /readiness
+          #    port: 81
+          #    scheme: HTTP
+          #  initialDelaySeconds: 5
+          #  timeoutSeconds: 1
