@@ -1,13 +1,14 @@
 kind: PersistentVolume
 apiVersion: v1
 metadata:
+  namespace: monitoring
   name: mysql-pv-volume
   labels:
     type: local
 spec:
   storageClassName: manual
   capacity:
-    storage: 20Gi
+    storage: 2Gi
   accessModes:
     - ReadWriteOnce
   hostPath:
@@ -17,10 +18,11 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: mysql-pv-claim
+  namespace: monitoring
 spec:
   storageClassName: manual
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 5Gi
+      storage: 1Gi

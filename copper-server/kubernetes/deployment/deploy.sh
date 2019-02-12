@@ -181,6 +181,14 @@ cd ..
 kubectl create -f emailserver/email.yaml 2> /dev/null || true
 echoGreenBold 'email service created...'
 #Building docker image
+
+# Create the persistent volume and persistent volume claim for database
+kubectl create -f persistent/mysql-pv.yaml  2> /dev/null || true
+echoGreenBold 'Persistent Volume created...'
+# Create mysql deployment
+kubectl create -f persistent/mysql-deployment.yaml  2> /dev/null || true
+echoGreenBold 'mysql deployment completed...'
+
 cd copperclient
 
 #Build the docker image

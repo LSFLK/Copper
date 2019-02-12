@@ -88,7 +88,7 @@ echo  "${WHITE}**               Email : support@copper.opensource.lk            
 echo  "${RED}******************************************************************************"
 echo
 
-echoRedBold ' !!!!!!!! -Undeploying Copper Email Server - !!!!!!!! '
+echoRedBold ' !!!!!!!! -Undeploying Copper Database server - You will lost your data permanantly - !!!!!!!! '
 
 
 
@@ -99,48 +99,26 @@ case "$response" in
 # 2> /dev/null || true   // statement is used to ignore and go ahead when a error received
 # 2>  true
 
-## delete the ldap
-kubectl delete service ldap-service --namespace=monitoring 2> /dev/null || true
-kubectl delete deployment ldap --namespace=monitoring 2> /dev/null || true
-echoRedBold 'Ldap service deleted...'
-# Then if you want to delete services created by above command
-kubectl delete service phpldapadmin-service --namespace=monitoring 2> /dev/null || true
-kubectl delete replicationcontrollers phpldapadmin-controller --namespace=monitoring 2> /dev/null || true
-echoRedBold 'phpldapadmin service deleted...'
-# If you want to delete emai service use following commands.
+## delete the mysql deployment
+kubectl delete deployment,svc mysql --namespace=monitoring 2> /dev/null || true
+
+echoRedBold 'mysql deployment deleted...'
+# Persistent Volume Claim deletion
+kubectl delete PersistentVolumeClaim mysql-pv-claim --namespace=monitoring 2> /dev/null || true
+
+echoRedBold 'Persistent Volume Claim deleted...'
+# Persistent Volume delete
 kubectl delete service email --namespace=monitoring 2> /dev/null || true
-kubectl delete deployment email --namespace=monitoring 2> /dev/null || true
+
 echoRedBold 'Email service deleted...'
 # If you want to delete webmail service use following commands.
 kubectl delete service webmail --namespace=monitoring 2> /dev/null || true
-kubectl delete deployment webmail --namespace=monitoring 2> /dev/null || true
-echoRedBold 'Webmail service deleted...'
+
+echoRedBold 'Persistent Volume deleted...'
 
 
-#deleting services
-kubectl delete services alertmanager --namespace=monitoring 2> /dev/null || true
-kubectl delete services prometheus-service --namespace=monitoring 2> /dev/null || true
-echoRedBold 'Alert service deleted...'
-#deleting configmaps
-kubectl delete configmap alertmanager-config --namespace=monitoring 2> /dev/null || true
-kubectl delete configmap alertmanager-templates --namespace=monitoring 2> /dev/null || true
-kubectl delete configmap prometheus-server-conf --namespace=monitoring 2> /dev/null || true
-echoRedBold 'Alert configuration deleted...'
-#deleting cluster roll
-kubectl delete clusterroles prometheus 2> /dev/null || true
-kubectl delete clusterrolebindings prometheus 2> /dev/null || true
-echoRedBold 'Prometheus Role deleted...'
-#deleting deployments
-kubectl delete deployment alertmanager --namespace=monitoring 2> /dev/null || true
-kubectl delete deployment prometheus-deployment --namespace=monitoring 2> /dev/null || true
-echoRedBold 'Prometheus deployment deleted...'
 
-
-## deleting namespace
-kubectl delete namespace monitoring  2> /dev/null || true
-echoRedBold "k8s namespace deleted"
-
-echoGreenBold 'Finished'
+echoGreenBold 'Whole data removed Cant be recovered. \n Finished'
 
     ;;
     *)

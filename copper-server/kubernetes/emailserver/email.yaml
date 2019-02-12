@@ -57,6 +57,8 @@ spec:
           ports:
             - name: tcp
               containerPort: 25
+            - name: submission
+              containerPort: 587
             - name: health
               containerPort: 25
           resources:

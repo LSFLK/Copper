@@ -22,6 +22,10 @@ spec:
       port: 433
       targetPort: 433
       name: httpse
+    #- protocol: TCP
+    #  port: 587
+    #  targetPort: 587
+    #  name: submission
     #  port: 433
     #  targetPort: 433
       #targetPort: http
@@ -55,6 +59,8 @@ spec:
               containerPort: 443
             - name: httpse
               containerPort: 433
+            - name: submission
+              containerPort: 587
             - name: health
               containerPort: 81
           resources:      

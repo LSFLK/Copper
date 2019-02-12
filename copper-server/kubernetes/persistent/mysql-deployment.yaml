@@ -1,7 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: monitoring
   name: mysql
+#spec:
+#  type: LoadBalancer
+#  ports:
+#    - protocol: TCP
+#      port: 3306
+#      targetPort: 3306
+#      name: mysql
 spec:
   ports:
   - port: 3306
@@ -12,6 +20,7 @@ spec:
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
+  namespace: monitoring
   name: mysql
 spec:
   selector:
@@ -33,10 +42,18 @@ spec:
           value: password
         ports:
         - containerPort: 3306
+        #- containerPort: 36
           name: mysql
         volumeMounts:
         - name: mysql-persistent-storage
           mountPath: /var/lib/mysql
+        resources:      
+           limits:
+             cpu: "1"
+             #memory: 3Gi
+           requests:
+             cpu: 200m
+             #memory: 2Gi
       volumes:
       - name: mysql-persistent-storage
         persistentVolumeClaim:
