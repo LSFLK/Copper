@@ -8,7 +8,8 @@ metadata:
 spec:
   storageClassName: manual
   capacity:
-    storage: 2Gi
+    #storage: 2Gi
+    storage: 1Gi
   accessModes:
     - ReadWriteOnce
   hostPath:
@@ -20,7 +21,8 @@ metadata:
   name: mysql-pv-claim
   namespace: monitoring
 spec:
-  storageClassName: manual
+  #93  : bellow line was commented due to error : pod has unbound PersistentVolumeClaims
+  #storageClassName: manual
   accessModes:
     - ReadWriteOnce
   resources:
