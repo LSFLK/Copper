@@ -8,12 +8,29 @@ spec:
   selector:
     app: webmail
   ports:
-    - protocol: "TCP"
-      port: 80
-      #targetPort: 80
-      targetPort: http
+    #- protocol: "TCP"
+    #  port: 443
+    #- protocol: TCP
+    #  port: 80
+    #  targetPort: 80
+    #  name: http
+    - protocol: TCP
+      port: 443
+      targetPort: 443
+      name: https
+    - protocol: TCP
+      port: 433
+      targetPort: 433
+      name: http
+    #- protocol: TCP
+    #  port: 587
+    #  targetPort: 587
+    #  name: submission
+    #  port: 433
+    #  targetPort: 433
+      #targetPort: http
       #clusterIP: None    
-      name: webmail
+      #name: webmail
       #nodePort: 30080
   #type: NodePort
 ---
@@ -36,17 +53,26 @@ spec:
           image: webmail
           imagePullPolicy: Never
           ports:
-            - name: http
-              containerPort: 80
+            #- name: http
+              #containerPort: 80
+            - name: https
+              containerPort: 443
+            - name: httpse
+              containerPort: 433
+            #- name: submission
+            #  containerPort: 587
             - name: health
               containerPort: 81
           resources:      
            limits:
              cpu: "1"
-             memory: 2Gi
+             #memory: 2Gi
+             memory: 1Gi
+             #memory: 512Mi
            requests:
              cpu: 200m
              memory: 1Gi
+             #memory: 256Mi
           #dnsPolicy: ClusterFirst # errors with this version
           #restartPolicy: Never   # errors with this version
           #resources:
