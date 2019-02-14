@@ -60,7 +60,7 @@ ENV APACHE_RUN_GROUP www-data
 
 
 # Expose to letsencript key generation ACME test
-EXPOSE 80 
+#EXPOSE 80 
 # Expose for non secured access (without https) for testing perposes
 EXPOSE 89
 # primary https port
@@ -149,8 +149,10 @@ RUN certbot-auto \
 #RUN cp ./tls/privkey.pem /etc/ssl/private/copper.opensource.lk.privkey.pem
 
 # this for copper live server
-ADD ./config/copper.opensource.lk.conf /etc/apache2/sites-enabled/copper.opensource.lk.conf
+ADD ./config/copper.http.conf /etc/apache2/sites-enabled/copper.http.conf
 ADD ./config/copper.https.conf /etc/apache2/sites-enabled/copper.https.conf
+# coppies port configuration
+ADD ./config/ports.conf /etc/apache2/ports.conf
 
 # adding ports.conf file to the image
 ADD ./config/ports.conf  /etc/apache2/

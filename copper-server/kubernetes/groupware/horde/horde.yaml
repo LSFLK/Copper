@@ -1,27 +1,23 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: webmail
+  name: horde
   namespace: monitoring
 spec:
   type: LoadBalancer
   selector:
-    app: webmail
+    app: horde
   ports:
     #- protocol: "TCP"
     #  port: 443
-    #- protocol: TCP
-    #  port: 80
-    #  targetPort: 80
-    #  name: http
     - protocol: TCP
-      port: 443
-      targetPort: 443
-      name: https
-    - protocol: TCP
-      port: 433
-      targetPort: 433
+      port: 80
+      targetPort: 80
       name: http
+    #- protocol: TCP
+    #  port: 433
+    #  targetPort: 433
+    #  name: http
     #- protocol: TCP
     #  port: 587
     #  targetPort: 587
@@ -37,28 +33,24 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: webmail
+  name: horde
   namespace: monitoring
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: webmail
+        app: horde
         track: stable
     spec:
       containers:
-        - name: webmail
+        - name: horde
           #image: "udacity/example-auth:1.0.0"
-          image: webmail
+          image: horde
           imagePullPolicy: Never
           ports:
-            #- name: http
-              #containerPort: 80
-            - name: https
-              containerPort: 443
-            - name: httpse
-              containerPort: 433
+            - name: http
+              containerPort: 80
             #- name: submission
             #  containerPort: 587
             - name: health
@@ -67,11 +59,11 @@ spec:
            limits:
              cpu: "1"
              #memory: 2Gi
-             memory: 1Gi
+             #memory: 1Gi # once we remove memory limits it can grown untill host permits.
              #memory: 512Mi
            requests:
              cpu: 200m
-             memory: 1Gi
+             #memory: 1Gi # 1Gi is not enough for horde
              #memory: 256Mi
           #dnsPolicy: ClusterFirst # errors with this version
           #restartPolicy: Never   # errors with this version
