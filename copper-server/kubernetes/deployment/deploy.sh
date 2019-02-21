@@ -200,8 +200,8 @@ echoGreenBold 'mysql deployment completed...'
 #cd ..
 
 #Buld the kubernetes pod
-Kubectl create -f copperclient/webmail.yaml 2> /dev/null || true
-echoGreenBold 'Docker webclient service created...'
+#Kubectl create -f copperclient/webmail.yaml 2> /dev/null || true
+#echoGreenBold 'Docker webclient service created...'
 
 #Prometheus implementation
 # Creating a roll has the access for clusters and bind the cluster roll.
