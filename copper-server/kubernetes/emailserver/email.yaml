@@ -54,11 +54,13 @@ spec:
           #image: "udacity/example-auth:1.0.0"
           image: "emailserver"
           imagePullPolicy: Never
-          ports:
-            - name: tcp
-              containerPort: 25
-            - name: health
-              containerPort: 25
+          #ports:
+          #  - name: tcp
+          #    containerPort: 25
+          #  - name: submission
+          #    containerPort: 587
+          #  - name: health
+          #    containerPort: 25
           resources:
             limits:
               cpu: 0.5

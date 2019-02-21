@@ -4662,8 +4662,7 @@ NewThemeLink IncludeCss LoadingDescriptionEsc TemplatesLink LangLink IncludeBack
 			$iCode = 0;
 			$sContentType = '';
 
-			// @\set_time_limit(120);
-			@\set_time_limit(10);
+			@\set_time_limit(120);
 
 			$oHttp = \MailSo\Base\Http::SingletonInstance();
 			$bResult = $oHttp->SaveUrlToFile($sUrl, $pDest, $sTmp, $sContentType, $iCode, $this->Logger(), 60,

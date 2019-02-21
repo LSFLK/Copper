@@ -185,11 +185,19 @@ In copper Email solution we are using rainloop web client.So we have to implemen
   cd copperclient
   // Build the docker image
   docker build -t webmail .
+  // use bellow command to run it using docker  (Testing perposes only).
+  docker run --name webmail -d webmail
+
 
   // Buld the kubernetes pod
   Kubectl create -f copperclient/webmail.yaml
 
-  //
+  // Deleting the service
+   kubectl delete service webmail --namespace=monitoring
+  kubectl delete deployment webmail --namespace=monitoring
+
+   // login in to webmail client
+  kubectl exec webmail-6f46b7cfbb-l9d8w --namespace=monitoring --stdin --tty -c webmail /bin/sh
 
 ```
 Once you deploy the webmail client then you have to configure it for accessing the emailserver.

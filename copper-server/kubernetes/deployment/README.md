@@ -66,7 +66,9 @@ Please update emailserver/configs/.env file before the deployment.
 
      Then login to the web client and test your email service
 
-     URL :http://localhost
+     URL :https://localhost/
+
+     If you are accessing the email solution host machine from a remote machine you has to replace host machine ip for localhost.
 
      -Username : test
      -Password : coppermail@lsf

@@ -181,25 +181,37 @@ cd ..
 kubectl create -f emailserver/email.yaml 2> /dev/null || true
 echoGreenBold 'email service created...'
 #Building docker image
-cd copperclient
+
+# Create the persistent volume and persistent volume claim for database
+kubectl create -f persistent/mysql-pv.yaml  2> /dev/null || true
+echoGreenBold 'Persistent Volume created...'
+# Create mysql deployment
+kubectl create -f persistent/mysql-deployment.yaml  2> /dev/null || true
+echoGreenBold 'mysql deployment completed...'
+
+
 
 #Build the docker image
-docker build -t webmail . 2> /dev/null || true
-echoGreenBold 'Docker webmail image created...'
+#cd copperclient
+#docker build -t webmail . 2> /dev/null || true
+#echoGreenBold 'Docker webmail image created...'
 # wait 1 seconds 
-sleep 1s
-cd ..
+#sleep 1s
+#cd ..
 
 #Buld the kubernetes pod
-Kubectl create -f copperclient/webmail.yaml 2> /dev/null || true
-echoGreenBold 'Docker webclient service created...'
+#Kubectl create -f copperclient/webmail.yaml 2> /dev/null || true
+#echoGreenBold 'Docker webclient service created...'
+
 #Prometheus implementation
 # Creating a roll has the access for clusters and bind the cluster roll.
 kubectl create -f prometheus-alert/clusterRole.yaml 2> /dev/null || true
 echoGreenBold 'Role creation and Role binding...'
+
 # Create the config map to keep configuration data of prometheus
 kubectl create -f prometheus-alert/config-map.yaml -n monitoring 2> /dev/null || true
 echoGreenBold 'Prometheus configuration created...'
+
 # Deploy prometheus pods 
 kubectl create  -f prometheus-alert/prometheus-deployment.yaml --namespace=monitoring 2> /dev/null || true
 
@@ -218,6 +230,12 @@ kubectl create -f prometheus-alert/Deployment.yaml 2> /dev/null || true
 kubectl create -f prometheus-alert/Service.yaml 2> /dev/null || true
 echoGreenBold 'Alert Manager created...'
 
+# horde deployment
+cd ./groupware/horde
+docker build -t horde . 2> /dev/null || true
+cd ..
+cd ..
+kubectl create -f groupware/horde/horde.yaml 2> /dev/null || true
 
 # wait 1 seconds 
 sleep 1s

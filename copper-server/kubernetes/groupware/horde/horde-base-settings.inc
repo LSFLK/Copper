@@ -1,0 +1,9 @@
+$conf['sql']['username'] = 'root';
+$conf['sql']['password'] = 'password';
+$conf['sql']['hostspec'] =  'mysql';
+$conf['sql']['port'] = '3306';
+$conf['sql']['protocol'] = 'TCP';
+$conf['sql']['database'] = 'horde';
+$conf['sql']['charset'] = 'utf-8';
+$conf['sql']['ssl'] = false;
+$conf['sql']['phptype'] = 'mysqli'
