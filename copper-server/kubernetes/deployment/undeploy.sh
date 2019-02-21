@@ -115,10 +115,10 @@ kubectl delete deployment email --namespace=monitoring 2> /dev/null || true
 echoRedBold 'Email service deleted...'
 
 # If you want to delete webmail service use following commands.
-kubectl delete service webmail --namespace=monitoring 2> /dev/null || true
-kubectl delete deployment webmail --namespace=monitoring 2> /dev/null || true
-docker rmi webmail 2> /dev/null || true
-echoRedBold 'Webmail service deleted...'
+#kubectl delete service webmail --namespace=monitoring 2> /dev/null || true
+#kubectl delete deployment webmail --namespace=monitoring 2> /dev/null || true
+#docker rmi webmail 2> /dev/null || true
+#echoRedBold 'Webmail service deleted...'
 
 
 #deleting services

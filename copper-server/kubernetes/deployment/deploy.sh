@@ -189,14 +189,15 @@ echoGreenBold 'Persistent Volume created...'
 kubectl create -f persistent/mysql-deployment.yaml  2> /dev/null || true
 echoGreenBold 'mysql deployment completed...'
 
-cd copperclient
+
 
 #Build the docker image
-docker build -t webmail . 2> /dev/null || true
-echoGreenBold 'Docker webmail image created...'
+#cd copperclient
+#docker build -t webmail . 2> /dev/null || true
+#echoGreenBold 'Docker webmail image created...'
 # wait 1 seconds 
-sleep 1s
-cd ..
+#sleep 1s
+#cd ..
 
 #Buld the kubernetes pod
 Kubectl create -f copperclient/webmail.yaml 2> /dev/null || true

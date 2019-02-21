@@ -57,7 +57,8 @@ spec:
               containerPort: 81
           resources:      
            limits:
-             cpu: "2"
+             cpu: 800m
+             #cpu: "2"
              #memory: 2Gi
              #memory: 1Gi # once we remove memory limits it can grown untill host permits.
              #memory: 512Mi
