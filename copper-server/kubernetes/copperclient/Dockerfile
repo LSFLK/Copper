@@ -11,7 +11,21 @@ ENV DOMAIN=${DOMAIN}
 
 # Install basics
 
-RUN apt-get update
+#RUN apt-get update
+RUN apt-get update --fix-missing && apt-get -y purge exim4*
+RUN apt-get -y upgrade
+RUN apt-get -y install apt-utils
+# installing netstat command
+RUN apt-get -y install net-tools
+# installing ping command
+RUN apt-get install -y iputils-ping
+# install mail until for testing functions
+RUN apt-get -y install mailutils
+# installing lsof command
+RUN apt-get -y install lsof
+RUN apt-get -y install telnet
+RUN apt-get -y install nano
+RUN apt-get -y install letsencrypt openssl
 
 RUN apt-get install -y software-properties-common && \
 

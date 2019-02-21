@@ -26,6 +26,24 @@ export DB_DRIVER=${DB_DRIVER}
 export DB_DRIVER=${DB_DRIVER}
 export DB_DRIVER=${DB_DRIVER}
 
+
+# root account
+export MYSQL_ENV_MYSQL_ROOT_USERNAME=${MYSQL_ENV_MYSQL_ROOT_USERNAME}
+export MYSQL_ENV_MYSQL_ROOT_PASSWORD=${MYSQL_ENV_MYSQL_ROOT_PASSWORD}
+
+export DB_NAME=${DB_NAME}
+export DB_USER=${DB_USER}
+export DB_PASS=${DB_PASS}
+#ENV DB_PROTOCOL unix
+#ENV DB_PROTOCOL tcp
+export DB_PROTOCOL=${DB_PROTOCOL}
+export DB_HOST=${DB_HOST}
+export MYSQL_PORT_3306_TCP_ADDR=${MYSQL_PORT_3306_TCP_ADDR}
+export MYSQL_PORT_3306_TCP_PORT=${MYSQL_PORT_3306_TCP_PORT}
+export DB_PORT=${DB_PORT}
+export DB_DRIVER=${DB_DRIVER}
+export HORDE_TEST_DISABLE=${HORDE_TEST_DISABLE}
+
 #if [ ! -f "/etc/horde/horde/conf.php" ]; then
 #    cp -rp /etc/.horde/* /etc/horde/
 #    cp /etc/horde/horde/conf.php.dist /etc/horde/horde/conf.php
@@ -62,7 +80,8 @@ sed -i "s/^\(.*sql.*database.*=\)\(.*\);/\1 '$DB_NAME';/g" /etc/horde/horde/conf
 sed -i "s/^\(.*sql.*phptype.*=\)\(.*\);/\1 '$DB_DRIVER';/g" /etc/horde/horde/conf.php
 
 
-# this is where horde_db_migrate fiel is placed
+# this is where horde_db_migrate files are placed
+#cd /usr/sbin
 cd /usr/sbin
 
 
@@ -97,7 +116,7 @@ fi
 #sed -i "s/^\(.*use_ssl.*=\)\(.*\);/\1 0;/g" /etc/horde/horde/conf.php
 #sed -i "s/^\(.*testdisable.*=\)\(.*\);/\1 $HORDE_TEST_DISABLE;/g" /etc/horde/horde/conf.php
 
-cd /usr/sbin
-horde-db-migrate
+#cd /usr/bin
+#horde-db-migrate
 
 service apache2 start
