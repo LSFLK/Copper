@@ -1,6 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: monitoring
   labels:
     app: phpldapadmin
   name: phpldapadmin-service
@@ -8,14 +9,14 @@ spec:
   type: LoadBalancer
   ports:
     - protocol: TCP
-      port: 443
+      port: 4433
       targetPort: 443
       name: https
       #nodePort: 30443
-    - protocol: TCP
-      port: 8080
-      targetPort: 80
-      name: http
+    #- protocol: TCP
+    #  port: 8080
+    #  targetPort: 80
+    #  name: http
       #nodePort: 30180
   #ports:
     #- port: 443
@@ -32,6 +33,7 @@ apiVersion: v1
 kind: ReplicationController
 metadata:
   name: phpldapadmin-controller
+  namespace: monitoring
   labels:
     app: phpldapadmin
 spec:
@@ -57,15 +59,16 @@ spec:
           env:
             - name: PHPLDAPADMIN_LDAP_HOSTS
               #value: "#PYTHON2BASH:[{'ldap.example.org': [{'server': [{'tls': 'true'}]}]}]"
-              #value: "#PYTHON2BASH:[{'copper-ldap': [{'server': [{'tls': 'false'}]}]}]"
-              value: "10.101.201.0"
+              #value: "#PYTHON2BASH:[{'10.102.209.171': [{'server': [{'tls': 'true'}]}]}]"
+              #value: "10.103.154.52"
+              value: "ldap-service"
             - name: PHPLDAPADMIN_SERVER_ADMIN
               value: "webmaster@example.org"
             - name: PHPLDAPADMIN_SERVER_PATH
               value: "/phpldapadmin"
             - name: PHPLDAPADMIN_HTTPS
-              #value: "true"
-              value: "false"
+              value: "true"
+              #value: "false"
             - name: PHPLDAPADMIN_HTTPS_CRT_FILENAME
               value: "cert.crt"
             - name: PHPLDAPADMIN_HTTPS_KEY_FILENAME
@@ -74,9 +77,10 @@ spec:
               value: "ca.crt"
             - name: PHPLDAPADMIN_LDAP_CLIENT_TLS
               value: "true"
-            #   value: "false"
+              #value: "false"
             - name: PHPLDAPADMIN_LDAP_CLIENT_TLS_REQCERT
-              value: "demand"
+              #value: "demand"
+              value: "try"
             - name: PHPLDAPADMIN_LDAP_CLIENT_TLS_CRT_FILENAME
               value: "cert.crt"
             - name: PHPLDAPADMIN_LDAP_CLIENT_TLS_KEY_FILENAME

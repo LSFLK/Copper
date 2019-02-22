@@ -22,11 +22,12 @@ spec:
     #  port: 587
     #  targetPort: 587
     #  name: submission
-    #  port: 433
-    #  targetPort: 433
+    #- protocol: TCP
+    #  port: 143
+    #  targetPort: 143
       #targetPort: http
       #clusterIP: None    
-      #name: webmail
+    #  name: imap
       #nodePort: 30080
   #type: NodePort
 ---
@@ -63,7 +64,7 @@ spec:
              #memory: 1Gi # once we remove memory limits it can grown untill host permits.
              #memory: 512Mi
            requests:
-             cpu: 400m
+             cpu: 700m
              #memory: 1Gi # 1Gi is not enough for horde
              #memory: 256Mi
           #dnsPolicy: ClusterFirst # errors with this version
@@ -87,3 +88,4 @@ spec:
           #    scheme: HTTP
           #  initialDelaySeconds: 5
           #  timeoutSeconds: 1
+          
