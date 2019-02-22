@@ -96,9 +96,9 @@ RUN mkdir -p /etc/service/apache2
 ADD ./run.sh /etc/service/apache2/run
 
 
-# Horde database migration
-#RUN /usr/bin/horde-db-migrate
-
+# Horde database migration script running
+#RUN cd /usr/sbin
+#RUN horde-db-migrate
 
 RUN chmod +x /etc/service/apache2/run
 

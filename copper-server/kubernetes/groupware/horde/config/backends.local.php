@@ -356,7 +356,7 @@
 // IMAP server
 $servers['imap'] = array(
     // ENABLED by default; will connect to IMAP port on local server
-    'disabled' => false,
+    'disabled' => true,
     'name' => 'copper.opensource.lk',
     'hostspec' => 'email',
     'hordeauth' => false,
@@ -387,9 +387,9 @@ $servers['pop'] = array(
 // options.
 $servers['advanced'] = array(
     // Disabled by default
-    'disabled' => true,
+    'disabled' => false,
     'name' => 'Advanced IMAP Server',
-    'hostspec' => 'localhost',
+    'hostspec' => 'email',
     'hordeauth' => false,
     'protocol' => 'imap',
     'port' => 143,

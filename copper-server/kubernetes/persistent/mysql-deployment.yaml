@@ -39,7 +39,7 @@ spec:
         env:
           # Use secret in real usage
         - name: MYSQL_ROOT_PASSWORD
-          value: password
+          value: c0pperDB
         ports:
         - containerPort: 3306
         #- containerPort: 36
@@ -49,10 +49,10 @@ spec:
           mountPath: /var/lib/mysql
         resources:      
            limits:
-             cpu: "1"
+             cpu: 500m
              #memory: 3Gi
            requests:
-             cpu: 200m
+             cpu: 400m
              #memory: 2Gi
       volumes:
       - name: mysql-persistent-storage
