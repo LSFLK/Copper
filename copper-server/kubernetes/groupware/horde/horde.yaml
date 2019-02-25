@@ -58,13 +58,13 @@ spec:
               containerPort: 81
           resources:      
            limits:
-             cpu: 800m
+             cpu: 500m
              #cpu: "2"
              #memory: 2Gi
              #memory: 1Gi # once we remove memory limits it can grown untill host permits.
              #memory: 512Mi
            requests:
-             cpu: 700m
+             cpu: 400m
              #memory: 1Gi # 1Gi is not enough for horde
              #memory: 256Mi
           #dnsPolicy: ClusterFirst # errors with this version
