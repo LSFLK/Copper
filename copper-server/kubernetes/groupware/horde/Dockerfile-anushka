@@ -1,0 +1,55 @@
+FROM ubuntu:18.04
+MAINTAINER Lanka Software Foundation <support@opensource.lk>
+ARG DEBIAN_FRONTEND=noninteractive
+LABEL KEY=LSF-COPPER-HORDE
+
+#ENV HOME /root
+
+# root account
+# ENV MYSQL_ENV_MYSQL_ROOT_USERNAME horde
+# ENV MYSQL_ENV_MYSQL_ROOT_PASSWORD horde
+
+# ENV DB_NAME horde
+# ENV DB_USER horde
+# ENV DB_PASS horde
+# #ENV DB_PROTOCOL unix
+# #ENV DB_PROTOCOL tcp
+# ENV DB_PROTOCOL TCP
+# ENV DB_HOST 172.19.0.19
+# ENV MYSQL_PORT_3306_TCP_ADDR 172.19.0.19
+# ENV MYSQL_PORT_3306_TCP_PORT 3306
+# ENV DB_PORT 3306
+# ENV DB_DRIVER mysqli
+# ENV HORDE_TEST_DISABLE true
+
+EXPOSE 80
+
+RUN apt-get update
+RUN apt-get -y upgrade
+RUN apt-get -y install nano
+# RUN apt-get -y install apache2 libapache2-mod-php mysql-client gnupg2 openssl php-pear
+# RUN apt-get -y install apache2
+RUN apt-get -y install apache2 libapache2-mod-php mysql-client gnupg2 openssl php-pear
+RUN apt-get -y install php-intl php-ldap php-ssh2 php-curl php-http php-xmlrpc php-geoip php-memcache php-memcached php-tidy
+RUN apt-get -y install php-common libapache2-mod-php php-cli
+RUN apt-get -y install php-mysql
+RUN apt-get -y install mysql-server
+RUN pear upgrade PEAR
+RUN pear channel-update pear.php.net
+RUN pear channel-discover pear.horde.org
+RUN pear install horde/horde_role
+
+##################################################################################################################
+
+#### Run below commands inside the horde container ######
+
+##################################################################################################################
+# RUN service mysql stop
+# RUN usermod -d /var/lib/mysql/ mysql
+# RUN service mysql start
+
+# RUN pear run-scripts horde/horde_role
+# ###    this is a user input ----->  /var/www/html/horde
+# RUN pear install -a -B horde/horde
+# RUN cp /var/www/html/horde/config/conf.php.dist /var/www/html/horde/config/conf.php
+# RUN service apache2 restart

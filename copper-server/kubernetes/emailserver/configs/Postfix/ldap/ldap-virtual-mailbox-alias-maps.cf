@@ -1,0 +1,28 @@
+#server_host = ldapi://%2fvar%2frun%2fopenldap%2fldapi/
+#server_host = ldap://172.19.0.21:3268/dc=coppermail,dc=dyndns,dc=org
+server_host = ldap://%LDAP_HOST_IP%
+# server_host = ldap://172.19.0.22
+# server_host = ldap://127.0.0.1
+
+# server_host = ldap://localhost
+#
+start_tls = no
+#start_tls = yes
+version = 3
+tls_ca_cert_file = /etc/ldap/tls/CA.pem
+tls_require_cert = yes
+
+bind = yes
+bind_dn = cn=%CN%,dc=%DC1%,dc=%DC2%,dc=%DC3%
+# bind_dn = uid=%CN%,dc=%DC1%,dc=%DC2%,dc=%DC3%
+bind_pw = %DNPASS%
+
+#search_base = ou=Mail,dc=example,dc=com
+scope = sub
+#-----------------
+search_base = ou=%OU%,dc=%DC1%,dc=%DC2%,dc=%DC3%
+version = 3
+#bind = no
+#query_filter = (&(objectclass=inetLocalMailRecipient)(mailLocalAddress=%s))
+query_filter = (&(objectclass=inetOrgPerson)(mail=%s))
+result_attribute = mail

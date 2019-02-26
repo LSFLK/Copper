@@ -1,0 +1,69 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: "email"
+  namespace: monitoring
+spec:
+  type: LoadBalancer
+  selector:
+    app: email
+  ports:
+    #- protocol: "TCP"
+    #  port: 25
+    #  targetPort: 25
+    - protocol: TCP
+      port: 25
+      targetPort: 25
+      name: smtp
+      #nodePort: 30025
+    - protocol: TCP
+      port: 143
+      targetPort: 143
+      name: imap
+      #nodePort: 30143
+    - protocol: TCP
+      port: 587
+      targetPort: 587
+      name: submission
+    - protocol: TCP
+      port: 4190
+      targetPort: 4190
+      name: sieve
+    - protocol: TCP
+      port: 11334
+      targetPort: 11334
+      name: rspamd
+      #nodePort: 31334
+  #type: NodePort
+---        
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: email
+  namespace: monitoring
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: email
+        track: stable
+    spec:
+      containers:
+        - name: email
+          #image: "udacity/example-auth:1.0.0"
+          image: "emailserver"
+          imagePullPolicy: Never
+          #ports:
+          #  - name: tcp
+          #    containerPort: 25
+          #  - name: submission
+          #    containerPort: 587
+          #  - name: health
+          #    containerPort: 25
+          resources:
+            limits:
+              cpu: 0.5
+              memory: "500Mi"
+   
+              

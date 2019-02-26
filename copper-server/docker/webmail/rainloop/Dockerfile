@@ -59,7 +59,7 @@ ENV APACHE_RUN_GROUP www-data
 
 # Expose apache.
 
-EXPOSE 80
+#EXPOSE 80
 
 #EXPOSE 8080
 
@@ -72,29 +72,29 @@ EXPOSE 80
 #ADD apache-config.conf /etc/apache2/sites-enabled/000-default.conf
 
 # Copy site into place.
-ADD ./webmail/rainloop/app/ /var/www/site/app
-#RUN chmod -R 777 /var/www/html/data
+#ADD ./webmail/rainloop/app/ /var/www/site/app
+ #RUN chmod -R 777 /var/www/html/data
 
-#RUN chown -R www-data:www-data /var/www/site/app .
+ #RUN chown -R www-data:www-data /var/www/site/app .
 
-# Update the default apache site with the config we created.
-#ADD ./webmail/rainloop/config/apache-config.conf /etc/apache2/sites-enabled/example.com.conf
+ # Update the default apache site with the config we created.
+ #ADD ./webmail/rainloop/config/apache-config.conf /etc/apache2/sites-enabled/example.com.conf
 
 # this for copper live server
-ADD ./webmail/rainloop/config/copper.opensource.lk.conf /etc/apache2/sites-enabled/copper.opensource.lk.conf
+#ADD ./webmail/rainloop/config/copper.opensource.lk.conf /etc/apache2/sites-enabled/copper.opensource.lk.conf
 
 
 
 # Lets encript 
 
 # First, add the repository:
-RUN add-apt-repository -y ppa:certbot/certbot
+#RUN add-apt-repository -y ppa:certbot/certbot
 
 #Install Certbot's Apache package with apt:
-RUN apt install -y python-certbot-apache
+#RUN apt install -y python-certbot-apache
 
 # reload the configuration
-CMD systemctl reload apache2
+#CMD systemctl reload apache2
 
 #certbot --apache -d example.com -d www.example.com
 #CMD certbot --apache -d copper.opensource.lk -d copper.opensource.lk

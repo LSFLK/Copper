@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: monitoring
+  name: mysql
+#spec:
+#  type: LoadBalancer
+#  ports:
+#    - protocol: TCP
+#      port: 3306
+#      targetPort: 3306
+#      name: mysql
+spec:
+  ports:
+  - port: 3306
+  selector:
+    app: mysql
+  clusterIP: None
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  namespace: monitoring
+  name: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - image: mysql:5.6
+        name: mysql
+        env:
+          # Use secret in real usage
+        - name: MYSQL_ROOT_PASSWORD
+          value: c0pperDB
+        ports:
+        - containerPort: 3306
+        #- containerPort: 36
+          name: mysql
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+        resources:      
+           limits:
+             cpu: 500m
+             #memory: 3Gi
+           requests:
+             cpu: 400m
+             #memory: 2Gi
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mysql-pv-claim

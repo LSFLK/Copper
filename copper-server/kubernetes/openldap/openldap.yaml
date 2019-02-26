@@ -1,0 +1,131 @@
+apiVersion: v1
+kind: List
+items:
+  - apiVersion: v1
+    kind: Service  
+    metadata:
+      namespace: monitoring
+      labels:
+        app: ldap
+      name: ldap-service
+    spec:
+      type: LoadBalancer
+      #loadBalancerIP: 10.10.10.10
+      #loadBalancerIP: "YOUR.IP.ADDRESS.HERE"
+      #type: ExternalName
+      #externalName: copper.ldap.org
+      #externalIPs:
+      #- 10.1.1.11
+      ports:
+        - protocol: TCP
+          port: 389
+          targetPort: 389
+          name: ldap
+          #nodePort: 30025
+        #- protocol: TCP
+        #  port: 143
+        #  targetPort: 143
+        #  name: imap
+        #  nodePort: 30143
+      #ports:
+        #- port: 389
+      selector:
+        app: ldap
+  #  ---
+  - apiVersion: extensions/v1beta1
+    kind: Deployment
+    metadata:
+      name: ldap
+      namespace: monitoring
+      labels:
+        app: ldap
+    spec:
+      replicas: 1
+      template:
+        metadata:
+          labels:
+            app: ldap
+        spec:
+          hostname: copper-ldap
+          containers:
+            - name: ldap
+              image: osixia/openldap:1.2.2
+              volumeMounts:
+                - name: ldap-data
+                  mountPath: /var/lib/ldap
+                - name: ldap-config
+                  mountPath: /etc/ldap/slapd.d
+                - name: ldap-certs
+                  mountPath: /container/service/slapd/assets/certs
+              ports:
+                - containerPort: 389
+                  name: openldap
+              env:
+                - name: LDAP_LOG_LEVEL
+                  #value: "256"
+                  value: "-1"
+                - name: LDAP_ORGANISATION
+                  value: "copper.opensource.lk"
+                  #value: "Example Inc."
+                - name: LDAP_DOMAIN
+                  value: "copper.opensource.lk"
+                  #value: "example.org"
+                - name: LDAP_ADMIN_PASSWORD
+                  value: "admin"
+                - name: LDAP_CONFIG_PASSWORD
+                  value: "config"
+                - name: LDAP_READONLY_USER
+                  value: "true"
+                - name: LDAP_READONLY_USER_USERNAME
+                  value: "readonly"
+                - name: LDAP_READONLY_USER_PASSWORD
+                  value: "readonly"
+                - name: LDAP_RFC2307BIS_SCHEMA
+                  value: "false"
+                - name: LDAP_BACKEND
+                  value: "mdb"
+                - name: LDAP_TLS
+                  value: "true"
+                  #value: "false"
+                - name: LDAP_TLS_CRT_FILENAME
+                  #value: "ldap.crt"
+                  value: "cert.pem"
+                - name: LDAP_TLS_KEY_FILENAME
+                  #value: "ldap.key"
+                  value: "privkey.pem"
+                - name: LDAP_TLS_CA_CRT_FILENAME 
+                  #value: "ca.crt"
+                  value: "fullchain.pem"
+                - name: LDAP_TLS_ENFORCE
+                  value: "false"
+                - name: LDAP_TLS_CIPHER_SUITE
+                  value: "SECURE256:+SECURE128:-VERS-TLS-ALL:+VERS-TLS1.2:-RSA:-DHE-DSS:-CAMELLIA-128-CBC:-CAMELLIA-256-CBC"
+                - name: LDAP_TLS_VERIFY_CLIENT
+                  #value: "demand"
+                  value: "try"
+                - name: LDAP_REPLICATION
+                  value: "false"
+                - name: LDAP_REPLICATION_CONFIG_SYNCPROV
+                  value: "binddn=\"cn=admin,cn=config\" bindmethod=simple credentials=$LDAP_CONFIG_PASSWORD searchbase=\"cn=config\" type=refreshAndPersist retry=\"60 +\" timeout=1 starttls=critical"
+                - name: LDAP_REPLICATION_DB_SYNCPROV
+                  value: "binddn=\"cn=admin,$LDAP_BASE_DN\" bindmethod=simple credentials=$LDAP_ADMIN_PASSWORD searchbase=\"$LDAP_BASE_DN\" type=refreshAndPersist interval=00:00:00:10 retry=\"60 +\" timeout=1 starttls=critical"
+                - name: LDAP_REPLICATION_HOSTS
+                  value: "#PYTHON2BASH:['ldap://ldap-one-service', 'ldap://ldap-two-service']"
+                - name: KEEP_EXISTING_CONFIG
+                  value: "false"
+                - name: LDAP_REMOVE_CONFIG_AFTER_SETUP
+                  value: "true"
+                - name: LDAP_SSL_HELPER_PREFIX
+                  value: "ldap"
+          volumes:
+            - name: ldap-data
+              hostPath:
+                path: "/data/ldap/db"
+            - name: ldap-config
+              hostPath:
+                path: "/data/ldap/config"
+            - name: ldap-certs
+              hostPath:
+                #path: "/data/ldap/certs"
+                #path: "/Users/wso2/Documents/copper/copper/copper-server/kubernetes/tls"
+                path: "/tls"
