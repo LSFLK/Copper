@@ -394,15 +394,15 @@ $servers['advanced'] = array(
     'protocol' => 'imap',
     'port' => 143,
     'secure' => 'tls',
-    'maildomain' => '',
+    'maildomain' => 'copper.opensource.lk',
     'smtp' => array(
     //    'auth' => true,
     //    'debug' => false,
     //    'horde_auth' => false,
-    //    'host' => 'smtp.example.com',
-    //    'lmtp' => false,
+        'host' => 'email',
+    //    'lmtp' => false, // if you use port 25
     //    'localhost' => 'localhost',
-    //    'password' => null,
+        'password' => null,
     //    /* Mail from a MUA SHOULD be sent via the mail submission port (587)
     //     * rather than the MTA port (25). (See RFC 6409/STD 72).
     //     * Note that mail submission REQUIRES some method of authentication
@@ -410,7 +410,8 @@ $servers['advanced'] = array(
     //     * mail submission agent to automatically authenticate this host
     //     * based on the network location). */
     //    'port' => 587,
-    //    'username' => null
+        'port' => 587,
+        'username' => null
     ),
     'spam' => array(
         // 'innocent' => array(

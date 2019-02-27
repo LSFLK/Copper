@@ -63,15 +63,20 @@ spec:
             #  containerPort: 587
             - name: health
               containerPort: 81
-          resources:      
-           limits:
-             cpu: "1"
+          resources:
+            limits:
+              #cpu: 0.5
+              #memory: "500Mi"
+              cpu: 400m # ~4/10th of a core
+              memory: "500Mi" # 500 Mebibytes    
+          # limits:
+          #   cpu: "1"
              #memory: 2Gi
-             memory: 1Gi
+          #   memory: 1Gi
              #memory: 512Mi
-           requests:
-             cpu: 200m
-             memory: 1Gi
+          # requests:
+          #   cpu: 200m
+          #   memory: 1Gi
              #memory: 256Mi
           #dnsPolicy: ClusterFirst # errors with this version
           #restartPolicy: Never   # errors with this version

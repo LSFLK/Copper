@@ -81,7 +81,8 @@ RUN cp /etc/horde/imp/backends.php /etc/horde/imp/backends.local.php
 # coppying conf.php for horde active directory
 
     #ADD ./config/conf.php /etc/horde/horde/conf.php
-    ADD ./config/backends.local.php /etc/horde/imp/backends.local.php
+    ADD ./config/backends.local.php /etc/horde/imp/backends.php
+    ADD ./config/backends.local.php /usr/share/horde/imp/config/backends.php
 
 #ADD ./webmail/horde-webmail/config/conf.php /usr/share/horde/config/conf.php
 #RUN chown www-data:www-data /usr/share/horde/config/conf.php

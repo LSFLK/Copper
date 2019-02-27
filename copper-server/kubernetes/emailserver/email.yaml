@@ -54,16 +54,23 @@ spec:
           #image: "udacity/example-auth:1.0.0"
           image: "emailserver"
           imagePullPolicy: Never
-          #ports:
-          #  - name: tcp
-          #    containerPort: 25
-          #  - name: submission
-          #    containerPort: 587
-          #  - name: health
-          #    containerPort: 25
+          ports:
+            - name: tcp
+              containerPort: 25
+            - name: health
+              containerPort: 25
+          #lifecycle:
+          #  postStart:
+          #    exec:
+          #      command: ["/bin/sh"]
+          #        args: ["-c", "service postfix start"] 
           resources:
             limits:
-              cpu: 0.5
-              memory: "500Mi"
+              #cpu: 0.5
+              #memory: "500Mi"
+              cpu: 400m # ~4/10th of a core
+              memory: "500Mi" # 500 Mebibytes 
+      #command: ["/bin/sh"]
+      #  args: ["-c", "service postfix start"]  
    
               
