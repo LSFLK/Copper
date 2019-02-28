@@ -400,9 +400,9 @@ $servers['advanced'] = array(
     //    'debug' => false,
     //    'horde_auth' => false,
         'host' => 'email',
-    //    'lmtp' => false, // if you use port 25
+        'lmtp' => false, // if you use port 25
     //    'localhost' => 'localhost',
-        'password' => null,
+    //    'password' => null,
     //    /* Mail from a MUA SHOULD be sent via the mail submission port (587)
     //     * rather than the MTA port (25). (See RFC 6409/STD 72).
     //     * Note that mail submission REQUIRES some method of authentication
@@ -410,8 +410,8 @@ $servers['advanced'] = array(
     //     * mail submission agent to automatically authenticate this host
     //     * based on the network location). */
     //    'port' => 587,
-        'port' => 587,
-        'username' => null
+        'port' => 25,
+    //    'username' => null
     ),
     'spam' => array(
         // 'innocent' => array(

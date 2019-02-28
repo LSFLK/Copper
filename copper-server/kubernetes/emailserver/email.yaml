@@ -55,10 +55,18 @@ spec:
           image: "emailserver"
           imagePullPolicy: Never
           ports:
-            - name: tcp
+            - name: submission
+              containerPort: 587
+            - name: imap
+              containerPort: 143
+            - name: smtp
               containerPort: 25
+            - name: seive
+              containerPort: 4190
+            - name: rspamd
+              containerPort: 11334
             - name: health
-              containerPort: 25
+              containerPort: 26
           #lifecycle:
           #  postStart:
           #    exec:
