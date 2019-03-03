@@ -60,8 +60,9 @@ smtpd_sasl_auth_enable = yes
 # send mail to valid mailboxes on the server, and the sender's domain must
 # actually exist.
 smtpd_client_restrictions =
-  permit_mynetworks,
-  permit_sasl_authenticated,
+  #permit_mynetworks,
+  #permit_sasl_authenticated,
+  # ---------- Above line permited early
   #reject_unknown_reverse_client_hostname,
   # you might want to consider:
   #  reject_unknown_client_hostname,
@@ -71,8 +72,9 @@ smtpd_client_restrictions =
   #reject_unauth_pipelining
   #reject_unauth_destination
 smtpd_helo_restrictions =
-  permit_mynetworks,
-  permit_sasl_authenticated,
+  #permit_mynetworks,
+  #permit_sasl_authenticated,
+  # ------------ Above line permited early
   #reject_invalid_helo_hostname,
   #reject_non_fqdn_helo_hostname,
   # you might want to consider:
@@ -180,6 +182,11 @@ inet_interfaces = all
 
 # Mail directory---------------------------------------------------------------------------------------
 # Handing off local delivery to Dovecot's LMTP, and telling it where to store mail
+#virtual_transport = dovecot
+#master.cf modification you mention is required only for non lmtp postfix's configuration
+
+#virtual_transport = lmtp:unix:...
+#The two remaining postfix configurations merely use slightly different LMTP socket name. They require modification of dovecot's configuration . 
 # deliver mail for virtual users to Dovecot's LMTP socket
 virtual_transport = lmtp:unix:private/dovecot-lmtp
 
