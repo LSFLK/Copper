@@ -52,8 +52,8 @@ spec:
       containers:
         - name: email
           #image: "udacity/example-auth:1.0.0"
-          image: "emailserver"
-          imagePullPolicy: Never
+          image: lsflk/copper:emailserver
+          imagePullPolicy: Always
           ports:
             - name: tcp
               containerPort: 25
