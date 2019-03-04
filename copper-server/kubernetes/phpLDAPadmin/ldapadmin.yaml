@@ -12,22 +12,8 @@ spec:
       port: 4433
       targetPort: 443
       name: https
-      #nodePort: 30443
-    #- protocol: TCP
-    #  port: 8080
-    #  targetPort: 80
-    #  name: http
-      #nodePort: 30180
-  #ports:
-    #- port: 443
-    #  nodePort: 30443
-    #  name : securedweb
-    #- port: 80
-    #  nodePort: 30180
-    #  name : normalweb
   selector:
     app: phpldapadmin
-  #type: NodePort
 ---
 apiVersion: v1
 kind: ReplicationController
