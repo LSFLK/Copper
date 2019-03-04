@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: V1
 kind: Service
 metadata:
   namespace: monitoring
