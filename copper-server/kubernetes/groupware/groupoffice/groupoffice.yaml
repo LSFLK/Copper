@@ -46,9 +46,9 @@ spec:
     spec:
       containers:
         - name: groupoffice
-          image: "intermesh/groupoffice"
+          image: lsflk/copper:groupoffice
           #image: groupoffice
-          #imagePullPolicy: Never
+          imagePullPolicy: Always
           env:
             - name: MYSQL_USER
               value: "root"

@@ -143,9 +143,14 @@ kubectl delete deployment prometheus-deployment --namespace=monitoring 2> /dev/n
 echoRedBold 'Prometheus deployment deleted...'
 
 # deleting horde
-kubectl delete service horde -n monitoring 2> /dev/null || true
-kubectl delete deployment horde -n monitoring 2> /dev/null || true
-docker rmi horde 2> /dev/null || true
+# kubectl delete service horde -n monitoring 2> /dev/null || true
+# kubectl delete deployment horde -n monitoring 2> /dev/null || true
+# docker rmi horde 2> /dev/null || true
+
+# deleting groupoffice
+kubectl delete service groupoffice -n monitoring 2> /dev/null || true
+kubectl delete deployment groupoffice -n monitoring 2> /dev/null || true
+# docker rmi groupoffice 2> /dev/null || true
 
 ## deleting namespace
 kubectl delete namespace monitoring  2> /dev/null || true
