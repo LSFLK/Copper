@@ -49,7 +49,7 @@ items:
           hostname: copper-ldap
           containers:
             - name: ldap
-              image: osixia/openldap:1.2.2
+              image: lsflk/copper:openldap
               volumeMounts:
                 - name: ldap-data
                   mountPath: /var/lib/ldap

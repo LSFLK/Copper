@@ -34,7 +34,7 @@ spec:
         app: mysql
     spec:
       containers:
-      - image: mysql:5.6
+      - image: lsflk/copper:mysql
         name: mysql
         env:
           # Use secret in real usage
