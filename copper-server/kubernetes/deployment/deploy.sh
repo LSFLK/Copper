@@ -231,11 +231,15 @@ kubectl create -f prometheus-alert/Service.yaml 2> /dev/null || true
 echoGreenBold 'Alert Manager created...'
 
 # horde deployment
-cd ./groupware/horde
-docker build -t horde . 2> /dev/null || true
-cd ..
-cd ..
-kubectl create -f groupware/horde/horde.yaml 2> /dev/null || true
+# cd ./groupware/horde
+# docker build -t horde . 2> /dev/null || true
+# cd ..
+# cd ..
+# kubectl create -f groupware/horde/horde.yaml 2> /dev/null || true
+
+#
+kubectl create -f groupware/groupoffice/groupoffice.yaml 2> /dev/null || true
+echoGreenBold 'Groupoffice created...'
 
 # wait 1 seconds 
 sleep 1s

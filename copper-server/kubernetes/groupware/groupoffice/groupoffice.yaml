@@ -46,9 +46,9 @@ spec:
     spec:
       containers:
         - name: groupoffice
-          image: "intermesh/groupoffice"
+          image: lsflk/copper:groupoffice
           #image: groupoffice
-          #imagePullPolicy: Never
+          imagePullPolicy: Always
           env:
             - name: MYSQL_USER
               value: "root"
@@ -61,43 +61,10 @@ spec:
           ports:
             - name: http
               containerPort: 80
-            #- name: submission
-            #  containerPort: 587
             - name: health
               containerPort: 81
-          #resources:      
-          # limits:
-          #   cpu: 800m
-             #cpu: "2"
-             #memory: 2Gi
-             #memory: 1Gi # once we remove memory limits it can grown untill host permits.
-             #memory: 512Mi
-          # requests:
-          #   cpu: 800m
-             #memory: 1Gi # 1Gi is not enough for horde
-             #memory: 256Mi
-          #dnsPolicy: ClusterFirst # errors with this version
-          #restartPolicy: Never   # errors with this version
           resources:
              limits:
                cpu: 500m # ~4/10th of a core
                memory: "700Mi" # 900 Mebibytes  
-          #  limits:
-          #    cpu: 0.9
-          #    memory: "5500Mi"
-          #livenessProbe:
-          #  httpGet:
-          #    path: /healthz
-          #    port: 81
-          #    scheme: HTTP
-          #  initialDelaySeconds: 5
-          #  periodSeconds: 15
-          #  timeoutSeconds: 5
-          #readinessProbe:
-          #  httpGet:
-          #    path: /readiness
-          #    port: 81
-          #    scheme: HTTP
-          #  initialDelaySeconds: 5
-          #  timeoutSeconds: 1
           
