@@ -222,6 +222,9 @@ echoGreenBold 'mysql deployment completed...'
 #Kubectl create -f copperclient/webmail.yaml 2> /dev/null || true
 #echoGreenBold 'Docker webclient service created...'
 
+<<<<<<< HEAD
+>>>>>>> c43d588217ef1dc5dfb0e9dd4517e4a953988fef
+=======
 >>>>>>> c43d588217ef1dc5dfb0e9dd4517e4a953988fef
 #Prometheus implementation
 # Creating a roll has the access for clusters and bind the cluster roll.
@@ -265,6 +268,7 @@ echoGreenBold 'Alert Manager created...'
 
 # horde deployment
 <<<<<<< HEAD
+<<<<<<< HEAD
 # cd ./groupware/horde
 # docker build -t horde . 2> /dev/null || true
 # cd ..
@@ -272,11 +276,16 @@ echoGreenBold 'Alert Manager created...'
 kubectl create -f horde/horde.yaml 2> /dev/null || true
 echoGreenBold 'Horde created...'
 =======
+=======
+>>>>>>> c43d588217ef1dc5dfb0e9dd4517e4a953988fef
 cd ./groupware/horde
 docker build -t horde . 2> /dev/null || true
 cd ..
 cd ..
 kubectl create -f groupware/horde/horde.yaml 2> /dev/null || true
+<<<<<<< HEAD
+>>>>>>> c43d588217ef1dc5dfb0e9dd4517e4a953988fef
+=======
 >>>>>>> c43d588217ef1dc5dfb0e9dd4517e4a953988fef
 
 # wait 1 seconds 
