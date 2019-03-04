@@ -10,7 +10,7 @@ items:
       name: ldap-service
     spec:
       type: LoadBalancer
-      loadBalancerIP: 10.10.10.10
+      #loadBalancerIP: 10.10.10.10
       #loadBalancerIP: "YOUR.IP.ADDRESS.HERE"
       #type: ExternalName
       #externalName: copper.ldap.org

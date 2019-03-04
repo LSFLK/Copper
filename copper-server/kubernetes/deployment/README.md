@@ -1,7 +1,7 @@
 
 #   Deplyment
-
-Please update emailserver/configs/.env file before the deployment.
+ Deployment Files are located in the Deployment folder
+ You can use deploy shell script to start server easily
 
 ## Prerequisite
     - Docker 
@@ -29,7 +29,6 @@ Please update emailserver/configs/.env file before the deployment.
     '''
     // view all pods and copy the pod name for emailserver
     kubectl get pods --namespace=monitoring
-    
     // login to emailserver. You have to raplace pod_name with email pod.
     kubectl exec <pod_name> --namespace=monitoring --stdin --tty -c email /bin/sh
   
@@ -66,7 +65,9 @@ Please update emailserver/configs/.env file before the deployment.
 
      Then login to the web client and test your email service
 
-     URL :http://localhost
+     URL :https://localhost/
+
+     If you are accessing the email solution host machine from a remote machine you has to replace host machine ip for localhost.
 
      -Username : test
      -Password : coppermail@lsf
