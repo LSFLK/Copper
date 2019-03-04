@@ -49,7 +49,7 @@ RUN pear install horde/horde_role
 ##### MYSQL
 #########################
 # RUN apt-get install mysql-server
-###### CAREFULL with this ####### RUN chown -R mysql:mysql /var/lib/mysql /var/run/mysqld && service mysql start && mvn -q verify site
+###### CAREFULL with this ####### RUN l && mvn -q verify site
 
 # Run dtabase migrate query in horde /usr/bin
 
