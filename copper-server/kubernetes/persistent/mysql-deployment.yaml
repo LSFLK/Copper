@@ -40,6 +40,8 @@ spec:
           # Use secret in real usage
         - name: MYSQL_ROOT_PASSWORD
           value: c0pperDB
+        - name: MYSQL_DATABASE
+          value: groupoffice
         ports:
         - containerPort: 3306
         #- containerPort: 36
@@ -59,3 +61,4 @@ spec:
       - name: mysql-persistent-storage
         persistentVolumeClaim:
           claimName: mysql-pv-claim
+
