@@ -11,7 +11,7 @@ before_script:
    - cd copper-server/kubernetes/deployment
 
 script:
-  - bash deploy.sh
+  - bash test_build.sh
 
 
 
