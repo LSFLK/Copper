@@ -80,8 +80,3 @@ spec:
         - name: ldap-client-certs
           hostPath:
             path: "/data/phpldapadmin/ldap-client-certs/"
-
-
-            #value: "#PYTHON2BASH:[{'ldap.example.org': [{'server': [{'tls': 'true'}]}]}]"
-              #value: "#PYTHON2BASH:[{'10.102.209.171': [{'server': [{'tls': 'true'}]}]}]"
-              #value: "10.103.154.52"
