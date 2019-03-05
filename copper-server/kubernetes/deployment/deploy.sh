@@ -170,12 +170,21 @@ echoGreenBold 'openldap service created...'
 kubectl create -f phpLDAPadmin/phpldapadmin.yaml 2> /dev/null || true
 echoGreenBold 'phpldapadmin service Created...'
 # creating emailserver docker image
+<<<<<<< HEAD
 # cd emailserver
 # docker build -t emailserver . 2> /dev/null || true
 # echoGreenBold 'Docker Email image Service Created...'
 # # wait 1 seconds 
 # sleep 3s
 # cd ..
+=======
+#cd emailserver
+#docker build -t emailserver . 2> /dev/null || true
+#echoGreenBold 'Docker Email image Service Created...'
+# wait 1 seconds 
+#sleep 3s
+#cd ..
+>>>>>>> a64f0928c9058289c203ba8f9b50af6f8749961a
 
 # Create the emailserver service from kubernetes using docker image we have created now.
 kubectl create -f emailserver/email.yaml 2> /dev/null || true
@@ -248,6 +257,11 @@ sleep 1s
 # https://stackoverflow.com/questions/51026174/running-a-command-on-all-kubernetes-pods-of-a-service
 
 echoGreenBold 'Finished'
+
+#sleep 5s
+
+#kubectl run -it --rm --image=mysql:5.6 --restart=Never mysql-client -n monitoring -- mysql -h mysql -pc0pperDB
+
 
      ;;
     *)
