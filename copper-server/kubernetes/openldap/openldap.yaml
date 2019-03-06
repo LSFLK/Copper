@@ -50,6 +50,7 @@ items:
           containers:
             - name: ldap
               image: lsflk/copper:openldap
+              #imagePullPolicy: Always
               volumeMounts:
                 - name: ldap-data
                   mountPath: /var/lib/ldap

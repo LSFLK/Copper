@@ -56,32 +56,66 @@ Unblock following ports
 1. Clone this Repository
 
 ```
-$ git clone https://github.com/LankaSoftwareFoundation/copper-base.git
+$ git clone https://github.com/LSFLK/Copper.git
 ```
 
-2. Edit .env file to replicate your settings
-
-3. Create external Docker Network
+2. Deploy the copper email solution.
+```
+$ cd copper/copper-server/kubernetes/deployments
+$ sh deploy.sh
 
 ```
-$ docker network create front
+
+3. Now kubernetes will take some time to pull and create requied images. Check whether all images are created properly.
+
+```
+$ kubectl get pods -n monitoring
+
 ```
 ## Running
 
-Run the system and start all services by :
+Insert previously created users to your openldap server.
 
-```
-$ docker-compose build
-```
-```
-$ docker-compose up -d 
-```
+https://localhost:4433/
 
+Login DN :cn=admin,dc=copper,dc=opensource,dc=lk
+Password : admin
 
+Then import the import_uid.ldif file .
 
 
-    - Direct your web browser to https://copper.opensource.lk/ldap to access the admin portal of the phpldapadmin
-      It's username and password what we provided in above steps
+## Test groupoffice
+
+Open the groupoffice browser.
+
+http://localhost:8004/install/
+
+1. Accept the agreement and continue
+2. Check Test page is ok. If there is a databae isseu it should be checked.
+3. Create the admin account
+4. After success completion the installation then you can login to system.
+
+5. Go to Email Tab and click on Accounts
+6. Add account with following details
+
+'''
+IMAP Configuration
+IMAP Host : email
+Port      : 143
+Username  : test@copper.opensource.lk
+Password  : coppermail@lsf
+Encription: TLS
+Checked Allow self signed certificates.
+
+SMTP Configuraiton
+HOST      : email
+Port      : 25
+Encription: No encription
+'''
+
+
+
+
 
       
                       
@@ -94,6 +128,9 @@ $ docker-compose up -d
   
 - openLdap solutions
   https://github.com/osixia/docker-openldap#quick-start
+
+- Group office
+  https://www.group-office.com/
 
 <!-- Prometheus container pull and run: 
     sudo docker pull prom/prometheus

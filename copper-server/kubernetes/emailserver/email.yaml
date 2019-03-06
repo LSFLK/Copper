@@ -51,9 +51,11 @@ spec:
     spec:
       containers:
         - name: email
+          #image: emailserver
           #image: tharangarajapaksha/emailserver
           image: lsflk/copper:emailserver
           imagePullPolicy: Always
+          #imagePullPolicy: Never
           #command: ["/bin/sh"]
           #args: ["-c", "service postfix start"]
           #args: ["-c", "while true; do echo hello; sleep 10;done"]
@@ -73,7 +75,7 @@ spec:
           lifecycle:
             postStart:
               exec:
-                command: ["/bin/sh", "-c", "service postfix start 2> /dev/null || true && service dovecot restart 2> /dev/null || true && service rspamd start 2> /dev/null || true"]
+                command: ["/bin/sh", "-c", "service rsyslog start 2> /dev/null || true && service postfix start 2> /dev/null || true && service dovecot restart 2> /dev/null || true && service rspamd start 2> /dev/null || true"]
                 #command: ["/bin/sh", "-c", "service postfix start"]
                 #command: ["/bin/sh", "-c", "pod_start.sh"]
                 #command: ['/bin/sh', 'pod_start.sh']
