@@ -73,9 +73,9 @@ spec:
           lifecycle:
             postStart:
               exec:
-                #command: ["/bin/sh", "-c", "service postfix start && service dovecot start && service rspamd start"]
-                command: ["/bin/sh", "-c", "service postfix start"]
-                #command: ["/bin/sh", "-c", "service dovecot start"]
+                command: ["/bin/sh", "-c", "service postfix start 2> /dev/null || true && service dovecot restart 2> /dev/null || true && service rspamd start 2> /dev/null || true"]
+                #command: ["/bin/sh", "-c", "service postfix start"]
+                #command: ["/bin/sh", "-c", "pod_start.sh"]
                 #command: ['/bin/sh', 'pod_start.sh']
           #lifecycle:
             #postStart:

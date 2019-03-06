@@ -47,7 +47,7 @@ spec:
       containers:
         - name: groupoffice
           image: lsflk/copper:groupoffice
-          #image: groupoffice
+          #image: intermesh/groupoffice
           imagePullPolicy: Always
           env:
             - name: MYSQL_USER
