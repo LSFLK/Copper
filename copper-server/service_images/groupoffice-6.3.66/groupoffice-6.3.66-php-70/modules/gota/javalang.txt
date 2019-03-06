@@ -1,0 +1,40 @@
+#If you want to translate GOTA please send this file translated to info@intermesh.nl
+
+btnCancel = Cancel
+btnSaveAs = Save as ...
+btnLaunchDefaultApp = Launch default application
+txtChooseAction = You downloaded the file \"{0}\". Do you want to save it or launch the default program on your computer?
+titleActionDialog = Please choose an option
+txtFileExists = The file \"{0}\" already exists!\nDo you want to replace it?
+
+statusConnecting = Connecting...
+statusUploading = Uploading file
+statusUploadComplete = Upload complete. Reading server response...
+statusDownloading = Downloading file
+statusDownloadComplete = Download complete
+
+btnExit = Exit
+btnInfo = Information
+
+txtUploadSuccess = Upload successful
+txtFileSent = File \"{0}\" was saved to successfully. Click here if you are finished with editing. This will release the document so that other users can edit it again.
+
+txtUploadError = An error occurred. File was NOT uploaded!
+
+txtError = Error
+txtSuccess=Success
+
+txtServerStatusCode = Server returned error code: 
+
+
+txtUnlockSuccess= The file \"{0}\" was unlocked successfully
+txtLockSuccess= The file \"{0}\" was locked successfully
+
+txtLockFile = Lock file?
+txtClickLockFile = Click here if you want to lock the file \"{0}\".
+
+txtEnterPassword = Please enter your password
+txtPassword = Password
+btnOk = Ok
+
+txtAuthorizationRequired = Authorization required

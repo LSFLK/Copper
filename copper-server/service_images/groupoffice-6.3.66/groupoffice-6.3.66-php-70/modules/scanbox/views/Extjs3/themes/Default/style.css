@@ -1,0 +1,11 @@
+.go-module-icon-scanbox , .go-menu-icon-scanbox{
+	background:url('images/scanbox.png');
+}
+
+.go-tab-icon-scanbox {
+	background-image: none !important;
+}
+
+.go-model-icon-GO_Scanbox_Model_ScannableFolder{
+	background-image: url('images/scanbox.png') !important;
+}

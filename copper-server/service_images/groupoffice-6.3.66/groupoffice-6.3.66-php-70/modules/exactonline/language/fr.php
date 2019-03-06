@@ -1,0 +1,23 @@
+<?php
+return array (
+  'Show Exact Online invoice' => 'Afficher les factures Exact Online',
+  'Ordered by' => 'Commander par',
+  'Invoiced to' => 'Facturé à',
+  'Order date' => 'Date de commande',
+  'Payment condition' => 'Condition de paiement',
+  'Your reference' => 'Vos références',
+  'Status' => 'Statut',
+  'Remarks' => 'Remarques',
+  'Amount' => 'Montant',
+  'Net price' => 'Prix net',
+  'VAT code' => 'TVA',
+  'VAT percentage' => 'Pourcentage TVA',
+  'Price' => 'Prix',
+  'VAT price' => 'Prix TVA',
+  'Open fee' => 'Sans frais',
+  'Could not find invoice.' => 'Impossible de retrouver la facture.',
+  'Exact Online division number' => 'Numéro de division Exact Online',
+  'description' => 'Ajoute une fonction d\'export au module "Facturation" pour Exact Online. Ajoute également une fonction dans le module "Projets" pour afficher les factures provenant d\'Exact Online',
+  'Type' => 'Type',
+  'Article' => 'Article',
+);

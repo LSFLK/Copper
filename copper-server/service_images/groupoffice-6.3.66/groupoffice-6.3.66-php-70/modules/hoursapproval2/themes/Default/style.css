@@ -1,0 +1,21 @@
+.go-module-icon-hoursapproval2, .go-menu-icon-hoursapproval2 {
+	background-image:url('images/hoursapproval2.png') !important;
+}
+
+.go-tab-icon-hoursapproval2 {
+	background-image: none !important;
+}
+
+.ha-approval-buttons{
+	font-weight:normal;
+}
+.ha-approval-buttons td{
+	padding:0px !important;
+	vertical-align:middle !important;
+}
+
+.ha-approve, .ha-disaprove{
+	float:left;
+	margin-right:5px;
+}
+

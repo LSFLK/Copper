@@ -1,0 +1,20 @@
+<?php
+return array (
+  'You don\'t have any items on your start page.' => '您的首页没有组件.',
+  'Select portlet' => '请选择portlet',
+  'News' => '热门话题',
+  'Please enter the RSS feed URL:' => '请输入 RSS feed URL:',
+  'Notes' => '记事本',
+  'Today ' => '今天 ',
+  'Show until' => '显示至',
+  'Title' => '标题',
+  'Manage announcements' => '管理公告',
+  'Announcement' => '公告',
+  'Announcements' => '公告',
+  'name' => '概要',
+  'description' => '在这里输入说明',
+  'Start page' => '摘要',
+  'Loading Feed...' => 'Loading Feed...',
+  'Go to Post' => 'Go to Post',
+  'http://newsrss.bbc.co.uk/rss/newsonline_world_edition/front_page/rss.xml' => 'http://newsrss.bbc.co.uk/rss/newsonline_world_edition/front_page/rss.xml',
+);

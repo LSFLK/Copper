@@ -1,0 +1,20 @@
+<?php
+return array (
+  'You don\'t have any items on your start page.' => 'Sinulla ei ole vielä mitään merkintää aloitussivulla.',
+  'Select portlet' => 'Valitse käyttöliittymäkomponentti',
+  'News' => 'Kuumat aiheet',
+  'Please enter the RSS feed URL:' => 'Syötä URL RSS-syötettä varten:',
+  'Notes' => 'Muistiinpanot',
+  'Loading Feed...' => 'Ladataan syötettä...',
+  'Go to Post' => 'Mene tietueeseen',
+  'Today ' => 'Tänään ',
+  'Show until' => 'Näytä kunnes',
+  'Title' => 'Otsikko',
+  'Manage announcements' => 'Hallitse tiedotteita',
+  'http://newsrss.bbc.co.uk/rss/newsonline_world_edition/front_page/rss.xml' => 'http://www.yle.fi/uutiset/rss/talous.xml',
+  'Announcement' => 'Tiedote',
+  'Announcements' => 'Tiedotteet',
+  'name' => 'Yhteenveto',
+  'description' => 'Laita kuvaus tähän',
+  'Start page' => 'Yhteenveto',
+);

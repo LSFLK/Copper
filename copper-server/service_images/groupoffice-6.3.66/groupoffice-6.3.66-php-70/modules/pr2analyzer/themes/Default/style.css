@@ -1,0 +1,9 @@
+.go-module-icon-pr2analyzer , .go-menu-icon-pr2analyzer{
+	background-image: url('images/pr2analyzer.png') !important;	
+}
+.go-tab-icon-projects {
+	background-image: none !important;
+}
+.pr2a-btn-report {
+	background-image: url(images/reports.png) !important;
+}

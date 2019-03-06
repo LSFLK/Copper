@@ -14,7 +14,7 @@ spec:
       name: https
   selector:
     app: phpldapadmin
-# --
+---
 apiVersion: v1
 kind: ReplicationController
 metadata:

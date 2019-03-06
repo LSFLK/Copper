@@ -1,0 +1,23 @@
+<?php
+return array (
+  'Save changes' => 'Änderungen speichern',
+  'Install' => 'Hinzufügen',
+  'Uninstall' => 'Entfernen',
+  'Available Modules' => 'Verfügbare Module',
+  'Module name' => 'Name',
+  'Description' => 'Beschreibung',
+  'WARNING! All data of this module will be deleted! Are you sure you want to uninstall the "{0}" module?' => 'ACHTUNG! Wenn Sie das Modul "{0}" deaktivieren, werden alle zugehörigen Daten gelöscht! Möchten Sie es wirklich deaktivieren?',
+  'The module "Modules" cannot be deleted!.' => 'Dieses Modul kann nicht entfernt werden!',
+  'The module "Modules" cannot be deleted!' => 'Dieses Modul kann nicht gelöscht werden!',
+  'Enabled' => 'Aktiviert',
+  'Sort order' => 'Sortierung',
+  'Buy licenses' => 'Lizenzen kaufen',
+  'Add to shopping cart' => 'Zum Einkaufswagen hinzufügen',
+  'Select users for package {package}' => 'Nutzer für das Paket {package} auswählen',
+  '30 day trial license' => '30 Tage Testlizenz',
+  'Get a free 30 day trial with unlimited users and all available modules. Click \'Yes\' to continue to our shop and get your trial license. If you don\'t have a shop account you\'ll need to register.' => 'Beantragen Sie eine 30 Tage Testlizenz mit unbegrenzter Nutzerzahl und allen verfügbaren Modulen. Durch Klick auf \'Ja\' bestätigen, um zu unserem Shop fortzufahren und Ihre Testlizenz zu beantragen. Wenn Sie noch keinen Shop-Account haben, müssen Sie sich registrieren.',
+  'name' => 'Module',
+  'description' => 'Modul zum Verwalten aktiver/inaktiver Module',
+  'Modules' => 'Module',
+  'Ok' => 'OK',
+);

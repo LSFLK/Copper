@@ -1,0 +1,29 @@
+.go-module-icon-leavedays , .go-menu-icon-leavedays{
+	background:url('images/leavedays.png');	
+}
+
+.go-tab-icon-leavedays {
+	background-image: none !important;
+}
+
+table.monthReport {
+	width: 100%;
+}
+
+table.monthReport th {
+	border-left: 1px solid #ddd; 
+	padding-left: 6px;
+}
+table.monthReport tbody th {
+	border-bottom:1px solid #aaa;
+	
+}
+
+table.monthReport td,table.monthReport tr {
+	width: 2.7%;
+	padding:0;
+	border: none;
+	height:24px;
+	border-left: 1px solid #ddd; 
+	border-bottom:1px solid #aaa;
+}

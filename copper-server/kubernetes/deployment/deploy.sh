@@ -52,11 +52,11 @@ NC="\033[00m"
 BOLD="\e[1m"
 NRM="\e[0m"
 
-echo -e "${RED}******************************************************************************"
-echo -e "${WHITE}**                                                                          **"
-echo -e "${WHITECHAR}**          POWERED BY LANKA SOFTWARE FOUNDATION  (LSF)                     **"
-echo -e "${WHITE}**                                                                          **"
-echo -e "${RED}******************************************************************************"
+echo "${RED}******************************************************************************"
+echo "${WHITE}**                                                                          **"
+echo "${WHITECHAR}**          POWERED BY LANKA SOFTWARE FOUNDATION  (LSF)                     **"
+echo "${WHITE}**                                                                          **"
+echo "${RED}******************************************************************************"
 
 #   Add follwing tag after command for ignoring stdout, errors etc
 #   > /dev/null throw away stdout
@@ -167,24 +167,15 @@ echoGreenBold 'Monitoring namespace created...'
 kubectl create -f openldap/openldap.yaml 2> /dev/null || true
 echoGreenBold 'openldap service created...'
 # Create the phpldapadmin service  
-kubectl create -f phpLDAPadmin/phpldapadmin.yaml 2> /dev/null || true
+kubectl create -f phpldapadmin/phpldapadmin.yaml 2> /dev/null || true
 echoGreenBold 'phpldapadmin service Created...'
 # creating emailserver docker image
-<<<<<<< HEAD
-# cd emailserver
-# docker build -t emailserver . 2> /dev/null || true
-# echoGreenBold 'Docker Email image Service Created...'
-# # wait 1 seconds 
-# sleep 3s
-# cd ..
-=======
 #cd emailserver
 #docker build -t emailserver . 2> /dev/null || true
 #echoGreenBold 'Docker Email image Service Created...'
 # wait 1 seconds 
 #sleep 3s
 #cd ..
->>>>>>> a64f0928c9058289c203ba8f9b50af6f8749961a
 
 # Create the emailserver service from kubernetes using docker image we have created now.
 kubectl create -f emailserver/email.yaml 2> /dev/null || true

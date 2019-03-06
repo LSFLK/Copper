@@ -1,0 +1,22 @@
+<?php
+return array (
+  'SMIME settings' => 'SMIME setttings',
+  'To upload a new PKCS12 certificate you must enter your {product_name} password. The {product_name} password must be different than your PCSK12 certificate for security reasons. No password is also prohibited.' => 'To upload a new PCSK12 certificate you must enter your {product_name} password. This password may not match the password of your PCSK12 certificate for security reasons. No password is also prohibited.',
+  'Please enter the password of your SMIME certificate.' => 'Please enter the password of your SMIME certificate.',
+  'This message is digitally signed. Click here to verify the signature and import the certificate.' => 'This message is digitally signed. Click here to verify the signature and import the certificate.',
+  'SMIME Certificate' => 'SMIME Certificate',
+  'Sign with SMIME' => 'Sign with SMIME',
+  'Encrypt with SMIME' => 'Encrypt with SMIME',
+  'Delete certificate' => 'Delete certificate',
+  'Select new PKCS12 Certificate' => 'Select new PKCS12 Certificate',
+  'Always sign messages' => 'Always sign messages',
+  'PKCS12 certificate' => 'PKCS12 certificate',
+  'To upload a new PKCS12 certificate you must enter your Group-Office password. The Group-Office password must be different than your PCSK12 certificate for security reasons. No password is also prohibited.' => 'To upload a new PCSK12 certificate you must enter your {product_name} password. This password may not match the password of your PCSK12 certificate for security reasons. No password is also prohibited.',
+  'Could not encrypt message because you don\'t have the public certificate for %s. Open a signed message of the recipient and verify the signature to import the public key.' => 'Could not encrypt message because you don\'t have the public certificate for %s. Open a signed message of the recipient and verify the signature to import the public key.',
+  'This message is encrypted and you don\'t have the private key to decrypt this message.' => 'This message is encrypted and you don\'t have the private key to decrypt this message.',
+  'The Group-Office password was incorrect.' => 'The {product_name} password was incorrect.',
+  'Your SMIME key password matches your Group-Office password. This is prohibited for security reasons!' => 'Your SMIME key password matches your {product_name} password. This is prohibited for security reasons!',
+  'Your SMIME key has no password. This is prohibited for security reasons!' => 'Your SMIME key has no password. This is prohibited for security reasons!',
+  'The certificate is invalid!' => 'The certificate is invalid!',
+  'Valid certificate' => 'Valid certificate',
+);

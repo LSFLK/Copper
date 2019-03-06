@@ -1,0 +1,20 @@
+<?php
+return array (
+  'You don\'t have any items on your start page.' => 'Başlangıç sayfanızda herhangi bir nesne bulunmuyor.',
+  'Select portlet' => 'Portlet seçiniz',
+  'News' => 'Sıcak konular',
+  'Please enter the RSS feed URL:' => 'Lütfen bir RSS besleme URL si giriniz:',
+  'Notes' => 'Notlar',
+  'Loading Feed...' => 'RSS ler yükleniyor...',
+  'Go to Post' => 'Gönderiye git',
+  'Today ' => 'Bugün ',
+  'Show until' => 'Zamanına kadar göster',
+  'Title' => 'Başlık',
+  'Manage announcements' => 'Anonsları yönet',
+  'http://newsrss.bbc.co.uk/rss/newsonline_world_edition/front_page/rss.xml' => 'http://rss.hurriyet.com.tr/rss.aspx?sectionId=1',
+  'Announcement' => 'Haber',
+  'Announcements' => 'Haberler',
+  'name' => 'Başlangıç Sayfası',
+  'description' => 'Farklı nesneler ile ilgili önizlem göster',
+  'Start page' => 'Özet',
+);

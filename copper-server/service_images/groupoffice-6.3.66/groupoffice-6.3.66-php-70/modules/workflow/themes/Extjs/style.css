@@ -1,0 +1,38 @@
+.go-module-icon-workflow , .go-menu-icon-workflow, .go-tab-icon-workflow {
+	background-image:url('images/workflow.png') !important;
+}
+
+.late td{
+	color: red;
+}
+
+.wf-container{
+	padding:10px;
+}
+
+.wf-title{
+	padding: 10px;
+}
+
+.wf-title h1{
+	color: #3386B0;
+  font-size: 16px;
+}
+
+.wf-step,.wf-active-step{
+	padding: 10px;
+	margin-bottom: 6px;
+}
+
+.wf-step h2,.wf-active-step h2 {
+	color: #7AA03B;
+	font-size: 14px;
+}
+
+.wf-step{
+}
+
+.wf-active-step{
+	background-color: #F1F1F1;
+  border: 1px solid #7AA03B;
+}
