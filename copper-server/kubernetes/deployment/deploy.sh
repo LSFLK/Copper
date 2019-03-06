@@ -254,3 +254,4 @@ echoGreenBold 'Finished'
         echoRedBold "Deployment cancelled"
         ;;
 esac
+
