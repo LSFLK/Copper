@@ -1,0 +1,9 @@
+modules/filesearch/SelectDocbundleDialog.js
+
+modules/filesearch/DocbundleDialog.js
+modules/filesearch/DocbundlesGrid.js
+modules/filesearch/ResultsGrid.js
+modules/filesearch/MainPanel.js
+modules/filesearch/Button.js
+
+modules/filesearch/EditPanel.js

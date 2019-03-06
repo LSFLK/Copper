@@ -1,0 +1,3 @@
+modules/pr2analyzer/views/Extjs3/MainPanel.js
+modules/pr2analyzer/views/Extjs3/HoursGrid.js
+modules/pr2analyzer/views/Extjs3/ReportGrid.js

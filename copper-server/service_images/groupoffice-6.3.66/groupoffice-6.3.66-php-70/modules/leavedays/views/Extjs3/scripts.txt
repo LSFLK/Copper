@@ -1,0 +1,10 @@
+modules/leavedays/views/Extjs3/UserPanel.js
+modules/leavedays/views/Extjs3/LeavedayDialog.js
+modules/leavedays/views/Extjs3/YearCreditDialog.js
+modules/leavedays/views/Extjs3/MonthWindow.js
+
+modules/leavedays/views/Extjs3/CreditTypesGrid.js
+modules/leavedays/views/Extjs3/CreditTypeDialog.js
+modules/leavedays/views/Extjs3/SettingsDialog.js
+
+modules/leavedays/views/Extjs3/MainPanel.js

@@ -1,0 +1,20 @@
+<?php
+return array (
+  'File to computer' => 'Datei auf Computer',
+  'File in {product_name}' => 'Datei in {product_name}',
+  'E-mail viewer' => 'E-Mail Betrachter',
+  'Link e-mail conversation to contact %s' => 'E-Mail-Konversation mit Kontakt %s verlinken',
+  'Link e-mail conversation to company %s' => 'E-Mail-Konversation mit Firma %s verlinken',
+  'Follow Up' => 'Nachverfolgen',
+  'name' => 'Menü E-mail speichern als',
+  'description' => 'Speichert E-Mail-Nachrichten als Datei, Link, Event, Notiz oder Aufgabe',
+  'File in Group-Office' => 'Datei in GroupOffice',
+  'File to item' => 'Datei in Eintrag',
+  'Appointment' => 'Termin',
+  'Note' => 'Notiz',
+  'Task' => 'Aufgabe',
+  'Project' => 'Projekt',
+  'Copying messages...' => 'Kopiere Nachrichten…',
+  'E-mail message' => 'E-Mail Nachricht',
+  'Mail to item' => 'Mail in Eintrag',
+);

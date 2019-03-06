@@ -1,0 +1,5 @@
+modules/exactonline/views/Extjs3/PluginBilling.js
+modules/exactonline/views/Extjs3/PluginProjects2.js
+modules/exactonline/views/Extjs3/Projects2Overrides.js
+modules/exactonline/views/Extjs3/AddressBookOverrides.js
+modules/exactonline/views/Extjs3/SettingsPanel.js

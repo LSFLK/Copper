@@ -1,0 +1,23 @@
+<?php
+return array (
+  'Save changes' => 'Változások mentése',
+  'Install' => 'Telepítés',
+  'Uninstall' => 'Eltávolítás',
+  'Available Modules' => 'Elérhető modulok',
+  'Module name' => 'Modul név',
+  'Description' => 'Leírás',
+  'WARNING! All data of this module will be deleted! Are you sure you want to uninstall the "{0}" module?' => 'FIGYELEM! Minden a modulban lévő adat el fog veszni! Folytatod a "{0}" eltávoltását?',
+  'The module "Modules" cannot be deleted!.' => 'A "Modulok" modul nem törölhető!.',
+  'The module "Modules" cannot be deleted!' => 'A "Modules" modul -értelemszerűen- nem törölhető!',
+  'name' => 'Modulok',
+  'description' => 'Admin modul; Modulok kezelése.',
+  'Modules' => 'modulok',
+  'Add to shopping cart' => 'Kosárba',
+  'Select users for package {package}' => 'Kiválasztás felhasználók számára csomag {csomag}',
+  '30 day trial license' => '30 napos próba licenc',
+  'Get a free 30 day trial with unlimited users and all available modules. Click \'Yes\' to continue to our shop and get your trial license. If you don\'t have a shop account you\'ll need to register.' => 'Kap egy ingyenes 30 napos próbaverzió korlátlan felhasználó és az összes rendelkezésre álló modulokat. Kattintson az „Igen”, hogy továbbra is a bolt, és kap a próbalicencet. Ha nincs üzlet fiókot kell regisztrálni.',
+  'Enabled' => 'Bekapcsolt',
+  'Sort order' => 'Sorrend',
+  'All data will be lost! Are you sure you want to delete module \'{item}\'?' => 'Minden adat el fog veszni! Biztos, hogy törölni kívánja ezt a modult: \'{item}\'?',
+  'Buy licenses' => 'Vásárlás',
+);

@@ -1,0 +1,26 @@
+.go-module-icon-timeregistration2 , .go-menu-icon-timeregistration2 {
+	background-image:url('images/timeregistration2.png') !important;
+}
+
+.go-tab-icon-timeregistration2 {
+	background-image: none !important;
+}
+
+/* Override standard grid styles (add colour to vertical grid lines) */
+#tr-timesheet .x-grid3-col {
+    border-right: 1px solid #EDEDED;
+}
+
+#tr-timesheet .x-grid3-cell-last{
+	border-right:0px !important;
+}
+
+/* Also remove padding from table data (to compensate for added grid lines) */
+#tr-timesheet .x-grid3-row td, #pm_timesheet .x-grid3-summary-row td {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.tr-over-budget td{
+	color: red;
+}

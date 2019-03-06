@@ -1,0 +1,4 @@
+name_nl,category_nl,description_nl,short_description_nl,cost_price,list_price,vat,total_price,supplier,supplier_product_id,stock,stock_min,article_id,unit,unit_stock
+Test product 1,import|bedrijf 2,Volledige beschrijving test product 1,Korte beschrijving test product 1,10,15,19,17.85,Test Bedrijf 2,,200,100,test_1,stuks,5 stuks
+Test product 2,import|bedrijf 2,Volledige beschrijving test product 2,Korte beschrijving test product 2,15,22.5,19,26.78,Test Bedrijf 2,,400,200,test_2,,
+Test product 3,import|bedrijf 1,Volledige beschrijving test product 3,Korte beschrijving test product 3,8,12,19,14.28,Test Bedrijf 1,,800,400,test_3,stuks,10 stuks

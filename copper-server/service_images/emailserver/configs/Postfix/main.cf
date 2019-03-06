@@ -87,11 +87,11 @@ smtpd_helo_restrictions =
   #reject_non_fqdn_sender,
   #reject_unknown_sender_domain,
   #reject_unauth_pipelining
-#smtpd_relay_restrictions =
-  #permit_mynetworks,
-  #permit_sasl_authenticated,
+smtpd_relay_restrictions =
+  permit_mynetworks,
+  permit_sasl_authenticated,
   # !!! THIS SETTING PREVENTS YOU FROM BEING AN OPEN RELAY !!!
-  #reject_unauth_destination
+  reject_unauth_destination
   # !!!      DO NOT REMOVE IT UNDER ANY CIRCUMSTANCES      !!!
 #smtpd_recipient_restrictions =
   #permit_mynetworks,
