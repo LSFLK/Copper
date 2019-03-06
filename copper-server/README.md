@@ -61,7 +61,7 @@ $ git clone https://github.com/LSFLK/Copper.git
 
 2. Deploy the copper email solution.
 ```
-$ cd copper/copper-server/kubernetes/deployments
+$ cd Copper/copper-server/kubernetes/deployment/
 $ sh deploy.sh
 
 ```
@@ -72,7 +72,9 @@ $ sh deploy.sh
 $ kubectl get pods -n monitoring
 
 ```
-## Running
+Wait untill all pods are up and running
+
+## Test Openldap
 
 Insert previously created users to your openldap server.
 
@@ -98,20 +100,28 @@ http://localhost:8004/install/
 5. Go to Email Tab and click on Accounts
 6. Add account with following details
 
-'''
-IMAP Configuration
+
+###IMAP Configuration
+
 IMAP Host : email
+
 Port      : 143
+
 Username  : test@copper.opensource.lk
+
 Password  : coppermail@lsf
+
 Encription: TLS
 Checked Allow self signed certificates.
 
-SMTP Configuraiton
+###SMTP Configuraiton
+
 HOST      : email
+
 Port      : 25
+
 Encription: No encription
-'''
+
 
 
 
