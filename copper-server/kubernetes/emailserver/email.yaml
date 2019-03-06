@@ -51,9 +51,12 @@ spec:
     spec:
       containers:
         - name: email
-          #image: "udacity/example-auth:1.0.0"
+          #image: tharangarajapaksha/emailserver
           image: lsflk/copper:emailserver
           imagePullPolicy: Always
+          #command: ["/bin/sh"]
+          #args: ["-c", "service postfix start"]
+          #args: ["-c", "while true; do echo hello; sleep 10;done"]
           ports:
             - name: submission
               containerPort: 587
@@ -67,11 +70,18 @@ spec:
               containerPort: 11334
             - name: health
               containerPort: 26
+          lifecycle:
+            postStart:
+              exec:
+                #command: ["/bin/sh", "-c", "service postfix start && service dovecot start && service rspamd start"]
+                command: ["/bin/sh", "-c", "service postfix start"]
+                #command: ["/bin/sh", "-c", "service dovecot start"]
+                #command: ['/bin/sh', 'pod_start.sh']
           #lifecycle:
-          #  postStart:
-          #    exec:
-          #      command: ["/bin/sh"]
-          #        args: ["-c", "service postfix start"] 
+            #postStart:
+              #exec:
+                #command: ["/bin/sh"]
+                #args: ["-c", "service postfix start"]
           resources:
             limits:
               #cpu: 0.5
