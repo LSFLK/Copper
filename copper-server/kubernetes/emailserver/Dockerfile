@@ -58,8 +58,6 @@ ADD https://raw.github.com/infertux/zeyple/master/zeyple/zeyple.conf.example /et
 RUN touch /var/log/zeyple.log && chown zeyple: /var/log/zeyple.log
 RUN chown -R zeyple /etc/zeyple /usr/local/bin/zeyple.py
 
-
-
 # COPY Changing dovecot congiguration files permission
 COPY ./configs/Dovecot /etc/dovecot/
 RUN chgrp dovecot /etc/dovecot/dovecot-sql.conf.ext
@@ -109,6 +107,10 @@ COPY ./configs/.env /bin/
 RUN chmod +x /bin/init_sys.sh
 RUN chmod 755 /bin/.env
 
+
+# Adding pod start commands to the email image
+ADD ./configs/pod_start.sh /bin/pod_start.sh
+RUN chmod +x /bin/pod_start.sh
 
 # postfixlog analyser 
 COPY ./configs/logAnalyze/pflogsumm /usr/local/bin/pflogsumm

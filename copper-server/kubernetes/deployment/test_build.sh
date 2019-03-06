@@ -51,3 +51,4 @@ kubectl create -f prometheus-alert/Service.yaml 2> /dev/null || true
 
 
 kubectl create -f groupware/groupoffice/groupoffice.yaml 2> /dev/null || true
+
