@@ -1,0 +1,112 @@
+.entity.Project::before {
+	content: "group_work";
+}
+
+.pm-disabled-cell{
+	background-color:#f1f1f1;
+	color:grey;
+}
+
+.pm-description-label{
+	font-weight:bold;
+	margin:0;
+}
+
+.pm-subproject-link{
+	text-decoration:none !important;
+}
+
+.pm-show-mine-only-cb .x-form-check-wrap{
+margin:4px 8px !important;
+}
+
+#pm-timesheet .x-grid3-row-table{
+	border-collapse:collapse;
+}
+
+#go-module-panel-projects2-west .x-tree-node-inline-icon.go-icon {
+	background-size: cover;
+}
+
+.print .x-grid3-scroller{
+	overflow:visible;
+}
+
+.go-module-icon-projects2 , .go-menu-icon-projects2{
+	background-image: url('images/projects2.png') !important;	
+}
+.go-tab-icon-projects2 {
+	background-image: none !important;
+}
+
+.go-model-icon-GO_Projects2_Model_Project {
+	background-image: url('images/projects2.png') !important;
+	width:16px;
+	height:16px;
+}
+
+.project-item-description{
+	padding:0 0 8px 0 !important;	
+}
+
+.project-row-description{
+	padding:10px 0 0 10px;	
+}
+
+.projects-items{
+	margin-top:10px;
+	margin-left:10px;
+	width:100%;
+}
+
+.projects-late{
+	color: red;
+}
+
+.projects-completed{
+	text-decoration: line-through;
+	color: black !important;
+}
+
+
+
+
+.pm-btn-stop-timer{
+	background-image:url('images/start_timer.png') !important;
+	
+}
+
+.go-link-icon-14 {
+	background-image: url('images/projects2.png') !important;
+}
+.go-link-icon-14 {
+	background-image: url('images/projects2.png') !important;
+}
+
+
+.pm-time-entry{
+	background-image:url('images/start_timer.png') !important;
+}
+
+.pm-expense{
+	background-image:url('images/expenses.png') !important;
+}
+
+.pm-over-budget{
+	color:red;
+}
+
+.pm-budget-warning{
+	color:orange;
+}
+
+.pm-btn-report{
+	background-image: url('images/report.png') !important;
+}
+.pm-progressbar{
+	height:10px;border:1px solid #666;
+}
+
+.pm-progress-indicator{
+	background-color:#009cc5;height:8px;
+}

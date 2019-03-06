@@ -1,0 +1,22 @@
+The filesearch module uses some command line programs for file indexing.
+
+Make sure the following commands are executable:
+
+catdoc
+xls2csv
+unzip
+tar
+imagemagick
+pdf2text
+pdfinfo
+tesseract-ocr
+exiv2
+
+Also make sure PHP5 has the php5-xsl extension installed.
+
+
+The search index must be updated in a cron job: 
+
+/usr/share/groupoffice/groupofficecli.php -c=/etc/groupoffice/config.php -r=filesearch/filesearch/sync
+
+This cronjob will run every night when using the debian packages.

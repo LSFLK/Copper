@@ -1,0 +1,20 @@
+<?php
+return array (
+  'You don\'t have any items on your start page.' => 'Δεν έχετε στοιχεία στην αρχική σας σελίδα.',
+  'Select portlet' => 'Επιλογή portlet',
+  'News' => 'Ενδιαφέροντα θέματα',
+  'Please enter the RSS feed URL:' => 'Παρακαλούμε εισάγετε την διεύθυνση τροφοδότησης RSS:',
+  'Notes' => 'Σημειώσεις',
+  'Loading Feed...' => 'Φόρτωση τροφοδότησης...',
+  'Go to Post' => 'Πήγαινε στην δημοσίευση',
+  'Today ' => 'Σήμερα',
+  'Show until' => 'Εμφάνιση μέχρι',
+  'Title' => 'Τίτλος',
+  'Manage announcements' => 'Διαχείριση ανακοινώσεων',
+  'Announcement' => 'Ανακοίνωση',
+  'Announcements' => 'Ανακοινώσεις',
+  'name' => 'Αρχική σελίδα',
+  'description' => 'Εμφανίζει μια σύνοψη διαφορετικών πραγματικών στοιχείων',
+  'Start page' => 'Σύνοψη',
+  'http://newsrss.bbc.co.uk/rss/newsonline_world_edition/front_page/rss.xml' => 'http://newsrss.bbc.co.uk/rss/newsonline_world_edition/front_page/rss.xml',
+);

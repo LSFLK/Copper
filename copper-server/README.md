@@ -101,7 +101,7 @@ http://localhost:8004/install/
 6. Add account with following details
 
 
-###IMAP Configuration
+### IMAP Configuration
 
 IMAP Host : email
 
@@ -114,7 +114,7 @@ Password  : coppermail@lsf
 Encription: TLS
 Checked Allow self signed certificates.
 
-###SMTP Configuraiton
+### SMTP Configuraiton
 
 HOST      : email
 

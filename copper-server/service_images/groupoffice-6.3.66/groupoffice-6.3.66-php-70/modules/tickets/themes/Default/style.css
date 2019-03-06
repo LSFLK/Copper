@@ -1,0 +1,108 @@
+.entity.Ticket::before {
+	content: "live_help";
+}
+.go-module-icon-tickets , .go-menu-icon-tickets{
+	background-image:url('tickets.png') !important;
+}
+.go-tab-icon-tickets {
+	background-image:none !important;
+}
+.go-model-icon-GO_Tickets_Model_Ticket {
+	background-image: url('tickets.png') !important;
+}
+
+.ml-unseen-dot.red{
+	background-color:#d32f2f;
+}
+
+.ti-unseen .x-grid3-td-1, .ti-unseen .x-grid3-td-2, .ti-late .x-grid3-td-1, .ti-late .x-grid3-td-2{
+	font-weight:bold;
+}
+
+.msg-wrap{
+	position: relative;
+	margin: 8px 16px;
+	background-color: rgba(0,0,0,.07);
+	border-radius: 14px;
+}
+.msg-wrap.from {
+	margin-left: 48px;
+	border-top-left-radius: 0;
+}
+.msg-wrap.to {
+	margin-right: 48px;
+	border-top-right-radius: 0;
+	background-color: rgba(39,58,128,.16);
+}
+.msg-wrap.note {
+	background-color: #fffadd;
+	border-top:0;
+}
+.ti-msg {
+	background-position: center center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	width: 32px;
+	position:absolute;
+	top:0; bottom:0;
+}
+.ti-msg.from {
+	left:-40px;
+	height:32px;
+	border-radius: 16px;
+}
+
+.ti-msg.to {
+	border-radius: 16px;
+	height:32px;
+	right:-40px;
+}
+
+.msg-head { padding: 8px 8px 0 8px;  }
+.msg-head .msg-left { font-weight: bold;}
+.msg-foot {padding: 8px 8px 0 8px; overflow:hidden;}
+
+.msg-head span, .msg-foot span { font-size: 0.9em; }
+
+div.msg-head span.msg-right, div.msg-foot span.msg-right{
+	float:right;
+
+}
+.msg-content {
+	padding:0 8px 8px;
+	line-height: 16px;
+	text-align:justify;
+}
+.msg-attachements { padding:3px 6px; }
+.msg-attachements * { display: inline-block;  }
+.msg-attachements a { 
+	background-position: 3px center;
+	background-color: #fafafa;
+	margin-right: 7px; 
+	color: #666;
+	padding-left: 23px !important;
+	padding: 4px 8px;
+	border-radius:2px;
+	box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+.msg-attachements a:hover {
+	background-color: white;
+	color: black;
+}
+
+.msg-wrap.x-view-selected{
+	background-color:rgba(39,58,128,.24);	
+	color: rgba(0,0,0, 0.87);
+}
+
+table.display-panel td{
+	/* Override default padding */
+}
+
+.ti-rate{
+	padding-right:5px;
+	text-align:right;
+}
+.ti-rate-totals td{
+	padding:2px 5px;
+}

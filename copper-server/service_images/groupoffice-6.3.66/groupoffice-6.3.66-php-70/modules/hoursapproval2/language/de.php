@@ -1,0 +1,21 @@
+<?php
+return array (
+  'Approve timeregistration' => 'Zeiterfassung genehmigen',
+  'Please enter the reason for disapproval' => 'Geben Sie für eine Ablehnung bitte einen Grund an',
+  'Disapprove' => 'Ablehnen',
+  'Approve' => 'Bestätigen',
+  'Timeregistration disapproved' => 'Zeiterfassung wurde abgelehnt',
+  '%s disapproved your timeregistration of week %s. Correct the time registration at: %s' => '%s hat Ihre Zeiterfassung für die Woche %s abgelehnt. Korrigeren Sie die Zeiterfassung am: %s',
+  'Approved' => 'Genehmigt',
+  'Week number %wnr succesfully opened for all users (week: %ws thru %we).' => 'Woche Nummer %wnr erfolgreich geöffnet für alle Benutzer (Woche: %ws bis %we).',
+  'Week number %wnr succesfully closed for all users (week: %ws thru %we).' => 'Woche Nummer %wnr erfolgreich geschlossen für alle Benutzer (Woche: %ws bis %we).',
+  'This action will open time registered week number %wnr for ALL users. Continue?' => 'Diese Aktion öffnet die Zeiterfassung für Woche Nummer %wnr für alle Benutzer. Fortfahren?',
+  'This action will close time registered week number %wnr for ALL users. Continue?' => 'Diese Aktion schließt die Zeiterfassung für Woche Nummer %wnr für alle Benutzer. Fortfahren?',
+  'This opens or closes a week for all users. Select a date in the week that you wish to open/close.' => 'Diese Aktion öffnet oder schließt eine Woche für alle Benutzer. Wählen Sie ein Datum in der Woche, die Sie öffnen / schließen möchten.',
+  'name' => 'Genehmigung von Zeiterfassungen V2',
+  'description' => 'Modul fuer Projektleiter zur Ueberpruefung und Genehmigung von Zeiterfassungs-Eintraegen',
+  'Duration' => 'Dauer',
+  'Project' => 'Projekt',
+  'Activity type' => 'Aktivitätstyp',
+  'Week' => 'Woche',
+);

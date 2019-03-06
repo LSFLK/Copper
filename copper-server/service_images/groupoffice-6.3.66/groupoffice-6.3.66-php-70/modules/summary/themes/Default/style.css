@@ -1,0 +1,13 @@
+.go-module-icon-summary, .go-menu-icon-summary{
+	background-image: url('images/summary.png') !important;
+}
+.go-tab-icon-summary {
+	background-image: none !important;
+}
+
+.rss-icon{
+	background-image: url('images/rss.gif') !important;
+}
+.note-icon{
+	background-image: url('images/note.png') !important;	
+}

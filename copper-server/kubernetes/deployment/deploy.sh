@@ -47,11 +47,11 @@ NC="\033[00m"
 BOLD="\e[1m"
 NRM="\e[0m"
 
-echo -e "${RED}******************************************************************************"
-echo -e "${WHITE}**                                                                          **"
-echo -e "${WHITECHAR}**          POWERED BY LANKA SOFTWARE FOUNDATION  (LSF)                     **"
-echo -e "${WHITE}**                                                                          **"
-echo -e "${RED}******************************************************************************"
+echo "${RED}******************************************************************************"
+echo "${WHITE}**                                                                          **"
+echo "${WHITECHAR}**          POWERED BY LANKA SOFTWARE FOUNDATION  (LSF)                     **"
+echo "${WHITE}**                                                                          **"
+echo "${RED}******************************************************************************"
 
 #   Add follwing tag after command for ignoring stdout, errors etc
 #   > /dev/null throw away stdout
