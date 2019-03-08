@@ -4,7 +4,6 @@ From ubuntu:18.04
 MAINTAINER Lanka Software Foundation <support@opensource.lk> 
 
 ARG DEBIAN_FRONTEND=noninteractive
-
 ENV TELEGRAF_VERSION 1.8.1-1
 
 
@@ -143,9 +142,11 @@ COPY ./configs/telegraf/entrypoint.sh entrypoint.sh
 RUN chmod 755 entrypoint.sh
 
 
-RUN init_sys.sh
+#RUN init_sys.sh
+
+ENTRYPOINT ["init_sys.sh"]
 
 #ENTRYPOINT ["entrypoint.sh"]
 #CMD ["telegraf"]
 #CMD service postfix start
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+#ENTRYPOINT ["tail", "-f", "/dev/null"]

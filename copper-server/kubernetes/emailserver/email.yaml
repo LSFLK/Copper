@@ -51,11 +51,11 @@ spec:
     spec:
       containers:
         - name: email
-          #image: emailserver
+          image: emailserver
           #image: tharangarajapaksha/emailserver
-          image: lsflk/copper:emailserver
-          imagePullPolicy: Always
-          #imagePullPolicy: Never
+          #image: lsflk/copper:emailserver
+          #imagePullPolicy: Always
+          imagePullPolicy: Never
           #command: ["/bin/sh"]
           #args: ["-c", "service postfix start"]
           #args: ["-c", "while true; do echo hello; sleep 10;done"]
@@ -84,6 +84,48 @@ spec:
               #exec:
                 #command: ["/bin/sh"]
                 #args: ["-c", "service postfix start"]
+          env:
+                - name: TELEGRAF_VERSION
+                  value: "1.8.1-1"
+                - name: MYSQL_USER
+                  value: "groupoffice"
+                - name: MYSQL_PASSWORD
+                  value: "groupoffice"
+                - name: MYSQL_DATABASE
+                  value: "groupoffice"
+                - name: EMAIL
+                  value: "admin@copper.opensource.lk"
+                - name: HOSTNAME
+                  value: "mail.copper.opensource.lk"
+                - name: FQDN
+                  value: "mail.copper.opensource.lk"
+                - name: DOMAIN
+                  value: "copper.opensource.lk"
+                - name: REDIS_HOST
+                  value: "REDIS_HOST"
+                - name: REDIS_PORT
+                  value: "REDIS_PORT"
+                - name: DEBUG
+                  value: "true"
+                - name: RSPAMD_PASSWORD
+                  value: "postfix@123"
+                - name: CN
+                  value: "admin"
+                - name: DC1
+                  value: "copper"
+                - name: DC2
+                  value: "opensource"
+                - name: DC3
+                  value: "lk"
+                - name: DNPASS
+                  value: "admin"
+                - name: OU
+                  value: "Users"
+                - name: LDAP_HOST_IP
+                  value: "ldap-service"
+                - name: KEY_PATH
+                  value: "KEY_PATH"
+                  #value: "Example Inc."
           resources:
             limits:
               #cpu: 0.5
