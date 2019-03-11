@@ -134,5 +134,5 @@ spec:
               memory: "500Mi" # 500 Mebibytes 
       #command: ["/bin/sh"]
       #  args: ["-c", "service postfix start"]  
-   
+  
               
