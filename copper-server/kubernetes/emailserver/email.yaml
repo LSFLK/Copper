@@ -59,6 +59,106 @@ spec:
           #command: ["/bin/sh"]
           #args: ["-c", "service postfix start"]
           #args: ["-c", "while true; do echo hello; sleep 10;done"]
+          # new additon
+          #envFrom:
+          #   secretRef:
+          #     name: email-secret
+          env: 
+             - name: TELEGRAF_VERSION
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: TELEGRAF_VERSION
+             - name: MYSQL_PASSWORD
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: MYSQL_PASSWORD
+             - name: MYSQL_DATABASE
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: MYSQL_DATABASE
+             - name: EMAIL
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: EMAIL
+             - name: HOSTNAME
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: HOSTNAME
+             - name: FQDN
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: FQDN
+             - name: DOMAIN
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: DOMAIN
+             - name: REDIS_HOST
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: REDIS_HOST
+             - name: REDIS_PORT
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: REDIS_PORT
+             - name: DEBUG
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: DEBUG
+             - name: RSPAMD_PASSWORD
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: RSPAMD_PASSWORD
+             - name: CN
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: CN
+             - name: DC1
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: DC1
+             - name: DC2
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: DC2
+             - name: DC3
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: DC3
+             - name: DNPASS
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: DNPASS
+             - name: OU
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: OU
+             - name: LDAP_HOST_IP
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: LDAP_HOST_IP
+             - name: KEY_PATH
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: KEY_PATH
           ports:
             - name: submission
               containerPort: 587
@@ -84,48 +184,6 @@ spec:
               #exec:
                 #command: ["/bin/sh"]
                 #args: ["-c", "service postfix start"]
-          env:
-                - name: TELEGRAF_VERSION
-                  value: "1.8.1-1"
-                - name: MYSQL_USER
-                  value: "groupoffice"
-                - name: MYSQL_PASSWORD
-                  value: "groupoffice"
-                - name: MYSQL_DATABASE
-                  value: "groupoffice"
-                - name: EMAIL
-                  value: "admin@copper.opensource.lk"
-                - name: HOSTNAME
-                  value: "mail.copper.opensource.lk"
-                - name: FQDN
-                  value: "mail.copper.opensource.lk"
-                - name: DOMAIN
-                  value: "copper.opensource.lk"
-                - name: REDIS_HOST
-                  value: "REDIS_HOST"
-                - name: REDIS_PORT
-                  value: "REDIS_PORT"
-                - name: DEBUG
-                  value: "true"
-                - name: RSPAMD_PASSWORD
-                  value: "postfix@123"
-                - name: CN
-                  value: "admin"
-                - name: DC1
-                  value: "copper"
-                - name: DC2
-                  value: "opensource"
-                - name: DC3
-                  value: "lk"
-                - name: DNPASS
-                  value: "admin"
-                - name: OU
-                  value: "Users"
-                - name: LDAP_HOST_IP
-                  value: "ldap-service"
-                - name: KEY_PATH
-                  value: "KEY_PATH"
-                  #value: "Example Inc."
           resources:
             limits:
               #cpu: 0.5
