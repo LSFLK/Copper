@@ -99,6 +99,9 @@ function echoGreenBold () {
 
 echoGreenBold 'Deploying Copper Email Server...'
 
+# Creating the k8s namespace
+kubectl create namespace monitoring 2> /dev/null || true
+echoGreenBold 'Monitoring namespace created...'
 
 ############## START OF CONFIGURATION #############################
 
@@ -111,8 +114,8 @@ echoGreenBold 'Please Submit your Input data carefully...'
 # echo What is your age?
 # read age
 # echo "Your age: $age" >> anu.txt
-
-echo "apiVersion: v1" >> secret.yaml
+#echo " " > secret.yaml ## inset to file
+echo "apiVersion: v1" > secret.yaml # this will clear all previous content in the file
 echo "kind: Secret" >> secret.yaml
 echo "metadata:" >> secret.yaml
 echo "    name: email-secret" >> secret.yaml
@@ -127,7 +130,7 @@ echo "    MYSQL_DATABASE: $mysql_db" >> secret.yaml
 
 echo Enter mysql database password: 
 read mysql_db_pwd
-echo "    MYSQL_DATABASE: $mysql_db_pwd" >> secret.yaml
+echo "    MYSQL_PASSWORD: $mysql_db_pwd" >> secret.yaml
 
 echo Enter admin username \(without domain\):
 read CN
@@ -169,7 +172,7 @@ echo "    RSPAMD_PASSWORD : $rspamd_pwd" >> secret.yaml
 # Now Create the configuration secrets
 
 echoGreenBold 'Configuration goint to be created...'
-kubectl create -f deployment/secret.yaml 2> /dev/null || true
+kubectl create -f secret.yaml 2> /dev/null || true
 echoGreenBold 'Secret configuration files Created...'
 
 
@@ -229,9 +232,7 @@ case "$response" in
 # changing to parent directory
 cd ..
 
-# Creating the k8s namespace
-kubectl create namespace monitoring 2> /dev/null || true
-echoGreenBold 'Monitoring namespace created...'
+
 # Creating ldap server
 kubectl create -f openldap/openldap.yaml 2> /dev/null || true
 echoGreenBold 'openldap service created...'
