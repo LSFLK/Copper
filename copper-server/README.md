@@ -92,7 +92,7 @@ Then import the import_uid.ldif file .
 
 Open the groupoffice browser.
 
-http://localhost:8004/install/
+http://localhost:8004/
 
 1. Accept the agreement and continue
 2. Check Test page is ok. If there is a databae isseu it should be checked.
