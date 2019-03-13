@@ -100,7 +100,7 @@ case "$response" in
 # 2>  true
 
 ## delete the ldap
-kubectl delete service ldap-service --namespace=copper 2> /dev/null || true
+kubectl delete service ldap -n copper 2> /dev/null || true
 kubectl delete deployment ldap --namespace=copper 2> /dev/null || true
 echoRedBold 'Ldap service deleted...'
 
@@ -154,7 +154,7 @@ kubectl delete deployment groupoffice -n copper 2> /dev/null || true
 
 #deleting the secret
 echoGreenBold 'secret configurations goint to be deleted...'
-kubectl delete secret email-secret -n monitoring 2> /dev/null || true
+kubectl delete secret email-secret -n copper 2> /dev/null || true
 echoGreenBold 'Secret configuration files deleted..'
 
 ## deleting namespace

@@ -137,9 +137,9 @@ echo Enter mysql database password:
 read mysql_db_pwd
 echo "    MYSQL_PASSWORD: $mysql_db_pwd" >> secret.yaml
 
-echo Enter ldap admin username \(without domain\):
-read CN
-echo "    CN: $CN" >> secret.yaml
+# echo Enter ldap admin username \(without domain\):
+# read CN
+echo "    CN: admin" >> secret.yaml
 
 echo Your domain must contain 3 parts. \(Eg: part1.part2.part3\)
 echo Enter the first part of domain:
@@ -151,11 +151,11 @@ echo "    DC2: $DC2" >> secret.yaml
 echo Enter the third part of domain:
 read DC3
 echo "    DC3: $DC3" >> secret.yaml
-echo Enter admin password:
+echo Enter LDAP admin password:
 read DNPASS
 echo "    DNPASS: $DNPASS" >> secret.yaml
 
-echo "    PHPLDAPADMIN_LDAP_HOSTS: ldap-service" >> secret.yaml
+echo "    PHPLDAPADMIN_LDAP_HOSTS: ldap" >> secret.yaml
 #echo Enter phpldapadmin password:
 #read LDAPADMIN
 echo "    PHPLDAPADMIN_SERVER_ADMIN: admin@$DC1.$DC2.$DC3" >> secret.yaml
@@ -170,26 +170,27 @@ echo "    PHPLDAPADMIN_LDAP_CLIENT_TLS_CRT_FILENAME: cert.crt" >> secret.yaml
 echo "    PHPLDAPADMIN_LDAP_CLIENT_TLS_KEY_FILENAME: cert.key" >> secret.yaml
 echo "    PHPLDAPADMIN_LDAP_CLIENT_TLS_CA_CRT_FILENAME: ca.crt" >> secret.yaml
 
-echo Enter ldap organization Ex : copper.opensource.lk:
+echo Enter organization name
 read ORG
 echo "    LDAP_ORGANISATION: $ORG" >> secret.yaml
 
-echo Enter ldap Domain Ex : copper.opensource.lk:
-read DOM
-echo "    LDAP_DOMAIN: $DOM" >> secret.yaml
+# echo Enter ldap Domain Ex : copper.opensource.lk:
+# read DOM
+echo "    LDAP_DOMAIN: $DC1.$DC2.$DC3" >> secret.yaml
 
-echo Enter ldap admin password Ex : copper.opensource.lk:
-read ADM
-echo "    LDAP_ADMIN_PASSWORD: $ADM" >> secret.yaml
+# echo Enter ldap admin password
+# read ADM
+echo "    LDAP_ADMIN_PASSWORD: $DNPASS" >> secret.yaml
 
-echo "    LDAP_LOG_LEVEL: \"-1\"" >> secret.yaml
-echo "    LDAP_CONFIG_PASSWORD: $ADM" >> secret.yaml
+#echo "    LDAP_LOG_LEVEL: \"-1\"" >> secret.yaml
+echo "    LDAP_LOG_LEVEL: \"256\"" >> secret.yaml
+echo "    LDAP_CONFIG_PASSWORD: $DNPASS" >> secret.yaml
 echo "    LDAP_READONLY_USER: \"false\"" >> secret.yaml
 echo "    LDAP_READONLY_USER_USERNAME: readonly" >> secret.yaml
 echo "    LDAP_READONLY_USER_PASSWORD: readonly" >> secret.yaml
 echo "    LDAP_RFC2307BIS_SCHEMA: \"false\"" >> secret.yaml
 echo "    LDAP_BACKEND: mdb" >> secret.yaml
-echo "    LDAP_TLS: \"false\"" >> secret.yaml
+echo "    LDAP_TLS: \"true\"" >> secret.yaml
 echo "    LDAP_TLS_CRT_FILENAME: cert.pem" >> secret.yaml
 echo "    LDAP_TLS_KEY_FILENAME: privkey.pem" >> secret.yaml
 echo "    LDAP_TLS_CA_CRT_FILENAME: fullchain.pem" >> secret.yaml
@@ -197,6 +198,7 @@ echo "    LDAP_TLS_ENFORCE: \"false\"" >> secret.yaml
 echo "    LDAP_TLS_CIPHER_SUITE: SECURE256:+SECURE128:-VERS-TLS-ALL:+VERS-TLS1.2:-RSA:-DHE-DSS:-CAMELLIA-128-CBC:-CAMELLIA-256-CBC" >> secret.yaml
 echo "    LDAP_TLS_VERIFY_CLIENT: try" >> secret.yaml
 echo "    LDAP_REPLICATION: \"false\"" >> secret.yaml
+#echo "    LDAP_REPLICATION_CONFIG_SYNCPROV: \"binddn=\"cn=admin,cn=config\" bindmethod=simple credentials=$LDAP_CONFIG_PASSWORD searchbase=\"cn=config\" type=refreshAndPersist retry=\"60 +\" timeout=1 starttls=critical" >> secret.yaml
 echo "    KEEP_EXISTING_CONFIG: \"false\"" >> secret.yaml
 echo "    LDAP_REMOVE_CONFIG_AFTER_SETUP: \"true\"" >> secret.yaml
 echo "    LDAP_SSL_HELPER_PREFIX: ldap" >> secret.yaml
@@ -204,7 +206,7 @@ echo "    LDAP_SSL_HELPER_PREFIX: ldap" >> secret.yaml
 
 
 echo "    OU : Users" >> secret.yaml
-echo "    LDAP_HOST_IP : ldap-service" >> secret.yaml
+echo "    LDAP_HOST_IP : ldap" >> secret.yaml
 echo "    KEY_PATH : KEYPATH" >> secret.yaml
 
 echo "    EMAIL : $CN@$DC1.$DC2.$DC3" >> secret.yaml

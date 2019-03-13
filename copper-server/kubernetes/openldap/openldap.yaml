@@ -7,7 +7,7 @@ items:
       namespace: copper
       labels:
         app: ldap
-      name: ldap-service
+      name: ldap
     spec:
       type: LoadBalancer
       #loadBalancerIP: 10.10.10.10
@@ -49,8 +49,8 @@ items:
           hostname: copper-ldap
           containers:
             - name: ldap
-              # image: lsflk/copper:openldap
-              image: osixia/openldap:1.2.2
+              #image: lsflk/copper:openldap
+              image: osixia/openldap:1.2.2 # 1.2.3 has a issue so downgraded to 1.2.2
               imagePullPolicy: Always
               volumeMounts:
                 - name: ldap-data
@@ -164,12 +164,12 @@ items:
                 #          name: email-secret
                 #          key: LDAP_REPLICATION_CONFIG_SYNCPROV
                 #
-                 - name: LDAP_REPLICATION_CONFIG_SYNCPROV
-                   value: "binddn=\"cn=admin,cn=config\" bindmethod=simple credentials=$LDAP_CONFIG_PASSWORD searchbase=\"cn=config\" type=refreshAndPersist retry=\"60 +\" timeout=1 starttls=critical"
-                 - name: LDAP_REPLICATION_DB_SYNCPROV
-                   value: "binddn=\"cn=admin,$LDAP_BASE_DN\" bindmethod=simple credentials=$LDAP_ADMIN_PASSWORD searchbase=\"$LDAP_BASE_DN\" type=refreshAndPersist interval=00:00:00:10 retry=\"60 +\" timeout=1 starttls=critical"
-                 - name: LDAP_REPLICATION_HOSTS
-                   value: "#PYTHON2BASH:['ldap://ldap-one-service', 'ldap://ldap-two-service']"
+                # - name: LDAP_REPLICATION_CONFIG_SYNCPROV
+                #   value: "binddn=\"cn=admin,cn=config\" bindmethod=simple credentials=$LDAP_CONFIG_PASSWORD searchbase=\"cn=config\" type=refreshAndPersist retry=\"60 +\" timeout=1 starttls=critical"
+                # - name: LDAP_REPLICATION_DB_SYNCPROV
+                #   value: "binddn=\"cn=admin,$LDAP_BASE_DN\" bindmethod=simple credentials=$LDAP_ADMIN_PASSWORD searchbase=\"$LDAP_BASE_DN\" type=refreshAndPersist interval=00:00:00:10 retry=\"60 +\" timeout=1 starttls=critical"
+                # - name: LDAP_REPLICATION_HOSTS
+                #   value: "#PYTHON2BASH:['ldap://ldap-one-service', 'ldap://ldap-two-service']"
                  - name: KEEP_EXISTING_CONFIG
                    valueFrom:
                        secretKeyRef:
@@ -197,3 +197,4 @@ items:
                 #path: "/data/ldap/certs"
                 #path: "/Users/wso2/Documents/copper/copper/copper-server/kubernetes/tls"
                 path: "/tls"
+               
