@@ -37,11 +37,21 @@ spec:
       - image: lsflk/copper:mysql
         name: mysql
         env:
+           - name: MYSQL_ROOT_PASSWORD
+             valueFrom:
+                 secretKeyRef:
+                    name: email-secret
+                    key: MYSQL_PASSWORD
+           - name: MYSQL_DATABASE
+             valueFrom:
+                 secretKeyRef:
+                    name: email-secret
+                    key: MYSQL_DATABASE
           # Use secret in real usage
-        - name: MYSQL_ROOT_PASSWORD
-          value: c0pperDB
-        - name: MYSQL_DATABASE
-          value: groupoffice
+        #- name: MYSQL_ROOT_PASSWORD
+        #  value: c0pperDB
+        #- name: MYSQL_DATABASE
+        #  value: groupoffice
         ports:
         - containerPort: 3306
         #- containerPort: 36
