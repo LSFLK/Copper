@@ -101,7 +101,7 @@ echoGreenBold 'Deploying Copper Email Server...'
 
 # Creating the k8s namespace
 kubectl create namespace copper 2> /dev/null || true
-echoGreenBold 'Monitoring namespace created...'
+echoGreenBold 'Copper namespace created...'
 
 ############## START OF CONFIGURATION #############################
 
