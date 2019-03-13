@@ -153,9 +153,9 @@ kubectl delete deployment groupoffice -n copper 2> /dev/null || true
 # docker rmi groupoffice 2> /dev/null || true
 
 #deleting the secret
-echoGreenBold 'secret configurations goint to be deleted...'
+echoRedBold 'secret configurations goint to be deleted...'
 kubectl delete secret email-secret -n copper 2> /dev/null || true
-echoGreenBold 'Secret configuration files deleted..'
+echoRedBold 'Secret configuration files deleted..'
 
 ## deleting namespace
 kubectl delete namespace copper  2> /dev/null || true
