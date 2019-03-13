@@ -33,8 +33,10 @@ spec:
     spec:
       containers:
         - name: phpldapadmin
-          image: lsflk/copper:phpldapadmin
-          #imagePullPolicy: Always
+          #image: lsflk/copper:phpldapadmin
+          image: osixia/phpldapadmin:0.7.2
+          imagePullPolicy: Always
+          #imagePullPolicy: Never
           volumeMounts:
             - name: phpldapadmin-certs
               mountPath: /container/service/phpldapadmin/assets/apache2/certs

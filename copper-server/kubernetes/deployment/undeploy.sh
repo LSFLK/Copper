@@ -100,7 +100,7 @@ case "$response" in
 # 2>  true
 
 ## delete the ldap
-kubectl delete service ldap-service --namespace=monitoring 2> /dev/null || true
+kubectl delete service ldap -n monitoring 2> /dev/null || true
 kubectl delete deployment ldap --namespace=monitoring 2> /dev/null || true
 echoRedBold 'Ldap service deleted...'
 
