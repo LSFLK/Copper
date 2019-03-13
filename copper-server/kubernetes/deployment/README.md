@@ -29,9 +29,9 @@
 
     '''
     // view all pods and copy the pod name for emailserver
-    kubectl get pods --namespace=monitoring
+    kubectl get pods --namespace=Copper
     // login to emailserver. You have to raplace pod_name with email pod.
-    kubectl exec <pod_name> --namespace=monitoring --stdin --tty -c email /bin/sh
+    kubectl exec <pod_name> --namespace=Copper --stdin --tty -c email /bin/sh
   
     // starting main services from inside the pod
     service postfix start
@@ -60,11 +60,11 @@
 
     first you have to check what is the pod name of dataase.
 
-    #kubectl get pods -n  monitoring
+    #kubectl get pods -n  Copper
 
     Then exicute followng command to open a mysql client connected with the mysql pod.
 
-    #kubectl run -it --rm --image=mysql:5.6 --restart=Never mysql-client -n monitoring -- mysql -h mysql -pc0pperDB
+    #kubectl run -it --rm --image=mysql:5.6 --restart=Never mysql-client -n Copper -- mysql -h mysql -pc0pperDB
 
     Then you will get access to the mysql database.
     Once you connected create a database.
