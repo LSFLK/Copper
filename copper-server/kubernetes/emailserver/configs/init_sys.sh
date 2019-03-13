@@ -1,54 +1,10 @@
 #!/usr/bin/env bash
 
-source .env
 
-# how to get parametes from the source file.
-# .env loading in the shell
-dotenv () {
-  set -a
-  [ -f .env ] && . .env
-  set +a
-}
-
-# Run dotenv on login
-dotenv
-
-# Run dotenv on every new directory
-cd () {
-  builtin cd $@
-  dotenv
-}
-
-# end of env loading to the file
-
-export EMAIL=${EMAIL}
-export KEY_PATH
-export HOSTNAME=${FQDN}
-export FQDN=${FQDN:-$(hostname --fqdn)}
-export DOMAIN=${DOMAIN:-$(hostname --domain)}
-export REDIS_HOST=${REDIS_HOST:-"redis"}
-export REDIS_PORT=${REDIS_PORT:-6379}
-# hardcoded variable setting
-#export DBUSER=${DBUSER:-"postfixuser"}
-#export DBPASS=${DBPASS:-"postfixpassword"}
-#export DBHOST=${DBHOST:-"mariadb"}
-#export DEBUG=${DEBUG:-"true"}
-#export RSPAMD_PASSWORD=${RSPAMD_PASSWORD:-"password"}
-
-
-export DEBUG=${DEBUG}
-export RSPAMD_PASSWORD=${RSPAMD_PASSWORD}
-
-#Variables need for OpenLdap-dovecot
-export CN=${CN}
-export DC1=${DC1}
-export DC2=${DC2}
-export DC3=${DC3}
-export DNPASS=${DNPASS}
-export OU=${OU}
-export LDAP_HOST_IP=${LDAP_HOST_IP}
 
 echo "Email is ${EMAIL}"
+
+echo "Mysql user is :${MYSQL_USER}"
 
 if [ -z "$EMAIL" ]; then
   echo "[ERROR] Email Must be set !"
@@ -140,6 +96,7 @@ chmod -R 755 /etc/letsencrypt/
  sed -i.bak -e "s;%DNPASS%;"${DNPASS}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
  sed -i.bak -e "s;%OU%;"${OU}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
  sed -i.bak -e "s;%LDAP_HOST_IP%;"${LDAP_HOST_IP}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
+ sed -i.bak -e "s;%DFQN%;"${FQDN}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
 
  #OpenLDAP with Postfix conf
  sed -i.bak -e "s;%CN%;"${CN}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf"
@@ -201,14 +158,15 @@ chmod -R 755 /etc/letsencrypt/
  postmap hash:/etc/postfix/virtual
  postmap hash:/etc/postfix/access
 
- service rsyslog start
- service postfix start
- service dovecot restart
- service rspamd start
+ service rsyslog start 2> /dev/null || true
+ service postfix start 2> /dev/null || true
+ service dovecot restart 2> /dev/null || true
+ # this take too much of time
+ service rspamd start 2> /dev/null || true
  #service clamav start # clamav unrecognized service
- freshclam
- service rspamd reload
- service clamav-daemon start # if there is not enough memory in the container this will omit a error and docker build will stop from hear.
- service clamav-freshclam start
+ #freshclam
+ service rspamd reload 2> /dev/null || true
+ #service clamav-daemon start # if there is not enough memory in the container this will omit a error and docker build will stop from hear.
+ #service clamav-freshclam start
  
- #tail -f /dev/null
+ tail -f /dev/null

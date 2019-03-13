@@ -1,0 +1,15 @@
+{
+    "name": "intermesh/group-office-6-exactonline",
+    "description": "Group-Office",
+    "require": {
+        "picqer/exact-php-client": "^2.15"        
+    },
+    "license": "Proprietary",
+    "authors": [
+        {
+            "name": "Merijn Schering",
+            "email": "mschering@intermesh.nl"
+        }
+    ]
+}
+

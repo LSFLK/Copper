@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# ------------------------------------------------------------------------
-# Copyright 2017 WSO2, Inc. (http://wso2.com)
-#
-
-# ------------------------------------------------------------------------
 
 set -e
 
@@ -52,11 +47,11 @@ NC="\033[00m"
 BOLD="\e[1m"
 NRM="\e[0m"
 
-echo -e "${RED}******************************************************************************"
-echo -e "${WHITE}**                                                                          **"
-echo -e "${WHITECHAR}**          POWERED BY LANKA SOFTWARE FOUNDATION  (LSF)                     **"
-echo -e "${WHITE}**                                                                          **"
-echo -e "${RED}******************************************************************************"
+echo "${RED}******************************************************************************"
+echo "${WHITE}**                                                                          **"
+echo "${WHITECHAR}**          POWERED BY LANKA SOFTWARE FOUNDATION  (LSF)                     **"
+echo "${WHITE}**                                                                          **"
+echo "${RED}******************************************************************************"
 
 #   Add follwing tag after command for ignoring stdout, errors etc
 #   > /dev/null throw away stdout
@@ -104,7 +99,138 @@ function echoGreenBold () {
 
 echoGreenBold 'Deploying Copper Email Server...'
 
+# Creating the k8s namespace
+kubectl create namespace monitoring 2> /dev/null || true
+echoGreenBold 'Monitoring namespace created...'
 
+############## START OF CONFIGURATION #############################
+
+echoGreenBold 'Please Submit your Input data carefully...'
+
+# Ask the user for their name
+# echo Hello, who am I talking to?
+# read varname
+# echo "It's nice to meet you $varname" >> anu.txt
+# echo What is your age?
+# read age
+# echo "Your age: $age" >> anu.txt
+#echo " " > secret.yaml ## inset to file
+echo "apiVersion: v1" > secret.yaml # this will clear all previous content in the file
+echo "kind: Secret" >> secret.yaml
+echo "metadata:" >> secret.yaml
+echo "    name: email-secret" >> secret.yaml
+echo "    namespace: monitoring" >> secret.yaml
+echo "type: Opaque" >> secret.yaml
+echo "stringData:" >> secret.yaml
+echo "    TELEGRAF_VERSION: 1.8.1-1" >> secret.yaml
+
+#echo Enter mysql server host name: 
+#read mysql_host
+echo "    MYSQL_HOST: mysql" >> secret.yaml
+echo Enter mysql database name: 
+read mysql_db
+echo "    MYSQL_DATABASE: $mysql_db" >> secret.yaml
+#echo Enter mysql database user: 
+#read mysql_user
+echo "    MYSQL_USER: root" >> secret.yaml
+echo Enter mysql database password: 
+read mysql_db_pwd
+echo "    MYSQL_PASSWORD: $mysql_db_pwd" >> secret.yaml
+
+echo Enter ldap admin username \(without domain\):
+read CN
+echo "    CN: $CN" >> secret.yaml
+
+echo Your domain must contain 3 parts. \(Eg: part1.part2.part3\)
+echo Enter the first part of domain:
+read DC1
+echo "    DC1: $DC1" >> secret.yaml
+echo Enter the second part of domain:
+read DC2
+echo "    DC2: $DC2" >> secret.yaml
+echo Enter the third part of domain:
+read DC3
+echo "    DC3: $DC3" >> secret.yaml
+echo Enter admin password:
+read DNPASS
+echo "    DNPASS: $DNPASS" >> secret.yaml
+
+echo "    PHPLDAPADMIN_LDAP_HOSTS: ldap" >> secret.yaml
+#echo Enter phpldapadmin password:
+#read LDAPADMIN
+echo "    PHPLDAPADMIN_SERVER_ADMIN: admin@$DC1.$DC2.$DC3" >> secret.yaml
+echo "    PHPLDAPADMIN_SERVER_PATH: /phpldapadmin" >> secret.yaml
+echo "    PHPLDAPADMIN_HTTPS: \"true\"" >> secret.yaml
+echo "    PHPLDAPADMIN_HTTPS_CRT_FILENAME: cert.crt" >> secret.yaml
+echo "    PHPLDAPADMIN_HTTPS_KEY_FILENAME: cert.key" >> secret.yaml
+echo "    PHPLDAPADMIN_HTTPS_CA_CRT_FILENAME: ca.crt" >> secret.yaml
+echo "    PHPLDAPADMIN_LDAP_CLIENT_TLS: \"true\"" >> secret.yaml
+echo "    PHPLDAPADMIN_LDAP_CLIENT_TLS_REQCERT: try" >> secret.yaml
+echo "    PHPLDAPADMIN_LDAP_CLIENT_TLS_CRT_FILENAME: cert.crt" >> secret.yaml
+echo "    PHPLDAPADMIN_LDAP_CLIENT_TLS_KEY_FILENAME: cert.key" >> secret.yaml
+echo "    PHPLDAPADMIN_LDAP_CLIENT_TLS_CA_CRT_FILENAME: ca.crt" >> secret.yaml
+
+echo Enter ldap organization Ex : copper.opensource.lk:
+read ORG
+echo "    LDAP_ORGANISATION: $ORG" >> secret.yaml
+
+echo Enter ldap Domain Ex : copper.opensource.lk:
+read DOM
+echo "    LDAP_DOMAIN: $DOM" >> secret.yaml
+
+echo Enter ldap admin password Ex : copper.opensource.lk:
+read ADM
+echo "    LDAP_ADMIN_PASSWORD: $ADM" >> secret.yaml
+
+#echo "    LDAP_LOG_LEVEL: \"-1\"" >> secret.yaml
+echo "    LDAP_LOG_LEVEL: \"256\"" >> secret.yaml
+echo "    LDAP_CONFIG_PASSWORD: $ADM" >> secret.yaml
+echo "    LDAP_READONLY_USER: \"false\"" >> secret.yaml
+echo "    LDAP_READONLY_USER_USERNAME: readonly" >> secret.yaml
+echo "    LDAP_READONLY_USER_PASSWORD: readonly" >> secret.yaml
+echo "    LDAP_RFC2307BIS_SCHEMA: \"false\"" >> secret.yaml
+echo "    LDAP_BACKEND: mdb" >> secret.yaml
+echo "    LDAP_TLS: \"true\"" >> secret.yaml
+echo "    LDAP_TLS_CRT_FILENAME: cert.pem" >> secret.yaml
+echo "    LDAP_TLS_KEY_FILENAME: privkey.pem" >> secret.yaml
+echo "    LDAP_TLS_CA_CRT_FILENAME: fullchain.pem" >> secret.yaml
+echo "    LDAP_TLS_ENFORCE: \"false\"" >> secret.yaml
+echo "    LDAP_TLS_CIPHER_SUITE: SECURE256:+SECURE128:-VERS-TLS-ALL:+VERS-TLS1.2:-RSA:-DHE-DSS:-CAMELLIA-128-CBC:-CAMELLIA-256-CBC" >> secret.yaml
+echo "    LDAP_TLS_VERIFY_CLIENT: try" >> secret.yaml
+echo "    LDAP_REPLICATION: \"false\"" >> secret.yaml
+#echo "    LDAP_REPLICATION_CONFIG_SYNCPROV: \"binddn=\"cn=admin,cn=config\" bindmethod=simple credentials=$LDAP_CONFIG_PASSWORD searchbase=\"cn=config\" type=refreshAndPersist retry=\"60 +\" timeout=1 starttls=critical" >> secret.yaml
+echo "    KEEP_EXISTING_CONFIG: \"false\"" >> secret.yaml
+echo "    LDAP_REMOVE_CONFIG_AFTER_SETUP: \"true\"" >> secret.yaml
+echo "    LDAP_SSL_HELPER_PREFIX: ldap" >> secret.yaml
+
+
+
+echo "    OU : Users" >> secret.yaml
+echo "    LDAP_HOST_IP : ldap" >> secret.yaml
+echo "    KEY_PATH : KEYPATH" >> secret.yaml
+
+echo "    EMAIL : $CN@$DC1.$DC2.$DC3" >> secret.yaml
+echo "    HOSTNAME : mail.$DC1.$DC2.$DC3" >> secret.yaml
+echo "    FQDN : mail.$DC1.$DC2.$DC3" >> secret.yaml
+echo "    DOMAIN : $DC1.$DC2.$DC3" >> secret.yaml
+
+echo "    REDIS_HOST : REDIS_HOST" >> secret.yaml
+echo "    REDIS_PORT : REDIS_PORT" >> secret.yaml
+echo "    DEBUG : \"true\"" >> secret.yaml
+
+echo Enter password for spam filter \(RspamD\)
+read rspamd_pwd
+echo "    RSPAMD_PASSWORD : $rspamd_pwd" >> secret.yaml
+
+
+# Now Create the configuration secrets
+
+echoGreenBold 'Configuration goint to be created...'
+kubectl create -f secret.yaml 2> /dev/null || true
+echoGreenBold 'Secret configuration files Created...'
+
+
+######### END OF CONFIGURATION #############################################
 
 # checking cert file list
 # - cert.pem
@@ -160,9 +286,7 @@ case "$response" in
 # changing to parent directory
 cd ..
 
-# Creating the k8s namespace
-kubectl create namespace monitoring 2> /dev/null || true
-echoGreenBold 'Monitoring namespace created...'
+
 # Creating ldap server
 kubectl create -f openldap/openldap.yaml 2> /dev/null || true
 echoGreenBold 'openldap service created...'
@@ -170,12 +294,12 @@ echoGreenBold 'openldap service created...'
 kubectl create -f phpldapadmin/phpldapadmin.yaml 2> /dev/null || true
 echoGreenBold 'phpldapadmin service Created...'
 # creating emailserver docker image
-cd emailserver
-docker build -t emailserver . 2> /dev/null || true
-echoGreenBold 'Docker Email image Service Created...'
+#cd emailserver
+#docker build -t emailserver . 2> /dev/null || true
+#echoGreenBold 'Docker Email image Service Created...'
 # wait 1 seconds 
-sleep 3s
-cd ..
+#sleep 3s
+#cd ..
 
 # Create the emailserver service from kubernetes using docker image we have created now.
 kubectl create -f emailserver/email.yaml 2> /dev/null || true
@@ -231,11 +355,15 @@ kubectl create -f prometheus-alert/Service.yaml 2> /dev/null || true
 echoGreenBold 'Alert Manager created...'
 
 # horde deployment
-cd ./groupware/horde
-docker build -t horde . 2> /dev/null || true
-cd ..
-cd ..
-kubectl create -f groupware/horde/horde.yaml 2> /dev/null || true
+# cd ./groupware/horde
+# docker build -t horde . 2> /dev/null || true
+# cd ..
+# cd ..
+# kubectl create -f groupware/horde/horde.yaml 2> /dev/null || true
+
+#
+kubectl create -f groupware/groupoffice/groupoffice.yaml 2> /dev/null || true
+echoGreenBold 'Groupoffice created...'
 
 # wait 1 seconds 
 sleep 1s
@@ -245,8 +373,14 @@ sleep 1s
 
 echoGreenBold 'Finished'
 
+#sleep 5s
+
+#kubectl run -it --rm --image=mysql:5.6 --restart=Never mysql-client -n monitoring -- mysql -h mysql -pc0pperDB
+
+
      ;;
     *)
         echoRedBold "Deployment cancelled"
         ;;
 esac
+

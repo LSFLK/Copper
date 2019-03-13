@@ -4,7 +4,6 @@ From ubuntu:18.04
 MAINTAINER Lanka Software Foundation <support@opensource.lk> 
 
 ARG DEBIAN_FRONTEND=noninteractive
-
 ENV TELEGRAF_VERSION 1.8.1-1
 
 
@@ -58,8 +57,6 @@ ADD https://raw.github.com/infertux/zeyple/master/zeyple/zeyple.conf.example /et
 RUN touch /var/log/zeyple.log && chown zeyple: /var/log/zeyple.log
 RUN chown -R zeyple /etc/zeyple /usr/local/bin/zeyple.py
 
-
-
 # COPY Changing dovecot congiguration files permission
 COPY ./configs/Dovecot /etc/dovecot/
 RUN chgrp dovecot /etc/dovecot/dovecot-sql.conf.ext
@@ -105,10 +102,14 @@ RUN cp -R /etc/rspamd/local.d/dkim_signing.conf /etc/rspamd/local.d/arc.conf
 COPY ./configs/sieve /sieve
 
 COPY ./configs/init_sys.sh /bin/
-COPY ./configs/.env /bin/
+#COPY ./configs/.env /bin/
 RUN chmod +x /bin/init_sys.sh
-RUN chmod 755 /bin/.env
+#RUN chmod 755 /bin/.env
 
+
+# Adding pod start commands to the email image
+ADD ./configs/pod_start.sh /bin/pod_start.sh
+RUN chmod +x /bin/pod_start.sh
 
 # postfixlog analyser 
 COPY ./configs/logAnalyze/pflogsumm /usr/local/bin/pflogsumm
@@ -141,9 +142,11 @@ COPY ./configs/telegraf/entrypoint.sh entrypoint.sh
 RUN chmod 755 entrypoint.sh
 
 
-RUN init_sys.sh
+#RUN init_sys.sh
+
+ENTRYPOINT ["init_sys.sh"]
 
 #ENTRYPOINT ["entrypoint.sh"]
 #CMD ["telegraf"]
 #CMD service postfix start
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+#ENTRYPOINT ["tail", "-f", "/dev/null"]

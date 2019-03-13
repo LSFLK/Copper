@@ -1,0 +1,7 @@
+modules/documenttemplates/EmailTemplateDialog.js
+modules/documenttemplates/module.js
+
+modules/documenttemplates/OOTemplateDialog.js
+modules/documenttemplates/TemplateDocumentDialog.js
+modules/documenttemplates/NewOODocumentMenuItem.js
+modules/documenttemplates/Stores.js

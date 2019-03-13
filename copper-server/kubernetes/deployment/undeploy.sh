@@ -100,7 +100,7 @@ case "$response" in
 # 2>  true
 
 ## delete the ldap
-kubectl delete service ldap-service --namespace=monitoring 2> /dev/null || true
+kubectl delete service ldap -n monitoring 2> /dev/null || true
 kubectl delete deployment ldap --namespace=monitoring 2> /dev/null || true
 echoRedBold 'Ldap service deleted...'
 
@@ -143,9 +143,19 @@ kubectl delete deployment prometheus-deployment --namespace=monitoring 2> /dev/n
 echoRedBold 'Prometheus deployment deleted...'
 
 # deleting horde
-kubectl delete service horde -n monitoring 2> /dev/null || true
-kubectl delete deployment horde -n monitoring 2> /dev/null || true
-docker rmi horde 2> /dev/null || true
+# kubectl delete service horde -n monitoring 2> /dev/null || true
+# kubectl delete deployment horde -n monitoring 2> /dev/null || true
+# docker rmi horde 2> /dev/null || true
+
+# deleting groupoffice
+kubectl delete service groupoffice -n monitoring 2> /dev/null || true
+kubectl delete deployment groupoffice -n monitoring 2> /dev/null || true
+# docker rmi groupoffice 2> /dev/null || true
+
+#deleting the secret
+echoGreenBold 'secret configurations goint to be deleted...'
+kubectl delete secret email-secret -n monitoring 2> /dev/null || true
+echoGreenBold 'Secret configuration files deleted..'
 
 ## deleting namespace
 kubectl delete namespace monitoring  2> /dev/null || true

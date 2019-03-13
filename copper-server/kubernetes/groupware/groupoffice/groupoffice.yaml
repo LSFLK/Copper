@@ -1,0 +1,82 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: groupoffice
+  namespace: monitoring
+spec:
+  type: LoadBalancer
+  selector:
+    app: groupoffice
+  ports:
+    #- protocol: "TCP"
+    #  port: 443
+    - protocol: TCP
+      port: 8004
+      targetPort: 80
+      name: http
+    #- protocol: TCP
+    #  port: 433
+    #  targetPort: 433
+    #  name: http
+    #- protocol: TCP
+    #  port: 587
+    #  targetPort: 587
+    #  name: submission
+    #- protocol: TCP
+    #  port: 143
+    #  targetPort: 143
+      #targetPort: http
+      #clusterIP: None    
+    #  name: imap
+      #nodePort: 30080
+  #type: NodePort
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: groupoffice
+  namespace: monitoring
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: groupoffice
+        track: stable
+    spec:
+      containers:
+        - name: groupoffice
+          image: lsflk/copper:groupoffice
+          #image: intermesh/groupoffice
+          imagePullPolicy: Always
+          env:
+             - name: MYSQL_USER
+               valueFrom:
+                    secretKeyRef:
+                        name: email-secret
+                        key: MYSQL_USER
+             - name: MYSQL_PASSWORD
+               valueFrom:
+                    secretKeyRef:
+                        name: email-secret
+                        key: MYSQL_PASSWORD
+             - name: MYSQL_DATABASE
+               valueFrom:
+                    secretKeyRef:
+                        name: email-secret
+                        key: MYSQL_DATABASE
+             - name: MYSQL_HOST
+               valueFrom:
+                    secretKeyRef:
+                        name: email-secret
+                        key: MYSQL_HOST
+          ports:
+            - name: http
+              containerPort: 80
+            - name: health
+              containerPort: 81
+          resources:
+             limits:
+               cpu: 500m # ~4/10th of a core
+               memory: "700Mi" # 900 Mebibytes  
+          

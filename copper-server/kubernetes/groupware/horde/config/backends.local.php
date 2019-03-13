@@ -356,7 +356,7 @@
 // IMAP server
 $servers['imap'] = array(
     // ENABLED by default; will connect to IMAP port on local server
-    'disabled' => false,
+    'disabled' => true,
     'name' => 'copper.opensource.lk',
     'hostspec' => 'email',
     'hordeauth' => false,
@@ -387,20 +387,20 @@ $servers['pop'] = array(
 // options.
 $servers['advanced'] = array(
     // Disabled by default
-    'disabled' => true,
+    'disabled' => false,
     'name' => 'Advanced IMAP Server',
-    'hostspec' => 'localhost',
+    'hostspec' => 'email',
     'hordeauth' => false,
     'protocol' => 'imap',
     'port' => 143,
     'secure' => 'tls',
-    'maildomain' => '',
+    'maildomain' => 'copper.opensource.lk',
     'smtp' => array(
     //    'auth' => true,
     //    'debug' => false,
     //    'horde_auth' => false,
-    //    'host' => 'smtp.example.com',
-    //    'lmtp' => false,
+        'host' => 'email',
+        'lmtp' => false, // if you use port 25
     //    'localhost' => 'localhost',
     //    'password' => null,
     //    /* Mail from a MUA SHOULD be sent via the mail submission port (587)
@@ -410,6 +410,7 @@ $servers['advanced'] = array(
     //     * mail submission agent to automatically authenticate this host
     //     * based on the network location). */
     //    'port' => 587,
+        'port' => 25,
     //    'username' => null
     ),
     'spam' => array(

@@ -34,12 +34,24 @@ spec:
         app: mysql
     spec:
       containers:
-      - image: mysql:5.6
+      - image: lsflk/copper:mysql
         name: mysql
         env:
+           - name: MYSQL_ROOT_PASSWORD
+             valueFrom:
+                 secretKeyRef:
+                    name: email-secret
+                    key: MYSQL_PASSWORD
+           - name: MYSQL_DATABASE
+             valueFrom:
+                 secretKeyRef:
+                    name: email-secret
+                    key: MYSQL_DATABASE
           # Use secret in real usage
-        - name: MYSQL_ROOT_PASSWORD
-          value: password
+        #- name: MYSQL_ROOT_PASSWORD
+        #  value: c0pperDB
+        #- name: MYSQL_DATABASE
+        #  value: groupoffice
         ports:
         - containerPort: 3306
         #- containerPort: 36
@@ -49,12 +61,14 @@ spec:
           mountPath: /var/lib/mysql
         resources:      
            limits:
-             cpu: "1"
+             cpu: 200m # ~2/10th of a core
+             memory: "500Mi" # 500 Mebibytes 
              #memory: 3Gi
-           requests:
-             cpu: 200m
+           #requests:
+             #cpu: 100m
              #memory: 2Gi
       volumes:
       - name: mysql-persistent-storage
         persistentVolumeClaim:
           claimName: mysql-pv-claim
+

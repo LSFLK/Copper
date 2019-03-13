@@ -1,0 +1,13 @@
+modules/timeregistration2/views/Extjs3/SettingsDialog.js
+
+
+modules/timeregistration2/views/Extjs3/EmployeeGrid.js
+modules/timeregistration2/views/Extjs3/EmployeeDialog.js
+
+modules/timeregistration2/views/Extjs3/YearOverviewGrid.js
+modules/timeregistration2/views/Extjs3/TimeEntryGrid.js
+modules/timeregistration2/views/Extjs3/WeekGrid.js
+modules/timeregistration2/views/Extjs3/MonthGrid.js
+modules/timeregistration2/views/Extjs3/YearGrid.js
+modules/timeregistration2/views/Extjs3/MainPanel.js
+

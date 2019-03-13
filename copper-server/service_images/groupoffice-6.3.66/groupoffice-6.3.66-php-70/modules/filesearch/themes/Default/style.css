@@ -1,0 +1,42 @@
+.go-module-icon-filesearch , .go-menu-icon-filesearch {
+	background-image: url('images/filesearch.png') !important;
+}
+
+.go-tab-icon-filesearch {
+	background-image: none !important;
+}
+
+.docx div{
+	padding:5px 0;
+}
+
+.fs-highlight{
+	background-color:yellow;
+}.go-link-icon-16 {
+	background-image: url('images/filesearch.png') !important;
+}
+.go-link-icon-16 {
+	background-image: url('images/filesearch.png') !important;
+}
+.go-link-icon-16 {
+	background-image: url('images/filesearch.png') !important;
+}
+.go-link-icon-16 {
+	background-image: url('images/filesearch.png') !important;
+}
+.go-link-icon-16 {
+	background-image: url('images/filesearch.png') !important;
+}
+.go-link-icon-16 {
+	background-image: url('images/filesearch.png') !important;
+}
+
+
+.fs-docbundles-grid .x-grid3-row-body {
+	padding:0px 5px;
+}
+
+.fs-searchresults-grid .x-grid3-col-name,.fs-docbundles-grid .x-grid3-col-name {
+	font-weight:bold;
+	/*color:#333;*/
+}

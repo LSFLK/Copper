@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS `wf_triggers`;
+DROP TABLE IF EXISTS `wf_models`;
+DROP TABLE IF EXISTS `wf_processes`;
+DROP TABLE IF EXISTS `wf_step_history`;
+DROP TABLE IF EXISTS `wf_steps`;
+DROP TABLE IF EXISTS `wf_approvers_groups`;
+DROP TABLE IF EXISTS `wf_approvers`;
+DROP TABLE IF EXISTS `wf_required_approvers`;
+DROP TABLE IF EXISTS `wf_action_types`;

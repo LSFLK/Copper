@@ -1,0 +1,3 @@
+modules/scanbox/views/Extjs3/ScanboxModule.js
+modules/scanbox/views/Extjs3/FileFoundDialog.js
+modules/scanbox/views/Extjs3/FilesGrid.js

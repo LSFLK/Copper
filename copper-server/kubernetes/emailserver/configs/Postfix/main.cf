@@ -29,7 +29,7 @@ smtpd_tls_cert_file=/etc/letsencrypt/live/%DFQN%/.fullchain.pem
 smtpd_tls_key_file=/etc/letsencrypt/live/%DFQN%/.privkey.pem
 
 smtpd_use_tls=yes
-smtpd_tls_auth_only = yes
+smtpd_tls_auth_only = no
 
 
 # These two lines define how postfix will connect to other mail servers.
@@ -40,8 +40,6 @@ smtpd_tls_auth_only = yes
 # DANE requires a DNSSEC capable resolver. If your DNS resolver doesn't
 # support DNSSEC, remove the above two lines and uncomment the below:
 #   smtp_tls_security_level = may
-smtp_tls_security_level = may
-
 # allow other mail servers to connect using TLS, but don't require it
 smtpd_tls_security_level = may
 
@@ -59,9 +57,10 @@ smtpd_sasl_auth_enable = yes
 # entry and present a valid, FQDN HELO hostname. In addition, they can only
 # send mail to valid mailboxes on the server, and the sender's domain must
 # actually exist.
-smtpd_client_restrictions =
+ssmtpd_helo_restrictions =
   permit_mynetworks,
   permit_sasl_authenticated,
+  # ---------- Above line permited early
   #reject_unknown_reverse_client_hostname,
   # you might want to consider:
   #  reject_unknown_client_hostname,
@@ -73,6 +72,7 @@ smtpd_client_restrictions =
 smtpd_helo_restrictions =
   permit_mynetworks,
   permit_sasl_authenticated,
+  # ------------ Above line permited early
   #reject_invalid_helo_hostname,
   #reject_non_fqdn_helo_hostname,
   # you might want to consider:
@@ -81,28 +81,28 @@ smtpd_helo_restrictions =
   # properly resolves in DNS. This is a somewhat restrictive check and may
   # reject legitimate mail.
   #reject_unauth_pipelining
-#smtpd_sender_restrictions =
-  #permit_mynetworks,
+smtpd_sender_restrictions =
+  permit_mynetworks,
   #permit_sasl_authenticated,
   #reject_non_fqdn_sender,
   #reject_unknown_sender_domain,
   #reject_unauth_pipelining
-#smtpd_relay_restrictions =
-  #permit_mynetworks,
-  #permit_sasl_authenticated,
+smtpd_relay_restrictions =
+  permit_mynetworks,
+  permit_sasl_authenticated,
   # !!! THIS SETTING PREVENTS YOU FROM BEING AN OPEN RELAY !!!
-  #reject_unauth_destination
+  reject_unauth_destination,
   # !!!      DO NOT REMOVE IT UNDER ANY CIRCUMSTANCES      !!!
-#smtpd_recipient_restrictions =
-  #permit_mynetworks,
-  #permit_sasl_authenticated,
+smtpd_recipient_restrictions =
+  permit_mynetworks,
+  permit_sasl_authenticated,
   #reject_non_fqdn_recipient,
   #reject_unknown_recipient_domain,
   #reject_unauth_pipelining,
   #reject_unverified_recipient
-#smtpd_data_restrictions =
-  #permit_mynetworks,
-  #permit_sasl_authenticated,
+smtpd_data_restrictions =
+  permit_mynetworks,
+  permit_sasl_authenticated,
   #reject_multi_recipient_bounce,
   #reject_unauth_pipelining
 
@@ -139,7 +139,7 @@ mydestination = localhost
 
 # spam related settings ---------------------------------
 # prevent spammers from searching for valid users
-#disable_vrfy_command = yes
+disable_vrfy_command = yes
 
 # require properly formatted email addresses - prevents a lot of spam
 #strict_rfc821_envelopes = yes
@@ -172,14 +172,22 @@ recipient_delimiter = +
 
 relayhost =
 #mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
-mynetworks = 127.0.0.0/8 172.19.0.1
+#mynetworks = 127.0.0.0/8 172.19.0.1
+#mynetworks = 127.0.0.0/8, <site IP>, [::1]/128
+mynetworks = 10.0.0.0/8
 
+# dont put 0.0.0.0 becouse it is now this is a open realy
 
 inet_interfaces = all
 
 
 # Mail directory---------------------------------------------------------------------------------------
 # Handing off local delivery to Dovecot's LMTP, and telling it where to store mail
+#virtual_transport = dovecot
+#master.cf modification you mention is required only for non lmtp postfix's configuration
+
+#virtual_transport = lmtp:unix:...
+#The two remaining postfix configurations merely use slightly different LMTP socket name. They require modification of dovecot's configuration . 
 # deliver mail for virtual users to Dovecot's LMTP socket
 virtual_transport = lmtp:unix:private/dovecot-lmtp
 

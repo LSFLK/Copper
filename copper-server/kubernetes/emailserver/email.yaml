@@ -51,19 +51,146 @@ spec:
     spec:
       containers:
         - name: email
-          #image: "udacity/example-auth:1.0.0"
-          image: "emailserver"
-          imagePullPolicy: Never
-          #ports:
-          #  - name: tcp
-          #    containerPort: 25
-          #  - name: submission
-          #    containerPort: 587
-          #  - name: health
-          #    containerPort: 25
+          #image: emailserver
+          #image: tharangarajapaksha/emailserver
+          image: lsflk/copper:emailserver
+          imagePullPolicy: Always
+          #imagePullPolicy: Never
+          #command: ["/bin/sh"]
+          #args: ["-c", "service postfix start"]
+          #args: ["-c", "while true; do echo hello; sleep 10;done"]
+          # new additon
+          #envFrom:
+          #   secretRef:
+          #     name: email-secret
+          env: 
+             - name: TELEGRAF_VERSION
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: TELEGRAF_VERSION
+             - name: MYSQL_PASSWORD
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: MYSQL_PASSWORD
+             - name: MYSQL_DATABASE
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: MYSQL_DATABASE
+             - name: EMAIL
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: EMAIL
+             - name: HOSTNAME
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: HOSTNAME
+             - name: FQDN
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: FQDN
+             - name: DOMAIN
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: DOMAIN
+             - name: REDIS_HOST
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: REDIS_HOST
+             - name: REDIS_PORT
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: REDIS_PORT
+             - name: DEBUG
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: DEBUG
+             - name: RSPAMD_PASSWORD
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: RSPAMD_PASSWORD
+             - name: CN
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: CN
+             - name: DC1
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: DC1
+             - name: DC2
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: DC2
+             - name: DC3
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: DC3
+             - name: DNPASS
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: DNPASS
+             - name: OU
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: OU
+             - name: LDAP_HOST_IP
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: LDAP_HOST_IP
+             - name: KEY_PATH
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: KEY_PATH
+          ports:
+            - name: submission
+              containerPort: 587
+            - name: imap
+              containerPort: 143
+            - name: smtp
+              containerPort: 25
+            - name: seive
+              containerPort: 4190
+            - name: rspamd
+              containerPort: 11334
+            - name: health
+              containerPort: 26
+          lifecycle:
+            postStart:
+              exec:
+                command: ["/bin/sh", "-c", "service rsyslog start 2> /dev/null || true && service postfix start 2> /dev/null || true && service dovecot restart 2> /dev/null || true && service rspamd start 2> /dev/null || true"]
+                #command: ["/bin/sh", "-c", "service postfix start"]
+                #command: ["/bin/sh", "-c", "pod_start.sh"]
+                #command: ['/bin/sh', 'pod_start.sh']
+          #lifecycle:
+            #postStart:
+              #exec:
+                #command: ["/bin/sh"]
+                #args: ["-c", "service postfix start"]
           resources:
             limits:
-              cpu: 0.5
-              memory: "500Mi"
-   
+              #cpu: 0.5
+              #memory: "500Mi"
+              cpu: 400m # ~4/10th of a core
+              memory: "500Mi" # 500 Mebibytes 
+      #command: ["/bin/sh"]
+      #  args: ["-c", "service postfix start"]  
+  
               

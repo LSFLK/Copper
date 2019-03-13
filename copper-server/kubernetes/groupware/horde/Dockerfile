@@ -81,7 +81,8 @@ RUN cp /etc/horde/imp/backends.php /etc/horde/imp/backends.local.php
 # coppying conf.php for horde active directory
 
     #ADD ./config/conf.php /etc/horde/horde/conf.php
-    ADD ./config/backends.local.php /etc/horde/imp/backends.local.php
+    #ADD ./config/backends.local.php /etc/horde/imp/backends.php
+    ADD ./config/backends.local.php /usr/share/horde/imp/config/backends.local.php
 
 #ADD ./webmail/horde-webmail/config/conf.php /usr/share/horde/config/conf.php
 #RUN chown www-data:www-data /usr/share/horde/config/conf.php
@@ -96,9 +97,9 @@ RUN mkdir -p /etc/service/apache2
 ADD ./run.sh /etc/service/apache2/run
 
 
-# Horde database migration
-#RUN /usr/bin/horde-db-migrate
-
+# Horde database migration script running
+#RUN cd /usr/sbin
+#RUN horde-db-migrate
 
 RUN chmod +x /etc/service/apache2/run
 

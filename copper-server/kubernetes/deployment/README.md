@@ -20,6 +20,7 @@ Please update emailserver/configs/.env file before the deployment.
     '''
         cd deployment
         sh deploy.sh
+        
     '''
 
 ## Service start
@@ -54,24 +55,34 @@ Please update emailserver/configs/.env file before the deployment.
     - Once successully loged in then you have to import some test users creation file  (user_import.ldif).
 
 
-### Testing web mail client
+### Database creation 
+
+    Now a groupoffice database should be created preor to start groupoffice installation begins.
+
+    first you have to check what is the pod name of dataase.
+
+    #kubectl get pods -n  monitoring
+
+    Then exicute followng command to open a mysql client connected with the mysql pod.
+
+    #kubectl run -it --rm --image=mysql:5.6 --restart=Never mysql-client -n monitoring -- mysql -h mysql -pc0pperDB
+
+    Then you will get access to the mysql database.
+    Once you connected create a database.
+
+    CREATE DATABASE groupoffice;
+
+### Testing groupoffice 
 
 
-     URL :http://localhost/?admin
+     URL :http://localhost:8004
 
-     Login with credential username : admin , password : 12345 and add your own domain here. Below you can see relevant settings which you needs to set and set other neccesary settings as your wish.
+     You will see the installation page of the groupoffice package.
+     First create the admin user and start installation.
 
-     - IMAP and SMTP server : email
-     - security : STARTTLS
+     Then login from the admin user name and start the configuration.
 
-     Then login to the web client and test your email service
-
-     URL :https://localhost/
-
-     If you are accessing the email solution host machine from a remote machine you has to replace host machine ip for localhost.
-
-     -Username : test
-     -Password : coppermail@lsf
+     You have to configure accounts, Email accounts and ldap configuations according to your interest.
 
 ### Testing RSPAMD
 
