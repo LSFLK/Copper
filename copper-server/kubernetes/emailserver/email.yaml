@@ -59,6 +59,106 @@ spec:
           #command: ["/bin/sh"]
           #args: ["-c", "service postfix start"]
           #args: ["-c", "while true; do echo hello; sleep 10;done"]
+          # new additon
+          #envFrom:
+          #   secretRef:
+          #     name: email-secret
+          env: 
+             - name: TELEGRAF_VERSION
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: TELEGRAF_VERSION
+             - name: MYSQL_PASSWORD
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: MYSQL_PASSWORD
+             - name: MYSQL_DATABASE
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: MYSQL_DATABASE
+             - name: EMAIL
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: EMAIL
+             - name: HOSTNAME
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: HOSTNAME
+             - name: FQDN
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: FQDN
+             - name: DOMAIN
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: DOMAIN
+             - name: REDIS_HOST
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: REDIS_HOST
+             - name: REDIS_PORT
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: REDIS_PORT
+             - name: DEBUG
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: DEBUG
+             - name: RSPAMD_PASSWORD
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: RSPAMD_PASSWORD
+             - name: CN
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: CN
+             - name: DC1
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: DC1
+             - name: DC2
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: DC2
+             - name: DC3
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: DC3
+             - name: DNPASS
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: DNPASS
+             - name: OU
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: OU
+             - name: LDAP_HOST_IP
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: LDAP_HOST_IP
+             - name: KEY_PATH
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: KEY_PATH
           ports:
             - name: submission
               containerPort: 587
@@ -92,5 +192,5 @@ spec:
               memory: "500Mi" # 500 Mebibytes 
       #command: ["/bin/sh"]
       #  args: ["-c", "service postfix start"]  
-   
+  
               

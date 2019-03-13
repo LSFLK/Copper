@@ -11,8 +11,10 @@ At the moment, Cu-email is compatible with both docker-compose and k8s. Please r
     - [POSTFIX](http://www.postfix.org/) : a modular mail transfer agent.
   - [x] IMAP Server and POP Server
     - [DOVECOT](https://www.dovecot.org/) : secure open-source IMAP and POP3 server.
-  - [x] WEBmail client
+  - [x] WEBmail client (Outdated)
     - [RAINLOOP](https://www.rainloop.net/) : Webmail client with basic features.
+  - [x] WEBmail client
+    - [Group-Office](https://www.group-office.com)
   - [x] Spam Filter
     - [RSPAMD](https://rspamd.com/) : Fast, free and open-source spam filtering system. You may find a comparison of spam filters [here](https://rspamd.com/comparison.html).
   - [x] Antivirus 
@@ -61,7 +63,7 @@ $ git clone https://github.com/LSFLK/Copper.git
 
 2. Deploy the copper email solution.
 ```
-$ cd copper/copper-server/kubernetes/deployments
+$ cd Copper/copper-server/kubernetes/deployment/
 $ sh deploy.sh
 
 ```
@@ -72,7 +74,9 @@ $ sh deploy.sh
 $ kubectl get pods -n monitoring
 
 ```
-## Running
+Wait untill all pods are up and running
+
+## Test Openldap
 
 Insert previously created users to your openldap server.
 
@@ -88,7 +92,7 @@ Then import the import_uid.ldif file .
 
 Open the groupoffice browser.
 
-http://localhost:8004/install/
+http://localhost:8004/
 
 1. Accept the agreement and continue
 2. Check Test page is ok. If there is a databae isseu it should be checked.
@@ -98,20 +102,28 @@ http://localhost:8004/install/
 5. Go to Email Tab and click on Accounts
 6. Add account with following details
 
-'''
-IMAP Configuration
+
+### IMAP Configuration
+
 IMAP Host : email
+
 Port      : 143
+
 Username  : test@copper.opensource.lk
+
 Password  : coppermail@lsf
+
 Encription: TLS
 Checked Allow self signed certificates.
 
-SMTP Configuraiton
+### SMTP Configuraiton
+
 HOST      : email
+
 Port      : 25
+
 Encription: No encription
-'''
+
 
 
 

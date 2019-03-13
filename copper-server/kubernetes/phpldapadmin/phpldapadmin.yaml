@@ -44,36 +44,71 @@ spec:
             #- containerPort: 443
             - containerPort: 80
           env:
-            - name: PHPLDAPADMIN_LDAP_HOSTS
+             - name: PHPLDAPADMIN_LDAP_HOSTS
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: PHPLDAPADMIN_LDAP_HOSTS
+            #- name: PHPLDAPADMIN_LDAP_HOSTS
               #value: "#PYTHON2BASH:[{'ldap.example.org': [{'server': [{'tls': 'true'}]}]}]"
               #value: "#PYTHON2BASH:[{'10.102.209.171': [{'server': [{'tls': 'true'}]}]}]"
               #value: "10.103.154.52"
-              value: "ldap-service"
-            - name: PHPLDAPADMIN_SERVER_ADMIN
-              value: "webmaster@example.org"
-            - name: PHPLDAPADMIN_SERVER_PATH
-              value: "/phpldapadmin"
-            - name: PHPLDAPADMIN_HTTPS
-              value: "true"
-              #value: "false"
-            - name: PHPLDAPADMIN_HTTPS_CRT_FILENAME
-              value: "cert.crt"
-            - name: PHPLDAPADMIN_HTTPS_KEY_FILENAME
-              value: "cert.key"
-            - name: PHPLDAPADMIN_HTTPS_CA_CRT_FILENAME
-              value: "ca.crt"
-            - name: PHPLDAPADMIN_LDAP_CLIENT_TLS
-              value: "true"
-              #value: "false"
-            - name: PHPLDAPADMIN_LDAP_CLIENT_TLS_REQCERT
-              #value: "demand"
-              value: "try"
-            - name: PHPLDAPADMIN_LDAP_CLIENT_TLS_CRT_FILENAME
-              value: "cert.crt"
-            - name: PHPLDAPADMIN_LDAP_CLIENT_TLS_KEY_FILENAME
-              value: "cert.key"
-            - name: PHPLDAPADMIN_LDAP_CLIENT_TLS_CA_CRT_FILENAME
-              value: "ca.crt"
+              #value: "ldap-service"
+             - name: PHPLDAPADMIN_SERVER_ADMIN
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: PHPLDAPADMIN_SERVER_ADMIN
+             - name: PHPLDAPADMIN_SERVER_PATH
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: PHPLDAPADMIN_SERVER_PATH
+             - name: PHPLDAPADMIN_HTTPS
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: PHPLDAPADMIN_HTTPS
+             - name: PHPLDAPADMIN_HTTPS_CRT_FILENAME
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: PHPLDAPADMIN_HTTPS_CRT_FILENAME
+             - name: PHPLDAPADMIN_HTTPS_KEY_FILENAME
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: PHPLDAPADMIN_HTTPS_KEY_FILENAME
+             - name: PHPLDAPADMIN_HTTPS_CA_CRT_FILENAME
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: PHPLDAPADMIN_HTTPS_CA_CRT_FILENAME
+             - name: PHPLDAPADMIN_LDAP_CLIENT_TLS
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: PHPLDAPADMIN_LDAP_CLIENT_TLS
+             - name: PHPLDAPADMIN_LDAP_CLIENT_TLS_REQCERT
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: PHPLDAPADMIN_LDAP_CLIENT_TLS_REQCERT
+             - name: PHPLDAPADMIN_LDAP_CLIENT_TLS_CRT_FILENAME
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: PHPLDAPADMIN_LDAP_CLIENT_TLS_CRT_FILENAME
+             - name: PHPLDAPADMIN_LDAP_CLIENT_TLS_KEY_FILENAME
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: PHPLDAPADMIN_LDAP_CLIENT_TLS_KEY_FILENAME
+             - name: PHPLDAPADMIN_LDAP_CLIENT_TLS_CA_CRT_FILENAME
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: PHPLDAPADMIN_LDAP_CLIENT_TLS_CA_CRT_FILENAME
       volumes:
         - name: phpldapadmin-certs
           hostPath:
