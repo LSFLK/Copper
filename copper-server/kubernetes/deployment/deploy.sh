@@ -124,15 +124,20 @@ echo "type: Opaque" >> secret.yaml
 echo "stringData:" >> secret.yaml
 echo "    TELEGRAF_VERSION: 1.8.1-1" >> secret.yaml
 
+#echo Enter mysql server host name: 
+#read mysql_host
+echo "    MYSQL_HOST: mysql" >> secret.yaml
 echo Enter mysql database name: 
 read mysql_db
 echo "    MYSQL_DATABASE: $mysql_db" >> secret.yaml
-
+#echo Enter mysql database user: 
+#read mysql_user
+echo "    MYSQL_USER: root" >> secret.yaml
 echo Enter mysql database password: 
 read mysql_db_pwd
 echo "    MYSQL_PASSWORD: $mysql_db_pwd" >> secret.yaml
 
-echo Enter admin username \(without domain\):
+echo Enter ldap admin username \(without domain\):
 read CN
 echo "    CN: $CN" >> secret.yaml
 

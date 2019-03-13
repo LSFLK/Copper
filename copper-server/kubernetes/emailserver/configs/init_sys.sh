@@ -96,6 +96,7 @@ chmod -R 755 /etc/letsencrypt/
  sed -i.bak -e "s;%DNPASS%;"${DNPASS}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
  sed -i.bak -e "s;%OU%;"${OU}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
  sed -i.bak -e "s;%LDAP_HOST_IP%;"${LDAP_HOST_IP}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
+ sed -i.bak -e "s;%DFQN%;"${FQDN}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
 
  #OpenLDAP with Postfix conf
  sed -i.bak -e "s;%CN%;"${CN}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf"
