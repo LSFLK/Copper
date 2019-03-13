@@ -100,36 +100,36 @@ case "$response" in
 # 2>  true
 
 ## delete the ldap
-kubectl delete service ldap -n monitoring 2> /dev/null || true
-kubectl delete deployment ldap --namespace=monitoring 2> /dev/null || true
+kubectl delete service ldap -n copper 2> /dev/null || true
+kubectl delete deployment ldap --namespace=copper 2> /dev/null || true
 echoRedBold 'Ldap service deleted...'
 
 # Then if you want to delete services created by above command
-kubectl delete service phpldapadmin-service --namespace=monitoring 2> /dev/null || true
-kubectl delete replicationcontrollers phpldapadmin-controller --namespace=monitoring 2> /dev/null || true
+kubectl delete service phpldapadmin-service --namespace=copper 2> /dev/null || true
+kubectl delete replicationcontrollers phpldapadmin-controller --namespace=copper 2> /dev/null || true
 echoRedBold 'phpldapadmin service deleted...'
 
 # If you want to delete emai service use following commands.
-kubectl delete service email --namespace=monitoring 2> /dev/null || true
-kubectl delete deployment email --namespace=monitoring 2> /dev/null || true
+kubectl delete service email --namespace=copper 2> /dev/null || true
+kubectl delete deployment email --namespace=copper 2> /dev/null || true
 echoRedBold 'Email service deleted...'
 
 # If you want to delete webmail service use following commands.
-#kubectl delete service webmail --namespace=monitoring 2> /dev/null || true
-#kubectl delete deployment webmail --namespace=monitoring 2> /dev/null || true
+#kubectl delete service webmail --namespace=copper 2> /dev/null || true
+#kubectl delete deployment webmail --namespace=copper 2> /dev/null || true
 #docker rmi webmail 2> /dev/null || true
 #echoRedBold 'Webmail service deleted...'
 
 
 #deleting services
-kubectl delete services alertmanager --namespace=monitoring 2> /dev/null || true
-kubectl delete services prometheus-service --namespace=monitoring 2> /dev/null || true
+kubectl delete services alertmanager --namespace=copper 2> /dev/null || true
+kubectl delete services prometheus-service --namespace=copper 2> /dev/null || true
 echoRedBold 'Alert service deleted...'
 
 #deleting configmaps
-kubectl delete configmap alertmanager-config --namespace=monitoring 2> /dev/null || true
-kubectl delete configmap alertmanager-templates --namespace=monitoring 2> /dev/null || true
-kubectl delete configmap prometheus-server-conf --namespace=monitoring 2> /dev/null || true
+kubectl delete configmap alertmanager-config --namespace=copper 2> /dev/null || true
+kubectl delete configmap alertmanager-templates --namespace=copper 2> /dev/null || true
+kubectl delete configmap prometheus-server-conf --namespace=copper 2> /dev/null || true
 echoRedBold 'Alert configuration deleted...'
 
 #deleting cluster roll
@@ -138,27 +138,27 @@ kubectl delete clusterrolebindings prometheus 2> /dev/null || true
 echoRedBold 'Prometheus Role deleted...'
 
 #deleting deployments
-kubectl delete deployment alertmanager --namespace=monitoring 2> /dev/null || true
-kubectl delete deployment prometheus-deployment --namespace=monitoring 2> /dev/null || true
+kubectl delete deployment alertmanager --namespace=copper 2> /dev/null || true
+kubectl delete deployment prometheus-deployment --namespace=copper 2> /dev/null || true
 echoRedBold 'Prometheus deployment deleted...'
 
 # deleting horde
-# kubectl delete service horde -n monitoring 2> /dev/null || true
-# kubectl delete deployment horde -n monitoring 2> /dev/null || true
+# kubectl delete service horde -n copper 2> /dev/null || true
+# kubectl delete deployment horde -n copper 2> /dev/null || true
 # docker rmi horde 2> /dev/null || true
 
 # deleting groupoffice
-kubectl delete service groupoffice -n monitoring 2> /dev/null || true
-kubectl delete deployment groupoffice -n monitoring 2> /dev/null || true
+kubectl delete service groupoffice -n copper 2> /dev/null || true
+kubectl delete deployment groupoffice -n copper 2> /dev/null || true
 # docker rmi groupoffice 2> /dev/null || true
 
 #deleting the secret
-echoGreenBold 'secret configurations goint to be deleted...'
-kubectl delete secret email-secret -n monitoring 2> /dev/null || true
-echoGreenBold 'Secret configuration files deleted..'
+echoRedBold 'secret configurations goint to be deleted...'
+kubectl delete secret email-secret -n copper 2> /dev/null || true
+echoRedBold 'Secret configuration files deleted..'
 
 ## deleting namespace
-kubectl delete namespace monitoring  2> /dev/null || true
+kubectl delete namespace copper  2> /dev/null || true
 echoRedBold "k8s namespace deleted"
 
 echoGreenBold 'Finished'

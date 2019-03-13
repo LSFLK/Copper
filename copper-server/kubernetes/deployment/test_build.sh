@@ -2,7 +2,7 @@
 
 
 # Creating the k8s namespace
-kubectl create namespace monitoring 2> /dev/null || true
+kubectl create namespace copper 2> /dev/null || true
 
 # Creating ldap server
 kubectl create -f openldap/openldap.yaml 2> /dev/null || true
@@ -29,14 +29,14 @@ kubectl create -f prometheus-alert/clusterRole.yaml 2> /dev/null || true
 
 
 # Create the config map to keep configuration data of prometheus
-kubectl create -f prometheus-alert/config-map.yaml -n monitoring 2> /dev/null || true
+kubectl create -f prometheus-alert/config-map.yaml -n copper 2> /dev/null || true
 
 
 # Deploy prometheus pods 
-kubectl create  -f prometheus-alert/prometheus-deployment.yaml --namespace=monitoring 2> /dev/null || true
+kubectl create  -f prometheus-alert/prometheus-deployment.yaml --namespace=copper 2> /dev/null || true
 
 # Create the service to access prometheus 
-kubectl create -f prometheus-alert/prometheus-service.yaml --namespace=monitoring 2> /dev/null || true
+kubectl create -f prometheus-alert/prometheus-service.yaml --namespace=copper 2> /dev/null || true
 
 # Alert manager implementation
 # Creating the configuration 

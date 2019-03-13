@@ -36,6 +36,12 @@ gidnumber: 500
 objectclass: posixGroup
 objectclass: top
 
+dn: cn=users,ou=groups,dc=copper,dc=opensource,dc=lk
+cn: users
+gidnumber: 501
+objectclass: posixGroup
+objectclass: top
+
 # Entry 5: ou=Users,dc=copper,dc=opensource,dc=lk
 dn: ou=Users,dc=copper,dc=opensource,dc=lk
 objectclass: organizationalUnit

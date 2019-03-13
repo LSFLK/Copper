@@ -100,19 +100,19 @@ case "$response" in
 # 2>  true
 
 ## delete the mysql deployment
-kubectl delete deployment,svc mysql --namespace=monitoring 2> /dev/null || true
+kubectl delete deployment,svc mysql --namespace=copper 2> /dev/null || true
 
 echoRedBold 'mysql deployment deleted...'
 # Persistent Volume Claim deletion
-kubectl delete PersistentVolumeClaim mysql-pv-claim --namespace=monitoring 2> /dev/null || true
+kubectl delete PersistentVolumeClaim mysql-pv-claim --namespace=copper 2> /dev/null || true
 
 echoRedBold 'Persistent Volume Claim deleted...'
 # Persistent Volume delete
-kubectl delete service email --namespace=monitoring 2> /dev/null || true
+kubectl delete service email --namespace=copper 2> /dev/null || true
 
 echoRedBold 'Email service deleted...'
 # If you want to delete webmail service use following commands.
-kubectl delete service webmail --namespace=monitoring 2> /dev/null || true
+kubectl delete service webmail --namespace=copper 2> /dev/null || true
 
 echoRedBold 'Persistent Volume deleted...'
 
