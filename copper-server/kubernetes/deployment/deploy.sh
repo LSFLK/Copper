@@ -100,7 +100,7 @@ function echoGreenBold () {
 echoGreenBold 'Deploying Copper Email Server...'
 
 # Creating the k8s namespace
-kubectl create namespace monitoring 2> /dev/null || true
+kubectl create namespace copper 2> /dev/null || true
 echoGreenBold 'Monitoring namespace created...'
 
 ############## START OF CONFIGURATION #############################
@@ -119,7 +119,7 @@ echo "apiVersion: v1" > secret.yaml # this will clear all previous content in th
 echo "kind: Secret" >> secret.yaml
 echo "metadata:" >> secret.yaml
 echo "    name: email-secret" >> secret.yaml
-echo "    namespace: monitoring" >> secret.yaml
+echo "    namespace: copper" >> secret.yaml
 echo "type: Opaque" >> secret.yaml
 echo "stringData:" >> secret.yaml
 echo "    TELEGRAF_VERSION: 1.8.1-1" >> secret.yaml

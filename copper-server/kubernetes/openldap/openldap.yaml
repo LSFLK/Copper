@@ -49,8 +49,9 @@ items:
           hostname: copper-ldap
           containers:
             - name: ldap
-              image: lsflk/copper:openldap
-              #imagePullPolicy: Always
+              # image: lsflk/copper:openldap
+              image: osixia/openldap:1.2.2
+              imagePullPolicy: Always
               volumeMounts:
                 - name: ldap-data
                   mountPath: /var/lib/ldap
