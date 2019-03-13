@@ -156,7 +156,7 @@ case "$response" in
 cd ..
 
 # Creating the k8s namespace
-kubectl create namespace monitoring 2> /dev/null || true
+kubectl create namespace copper 2> /dev/null || true
 echoGreenBold 'Monitoring namespace created...'
 # Creating ldap server
 kubectl create -f openldap/openldap.yaml 2> /dev/null || true
@@ -204,14 +204,14 @@ kubectl create -f prometheus-alert/clusterRole.yaml 2> /dev/null || true
 echoGreenBold 'Role creation and Role binding...'
 
 # Create the config map to keep configuration data of prometheus
-kubectl create -f prometheus-alert/config-map.yaml -n monitoring 2> /dev/null || true
+kubectl create -f prometheus-alert/config-map.yaml -n copper 2> /dev/null || true
 echoGreenBold 'Prometheus configuration created...'
 
 # Deploy prometheus pods 
-kubectl create  -f prometheus-alert/prometheus-deployment.yaml --namespace=monitoring 2> /dev/null || true
+kubectl create  -f prometheus-alert/prometheus-deployment.yaml --namespace=copper 2> /dev/null || true
 
 # Create the service to access prometheus 
-kubectl create -f prometheus-alert/prometheus-service.yaml --namespace=monitoring 2> /dev/null || true
+kubectl create -f prometheus-alert/prometheus-service.yaml --namespace=copper 2> /dev/null || true
 echoGreenBold 'Prometheus service created...'
 # Alert manager implementation
 # Creating the configuration 
@@ -246,7 +246,7 @@ echoGreenBold 'Finished'
 
 #sleep 5s
 
-#kubectl run -it --rm --image=mysql:5.6 --restart=Never mysql-client -n monitoring -- mysql -h mysql -pc0pperDB
+#kubectl run -it --rm --image=mysql:5.6 --restart=Never mysql-client -n copper -- mysql -h mysql -pc0pperDB
 
 
      ;;

@@ -4,7 +4,7 @@ items:
   - apiVersion: v1
     kind: Service  
     metadata:
-      namespace: monitoring
+      namespace: copper
       labels:
         app: ldap
       name: ldap-service
@@ -36,7 +36,7 @@ items:
     kind: Deployment
     metadata:
       name: ldap
-      namespace: monitoring
+      namespace: copper
       labels:
         app: ldap
     spec:
