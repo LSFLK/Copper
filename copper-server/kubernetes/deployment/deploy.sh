@@ -209,7 +209,7 @@ echo "    OU : Users" >> secret.yaml
 echo "    LDAP_HOST_IP : ldap" >> secret.yaml
 echo "    KEY_PATH : KEYPATH" >> secret.yaml
 
-echo "    EMAIL : $CN@$DC1.$DC2.$DC3" >> secret.yaml
+echo "    EMAIL : admin@$DC1.$DC2.$DC3" >> secret.yaml
 echo "    HOSTNAME : mail.$DC1.$DC2.$DC3" >> secret.yaml
 echo "    FQDN : mail.$DC1.$DC2.$DC3" >> secret.yaml
 echo "    DOMAIN : $DC1.$DC2.$DC3" >> secret.yaml
