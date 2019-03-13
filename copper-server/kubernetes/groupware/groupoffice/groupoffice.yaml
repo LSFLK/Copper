@@ -2,7 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: groupoffice
-  namespace: monitoring
+  namespace: copper
 spec:
   type: LoadBalancer
   selector:
@@ -35,7 +35,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: groupoffice
-  namespace: monitoring
+  namespace: copper
 spec:
   replicas: 1
   template:
@@ -47,7 +47,6 @@ spec:
       containers:
         - name: groupoffice
           image: lsflk/copper:groupoffice
-          #image: intermesh/groupoffice
           imagePullPolicy: Always
           env:
              - name: MYSQL_USER

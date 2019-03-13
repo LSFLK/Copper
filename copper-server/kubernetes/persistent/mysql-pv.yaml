@@ -1,7 +1,7 @@
 kind: PersistentVolume
 apiVersion: v1
 metadata:
-  namespace: monitoring
+  namespace: copper
   name: mysql-pv-volume
   labels:
     type: local
@@ -19,7 +19,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: mysql-pv-claim
-  namespace: monitoring
+  namespace: copper
 spec:
   #93  : bellow line was commented due to error : pod has unbound PersistentVolumeClaims
   #storageClassName: manual

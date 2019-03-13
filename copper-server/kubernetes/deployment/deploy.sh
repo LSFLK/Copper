@@ -100,8 +100,8 @@ function echoGreenBold () {
 echoGreenBold 'Deploying Copper Email Server...'
 
 # Creating the k8s namespace
-kubectl create namespace monitoring 2> /dev/null || true
-echoGreenBold 'Monitoring namespace created...'
+kubectl create namespace copper 2> /dev/null || true
+echoGreenBold 'Copper namespace created...'
 
 ############## START OF CONFIGURATION #############################
 
@@ -119,7 +119,7 @@ echo "apiVersion: v1" > secret.yaml # this will clear all previous content in th
 echo "kind: Secret" >> secret.yaml
 echo "metadata:" >> secret.yaml
 echo "    name: email-secret" >> secret.yaml
-echo "    namespace: monitoring" >> secret.yaml
+echo "    namespace: copper" >> secret.yaml
 echo "type: Opaque" >> secret.yaml
 echo "stringData:" >> secret.yaml
 echo "    TELEGRAF_VERSION: 1.8.1-1" >> secret.yaml
@@ -137,9 +137,9 @@ echo Enter mysql database password:
 read mysql_db_pwd
 echo "    MYSQL_PASSWORD: $mysql_db_pwd" >> secret.yaml
 
-echo Enter ldap admin username \(without domain\):
-read CN
-echo "    CN: $CN" >> secret.yaml
+# echo Enter ldap admin username \(without domain\):
+# read CN
+echo "    CN: admin" >> secret.yaml
 
 echo Your domain must contain 3 parts. \(Eg: part1.part2.part3\)
 echo Enter the first part of domain:
@@ -151,7 +151,7 @@ echo "    DC2: $DC2" >> secret.yaml
 echo Enter the third part of domain:
 read DC3
 echo "    DC3: $DC3" >> secret.yaml
-echo Enter admin password:
+echo Enter LDAP admin password:
 read DNPASS
 echo "    DNPASS: $DNPASS" >> secret.yaml
 
@@ -170,21 +170,21 @@ echo "    PHPLDAPADMIN_LDAP_CLIENT_TLS_CRT_FILENAME: cert.crt" >> secret.yaml
 echo "    PHPLDAPADMIN_LDAP_CLIENT_TLS_KEY_FILENAME: cert.key" >> secret.yaml
 echo "    PHPLDAPADMIN_LDAP_CLIENT_TLS_CA_CRT_FILENAME: ca.crt" >> secret.yaml
 
-echo Enter ldap organization Ex : copper.opensource.lk:
+echo Enter organization name
 read ORG
 echo "    LDAP_ORGANISATION: $ORG" >> secret.yaml
 
-echo Enter ldap Domain Ex : copper.opensource.lk:
-read DOM
-echo "    LDAP_DOMAIN: $DOM" >> secret.yaml
+# echo Enter ldap Domain Ex : copper.opensource.lk:
+# read DOM
+echo "    LDAP_DOMAIN: $DC1.$DC2.$DC3" >> secret.yaml
 
-echo Enter ldap admin password Ex : copper.opensource.lk:
-read ADM
-echo "    LDAP_ADMIN_PASSWORD: $ADM" >> secret.yaml
+# echo Enter ldap admin password
+# read ADM
+echo "    LDAP_ADMIN_PASSWORD: $DNPASS" >> secret.yaml
 
 #echo "    LDAP_LOG_LEVEL: \"-1\"" >> secret.yaml
 echo "    LDAP_LOG_LEVEL: \"256\"" >> secret.yaml
-echo "    LDAP_CONFIG_PASSWORD: $ADM" >> secret.yaml
+echo "    LDAP_CONFIG_PASSWORD: $DNPASS" >> secret.yaml
 echo "    LDAP_READONLY_USER: \"false\"" >> secret.yaml
 echo "    LDAP_READONLY_USER_USERNAME: readonly" >> secret.yaml
 echo "    LDAP_READONLY_USER_PASSWORD: readonly" >> secret.yaml
@@ -286,7 +286,6 @@ case "$response" in
 # changing to parent directory
 cd ..
 
-
 # Creating ldap server
 kubectl create -f openldap/openldap.yaml 2> /dev/null || true
 echoGreenBold 'openldap service created...'
@@ -333,14 +332,14 @@ kubectl create -f prometheus-alert/clusterRole.yaml 2> /dev/null || true
 echoGreenBold 'Role creation and Role binding...'
 
 # Create the config map to keep configuration data of prometheus
-kubectl create -f prometheus-alert/config-map.yaml -n monitoring 2> /dev/null || true
+kubectl create -f prometheus-alert/config-map.yaml -n copper 2> /dev/null || true
 echoGreenBold 'Prometheus configuration created...'
 
 # Deploy prometheus pods 
-kubectl create  -f prometheus-alert/prometheus-deployment.yaml --namespace=monitoring 2> /dev/null || true
+kubectl create  -f prometheus-alert/prometheus-deployment.yaml --namespace=copper 2> /dev/null || true
 
 # Create the service to access prometheus 
-kubectl create -f prometheus-alert/prometheus-service.yaml --namespace=monitoring 2> /dev/null || true
+kubectl create -f prometheus-alert/prometheus-service.yaml --namespace=copper 2> /dev/null || true
 echoGreenBold 'Prometheus service created...'
 # Alert manager implementation
 # Creating the configuration 
@@ -375,7 +374,7 @@ echoGreenBold 'Finished'
 
 #sleep 5s
 
-#kubectl run -it --rm --image=mysql:5.6 --restart=Never mysql-client -n monitoring -- mysql -h mysql -pc0pperDB
+#kubectl run -it --rm --image=mysql:5.6 --restart=Never mysql-client -n copper -- mysql -h mysql -pc0pperDB
 
 
      ;;

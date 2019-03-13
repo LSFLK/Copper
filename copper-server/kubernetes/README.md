@@ -74,7 +74,7 @@ cd copper/copper-server/kubernetes
 
 ## Creating the namespace for the project
 ```
-  kubectl create namespace monitoring
+  kubectl create namespace copper
 ```
 
 ## Create the ldap server with following command
@@ -83,17 +83,17 @@ cd copper/copper-server/kubernetes
   kubectl create -f openldap/openldap.yaml
 
   // view kubernetes openldap pods
-  kubectl get pods --namespace=monitoring
+  kubectl get pods --namespace=copper
 
   // view service details of openldap 
-  kubectl get services --namespace=monitoring
+  kubectl get services --namespace=copper
 
   // loging to the openldap pod
-  kubectl exec <pod-name-taken> --namespace=monitoring --stdin --tty -c ldap /bin/sh
+  kubectl exec <pod-name-taken> --namespace=copper --stdin --tty -c ldap /bin/sh
 
   // delete the ldap
-  kubectl delete service ldap-service --namespace=monitoring
-  kubectl delete deployment ldap --namespace=monitoring
+  kubectl delete service ldap-service --namespace=copper
+  kubectl delete deployment ldap --namespace=copper
 
   // Test the server
   ldapwhoami -H ldap:// -x   // without TLS 
@@ -122,11 +122,11 @@ Phpldapadmin service is created to control openldap service. We have provided im
   kubectl create -f phpldapadmin/phpldapadmin.yaml 
 
   // Then if you want to delete services created by above command
-  kubectl delete service phpldapadmin-service --namespace=monitoring
-  kubectl delete replicationcontrollers phpldapadmin-controller --namespace=monitoring
+  kubectl delete service phpldapadmin-service --namespace=copper
+  kubectl delete replicationcontrollers phpldapadmin-controller --namespace=copper
 
   // Login to phpldapadmin server 
-  kubectl exec <pod_name> --namespace=monitoring --stdin --tty -c phpldapadmin /bin/sh
+  kubectl exec <pod_name> --namespace=copper --stdin --tty -c phpldapadmin /bin/sh
 ```
 Now you can test openldap and phpldapadmin services by login to it.
 [https://localhost:4433]
@@ -151,8 +151,8 @@ Our emailserver is the most complex part of this system. First we have to build 
   // Create the emailserver service from kubernetes using docker image we have created now.
   kubectl create -f emailserver/email.yaml
 
-  // check all pods created under monitoring namespace
-  kubectl get pods --namespace=monitoring
+  // check all pods created under copper namespace
+  kubectl get pods --namespace=copper
 
   You can get pod name from above command.
 
@@ -160,7 +160,7 @@ Our emailserver is the most complex part of this system. First we have to build 
 ### Once you created the emailserver it's services has to be run manualy 
 ```
   // login in to emailserver. You have to change pod name email-6f46b7cfbb-l9d8w.
-  kubectl exec email-6f46b7cfbb-l9d8w --namespace=monitoring --stdin --tty -c email /bin/sh
+  kubectl exec email-6f46b7cfbb-l9d8w --namespace=copper --stdin --tty -c email /bin/sh
   
   // starting main services from inside the pod
   service postfix start
@@ -168,8 +168,8 @@ Our emailserver is the most complex part of this system. First we have to build 
   service rspamd start
 
   // If you want to delete emai service use following commands.
-  kubectl delete service email --namespace=monitoring
-  kubectl delete deployment email --namespace=monitoring
+  kubectl delete service email --namespace=copper
+  kubectl delete deployment email --namespace=copper
 
 ```
 
@@ -193,11 +193,11 @@ In copper Email solution we are using rainloop web client.So we have to implemen
   Kubectl create -f copperclient/webmail.yaml
 
   // Deleting the service
-   kubectl delete service webmail --namespace=monitoring
-  kubectl delete deployment webmail --namespace=monitoring
+   kubectl delete service webmail --namespace=copper
+  kubectl delete deployment webmail --namespace=copper
 
    // login in to webmail client
-  kubectl exec webmail-6f46b7cfbb-l9d8w --namespace=monitoring --stdin --tty -c webmail /bin/sh
+  kubectl exec webmail-6f46b7cfbb-l9d8w --namespace=copper --stdin --tty -c webmail /bin/sh
 
 ```
 Once you deploy the webmail client then you have to configure it for accessing the emailserver.
@@ -238,11 +238,11 @@ Alerting is very importatn function in any live system. In this copper email sol
   // Creating a roll has the access for clusters and bind the cluster roll.
   kubectl create -f prometheus-alert/clusterRole.yaml
   // Create the config map to keep configuration data of prometheus
-  kubectl create -f prometheus-alert/config-map.yaml -n monitoring
+  kubectl create -f prometheus-alert/config-map.yaml -n copper
   // Deploy prometheus pods 
-  kubectl create  -f prometheus-alert/prometheus-deployment.yaml --namespace=monitoring
+  kubectl create  -f prometheus-alert/prometheus-deployment.yaml --namespace=copper
   // Create the service to access prometheus 
-  kubectl create -f prometheus-alert/prometheus-service.yaml --namespace=monitoring
+  kubectl create -f prometheus-alert/prometheus-service.yaml --namespace=copper
 
 ```
 
@@ -270,23 +270,23 @@ Further if you want further controll and deleting pods and alert manager systems
 
 ```
 // Monitoring services and configmap etc
-kubectl get services --namespace=monitoring
-kubectl get configmap --namespace=monitoring
+kubectl get services --namespace=copper
+kubectl get configmap --namespace=copper
 
 
 // deleting services
-kubectl delete services alertmanager --namespace=monitoring
-kubectl delete services prometheus-service --namespace=monitoring
+kubectl delete services alertmanager --namespace=copper
+kubectl delete services prometheus-service --namespace=copper
 //deleting configmaps
-kubectl delete configmap alertmanager-config --namespace=monitoring
-kubectl delete configmap alertmanager-templates --namespace=monitoring
-kubectl delete configmap prometheus-server-conf --namespace=monitoring
+kubectl delete configmap alertmanager-config --namespace=copper
+kubectl delete configmap alertmanager-templates --namespace=copper
+kubectl delete configmap prometheus-server-conf --namespace=copper
 // deleting cluster roll
 kubectl delete clusterroles prometheus
 kubectl delete clusterrolebindings prometheus
 //deleting deployments
-kubectl delete deployment alertmanager --namespace=monitoring
-kubectl delete deployment prometheus-deployment --namespace=monitoring
+kubectl delete deployment alertmanager --namespace=copper
+kubectl delete deployment prometheus-deployment --namespace=copper
 
 ```
 
