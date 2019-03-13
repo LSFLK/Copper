@@ -50,14 +50,26 @@ spec:
           #image: intermesh/groupoffice
           imagePullPolicy: Always
           env:
-            - name: MYSQL_USER
-              value: "root"
-            - name: MYSQL_PASSWORD
-              value: "c0pperDB"
-            - name: MYSQL_DATABASE
-              value: "groupoffice"
-            - name: MYSQL_HOST
-              value: "mysql"
+             - name: MYSQL_USER
+               valueFrom:
+                    secretKeyRef:
+                        name: email-secret
+                        key: MYSQL_USER
+             - name: MYSQL_PASSWORD
+               valueFrom:
+                    secretKeyRef:
+                        name: email-secret
+                        key: MYSQL_PASSWORD
+             - name: MYSQL_DATABASE
+               valueFrom:
+                    secretKeyRef:
+                        name: email-secret
+                        key: MYSQL_DATABASE
+             - name: MYSQL_HOST
+               valueFrom:
+                    secretKeyRef:
+                        name: email-secret
+                        key: MYSQL_HOST
           ports:
             - name: http
               containerPort: 80
