@@ -1,39 +1,41 @@
-dn: ou=domains,dc=copper,dc=support,dc=lk
+
+dn: ou=domains,dc=sin,dc=hala,dc=lk
 objectclass: organizationalUnit
 objectclass: top
 ou: domains
 
-dn: dc=copper.support.lk,ou=domains,dc=copper,dc=support,dc=lk
-associateddomain: copper.support.lk
-dc: copper.support.lk
+
+dn: dc=sin.hala.lk,ou=domains,dc=sin,dc=hala,dc=lk
+associateddomain: sin.hala.lk
+dc: sin.hala.lk
 objectclass: dNSDomain
 objectclass: domainRelatedObject
 objectclass: top
-dn: ou=groups,dc=copper,dc=support,dc=lk
+dn: ou=groups,dc=sin,dc=hala,dc=lk
 objectclass: organizationalUnit
 objectclass: top
 ou: groups
-dn: cn=admins,ou=groups,dc=copper,dc=support,dc=lk
+dn: cn=admins,ou=groups,dc=sin,dc=hala,dc=lk
 cn: admins
 gidnumber: 500
 objectclass: posixGroup
 objectclass: top
-dn: cn=users,ou=groups,dc=copper,dc=support,dc=lk
+
+dn: cn=users,ou=groups,dc=sin,dc=hala,dc=lk
 cn: users
 gidnumber: 501
 objectclass: posixGroup
 objectclass: top
-dn: ou=Users,dc=copper,dc=support,dc=lk
+
+dn: ou=Users,dc=sin,dc=hala,dc=lk
 objectclass: organizationalUnit
 objectclass: top
 ou: Users
-dn: uid=copper,ou=Users,dc=copper,dc=support,dc=lk
+dn: uid=copper,ou=Users,dc=sin,dc=hala,dc=lk
 cn: copper
 gidnumber: 501
 givenname: copper
-homedirectory: /home/Users/copp
 loginshell: /bin/sh
-mail: copper@dc=copper,dc=support,dc=lk
 objectclass: inetOrgPerson
 objectclass: posixAccount
 objectclass: top
