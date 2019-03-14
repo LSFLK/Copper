@@ -11,12 +11,12 @@ hosts = %LDAP_HOST_IP%
 # Distinguished Name - the username used to login to the LDAP server.
 # Leave it commented out to bind anonymously (useful with auth_bind=yes).
 #dn = 
+#dn = cn=%CN%,dc=%DC1%,dc=%DC2%,dc=%DC3%
 dn = cn=%CN%,dc=%DC1%,dc=%DC2%,dc=%DC3%
-#dn = uid=%CN%,dc=%DC1%,dc=%DC2%,dc=%DC3%
 #dn = uid=admin,ou=%OU%,dc=%DC1%,dc=%DC2%,dc=%DC3%
 
 # Password for LDAP server, if dn is specified.
-#dnpass = 
+#dnpass = %ROPASS%
 dnpass = %DNPASS%
 
 # Use authentication binding for verifying password's validity. This works by

@@ -166,6 +166,12 @@ echo "    DC3: $DC3" >> secret.yaml
 echo Enter LDAP admin password:
 read DNPASS
 echo "    DNPASS: $DNPASS" >> secret.yaml
+echo Enter LDAP readonly user name:
+read RO
+echo "    RO: $RO" >> secret.yaml
+echo Enter LDAP readonly user password:
+read ROPASS
+echo "    ROPASS: $ROPASS" >> secret.yaml
 
 echo "    PHPLDAPADMIN_LDAP_HOSTS: ldap" >> secret.yaml
 #echo Enter phpldapadmin password:
@@ -310,6 +316,95 @@ kubectl create -f secret.yaml 2> /dev/null || true
 echoGreenBold 'Secret configuration files Created...'
 
 
+################ Creating LDAP yaml for LDAP configuration
+
+# Entry 1: ou=domains,dc=DC1,dc=DC2,dc=DC3
+echo "dn: ou=domains,dc=$DC1,dc=$DC2,dc=$DC3" > ldap.ldif
+echo "objectclass: organizationalUnit" >> ldap.ldif
+echo "objectclass: top" >> ldap.ldif
+echo "ou: domains" >> ldap.ldif
+echo "" >> ldap.ldif
+
+# Entry 2: dc=$DC1.$DC2.$DC3,ou=domains,dc=$DC1,dc=$DC2,dc=$DC3
+echo "dn: dc=$DC1.$DC2.$DC3,ou=domains,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
+echo "associateddomain: $DC1.$DC2.$DC3" >> ldap.ldif
+echo "dc: $DC1.$DC2.$DC3" >> ldap.ldif
+echo "objectclass: dNSDomain" >> ldap.ldif
+echo "objectclass: domainRelatedObject" >> ldap.ldif
+echo "objectclass: top" >> ldap.ldif
+## Entry 2: dc=copper.support.lk,ou=domains,dc=copper,dc=support,dc=lk
+#dn: dc=copper.support.lk,ou=domains,dc=copper,dc=support,dc=lk
+#associateddomain: copper.support.lk
+#dc: copper.support.lk
+#objectclass: dNSDomain
+#objectclass: domainRelatedObject
+#objectclass: top
+
+# Entry 3: ou=groups,dc=$DC1,dc=$DC2,dc=$DC3
+echo "dn: ou=groups,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
+echo "objectclass: organizationalUnit" >> ldap.ldif
+echo "objectclass: top" >> ldap.ldif
+echo "ou: groups" >> ldap.ldif
+
+# Entry 4: cn=admin,ou=groups,dc=$DC1,dc=$DC2,dc=$DC3
+echo "dn: cn=admins,ou=groups,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
+echo "cn: admins" >> ldap.ldif
+echo "gidnumber: 500" >> ldap.ldif
+echo "objectclass: posixGroup" >> ldap.ldif
+echo "objectclass: top" >> ldap.ldif
+
+echo "dn: cn=users,ou=groups,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
+echo "cn: users" >> ldap.ldif
+echo "gidnumber: 501" >> ldap.ldif
+echo "objectclass: posixGroup" >> ldap.ldif
+echo "objectclass: top" >> ldap.ldif
+
+# Entry 5: ou=Users,dc=$DC1,dc=$DC2,dc=$DC3
+echo "dn: ou=Users,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
+echo "objectclass: organizationalUnit" >> ldap.ldif
+echo "objectclass: top" >> ldap.ldif
+echo "ou: Users" >> ldap.ldif
+
+# Entry 6: cn=copper,ou=Users,dc=$DC1,dc=$DC2,dc=$DC3
+echo "dn: uid=copper,ou=Users,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
+echo "cn: copper" >> ldap.ldif
+echo "gidnumber: 501" >> ldap.ldif
+echo "givenname: copper" >> ldap.ldif
+echo "homedirectory: /home/Users/copper" >> ldap.ldif
+echo "loginshell: /bin/sh" >> ldap.ldif
+echo "mail: copper@dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
+echo "objectclass: inetOrgPerson" >> ldap.ldif
+echo "objectclass: posixAccount" >> ldap.ldif
+echo "objectclass: top" >> ldap.ldif
+echo "sn: copper" >> ldap.ldif
+echo "uid: copper" >> ldap.ldif
+echo "uidnumber: 1001" >> ldap.ldif
+echo "userpassword: {SSHA}79+ggcj1RrXEitcvjVBDgqF6NdJf09Y3" >> ldap.ldif
+echo "#userpassword in plain: copper" >> ldap.ldif
+
+# Entry 7: cn=test,ou=Users,dc=$DC1,dc=$DC2,dc=$DC3
+echo "dn: uid=test,ou=Users,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
+echo "cn: test" >> ldap.ldif
+echo "gidnumber: 501" >> ldap.ldif
+echo "givenname: test" >> ldap.ldif
+echo "homedirectory: /home/Users/test" >> ldap.ldif
+echo "loginshell: /bin/sh" >> ldap.ldif
+echo "mail: test@dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
+echo "objectclass: inetOrgPerson" >> ldap.ldif
+echo "objectclass: posixAccount" >> ldap.ldif
+echo "objectclass: top" >> ldap.ldif
+echo "sn: test" >> ldap.ldif
+echo "uid: test" >> ldap.ldif
+echo "uidnumber: 1002" >> ldap.ldif
+echo "userpassword: {SSHA}79+ggcj1RrXEitcvjVBDgqF6NdJf09Y3" >> ldap.ldif
+echo "#userpassword in plain: test" >> ldap.ldif
+
+
+echoGreenBold 'ldap.ldif file was Created...'
+
+
+
+
 ######### END OF CONFIGURATION #############################################
 
 # checking cert file list
@@ -450,8 +545,9 @@ sleep 1s
 #use for service starting in all email pods
 # https://stackoverflow.com/questions/51026174/running-a-command-on-all-kubernetes-pods-of-a-service
 
-echoGreenBold 'Finished'
-
+echoGreenBold ' ########################################## Installation completed #######################################'
+echoGreenBold ' Please import ldap.ldif file to import a test user for testing perposes from https://localhost:4433/ url.'
+echoGreenBold ' Contact support@copper.opensource.lk for further assistance. ############################################'
 #sleep 5s
 
 #kubectl run -it --rm --image=mysql:5.6 --restart=Never mysql-client -n copper -- mysql -h mysql -pc0pperDB

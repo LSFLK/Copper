@@ -1,7 +1,9 @@
+
 dn: ou=domains,dc=sin,dc=hala,dc=lk
 objectclass: organizationalUnit
 objectclass: top
 ou: domains
+
 
 dn: dc=sin.hala.lk,ou=domains,dc=sin,dc=hala,dc=lk
 associateddomain: sin.hala.lk
@@ -18,11 +20,13 @@ cn: admins
 gidnumber: 500
 objectclass: posixGroup
 objectclass: top
+
 dn: cn=users,ou=groups,dc=sin,dc=hala,dc=lk
 cn: users
 gidnumber: 501
 objectclass: posixGroup
 objectclass: top
+
 dn: ou=Users,dc=sin,dc=hala,dc=lk
 objectclass: organizationalUnit
 objectclass: top

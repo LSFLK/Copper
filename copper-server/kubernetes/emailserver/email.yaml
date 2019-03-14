@@ -139,11 +139,21 @@ spec:
                   secretKeyRef:
                      name: email-secret
                      key: DC3
-             - name: DNPASS
+             #- name: DNPASS
+             #  valueFrom:
+             #     secretKeyRef:
+             #        name: email-secret
+             #        key: DNPASS
+             - name: RO
                valueFrom:
                   secretKeyRef:
                      name: email-secret
-                     key: DNPASS
+                     key: RO
+             - name: ROPASS
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: ROPASS
              - name: OU
                valueFrom:
                   secretKeyRef:
