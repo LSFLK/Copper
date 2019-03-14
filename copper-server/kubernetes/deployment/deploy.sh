@@ -367,7 +367,7 @@ case "$response" in
 cd ..
 
 # Creating ldap server
-kubectl create -f openldap/openldap.ldif 2> /dev/null || true
+kubectl create -f openldap/openldap.yaml 2> /dev/null || true
 echoGreenBold 'openldap service created...'
 # Create the phpldapadmin service  
 kubectl create -f phpldapadmin/phpldapadmin.yaml 2> /dev/null || true
