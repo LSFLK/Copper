@@ -154,6 +154,15 @@ echo "    DC2: $DC2" >> secret.yaml
 echo Enter the third part of domain:
 read DC3
 echo "    DC3: $DC3" >> secret.yaml
+
+# echo Enter the domain:
+# read DC1
+# echo "    DC1: $DC1" >> secret.yaml
+# read DC2
+# echo "    DC2: $DC2" >> secret.yaml
+# read DC3
+# echo "    DC3: $DC3" >> secret.yaml
+
 echo Enter LDAP admin password:
 read DNPASS
 echo "    DNPASS: $DNPASS" >> secret.yaml
@@ -188,9 +197,16 @@ echo "    LDAP_ADMIN_PASSWORD: $DNPASS" >> secret.yaml
 #echo "    LDAP_LOG_LEVEL: \"-1\"" >> secret.yaml
 echo "    LDAP_LOG_LEVEL: \"256\"" >> secret.yaml
 echo "    LDAP_CONFIG_PASSWORD: $DNPASS" >> secret.yaml
-echo "    LDAP_READONLY_USER: \"false\"" >> secret.yaml
-echo "    LDAP_READONLY_USER_USERNAME: readonly" >> secret.yaml
-echo "    LDAP_READONLY_USER_PASSWORD: readonly" >> secret.yaml
+echo "    LDAP_READONLY_USER: \"true\"" >> secret.yaml
+# echo "    LDAP_READONLY_USER_USERNAME: readonly" >> secret.yaml
+# echo "    LDAP_READONLY_USER_PASSWORD: readonly" >> secret.yaml
+echo Enter readonly user username:
+read RO
+echo "    LDAP_READONLY_USER_PASSWORD: $RO" >> secret.yaml
+echo Enter readonly user password:
+read ROPASS
+echo "    LDAP_READONLY_USER_PASSWORD: $ROPASS" >> secret.yaml
+
 echo "    LDAP_RFC2307BIS_SCHEMA: \"false\"" >> secret.yaml
 echo "    LDAP_BACKEND: mdb" >> secret.yaml
 echo "    LDAP_TLS: \"true\"" >> secret.yaml
