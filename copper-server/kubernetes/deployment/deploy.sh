@@ -108,7 +108,7 @@ echoGreenBold 'Copper namespace created...'
 echoGreenBold 'Please Submit your Input data carefully...'
 
 ############## Removing previously created config files
-rm -f ./ldap.yaml
+rm -f ./ldap.ldif
 
 # Ask the user for their name
 # echo Hello, who am I talking to?
@@ -247,61 +247,61 @@ echo "    RSPAMD_PASSWORD : $rspamd_pwd" >> secret.yaml
 ################ Creating LDAP yaml for LDAP configuration
 
 # Entry 1: ou=domains,dc=DC1,dc=DC2,dc=DC3
-echo "dn: ou=domains,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.yaml
-echo "objectclass: organizationalUnit" >> ldap.yaml
-echo "objectclass: top" >> ldap.yaml
-echo "ou: domains" >> ldap.yaml
-echo "" >> ldap.yaml
+echo "dn: ou=domains,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
+echo "objectclass: organizationalUnit" >> ldap.ldif
+echo "objectclass: top" >> ldap.ldif
+echo "ou: domains" >> ldap.ldif
+echo "" >> ldap.ldif
 
 # Entry 2: dc=$DC1.$DC2.$DC3,ou=domains,dc=$DC1,dc=$DC2,dc=$DC3
-echo "dn: dc=$DC1.$DC2.$DC3,ou=domains,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.yaml
-echo "associateddomain: $DC1.$DC2.$DC3" >> ldap.yaml
-echo "dc: $DC1.$DC2.$DC3" >> ldap.yaml
-echo "objectclass: dNSDomain" >> ldap.yaml
-echo "objectclass: domainRelatedObject" >> ldap.yaml
-echo "objectclass: top" >> ldap.yaml
+echo "dn: dc=$DC1.$DC2.$DC3,ou=domains,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
+echo "associateddomain: $DC1.$DC2.$DC3" >> ldap.ldif
+echo "dc: $DC1.$DC2.$DC3" >> ldap.ldif
+echo "objectclass: dNSDomain" >> ldap.ldif
+echo "objectclass: domainRelatedObject" >> ldap.ldif
+echo "objectclass: top" >> ldap.ldif
 
 # Entry 3: ou=groups,dc=$DC1,dc=$DC2,dc=$DC3
-echo "dn: ou=groups,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.yaml
-echo "objectclass: organizationalUnit" >> ldap.yaml
-echo "objectclass: top" >> ldap.yaml
-echo "ou: groups" >> ldap.yaml
+echo "dn: ou=groups,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
+echo "objectclass: organizationalUnit" >> ldap.ldif
+echo "objectclass: top" >> ldap.ldif
+echo "ou: groups" >> ldap.ldif
 
 # Entry 4: cn=admin,ou=groups,dc=$DC1,dc=$DC2,dc=$DC3
-echo "dn: cn=admins,ou=groups,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.yaml
-echo "cn: admins" >> ldap.yaml
-echo "gidnumber: 500" >> ldap.yaml
-echo "objectclass: posixGroup" >> ldap.yaml
-echo "objectclass: top" >> ldap.yaml
+echo "dn: cn=admins,ou=groups,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
+echo "cn: admins" >> ldap.ldif
+echo "gidnumber: 500" >> ldap.ldif
+echo "objectclass: posixGroup" >> ldap.ldif
+echo "objectclass: top" >> ldap.ldif
 
-echo "dn: cn=users,ou=groups,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.yaml
-echo "cn: users" >> ldap.yaml
-echo "gidnumber: 501" >> ldap.yaml
-echo "objectclass: posixGroup" >> ldap.yaml
-echo "objectclass: top" >> ldap.yaml
+echo "dn: cn=users,ou=groups,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
+echo "cn: users" >> ldap.ldif
+echo "gidnumber: 501" >> ldap.ldif
+echo "objectclass: posixGroup" >> ldap.ldif
+echo "objectclass: top" >> ldap.ldif
 
 # Entry 5: ou=Users,dc=$DC1,dc=$DC2,dc=$DC3
-echo "dn: ou=Users,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.yaml
-echo "objectclass: organizationalUnit" >> ldap.yaml
-echo "objectclass: top" >> ldap.yaml
-echo "ou: Users" >> ldap.yaml
+echo "dn: ou=Users,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
+echo "objectclass: organizationalUnit" >> ldap.ldif
+echo "objectclass: top" >> ldap.ldif
+echo "ou: Users" >> ldap.ldif
 
 # Entry 6: cn=lsf,ou=Users,dc=$DC1,dc=$DC2,dc=$DC3
-echo "dn: uid=copper,ou=Users,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.yaml
-echo "cn: copper" >> ldap.yaml
-echo "gidnumber: 501" >> ldap.yaml
-echo "givenname: copper" >> ldap.yaml
-echo "homedirectory: /home/Users/copp" >> ldap.yamler
-echo "loginshell: /bin/sh" >> ldap.yaml
-echo "mail: copper@dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.yamlDC3
-echo "objectclass: inetOrgPerson" >> ldap.yaml
-echo "objectclass: posixAccount" >> ldap.yaml
-echo "objectclass: top" >> ldap.yaml
-echo "sn: copper" >> ldap.yaml
-echo "uid: copper" >> ldap.yaml
-echo "uidnumber: 1001" >> ldap.yaml
-echo "userpassword: {SSHA}79+ggcj1RrXEitcvjVBDgqF6NdJf09Y3" >> ldap.yaml
-echo "#userpassword in plain: copper@lsf" >> ldap.yaml
+echo "dn: uid=copper,ou=Users,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
+echo "cn: copper" >> ldap.ldif
+echo "gidnumber: 501" >> ldap.ldif
+echo "givenname: copper" >> ldap.ldif
+echo "homedirectory: /home/Users/copp" >> ldap.ldifer
+echo "loginshell: /bin/sh" >> ldap.ldif
+echo "mail: copper@dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldifDC3
+echo "objectclass: inetOrgPerson" >> ldap.ldif
+echo "objectclass: posixAccount" >> ldap.ldif
+echo "objectclass: top" >> ldap.ldif
+echo "sn: copper" >> ldap.ldif
+echo "uid: copper" >> ldap.ldif
+echo "uidnumber: 1001" >> ldap.ldif
+echo "userpassword: {SSHA}79+ggcj1RrXEitcvjVBDgqF6NdJf09Y3" >> ldap.ldif
+echo "#userpassword in plain: copper@lsf" >> ldap.ldif
 
 # Now Create the configuration secrets
 
@@ -367,7 +367,7 @@ case "$response" in
 cd ..
 
 # Creating ldap server
-kubectl create -f openldap/openldap.yaml 2> /dev/null || true
+kubectl create -f openldap/openldap.ldif 2> /dev/null || true
 echoGreenBold 'openldap service created...'
 # Create the phpldapadmin service  
 kubectl create -f phpldapadmin/phpldapadmin.yaml 2> /dev/null || true
