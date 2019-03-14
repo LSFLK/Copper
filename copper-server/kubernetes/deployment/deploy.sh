@@ -291,9 +291,9 @@ echo "dn: uid=copper,ou=Users,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
 echo "cn: copper" >> ldap.ldif
 echo "gidnumber: 501" >> ldap.ldif
 echo "givenname: copper" >> ldap.ldif
-echo "homedirectory: /home/Users/copp" >> ldap.ldifer
+echo "homedirectory: /home/Users/copp" >> ldap.ldif
 echo "loginshell: /bin/sh" >> ldap.ldif
-echo "mail: copper@dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldifDC3
+echo "mail: copper@$DC1.$DC2.$DC3" >> ldap.ldif
 echo "objectclass: inetOrgPerson" >> ldap.ldif
 echo "objectclass: posixAccount" >> ldap.ldif
 echo "objectclass: top" >> ldap.ldif
@@ -302,6 +302,7 @@ echo "uid: copper" >> ldap.ldif
 echo "uidnumber: 1001" >> ldap.ldif
 echo "userpassword: {SSHA}79+ggcj1RrXEitcvjVBDgqF6NdJf09Y3" >> ldap.ldif
 echo "#userpassword in plain: copper@lsf" >> ldap.ldif
+
 
 # Now Create the configuration secrets
 
