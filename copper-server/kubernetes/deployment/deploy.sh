@@ -246,47 +246,52 @@ echo "    RSPAMD_PASSWORD : $rspamd_pwd" >> secret.yaml
 ################################################################
 ################ Creating LDAP yaml for LDAP configuration
 
-# Entry 1: ou=domains,dc=DC1,dc=DC2,dc=DC3
+echo "# Entry 1: ou=domains,dc=DC1,dc=DC2,dc=DC3" >> ldap.ldif
 echo "dn: ou=domains,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
 echo "objectclass: organizationalUnit" >> ldap.ldif
 echo "objectclass: top" >> ldap.ldif
 echo "ou: domains" >> ldap.ldif
 echo "" >> ldap.ldif
 
-# Entry 2: dc=$DC1.$DC2.$DC3,ou=domains,dc=$DC1,dc=$DC2,dc=$DC3
+echo "# Entry 2: dc=$DC1.$DC2.$DC3,ou=domains,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
 echo "dn: dc=$DC1.$DC2.$DC3,ou=domains,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
 echo "associateddomain: $DC1.$DC2.$DC3" >> ldap.ldif
 echo "dc: $DC1.$DC2.$DC3" >> ldap.ldif
 echo "objectclass: dNSDomain" >> ldap.ldif
 echo "objectclass: domainRelatedObject" >> ldap.ldif
 echo "objectclass: top" >> ldap.ldif
+echo "" >> ldap.ldif
 
-# Entry 3: ou=groups,dc=$DC1,dc=$DC2,dc=$DC3
+echo "# Entry 3: ou=groups,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
 echo "dn: ou=groups,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
 echo "objectclass: organizationalUnit" >> ldap.ldif
 echo "objectclass: top" >> ldap.ldif
 echo "ou: groups" >> ldap.ldif
+echo "" >> ldap.ldif
 
-# Entry 4: cn=admin,ou=groups,dc=$DC1,dc=$DC2,dc=$DC3
+echo "# Entry 4: cn=admin,ou=groups,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
 echo "dn: cn=admins,ou=groups,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
 echo "cn: admins" >> ldap.ldif
 echo "gidnumber: 500" >> ldap.ldif
 echo "objectclass: posixGroup" >> ldap.ldif
 echo "objectclass: top" >> ldap.ldif
+echo "" >> ldap.ldif
 
 echo "dn: cn=users,ou=groups,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
 echo "cn: users" >> ldap.ldif
 echo "gidnumber: 501" >> ldap.ldif
 echo "objectclass: posixGroup" >> ldap.ldif
 echo "objectclass: top" >> ldap.ldif
+echo "" >> ldap.ldif
 
-# Entry 5: ou=Users,dc=$DC1,dc=$DC2,dc=$DC3
+echo "# Entry 5: ou=Users,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
 echo "dn: ou=Users,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
 echo "objectclass: organizationalUnit" >> ldap.ldif
 echo "objectclass: top" >> ldap.ldif
 echo "ou: Users" >> ldap.ldif
+echo "" >> ldap.ldif
 
-# Entry 6: cn=lsf,ou=Users,dc=$DC1,dc=$DC2,dc=$DC3
+echo "# Entry 6: cn=lsf,ou=Users,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
 echo "dn: uid=copper,ou=Users,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
 echo "cn: copper" >> ldap.ldif
 echo "gidnumber: 501" >> ldap.ldif
