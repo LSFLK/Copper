@@ -252,6 +252,13 @@ echo "dc: $DC1.$DC2.$DC3" >> ldap.ldif
 echo "objectclass: dNSDomain" >> ldap.ldif
 echo "objectclass: domainRelatedObject" >> ldap.ldif
 echo "objectclass: top" >> ldap.ldif
+## Entry 2: dc=copper.support.lk,ou=domains,dc=copper,dc=support,dc=lk
+#dn: dc=copper.support.lk,ou=domains,dc=copper,dc=support,dc=lk
+#associateddomain: copper.support.lk
+#dc: copper.support.lk
+#objectclass: dNSDomain
+#objectclass: domainRelatedObject
+#objectclass: top
 
 # Entry 3: ou=groups,dc=$DC1,dc=$DC2,dc=$DC3
 echo "dn: ou=groups,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif

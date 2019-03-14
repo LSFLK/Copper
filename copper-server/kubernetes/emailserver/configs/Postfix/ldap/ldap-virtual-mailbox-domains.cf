@@ -14,8 +14,8 @@ tls_require_cert = yes
 bind = yes
 #bind_dn = cn=%CN%,dc=%DC1%,dc=%DC2%,dc=%DC3%
 #bind_pw = %DNPASS%
-bind_dn = cn=%RO%,dc=%DC1%,dc=%DC2%,dc=%DC3%
-bind_pw = %ROPASS%
+bind_dn = cn=%CN%,dc=%DC1%,dc=%DC2%,dc=%DC3%
+bind_pw = %DNPASS%
 
 #search_base = ou=Mail,dc=example,dc=com
 scope = sub
