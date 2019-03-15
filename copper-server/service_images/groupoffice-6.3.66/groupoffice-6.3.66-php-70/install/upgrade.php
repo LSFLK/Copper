@@ -18,7 +18,7 @@ function isValidDb() {
 		return 63;
 	}
 	if (!GO()->getDatabase()->hasTable("go_settings")) {
-		throw new \Exception("Your database does not seem to be a Group-Office database");
+		throw new \Exception("Your database does not seem to be a Copper-Office database");
 	}
 	$mtime = (new \go\core\db\Query)
 					->selectSingleValue('value')
@@ -119,7 +119,7 @@ try {
 	
 	require('header.php');
 	
-	echo "<section><div class=\"card\"><h2>Upgrading Group-Office</h2><pre>";
+	echo "<section><div class=\"card\"><h2>Upgrading Copper-Office</h2><pre>";
 	
 	App::get();
 
