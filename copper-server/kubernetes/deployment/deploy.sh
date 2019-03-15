@@ -293,7 +293,7 @@ echo "gidnumber: 501" >> ldap.ldif
 echo "givenname: copper" >> ldap.ldif
 echo "homedirectory: /home/Users/copper" >> ldap.ldif
 echo "loginshell: /bin/sh" >> ldap.ldif
-echo "mail: copper@dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
+echo "mail: copper@$DC1.$DC2.$DC3" >> ldap.ldif
 echo "objectclass: inetOrgPerson" >> ldap.ldif
 echo "objectclass: posixAccount" >> ldap.ldif
 echo "objectclass: top" >> ldap.ldif
@@ -310,7 +310,7 @@ echo "gidnumber: 501" >> ldap.ldif
 echo "givenname: test" >> ldap.ldif
 echo "homedirectory: /home/Users/test" >> ldap.ldif
 echo "loginshell: /bin/sh" >> ldap.ldif
-echo "mail: test@dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
+echo "mail: test$DC1.$DC2.$DC3" >> ldap.ldif
 echo "objectclass: inetOrgPerson" >> ldap.ldif
 echo "objectclass: posixAccount" >> ldap.ldif
 echo "objectclass: top" >> ldap.ldif
