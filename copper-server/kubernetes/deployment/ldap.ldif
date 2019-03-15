@@ -1,41 +1,50 @@
-
-dn: ou=domains,dc=sin,dc=hala,dc=lk
+# Entry 1: ou=domains,dc=DC1,dc=DC2,dc=DC3
+dn: ou=domains,dc=anushka,dc=uditha,dc=lk
 objectclass: organizationalUnit
 objectclass: top
 ou: domains
 
-
-dn: dc=sin.hala.lk,ou=domains,dc=sin,dc=hala,dc=lk
-associateddomain: sin.hala.lk
-dc: sin.hala.lk
+# Entry 2: dc=anushka.uditha.lk,ou=domains,dc=anushka,dc=uditha,dc=lk
+dn: dc=anushka.uditha.lk,ou=domains,dc=anushka,dc=uditha,dc=lk
+associateddomain: anushka.uditha.lk
+dc: anushka.uditha.lk
 objectclass: dNSDomain
 objectclass: domainRelatedObject
 objectclass: top
-dn: ou=groups,dc=sin,dc=hala,dc=lk
+
+# Entry 3: ou=groups,dc=anushka,dc=uditha,dc=lk
+dn: ou=groups,dc=anushka,dc=uditha,dc=lk
 objectclass: organizationalUnit
 objectclass: top
 ou: groups
-dn: cn=admins,ou=groups,dc=sin,dc=hala,dc=lk
+
+# Entry 4: cn=admin,ou=groups,dc=anushka,dc=uditha,dc=lk
+dn: cn=admins,ou=groups,dc=anushka,dc=uditha,dc=lk
 cn: admins
 gidnumber: 500
 objectclass: posixGroup
 objectclass: top
 
-dn: cn=users,ou=groups,dc=sin,dc=hala,dc=lk
+dn: cn=users,ou=groups,dc=anushka,dc=uditha,dc=lk
 cn: users
 gidnumber: 501
 objectclass: posixGroup
 objectclass: top
 
-dn: ou=Users,dc=sin,dc=hala,dc=lk
+# Entry 5: ou=Users,dc=anushka,dc=uditha,dc=lk
+dn: ou=Users,dc=anushka,dc=uditha,dc=lk
 objectclass: organizationalUnit
 objectclass: top
 ou: Users
-dn: uid=copper,ou=Users,dc=sin,dc=hala,dc=lk
+
+# Entry 6: cn=lsf,ou=Users,dc=anushka,dc=uditha,dc=lk
+dn: uid=copper,ou=Users,dc=anushka,dc=uditha,dc=lk
 cn: copper
 gidnumber: 501
 givenname: copper
+homedirectory: /home/Users/copp
 loginshell: /bin/sh
+mail: copper@anushka.uditha.lk
 objectclass: inetOrgPerson
 objectclass: posixAccount
 objectclass: top

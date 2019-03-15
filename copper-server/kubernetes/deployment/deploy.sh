@@ -173,7 +173,11 @@ echo Enter LDAP readonly user password:
 read ROPASS
 echo "    ROPASS: $ROPASS" >> secret.yaml
 
+echo "    LDAP_READONLY_USER_PASSWORD: $RO" >> secret.yaml
+echo "    LDAP_READONLY_USER_PASSWORD: $ROPASS" >> secret.yaml
+
 echo "    PHPLDAPADMIN_LDAP_HOSTS: ldap" >> secret.yaml
+
 #echo Enter phpldapadmin password:
 #read LDAPADMIN
 echo "    PHPLDAPADMIN_SERVER_ADMIN: admin@$DC1.$DC2.$DC3" >> secret.yaml
@@ -204,14 +208,6 @@ echo "    LDAP_ADMIN_PASSWORD: $DNPASS" >> secret.yaml
 echo "    LDAP_LOG_LEVEL: \"256\"" >> secret.yaml
 echo "    LDAP_CONFIG_PASSWORD: $DNPASS" >> secret.yaml
 echo "    LDAP_READONLY_USER: \"true\"" >> secret.yaml
-# echo "    LDAP_READONLY_USER_USERNAME: readonly" >> secret.yaml
-# echo "    LDAP_READONLY_USER_PASSWORD: readonly" >> secret.yaml
-echo Enter readonly user username:
-read RO
-echo "    LDAP_READONLY_USER_PASSWORD: $RO" >> secret.yaml
-echo Enter readonly user password:
-read ROPASS
-echo "    LDAP_READONLY_USER_PASSWORD: $ROPASS" >> secret.yaml
 
 echo "    LDAP_RFC2307BIS_SCHEMA: \"false\"" >> secret.yaml
 echo "    LDAP_BACKEND: mdb" >> secret.yaml
@@ -246,6 +242,12 @@ echo "    DEBUG : \"true\"" >> secret.yaml
 echo Enter password for spam filter \(RspamD\)
 read rspamd_pwd
 echo "    RSPAMD_PASSWORD : $rspamd_pwd" >> secret.yaml
+
+# Now Create the configuration secrets
+
+echoGreenBold 'Configuration goint to be created...'
+kubectl create -f secret.yaml 2> /dev/null || true
+echoGreenBold 'Secret configuration files Created...'
 
 ################################################################
 ################################################################
@@ -313,98 +315,6 @@ echo "uid: copper" >> ldap.ldif
 echo "uidnumber: 1001" >> ldap.ldif
 echo "userpassword: {SSHA}79+ggcj1RrXEitcvjVBDgqF6NdJf09Y3" >> ldap.ldif
 echo "#userpassword in plain: copper@lsf" >> ldap.ldif
-
-
-# Now Create the configuration secrets
-
-echoGreenBold 'Configuration goint to be created...'
-kubectl create -f secret.yaml 2> /dev/null || true
-echoGreenBold 'Secret configuration files Created...'
-
-
-################ Creating LDAP yaml for LDAP configuration
-
-# Entry 1: ou=domains,dc=DC1,dc=DC2,dc=DC3
-echo "dn: ou=domains,dc=$DC1,dc=$DC2,dc=$DC3" > ldap.ldif
-echo "objectclass: organizationalUnit" >> ldap.ldif
-echo "objectclass: top" >> ldap.ldif
-echo "ou: domains" >> ldap.ldif
-echo "" >> ldap.ldif
-
-# Entry 2: dc=$DC1.$DC2.$DC3,ou=domains,dc=$DC1,dc=$DC2,dc=$DC3
-echo "dn: dc=$DC1.$DC2.$DC3,ou=domains,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
-echo "associateddomain: $DC1.$DC2.$DC3" >> ldap.ldif
-echo "dc: $DC1.$DC2.$DC3" >> ldap.ldif
-echo "objectclass: dNSDomain" >> ldap.ldif
-echo "objectclass: domainRelatedObject" >> ldap.ldif
-echo "objectclass: top" >> ldap.ldif
-## Entry 2: dc=copper.support.lk,ou=domains,dc=copper,dc=support,dc=lk
-#dn: dc=copper.support.lk,ou=domains,dc=copper,dc=support,dc=lk
-#associateddomain: copper.support.lk
-#dc: copper.support.lk
-#objectclass: dNSDomain
-#objectclass: domainRelatedObject
-#objectclass: top
-
-# Entry 3: ou=groups,dc=$DC1,dc=$DC2,dc=$DC3
-echo "dn: ou=groups,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
-echo "objectclass: organizationalUnit" >> ldap.ldif
-echo "objectclass: top" >> ldap.ldif
-echo "ou: groups" >> ldap.ldif
-
-# Entry 4: cn=admin,ou=groups,dc=$DC1,dc=$DC2,dc=$DC3
-echo "dn: cn=admins,ou=groups,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
-echo "cn: admins" >> ldap.ldif
-echo "gidnumber: 500" >> ldap.ldif
-echo "objectclass: posixGroup" >> ldap.ldif
-echo "objectclass: top" >> ldap.ldif
-
-echo "dn: cn=users,ou=groups,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
-echo "cn: users" >> ldap.ldif
-echo "gidnumber: 501" >> ldap.ldif
-echo "objectclass: posixGroup" >> ldap.ldif
-echo "objectclass: top" >> ldap.ldif
-
-# Entry 5: ou=Users,dc=$DC1,dc=$DC2,dc=$DC3
-echo "dn: ou=Users,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
-echo "objectclass: organizationalUnit" >> ldap.ldif
-echo "objectclass: top" >> ldap.ldif
-echo "ou: Users" >> ldap.ldif
-
-# Entry 6: cn=copper,ou=Users,dc=$DC1,dc=$DC2,dc=$DC3
-echo "dn: uid=copper,ou=Users,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
-echo "cn: copper" >> ldap.ldif
-echo "gidnumber: 501" >> ldap.ldif
-echo "givenname: copper" >> ldap.ldif
-echo "homedirectory: /home/Users/copper" >> ldap.ldif
-echo "loginshell: /bin/sh" >> ldap.ldif
-echo "mail: copper@dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
-echo "objectclass: inetOrgPerson" >> ldap.ldif
-echo "objectclass: posixAccount" >> ldap.ldif
-echo "objectclass: top" >> ldap.ldif
-echo "sn: copper" >> ldap.ldif
-echo "uid: copper" >> ldap.ldif
-echo "uidnumber: 1001" >> ldap.ldif
-echo "userpassword: {SSHA}79+ggcj1RrXEitcvjVBDgqF6NdJf09Y3" >> ldap.ldif
-echo "#userpassword in plain: copper" >> ldap.ldif
-
-# Entry 7: cn=test,ou=Users,dc=$DC1,dc=$DC2,dc=$DC3
-echo "dn: uid=test,ou=Users,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
-echo "cn: test" >> ldap.ldif
-echo "gidnumber: 501" >> ldap.ldif
-echo "givenname: test" >> ldap.ldif
-echo "homedirectory: /home/Users/test" >> ldap.ldif
-echo "loginshell: /bin/sh" >> ldap.ldif
-echo "mail: test@dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
-echo "objectclass: inetOrgPerson" >> ldap.ldif
-echo "objectclass: posixAccount" >> ldap.ldif
-echo "objectclass: top" >> ldap.ldif
-echo "sn: test" >> ldap.ldif
-echo "uid: test" >> ldap.ldif
-echo "uidnumber: 1002" >> ldap.ldif
-echo "userpassword: {SSHA}79+ggcj1RrXEitcvjVBDgqF6NdJf09Y3" >> ldap.ldif
-echo "#userpassword in plain: test" >> ldap.ldif
-
 
 echoGreenBold 'ldap.ldif file was Created...'
 
