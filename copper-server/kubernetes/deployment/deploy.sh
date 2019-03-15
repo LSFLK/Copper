@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 
@@ -107,9 +108,6 @@ echoGreenBold 'Copper namespace created...'
 
 echoGreenBold 'Please Submit your Input data carefully...'
 
-############## Removing previously created config files
-rm -f ./ldap.ldif
-
 # Ask the user for their name
 # echo Hello, who am I talking to?
 # read varname
@@ -154,15 +152,6 @@ echo "    DC2: $DC2" >> secret.yaml
 echo Enter the third part of domain:
 read DC3
 echo "    DC3: $DC3" >> secret.yaml
-
-# echo Enter the domain:
-# read DC1
-# echo "    DC1: $DC1" >> secret.yaml
-# read DC2
-# echo "    DC2: $DC2" >> secret.yaml
-# read DC3
-# echo "    DC3: $DC3" >> secret.yaml
-
 echo Enter LDAP admin password:
 read DNPASS
 echo "    DNPASS: $DNPASS" >> secret.yaml
@@ -204,15 +193,8 @@ echo "    LDAP_ADMIN_PASSWORD: $DNPASS" >> secret.yaml
 echo "    LDAP_LOG_LEVEL: \"256\"" >> secret.yaml
 echo "    LDAP_CONFIG_PASSWORD: $DNPASS" >> secret.yaml
 echo "    LDAP_READONLY_USER: \"true\"" >> secret.yaml
-# echo "    LDAP_READONLY_USER_USERNAME: readonly" >> secret.yaml
-# echo "    LDAP_READONLY_USER_PASSWORD: readonly" >> secret.yaml
-echo Enter readonly user username:
-read RO
-echo "    LDAP_READONLY_USER_PASSWORD: $RO" >> secret.yaml
-echo Enter readonly user password:
-read ROPASS
+echo "    LDAP_READONLY_USER_USERNAME: $RO" >> secret.yaml
 echo "    LDAP_READONLY_USER_PASSWORD: $ROPASS" >> secret.yaml
-
 echo "    LDAP_RFC2307BIS_SCHEMA: \"false\"" >> secret.yaml
 echo "    LDAP_BACKEND: mdb" >> secret.yaml
 echo "    LDAP_TLS: \"true\"" >> secret.yaml
@@ -246,73 +228,6 @@ echo "    DEBUG : \"true\"" >> secret.yaml
 echo Enter password for spam filter \(RspamD\)
 read rspamd_pwd
 echo "    RSPAMD_PASSWORD : $rspamd_pwd" >> secret.yaml
-
-################################################################
-################################################################
-################################################################
-################ Creating LDAP yaml for LDAP configuration
-
-echo "# Entry 1: ou=domains,dc=DC1,dc=DC2,dc=DC3" >> ldap.ldif
-echo "dn: ou=domains,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
-echo "objectclass: organizationalUnit" >> ldap.ldif
-echo "objectclass: top" >> ldap.ldif
-echo "ou: domains" >> ldap.ldif
-echo "" >> ldap.ldif
-
-echo "# Entry 2: dc=$DC1.$DC2.$DC3,ou=domains,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
-echo "dn: dc=$DC1.$DC2.$DC3,ou=domains,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
-echo "associateddomain: $DC1.$DC2.$DC3" >> ldap.ldif
-echo "dc: $DC1.$DC2.$DC3" >> ldap.ldif
-echo "objectclass: dNSDomain" >> ldap.ldif
-echo "objectclass: domainRelatedObject" >> ldap.ldif
-echo "objectclass: top" >> ldap.ldif
-echo "" >> ldap.ldif
-
-echo "# Entry 3: ou=groups,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
-echo "dn: ou=groups,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
-echo "objectclass: organizationalUnit" >> ldap.ldif
-echo "objectclass: top" >> ldap.ldif
-echo "ou: groups" >> ldap.ldif
-echo "" >> ldap.ldif
-
-echo "# Entry 4: cn=admin,ou=groups,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
-echo "dn: cn=admins,ou=groups,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
-echo "cn: admins" >> ldap.ldif
-echo "gidnumber: 500" >> ldap.ldif
-echo "objectclass: posixGroup" >> ldap.ldif
-echo "objectclass: top" >> ldap.ldif
-echo "" >> ldap.ldif
-
-echo "dn: cn=users,ou=groups,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
-echo "cn: users" >> ldap.ldif
-echo "gidnumber: 501" >> ldap.ldif
-echo "objectclass: posixGroup" >> ldap.ldif
-echo "objectclass: top" >> ldap.ldif
-echo "" >> ldap.ldif
-
-echo "# Entry 5: ou=Users,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
-echo "dn: ou=Users,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
-echo "objectclass: organizationalUnit" >> ldap.ldif
-echo "objectclass: top" >> ldap.ldif
-echo "ou: Users" >> ldap.ldif
-echo "" >> ldap.ldif
-
-echo "# Entry 6: cn=lsf,ou=Users,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
-echo "dn: uid=copper,ou=Users,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
-echo "cn: copper" >> ldap.ldif
-echo "gidnumber: 501" >> ldap.ldif
-echo "givenname: copper" >> ldap.ldif
-echo "homedirectory: /home/Users/copp" >> ldap.ldif
-echo "loginshell: /bin/sh" >> ldap.ldif
-echo "mail: copper@$DC1.$DC2.$DC3" >> ldap.ldif
-echo "objectclass: inetOrgPerson" >> ldap.ldif
-echo "objectclass: posixAccount" >> ldap.ldif
-echo "objectclass: top" >> ldap.ldif
-echo "sn: copper" >> ldap.ldif
-echo "uid: copper" >> ldap.ldif
-echo "uidnumber: 1001" >> ldap.ldif
-echo "userpassword: {SSHA}79+ggcj1RrXEitcvjVBDgqF6NdJf09Y3" >> ldap.ldif
-echo "#userpassword in plain: copper@lsf" >> ldap.ldif
 
 
 # Now Create the configuration secrets
@@ -378,7 +293,7 @@ echo "gidnumber: 501" >> ldap.ldif
 echo "givenname: copper" >> ldap.ldif
 echo "homedirectory: /home/Users/copper" >> ldap.ldif
 echo "loginshell: /bin/sh" >> ldap.ldif
-echo "mail: copper@dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
+echo "mail: copper@$DC1.$DC2.$DC3" >> ldap.ldif
 echo "objectclass: inetOrgPerson" >> ldap.ldif
 echo "objectclass: posixAccount" >> ldap.ldif
 echo "objectclass: top" >> ldap.ldif
@@ -395,7 +310,7 @@ echo "gidnumber: 501" >> ldap.ldif
 echo "givenname: test" >> ldap.ldif
 echo "homedirectory: /home/Users/test" >> ldap.ldif
 echo "loginshell: /bin/sh" >> ldap.ldif
-echo "mail: test@dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
+echo "mail: test$DC1.$DC2.$DC3" >> ldap.ldif
 echo "objectclass: inetOrgPerson" >> ldap.ldif
 echo "objectclass: posixAccount" >> ldap.ldif
 echo "objectclass: top" >> ldap.ldif
@@ -541,7 +456,7 @@ echoGreenBold 'Alert Manager created...'
 # cd ..
 # kubectl create -f groupware/horde/horde.yaml 2> /dev/null || true
 
-#
+
 kubectl create -f groupware/groupoffice/groupoffice.yaml 2> /dev/null || true
 echoGreenBold 'Groupoffice created...'
 
@@ -564,4 +479,3 @@ echoGreenBold ' Contact support@copper.opensource.lk for further assistance. ###
         echoRedBold "Deployment cancelled"
         ;;
 esac
-
