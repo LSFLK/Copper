@@ -125,7 +125,7 @@ require('header.php');
 				<h2>Data storage</h2>
 				
 				<p>
-					Please create a folder for storing Group-Office files and a temporary files folder and make sure the webserver user can write to these folders.
+					Please create a folder for storing Copper-Office files and a temporary files folder and make sure the webserver user can write to these folders.
 				</p>
 				
 				<?php
