@@ -535,7 +535,7 @@ echoGreenBold 'Alert Manager created...'
 # cd ..
 # kubectl create -f groupware/horde/horde.yaml 2> /dev/null || true
 
-#
+
 kubectl create -f groupware/groupoffice/groupoffice.yaml 2> /dev/null || true
 echoGreenBold 'Groupoffice created...'
 

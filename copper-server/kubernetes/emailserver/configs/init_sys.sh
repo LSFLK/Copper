@@ -15,6 +15,7 @@ fi
   #echo "[ERROR] MariaDB database password must be set !"
   #exit 1
 #fi
+#
 
 if [ -z "$RSPAMD_PASSWORD" ]; then
   echo "[ERROR] Rspamd password must be set !"
