@@ -11,12 +11,10 @@ At the moment, Cu-email is compatible with both docker-compose and k8s. Please r
     - [POSTFIX](http://www.postfix.org/) : a modular mail transfer agent.
   - [x] IMAP Server and POP Server
     - [DOVECOT](https://www.dovecot.org/) : secure open-source IMAP and POP3 server.
-  - [x] WEBmail client (Outdated)
-    - [RAINLOOP](https://www.rainloop.net/) : Webmail client with basic features.
   - [x] WEBmail client
     - [Group-Office](https://www.group-office.com)
   - [x] Spam Filter
-    - [RSPAMD](https://rspamd.com/) : Fast, free and open-source spam filtering system. You may find a comparison of spam filters [here](https://rspamd.com/comparison.html).
+    - [RSPAMD](https://rspamd.com/) : Fast, free and open-source spam filtering system. You may find a comparison of spam  filters [here](https://rspamd.com/comparison.html).
   - [x] Antivirus 
     - [ClamAV](https://www.clamav.net/) : is an open source antivirus engine for detecting trojans, viruses, malware & other malicious threats.
   - [x] Security enhancement
@@ -67,11 +65,19 @@ $ cd Copper/copper-server/kubernetes/deployment/
 $ sh deploy.sh
 
 ```
+It will ask some questions related to your system and you have to provide following informations.
+
+- Mysql db name
+- Mysql db password
+- Admin password for ldap service
+- Domain name 
+- Organization
+- Rspamd system password.
 
 3. Now kubernetes will take some time to pull and create requied images. Check whether all images are created properly.
 
 ```
-$ kubectl get pods -n monitoring
+$ kubectl get pods -n copper
 
 ```
 Wait untill all pods are up and running
@@ -82,10 +88,11 @@ Insert previously created users to your openldap server.
 
 https://localhost:4433/
 
-Login DN :cn=admin,dc=copper,dc=opensource,dc=lk
-Password : admin
+Login DN :cn=<ldpa admin name>,dc=<domain name part 1>,dc=<domain name part 2>,dc=<domain name part 3>
+Password : <Password you provided at installation >
 
-Then import the import_uid.ldif file .
+Then import the import.ldif file which is created in the installation process. It will create two test users.
+"test", "copper" both having "coppermail@lsf". You may login to phpldapadmin using above services.
 
 
 ## Test groupoffice
