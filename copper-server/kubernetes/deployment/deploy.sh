@@ -180,6 +180,7 @@ echo "    PHPLDAPADMIN_LDAP_CLIENT_TLS_CA_CRT_FILENAME: ca.crt" >> secret.yaml
 echo Enter organization name
 read ORG
 echo "    LDAP_ORGANISATION: $ORG" >> secret.yaml
+echo "    ORGNIZATION: $ORG" >> secret.yaml
 
 # echo Enter ldap Domain Ex : copper.opensource.lk:
 # read DOM
@@ -238,9 +239,11 @@ echoGreenBold 'Secret configuration files Created...'
 
 
 ################ Creating LDAP yaml for LDAP configuration
+echo "version: 1" > ldap.ldif
+echo "" >> ldap.ldif
 
 # Entry 1: ou=domains,dc=DC1,dc=DC2,dc=DC3
-echo "dn: ou=domains,dc=$DC1,dc=$DC2,dc=$DC3" > ldap.ldif
+echo "dn: ou=domains,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
 echo "objectclass: organizationalUnit" >> ldap.ldif
 echo "objectclass: top" >> ldap.ldif
 echo "ou: domains" >> ldap.ldif
@@ -253,6 +256,7 @@ echo "dc: $DC1.$DC2.$DC3" >> ldap.ldif
 echo "objectclass: dNSDomain" >> ldap.ldif
 echo "objectclass: domainRelatedObject" >> ldap.ldif
 echo "objectclass: top" >> ldap.ldif
+echo "" >> ldap.ldif
 ## Entry 2: dc=copper.support.lk,ou=domains,dc=copper,dc=support,dc=lk
 #dn: dc=copper.support.lk,ou=domains,dc=copper,dc=support,dc=lk
 #associateddomain: copper.support.lk
@@ -266,6 +270,7 @@ echo "dn: ou=groups,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
 echo "objectclass: organizationalUnit" >> ldap.ldif
 echo "objectclass: top" >> ldap.ldif
 echo "ou: groups" >> ldap.ldif
+echo "" >> ldap.ldif
 
 # Entry 4: cn=admin,ou=groups,dc=$DC1,dc=$DC2,dc=$DC3
 echo "dn: cn=admins,ou=groups,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
@@ -273,18 +278,21 @@ echo "cn: admins" >> ldap.ldif
 echo "gidnumber: 500" >> ldap.ldif
 echo "objectclass: posixGroup" >> ldap.ldif
 echo "objectclass: top" >> ldap.ldif
+echo "" >> ldap.ldif
 
 echo "dn: cn=users,ou=groups,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
 echo "cn: users" >> ldap.ldif
 echo "gidnumber: 501" >> ldap.ldif
 echo "objectclass: posixGroup" >> ldap.ldif
 echo "objectclass: top" >> ldap.ldif
+echo "" >> ldap.ldif
 
 # Entry 5: ou=Users,dc=$DC1,dc=$DC2,dc=$DC3
 echo "dn: ou=Users,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
 echo "objectclass: organizationalUnit" >> ldap.ldif
 echo "objectclass: top" >> ldap.ldif
 echo "ou: Users" >> ldap.ldif
+echo "" >> ldap.ldif
 
 # Entry 6: cn=copper,ou=Users,dc=$DC1,dc=$DC2,dc=$DC3
 echo "dn: uid=copper,ou=Users,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
@@ -302,6 +310,7 @@ echo "uid: copper" >> ldap.ldif
 echo "uidnumber: 1001" >> ldap.ldif
 echo "userpassword: {SSHA}79+ggcj1RrXEitcvjVBDgqF6NdJf09Y3" >> ldap.ldif
 echo "#userpassword in plain: copper" >> ldap.ldif
+echo "" >> ldap.ldif
 
 # Entry 7: cn=test,ou=Users,dc=$DC1,dc=$DC2,dc=$DC3
 echo "dn: uid=test,ou=Users,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
@@ -310,7 +319,9 @@ echo "gidnumber: 501" >> ldap.ldif
 echo "givenname: test" >> ldap.ldif
 echo "homedirectory: /home/Users/test" >> ldap.ldif
 echo "loginshell: /bin/sh" >> ldap.ldif
-echo "mail: test$DC1.$DC2.$DC3" >> ldap.ldif
+
+echo "mail: test@$DC1.$DC2.$DC3" >> ldap.ldif
+
 echo "objectclass: inetOrgPerson" >> ldap.ldif
 echo "objectclass: posixAccount" >> ldap.ldif
 echo "objectclass: top" >> ldap.ldif
@@ -319,7 +330,7 @@ echo "uid: test" >> ldap.ldif
 echo "uidnumber: 1002" >> ldap.ldif
 echo "userpassword: {SSHA}79+ggcj1RrXEitcvjVBDgqF6NdJf09Y3" >> ldap.ldif
 echo "#userpassword in plain: test" >> ldap.ldif
-
+echo "" >> ldap.ldif
 
 echoGreenBold 'ldap.ldif file was Created...'
 

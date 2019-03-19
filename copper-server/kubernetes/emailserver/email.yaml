@@ -51,11 +51,11 @@ spec:
     spec:
       containers:
         - name: email
-          #image: emailserver
+          image: emailserver
           #image: tharangarajapaksha/emailserver
-          image: lsflk/copper:emailserver
-          imagePullPolicy: Always
-          #imagePullPolicy: Never
+          #image: lsflk/copper:emailserver
+          #imagePullPolicy: Always
+          imagePullPolicy: Never
           #command: ["/bin/sh"]
           #args: ["-c", "service postfix start"]
           #args: ["-c", "while true; do echo hello; sleep 10;done"]
@@ -139,11 +139,11 @@ spec:
                   secretKeyRef:
                      name: email-secret
                      key: DC3
-             #- name: DNPASS
-             #  valueFrom:
-             #     secretKeyRef:
-             #        name: email-secret
-             #        key: DNPASS
+             - name: ORGNIZATION
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: ORGNIZATION
              - name: RO
                valueFrom:
                   secretKeyRef:
@@ -198,8 +198,8 @@ spec:
             limits:
               #cpu: 0.5
               #memory: "500Mi"
-              cpu: 400m # ~4/10th of a core
-              memory: "500Mi" # 500 Mebibytes 
+              cpu: 600m # ~6/10th of a core
+              memory: "400Mi" # 500 Mebibytes 
       #command: ["/bin/sh"]
       #  args: ["-c", "service postfix start"]  
   
