@@ -50,7 +50,7 @@ smtpd_tls_security_level = may
 # Enabling SMTP for authenticated users, and handing off authentication to Dovecot
 smtpd_sasl_type = dovecot
 smtpd_sasl_path = private/auth
-smtpd_sasl_auth_enable = yes
+smtpd_sasl_auth_enable = no
 
 
 # The following block specifies some security restrictions for incoming
@@ -60,7 +60,7 @@ smtpd_sasl_auth_enable = yes
 # entry and present a valid, FQDN HELO hostname. In addition, they can only
 # send mail to valid mailboxes on the server, and the sender's domain must
 # actually exist.
-ssmtpd_helo_restrictions =
+smtpd_helo_restrictions =
   permit_mynetworks,
   permit_sasl_authenticated,
   # ---------- Above line permited early
@@ -85,7 +85,7 @@ smtpd_helo_restrictions =
   # reject legitimate mail.
   #reject_unauth_pipelining
 smtpd_sender_restrictions =
-  permit_mynetworks,
+  #permit_mynetworks,
   #permit_sasl_authenticated,
   #reject_non_fqdn_sender,
   #reject_unknown_sender_domain,
@@ -94,7 +94,7 @@ smtpd_relay_restrictions =
   permit_mynetworks,
   permit_sasl_authenticated,
   # !!! THIS SETTING PREVENTS YOU FROM BEING AN OPEN RELAY !!!
-  reject_unauth_destination,
+  #reject_unauth_destination,
   # !!!      DO NOT REMOVE IT UNDER ANY CIRCUMSTANCES      !!!
 smtpd_recipient_restrictions =
   permit_mynetworks,
@@ -111,9 +111,9 @@ smtpd_data_restrictions =
 
 #-----------------------------------------------------------------------
 
-smtpd_error_sleep_time = 1s
-smtpd_soft_error_limit = 10
-smtpd_hard_error_limit = 20
+smtpd_error_sleep_time = 5s
+smtpd_soft_error_limit = 20
+smtpd_hard_error_limit = 40
 
 # See /usr/share/doc/postfix/TLS_README.gz in the postfix-doc package for
 # information on enabling SSL in the smtp client.
@@ -142,7 +142,7 @@ mydestination = localhost
 
 # spam related settings ---------------------------------
 # prevent spammers from searching for valid users
-disable_vrfy_command = yes
+disable_vrfy_command = no
 
 # require properly formatted email addresses - prevents a lot of spam
 #strict_rfc821_envelopes = yes
