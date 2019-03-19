@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 
@@ -318,7 +319,9 @@ echo "gidnumber: 501" >> ldap.ldif
 echo "givenname: test" >> ldap.ldif
 echo "homedirectory: /home/Users/test" >> ldap.ldif
 echo "loginshell: /bin/sh" >> ldap.ldif
+
 echo "mail: test@$DC1.$DC2.$DC3" >> ldap.ldif
+
 echo "objectclass: inetOrgPerson" >> ldap.ldif
 echo "objectclass: posixAccount" >> ldap.ldif
 echo "objectclass: top" >> ldap.ldif
@@ -487,4 +490,3 @@ echoGreenBold ' Contact support@copper.opensource.lk for further assistance. ###
         echoRedBold "Deployment cancelled"
         ;;
 esac
-

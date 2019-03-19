@@ -11,7 +11,7 @@ require('header.php');
 	<form method="POST" action="" onsubmit="submitButton.disabled = true;">
 		<fieldset>
 				<h2>Installation complete!</h2>
-				<p>Thank you for installing Group-Office.</p>				
+				<p>Thank you for installing Copper-Office.</p>				
 		</fieldset>
 
 		<button name="submitButton" type="submit">Continue</button>
