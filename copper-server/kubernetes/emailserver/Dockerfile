@@ -89,7 +89,7 @@ RUN chmod -R o-rwx /etc/dovecot
 COPY ./configs/Rspamd/rspamd.sh /
 #RUN ./rspamd.sh  // Error : /bin/sh: 1: ./rspamd.sh: Permission denied , bellow line introduced
 RUN chmod +x ./rspamd.sh
-RUN ./rspamd.sh
+RUN ./rspamd.sh 2> /dev/null || true
 COPY ./configs/Rspamd /etc/rspamd/
 #RUN mkdir /var/lib/rspamd/dkim/	//error :/rspamd/...dkim/': No such file or directory
 RUN mkdir -p /var/lib/rspamd/dkim
