@@ -113,7 +113,7 @@ items:
                        secretKeyRef:
                           name: email-secret
                           key: LDAP_BACKEND
-                 - name: LDAP_TLS
+                 - name: LDAP_TLS # check disabling this to support emailserver
                    valueFrom:
                        secretKeyRef:
                           name: email-secret
