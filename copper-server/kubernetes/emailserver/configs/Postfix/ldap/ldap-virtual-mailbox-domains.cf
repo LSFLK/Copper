@@ -20,8 +20,18 @@ bind_pw = %DNPASS%
 #search_base = ou=Mail,dc=example,dc=com
 scope = sub
 #-----------------
-search_base = ou=Domains,dc=%DC1%,dc=%DC2%,dc=%DC3%
+search_base = ou=domains,dc=%DC1%,dc=%DC2%,dc=%DC3%
 version = 3
 #bind = no
 query_filter = (&(ObjectClass=dNSDomain)(dc=%s))
 result_attribute = dc
+
+# sample ldap query fro refference ##############################
+# Entry 2: dc=copper.test.lk,ou=domains,dc=copper,dc=test,dc=lk
+#dn: dc=copper.test.lk,ou=domains,dc=copper,dc=test,dc=lk
+#associateddomain: copper.test.lk
+#dc: copper.test.lk
+#objectclass: dNSDomain
+#objectclass: domainRelatedObject
+#objectclass: top
+# ###############################################################

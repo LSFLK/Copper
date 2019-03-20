@@ -59,8 +59,8 @@ RUN chown -R zeyple /etc/zeyple /usr/local/bin/zeyple.py
 
 # COPY Changing dovecot congiguration files permission
 COPY ./configs/Dovecot /etc/dovecot/
-RUN chgrp dovecot /etc/dovecot/dovecot-sql.conf.ext
-RUN chmod o= /etc/dovecot/dovecot-sql.conf.ext
+#RUN chgrp dovecot /etc/dovecot/dovecot-sql.conf.ext
+#RUN chmod o= /etc/dovecot/dovecot-sql.conf.ext
 
 # changes accoring to url : https://www.linode.com/docs/email/postfix/email-with-postfix-dovecot-and-mariadb-on-centos-7/
 COPY ./configs/Postfix /etc/postfix/
@@ -87,7 +87,7 @@ RUN chown -R vmail:dovecot /etc/dovecot
 RUN chmod -R o-rwx /etc/dovecot
 
 COPY ./configs/Rspamd/rspamd.sh /
-#RUN ./rspamd.sh  // Error : /bin/sh: 1: ./rspamd.sh: Permission denied , bellow line introduced
+RUN ./rspamd.sh  // Error : /bin/sh: 1: ./rspamd.sh: Permission denied , bellow line introduced
 RUN chmod +x ./rspamd.sh
 RUN ./rspamd.sh 2> /dev/null || true
 COPY ./configs/Rspamd /etc/rspamd/

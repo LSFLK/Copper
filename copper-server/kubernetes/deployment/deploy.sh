@@ -197,7 +197,8 @@ echo "    LDAP_READONLY_USER_USERNAME: $RO" >> secret.yaml
 echo "    LDAP_READONLY_USER_PASSWORD: $ROPASS" >> secret.yaml
 echo "    LDAP_RFC2307BIS_SCHEMA: \"false\"" >> secret.yaml
 echo "    LDAP_BACKEND: mdb" >> secret.yaml
-echo "    LDAP_TLS: \"true\"" >> secret.yaml
+#echo "    LDAP_TLS: \"true\"" >> secret.yaml
+echo "    LDAP_TLS: \"false\"" >> secret.yaml
 echo "    LDAP_TLS_CRT_FILENAME: cert.pem" >> secret.yaml
 echo "    LDAP_TLS_KEY_FILENAME: privkey.pem" >> secret.yaml
 echo "    LDAP_TLS_CA_CRT_FILENAME: fullchain.pem" >> secret.yaml
@@ -232,7 +233,7 @@ echo "    RSPAMD_PASSWORD : $rspamd_pwd" >> secret.yaml
 
 # Now Create the configuration secrets
 
-echoGreenBold 'Configuration goint to be created...'
+echoGreenBold 'Configuration going to be created...'
 kubectl create -f secret.yaml 2> /dev/null || true
 echoGreenBold 'Secret configuration files Created...'
 
