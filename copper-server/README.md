@@ -88,11 +88,11 @@ Insert previously created users to your openldap server.
 
 https://localhost:4433/
 
-Login DN :cn=<ldpa admin name>,dc=<domain name part 1>,dc=<domain name part 2>,dc=<domain name part 3>
-Password : <Password you provided at installation >
+Login DN :cn=admin,dc=<domain_p1>,dc=<domain_p2>,dc=<domain_p3>
 
-Then import the import.ldif file which is created in the installation process. It will create two test users.
-"test", "copper" both having "coppermail@lsf". You may login to phpldapadmin using above services.
+Password : admin
+
+Then import the ldap.ldif file .
 
 
 ## Test groupoffice
@@ -116,12 +116,11 @@ IMAP Host : email
 
 Port      : 143
 
-Username  : test@copper.opensource.lk
+Username  : test@<domain_p1>.<domain_p2>.<domain_p3>
 
 Password  : coppermail@lsf
 
 Encription: TLS
-Checked Allow self signed certificates.
 
 ### SMTP Configuraiton
 
