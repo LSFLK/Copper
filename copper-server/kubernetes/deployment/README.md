@@ -103,7 +103,8 @@ Ex : spam
     - Password : <password provided at installation step>
     
 ### Connectiong Group Offcie with LDAP server user base.
- [Group Office LDAP configuration.]
+ 
+ Please reffere wiki page "Group Office LDAP configuration" for further information.
  
     
 ### Please do not forget to reset default passwords after configuring email server
