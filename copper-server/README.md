@@ -71,7 +71,7 @@ $ sh deploy.sh
 3. Now kubernetes will take some time to pull and create requied images. Check whether all images are created properly.
 
 ```
-$ kubectl get pods -n monitoring
+$ kubectl get pods -n copper
 
 ```
 Wait untill all pods are up and running
@@ -82,7 +82,7 @@ Insert previously created users to your openldap server.
 
 https://localhost:4433/
 
-Login DN :cn=admin,dc=copper,dc=opensource,dc=lk
+Login DN :cn=admin,dc=<domain_p1>,dc=<domain_p2>,dc=<domain_p3>
 Password : admin
 
 Then import the import_uid.ldif file .
@@ -109,12 +109,11 @@ IMAP Host : email
 
 Port      : 143
 
-Username  : test@copper.opensource.lk
+Username  : test@<domain_p1>.<domain_p2>.<domain_p3>
 
 Password  : coppermail@lsf
 
 Encription: TLS
-Checked Allow self signed certificates.
 
 ### SMTP Configuraiton
 
