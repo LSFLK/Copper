@@ -1,46 +1,49 @@
+
 version: 1
 
-dn: ou=domains,dc=anu,dc=email,dc=uk
+dn: ou=domains,dc=copper,dc=test,dc=lk
 objectclass: organizationalUnit
 objectclass: top
 ou: domains
 
-dn: dc=anu.email.uk,ou=domains,dc=anu,dc=email,dc=uk
-associateddomain: anu.email.uk
-dc: anu.email.uk
+dn: dc=copper.test.lk,ou=domains,dc=copper,dc=test,dc=lk
+associateddomain: copper.test.lk
+dc: copper.test.lk
 objectclass: dNSDomain
 objectclass: domainRelatedObject
 objectclass: top
 
-dn: ou=groups,dc=anu,dc=email,dc=uk
+dn: ou=groups,dc=copper,dc=test,dc=lk
 objectclass: organizationalUnit
 objectclass: top
 ou: groups
 
-dn: cn=admins,ou=groups,dc=anu,dc=email,dc=uk
+dn: cn=admins,ou=groups,dc=copper,dc=test,dc=lk
+
 cn: admins
 gidnumber: 500
 objectclass: posixGroup
 objectclass: top
 
-dn: cn=users,ou=groups,dc=anu,dc=email,dc=uk
+
+dn: cn=users,ou=groups,dc=copper,dc=test,dc=lk
 cn: users
 gidnumber: 501
 objectclass: posixGroup
 objectclass: top
 
-dn: ou=Users,dc=anu,dc=email,dc=uk
+dn: ou=Users,dc=copper,dc=test,dc=lk
 objectclass: organizationalUnit
 objectclass: top
 ou: Users
 
-dn: uid=copper,ou=Users,dc=anu,dc=email,dc=uk
+dn: uid=copper,ou=Users,dc=copper,dc=test,dc=lk
 cn: copper
 gidnumber: 501
 givenname: copper
 homedirectory: /home/Users/copper
 loginshell: /bin/sh
-mail: copper@anu.email.uk
+mail: copper@copper.test.lk
 objectclass: inetOrgPerson
 objectclass: posixAccount
 objectclass: top
@@ -50,13 +53,14 @@ uidnumber: 1001
 userpassword: {SSHA}79+ggcj1RrXEitcvjVBDgqF6NdJf09Y3
 #userpassword in plain: copper
 
-dn: uid=test,ou=Users,dc=anu,dc=email,dc=uk
+dn: uid=test,ou=Users,dc=copper,dc=test,dc=lk
+
 cn: test
 gidnumber: 501
 givenname: test
 homedirectory: /home/Users/test
 loginshell: /bin/sh
-mail: test@anu.email.uk
+mail: test@copper.test.lk
 objectclass: inetOrgPerson
 objectclass: posixAccount
 objectclass: top
