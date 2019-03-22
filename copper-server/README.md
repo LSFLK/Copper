@@ -92,7 +92,7 @@ Login DN :cn=admin,dc=<domain_p1>,dc=<domain_p2>,dc=<domain_p3>
 
 Password : admin
 
-Then import the ldap.ldif file .
+Then import the "Copper/copper-server/kubernetes/deployment/ldap.ldif" file.
 
 
 ## Test groupoffice
@@ -105,7 +105,6 @@ http://localhost:8004/
 2. Check Test page is ok. If there is a databae isseu it should be checked.
 3. Create the admin account
 4. After success completion the installation then you can login to system.
-
 5. Go to Email Tab and click on Accounts
 6. Add account with following details
 
@@ -129,14 +128,7 @@ HOST      : email
 Port      : 25
 
 Encription: No encription
-
-
-
-
-
-
-      
-                      
+        
 ## References 
 - Email solution initiated by Prabod Rathnayaka. url :   
   https://github.com/prabod/email-solution/tree/master/docker
