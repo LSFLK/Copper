@@ -1,31 +1,10 @@
 #!/usr/bin/env bash
 
-export EMAIL
-export KEY_PATH
-
-export FQDN=${FQDN:-$(hostname --fqdn)}
-export DOMAIN=${DOMAIN:-$(hostname --domain)}
-export REDIS_HOST=${REDIS_HOST:-"redis"}
-export REDIS_PORT=${REDIS_PORT:-6379}
-# hardcoded variable setting
-#export DBUSER=${DBUSER:-"postfixuser"}
-#export DBPASS=${DBPASS:-"postfixpassword"}
-#export DBHOST=${DBHOST:-"mariadb"}
-#export DEBUG=${DEBUG:-"true"}
-#export RSPAMD_PASSWORD=${RSPAMD_PASSWORD:-"password"}
 
 
-export DEBUG=${DEBUG}
-export RSPAMD_PASSWORD=${RSPAMD_PASSWORD}
+echo "Email is ${EMAIL}"
 
-#Variables need for OpenLdap-dovecot
-export CN=${CN}
-export DC1=${DC1}
-export DC2=${DC2}
-export DC3=${DC3}
-export DNPASS=${DNPASS}
-export OU=${OU}
-export LDAP_HOST_IP=${LDAP_HOST_IP}
+echo "Mysql user is :${MYSQL_USER}"
 
 if [ -z "$EMAIL" ]; then
   echo "[ERROR] Email Must be set !"
@@ -36,6 +15,7 @@ fi
   #echo "[ERROR] MariaDB database password must be set !"
   #exit 1
 #fi
+#
 
 if [ -z "$RSPAMD_PASSWORD" ]; then
   echo "[ERROR] Rspamd password must be set !"
@@ -74,7 +54,7 @@ echo "Checking for existing certificates"
 
 if [ "$DEBUG" = true ]; then
    mkdir -p $KEY_PATH
-   openssl req -nodes -x509 -newkey rsa:4096 -keyout ${KEY_PATH}.privkey.pem -out ${KEY_PATH}.fullchain.pem -days 365 -subj "/C=US/ST=Oregon/L=Portland/O=Company Name/OU=Org/CN=nextgenmed.dyndns.org"
+   openssl req -nodes -x509 -newkey rsa:4096 -keyout ${KEY_PATH}.privkey.pem -out ${KEY_PATH}.fullchain.pem -days 365 -subj "/C=US/ST=Oregon/L=Portland/O=$ORGNIZATION/OU=Org/CN=$HOSTNAME"
    echo "IN DEBUG MODE!!!! - GENERATED SELF SIGNED SSL KEY"
   else
 if (( ${#files} )); then
@@ -95,52 +75,57 @@ if (( ${#files} )); then
 chmod -R 755 /etc/letsencrypt/
 
  cp -R /etc/letsencrypt/ /cert
- sed -i.bak -e "s;%DFQN%;"${HOSTNAME}";g" "/etc/postfix/main.cf"
+ #sed -i.bak -e "s;%DFQN%;"${HOSTNAME}";g" "/etc/postfix/main.cf"
+ sed -i.bak -e "s;%DFQN%;"${FQDN}";g" "/etc/postfix/main.cf"
  sed -i.bak -e "s;%DOMAIN%;"${DOMAIN}";g" "/etc/postfix/main.cf"
  sed -i.bak -e "s;%DOMAIN%;"${DOMAIN}";g" "/etc/dovecot/conf.d/15-lda.conf"
  sed -i.bak -e "s;%DOMAIN%;"${DOMAIN}";g" "/etc/dovecot/conf.d/20-lmtp.conf"
- sed -i.bak -e "s;%DFQN%;"${HOSTNAME}";g" "/etc/dovecot/conf.d/10-ssl.conf"
+ #sed -i.bak -e "s;%DFQN%;"${HOSTNAME}";g" "/etc/dovecot/conf.d/10-ssl.conf"
+ sed -i.bak -e "s;%DFQN%;"${FQDN}";g" "/etc/dovecot/conf.d/10-ssl.conf"
 
-
- sed -i -e "s;redis;"${REDIS_HOST}";g" "/etc/rspamd/local.d/redis.conf"
- sed -i -e "s;redis;"${REDIS_HOST}";g" "/etc/rspamd/local.d/redis.conf"
-
-
+ #sed -i -e "s;redis;"${REDIS_HOST}";g" "/etc/rspamd/local.d/redis.conf"
+ #sed -i -e "s;redis;"${REDIS_HOST}";g" "/etc/rspamd/local.d/redis.conf"
 
  PASSWORD=$(rspamadm pw --quiet --encrypt --type pbkdf2 --password "${RSPAMD_PASSWORD}")
  sed -i "s;pwrd;"${RSPAMD_PASSWORD}";g" "/etc/rspamd/local.d/worker-controller.inc"
 
  #OpenLDAP with Dovecot conf
- sed -i.bak -e "s;%CN%;"${CN}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
+ #sed -i.bak -e "s;%CN%;"${CN}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
+ sed -i.bak -e "s;%CN%;"${RO}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
  sed -i.bak -e "s;%DC1%;"${DC1}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
  sed -i.bak -e "s;%DC2%;"${DC2}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
  sed -i.bak -e "s;%DC3%;"${DC3}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
- sed -i.bak -e "s;%DNPASS%;"${DNPASS}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
+ #sed -i.bak -e "s;%DNPASS%;"${DNPASS}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
+ sed -i.bak -e "s;%DNPASS%;"${ROPASS}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
  sed -i.bak -e "s;%OU%;"${OU}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
  sed -i.bak -e "s;%LDAP_HOST_IP%;"${LDAP_HOST_IP}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
+ sed -i.bak -e "s;%DFQN%;"${FQDN}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
 
  #OpenLDAP with Postfix conf
- sed -i.bak -e "s;%CN%;"${CN}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf"
+ #sed -i.bak -e "s;%CN%;"${CN}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf"
+ sed -i.bak -e "s;%CN%;"${RO}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf"
  sed -i.bak -e "s;%DC1%;"${DC1}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf"
  sed -i.bak -e "s;%DC2%;"${DC2}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf"
  sed -i.bak -e "s;%DC3%;"${DC3}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf"
- sed -i.bak -e "s;%DNPASS%;"${DNPASS}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf"
+ sed -i.bak -e "s;%DNPASS%;"${ROPASS}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf"
  sed -i.bak -e "s;%OU%;"${OU}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf"
  sed -i.bak -e "s;%LDAP_HOST_IP%;"${LDAP_HOST_IP}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf"
 
- sed -i.bak -e "s;%CN%;"${CN}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-maps.cf"
+ #sed -i.bak -e "s;%CN%;"${CN}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-maps.cf"
+ sed -i.bak -e "s;%CN%;"${RO}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-maps.cf"
  sed -i.bak -e "s;%DC1%;"${DC1}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-maps.cf"
  sed -i.bak -e "s;%DC2%;"${DC2}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-maps.cf"
  sed -i.bak -e "s;%DC3%;"${DC3}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-maps.cf"
- sed -i.bak -e "s;%DNPASS%;"${DNPASS}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-maps.cf"
+ sed -i.bak -e "s;%DNPASS%;"${ROPASS}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-maps.cf"
  sed -i.bak -e "s;%OU%;"${OU}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-maps.cf"
  sed -i.bak -e "s;%LDAP_HOST_IP%;"${LDAP_HOST_IP}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-maps.cf"
 
- sed -i.bak -e "s;%CN%;"${CN}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
+ #sed -i.bak -e "s;%CN%;"${CN}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
+ sed -i.bak -e "s;%CN%;"${RO}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
  sed -i.bak -e "s;%DC1%;"${DC1}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
  sed -i.bak -e "s;%DC2%;"${DC2}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
  sed -i.bak -e "s;%DC3%;"${DC3}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
- sed -i.bak -e "s;%DNPASS%;"${DNPASS}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
+ sed -i.bak -e "s;%DNPASS%;"${ROPASS}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
  sed -i.bak -e "s;%OU%;"${OU}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
  sed -i.bak -e "s;%LDAP_HOST_IP%;"${LDAP_HOST_IP}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
 
@@ -179,15 +164,15 @@ chmod -R 755 /etc/letsencrypt/
  postmap hash:/etc/postfix/virtual
  postmap hash:/etc/postfix/access
 
- service rsyslog start
- service postfix start
- service dovecot restart
- service rspamd start
- freshclam
- service rspamd reload
- service clamav-daemon start
- service clamav-freshclam start
-
-
-
+ service rsyslog start 2> /dev/null || true
+ service postfix start 2> /dev/null || true
+ service dovecot restart 2> /dev/null || true
+ # this take too much of time
+ service rspamd start 2> /dev/null || true
+ #service clamav start # clamav unrecognized service
+ #freshclam
+ service rspamd reload 2> /dev/null || true
+ #service clamav-daemon start # if there is not enough memory in the container this will omit a error and docker build will stop from hear.
+ #service clamav-freshclam start
+ 
  tail -f /dev/null
