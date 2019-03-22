@@ -51,9 +51,9 @@ spec:
     spec:
       containers:
         - name: email
-          image: emailserver
+          #image: emailserver
           #image: tharangarajapaksha/emailserver
-          #image: lsflk/copper:emailserver
+          image: lsflk/copper:emailserver
           #imagePullPolicy: Always
           imagePullPolicy: Never
           #command: ["/bin/sh"]

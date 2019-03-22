@@ -189,16 +189,16 @@ echo "    LDAP_DOMAIN: $DC1.$DC2.$DC3" >> secret.yaml
 # read ADM
 echo "    LDAP_ADMIN_PASSWORD: $DNPASS" >> secret.yaml
 
-#echo "    LDAP_LOG_LEVEL: \"-1\"" >> secret.yaml
-echo "    LDAP_LOG_LEVEL: \"256\"" >> secret.yaml
+echo "    LDAP_LOG_LEVEL: \"-1\"" >> secret.yaml # to get all debugs.
+#echo "    LDAP_LOG_LEVEL: \"256\"" >> secret.yaml # http://www.openldap.org/doc/admin24/slapdconfig.html
 echo "    LDAP_CONFIG_PASSWORD: $DNPASS" >> secret.yaml
 echo "    LDAP_READONLY_USER: \"true\"" >> secret.yaml
 echo "    LDAP_READONLY_USER_USERNAME: $RO" >> secret.yaml
 echo "    LDAP_READONLY_USER_PASSWORD: $ROPASS" >> secret.yaml
 echo "    LDAP_RFC2307BIS_SCHEMA: \"false\"" >> secret.yaml
 echo "    LDAP_BACKEND: mdb" >> secret.yaml
-#echo "    LDAP_TLS: \"true\"" >> secret.yaml
-echo "    LDAP_TLS: \"false\"" >> secret.yaml
+echo "    LDAP_TLS: \"true\"" >> secret.yaml
+#echo "    LDAP_TLS: \"false\"" >> secret.yaml
 echo "    LDAP_TLS_CRT_FILENAME: cert.pem" >> secret.yaml
 echo "    LDAP_TLS_KEY_FILENAME: privkey.pem" >> secret.yaml
 echo "    LDAP_TLS_CA_CRT_FILENAME: fullchain.pem" >> secret.yaml
