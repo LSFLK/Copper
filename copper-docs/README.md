@@ -52,27 +52,10 @@ Additional labels  **alpha** | **beta** | **RC**
 
 #### Create environment
 
-1. Clone the repository [Copper](https://github.com/LSFLK/Copper.git)
+1. Clone the repository [Copper](https://github.com/LSFLK/Copper.git) and refer [this](https://github.com/LSFLK/Copper/blob/master/copper-server/README.md) document for install Copper.
 
 ```
 $ git clone https://github.com/LSFLK/Copper.git
-```
-
-2. Edit ".env" file which is inside of copper server, to replicate your settings
-
-3. Create external docker networks using below commands
-
-```
-$ docker network create front
-$ docker network create back
-```
-#### Run
-
-Run the system and start Copper server by :
-
-```
-$ docker-compose build
-$ docker-compose up -d 
 ```
 
 #### Stay in touch with us.
