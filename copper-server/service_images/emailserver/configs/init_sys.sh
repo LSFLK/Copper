@@ -1,4 +1,3 @@
-
 #!/usr/bin/env bash
 
 
@@ -16,6 +15,7 @@ fi
   #echo "[ERROR] MariaDB database password must be set !"
   #exit 1
 #fi
+#
 
 if [ -z "$RSPAMD_PASSWORD" ]; then
   echo "[ERROR] Rspamd password must be set !"
@@ -54,7 +54,7 @@ echo "Checking for existing certificates"
 
 if [ "$DEBUG" = true ]; then
    mkdir -p $KEY_PATH
-   openssl req -nodes -x509 -newkey rsa:4096 -keyout ${KEY_PATH}.privkey.pem -out ${KEY_PATH}.fullchain.pem -days 365 -subj "/C=US/ST=Oregon/L=Portland/O=Company Name/OU=Org/CN=nextgenmed.dyndns.org"
+   openssl req -nodes -x509 -newkey rsa:4096 -keyout ${KEY_PATH}.privkey.pem -out ${KEY_PATH}.fullchain.pem -days 365 -subj "/C=US/ST=Oregon/L=Portland/O=$ORGNIZATION/OU=Org/CN=$HOSTNAME"
    echo "IN DEBUG MODE!!!! - GENERATED SELF SIGNED SSL KEY"
   else
 if (( ${#files} )); then
