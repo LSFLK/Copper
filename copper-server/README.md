@@ -83,6 +83,7 @@ Insert previously created users to your openldap server.
 https://localhost:4433/
 
 Login DN :cn=admin,dc=<domain_p1>,dc=<domain_p2>,dc=<domain_p3>
+
 Password : admin
 
 Then import the import_uid.ldif file .
