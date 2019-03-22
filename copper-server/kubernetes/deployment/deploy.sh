@@ -479,8 +479,10 @@ sleep 1s
 # https://stackoverflow.com/questions/51026174/running-a-command-on-all-kubernetes-pods-of-a-service
 
 echoGreenBold ' ########################################## Installation completed #######################################'
-echoGreenBold ' Please import ldap.ldif file to import a test user for testing perposes from https://localhost:4433/ url.'
-echoGreenBold ' Contact support@copper.opensource.lk for further assistance. ############################################'
+echo ""
+echoGreenBold ' Please import ldap.ldif file to import a test users for testing perposes from https://localhost:4433/ url.'
+echo ""
+echoGreenBold ' Contact copper@opensource.lk for further assistance. ############################################'
 #sleep 5s
 
 #kubectl run -it --rm --image=mysql:5.6 --restart=Never mysql-client -n copper -- mysql -h mysql -pc0pperDB

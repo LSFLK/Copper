@@ -44,7 +44,6 @@ givenname: copper
 homedirectory: /home/Users/copper
 loginshell: /bin/sh
 mail: copper@copper.test.lk
-
 objectclass: inetOrgPerson
 objectclass: posixAccount
 objectclass: top
