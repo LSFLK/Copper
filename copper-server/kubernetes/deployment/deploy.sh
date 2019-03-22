@@ -351,7 +351,7 @@ file="../tls/cert.pem"
 if [ ! -f "$file" ]
 then
     echoRedBold "$0: cert.pem file '${file}' not found in tls directory. !"
-    exit 3 
+    #exit 3 
 fi
 
 # checking the privkey.key files exists
@@ -359,7 +359,7 @@ file="../tls/privkey.pem"
 if [ ! -f "$file" ]
 then
     echoRedBold "$0: privkey.pem file '${file}' not found in tls directory. !"
-    exit 3 
+    #exit 3 
 fi
 
 # checking the dhparam.pem files exists
@@ -367,7 +367,7 @@ file="../tls/dhparam.pem"
 if [ ! -f "$file" ]
 then
     echoRedBold "$0: dhparam.pem file '${file}' not found in tls directory. !"
-    exit 3 
+    #exit 3 
 fi
 
 # checking the fullchain.pem files exists
