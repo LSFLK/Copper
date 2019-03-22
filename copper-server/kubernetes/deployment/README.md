@@ -23,53 +23,64 @@
         
     '''
 
-## Service start
+## You may have to provide following informaiton while the installation process is going on.
 
- After successfull completion of deployment you have to start some services related to emailserver.
 
-    '''
-    // view all pods and copy the pod name for emailserver
-    kubectl get pods --namespace=Copper
-    // login to emailserver. You have to raplace pod_name with email pod.
-    kubectl exec <pod_name> --namespace=Copper --stdin --tty -c email /bin/sh
-  
-    // starting main services from inside the pod
-    service postfix start
-    service dovecot start
-    service rspamd start
+Enter mysql database name:
 
-    '''
+Ex : copper
+
+Enter mysql database password:
+
+Ex : copper
+
+Your domain must contain 3 parts. (Eg: part1.part2.part3)
+Enter the first part of domain:
+
+Ex : copper
+
+Enter the second part of domain:
+
+Ex : test
+
+Enter the third part of domain:
+
+Ex : lk
+
+Enter LDAP admin password:
+
+Ex : admin
+
+Enter LDAP readonly user name:
+
+Ex : raa
+
+Enter LDAP readonly user password:
+
+Ex : raa
+
+Enter organization name
+
+Ex : lsf
+
+Enter password for spam filter (RspamD)
+
+Ex : spam
 
 ## Testing the server
 
 ### Testing phpldapadmin user management
 
     URL :https://localhost:4433
+    // Hear the read only usr name and pasword should be provided for cn.
+    Ex : username : cn=readonly,dc=copper,dc=opensource,dc=lk
+    password : readonlypassword
 
-    username : cn=admin,dc=copper,dc=opensource,dc=lk
-    password : admin
+   
 
-    - Above details are different in your deployment configuration.( .env).
-
-    - Once successully loged in then you have to import some test users creation file  (user_import.ldif).
+    - Once successully loged in then you have to import some test users creation file  (ldap.ldif).
 
 
-### Database creation 
-
-    Now a groupoffice database should be created preor to start groupoffice installation begins.
-
-    first you have to check what is the pod name of dataase.
-
-    #kubectl get pods -n  Copper
-
-    Then exicute followng command to open a mysql client connected with the mysql pod.
-
-    #kubectl run -it --rm --image=mysql:5.6 --restart=Never mysql-client -n Copper -- mysql -h mysql -pc0pperDB
-
-    Then you will get access to the mysql database.
-    Once you connected create a database.
-
-    CREATE DATABASE groupoffice;
 
 ### Testing groupoffice 
 
@@ -89,6 +100,11 @@
 
     URL :http://localhost:11334/
 
-    - Password : postfix@123
+    - Password : <password provided at installation step>
+    
+### Connectiong Group Offcie with LDAP server user base.
+ 
+ Please reffere wiki page "Group Office LDAP configuration" for further information.
+ 
     
 ### Please do not forget to reset default passwords after configuring email server

@@ -18,7 +18,7 @@ Copper email solution can be used by any organization and can be monitored and c
 - [Dovecot](https://www.dovecot.org/) : Secure open-source IMAP and POP3 server (MDA)
 - [ClamAV](https://www.clamav.net/) : Antivirus software
 - [Rspamd](https://rspamd.com/) : Spam filter
-- [Rainloop](https://www.rainloop.net/) : Web client to access mail for users
+- [Group-Office](https://www.group-office.com/) : Web client to access mail for users
 - [OpenLDAP](https://www.openldap.org/) : Directory service which authenticate users
 
 
@@ -52,27 +52,10 @@ Additional labels  **alpha** | **beta** | **RC**
 
 #### Create environment
 
-1. Clone the repository [Copper](https://github.com/LSFLK/Copper.git)
+1. Clone the repository [Copper](https://github.com/LSFLK/Copper.git) and refer [this](https://github.com/LSFLK/Copper/blob/master/copper-server/README.md) document for install Copper.
 
 ```
 $ git clone https://github.com/LSFLK/Copper.git
-```
-
-2. Edit ".env" file which is inside of copper server, to replicate your settings
-
-3. Create external docker networks using below commands
-
-```
-$ docker network create front
-$ docker network create back
-```
-#### Run
-
-Run the system and start Copper server by :
-
-```
-$ docker-compose build
-$ docker-compose up -d 
 ```
 
 #### Stay in touch with us.

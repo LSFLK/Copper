@@ -1,5 +1,3 @@
-#uris = ldap://172.19.0.22 ldap://ldap.coppermail.dyndns.org
-
 # Space separated list of LDAP hosts to use. host:port is allowed too.
 
 hosts = %LDAP_HOST_IP%

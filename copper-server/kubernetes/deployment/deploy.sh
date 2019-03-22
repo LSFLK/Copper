@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 
@@ -319,7 +320,9 @@ echo "gidnumber: 501" >> ldap.ldif
 echo "givenname: test" >> ldap.ldif
 echo "homedirectory: /home/Users/test" >> ldap.ldif
 echo "loginshell: /bin/sh" >> ldap.ldif
+
 echo "mail: test@$DC1.$DC2.$DC3" >> ldap.ldif
+
 echo "objectclass: inetOrgPerson" >> ldap.ldif
 echo "objectclass: posixAccount" >> ldap.ldif
 echo "objectclass: top" >> ldap.ldif
@@ -476,8 +479,10 @@ sleep 1s
 # https://stackoverflow.com/questions/51026174/running-a-command-on-all-kubernetes-pods-of-a-service
 
 echoGreenBold ' ########################################## Installation completed #######################################'
-echoGreenBold ' Please import ldap.ldif file to import a test user for testing perposes from https://localhost:4433/ url.'
-echoGreenBold ' Contact support@copper.opensource.lk for further assistance. ############################################'
+echo ""
+echoGreenBold ' Please import ldap.ldif file to import a test users for testing perposes from https://localhost:4433/ url.'
+echo ""
+echoGreenBold ' Contact copper@opensource.lk for further assistance. ############################################'
 #sleep 5s
 
 #kubectl run -it --rm --image=mysql:5.6 --restart=Never mysql-client -n copper -- mysql -h mysql -pc0pperDB
@@ -488,4 +493,3 @@ echoGreenBold ' Contact support@copper.opensource.lk for further assistance. ###
         echoRedBold "Deployment cancelled"
         ;;
 esac
-

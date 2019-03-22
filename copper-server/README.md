@@ -11,12 +11,10 @@ At the moment, Cu-email is compatible with both docker-compose and k8s. Please r
     - [POSTFIX](http://www.postfix.org/) : a modular mail transfer agent.
   - [x] IMAP Server and POP Server
     - [DOVECOT](https://www.dovecot.org/) : secure open-source IMAP and POP3 server.
-  - [x] WEBmail client (Outdated)
-    - [RAINLOOP](https://www.rainloop.net/) : Webmail client with basic features.
   - [x] WEBmail client
     - [Group-Office](https://www.group-office.com)
   - [x] Spam Filter
-    - [RSPAMD](https://rspamd.com/) : Fast, free and open-source spam filtering system. You may find a comparison of spam filters [here](https://rspamd.com/comparison.html).
+    - [RSPAMD](https://rspamd.com/) : Fast, free and open-source spam filtering system. You may find a comparison of spam  filters [here](https://rspamd.com/comparison.html).
   - [x] Antivirus 
     - [ClamAV](https://www.clamav.net/) : is an open source antivirus engine for detecting trojans, viruses, malware & other malicious threats.
   - [x] Security enhancement
@@ -67,11 +65,19 @@ $ cd Copper/copper-server/kubernetes/deployment/
 $ sh deploy.sh
 
 ```
+It will ask some questions related to your system and you have to provide following informations.
+
+- Mysql db name
+- Mysql db password
+- Admin password for ldap service
+- Domain name 
+- Organization
+- Rspamd system password.
 
 3. Now kubernetes will take some time to pull and create requied images. Check whether all images are created properly.
 
 ```
-$ kubectl get pods -n monitoring
+$ kubectl get pods -n copper
 
 ```
 Wait untill all pods are up and running
@@ -82,10 +88,11 @@ Insert previously created users to your openldap server.
 
 https://localhost:4433/
 
-Login DN :cn=admin,dc=copper,dc=opensource,dc=lk
+Login DN :cn=admin,dc=<domain_p1>,dc=<domain_p2>,dc=<domain_p3>
+
 Password : admin
 
-Then import the import_uid.ldif file .
+Then import the "Copper/copper-server/kubernetes/deployment/ldap.ldif" file.
 
 
 ## Test groupoffice
@@ -98,7 +105,6 @@ http://localhost:8004/
 2. Check Test page is ok. If there is a databae isseu it should be checked.
 3. Create the admin account
 4. After success completion the installation then you can login to system.
-
 5. Go to Email Tab and click on Accounts
 6. Add account with following details
 
@@ -109,12 +115,11 @@ IMAP Host : email
 
 Port      : 143
 
-Username  : test@copper.opensource.lk
+Username  : test@<domain_p1>.<domain_p2>.<domain_p3>
 
 Password  : coppermail@lsf
 
 Encription: TLS
-Checked Allow self signed certificates.
 
 ### SMTP Configuraiton
 
@@ -123,14 +128,7 @@ HOST      : email
 Port      : 25
 
 Encription: No encription
-
-
-
-
-
-
-      
-                      
+        
 ## References 
 - Email solution initiated by Prabod Rathnayaka. url :   
   https://github.com/prabod/email-solution/tree/master/docker
