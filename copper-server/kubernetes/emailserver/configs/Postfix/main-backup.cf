@@ -1,3 +1,4 @@
+#  this file taken from octobmer 30 2018 saved version.
 #  use this url to know each parameter : http://www.postfix.org/STANDARD_CONFIGURATION_README.html
 #  & https://www.c0ffee.net/blog/mail-server-guide
 
@@ -113,8 +114,8 @@ smtpd_helo_restrictions =
 
 # Name of this mail server, used in the SMTP HELO for outgoing mail. Make
 # sure this resolves to the same IP as your reverse DNS hostname.
-#myhostname = %DFQN%
-myhostname = email
+myhostname = %DFQN%
+
 
 
 alias_maps = hash:/etc/aliases
@@ -130,8 +131,8 @@ myorigin = %DOMAIN%
 # virtual domains, which are configured below. Make sure to specify the FQDN
 # of your sever, as well as localhost.
 # Note: NEVER specify any virtual domains here!!! Those come later.
-#mydestination = localhost
-mydestination = email
+mydestination = localhost
+
 
 # spam related settings ---------------------------------
 # prevent spammers from searching for valid users
@@ -168,8 +169,8 @@ recipient_delimiter = +
 
 relayhost =
 #mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
-#mynetworks = 127.0.0.0/8 172.19.0.1
-mynetworks = 127.0.0.0/8 
+mynetworks = 127.0.0.0/8 172.19.0.1
+
 
 inet_interfaces = all
 

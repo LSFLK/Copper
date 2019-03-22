@@ -117,10 +117,10 @@ RUN chown bin:bin /usr/local/bin/pflogsumm
 RUN chmod 755 /usr/local/bin/pflogsumm
 
 # copying virus sh file
-# RUN mkdir /agent
-# RUN chmod 755 /agent
-# COPY ./emailserver/configs/clamAV/init_refresh.sh /agent/
-# RUN chmod +x /agent/init_refresh.sh
+ #RUN mkdir /agent
+ #RUN chmod 755 /agent
+ #COPY ./emailserver/configs/clamAV/init_refresh.sh /agent/
+ #RUN chmod +x /agent/init_refresh.sh
 
 # Antivirus with amavisd-new and clamAV
 RUN apt -y install clamav-daemon clamav
