@@ -243,14 +243,14 @@ echoGreenBold 'Secret configuration files Created...'
 echo "version: 1" > ldap.ldif
 echo "" >> ldap.ldif
 
-# Entry 1: ou=domains,dc=DC1,dc=DC2,dc=DC3
+# Entry: ou=domains,dc=DC1,dc=DC2,dc=DC3
 echo "dn: ou=domains,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
 echo "objectclass: organizationalUnit" >> ldap.ldif
 echo "objectclass: top" >> ldap.ldif
 echo "ou: domains" >> ldap.ldif
 echo "" >> ldap.ldif
 
-# Entry 2: dc=$DC1.$DC2.$DC3,ou=domains,dc=$DC1,dc=$DC2,dc=$DC3
+# Entry: dc=$DC1.$DC2.$DC3,ou=domains,dc=$DC1,dc=$DC2,dc=$DC3
 echo "dn: dc=$DC1.$DC2.$DC3,ou=domains,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
 echo "associateddomain: $DC1.$DC2.$DC3" >> ldap.ldif
 echo "dc: $DC1.$DC2.$DC3" >> ldap.ldif
@@ -258,7 +258,7 @@ echo "objectclass: dNSDomain" >> ldap.ldif
 echo "objectclass: domainRelatedObject" >> ldap.ldif
 echo "objectclass: top" >> ldap.ldif
 echo "" >> ldap.ldif
-## Entry 2: dc=copper.support.lk,ou=domains,dc=copper,dc=support,dc=lk
+## Entry: dc=copper.support.lk,ou=domains,dc=copper,dc=support,dc=lk
 #dn: dc=copper.support.lk,ou=domains,dc=copper,dc=support,dc=lk
 #associateddomain: copper.support.lk
 #dc: copper.support.lk
@@ -266,14 +266,14 @@ echo "" >> ldap.ldif
 #objectclass: domainRelatedObject
 #objectclass: top
 
-# Entry 3: ou=groups,dc=$DC1,dc=$DC2,dc=$DC3
+# Entry: ou=groups,dc=$DC1,dc=$DC2,dc=$DC3
 echo "dn: ou=groups,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
 echo "objectclass: organizationalUnit" >> ldap.ldif
 echo "objectclass: top" >> ldap.ldif
 echo "ou: groups" >> ldap.ldif
 echo "" >> ldap.ldif
 
-# Entry 4: cn=admin,ou=groups,dc=$DC1,dc=$DC2,dc=$DC3
+# Entry: cn=admin,ou=groups,dc=$DC1,dc=$DC2,dc=$DC3
 echo "dn: cn=admins,ou=groups,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
 echo "cn: admins" >> ldap.ldif
 echo "gidnumber: 500" >> ldap.ldif
@@ -288,14 +288,32 @@ echo "objectclass: posixGroup" >> ldap.ldif
 echo "objectclass: top" >> ldap.ldif
 echo "" >> ldap.ldif
 
-# Entry 5: ou=Users,dc=$DC1,dc=$DC2,dc=$DC3
+# Entry: ou=Users,dc=$DC1,dc=$DC2,dc=$DC3
 echo "dn: ou=Users,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
 echo "objectclass: organizationalUnit" >> ldap.ldif
 echo "objectclass: top" >> ldap.ldif
 echo "ou: Users" >> ldap.ldif
 echo "" >> ldap.ldif
 
-# Entry 6: cn=copper,ou=Users,dc=$DC1,dc=$DC2,dc=$DC3
+# Entry: cn=system,ou=Users,dc=$DC1,dc=$DC2,dc=$DC3
+echo "dn: uid=system,ou=Users,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
+echo "cn: system" >> ldap.ldif
+echo "gidnumber: 501" >> ldap.ldif
+echo "givenname: system" >> ldap.ldif
+echo "homedirectory: /home/Users/system" >> ldap.ldif
+echo "loginshell: /bin/sh" >> ldap.ldif
+echo "mail: system@$DC1.$DC2.$DC3" >> ldap.ldif
+echo "objectclass: inetOrgPerson" >> ldap.ldif
+echo "objectclass: posixAccount" >> ldap.ldif
+echo "objectclass: top" >> ldap.ldif
+echo "sn: system" >> ldap.ldif
+echo "uid: system" >> ldap.ldif
+echo "uidnumber: 1000" >> ldap.ldif
+echo "userpassword: {SSHA}79+ggcj1RrXEitcvjVBDgqF6NdJf09Y3" >> ldap.ldif
+echo "#userpassword in plain: system" >> ldap.ldif
+echo "" >> ldap.ldif
+
+# Entry: cn=copper,ou=Users,dc=$DC1,dc=$DC2,dc=$DC3
 echo "dn: uid=copper,ou=Users,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
 echo "cn: copper" >> ldap.ldif
 echo "gidnumber: 501" >> ldap.ldif
@@ -313,16 +331,14 @@ echo "userpassword: {SSHA}79+ggcj1RrXEitcvjVBDgqF6NdJf09Y3" >> ldap.ldif
 echo "#userpassword in plain: copper" >> ldap.ldif
 echo "" >> ldap.ldif
 
-# Entry 7: cn=test,ou=Users,dc=$DC1,dc=$DC2,dc=$DC3
+# Entry: cn=test,ou=Users,dc=$DC1,dc=$DC2,dc=$DC3
 echo "dn: uid=test,ou=Users,dc=$DC1,dc=$DC2,dc=$DC3" >> ldap.ldif
 echo "cn: test" >> ldap.ldif
 echo "gidnumber: 501" >> ldap.ldif
 echo "givenname: test" >> ldap.ldif
 echo "homedirectory: /home/Users/test" >> ldap.ldif
 echo "loginshell: /bin/sh" >> ldap.ldif
-
 echo "mail: test@$DC1.$DC2.$DC3" >> ldap.ldif
-
 echo "objectclass: inetOrgPerson" >> ldap.ldif
 echo "objectclass: posixAccount" >> ldap.ldif
 echo "objectclass: top" >> ldap.ldif
