@@ -53,6 +53,8 @@ Unblock following ports
 
 ## Installation
 
+README.md file in the Deployment folder describe the installation process in detailed. It is the most updated one and please reffer it for more details. 
+
 1. Clone this Repository
 
 ```
@@ -70,6 +72,7 @@ It will ask some questions related to your system and you have to provide follow
 - Mysql db name
 - Mysql db password
 - Admin password for ldap service
+- Readonly ldap username and passeord
 - Domain name 
 - Organization
 - Rspamd system password.
@@ -90,7 +93,7 @@ https://localhost:4433/
 
 Login DN :cn=admin,dc=<domain_p1>,dc=<domain_p2>,dc=<domain_p3>
 
-Password : admin
+Password : <provided admin password for ldap >
 
 Then import the "Copper/copper-server/kubernetes/deployment/ldap.ldif" file.
 
