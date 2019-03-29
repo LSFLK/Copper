@@ -205,7 +205,8 @@ echo "    LDAP_TLS_KEY_FILENAME: privkey.pem" >> secret.yaml
 echo "    LDAP_TLS_CA_CRT_FILENAME: fullchain.pem" >> secret.yaml
 echo "    LDAP_TLS_ENFORCE: \"false\"" >> secret.yaml
 echo "    LDAP_TLS_CIPHER_SUITE: SECURE256:+SECURE128:-VERS-TLS-ALL:+VERS-TLS1.2:-RSA:-DHE-DSS:-CAMELLIA-128-CBC:-CAMELLIA-256-CBC" >> secret.yaml
-echo "    LDAP_TLS_VERIFY_CLIENT: try" >> secret.yaml
+#echo "    LDAP_TLS_VERIFY_CLIENT: try" >> secret.yaml
+echo "    LDAP_TLS_VERIFY_CLIENT: allow" >> secret.yaml
 echo "    LDAP_REPLICATION: \"false\"" >> secret.yaml
 #echo "    LDAP_REPLICATION_CONFIG_SYNCPROV: \"binddn=\"cn=admin,cn=config\" bindmethod=simple credentials=$LDAP_CONFIG_PASSWORD searchbase=\"cn=config\" type=refreshAndPersist retry=\"60 +\" timeout=1 starttls=critical" >> secret.yaml
 echo "    KEEP_EXISTING_CONFIG: \"false\"" >> secret.yaml
@@ -474,6 +475,19 @@ echoGreenBold 'Groupoffice created...'
 
 # wait 1 seconds 
 sleep 1s
+
+# Creating the namespace
+
+cd Apps/ldap-manager/
+docker build -t ldap-manager .
+cd ..
+cd ..
+
+echoGreenBold 'ldap-manager image created...'
+
+# Creating the web server
+kubectl create -f Apps/ldap-manager/ldap-manager.yaml 2> /dev/null || true
+echoGreenBold 'ldap-manager created...'
 
 #use for service starting in all email pods
 # https://stackoverflow.com/questions/51026174/running-a-command-on-all-kubernetes-pods-of-a-service
