@@ -85,13 +85,11 @@ ENV APACHE_RUN_GROUP www-data
 # Expose to letsencript key generation ACME test
 #EXPOSE 80 
 # Expose for non secured access (without https) for testing perposes
-EXPOSE 89
+#EXPOSE 89
 # primary https port
 EXPOSE 443
 # secondary https port
 EXPOSE 433
-
-
 
 
 
@@ -194,5 +192,10 @@ RUN echo "127.0.0.1  copper.opensource.lk copper" >> /etc/hosts
 # enable https in apache
 RUN a2enmod ssl
 
-CMD /usr/sbin/apache2ctl -D FOREGROUND
+COPY ./config/init_sys.sh /bin/
+RUN chmod +x /bin/init_sys.sh
+
+# changing apache start to entrypoint to let kubernetes to start the system
+ENTRYPOINT ["init_sys.sh"]
+#CMD /usr/sbin/apache2ctl -D FOREGROUND
 

@@ -8,13 +8,7 @@
     - Kubernetes
     - Internet connectivity
 
-## Copy your certification and key files to the folder "/kubernetes/tls" replacing follwing sample files.
 
-  /kubernetes/tls
-    - cert.pem
-    - fullchain.pem
-    - privkey.key
-    - dhparam.pem
 
 ## Start the deployment
     '''
@@ -104,7 +98,81 @@ Ex : spam
     
 ### Connectiong Group Offcie with LDAP server user base.
  
- Please reffere wiki page "Group Office LDAP configuration" for further information.
- 
+
+1. Login as admin
+
+2. Then go to Admin menu - > Modules  and add checked on community -> LDAP Authenticator
+
+3. Then go to System setting and Authentication . If it has not LDAP section then refresh the page.
+
+4. Clikc on "+" mark to add ldap connection provide following parameters.
+
+Domains : Domain name configured for ldap server
+
+Hostname : LDAP server host name
+
+Protocol : LDAP protocol
+
+ENCRIPTION : TLS
+
+Checked on Use Authentication
+
+Provide Username and password for ldap readonly user.
+
+Ex : usrname : cn=raa,dc=copper,dc=test,dc=lk
+
+Ex : password : XXXX
+
+Userbase details of LDAP server
+
+username attribute  : uid
+
+peopleDN : Ex : ou=Users,dc=copper,dc=test,dc=lk
+
+groupDN : Ex : ou=groups,dc=copper,dc=test,dc=lk
+
+Check on create email server for users
+
+#### Email server configuration
+
+IMAP Host : email
+
+Port      : 143
+
+Encription: TLS
+
+Ubcheck validate certificate
+
+
+
+HOST      : email
+
+Port      : 587
+
+Check on use user credentials.
+
+Encription : TLS
+
+Uncheck validate certificate
+
+
+Finaly add the user to the Internal group
+
+
+Now groupoffice configuration is complete. Then you can can log using your email account to group office for your domain.
+
+### Password change for users.
+
+By default test users password is set to "coppermail@lsf" or when system admin set a password for specific users it will be known to administrator. So once a new user log in to the system after admin
+provided the credential user has to change the password. There is a seperate interface for this perpose.
+
+https://localhost:4343/service/
+
+
+Juse provide the usernmae , current password, new password and confirme new password.
+
+
+Thats it . Usre's account is users now.
+
     
 ### Please do not forget to reset default passwords after configuring email server

@@ -36,9 +36,12 @@ $debug = false;
 # LDAP
 $ldap_url = "ldap://ldap";
 $ldap_starttls = false;
-$ldap_binddn = "cn=raa,dc=copper,dc=test,dc=lk";
-$ldap_bindpw = "raa";
-$ldap_base = "dc=copper,dc=test,dc=lk";
+# ldap_binddn = "cn=raa,dc=copper,dc=test,dc=lk";
+$ldap_binddn = "cn=%CN%,dc=%DC1%,dc=%DC2%,dc=%DC3%";
+# ldap_bindpw = "raa";
+$ldap_bindpw = "%DNPASS%";
+# ldap_base = "dc=copper,dc=test,dc=lk";
+$ldap_base = "dc=%DC1%,dc=%DC2%,dc=%DC3%";
 $ldap_login_attribute = "uid";
 $ldap_fullname_attribute = "cn";
 #$ldap_filter = "(&(objectClass=person)($ldap_login_attribute={login}))";

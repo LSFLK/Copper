@@ -52,6 +52,77 @@ spec:
           #image: "udacity/example-auth:1.0.0"
           image: ldap-manager
           imagePullPolicy: Never
+          env: 
+             - name: EMAIL
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: EMAIL
+             - name: HOSTNAME
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: HOSTNAME
+             - name: FQDN
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: FQDN
+             - name: DOMAIN
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: DOMAIN
+             - name: CN
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: CN
+             - name: DC1
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: DC1
+             - name: DC2
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: DC2
+             - name: DC3
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: DC3
+             - name: ORGNIZATION
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: ORGNIZATION
+             - name: RO
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: RO
+             - name: ROPASS
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: ROPASS
+             - name: OU
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: OU
+             - name: LDAP_HOST_IP
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: LDAP_HOST_IP
+             - name: KEY_PATH
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: KEY_PATH
           ports:
             #- name: http
               #containerPort: 80

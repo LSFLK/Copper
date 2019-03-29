@@ -196,6 +196,22 @@ Uncheck validate certificate
 Finaly add the user to the Internal group
 
 
+Now groupoffice configuration is complete. Then you can can log using your email account to group office for your domain.
+
+### Password change for users.
+
+By default test users password is set to "coppermail@lsf" or when system admin set a password for specific users it will be known to administrator. So once a new user log in to the system after admin
+provided the credential user has to change the password. There is a seperate interface for this perpose.
+
+https://localhost:4343/service/
+
+
+Juse provide the usernmae , current password, new password and confirme new password.
+
+
+Thats it . Usre's account is users now.
+
+
         
 ## References 
 - Email solution initiated by Prabod Rathnayaka. url :   
