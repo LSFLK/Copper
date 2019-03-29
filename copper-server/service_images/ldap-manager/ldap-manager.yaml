@@ -1,0 +1,167 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: ldap-manager
+  namespace: copper
+spec:
+  type: LoadBalancer
+  selector:
+    app: ldap-manager
+  ports:
+    #- protocol: "TCP"
+    #  port: 443
+    #- protocol: TCP
+    #  port: 80
+    #  targetPort: 80
+    #  name: http
+    - protocol: TCP
+      port: 4343
+      targetPort: 443
+      name: https
+    - protocol: TCP
+      port: 433
+      targetPort: 433
+      name: http
+    #- protocol: TCP
+    #  port: 587
+    #  targetPort: 587
+    #  name: submission
+    #  port: 433
+    #  targetPort: 433
+      #targetPort: http
+      #clusterIP: None    
+      #name: webmail
+      #nodePort: 30080
+  #type: NodePort
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ldap-manager
+  namespace: copper
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ldap-manager
+        track: stable
+    spec:
+      containers:
+        - name: ldap-manager
+          #image: "udacity/example-auth:1.0.0"
+          image: ldap-manager
+          imagePullPolicy: Never
+          env: 
+             - name: EMAIL
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: EMAIL
+             - name: HOSTNAME
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: HOSTNAME
+             - name: FQDN
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: FQDN
+             - name: DOMAIN
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: DOMAIN
+             - name: CN
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: CN
+             - name: DC1
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: DC1
+             - name: DC2
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: DC2
+             - name: DC3
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: DC3
+             - name: ORGNIZATION
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: ORGNIZATION
+             - name: RO
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: RO
+             - name: ROPASS
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: ROPASS
+             - name: OU
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: OU
+             - name: LDAP_HOST_IP
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: LDAP_HOST_IP
+             - name: KEY_PATH
+               valueFrom:
+                  secretKeyRef:
+                     name: email-secret
+                     key: KEY_PATH
+          ports:
+            #- name: http
+              #containerPort: 80
+            - name: https
+              containerPort: 443
+            - name: httpse
+              containerPort: 433
+            #- name: submission
+            #  containerPort: 587
+            - name: health
+              containerPort: 81
+          resources:      
+           limits:
+             cpu: "1"
+             #memory: 2Gi
+             memory: 1Gi
+             #memory: 512Mi
+           requests:
+             cpu: 200m
+             memory: 1Gi
+             #memory: 256Mi
+          #dnsPolicy: ClusterFirst # errors with this version
+          #restartPolicy: Never   # errors with this version
+          #resources:
+          #  limits:
+          #    cpu: 0.9
+          #    memory: "5500Mi"
+          #livenessProbe:
+          #  httpGet:
+          #    path: /healthz
+          #    port: 81
+          #    scheme: HTTP
+          #  initialDelaySeconds: 5
+          #  periodSeconds: 15
+          #  timeoutSeconds: 5
+          #readinessProbe:
+          #  httpGet:
+          #    path: /readiness
+          #    port: 81
+          #    scheme: HTTP
+          #  initialDelaySeconds: 5
+          #  timeoutSeconds: 1

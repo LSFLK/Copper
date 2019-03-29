@@ -118,16 +118,16 @@ pass_filter = (&(objectclass=inetOrgPerson)(uid=%n))
 #sasl_authz_id =
 
 # Use TLS to connect to the LDAP server.Connect to ldap port (389) and use STARTTLS command. Use tls=yes to enable this. 
-#tls = yes
+tls = yes
 # TLS options, currently supported only with OpenLDAP:
 tls_ca_cert_file = /etc/letsencrypt/live/%DFQN%/.fullchain.pem
-tls_ca_cert_dir = /etc/letsencrypt/live/%DFQN%/
+#tls_ca_cert_dir = /etc/letsencrypt/live/%DFQN%/
 tls_cipher_suite = SECURE256:-VERS-SSL3.0
 # TLS cert/key is used only if LDAP server requires a client certificate.
-tls_cert_file =/etc/letsencrypt/live/%DFQN%/.fullchain.pem
-tls_key_file =/etc/letsencrypt/live/%DFQN%/.privkey.pem
+#tls_cert_file =/etc/letsencrypt/live/%DFQN%/.fullchain.pem
+#tls_key_file =/etc/letsencrypt/live/%DFQN%/.privkey.pem
 # Valid values: never, hard, demand, allow, try
- tls_require_cert = try
+ tls_require_cert = allow
 
 # LDAP library debug level as specified by LDAP_DEBUG_* in ldap_log.h.
 # -1 = everything. You may need to recompile OpenLDAP with debugging enabled
