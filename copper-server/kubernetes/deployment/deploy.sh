@@ -478,16 +478,16 @@ sleep 1s
 
 # Creating the namespace
 
-cd Apps/ldap-manager/
-docker build -t ldap-manager .
-cd ..
-cd ..
+#cd Apps/ldap-pw/
+#docker build -t ldap-pw .
+#cd ..
+#cd ..
 
-echoGreenBold 'ldap-manager image created...'
+#echoGreenBold 'ldap-pw image created...'
 
 # Creating the web server
-kubectl create -f Apps/ldap-manager/ldap-manager.yaml 2> /dev/null || true
-echoGreenBold 'ldap-manager created...'
+kubectl create -f Apps/ldap-pw/ldap-pw.yaml 2> /dev/null || true
+echoGreenBold 'ldap-pw created...'
 
 #use for service starting in all email pods
 # https://stackoverflow.com/questions/51026174/running-a-command-on-all-kubernetes-pods-of-a-service
