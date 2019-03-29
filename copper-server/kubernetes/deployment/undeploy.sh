@@ -152,6 +152,11 @@ kubectl delete service groupoffice -n copper 2> /dev/null || true
 kubectl delete deployment groupoffice -n copper 2> /dev/null || true
 # docker rmi groupoffice 2> /dev/null || true
 
+# deleting ldap-pw
+kubectl delete service -n copper ldap-pw 2> /dev/null || true
+kubectl delete deployment -n copper ldap-pw 2> /dev/null || true
+# docker rmi groupoffice 2> /dev/null || true
+
 #deleting the secret
 echoRedBold 'secret configurations goint to be deleted...'
 kubectl delete secret email-secret -n copper 2> /dev/null || true
