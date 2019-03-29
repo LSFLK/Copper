@@ -131,6 +131,71 @@ HOST      : email
 Port      : 25
 
 Encription: No encription
+
+But if you want to use LDAP server as you identity management then it should be configured instead of email server details.
+
+### LDAP server configuration
+
+1. Login as admin
+
+2. Then go to Admin menu - > Modules  and add checked on community -> LDAP Authenticator
+
+3. Then go to System setting and Authentication . If it has not LDAP section then refresh the page.
+
+4. Clikc on "+" mark to add ldap connection provide following parameters.
+
+Domains : Domain name configured for ldap server
+
+Hostname : LDAP server host name
+
+Protocol : LDAP protocol
+
+ENCRIPTION : TLS
+
+Checked on Use Authentication
+
+Provide Username and password for ldap readonly user.
+
+Ex : usrname : cn=raa,dc=copper,dc=test,dc=lk
+
+Ex : password : XXXX
+
+Userbase details of LDAP server
+
+username attribute  : uid
+
+peopleDN : Ex : ou=Users,dc=copper,dc=test,dc=lk
+
+groupDN : Ex : ou=groups,dc=copper,dc=test,dc=lk
+
+Check on create email server for users
+
+#### Email server configuration
+
+IMAP Host : email
+
+Port      : 143
+
+Encription: TLS
+
+Ubcheck validate certificate
+
+
+
+HOST      : email
+
+Port      : 587
+
+Check on use user credentials.
+
+Encription : TLS
+
+Uncheck validate certificate
+
+
+Finaly add the user to the Internal group
+
+
         
 ## References 
 - Email solution initiated by Prabod Rathnayaka. url :   
