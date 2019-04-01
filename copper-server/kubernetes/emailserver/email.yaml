@@ -49,6 +49,7 @@ spec:
         app: email
         track: stable
     spec:
+      hostname: email
       containers:
         - name: email
           #image: emailserver

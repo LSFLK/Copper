@@ -46,7 +46,8 @@ items:
           labels:
             app: ldap
         spec:
-          hostname: copper-ldap
+          #hostname: copper-ldap
+          hostname: ldap
           containers:
             - name: ldap
               #image: lsflk/copper:openldap

@@ -205,7 +205,8 @@ echo "    LDAP_TLS_KEY_FILENAME: privkey.pem" >> secret.yaml
 echo "    LDAP_TLS_CA_CRT_FILENAME: fullchain.pem" >> secret.yaml
 echo "    LDAP_TLS_ENFORCE: \"false\"" >> secret.yaml
 echo "    LDAP_TLS_CIPHER_SUITE: SECURE256:+SECURE128:-VERS-TLS-ALL:+VERS-TLS1.2:-RSA:-DHE-DSS:-CAMELLIA-128-CBC:-CAMELLIA-256-CBC" >> secret.yaml
-echo "    LDAP_TLS_VERIFY_CLIENT: try" >> secret.yaml
+#echo "    LDAP_TLS_VERIFY_CLIENT: try" >> secret.yaml
+echo "    LDAP_TLS_VERIFY_CLIENT: allow" >> secret.yaml
 echo "    LDAP_REPLICATION: \"false\"" >> secret.yaml
 #echo "    LDAP_REPLICATION_CONFIG_SYNCPROV: \"binddn=\"cn=admin,cn=config\" bindmethod=simple credentials=$LDAP_CONFIG_PASSWORD searchbase=\"cn=config\" type=refreshAndPersist retry=\"60 +\" timeout=1 starttls=critical" >> secret.yaml
 echo "    KEEP_EXISTING_CONFIG: \"false\"" >> secret.yaml
@@ -367,7 +368,7 @@ file="../tls/cert.pem"
 if [ ! -f "$file" ]
 then
     echoRedBold "$0: cert.pem file '${file}' not found in tls directory. !"
-    exit 3 
+    #exit 3 
 fi
 
 # checking the privkey.key files exists
@@ -375,7 +376,7 @@ file="../tls/privkey.pem"
 if [ ! -f "$file" ]
 then
     echoRedBold "$0: privkey.pem file '${file}' not found in tls directory. !"
-    exit 3 
+    #exit 3 
 fi
 
 # checking the dhparam.pem files exists
@@ -383,7 +384,7 @@ file="../tls/dhparam.pem"
 if [ ! -f "$file" ]
 then
     echoRedBold "$0: dhparam.pem file '${file}' not found in tls directory. !"
-    exit 3 
+    #exit 3 
 fi
 
 # checking the fullchain.pem files exists
@@ -490,6 +491,19 @@ echoGreenBold 'Groupoffice created...'
 
 # wait 1 seconds 
 sleep 1s
+
+# Creating the namespace
+
+#cd Apps/ldap-pw/
+#docker build -t ldap-pw .
+#cd ..
+#cd ..
+
+#echoGreenBold 'ldap-pw image created...'
+
+# Creating the web server
+kubectl create -f Apps/ldap-pw/ldap-pw.yaml 2> /dev/null || true
+echoGreenBold 'ldap-pw created...'
 
 #use for service starting in all email pods
 # https://stackoverflow.com/questions/51026174/running-a-command-on-all-kubernetes-pods-of-a-service

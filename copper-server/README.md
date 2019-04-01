@@ -53,6 +53,8 @@ Unblock following ports
 
 ## Installation
 
+README.md file in the Deployment folder describe the installation process in detailed. It is the most updated one and please reffer it for more details. 
+
 1. Clone this Repository
 
 ```
@@ -70,6 +72,7 @@ It will ask some questions related to your system and you have to provide follow
 - Mysql db name
 - Mysql db password
 - Admin password for ldap service
+- Readonly ldap username and passeord
 - Domain name 
 - Organization
 - Rspamd system password.
@@ -90,9 +93,9 @@ https://localhost:4433/
 
 Login DN :cn=admin,dc=<domain_p1>,dc=<domain_p2>,dc=<domain_p3>
 
-Password : admin
+Password : <provided admin password for ldap >
 
-Then import the ldap.ldif file .
+Then import the "Copper/copper-server/kubernetes/deployment/ldap.ldif" file.
 
 
 ## Test groupoffice
@@ -105,7 +108,6 @@ http://localhost:8004/
 2. Check Test page is ok. If there is a databae isseu it should be checked.
 3. Create the admin account
 4. After success completion the installation then you can login to system.
-
 5. Go to Email Tab and click on Accounts
 6. Add account with following details
 
@@ -130,13 +132,87 @@ Port      : 25
 
 Encription: No encription
 
+But if you want to use LDAP server as you identity management then it should be configured instead of email server details.
+
+### LDAP server configuration
+
+1. Login as admin
+
+2. Then go to Admin menu - > Modules  and add checked on community -> LDAP Authenticator
+
+3. Then go to System setting and Authentication . If it has not LDAP section then refresh the page.
+
+4. Clikc on "+" mark to add ldap connection provide following parameters.
+
+Domains : Domain name configured for ldap server
+
+Hostname : LDAP server host name
+
+Protocol : LDAP protocol
+
+ENCRIPTION : TLS
+
+Checked on Use Authentication
+
+Provide Username and password for ldap readonly user.
+
+Ex : usrname : cn=raa,dc=copper,dc=test,dc=lk
+
+Ex : password : XXXX
+
+Userbase details of LDAP server
+
+username attribute  : uid
+
+peopleDN : Ex : ou=Users,dc=copper,dc=test,dc=lk
+
+groupDN : Ex : ou=groups,dc=copper,dc=test,dc=lk
+
+Check on create email server for users
+
+#### Email server configuration
+
+IMAP Host : email
+
+Port      : 143
+
+Encription: TLS
+
+Ubcheck validate certificate
 
 
 
+HOST      : email
+
+Port      : 587
+
+Check on use user credentials.
+
+Encription : TLS
+
+Uncheck validate certificate
 
 
-      
-                      
+Finaly add the user to the Internal group
+
+
+Now groupoffice configuration is complete. Then you can can log using your email account to group office for your domain.
+
+### Password change for users.
+
+By default test users password is set to "coppermail@lsf" or when system admin set a password for specific users it will be known to administrator. So once a new user log in to the system after admin
+provided the credential user has to change the password. There is a seperate interface for this perpose.
+
+https://localhost:4343/service/
+
+
+Juse provide the usernmae , current password, new password and confirme new password.
+
+
+Thats it . Usre's account is users now.
+
+
+        
 ## References 
 - Email solution initiated by Prabod Rathnayaka. url :   
   https://github.com/prabod/email-solution/tree/master/docker

@@ -31,6 +31,7 @@ spec:
       labels:
         app: phpldapadmin
     spec:
+      hostname: phpldapadmin
       containers:
         - name: phpldapadmin
           #image: lsflk/copper:phpldapadmin
