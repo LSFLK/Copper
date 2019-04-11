@@ -13,26 +13,32 @@ data:
       beats {
         port => 5044
       }
-    }
+    #}
+      # bellow input can establish the connection but cant publish events
+      # ERROR	logstash/async.go:256	Failed to publish events caused by: read tcp 10.1.9.191:55742->10.111.159.152:5044: i/o timeout
+      #tcp {
+      #  port => 5044
+        #codec => json
+      #}
     # input taken from postfix log files just for testing
     #input {
     #  file {
     #    path => "/var/log/maillog"
     #    type => "postfix"   # You can define a type however you like.
     #  }
-    #}
-    filter {
-      if [message] =~ /^\{.*\}$/ {
-        json {
-          source => "message"
-        }
-      }
-      if [ClientHost] {
-        geoip {
-          source => "ClientHost"
-        }
-      }
     }
+    #filter {
+    #  if [message] =~ /^\{.*\}$/ {
+    #    json {
+    #      source => "message"
+    #    }
+    #  }
+    #  if [ClientHost] {
+    #    geoip {
+    #      source => "ClientHost"
+    #    }
+    #  }
+    #}
     output {
         elasticsearch {
             #hosts => [ "elasticsearch-logging:9200" ]

@@ -132,23 +132,24 @@ kubectl delete configmap logstash-configmap -n copper 2> /dev/null || true
 echoGreenBold 'ELK Agent logstash deleted...'
 
 # Deleting the filebeat
-kubectl delete configmap filebeat-config created -n copper 2> /dev/null || true
-kubectl delete configmap filebeat-prospectors created -n copper 2> /dev/null || true
+kubectl delete configmap filebeat-config -n copper 2> /dev/null || true
+kubectl delete configmap filebeat-prospectors -n copper 2> /dev/null || true
 kubectl delete daemonset filebeat created -n copper 2> /dev/null || true
-kubectl delete clusterrolebinding.rbac.authorization.k8s.io filebeat created -n copper 2> /dev/null || true
-kubectl delete clusterrole.rbac.authorization.k8s.io filebeat created -n copper 2> /dev/null || true
-kubectl delete serviceaccount filebeat created -n copper 2> /dev/null || true
+kubectl delete clusterrolebinding.rbac.authorization.k8s.io filebeat -n copper 2> /dev/null || true
+kubectl delete clusterrole.rbac.authorization.k8s.io filebeat -n copper 2> /dev/null || true
+kubectl delete serviceaccount filebeat -n copper 2> /dev/null || true
 echoGreenBold 'ELK Agent file beat deleted...'
 
 # Deleting the metricbeat
-kubectl delete configmap metricbeat-config created -n copper 2> /dev/null || true
-kubectl delete configmap metricbeat-daemonset-modules created -n copper 2> /dev/null || true
-kubectl delete daemonset metricbeat created -n copper 2> /dev/null || true
-kubectl delete configmap metricbeat-deployment-modules created -n copper 2> /dev/null || true
-kubectl delete deployment metricbeat created -n copper 2> /dev/null || true
-kubectl delete clusterrolebinding.rbac.authorization.k8s.io metricbeat created -n copper 2> /dev/null || true
-kubectl delete clusterrole.rbac.authorization.k8s.io metricbeat created -n copper 2> /dev/null || true
-kubectl delete serviceaccount metricbeat created -n copper 2> /dev/null || true
+kubectl delete configmap metricbeat-config -n copper 2> /dev/null || true
+kubectl delete configmap metricbeat-daemonset-modules -n copper 2> /dev/null || true
+kubectl delete daemonset metricbeat -n copper 2> /dev/null || true
+kubectl delete configmap metricbeat-deployment-modules -n copper 2> /dev/null || true
+kubectl delete DaemonSet metricbeat -n copper 2> /dev/null || true
+kubectl delete deployment metricbeat-state -n copper 2> /dev/null || true
+kubectl delete clusterrolebinding.rbac.authorization.k8s.io metricbeat -n copper 2> /dev/null || true
+kubectl delete clusterrole.rbac.authorization.k8s.io metricbeat -n copper 2> /dev/null || true
+kubectl delete serviceaccount metricbeat -n copper 2> /dev/null || true
 echoGreenBold 'ELK Agent file metricbeat deleted...'
 
 # Deleting kibana interface
