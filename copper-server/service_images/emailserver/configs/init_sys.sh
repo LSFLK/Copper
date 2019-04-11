@@ -102,7 +102,7 @@ chmod -R 755 /etc/letsencrypt/
  sed -i.bak -e "s;%DFQN%;"${FQDN}";g" "/etc/dovecot/dovecot-ldap.conf.ext"
 
  #OpenLDAP with Postfix conf
- #sed -i.bak -e "s;%CN%;"${CN}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf"
+ sed -i.bak -e "s;%DFQN%;"${FQDN}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf"
  sed -i.bak -e "s;%CN%;"${RO}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf"
  sed -i.bak -e "s;%DC1%;"${DC1}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf"
  sed -i.bak -e "s;%DC2%;"${DC2}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf"
@@ -111,7 +111,7 @@ chmod -R 755 /etc/letsencrypt/
  sed -i.bak -e "s;%OU%;"${OU}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf"
  sed -i.bak -e "s;%LDAP_HOST_IP%;"${LDAP_HOST_IP}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-alias-maps.cf"
 
- #sed -i.bak -e "s;%CN%;"${CN}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-maps.cf"
+ sed -i.bak -e "s;%DFQN%;"${FQDN}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-maps.cf"
  sed -i.bak -e "s;%CN%;"${RO}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-maps.cf"
  sed -i.bak -e "s;%DC1%;"${DC1}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-maps.cf"
  sed -i.bak -e "s;%DC2%;"${DC2}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-maps.cf"
@@ -120,7 +120,7 @@ chmod -R 755 /etc/letsencrypt/
  sed -i.bak -e "s;%OU%;"${OU}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-maps.cf"
  sed -i.bak -e "s;%LDAP_HOST_IP%;"${LDAP_HOST_IP}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-maps.cf"
 
- #sed -i.bak -e "s;%CN%;"${CN}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
+ sed -i.bak -e "s;%DFQN%;"${FQDN}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
  sed -i.bak -e "s;%CN%;"${RO}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
  sed -i.bak -e "s;%DC1%;"${DC1}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"
  sed -i.bak -e "s;%DC2%;"${DC2}";g" "/etc/postfix/ldap/ldap-virtual-mailbox-domains.cf"

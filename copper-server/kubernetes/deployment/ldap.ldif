@@ -1,4 +1,3 @@
-
 version: 1
 
 dn: ou=domains,dc=copper,dc=test,dc=lk
@@ -19,12 +18,10 @@ objectclass: top
 ou: groups
 
 dn: cn=admins,ou=groups,dc=copper,dc=test,dc=lk
-
 cn: admins
 gidnumber: 500
 objectclass: posixGroup
 objectclass: top
-
 
 dn: cn=users,ou=groups,dc=copper,dc=test,dc=lk
 cn: users
@@ -54,7 +51,6 @@ userpassword: {SSHA}79+ggcj1RrXEitcvjVBDgqF6NdJf09Y3
 #userpassword in plain: copper
 
 dn: uid=test,ou=Users,dc=copper,dc=test,dc=lk
-
 cn: test
 gidnumber: 501
 givenname: test
