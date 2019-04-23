@@ -98,7 +98,7 @@ function echoGreenBold () {
     
 }
 
-echoGreenBold 'Deploying ELK Agent ...'
+echoGreenBold 'Deploying ELK Hub ...'
 
 read -r -p "ELK stack going to be installed. Are you ready? [y/N] " response
 case "$response" in
