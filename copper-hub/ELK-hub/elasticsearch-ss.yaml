@@ -4,7 +4,7 @@ kind: ServiceAccount
 metadata:
   #name: elasticsearch-logging
   name: elasticsearch
-  namespace: copper
+  namespace: copperhub
   labels:
     #k8s-app: elasticsearch-logging
     k8s-app: elasticsearch
@@ -34,7 +34,7 @@ rules:
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  namespace: copper
+  namespace: copperhub
   #name: elasticsearch-logging
   name: elasticsearch
   labels:
@@ -46,7 +46,7 @@ subjects:
 - kind: ServiceAccount
   #name: elasticsearch-logging
   name: elasticsearch
-  namespace: copper
+  namespace: copperhub
   apiGroup: ""
 roleRef:
   kind: ClusterRole
@@ -60,7 +60,7 @@ kind: StatefulSet
 metadata:
   #name: elasticsearch-logging
   name: elasticsearch
-  namespace: copper
+  namespace: copperhub
   labels:
     #k8s-app: elasticsearch-logging
     k8s-app: elasticsearch
@@ -71,7 +71,8 @@ metadata:
 spec:
   #serviceName: elasticsearch-logging
   serviceName: elasticsearch
-  replicas: 2
+  #replicas: 2
+  replicas: 1
   updateStrategy:
     type: RollingUpdate
   selector:
@@ -139,7 +140,7 @@ kind: Service
 metadata:
   #name: elasticsearch-logging
   name: elasticsearch
-  namespace: copper
+  namespace: copperhub
   labels:
     #k8s-app: elasticsearch-logging
     k8s-app: elasticsearch

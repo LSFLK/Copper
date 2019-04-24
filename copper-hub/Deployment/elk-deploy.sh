@@ -108,29 +108,29 @@ cd ..
 
 
 # Creating the k8s namespace
-kubectl create namespace copper 2> /dev/null || true
+kubectl create namespace copperhub 2> /dev/null || true
 echoGreenBold 'Copper namespace created...'
 
 ############## START OF CONFIGURATION #############################
 # Creating elasticsearch service, statefull set , roll, roll binding etc
-kubectl apply -f Agent/ELK-agent/elasticsearch-ss.yaml 2> /dev/null || true
-echoGreenBold 'ELK Agent elasticsearch created...'
+kubectl apply -f ELK-hub/elasticsearch-ss.yaml 2> /dev/null || true
+echoGreenBold 'ELK hub elasticsearch created...'
 
 
 # Creating logtash service, deployment and configmap etc
-kubectl apply -f Agent/ELK-agent/logstash-deployment.yaml 2> /dev/null || true
-echoGreenBold 'ELK Agents logstash created...'
+kubectl apply -f ELK-hub/logstash-deployment.yaml 2> /dev/null || true
+echoGreenBold 'ELK hub logstash created...'
 
 
 # Log farmers creating
-kubectl apply -f Agent/ELK-agent/filebeat-ds.yaml 2> /dev/null || true
-echoGreenBold 'ELK Agents filebeat created...'
-kubectl apply -f Agent/ELK-agent/metricbeat-ds.yaml 2> /dev/null || true
-echoGreenBold 'ELK Agents metricbeat created...'
+kubectl apply -f ELK-hub/filebeat-ds.yaml 2> /dev/null || true
+echoGreenBold 'ELK hub filebeat created...'
+kubectl apply -f ELK-hub/metricbeat-ds.yaml 2> /dev/null || true
+echoGreenBold 'ELK hub metricbeat created...'
 
 # Kibana interface creating for agent
-kubectl apply -f Agent/ELK-agent/kibana-deployment.yaml 2> /dev/null || true
-echoGreenBold 'ELK Agents Kibana interface created...'
+kubectl apply -f ELK-hub/kibana-deployment.yaml 2> /dev/null || true
+echoGreenBold 'ELK hub Kibana interface created...'
 
 
 
@@ -144,7 +144,7 @@ echoGreenBold 'ELK Agents Kibana interface created...'
 
 echoGreenBold ' ########################################## ELK Installation completed #######################################'
 echo ""
-echoGreenBold ' ELK Installation completed '
+echoGreenBold ' ELK hub Installation completed '
 echo ""
 echoGreenBold ' Contact copper@opensource.lk for further assistance. ############################################'
 #sleep 5s
@@ -154,6 +154,6 @@ echoGreenBold ' Contact copper@opensource.lk for further assistance. ###########
 
      ;;
     *)
-        echoRedBold "ELK Deployment cancelled"
+        echoRedBold "ELK hub Deployment cancelled"
         ;;
 esac
