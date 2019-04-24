@@ -98,9 +98,9 @@ function echoGreenBold () {
     
 }
 
-echoGreenBold 'Deploying ELK Agent ...'
+echoGreenBold 'Un Deploying ELK hub ...'
 
-read -r -p "ELK stack going to be installed. Are you ready? [y/N] " response
+read -r -p "ELK stack going to be un installed. Are you ready? [y/N] " response
 case "$response" in
     [yY][eE][sS]|[yY])
 
@@ -108,31 +108,55 @@ cd ..
 
 
 # Creating the k8s namespace
-kubectl create namespace copper 2> /dev/null || true
-echoGreenBold 'Copper namespace created...'
+#kubectl delete namespace copper 2> /dev/null || true
+#echoGreenBold 'Copper namespace deleted...'
 
-############## START OF CONFIGURATION #############################
-# Creating elasticsearch service, statefull set , roll, roll binding etc
-kubectl apply -f Agent/ELK-agent/elasticsearch-ss.yaml 2> /dev/null || true
-echoGreenBold 'ELK Agent elasticsearch created...'
+############## START OF DELETION #############################
+# Deleting
 
 
-# Creating logtash service, deployment and configmap etc
-kubectl apply -f Agent/ELK-agent/logstash-deployment.yaml 2> /dev/null || true
-echoGreenBold 'ELK Agents logstash created...'
+
+Kubectl delete serviceaccount elasticsearch -n copperhub 2> /dev/null || true
+kubectl delete clusterrole.rbac.authorization.k8s.io elasticsearch -n copperhub 2> /dev/null || true
+kubectl delete clusterrolebinding.rbac.authorization.k8s.io elasticsearch -n copperhub 2> /dev/null || true
+Kubectl delete service elasticsearch -n copperhub 2> /dev/null || true
+kubectl delete StatefulSet elasticsearch -n copperhub 2> /dev/null || true
+
+echoGreenBold 'ELK hub elasticsearch deleted...'
 
 
-# Log farmers creating
-kubectl apply -f Agent/ELK-agent/filebeat-ds.yaml 2> /dev/null || true
-echoGreenBold 'ELK Agents filebeat created...'
-kubectl apply -f Agent/ELK-agent/metricbeat-ds.yaml 2> /dev/null || true
-echoGreenBold 'ELK Agents metricbeat created...'
+# Deleting the service logstash
+kubectl delete service logstash -n copperhub 2> /dev/null || true
+kubectl delete deployment logstash -n copperhub 2> /dev/null || true
+kubectl delete configmap logstash-configmap -n copperhub 2> /dev/null || true
+echoGreenBold 'ELK hub logstash deleted...'
 
-# Kibana interface creating for agent
-kubectl apply -f Agent/ELK-agent/kibana-deployment.yaml 2> /dev/null || true
-echoGreenBold 'ELK Agents Kibana interface created...'
+# Deleting the filebeat
+kubectl delete configmap filebeat-config -n copperhub 2> /dev/null || true
+kubectl delete configmap filebeat-prospectors -n copperhub 2> /dev/null || true
+kubectl delete daemonset filebeat created -n copperhub 2> /dev/null || true
+kubectl delete clusterrolebinding.rbac.authorization.k8s.io filebeat -n copperhub 2> /dev/null || true
+kubectl delete clusterrole.rbac.authorization.k8s.io filebeat -n copperhub 2> /dev/null || true
+kubectl delete serviceaccount filebeat -n copperhub 2> /dev/null || true
+echoGreenBold 'ELK hub file beat deleted...'
 
+# Deleting the metricbeat
+kubectl delete configmap metricbeat-config -n copperhub 2> /dev/null || true
+kubectl delete configmap metricbeat-daemonset-modules -n copperhub 2> /dev/null || true
+kubectl delete daemonset metricbeat -n copperhub 2> /dev/null || true
+kubectl delete configmap metricbeat-deployment-modules -n copperhub 2> /dev/null || true
+kubectl delete DaemonSet metricbeat -n copper 2> /dev/null || true
+kubectl delete deployment metricbeat-state -n copperhub 2> /dev/null || true
+kubectl delete clusterrolebinding.rbac.authorization.k8s.io metricbeat -n copperhub 2> /dev/null || true
+kubectl delete clusterrole.rbac.authorization.k8s.io metricbeat -n copperhub 2> /dev/null || true
+kubectl delete serviceaccount metricbeat -n copperhub 2> /dev/null || true
+echoGreenBold 'ELK hub file metricbeat deleted...'
 
+# Deleting kibana interface
+kubectl delete deployment kibana-logging -n copperhub 2> /dev/null || true
+kubectl delete service kibana-logging -n copperhub 2> /dev/null || true
+kubectl delete ingress logs-ingress -n copperhub 2> /dev/null || true
+echoGreenBold 'ELK hub kibana interface deleted...'
 
 
 # Creating the web server
@@ -142,9 +166,9 @@ echoGreenBold 'ELK Agents Kibana interface created...'
 #use for service starting in all email pods
 # https://stackoverflow.com/questions/51026174/running-a-command-on-all-kubernetes-pods-of-a-service
 
-echoGreenBold ' ########################################## ELK Installation completed #######################################'
+echoGreenBold ' ########################################## ELK un Installation completed #######################################'
 echo ""
-echoGreenBold ' ELK Installation completed '
+echoGreenBold ' ELK un Installation completed '
 echo ""
 echoGreenBold ' Contact copper@opensource.lk for further assistance. ############################################'
 #sleep 5s
@@ -154,6 +178,6 @@ echoGreenBold ' Contact copper@opensource.lk for further assistance. ###########
 
      ;;
     *)
-        echoRedBold "ELK Deployment cancelled"
+        echoRedBold "ELK un Deployment cancelled"
         ;;
 esac
