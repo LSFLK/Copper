@@ -174,5 +174,12 @@ chmod -R 755 /etc/letsencrypt/
  service rspamd reload 2> /dev/null || true
  #service clamav-daemon start # if there is not enough memory in the container this will omit a error and docker build will stop from hear.
  #service clamav-freshclam start
+
+#starting filebeat
+cd filebeat-6.7.1-linux-x86_64
+chown root filebeat.yml
+./filebeat -e
+ 
+
  
  tail -f /dev/null

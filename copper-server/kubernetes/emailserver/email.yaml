@@ -52,11 +52,11 @@ spec:
       hostname: email
       containers:
         - name: email
-          #image: emailserver
+          image: emailserver
           #image: tharangarajapaksha/emailserver
-          image: lsflk/copper:emailserver
-          imagePullPolicy: Always
-          #imagePullPolicy: Never
+          #image: lsflk/copper:emailserver
+          #imagePullPolicy: Always
+          imagePullPolicy: Never
           #command: ["/bin/sh"]
           #args: ["-c", "service postfix start"]
           #args: ["-c", "while true; do echo hello; sleep 10;done"]
