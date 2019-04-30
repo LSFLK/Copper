@@ -111,6 +111,15 @@ RUN chmod +x /bin/init_sys.sh
 ADD ./configs/pod_start.sh /bin/pod_start.sh
 RUN chmod +x /bin/pod_start.sh
 
+# install filebeat to send alarms to ELK stack in copper hub
+RUN curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.7.1-linux-x86_64.tar.gz
+RUN tar xzvf filebeat-6.7.1-linux-x86_64.tar.gz
+RUN cd filebeat-6.7.1-linux-x86_64
+# coppy local filebeat configuration file
+ADD ./configs/filebeat/filebeat.yml /filebeat-6.7.1-linux-x86_64/filebeat.yml
+#RUN chown root filebeat.yml
+#RUN ./filebeat -e
+
 # postfixlog analyser 
 COPY ./configs/logAnalyze/pflogsumm /usr/local/bin/pflogsumm
 RUN chown bin:bin /usr/local/bin/pflogsumm

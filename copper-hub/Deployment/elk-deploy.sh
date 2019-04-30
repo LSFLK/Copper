@@ -98,7 +98,7 @@ function echoGreenBold () {
     
 }
 
-echoGreenBold 'Deploying ELK Agent ...'
+echoGreenBold 'Deploying ELK Hub ...'
 
 read -r -p "ELK stack going to be installed. Are you ready? [y/N] " response
 case "$response" in
@@ -108,55 +108,31 @@ cd ..
 
 
 # Creating the k8s namespace
-#kubectl delete namespace copper 2> /dev/null || true
-#echoGreenBold 'Copper namespace deleted...'
+kubectl create namespace copperhub 2> /dev/null || true
+echoGreenBold 'Copper namespace created...'
 
-############## START OF DELETION #############################
-# Deleting
-
-
-
-Kubectl delete serviceaccount elasticsearch -n copper 2> /dev/null || true
-kubectl delete clusterrole.rbac.authorization.k8s.io elasticsearch -n copper 2> /dev/null || true
-kubectl delete clusterrolebinding.rbac.authorization.k8s.io elasticsearch -n copper 2> /dev/null || true
-Kubectl delete service elasticsearch -n copper 2> /dev/null || true
-kubectl delete StatefulSet elasticsearch -n copper 2> /dev/null || true
-
-echoGreenBold 'ELK Agent elasticsearch deleted...'
+############## START OF CONFIGURATION #############################
+# Creating elasticsearch service, statefull set , roll, roll binding etc
+kubectl apply -f ELK-hub/elasticsearch-ss.yaml 2> /dev/null || true
+echoGreenBold 'ELK hub elasticsearch created...'
 
 
-# Deleting the service logstash
-kubectl delete service logstash -n copper 2> /dev/null || true
-kubectl delete deployment logstash -n copper 2> /dev/null || true
-kubectl delete configmap logstash-configmap -n copper 2> /dev/null || true
-echoGreenBold 'ELK Agent logstash deleted...'
+# Creating logtash service, deployment and configmap etc
+kubectl apply -f ELK-hub/logstash-deployment.yaml 2> /dev/null || true
+echoGreenBold 'ELK hub logstash created...'
 
-# Deleting the filebeat
-kubectl delete configmap filebeat-config -n copper 2> /dev/null || true
-kubectl delete configmap filebeat-prospectors -n copper 2> /dev/null || true
-kubectl delete daemonset filebeat created -n copper 2> /dev/null || true
-kubectl delete clusterrolebinding.rbac.authorization.k8s.io filebeat -n copper 2> /dev/null || true
-kubectl delete clusterrole.rbac.authorization.k8s.io filebeat -n copper 2> /dev/null || true
-kubectl delete serviceaccount filebeat -n copper 2> /dev/null || true
-echoGreenBold 'ELK Agent file beat deleted...'
 
-# Deleting the metricbeat
-kubectl delete configmap metricbeat-config -n copper 2> /dev/null || true
-kubectl delete configmap metricbeat-daemonset-modules -n copper 2> /dev/null || true
-kubectl delete daemonset metricbeat -n copper 2> /dev/null || true
-kubectl delete configmap metricbeat-deployment-modules -n copper 2> /dev/null || true
-kubectl delete DaemonSet metricbeat -n copper 2> /dev/null || true
-kubectl delete deployment metricbeat-state -n copper 2> /dev/null || true
-kubectl delete clusterrolebinding.rbac.authorization.k8s.io metricbeat -n copper 2> /dev/null || true
-kubectl delete clusterrole.rbac.authorization.k8s.io metricbeat -n copper 2> /dev/null || true
-kubectl delete serviceaccount metricbeat -n copper 2> /dev/null || true
-echoGreenBold 'ELK Agent file metricbeat deleted...'
+# Log farmers creating
+kubectl apply -f ELK-hub/filebeat-ds.yaml 2> /dev/null || true
+echoGreenBold 'ELK hub filebeat created...'
+kubectl apply -f ELK-hub/metricbeat-ds.yaml 2> /dev/null || true
+echoGreenBold 'ELK hub metricbeat created...'
 
-# Deleting kibana interface
-kubectl delete deployment kibana-logging -n copper 2> /dev/null || true
-kubectl delete service kibana-logging -n copper 2> /dev/null || true
-kubectl delete ingress logs-ingress -n copper 2> /dev/null || true
-echoGreenBold 'ELK Agent kibana interface deleted...'
+# Kibana interface creating for agent
+kubectl apply -f ELK-hub/kibana-deployment.yaml 2> /dev/null || true
+echoGreenBold 'ELK hub Kibana interface created...'
+
+
 
 
 # Creating the web server
@@ -168,7 +144,7 @@ echoGreenBold 'ELK Agent kibana interface deleted...'
 
 echoGreenBold ' ########################################## ELK Installation completed #######################################'
 echo ""
-echoGreenBold ' ELK Installation completed '
+echoGreenBold ' ELK hub Installation completed '
 echo ""
 echoGreenBold ' Contact copper@opensource.lk for further assistance. ############################################'
 #sleep 5s
@@ -178,6 +154,6 @@ echoGreenBold ' Contact copper@opensource.lk for further assistance. ###########
 
      ;;
     *)
-        echoRedBold "ELK Deployment cancelled"
+        echoRedBold "ELK hub Deployment cancelled"
         ;;
 esac

@@ -50,7 +50,29 @@ files=$(shopt -s nullglob dotglob; echo $KEY_PATH)
 echo $KEY_PATH
 echo "Checking for existing certificates"
 
+# Generate keys to tls folder in /cert this has been mounted as volme mount 
 
+# create the root private key
+openssl genrsa  -out rootCA.key 4096
+#openssl genrsa  -out privkey.key 4096
+
+# Create and Self sign the root certificate creation
+openssl req -x509 -new -nodes -key rootCA.key -sha256 -days 1024 -subj "/C=LK/ST=western/O=lsf, Inc./CN=local.com" -out fullchain.pem
+
+#Updating Root CA in the local machine
+mkdir /usr/local/share/ca-certificates/extra
+cp fullchain.pem /usr/local/share/ca-certificates/extra/fullchain.pem
+update-ca-certificates
+
+#Create my domain key, this is privkey.key in our example
+#openssl genrsa -out example.com.key 2048
+openssl genrsa -out privkey.key 2048
+
+# Create CSR (Certificate Signing Request)
+openssl req -new -sha256 -key privkey.key -subj "/C=SL/ST=western/O=lsf, Inc./CN=${DOMAIN}" -out cert.csr
+
+# Create the certificate
+openssl x509 -req -in cert.csr -CA fullchain.pem -CAkey rootCA.key -CAcreateserial -out cert.pem -days 500 -sha256
 
 if [ "$DEBUG" = true ]; then
    mkdir -p $KEY_PATH
@@ -174,5 +196,12 @@ chmod -R 755 /etc/letsencrypt/
  service rspamd reload 2> /dev/null || true
  #service clamav-daemon start # if there is not enough memory in the container this will omit a error and docker build will stop from hear.
  #service clamav-freshclam start
+
+#starting filebeat
+cd filebeat-6.7.1-linux-x86_64
+chown root filebeat.yml
+./filebeat -e
+ 
+
  
  tail -f /dev/null

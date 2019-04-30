@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: metricbeat-config
-  namespace: copper
+  namespace: copperhub
   labels:
     k8s-app: metricbeat
 data:
@@ -28,7 +28,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: metricbeat-daemonset-modules
-  namespace: copper
+  namespace: copperhub
   labels:
     k8s-app: metricbeat
 data:
@@ -74,7 +74,7 @@ apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
   name: metricbeat
-  namespace: copper
+  namespace: copperhub
   labels:
     k8s-app: metricbeat
 spec:
@@ -166,7 +166,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: metricbeat-deployment-modules
-  namespace: copper
+  namespace: copperhub
   labels:
     k8s-app: metricbeat
 data:
@@ -190,7 +190,7 @@ apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: metricbeat-state
-  namespace: copper
+  namespace: copperhub
   labels:
     k8s-app: metricbeat-state
 spec:
@@ -259,7 +259,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: metricbeat
-  namespace: copper
+  namespace: copperhub
 roleRef:
   kind: ClusterRole
   name: metricbeat
@@ -286,6 +286,6 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: metricbeat
-  namespace: copper
+  namespace: copperhub
   labels:
     k8s-app: metricbeat

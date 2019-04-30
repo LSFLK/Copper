@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: logstash-configmap
-  namespace: copper
+  namespace: copperhub
 data:
   logstash.yml: |
     http.host: "0.0.0.0"
@@ -50,7 +50,7 @@ apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: logstash
-  namespace: copper
+  namespace: copperhub
 spec:
   replicas: 1
   template:
@@ -87,7 +87,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: logstash
-  namespace: copper
+  namespace: copperhub
 spec:
   selector:
     app: logstash
@@ -95,4 +95,6 @@ spec:
   - protocol: TCP
     port: 5044
     targetPort: 5044
-  type: ClusterIP
+    nodePort: 31336 # this should be removed when we are not useing nodeport
+  #type: ClusterIP
+  type: NodePort # allowing access from localhost machine from nodeport

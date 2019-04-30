@@ -2,7 +2,7 @@ apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   name: elasticsearch-curator
-  namespace: kube-system
+  namespace: copperhub
   labels:
     k8s-app: elasticsearch-logging
 spec:

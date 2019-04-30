@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: kibana-logging
-  namespace: copper
+  namespace: copperhub
   labels:
     k8s-app: kibana-logging
     kubernetes.io/cluster-service: "true"
@@ -43,7 +43,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: kibana-logging
-  namespace: copper
+  namespace: copperhub
   labels:
     k8s-app: kibana-logging
     kubernetes.io/cluster-service: "true"
@@ -81,7 +81,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: logs-ingress
-  namespace: copper
+  namespace: copperhub
   labels:
     app: logs
   annotations:
