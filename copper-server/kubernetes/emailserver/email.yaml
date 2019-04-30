@@ -64,6 +64,9 @@ spec:
           #envFrom:
           #   secretRef:
           #     name: email-secret
+          volumeMounts:
+                - name: ldap-certs
+                  mountPath: /cert
           env: 
              - name: TELEGRAF_VERSION
                valueFrom:
@@ -203,5 +206,10 @@ spec:
               memory: "400Mi" # 500 Mebibytes 
       #command: ["/bin/sh"]
       #  args: ["-c", "service postfix start"]  
-  
+      volumes:
+            - name: ldap-certs
+              hostPath:
+                #path: "/data/ldap/certs"
+                #path: "/Users/wso2/Documents/copper/copper/copper-server/kubernetes/tls"
+                path: "./tls/"
               
