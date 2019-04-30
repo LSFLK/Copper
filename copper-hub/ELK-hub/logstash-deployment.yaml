@@ -95,4 +95,6 @@ spec:
   - protocol: TCP
     port: 5044
     targetPort: 5044
-  type: ClusterIP
+    nodePort: 31336 # this should be removed when we are not useing nodeport
+  #type: ClusterIP
+  type: NodePort # allowing access from localhost machine from nodeport
