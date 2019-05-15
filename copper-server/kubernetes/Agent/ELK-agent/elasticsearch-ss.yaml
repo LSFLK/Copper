@@ -95,7 +95,7 @@ spec:
       #- image: k8s.gcr.io/elasticsearch:v6.2.4
       - image: docker.elastic.co/elasticsearch/elasticsearch:6.7.1
         #name: elasticsearch-logging
-        imagePullPolicy: Always
+        imagePullPolicy: Always 
         name: elasticsearch
         resources:
           # need more cpu upon initialization, therefore burstable class
@@ -105,7 +105,7 @@ spec:
             cpu: 100m
         ports:
         - containerPort: 9200
-          name: db
+           name: db
           protocol: TCP
         - containerPort: 9300
           name: transport
