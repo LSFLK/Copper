@@ -4,7 +4,7 @@ metadata:
   namespace: copper
   labels:
     app: phpldapadmin
-  name: phpldapadmin-service
+  name: phpldapadmin
 spec:
   type: LoadBalancer
   ports:
@@ -118,4 +118,5 @@ spec:
             path: "/data/phpldapadmin/ssl/"
         - name: ldap-client-certs
           hostPath:
-            path: "/data/phpldapadmin/ldap-client-certs/"
+            #path: "/data/phpldapadmin/ldap-client-certs/"
+            path: "/data/ldap/certs"

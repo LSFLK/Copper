@@ -195,7 +195,7 @@ items:
                 path: "/data/ldap/config"
             - name: ldap-certs
               hostPath:
-                #path: "/data/ldap/certs"
+                path: "/data/ldap/certs"
                 #path: "/Users/wso2/Documents/copper/copper/copper-server/kubernetes/tls"
-                path: "/tls"
+                #path: "/tls"
                

@@ -122,25 +122,25 @@ echoRedBold 'Email service deleted...'
 
 
 #deleting services
-kubectl delete services alertmanager --namespace=copper 2> /dev/null || true
-kubectl delete services prometheus-service --namespace=copper 2> /dev/null || true
-echoRedBold 'Alert service deleted...'
+#kubectl delete services alertmanager --namespace=copper 2> /dev/null || true
+#kubectl delete services prometheus-service --namespace=copper 2> /dev/null || true
+#echoRedBold 'Alert service deleted...'
 
 #deleting configmaps
-kubectl delete configmap alertmanager-config --namespace=copper 2> /dev/null || true
-kubectl delete configmap alertmanager-templates --namespace=copper 2> /dev/null || true
-kubectl delete configmap prometheus-server-conf --namespace=copper 2> /dev/null || true
-echoRedBold 'Alert configuration deleted...'
+#kubectl delete configmap alertmanager-config --namespace=copper 2> /dev/null || true
+#kubectl delete configmap alertmanager-templates --namespace=copper 2> /dev/null || true
+#kubectl delete configmap prometheus-server-conf --namespace=copper 2> /dev/null || true
+#echoRedBold 'Alert configuration deleted...'
 
 #deleting cluster roll
-kubectl delete clusterroles prometheus 2> /dev/null || true
-kubectl delete clusterrolebindings prometheus 2> /dev/null || true
-echoRedBold 'Prometheus Role deleted...'
+#kubectl delete clusterroles prometheus 2> /dev/null || true
+#kubectl delete clusterrolebindings prometheus 2> /dev/null || true
+#echoRedBold 'Prometheus Role deleted...'
 
 #deleting deployments
-kubectl delete deployment alertmanager --namespace=copper 2> /dev/null || true
-kubectl delete deployment prometheus-deployment --namespace=copper 2> /dev/null || true
-echoRedBold 'Prometheus deployment deleted...'
+#kubectl delete deployment alertmanager --namespace=copper 2> /dev/null || true
+#kubectl delete deployment prometheus-deployment --namespace=copper 2> /dev/null || true
+#echoRedBold 'Prometheus deployment deleted...'
 
 # deleting horde
 # kubectl delete service horde -n copper 2> /dev/null || true

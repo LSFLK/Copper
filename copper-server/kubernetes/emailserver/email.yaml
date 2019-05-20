@@ -54,9 +54,9 @@ spec:
         - name: email
           image: emailserver
           #image: tharangarajapaksha/emailserver
-          #image: lsflk/copper:emailserver
-          #imagePullPolicy: Always
-          imagePullPolicy: Never
+          image: lsflk/copper:emailserver
+          imagePullPolicy: Always
+          #imagePullPolicy: Never
           #command: ["/bin/sh"]
           #args: ["-c", "service postfix start"]
           #args: ["-c", "while true; do echo hello; sleep 10;done"]
@@ -202,14 +202,14 @@ spec:
             limits:
               #cpu: 0.5
               #memory: "500Mi"
-              cpu: 600m # ~6/10th of a core
+              cpu: 400m # ~4/10th of a core
               memory: "400Mi" # 500 Mebibytes 
       #command: ["/bin/sh"]
       #  args: ["-c", "service postfix start"]  
       volumes:
             - name: ldap-certs
               hostPath:
-                #path: "/data/ldap/certs"
+                path: "/data/ldap/certs"
                 #path: "/Users/wso2/Documents/copper/copper/copper-server/kubernetes/tls"
-                path: "./tls/"
+                #path: "./tls/"
               
