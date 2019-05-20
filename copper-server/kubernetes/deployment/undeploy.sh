@@ -124,6 +124,7 @@ echoRedBold 'Email service deleted...'
 #echoRedBold 'Webmail service deleted...'
 
 
+# >>>> Removing Prometheus stack >>>>>>
 #deleting services
 #kubectl delete services alertmanager --namespace=copper 2> /dev/null || true
 #kubectl delete services prometheus-service --namespace=copper 2> /dev/null || true
@@ -145,10 +146,7 @@ echoRedBold 'Email service deleted...'
 #kubectl delete deployment prometheus-deployment --namespace=copper 2> /dev/null || true
 #echoRedBold 'Prometheus deployment deleted...'
 
-# deleting horde
-# kubectl delete service horde -n copper 2> /dev/null || true
-# kubectl delete deployment horde -n copper 2> /dev/null || true
-# docker rmi horde 2> /dev/null || true
+# >>>> end of removing prometheus stack >>>
 
 # deleting groupoffice
 kubectl delete service groupoffice -n copper 2> /dev/null || true
