@@ -423,52 +423,36 @@ echoGreenBold 'mysql deployment completed...'
 
 
 
-#Build the docker image
-#cd copperclient
-#docker build -t webmail . 2> /dev/null || true
-#echoGreenBold 'Docker webmail image created...'
-# wait 1 seconds 
-#sleep 1s
-#cd ..
-
-#Buld the kubernetes pod
-#Kubectl create -f copperclient/webmail.yaml 2> /dev/null || true
-#echoGreenBold 'Docker webclient service created...'
+# >>>>>> Start of prometheus stack deployment (bellow all commands should be activated)
 
 #Prometheus implementation
 # Creating a roll has the access for clusters and bind the cluster roll.
-kubectl create -f prometheus-alert/clusterRole.yaml 2> /dev/null || true
-echoGreenBold 'Role creation and Role binding...'
+#kubectl create -f prometheus-alert/clusterRole.yaml 2> /dev/null || true
+#echoGreenBold 'Role creation and Role binding...'
 
 # Create the config map to keep configuration data of prometheus
-kubectl create -f prometheus-alert/config-map.yaml -n copper 2> /dev/null || true
-echoGreenBold 'Prometheus configuration created...'
+#kubectl create -f prometheus-alert/config-map.yaml -n copper 2> /dev/null || true
+#echoGreenBold 'Prometheus configuration created...'
 
 # Deploy prometheus pods 
-kubectl create  -f prometheus-alert/prometheus-deployment.yaml --namespace=copper 2> /dev/null || true
+#kubectl create  -f prometheus-alert/prometheus-deployment.yaml --namespace=copper 2> /dev/null || true
 
 # Create the service to access prometheus 
-kubectl create -f prometheus-alert/prometheus-service.yaml --namespace=copper 2> /dev/null || true
-echoGreenBold 'Prometheus service created...'
+#kubectl create -f prometheus-alert/prometheus-service.yaml --namespace=copper 2> /dev/null || true
+#echoGreenBold 'Prometheus service created...'
 # Alert manager implementation
 # Creating the configuration 
-kubectl create -f prometheus-alert/AlertManagerConfigmap.yaml 2> /dev/null || true
+#kubectl create -f prometheus-alert/AlertManagerConfigmap.yaml 2> /dev/null || true
 #
-kubectl create -f prometheus-alert/AlertTemplateConfigMap.yaml 2> /dev/null || true
-echoGreenBold 'Alert Manager congiguration created..'
+#kubectl create -f prometheus-alert/AlertTemplateConfigMap.yaml 2> /dev/null || true
+#echoGreenBold 'Alert Manager congiguration created..'
 #
-kubectl create -f prometheus-alert/Deployment.yaml 2> /dev/null || true
+#kubectl create -f prometheus-alert/Deployment.yaml 2> /dev/null || true
 #
-kubectl create -f prometheus-alert/Service.yaml 2> /dev/null || true
-echoGreenBold 'Alert Manager created...'
+#kubectl create -f prometheus-alert/Service.yaml 2> /dev/null || true
+#echoGreenBold 'Alert Manager created...'
 
-# horde deployment
-# cd ./groupware/horde
-# docker build -t horde . 2> /dev/null || true
-# cd ..
-# cd ..
-# kubectl create -f groupware/horde/horde.yaml 2> /dev/null || true
-
+# >>>>>> end of prometheus stack deployment
 
 kubectl create -f groupware/groupoffice/groupoffice.yaml 2> /dev/null || true
 echoGreenBold 'Groupoffice created...'

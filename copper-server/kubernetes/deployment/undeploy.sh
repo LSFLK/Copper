@@ -105,8 +105,11 @@ kubectl delete deployment ldap --namespace=copper 2> /dev/null || true
 echoRedBold 'Ldap service deleted...'
 
 # Then if you want to delete services created by above command
-kubectl delete service phpldapadmin-service --namespace=copper 2> /dev/null || true
-kubectl delete replicationcontrollers phpldapadmin-controller --namespace=copper 2> /dev/null || true
+#kubectl delete service phpldapadmin-service --namespace=copper 2> /dev/null || true
+#kubectl delete replicationcontrollers phpldapadmin-controller --namespace=copper 2> /dev/null || true
+kubectl delete service phpldapadmin --namespace=copper 2> /dev/null || true
+kubectl delete replicationcontrollers phpldapadmin --namespace=copper 2> /dev/null || true
+
 echoRedBold 'phpldapadmin service deleted...'
 
 # If you want to delete emai service use following commands.

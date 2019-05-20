@@ -18,7 +18,7 @@ spec:
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: phpldapadmin-controller
+  name: phpldapadmin
   namespace: copper
   labels:
     app: phpldapadmin
