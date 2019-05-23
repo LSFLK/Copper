@@ -119,7 +119,7 @@ cd ..
 Kubectl delete serviceaccount elasticsearch -n copperhub 2> /dev/null || true
 kubectl delete clusterrole.rbac.authorization.k8s.io elasticsearch -n copperhub 2> /dev/null || true
 kubectl delete clusterrolebinding.rbac.authorization.k8s.io elasticsearch -n copperhub 2> /dev/null || true
-Kubectl delete service elasticsearch -n copperhub 2> /dev/null || true
+kubectl delete service elasticsearch -n copperhub 2> /dev/null || true
 kubectl delete StatefulSet elasticsearch -n copperhub 2> /dev/null || true
 
 echoGreenBold 'ELK hub elasticsearch deleted...'

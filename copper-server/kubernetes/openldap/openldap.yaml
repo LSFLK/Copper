@@ -186,6 +186,13 @@ items:
                        secretKeyRef:
                           name: email-secret
                           key: LDAP_SSL_HELPER_PREFIX
+              resources:
+                limits:
+                    cpu: 200m # ~4/10th of a core
+                    memory: "1000Mi" # 500 Mebibytes 
+                requests:
+                    cpu: 100m # ~4/10th of a core
+                    memory: "500Mi" # 500 Mebibytes 
           volumes:
             - name: ldap-data
               hostPath:

@@ -112,6 +112,13 @@ spec:
                   secretKeyRef:
                      name: email-secret
                      key: PHPLDAPADMIN_LDAP_CLIENT_TLS_CA_CRT_FILENAME
+          resources:
+                limits:
+                    cpu: 200m # ~4/10th of a core
+                    memory: "1000Mi" # 500 Mebibytes 
+                requests:
+                    cpu: 100m # ~4/10th of a core
+                    memory: "500Mi" # 500 Mebibytes 
       volumes:
         - name: phpldapadmin-certs
           hostPath:

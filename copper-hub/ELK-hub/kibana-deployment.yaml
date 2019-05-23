@@ -27,7 +27,7 @@ spec:
         resources:
           # need more cpu upon initialization, therefore burstable class
           limits:
-            cpu: 1000m
+            cpu: 600m
           requests:
             cpu: 100m
         env:
@@ -62,7 +62,12 @@ spec:
 #apiVersion: v1
 #metadata:
 #  name: kibana-logging
-#  namespace: kube-system
+#  namespace: copperhub
+#  labels:
+#    k8s-app: kibana-logging
+#    kubernetes.io/cluster-service: "true"
+#    addonmanager.kubernetes.io/mode: Reconcile
+#    kubernetes.io/name: "Kibana"
 #spec:
 #  type: LoadBalancer
 #  selector:
@@ -73,9 +78,7 @@ spec:
     #  targetPort: 25
 #    - protocol: TCP
 #      port: 5601
-#      targetPort: 5601
-#      name: smtp
-      #nodePort: 30025
+#      targetPort: ui
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -88,7 +91,7 @@ metadata:
     kubernetes.io/ingress.class: traefik
 spec:
   rules:
-  - host: logs.example.com
+  - host: localhost.com
     http:
       paths:
       - path: /

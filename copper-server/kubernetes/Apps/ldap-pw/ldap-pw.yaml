@@ -137,13 +137,13 @@ spec:
               containerPort: 81
           resources:      
            limits:
-             cpu: "400m"
+             cpu: "200m"
              #memory: 2Gi
-             memory: 1Gi
+             memory: 800Gi
              #memory: 512Mi
            requests:
-             cpu: 200m
-             memory: 1Gi
+             cpu: 100m
+             memory: 512Mi
              #memory: 256Mi
           #dnsPolicy: ClusterFirst # errors with this version
           #restartPolicy: Never   # errors with this version

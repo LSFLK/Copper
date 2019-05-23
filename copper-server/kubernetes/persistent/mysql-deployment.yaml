@@ -61,12 +61,12 @@ spec:
           mountPath: /var/lib/mysql
         resources:      
            limits:
-             cpu: 200m # ~2/10th of a core
-             memory: "500Mi" # 500 Mebibytes 
+             cpu: 300m # ~2/10th of a core
+             memory: "1000Mi" # 500 Mebibytes 
              #memory: 3Gi
-           #requests:
-             #cpu: 100m
-             #memory: 2Gi
+           requests:
+             cpu: 200m
+             memory: "500Mi" # 500 Mebibytes 
       volumes:
       - name: mysql-persistent-storage
         persistentVolumeClaim:
