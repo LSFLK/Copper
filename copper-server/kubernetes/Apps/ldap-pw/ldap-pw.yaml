@@ -143,7 +143,7 @@ spec:
              #memory: 512Mi
            requests:
              cpu: 100m
-             memory: 512Mi
+             memory: 400Mi
              #memory: 256Mi
           #dnsPolicy: ClusterFirst # errors with this version
           #restartPolicy: Never   # errors with this version
