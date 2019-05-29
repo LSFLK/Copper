@@ -15,6 +15,15 @@ spec:
       port: 25
       targetPort: 25
       name: smtp
+    - protocol: TCP
+      port: 2525
+      targetPort: 2525
+      name: smtprelay
+      #port 2525 is used for 
+    - protocol: TCP
+      port: 465
+      targetPort: 465
+      name: smtps
       #nodePort: 30025
     - protocol: TCP
       port: 143
@@ -176,10 +185,14 @@ spec:
           ports:
             - name: submission
               containerPort: 587
+            - name: smtps
+              containerPort: 465
             - name: imap
               containerPort: 143
             - name: smtp
               containerPort: 25
+            - name: smtprelay
+              containerPort: 2525
             - name: seive
               containerPort: 4190
             - name: rspamd
