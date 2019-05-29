@@ -27,6 +27,13 @@ data:
     #    type => "postfix"   # You can define a type however you like.
     #  }
     }
+    filter {
+      # if "Host not found" not in [message]{
+      #   drop{ }
+      # }
+      if ([message] !~ "Host not found") {
+        drop { }
+      }
     #filter {
     #  if [message] =~ /^\{.*\}$/ {
     #    json {
@@ -38,7 +45,7 @@ data:
     #      source => "ClientHost"
     #    }
     #  }
-    #}
+    }
     output {
         elasticsearch {
             #hosts => [ "elasticsearch-logging:9200" ]
