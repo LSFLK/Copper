@@ -204,4 +204,4 @@ processors:
 # automatically inherited from the Elasticsearch output configuration, so if you
 # have the Elasticsearch output configured, you can simply uncomment the
 # following line.
-#xpack.monitoring.elasticsearch:
+# xpack.monitoring.elasticsearch:
