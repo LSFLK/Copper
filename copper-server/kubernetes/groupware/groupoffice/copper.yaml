@@ -1,0 +1,75 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: copperclient
+  namespace: copper
+spec:
+  type: NodePort
+  selector:
+    app: copperclient
+  ports:
+    # Three types of ports for a service
+    # nodePort - a static port assigned on each the node
+    # port - port exposed internally in the cluster
+    # targetPort - the container port to send requests to
+    - nodePort: 30080
+      port: 8080 
+      targetPort: 80
+  ports:
+    #- nodePort: 30443
+    - port: 4443 
+      targetPort: 443
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: copperclient
+  namespace: copper
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: copperclient
+        track: stable
+    spec:
+      hostname: copperclient
+      containers:
+        - name: copperclient
+          image: lsflk/copper:copperoffice
+          imagePullPolicy: Always
+          env:
+             - name: MYSQL_USER
+               valueFrom:
+                    secretKeyRef:
+                        name: email-secret
+                        key: MYSQL_USER
+             - name: MYSQL_PASSWORD
+               valueFrom:
+                    secretKeyRef:
+                        name: email-secret
+                        key: MYSQL_PASSWORD
+             - name: MYSQL_DATABASE
+               valueFrom:
+                    secretKeyRef:
+                        name: email-secret
+                        key: MYSQL_DATABASE
+             - name: MYSQL_HOST
+               valueFrom:
+                    secretKeyRef:
+                        name: email-secret
+                        key: MYSQL_HOST
+          ports:
+            - name: http
+              containerPort: 80
+            - name: https
+              containerPort: 433
+            - name: health
+              containerPort: 432
+          resources:
+             limits:
+               cpu: 200m # ~4/10th of a core
+               memory: "800Mi" # 900 Mebibytes  
+             requests:
+               cpu: 100m # ~4/10th of a core
+               memory: "400Mi" # 900 Mebibytes  

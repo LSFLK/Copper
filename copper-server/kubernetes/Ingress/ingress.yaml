@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: copper-ingress
+  namespace: copper
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.org/ssl-services: "copperclient"
+spec:
+  tls:
+    - hosts:
+      - example.com
+      secretName: tls-certificate
+  rules:
+  - host: example.com
+    http:
+      paths:
+      - path: /cu
+        backend:
+          serviceName: copperclient
+          servicePort: 4443
+      - path: /copper
+        backend:
+          serviceName: copperclient
+          servicePort: 8080
+      - path: /hello
+        backend:
+          serviceName: hello-world-svc
+          servicePort: 8080
