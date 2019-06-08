@@ -12,12 +12,14 @@ spec:
     # nodePort - a static port assigned on each the node
     # port - port exposed internally in the cluster
     # targetPort - the container port to send requests to
-    - nodePort: 30080
+    - protocol: TCP
+    #- nodePort: 30080
       port: 8080 
       targetPort: 80
   ports:
     #- nodePort: 30443
-    - port: 4443 
+    - protocol: TCP
+      port: 4443 
       targetPort: 443
 ---
 apiVersion: extensions/v1beta1

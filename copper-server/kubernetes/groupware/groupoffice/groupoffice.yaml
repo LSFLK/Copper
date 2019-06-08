@@ -4,32 +4,19 @@ metadata:
   name: groupoffice
   namespace: copper
 spec:
-  type: LoadBalancer
+  #type: LoadBalancer
   selector:
     app: groupoffice
   ports:
-    #- protocol: "TCP"
-    #  port: 443
-    - protocol: TCP
-      port: 8004
-      targetPort: 80
-      name: http
     #- protocol: TCP
-    #  port: 433
-    #  targetPort: 433
+    #  port: 8004
+    #  targetPort: 80
     #  name: http
-    #- protocol: TCP
-    #  port: 587
-    #  targetPort: 587
-    #  name: submission
-    #- protocol: TCP
-    #  port: 143
-    #  targetPort: 143
-      #targetPort: http
-      #clusterIP: None    
-    #  name: imap
+    - protocol: TCP
+      port: 8008
+      targetPort: 80
       #nodePort: 30080
-  #type: NodePort
+  type: NodePort
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment

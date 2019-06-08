@@ -14,8 +14,10 @@ spec:
       containers: 
         - args: 
             - /nginx-ingress-controller
-            - "--default-backend-service=$(POD_NAMESPACE)/default-http-backend"
-            - "--default-ssl-certificate=$(POD_NAMESPACE)/tls-certificate"
+            #- "--default-backend-service=$(POD_NAMESPACE)/default-http-backend"
+            #- "--default-ssl-certificate=$(POD_NAMESPACE)/tls-certificate"
+            - "--default-backend-service=copper/default-http-backend"
+            - "--default-ssl-certificate=copper/tls-certificate"
           env: 
             - name: POD_NAME
               valueFrom: 
