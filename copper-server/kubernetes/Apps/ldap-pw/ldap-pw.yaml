@@ -4,28 +4,26 @@ metadata:
   name: ldap-pw
   namespace: copper
 spec:
-  type: LoadBalancer
+  #type: LoadBalancer
+  type: NodePort
   selector:
     app: ldap-pw
   ports:
     #- protocol: "TCP"
     #  port: 443
-    #- protocol: TCP
-    #  port: 80
-    #  targetPort: 80
-    #  name: http
     - protocol: TCP
-      port: 4343
-      targetPort: 443
-      name: https
-    - protocol: TCP
-      port: 433
-      targetPort: 433
+      port: 8888
+      targetPort: 89
       name: http
     #- protocol: TCP
-    #  port: 587
-    #  targetPort: 587
-    #  name: submission
+    #  port: 4343
+    #  targetPort: 443
+    #  name: https
+    #- protocol: TCP
+    #  port: 433
+    #  targetPort: 433
+    #  name: http
+    #- protocol: TCP
     #  port: 433
     #  targetPort: 433
       #targetPort: http
@@ -125,8 +123,8 @@ spec:
                      name: email-secret
                      key: KEY_PATH
           ports:
-            #- name: http
-              #containerPort: 80
+            - name: http
+              containerPort: 89
             - name: https
               containerPort: 443
             - name: httpse

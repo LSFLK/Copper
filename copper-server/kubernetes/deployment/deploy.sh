@@ -167,7 +167,8 @@ echo "    PHPLDAPADMIN_LDAP_HOSTS: ldap" >> secret.yaml
 #read LDAPADMIN
 echo "    PHPLDAPADMIN_SERVER_ADMIN: admin@$DC1.$DC2.$DC3" >> secret.yaml
 echo "    PHPLDAPADMIN_SERVER_PATH: /phpldapadmin" >> secret.yaml
-echo "    PHPLDAPADMIN_HTTPS: \"true\"" >> secret.yaml
+#echo "    PHPLDAPADMIN_HTTPS: \"true\"" >> secret.yaml
+echo "    PHPLDAPADMIN_HTTPS: \"false\"" >> secret.yaml
 echo "    PHPLDAPADMIN_HTTPS_CRT_FILENAME: cert.crt" >> secret.yaml
 echo "    PHPLDAPADMIN_HTTPS_KEY_FILENAME: cert.key" >> secret.yaml
 echo "    PHPLDAPADMIN_HTTPS_CA_CRT_FILENAME: ca.crt" >> secret.yaml

@@ -6,12 +6,18 @@ metadata:
     app: phpldapadmin
   name: phpldapadmin
 spec:
-  type: LoadBalancer
+  #type: LoadBalancer
+  #ports:
+  #  - protocol: TCP
+  #    port: 4433
+  #    targetPort: 443
+  #    name: https
+  type: NodePort
   ports:
     - protocol: TCP
-      port: 4433
-      targetPort: 443
-      name: https
+      port: 8088
+      targetPort: 80
+      name: http
   selector:
     app: phpldapadmin
 ---

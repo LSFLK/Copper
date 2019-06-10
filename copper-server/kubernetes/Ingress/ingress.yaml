@@ -30,4 +30,12 @@ spec:
         backend:
           serviceName: copperclient
           servicePort: 4443
-      
+      - path: /phpldapadmin
+        backend:
+          serviceName: phpldapadmin
+          servicePort: 8088
+      - path: /site/service/
+        backend:
+          serviceName: ldap-pw
+          servicePort: 8888
+          
