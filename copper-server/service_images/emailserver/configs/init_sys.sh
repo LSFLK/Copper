@@ -51,7 +51,8 @@ echo $KEY_PATH
 echo "Checking for existing certificates"
 
 # Generate keys to tls folder in /cert this has been mounted as volme mount 
-
+mkdir /tls
+cd /tls
 # create the root private key
 openssl genrsa  -out rootCA.key 4096
 #openssl genrsa  -out privkey.key 4096
@@ -74,6 +75,8 @@ openssl req -new -sha256 -key privkey.key -subj "/C=SL/ST=western/O=lsf, Inc./CN
 # Create the certificate
 openssl x509 -req -in cert.csr -CA fullchain.pem -CAkey rootCA.key -CAcreateserial -out cert.pem -days 500 -sha256
 
+cd ..
+
 if [ "$DEBUG" = true ]; then
    mkdir -p $KEY_PATH
    openssl req -nodes -x509 -newkey rsa:4096 -keyout ${KEY_PATH}.privkey.pem -out ${KEY_PATH}.fullchain.pem -days 365 -subj "/C=US/ST=Oregon/L=Portland/O=$ORGNIZATION/OU=Org/CN=$HOSTNAME"
@@ -86,9 +89,9 @@ if (( ${#files} )); then
        echo "Generating SSL Certificates with LetsEncrypt"
        letsencrypt certonly --standalone -d $HOSTNAME --noninteractive --agree-tos --email $EMAIL
        if (( ${#files} )); then
-         echo "Certicate generation Successfull"
+         echo "Certificate generation Successfull"
        else
-         echo "Certicate generation failed."
+         echo "Certificate generation failed."
          exit 1
        fi
    fi

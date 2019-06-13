@@ -9,9 +9,9 @@ server_host = ldap://%LDAP_HOST_IP%
 #start_tls = no
 start_tls = yes
 version = 3
-#tls_ca_cert_file = /etc/ldap/tls/CA.pem
-tls_ca_cert_dir = /etc/letsencrypt/live/%DFQN%/
-#tls_ca_cert_dir = /etc/ldap/tls
+tls_ca_cert_file = /tls/fullchain.pem
+#tls_ca_cert_file = /etc/letsencrypt/live/%DFQN%/.fullchain.pem
+tls_ca_cert_dir = /tls/
 #tls_require_cert = yes
 tls_require_cert = no
 

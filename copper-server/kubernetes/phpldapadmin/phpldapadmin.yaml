@@ -120,11 +120,11 @@ spec:
                      key: PHPLDAPADMIN_LDAP_CLIENT_TLS_CA_CRT_FILENAME
           resources:
                 limits:
-                    cpu: 100m # ~4/10th of a core
+                    cpu: 100m # ~1/10th of a core
                     memory: "500Mi" # 500 Mebibytes 
                 requests:
-                    cpu: 50m # ~4/10th of a core
-                    memory: "300Mi" # 500 Mebibytes 
+                    cpu: 50m # ~1/20th of a core
+                    memory: "300Mi" # 300 Mebibytes 
       volumes:
         - name: phpldapadmin-certs
           hostPath:
@@ -133,3 +133,4 @@ spec:
           hostPath:
             #path: "/data/phpldapadmin/ldap-client-certs/"
             path: "/data/ldap/certs"
+            #path: "/home/tharanga_rajapaksha/coppervolume"

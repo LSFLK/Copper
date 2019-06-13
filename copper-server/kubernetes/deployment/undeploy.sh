@@ -151,17 +151,39 @@ echoRedBold 'Email service deleted...'
 # deleting groupoffice
 kubectl delete service groupoffice -n copper 2> /dev/null || true
 kubectl delete deployment groupoffice -n copper 2> /dev/null || true
+echoRedBold 'Groupoffice service deleted...'
 # docker rmi groupoffice 2> /dev/null || true
 
 # deleting ldap-pw
 kubectl delete service -n copper ldap-pw 2> /dev/null || true
 kubectl delete deployment -n copper ldap-pw 2> /dev/null || true
+echoRedBold 'Ldap-pw service deleted...'
 # docker rmi groupoffice 2> /dev/null || true
 
 #deleting the secret
 echoRedBold 'secret configurations goint to be deleted...'
 kubectl delete secret email-secret -n copper 2> /dev/null || true
-echoRedBold 'Secret configuration files deleted..'
+echoRedBold 'Secret configuration deleted..'
+
+# Deleting ingress
+
+kubectl delete ingresses.extensions copper-ingress -n copper 2> /dev/null || true
+echoRedBold ' ingress rules deleted ...'
+
+kubectl delete service nginx-ingress -n copper 2> /dev/null || true
+echoRedBold ' nginx-ingress service deleted ...'
+
+kubectl delete deployment nginx-ingress-controller -n copper 2> /dev/null || true
+echoRedBold 'nginx-ingress controller deleted...'
+
+kubectl delete deployment.extensions default-http-backend -n copper 2> /dev/null || true
+
+kubectl delete service default-http-backend -n copper 2> /dev/null || true
+echoRedBold ' default backend service deleted ...'
+
+kubectl delete secret tls-certificate -n copper 2> /dev/null || true
+kubectl delete secret tls-dhparam -n copper 2> /dev/null || true
+echoRedBold "certificate secrets deleted"
 
 ## deleting namespace
 kubectl delete namespace copper  2> /dev/null || true

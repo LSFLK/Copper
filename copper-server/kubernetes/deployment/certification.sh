@@ -95,6 +95,11 @@ read -r -p "Are you sure? [y/N] " response
 case "$response" in
     [yY][eE][sS]|[yY])
 
+# Creating the k8s namespace
+kubectl create namespace copper 2> /dev/null || true
+echoGreenBold 'Copper namespace created...'
+
+
 mkdir tls 2> /dev/null || true
 
 echoGreenBold 'tls folder created in development folder...'
@@ -102,6 +107,7 @@ echoGreenBold 'tls folder created in development folder...'
 cd tls
 
 rm -rf *
+echoGreenBold 'Delete files if exists ......'
 
 # Root Certificate Authority key file generation
 
@@ -151,6 +157,14 @@ openssl dhparam -out dhparam.pem 2048
 echoGreenBold 'Diffie-Hellman group code generation completed...'
 
 echoGreenBold 'Certification Generation Completed'
+
+# Creating the kubernetes secrets for deployment
+#kubectl create secret tls tls-certificate --key example.com.key --cert example.com.crt -n copper
+#kubectl create secret generic tls-dhparam --from-file=dhparam.pem -n copper
+
+kubectl create secret tls tls-certificate --key $cn.key --cert $cn.crt -n copper 2> /dev/null || true
+kubectl create secret generic tls-dhparam --from-file=dhparam.pem -n copper 2> /dev/null || true
+
 
     ;;
     *)

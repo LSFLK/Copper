@@ -12,10 +12,12 @@ metadata:
 spec:
   tls:
     - hosts:
-      - example.com
+      #- example.com
+      - copper.opensource.lk
       secretName: tls-certificate
   rules:
-  - host: example.com
+  #- host: example.com
+  - host: copper.opensource.lk
     http:
       paths:
       - path: /hello
