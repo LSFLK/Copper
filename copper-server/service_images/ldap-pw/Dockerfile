@@ -1,7 +1,3 @@
-#https://medium.com/@meeramarygeorge/create-php-mysql-apache-development-environment-using-docker-in-windows-9beeba6985
-#https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-ubuntu-18-04
-#https://loige.co/using-lets-encrypt-and-certbot-to-automate-the-creation-of-certificates-for-openvpn/
-#FROM ubuntu:latest
 FROM ubuntu:18.04
 
 MAINTAINER Name<admin@opensource.lk>
