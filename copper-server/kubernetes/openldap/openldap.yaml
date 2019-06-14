@@ -9,7 +9,8 @@ items:
         app: ldap
       name: ldap
     spec:
-      type: LoadBalancer
+      #type: LoadBalancer
+      type: NodePort
       #loadBalancerIP: 10.10.10.10
       #loadBalancerIP: "YOUR.IP.ADDRESS.HERE"
       #type: ExternalName
@@ -204,6 +205,7 @@ items:
               hostPath:
                 #path: "/data/ldap/certs"
                 #path: "/home/tharanga_rajapaksha/coppervolume"
+                # to have proper tls communicatin this path should be changed according to deployment environment
                 path: "/Users/wso2/Documents/copper/cu/copper/copper-server/kubernetes/deployment/tls"
                 #path: "/tls"
                

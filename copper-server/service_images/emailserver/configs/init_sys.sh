@@ -75,6 +75,10 @@ openssl req -new -sha256 -key privkey.key -subj "/C=SL/ST=western/O=lsf, Inc./CN
 # Create the certificate
 openssl x509 -req -in cert.csr -CA fullchain.pem -CAkey rootCA.key -CAcreateserial -out cert.pem -days 500 -sha256
 
+# Generate dhparam
+openssl dhparam -out dhparam.pem 2048
+
+
 cd ..
 
 if [ "$DEBUG" = true ]; then

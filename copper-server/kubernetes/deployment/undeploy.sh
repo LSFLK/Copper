@@ -167,22 +167,22 @@ echoRedBold 'Secret configuration deleted..'
 
 # Deleting ingress
 
-kubectl delete ingresses.extensions copper-ingress -n copper 2> /dev/null || true
+kubectl delete ingresses.extensions copper-ingress -n copper
 echoRedBold ' ingress rules deleted ...'
 
-kubectl delete service nginx-ingress -n copper 2> /dev/null || true
+kubectl delete service nginx-ingress -n copper 
 echoRedBold ' nginx-ingress service deleted ...'
 
-kubectl delete deployment nginx-ingress-controller -n copper 2> /dev/null || true
+kubectl delete deployment nginx-ingress-controller -n copper
 echoRedBold 'nginx-ingress controller deleted...'
 
-kubectl delete deployment.extensions default-http-backend -n copper 2> /dev/null || true
+kubectl delete deployment.extensions default-http-backend -n copper 
 
-kubectl delete service default-http-backend -n copper 2> /dev/null || true
+kubectl delete service default-http-backend -n copper
 echoRedBold ' default backend service deleted ...'
 
-kubectl delete secret tls-certificate -n copper 2> /dev/null || true
-kubectl delete secret tls-dhparam -n copper 2> /dev/null || true
+kubectl delete secret tls-certificate -n copper 
+kubectl delete secret tls-dhparam -n copper 
 echoRedBold "certificate secrets deleted"
 
 ## deleting namespace
