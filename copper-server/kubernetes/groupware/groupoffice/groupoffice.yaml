@@ -65,7 +65,7 @@ spec:
           resources:
              limits:
                cpu: 200m # ~2/10th of a core
-               memory: "800Mi" # 800 Mebibytes  
+               memory: "600Mi" # 800 Mebibytes  
              requests:
                cpu: 100m # ~1/10th of a core
-               memory: "400Mi" # 400 Mebibytes  
+               memory: "300Mi" # 400 Mebibytes  

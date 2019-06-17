@@ -134,3 +134,7 @@ spec:
             #path: "/data/phpldapadmin/ldap-client-certs/"
             path: "/data/ldap/certs"
             #path: "/home/tharanga_rajapaksha/coppervolume"
+            #path: "/home/tharanga_rajapaksha/coppervolume"
+            # to have proper tls communicatin this path should be changed according to deployment environment
+            path: "/Users/wso2/Documents/copper/cu/copper/copper-server/kubernetes/deployment/tls"
+                

@@ -12,10 +12,10 @@ spec:
       port: 80
       targetPort: 80
       name: letsencrypt
-    #- protocol: TCP
-    #  port: 25
-    #  targetPort: 25
-    #  name: smtp
+    - protocol: TCP
+      port: 25
+      targetPort: 25
+      name: smtp
     - protocol: TCP
       port: 2525
       targetPort: 2525
@@ -190,8 +190,8 @@ spec:
               containerPort: 465
             - name: imap
               containerPort: 143
-            #- name: smtp
-            #  containerPort: 25
+            - name: smtp
+              containerPort: 25
             - name: smtprelay
               containerPort: 2525
             - name: seive
@@ -222,14 +222,14 @@ spec:
               memory: "500Mi" # 500 Mebibytes 
             requests:
               cpu: 50m # ~4/10th of a core
-              memory: "300Mi" # 500 Mebibytes 
+              memory: "200Mi" # 500 Mebibytes 
       #command: ["/bin/sh"]
       #  args: ["-c", "service postfix start"]  
       volumes:
             - name: ldap-certs
               hostPath:
-                path: "/data/ldap/certs"
+                #path: "/data/ldap/certs"
                 #path: "/home/tharanga_rajapaksha/coppervolume"
-                #path: "/Users/wso2/Documents/copper/copper/copper-server/kubernetes/tls"
+                path: "/Users/wso2/Documents/copper/copper/copper-server/kubernetes/tls"
                 #path: "./tls/"
               
