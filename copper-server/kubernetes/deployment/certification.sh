@@ -88,39 +88,83 @@ echo  "${WHITE}**               Email : support@copper.opensource.lk            
 echo  "${RED}******************************************************************************"
 echo
 
-echoRedBold ' !!!!!!!! -Undeploying Copper Database server - You will lost your data permanantly - !!!!!!!! '
-
+echoRedBold ' !!!!!!!! -Certificate Generation - !!!!!!!! '
 
 
 read -r -p "Are you sure? [y/N] " response
 case "$response" in
     [yY][eE][sS]|[yY])
 
-# 2> /dev/null || true   // statement is used to ignore and go ahead when a error received
-# 2>  true
-
-## delete the mysql deployment
-kubectl delete deployment,svc mysql --namespace=copper 2> /dev/null || true
-
-echoRedBold 'mysql deployment deleted...'
-# Persistent Volume Claim deletion
-kubectl delete PersistentVolumeClaim mysql-pv-claim --namespace=copper 2> /dev/null || true
-
-kubectl delete persistentvolumes mysql-pv-volume --namespace=copper 2> /dev/null || true
-
-echoRedBold 'Persistent Volume Claim deleted...'
-# Persistent Volume delete
-kubectl delete service email --namespace=copper 2> /dev/null || true
-
-echoRedBold 'Email service deleted...'
-# If you want to delete webmail service use following commands.
-kubectl delete service webmail --namespace=copper 2> /dev/null || true
-
-echoRedBold 'Persistent Volume deleted...'
+# Creating the k8s namespace
+kubectl create namespace copper 2> /dev/null || true
+echoGreenBold 'Copper namespace created...'
 
 
+mkdir tls 2> /dev/null || true
 
-echoGreenBold 'Whole data removed Cant be recovered. \n Finished'
+echoGreenBold 'tls folder created in development folder...'
+
+cd tls
+
+rm -rf *
+echoGreenBold 'Delete files if exists ......'
+
+# Root Certificate Authority key file generation
+
+openssl genrsa  -out rootCA.key 4096
+echoGreenBold 'rootCA.key file generated...'
+
+# Local certificate authority (CA) certificate generation
+echo Enter country Code: 
+read cc
+#echo "    MYSQL_DATABASE: $mysql_db" >> secret.yaml
+echo Enter State / Province: 
+read st
+echo Enter Organization: 
+read og
+echo Enter your domain: 
+read cn
+
+openssl req -x509 -new -nodes -key rootCA.key -sha256 -days 1024 -subj "/C=$cc/ST=$st/O=$og, Inc./CN=local.com" -out rootCA.crt
+
+echoGreenBold 'rootCA.crt CA certificate generated...'
+
+#updating your local certificate store
+#mkdir /usr/local/share/ca-certificates/extra
+#update-ca-certificates 
+
+# Create your domain key
+openssl genrsa -out $cn.key 2048
+
+echoGreenBold '$cn domain key created...'
+
+# Create self signed request
+
+openssl req -new -sha256 -key $cn.key -subj "/C=$cc/ST=$st/O=$og, Inc./CN=$cn" -out $cn.csr
+
+echoGreenBold '$cn.csr Certificate Request created..'
+
+# Create self signed certificate
+
+openssl x509 -req -in $cn.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateserial -out $cn.crt -days 500 -sha256
+
+echoGreenBold 'Self signed certificate created...'
+
+#Generate dhparam
+
+openssl dhparam -out dhparam.pem 2048
+
+echoGreenBold 'Diffie-Hellman group code generation completed...'
+
+echoGreenBold 'Certification Generation Completed'
+
+# Creating the kubernetes secrets for deployment
+#kubectl create secret tls tls-certificate --key example.com.key --cert example.com.crt -n copper
+#kubectl create secret generic tls-dhparam --from-file=dhparam.pem -n copper
+
+kubectl create secret tls tls-certificate --key $cn.key --cert $cn.crt -n copper 2> /dev/null || true
+kubectl create secret generic tls-dhparam --from-file=dhparam.pem -n copper 2> /dev/null || true
+
 
     ;;
     *)

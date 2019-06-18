@@ -1,39 +1,43 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: groupoffice
+  name: copperclient
   namespace: copper
 spec:
-  #type: LoadBalancer
-  selector:
-    app: groupoffice
-  ports:
-    #- protocol: TCP
-    #  port: 8004
-    #  targetPort: 80
-    #  name: http
-    - protocol: TCP
-      port: 8008
-      targetPort: 80
-      #nodePort: 30080
   type: NodePort
+  selector:
+    app: copperclient
+  ports:
+    # Three types of ports for a service
+    # nodePort - a static port assigned on each the node
+    # port - port exposed internally in the cluster
+    # targetPort - the container port to send requests to
+    - protocol: TCP
+    #- nodePort: 30080
+      port: 8080 
+      targetPort: 80
+  ports:
+    #- nodePort: 30443
+    - protocol: TCP
+      port: 4443 
+      targetPort: 443
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: groupoffice
+  name: copperclient
   namespace: copper
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: groupoffice
+        app: copperclient
         track: stable
     spec:
-      hostname: groupoffice
+      hostname: copperclient
       containers:
-        - name: groupoffice
+        - name: copperclient
           image: lsflk/copper:copperoffice
           imagePullPolicy: Always
           env:
@@ -60,12 +64,14 @@ spec:
           ports:
             - name: http
               containerPort: 80
+            - name: https
+              containerPort: 433
             - name: health
-              containerPort: 81
+              containerPort: 432
           resources:
              limits:
-               cpu: 200m # ~2/10th of a core
-               memory: "600Mi" # 800 Mebibytes  
+               cpu: 200m # ~4/10th of a core
+               memory: "800Mi" # 900 Mebibytes  
              requests:
-               cpu: 100m # ~1/10th of a core
-               memory: "300Mi" # 400 Mebibytes  
+               cpu: 100m # ~4/10th of a core
+               memory: "400Mi" # 900 Mebibytes  

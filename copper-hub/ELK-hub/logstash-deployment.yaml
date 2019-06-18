@@ -12,8 +12,9 @@ data:
     input {
       beats {
         port => 5044
+        #type => "EmailServer"   # You can define a type however default is log
       }
-    #}
+    }
       # bellow input can establish the connection but cant publish events
       # ERROR	logstash/async.go:256	Failed to publish events caused by: read tcp 10.1.9.191:55742->10.111.159.152:5044: i/o timeout
       #tcp {
@@ -26,7 +27,9 @@ data:
     #    path => "/var/log/maillog"
     #    type => "postfix"   # You can define a type however you like.
     #  }
-    }
+    #}
+
+
     #filter {
     #  if [message] =~ /^\{.*\}$/ {
     #    json {
@@ -39,6 +42,30 @@ data:
     #    }
     #  }
     #}
+    
+    #filter {
+    #  if [type] == "log" {
+    #  if [message] =~ /^\{.*\}$/ {
+    #      type => "EmailServer" 
+    #  }
+    #}  
+
+    #filter {
+    #  if [type] == "syslog" {
+    #    grok {
+    #      match => { "message" => "%{SYSLOGTIMESTAMP:syslog_timestamp} %{SYSLOGHOST:syslog_hostname} \
+    #      %{DATA:syslog_program}(?:\[%{POSINT:syslog_pid}\])?: %{GREEDYDATA:syslog_message}" }
+    #      add_field => [ "received_at", "%{@timestamp}" ]
+    #      add_field => [ "received_from", "%{host}" ]
+    
+    #      }
+    #      syslog_pri { }
+    #      date {
+    #        match => [ "syslog_timestamp", "MMM  d HH:mm:ss", "MMM dd HH:mm:ss" ]
+    #      }
+    #  }
+    #}  
+
     output {
         elasticsearch {
             #hosts => [ "elasticsearch-logging:9200" ]
@@ -95,4 +122,6 @@ spec:
   - protocol: TCP
     port: 5044
     targetPort: 5044
-  type: ClusterIP
+    nodePort: 31336 # this should be removed when we are not useing nodeport
+  #type: ClusterIP
+  type: NodePort # allowing access from localhost machine from nodeport
