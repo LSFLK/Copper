@@ -120,8 +120,10 @@ pass_filter = (&(objectclass=inetOrgPerson)(uid=%n))
 # Use TLS to connect to the LDAP server.Connect to ldap port (389) and use STARTTLS command. Use tls=yes to enable this. 
 tls = yes
 # TLS options, currently supported only with OpenLDAP:
-tls_ca_cert_file = /etc/letsencrypt/live/%DFQN%/.fullchain.pem
+#tls_ca_cert_file = /etc/letsencrypt/live/%DFQN%/.fullchain.pem
+tls_ca_cert_file = /tls/fullchain.pem
 #tls_ca_cert_dir = /etc/letsencrypt/live/%DFQN%/
+tls_ca_cert_dir = /tls
 tls_cipher_suite = SECURE256:-VERS-SSL3.0
 # TLS cert/key is used only if LDAP server requires a client certificate.
 #tls_cert_file =/etc/letsencrypt/live/%DFQN%/.fullchain.pem

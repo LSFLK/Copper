@@ -1,0 +1,33 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata: 
+  name: hello-world-deployment
+  namespace: copper
+spec: 
+  replicas: 1
+  template: 
+    metadata: 
+      labels: 
+        app: hello-world
+    spec: 
+      containers: 
+        - image: "gokul93/hello-world:latest"
+          imagePullPolicy: Always
+          name: hello-world-container
+          ports: 
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: hello-world-svc
+  namespace: copper
+spec: 
+  type: NodePort
+  ports: 
+     -  port: 8080
+        protocol: TCP
+        targetPort: 8080
+  selector: 
+    app: hello-world
+

@@ -106,6 +106,8 @@ echoRedBold 'mysql deployment deleted...'
 # Persistent Volume Claim deletion
 kubectl delete PersistentVolumeClaim mysql-pv-claim --namespace=copper 2> /dev/null || true
 
+kubectl delete persistentvolumes mysql-pv-volume --namespace=copper 2> /dev/null || true
+
 echoRedBold 'Persistent Volume Claim deleted...'
 # Persistent Volume delete
 kubectl delete service email --namespace=copper 2> /dev/null || true

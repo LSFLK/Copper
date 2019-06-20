@@ -4,21 +4,27 @@ metadata:
   namespace: copper
   labels:
     app: phpldapadmin
-  name: phpldapadmin-service
+  name: phpldapadmin
 spec:
-  type: LoadBalancer
+  #type: LoadBalancer
+  #ports:
+  #  - protocol: TCP
+  #    port: 4433
+  #    targetPort: 443
+  #    name: https
+  type: NodePort
   ports:
     - protocol: TCP
-      port: 4433
-      targetPort: 443
-      name: https
+      port: 8088
+      targetPort: 80
+      name: http
   selector:
     app: phpldapadmin
 ---
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: phpldapadmin-controller
+  name: phpldapadmin
   namespace: copper
   labels:
     app: phpldapadmin
@@ -112,10 +118,23 @@ spec:
                   secretKeyRef:
                      name: email-secret
                      key: PHPLDAPADMIN_LDAP_CLIENT_TLS_CA_CRT_FILENAME
+          resources:
+                limits:
+                    cpu: 100m # ~1/10th of a core
+                    memory: "500Mi" # 500 Mebibytes 
+                requests:
+                    cpu: 50m # ~1/20th of a core
+                    memory: "300Mi" # 300 Mebibytes 
       volumes:
         - name: phpldapadmin-certs
           hostPath:
             path: "/data/phpldapadmin/ssl/"
         - name: ldap-client-certs
           hostPath:
-            path: "/data/phpldapadmin/ldap-client-certs/"
+            #path: "/data/phpldapadmin/ldap-client-certs/"
+            path: "/data/ldap/certs"
+            #path: "/home/tharanga_rajapaksha/coppervolume"
+            #path: "/home/tharanga_rajapaksha/coppervolume"
+            # to have proper tls communicatin this path should be changed according to deployment environment
+            path: "/Users/wso2/Documents/copper/cu/copper/copper-server/kubernetes/deployment/tls"
+                

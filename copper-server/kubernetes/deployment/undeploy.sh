@@ -105,8 +105,11 @@ kubectl delete deployment ldap --namespace=copper 2> /dev/null || true
 echoRedBold 'Ldap service deleted...'
 
 # Then if you want to delete services created by above command
-kubectl delete service phpldapadmin-service --namespace=copper 2> /dev/null || true
-kubectl delete replicationcontrollers phpldapadmin-controller --namespace=copper 2> /dev/null || true
+#kubectl delete service phpldapadmin-service --namespace=copper 2> /dev/null || true
+#kubectl delete replicationcontrollers phpldapadmin-controller --namespace=copper 2> /dev/null || true
+kubectl delete service phpldapadmin --namespace=copper 2> /dev/null || true
+kubectl delete replicationcontrollers phpldapadmin --namespace=copper 2> /dev/null || true
+
 echoRedBold 'phpldapadmin service deleted...'
 
 # If you want to delete emai service use following commands.
@@ -121,46 +124,66 @@ echoRedBold 'Email service deleted...'
 #echoRedBold 'Webmail service deleted...'
 
 
+# >>>> Removing Prometheus stack >>>>>>
 #deleting services
-kubectl delete services alertmanager --namespace=copper 2> /dev/null || true
-kubectl delete services prometheus-service --namespace=copper 2> /dev/null || true
-echoRedBold 'Alert service deleted...'
+#kubectl delete services alertmanager --namespace=copper 2> /dev/null || true
+#kubectl delete services prometheus-service --namespace=copper 2> /dev/null || true
+#echoRedBold 'Alert service deleted...'
 
 #deleting configmaps
-kubectl delete configmap alertmanager-config --namespace=copper 2> /dev/null || true
-kubectl delete configmap alertmanager-templates --namespace=copper 2> /dev/null || true
-kubectl delete configmap prometheus-server-conf --namespace=copper 2> /dev/null || true
-echoRedBold 'Alert configuration deleted...'
+#kubectl delete configmap alertmanager-config --namespace=copper 2> /dev/null || true
+#kubectl delete configmap alertmanager-templates --namespace=copper 2> /dev/null || true
+#kubectl delete configmap prometheus-server-conf --namespace=copper 2> /dev/null || true
+#echoRedBold 'Alert configuration deleted...'
 
 #deleting cluster roll
-kubectl delete clusterroles prometheus 2> /dev/null || true
-kubectl delete clusterrolebindings prometheus 2> /dev/null || true
-echoRedBold 'Prometheus Role deleted...'
+#kubectl delete clusterroles prometheus 2> /dev/null || true
+#kubectl delete clusterrolebindings prometheus 2> /dev/null || true
+#echoRedBold 'Prometheus Role deleted...'
 
 #deleting deployments
-kubectl delete deployment alertmanager --namespace=copper 2> /dev/null || true
-kubectl delete deployment prometheus-deployment --namespace=copper 2> /dev/null || true
-echoRedBold 'Prometheus deployment deleted...'
+#kubectl delete deployment alertmanager --namespace=copper 2> /dev/null || true
+#kubectl delete deployment prometheus-deployment --namespace=copper 2> /dev/null || true
+#echoRedBold 'Prometheus deployment deleted...'
 
-# deleting horde
-# kubectl delete service horde -n copper 2> /dev/null || true
-# kubectl delete deployment horde -n copper 2> /dev/null || true
-# docker rmi horde 2> /dev/null || true
+# >>>> end of removing prometheus stack >>>
 
 # deleting groupoffice
 kubectl delete service groupoffice -n copper 2> /dev/null || true
 kubectl delete deployment groupoffice -n copper 2> /dev/null || true
+echoRedBold 'Groupoffice service deleted...'
 # docker rmi groupoffice 2> /dev/null || true
 
 # deleting ldap-pw
 kubectl delete service -n copper ldap-pw 2> /dev/null || true
 kubectl delete deployment -n copper ldap-pw 2> /dev/null || true
+echoRedBold 'Ldap-pw service deleted...'
 # docker rmi groupoffice 2> /dev/null || true
 
 #deleting the secret
 echoRedBold 'secret configurations goint to be deleted...'
 kubectl delete secret email-secret -n copper 2> /dev/null || true
-echoRedBold 'Secret configuration files deleted..'
+echoRedBold 'Secret configuration deleted..'
+
+# Deleting ingress
+
+kubectl delete ingresses.extensions copper-ingress -n copper
+echoRedBold ' ingress rules deleted ...'
+
+kubectl delete service nginx-ingress -n copper 
+echoRedBold ' nginx-ingress service deleted ...'
+
+kubectl delete deployment nginx-ingress-controller -n copper
+echoRedBold 'nginx-ingress controller deleted...'
+
+kubectl delete deployment.extensions default-http-backend -n copper 
+
+kubectl delete service default-http-backend -n copper
+echoRedBold ' default backend service deleted ...'
+
+kubectl delete secret tls-certificate -n copper 
+kubectl delete secret tls-dhparam -n copper 
+echoRedBold "certificate secrets deleted"
 
 ## deleting namespace
 kubectl delete namespace copper  2> /dev/null || true

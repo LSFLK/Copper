@@ -25,12 +25,21 @@ readme_directory = no
 
 
 # path to the SSL certificate for the mail server
-smtpd_tls_cert_file=/etc/letsencrypt/live/%DFQN%/.fullchain.pem
-smtpd_tls_key_file=/etc/letsencrypt/live/%DFQN%/.privkey.pem
+#smtpd_tls_cert_file=/etc/letsencrypt/live/%DFQN%/.fullchain.pem
+#smtpd_tls_key_file=/etc/letsencrypt/live/%DFQN%/.privkey.pem
+
+# path to the SSL certificate for the mail server
+smtpd_tls_cert_file=/tls/cert.pem
+smtpd_tls_key_file=/tls/privkey.key
+smtpd_tls_CAfile=/tls/fullchain.pem
+smtp_tls_CApath=/tls/
+
 
 smtpd_use_tls=yes
 smtpd_tls_auth_only = yes
-
+smtp_tls_loglevel=1
+smtpd_tls_loglevel=1
+smtp_tls_note_starttls_offer=yes
 
 # These two lines define how postfix will connect to other mail servers.
 # DANE is a stronger form of opportunistic TLS. You can read about it here:

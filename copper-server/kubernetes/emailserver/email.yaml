@@ -8,13 +8,23 @@ spec:
   selector:
     app: email
   ports:
-    #- protocol: "TCP"
-    #  port: 25
-    #  targetPort: 25
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      name: letsencrypt
     - protocol: TCP
       port: 25
       targetPort: 25
       name: smtp
+    - protocol: TCP
+      port: 2525
+      targetPort: 2525
+      name: smtprelay
+      #port 2525 is used for 
+    - protocol: TCP
+      port: 465
+      targetPort: 465
+      name: smtps
       #nodePort: 30025
     - protocol: TCP
       port: 143
@@ -176,14 +186,20 @@ spec:
           ports:
             - name: submission
               containerPort: 587
+            - name: smtps
+              containerPort: 465
             - name: imap
               containerPort: 143
             - name: smtp
               containerPort: 25
+            - name: smtprelay
+              containerPort: 2525
             - name: seive
               containerPort: 4190
             - name: rspamd
               containerPort: 11334
+            - name: letsencrypt
+              containerPort: 80
             - name: health
               containerPort: 26
           lifecycle:
@@ -202,8 +218,11 @@ spec:
             limits:
               #cpu: 0.5
               #memory: "500Mi"
-              cpu: 600m # ~6/10th of a core
-              memory: "400Mi" # 500 Mebibytes 
+              cpu: 100m # ~1/10th of a core
+              memory: "500Mi" # 500 Mebibytes 
+            requests:
+              cpu: 50m # ~4/10th of a core
+              memory: "200Mi" # 500 Mebibytes 
       #command: ["/bin/sh"]
       #  args: ["-c", "service postfix start"]  
       volumes:
