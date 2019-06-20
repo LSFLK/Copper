@@ -1,46 +1,62 @@
 version: 1
 
-dn: ou=domains,dc=copper,dc=opensource,dc=lk
+dn: ou=domains,dc=copper,dc=mail,dc=lk
 objectclass: organizationalUnit
 objectclass: top
 ou: domains
 
-dn: dc=copper.opensource.lk,ou=domains,dc=copper,dc=opensource,dc=lk
-associateddomain: copper.opensource.lk
-dc: copper.opensource.lk
+dn: dc=copper.mail.lk,ou=domains,dc=copper,dc=mail,dc=lk
+associateddomain: copper.mail.lk
+dc: copper.mail.lk
 objectclass: dNSDomain
 objectclass: domainRelatedObject
 objectclass: top
 
-dn: ou=groups,dc=copper,dc=opensource,dc=lk
+dn: ou=groups,dc=copper,dc=mail,dc=lk
 objectclass: organizationalUnit
 objectclass: top
 ou: groups
 
-dn: cn=admins,ou=groups,dc=copper,dc=opensource,dc=lk
+dn: cn=admins,ou=groups,dc=copper,dc=mail,dc=lk
 cn: admins
 gidnumber: 500
 objectclass: posixGroup
 objectclass: top
 
-dn: cn=users,ou=groups,dc=copper,dc=opensource,dc=lk
+dn: cn=users,ou=groups,dc=copper,dc=mail,dc=lk
 cn: users
 gidnumber: 501
 objectclass: posixGroup
 objectclass: top
 
-dn: ou=Users,dc=copper,dc=opensource,dc=lk
+dn: ou=Users,dc=copper,dc=mail,dc=lk
 objectclass: organizationalUnit
 objectclass: top
 ou: Users
 
-dn: uid=copper,ou=Users,dc=copper,dc=opensource,dc=lk
+dn: uid=system,ou=Users,dc=copper,dc=mail,dc=lk
+cn: system
+gidnumber: 501
+givenname: system
+homedirectory: /home/Users/system
+loginshell: /bin/sh
+mail: system@copper.mail.lk
+objectclass: inetOrgPerson
+objectclass: posixAccount
+objectclass: top
+sn: system
+uid: system
+uidnumber: 1000
+userpassword: {SSHA}79+ggcj1RrXEitcvjVBDgqF6NdJf09Y3
+#userpassword in plain: system
+
+dn: uid=copper,ou=Users,dc=copper,dc=mail,dc=lk
 cn: copper
 gidnumber: 501
 givenname: copper
 homedirectory: /home/Users/copper
 loginshell: /bin/sh
-mail: copper@copper.opensource.lk
+mail: copper@copper.mail.lk
 objectclass: inetOrgPerson
 objectclass: posixAccount
 objectclass: top
@@ -50,13 +66,13 @@ uidnumber: 1001
 userpassword: {SSHA}79+ggcj1RrXEitcvjVBDgqF6NdJf09Y3
 #userpassword in plain: copper
 
-dn: uid=test,ou=Users,dc=copper,dc=opensource,dc=lk
+dn: uid=test,ou=Users,dc=copper,dc=mail,dc=lk
 cn: test
 gidnumber: 501
 givenname: test
 homedirectory: /home/Users/test
 loginshell: /bin/sh
-mail: test@copper.opensource.lk
+mail: test@copper.mail.lk
 objectclass: inetOrgPerson
 objectclass: posixAccount
 objectclass: top

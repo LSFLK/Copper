@@ -29,7 +29,6 @@ data:
     #  }
     #}
 
-
     #filter {
     #  if [message] =~ /^\{.*\}$/ {
     #    json {
@@ -65,7 +64,6 @@ data:
     #      }
     #  }
     #}  
-
     output {
         elasticsearch {
             #hosts => [ "elasticsearch-logging:9200" ]
