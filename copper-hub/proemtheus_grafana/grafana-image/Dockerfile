@@ -30,6 +30,8 @@ RUN apt-get update && apt-get install -qq -y tar libfontconfig curl ca-certifica
     chown -R grafana:grafana "$GF_PATHS_DATA" "$GF_PATHS_HOME/.aws" "$GF_PATHS_LOGS" "$GF_PATHS_PLUGINS" && \
     chmod 777 "$GF_PATHS_DATA" "$GF_PATHS_HOME/.aws" "$GF_PATHS_LOGS" "$GF_PATHS_PLUGINS"
 
+ADD ./grafana.ini /etc/grafana/
+
 EXPOSE 3000
 
 COPY ./run.sh /run.sh
