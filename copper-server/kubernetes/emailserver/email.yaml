@@ -228,7 +228,6 @@ spec:
       volumes:
             - name: ldap-certs
               hostPath:
-                #path: "/data/ldap/certs"
-                path: "/Users/wso2/anushka/office/Copper/copper-server/kubernetes/tls"
+                path: "/data/ldap/certs"
                 # path: "./tls/"
               
