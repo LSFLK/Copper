@@ -102,9 +102,17 @@ RUN cp -R /etc/rspamd/local.d/dkim_signing.conf /etc/rspamd/local.d/arc.conf
 COPY ./configs/sieve /sieve
 
 COPY ./configs/init_sys.sh /bin/
+COPY ./configs/init_sys.sh /bin/
 #COPY ./configs/.env /bin/
 RUN chmod +x /bin/init_sys.sh
 #RUN chmod 755 /bin/.env
+
+# clamav refresh shel
+COPY ./configs/clamAV/init_clamav.sh /bin/init_clamav.sh
+RUN chmod +x /bin/init_clamav.sh
+RUN touch /var/log/copper.log
+RUN touch /var/log/copperclamav.log
+RUN touch /var/log/copper.err
 
 
 # Adding pod start commands to the email image
