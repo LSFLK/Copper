@@ -201,16 +201,19 @@ chmod -R 755 /etc/letsencrypt/
  #service clamav start # clamav unrecognized service
  #freshclam
  service rspamd reload 2> /dev/null || true
- #service clamav-daemon start # if there is not enough memory in the container this will omit a error and docker build will stop from hear.
- #service clamav-freshclam start
+ service clamav-daemon start # if there is not enough memory in the container this will omit a error and docker build will stop from hear.
+ service clamav-freshclam start
 
  # enabling virsu database updating daily using a cron job at 01.30 AM
- crontab -l | { cat; echo "30 01 * * * freshclam"; } | crontab -
+ #crontab -l | { cat; echo "30 01 * * * init_clamav.sh"; } | crontab -
+ #crontab -l | { cat; echo "* * * * * init_clamav.sh"; } | crontab -
+ #service cron start
+ #But above command removed to re run from kubernetes due to not working with images
 
 #starting filebeat
-cd filebeat-6.7.1-linux-x86_64
-chown root filebeat.yml
-./filebeat -e
+ cd filebeat-6.7.1-linux-x86_64
+ chown root filebeat.yml
+ ./filebeat -e
  
 
  
