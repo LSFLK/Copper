@@ -17,7 +17,7 @@
   "gnetId": 737,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1560946394013,
+  "iteration": 1561480050178,
   "links": [],
   "panels": [
     {
@@ -55,7 +55,11 @@
         "message": "Pod count decreased",
         "name": "Pod count alert",
         "noDataState": "alerting",
-        "notifications": []
+        "notifications": [
+          {
+            "uid": "XPFCa97Zk"
+          }
+        ]
       },
       "aliasColors": {},
       "bars": false,
@@ -249,7 +253,7 @@
           {
             "evaluator": {
               "params": [
-                520000000
+                533333333
               ],
               "type": "gt"
             },
@@ -280,6 +284,9 @@
         "notifications": [
           {
             "uid": "ec4m9OnWz"
+          },
+          {
+            "uid": "XPFCa97Zk"
           }
         ]
       },
@@ -332,7 +339,7 @@
           "fill": true,
           "line": true,
           "op": "gt",
-          "value": 520000000
+          "value": 533333333
         }
       ],
       "timeFrom": null,
@@ -1806,7 +1813,7 @@
     ]
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-3h",
     "to": "now"
   },
   "timepicker": {
@@ -1837,5 +1844,5 @@
   "timezone": "browser",
   "title": "Kubernetes Pod Resources",
   "uid": "VW1dXd7Zk",
-  "version": 3
+  "version": 8
 }

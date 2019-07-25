@@ -41,6 +41,18 @@ data:
     #    }
     #  }
     #}
+    # Filter for accept only the outbound alert
+    filter {
+    #   # if "Host not found" not in [message]{
+    #   #   drop{ }
+    #   # }
+    #   if ([message] !~ "Host not found") {
+    #     drop { }
+    #   }
+      if ([host.name] == "*filebeat*"){
+        drop { }
+      }
+    }
     
     #filter {
     #  if [type] == "log" {
