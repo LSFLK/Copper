@@ -65,6 +65,9 @@ mkdir /usr/local/share/ca-certificates/extra
 cp fullchain.pem /usr/local/share/ca-certificates/extra/fullchain.pem
 update-ca-certificates
 
+
+
+
 #Create my domain key, this is privkey.key in our example
 #openssl genrsa -out example.com.key 2048
 openssl genrsa -out privkey.key 2048
@@ -101,9 +104,11 @@ if (( ${#files} )); then
    fi
   fi
 
-chmod -R 755 /etc/letsencrypt/
-
+# coppying certificate files to /cert folder
+ chmod -R 755 /etc/letsencrypt/
  cp -R /etc/letsencrypt/ /cert
+
+
  #sed -i.bak -e "s;%DFQN%;"${HOSTNAME}";g" "/etc/postfix/main.cf"
  sed -i.bak -e "s;%DFQN%;"${FQDN}";g" "/etc/postfix/main.cf"
  sed -i.bak -e "s;%DOMAIN%;"${DOMAIN}";g" "/etc/postfix/main.cf"
@@ -209,6 +214,7 @@ chmod -R 755 /etc/letsencrypt/
  #crontab -l | { cat; echo "* * * * * init_clamav.sh"; } | crontab -
  #service cron start
  #But above command removed to re run from kubernetes due to not working with images
+
 
 #starting filebeat
  cd filebeat-6.7.1-linux-x86_64

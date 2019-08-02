@@ -74,9 +74,12 @@ spec:
           #envFrom:
           #   secretRef:
           #     name: email-secret
+          # if you remove the volume volumeMounts also should be removed ####################
           volumeMounts:
                 - name: ldap-certs
                   mountPath: /cert
+                - name: mail-dir
+                  mountPath: /var/mail
           env: 
              - name: TELEGRAF_VERSION
                valueFrom:
@@ -228,9 +231,12 @@ spec:
       #  args: ["-c", "service postfix start"]  
       volumes:
             - name: ldap-certs
+      #        emptyDir: {} # introducing emptyDir instead of hostPath
               hostPath:
-                #path: "/data/ldap/certs"
-                #path: "/home/tharanga_rajapaksha/coppervolume"
-                path: "/Users/wso2/Documents/copper/copper/copper-server/kubernetes/tls"
-                #path: "./tls/"
-              
+              #  #path: "/data/ldap/certs"
+                path: "/Users/wso2/Documents/copper/cu/copper/copper-server/kubernetes/deployment/tls"
+            - name: mail-dir
+      #        emptyDir: {} # introducing emptyDir instead of hostPath
+              hostPath:
+              #  #path: "/data/ldap/certs"
+                path: "/Users/wso2/Documents/copper/cu/copper/copper-server/kubernetes/deployment/maildir"
