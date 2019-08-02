@@ -25,11 +25,11 @@ data:
     - name: alert-emailer
       email_configs:
       #- to: demo@devopscube.com
-      - to: tharanga.rajapaksha@gmail.com
+      - to: copper@copper.mail.lk
         send_resolved: false
         #from: from-email@email.com
         #smarthost: email-host-here
-        from: tharanga.rajapaksha@gmail.com
+        from: copper@copper.mail.lk
         smarthost: smtp.gmail.com
         require_tls: false
     - name: slack_demo
