@@ -21,7 +21,7 @@
     "react-google-maps": "9.4.5",
     "react-moment": "^0.8.4",
     "react-router-dom": "4.3.1",
-    "react-scripts": "2.1.5",
+    "react-scripts": "5.0.1",
     "react-swipeable-views": "0.13.1",
     "reactjs-calendar-heatmap": "0.0.10"
   },
